@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+
+
+<system name="mule">
+
+
+
+  <channel name="Mule">
+
+
+
+
+
+        <switch name="systems/mule/linked">
+           <default value="0"/>
+           <test  logic="AND" value="1">
+                /sim/model/mule/linked == 1
+                fcs/cutoff-switch == 0
+                /gear/gear[1]/compression-norm gt 0.15
+           </test>
+       </switch>
+
+
+
+       <switch name="systems/mule/force">
+           <default value="0"/>
+           <test  logic="AND" value="/sim/model/mule/magnitude">
+                systems/mule/linked == 1
+                gear/unit[1]/wheel-speed-fps lt 500
+           </test>
+           <output>external_reactions/mule/magnitude</output>
+       </switch>
+
+
+
+
+
+
+  </channel>
+
+</system>

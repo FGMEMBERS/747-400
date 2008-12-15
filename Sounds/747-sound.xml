@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+ 
+<PropertyList>
+
+<fx>
+
+  <gear>
+   <name>gear</name>
+   <mode>in-transit</mode>
+   <path>Sounds/gear.wav</path>
+   <property>/gear/gear[0]/position-norm</property>
+   <pitch>
+    <internal>dt_play</internal>
+    <offset>1.0</offset>
+    <factor>-0.001</factor>
+   </pitch>
+  </gear>
+
+  <gear>
+   <name>gear-lock</name>
+   <path>Sounds/gear-lck.wav</path>
+   <condition>
+    <equals>
+     <property>/gear/gear[0]/position-norm</property>
+     <value>0</value>
+    </equals>
+   </condition>
+  </gear>
+
+  <gear>
+   <name>gear-horn</name>
+   <mode>looped</mode>
+   <path>Sounds/gear-hrn.wav</path>
+   <condition>
+    <and>
+    <less-than>
+     <property>/controls/engines/engine/throttle</property>
+     <value>0.25</value>
+    </less-than>
+    <less-than>
+     <property>/velocities/groundspeed-kt</property>
+     <value>270</value>
+    </less-than>
+    <equals>
+     <property>/controls/gear/gear-down</property>
+     <value>0</value>
+    </equals>
+    </and>
+   </condition>
+  </gear>
+
+  <squeal>
+   <name>squeal</name>
+   <path>Sounds/squeal.wav</path>
+   <condition>
+    <or>
+     <property>/gear/gear[0]/wow</property>
+     <property>/gear/gear[1]/wow</property>
+     <property>/gear/gear[2]/wow</property>
+     <property>/gear/gear[3]/wow</property>
+     <property>/gear/gear[4]/wow</property>
+    </or>
+   </condition>
+   <volume>
+    <property>/velocities/speed-down-fps</property>
+    <factor>0.05</factor>
+   </volume>
+   <volume>
+    <property>/velocities/airspeed-kt</property>
+    <factor>0.01</factor>
+   </volume>
+   <volume>
+    <internal>dt_stop</internal>
+    <factor>0.05</factor>
+    <max>1.0</max>
+   </volume>
+   <pitch>
+    <property>/velocities/airspeed-kt</property>
+    <factor>0.0025</factor>
+    <offset>1.2</offset>
+   </pitch>
+  </squeal>
+
+  <flap>
+   <name>flaps</name>
+   <mode>in-transit</mode>
+   <path>Sounds/flaps.wav</path>
+   <property>/surface-positions/flap-pos-norm</property>
+   <volume>
+    <factor>0.45</factor>
+   </volume>
+  </flap>
+
+  <wind>
+   <name>wind</name>
+   <mode>looped</mode>
+   <path>Sounds/wind-8khz.wav</path>
+   <property>/velocities/airspeed-kt</property>
+   <volume>
+    <property>/position/altitude-ft</property>
+    <factor>-0.000015</factor>
+    <offset>1.0</offset>
+    <min>0.1</min>
+    <max>1.0</max>
+   </volume>
+   <volume>
+     <property>/velocities/airspeed-kt</property>
+     <factor>0.0015</factor>
+     <min>0.03</min>
+     <max>0.25</max>
+   </volume>
+   <pitch>
+    <property>/velocities/airspeed-kt</property>
+    <factor>0.01</factor>
+    <offset>1.25</offset>
+   </pitch>
+  </wind>
+
+  <stall>
+   <name>stall</name>
+   <path>Sounds/stall.wav</path>
+   <property>/sim/alarms/stall-warning</property>
+   <volume>
+    <property>/velocities/airspeed-kt</property>
+    <min>125.0</min>
+   </volume>
+  </stall>
+
+    <click>
+        <name>click1</name>
+        <path>Sounds/click.wav</path>
+        <condition>
+            <property>sim/sound/click</property>
+        </condition>
+        <volume>
+            <property>sim/sound/Cvolume</property>
+            <factor>0.3</factor>
+        </volume>
+        <position>
+            <x>5</x>
+            <y>0</y>
+            <z>0</z>
+        </position>
+        <reference-dist>2.5</reference-dist>
+        <max-dist>5.0</max-dist>
+    </click>
+  
+  <switch>
+   <name>click on</name>
+   <mode>once</mode>
+   <path>Aircraft/747-400/Sounds/FastenSeatbelt.wav</path>
+   <condition>
+   <property>controls/switches/seatbelt-sign</property>
+  </condition>
+   <volume>
+    <factor>1</factor>
+   </volume>
+  </switch>
+
+</fx>
+ 
+</PropertyList>

@@ -1,0 +1,355 @@
+<PropertyList>
+    
+<name>ILS</name>
+    
+<description>This tutorial starts nm out of KOAK, in clear, still, weather. Land at runway 29 to complete the tutorial.</description>
+
+  
+
+<timeofday>morning</timeofday>
+    
+
+<presets>
+            
+<airport-id>KOAK</airport-id>
+
+<on-ground>0</on-ground>
+     
+<runway>29</runway>      
+<altitude-ft>3000</altitude-ft>
+      
+<latitude-deg>-99999</latitude-deg>
+      
+<longitude-deg>-99999</longitude-deg>
+      
+<heading-deg>310.12</heading-deg>
+      
+<airspeed-kt>300.0</airspeed-kt>
+      
+<glideslope-deg>0</glideslope-deg>
+      
+<offset-azimuth>0</offset-azimuth>
+      
+<offset-distance>20</offset-distance>
+    
+<ndb-id>0</ndb-id>
+      
+<vor-id>0</vor-id>
+      
+<fix>0</fix>
+</presets>  
+
+<init>
+    
+<set>
+            
+<property>/sim/current-view/view-number</property>
+            
+<value>0</value>
+        
+</set>
+        
+
+<set>
+            
+<property>/controls/gear/brake-parking</property>
+            
+<value>0</value>
+        
+</set>
+        
+
+<set>
+            
+<property>/controls/flight/flaps</property>
+            
+<value>0.0</value>
+        
+</set>
+    
+ 
+<set>
+            <property>/controls/electric/external-power</property>
+            <value>true</value>
+        </set>
+        
+<set>
+            <property>/controls/electric/battery-switch</property>
+            <value>true</value>
+        </set>
+ 
+<set>
+            <property>/controls/electric/inverter-switch</property>
+            <value>true</value>
+        </set>
+
+<set>
+            <property>/controls/engines/engine[0]/cutoff</property>
+            <value>false</value>
+        </set>
+        
+<set>
+            <property>/controls/engines/engine[1]/cutoff</property>
+            <value>false</value>
+        </set>
+  
+<set>
+            <property>/controls/electric/engine[0]/generator</property>
+            <value>true</value>
+        </set>
+        
+<set>
+            <property>/controls/electric/engine[1]/generator</property>
+            <value>true</value>
+        </set>
+       
+<set>
+            <property>/controls/engines/engine[0]/ignition</property>
+            <value>1</value>
+        </set>
+        
+<set>
+            <property>/controls/engines/engine[1]/ignition</property>
+            <value>1</value>
+        </set>
+        
+<set>
+            <property>/controls/engines/engine[0]/throttle</property>
+            <value>0.75</value>
+        </set>
+        
+<set>
+            <property>/controls/engines/engine[1]/throttle</property>
+            <value>0.75</value>
+        </set>
+              
+</init>
+
+    
+
+<step>
+        
+<message>
+            Set NAV1 fequency to 116.80.{|.}
+            </message>
+        
+        
+<view>
+            
+<heading-offset-deg>329.5</heading-offset-deg>
+            
+<pitch-offset-deg>-30</pitch-offset-deg>
+            
+<field-of-view>31.5</field-of-view>
+        
+</view>
+   
+
+<exit>
+            
+<condition>
+                
+                    
+<equals>
+                        
+<property>/instrumentation/nav/frequencies/selected-mhz-fmt</property>
+                        
+<value>116.80</value>
+                    
+</equals>
+                   
+</condition>
+        
+</exit>
+    
+</step>
+
+
+    
+
+<step>
+        
+<message>
+            Turn BRG to NAV.{|.}
+            </message>
+        
+        
+<view>
+            
+<heading-offset-deg>8.25</heading-offset-deg>
+            
+<pitch-offset-deg>-25.5</pitch-offset-deg>
+            
+<field-of-view>30.25</field-of-view>
+        
+</view>
+</step>
+
+
+<step>
+        
+<message>
+            Align your autopilot heading with the blue line.{|.}            Set autopilot altitude to 3000 ft.{|.}
+            </message>
+   
+</step>
+
+<step>
+        
+<message>
+            Set COM1 fequency to 133.77.{|.}
+            </message>
+  
+<view>
+            
+<heading-offset-deg>329.5</heading-offset-deg>
+            
+<pitch-offset-deg>-30</pitch-offset-deg>
+            
+<field-of-view>31.5</field-of-view>
+        
+</view>
+               
+
+<exit>
+            
+<condition>
+                
+                    
+<equals>
+                        
+<property>/instrumentation/comm/frequencies/selected-mhz</property>
+                        
+<value>133.77</value>
+                    
+</equals>
+                   
+</condition>
+        
+</exit>
+ 
+</step>
+
+<step>
+        
+<message>
+            Set NAV1 fequency to 108.17.{|.}
+            </message>
+        
+        
+<view>
+            
+<heading-offset-deg>329.5</heading-offset-deg>
+            
+<pitch-offset-deg>-30</pitch-offset-deg>
+            
+<field-of-view>31.5</field-of-view>
+        
+</view>
+               
+
+<exit>
+            
+<condition>
+                
+                    
+<equals>
+                        
+<property>/instrumentation/nav/frequencies/selected-mhz-fmt</property>
+                        
+<value>108.17</value>
+                    
+</equals>
+                   
+</condition>
+        
+</exit>
+    
+</step>
+
+
+
+
+<step>
+        
+<message>
+            Set AP to NAV and APR.{|.}
+            </message>
+   
+
+<exit>
+            
+<condition>
+                
+                    
+<equals>
+                        
+<property>autopilot/locks/altitude</property>
+<value>altitude-hold</value>
+
+</equals>
+       
+<equals>
+ 
+                        
+<property>autopilot/locks/heading</property>
+<value>nav1-hold</value>
+</equals>
+               
+</condition>
+        
+</exit>
+</step>
+
+<step>
+        
+<message>
+            Slow down to 150 kt.{|.}
+            </message>
+   
+
+<exit>
+            
+<condition>
+<and>
+                
+                    
+<equals>
+                        
+<property>velocities/airspeed-kt</property>
+<value>150</value>
+                    
+</equals>
+       
+<less-than>
+                        
+<property>velocities/airspeed-kt</property>
+<value>150</value>
+                    
+</less-than>
+   
+</and>            
+</condition>
+        
+</exit>
+ 
+</step>
+
+<end>
+        
+<message>Congratulations on a successful ILS landing.        </message>
+        
+<view>
+            
+<heading-offset-deg>0</heading-offset-deg>
+            
+<pitch-offset-deg>-12</pitch-offset-deg>
+            
+<field-of-view>60</field-of-view>
+        
+</view>
+    
+</end>
+
+
+</PropertyList>

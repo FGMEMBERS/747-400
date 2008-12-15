@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<!-- intialize systems :
+
+-->
+
+<PropertyList>
+
+  <autopilot>
+   <state>
+    <vor-engage type="bool">false</vor-engage>
+   </state>
+  </autopilot>
+
+  <engines>
+   <engine n="0">
+    <engine-num>1</engine-num>
+   </engine>
+   <engine n="1">
+    <engine-num>2</engine-num>
+   </engine>
+   <engine n="2">
+    <engine-num>3</engine-num>
+   </engine>
+   <engine n="3">
+    <engine-num>4</engine-num>
+   </engine>
+  </engines>
+
+  <seat>
+   <captain type="bool">true</captain>
+   <cargo-aft type="bool">false</cargo-aft>
+   <cargo-forward type="bool">false</cargo-forward>
+   <gear-well type="bool">false</gear-well>
+  </seat>
+
+</PropertyList>

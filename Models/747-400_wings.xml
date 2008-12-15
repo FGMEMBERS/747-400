@@ -1,0 +1,178 @@
+<PropertyList>
+
+ <path>747-400_wings.ac</path>
+ <texture-path>Textures/Livery/KLM/</texture-path>
+ <offsets>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>0</z-m>
+ </offsets>
+
+<!-- ENGINE FIRE LEFT OUTER -->
+<model>
+ <path>Aircraft/747-400/Models/engine_on_fire1.xml</path> 
+ <offsets> 
+        
+  <x-m>10.5</x-m>
+        
+  <y-m>-21.23</y-m>
+        
+  <z-m>-1.97</z-m>
+      
+ <heading-deg>0</heading-deg>
+ </offsets>
+
+</model>
+
+<!-- ENGINE FIRE LEFT INNER -->
+<model>
+ <path>Aircraft/747-400/Models/engine_on_fire2.xml</path> 
+ <offsets> 
+        
+  <x-m>3</x-m>
+        
+  <y-m>-13.447</y-m>
+        
+  <z-m>-2.575</z-m>
+      
+ <heading-deg>0</heading-deg>
+ </offsets>
+
+</model>
+ 
+<!-- AILERONS -->
+<!-- LEFT -->
+<!-- INNER -->
+<animation>
+  
+<type>rotate</type>
+ 
+<object-name>Mesh29 AileronL_001_2</object-name> 
+<object-name>Mesh30 AileronL_002_2</object-name>
+<object-name>Mesh31 AileronLeftI_2</object-name>
+<property>surface-positions/left-aileron-pos-norm</property>
+  
+<factor>-30</factor>   
+<axis>
+   
+<x1-m>7.23</x1-m>
+   <y1-m>-11.25</y1-m>
+   <z1-m>-1.14</z1-m>
+   
+<x2-m>7.23</x2-m>
+   <y2-m>-13.02</y2-m>
+   <z2-m>-0.99</z2-m>
+</axis>
+ 
+</animation>
+
+<!-- OUTER -->
+<animation>
+  
+<type>rotate</type>
+ 
+<object-name>Mesh82 AileronL_000_2</object-name>
+<object-name>Mesh82 AileronL_003_2</object-name> 
+<object-name>Mesh84 AileronLeftO_2</object-name> 
+<property>surface-positions/left-aileron-pos-norm</property>
+  
+<factor>-30</factor>  
+<axis>
+   
+<x1-m>12.88</x1-m>
+   <y1-m>-21.6</y1-m>
+   <z1-m>0.20</z1-m>
+   
+<x2-m>17.11</x2-m>
+   <y2-m>-28.4</y2-m>
+   <z2-m>0.74</z2-m>
+  
+</axis>
+ 
+</animation>
+
+<!-- RIGHT -->
+<!-- INNER -->
+<animation>
+  
+<type>rotate</type>
+ 
+<object-name>Mesh33 AileronR_001_2</object-name> 
+<object-name>Mesh36 AileronR_004_2</object-name>
+<object-name>Mesh37 AileronRight_2</object-name>
+<property>surface-positions/left-aileron-pos-norm</property>
+  
+<factor>-30</factor>   
+<axis>
+   
+<x1-m>7.23</x1-m>
+   <y1-m>11.25</y1-m>
+   <z1-m>-1.14</z1-m>
+   
+<x2-m>7.23</x2-m>
+   <y2-m>13.02</y2-m>
+   <z2-m>-0.99</z2-m>
+</axis>
+ 
+</animation>
+
+<!-- OUTER -->
+<animation>
+  
+<type>rotate</type>
+
+<object-name>Mesh32 AileronR_000_2</object-name>
+<object-name>Mesh34 AileronR_002_2</object-name>
+<object-name>Mesh35 AileronR_003_2</object-name>
+<property>surface-positions/left-aileron-pos-norm</property>
+  
+<factor>-30</factor>  
+<axis>
+   
+<x1-m>12.88</x1-m>
+   <y1-m>21.6</y1-m>
+   <z1-m>0.20</z1-m>
+   
+<x2-m>17.11</x2-m>
+   <y2-m>28.4</y2-m>
+   <z2-m>0.74</z2-m>
+  
+</axis>
+ 
+</animation>
+
+<!-- THRUST REVERSERS -->
+
+ <animation>
+  <type>translate</type>
+  <object-name>Mesh17 Group_14_3 Gro_0</object-name>
+  <object-name>Mesh17 Group_14_3 Gro_1</object-name>
+  <object-name>Mesh23 Group_14_4 Gro_0</object-name>
+  <object-name>Mesh23 Group_14_4 Gro_1</object-name>
+  <object-name>Mesh11 Group_14_2 Gro_0</object-name>
+  <object-name>Mesh11 Group_14_2 Gro_1</object-name>
+  <object-name>Mesh5 Group_14_1 Grou_0</object-name>
+  <object-name>Mesh5 Group_14_1 Grou_1</object-name>
+  <object-name>Mesh10 Group_10_1 Mod</object-name>
+  <object-name>Mesh16 Group_10_2 Mod</object-name>
+  <object-name>Mesh22 Group_10_3 Mod</object-name>
+  <object-name>Mesh28 Group_10_4 Mod</object-name>
+  <property>engines/engine/reverser-pos-norm</property>
+  <interpolation>
+    <entry>
+      <ind>0</ind>
+      <dep>0.0</dep>
+    </entry>
+    <entry>
+      <ind>1</ind>
+      <dep>0.8</dep>
+    </entry>
+  </interpolation>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+</PropertyList>

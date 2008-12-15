@@ -1,0 +1,250 @@
+<PropertyList>
+
+    <name>Pushback and Start</name>
+    <description>
+We're now fully configured to begin our pushback and engine start. The passengers are on board and
+you've just been given your clearance. As things start to happen very quickly from here on out, don't be
+afraid to pause your sim between steps.
+    </description>
+    <audio-dir>Aircraft/747-400/tutorial</audio-dir>
+    <timeofday>noon</timeofday>
+    <presets>
+      <airport-id>KSFO</airport-id>
+      <on-ground>1</on-ground>
+      <runway>28R</runway>
+      <altitude-ft>0</altitude-ft>
+      <latitude-deg>37.61838</latitude-deg>
+      <longitude-deg>-122.39193</longitude-deg>
+      <heading-deg>0</heading-deg>
+      <airspeed-kt>0</airspeed-kt>
+      <glideslope-deg>0</glideslope-deg>
+      <offset-azimuth>0</offset-azimuth>
+      <offset-distance>0</offset-distance>
+    </presets>
+
+    <init>
+      <set>
+        <property>/controls/gear/brake-parking</property>
+        <value>1</value>
+      </set>
+      <set>
+        <property>/controls/flight/flaps</property>
+        <value>0.0</value>
+      </set>
+      <set>
+        <property>/controls/engines/engine/magnetos</property>
+        <value>0</value>
+      </set>
+      <set>
+        <property>/controls/engines/engine/throttle</property>
+        <value>0</value>
+      </set>
+      <set>
+        <property>/engines/engine/running</property>
+        <value>false</value>
+      </set>
+      <set>
+        <property>/instrumentation/adf/frequencies/selected-khz</property>
+        <value>340</value>
+      </set>
+      <set>
+        <property>/environment/weather-scenario</property>
+        <value>Fair weather</value>
+      </set>
+      <set>
+        <property>/controls/flight/elevator-trim</property>
+        <value>0.17</value>
+      </set>
+    </init>
+
+    <step>
+      <message>Close all doors.</message>
+    </step>
+
+    <step>
+      <message>Right click on the RST button on the pushback guage</message>
+    </step>
+
+    <step>
+      <message>Adjust DIST and DEG.</message>
+    </step>
+
+    <step>
+      <message>As soon DIST and DEG are entered, left click on the RST button.</message>
+    </step>
+
+    <step>
+      <message>Turn ON the BEACON lights.</message>
+	<exit>
+            
+	<condition>
+                
+                    
+		<equals>
+                        
+			<property>/controls/lighting/beacon</property>
+                        
+			<value>true</value>
+                    
+		</equals>
+     
+	</condition>
+        
+	</exit>
+ 
+    </step>
+
+    <step>
+      <message>Set Hydraulid DEMAND Pump selector 4 to AUX.</message>
+    </step>
+
+    <step>
+      <message>Set Hydraulic DEMAND Pump selectors 1-3 to AUTO.</message>
+    </step>
+
+    <step>
+      <message>Turn OFF all but one PACK selector.</message>
+    </step>
+
+    <step>
+      <message>Turn OFF autostart.</message>
+    </step>
+
+    <step>
+      <message>Turn ON continuous ignition.</message>
+    </step>
+
+    <step>
+      <message>Ensure all throttles are at idle</message>
+	<exit>
+            
+	<condition>
+                
+                    
+		<equals>
+                        
+			<property>/controls/engines/engine/throttle</property>
+                        
+			<value>0</value>
+                    
+		</equals>
+     
+		<equals>
+                        
+			<property>/controls/engines/engine[1]/throttle</property>
+                        
+			<value>0</value>
+                    
+		</equals>
+     
+		<equals>
+                        
+			<property>/controls/engines/engine[2]/throttle</property>
+                        
+			<value>0</value>
+                    
+		</equals>
+     
+		<equals>
+                        
+			<property>/controls/engines/engine[3]/throttle</property>
+                        
+			<value>0</value>
+                    
+		</equals>
+     
+	</condition>
+        
+	</exit>
+ 
+    </step>
+
+    <step>
+      <message>ARM the emergency lights.</message>
+    </step>
+
+    <step>
+      <message>Press the ENG button on the EICAS MCP.</message>
+    </step>
+
+    <step>
+      <message>Pull the Engine Start Selector for Engine 4.</message>
+    </step>
+
+    <step>
+      <message>When the N2% RPM indicator on the EICAS reaches the magenta line (around 14%), switch the Fuel Control Switch for Engine 4 to RUN.</message>
+    </step>
+
+    <step>
+      <message>Repeat this process for engine 1. Pull the Start Selector, wait for N2 to reach the magenta line, set Fuel Control to RUN.</message>
+    </step>
+
+    <step>
+      <message>Now do the same thing for engines 2 and 3.</message>
+    </step>
+
+    <step>
+      <message>Turn OFF the APU.</message>
+	<exit>
+            
+	<condition>
+                
+                    
+		<equals>
+                        
+			<property>/controls/engines/engine/throttle</property>
+                        
+			<value>0</value>
+                    
+		</equals>
+     
+		<equals>
+                        
+			<property>/controls/engines/engine[1]/throttle</property>
+                        
+			<value>0</value>
+                    
+		</equals>
+     
+		<equals>
+                        
+			<property>/controls/engines/engine[2]/throttle</property>
+                        
+			<value>0</value>
+                    
+		</equals>
+     
+		<equals>
+                        
+			<property>/controls/engines/engine[3]/throttle</property>
+                        
+			<value>0</value>
+                    
+		</equals>
+     
+	</condition>
+        
+	</exit>
+ 
+    </step>
+
+    <step>
+      <message>Turn OFF APU Bleed Air.</message>
+    </step>
+
+    <step>
+      <message>Turn all PACK selectors to NORM.</message>
+     </step>
+
+    <step>
+      <message>Set Hydraulid DEMAND Pump selector 4 to AUTO.</message>
+    </step>
+
+    <step>
+      <message>Check the main display for any warnings.</message>
+    </step>
+
+    <step>
+      <message>Turn ON MAIN and OVRD fuel pumps for each tank that contains fuel.</message>
+    </step>
+</PropertyList>

@@ -1,0 +1,73 @@
+<PropertyList>
+
+ <path>747-400_tail.ac</path>
+ <texture-path>Textures/Livery/KLM/</texture-path>
+ <offsets>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>0</z-m>
+ </offsets>
+ 
+ <!-- RUDDER -->
+ 
+<animation>
+<type>rotate</type>
+<object-name>Mesh25 Group_21_1 Mod</object-name> 
+<object-name>Mesh26 Group_21_1 Mod</object-name>
+<property>surface-positions/rudder-pos-norm</property>
+<factor>50</factor>
+<axis>
+<x1-m>33</x1-m>
+<y1-m>0.0</y1-m>
+<z1-m>3.86</z1-m>
+<x2-m>39.5</x2-m>
+<y2-m>0.0</y2-m>
+<z2-m>13.24</z2-m>
+</axis>
+</animation>
+
+<!-- ELEVATORS -->
+<!-- RIGHT ELEVATOR-->
+
+<animation>
+<type>rotate</type>
+<object-name>Mesh17 Elevator_001_2</object-name>
+<object-name>Mesh19 Elevator_008_2</object-name>
+<object-name>Mesh18 Elevator_002_2</object-name>
+<object-name>Mesh20 ElevatorRigh_2</object-name>
+<object-name>Mesh1 Elevator_003_2_</object-name>
+<object-name>Mesh2 Elevator_004_2_</object-name>
+<property>surface-positions/elevator-pos-norm</property>
+<factor>25</factor>
+<axis>
+<x1-m>34.90</x1-m>
+   <y1-m>0.95</y1-m>
+   <z1-m>2.35</z1-m>
+<x2-m>38.95</x2-m>
+   <y2-m>9.3</y2-m>
+   <z2-m>3.5</z2-m>
+</axis>
+</animation>
+
+<!-- LEFT ELEVATOR-->
+<animation>
+<type>rotate</type>
+<object-name>Mesh21 Elevator_000_2</object-name>
+<object-name>Mesh22 Elevator_007_2</object-name>
+<object-name>Mesh23 Elevator_009_2</object-name>
+<object-name>Mesh24 ElevatorLeft_2</object-name>
+<object-name>Mesh3 Elevator_005_2_</object-name>
+<object-name>Mesh4 Elevator_006_2_</object-name>
+<property>controls/flight/elevator</property>
+<factor>-25</factor>
+<axis>
+<x1-m>34.90</x1-m>
+   <y1-m>-0.95</y1-m>
+   <z1-m>2.35</z1-m>
+<x2-m>38.95</x2-m>
+   <y2-m>-9.3</y2-m>
+   <z2-m>3.5</z2-m>
+</axis>
+</animation>
+
+</PropertyList>

@@ -1,0 +1,27 @@
+<PropertyList>
+
+	
+
+<path>overhead.ac</path>
+
+
+
+ <animation>
+   <type>select</type>
+<condition>
+<or>
+      <equals>
+       <property>sim/current-view/view-number</property>
+       <value>0</value>
+      </equals>
+      <equals>
+       <property>sim/current-view/view-number</property>
+       <value>8</value>
+      </equals>
+</or>
+</condition>
+ </animation>
+
+</PropertyList>
+
+

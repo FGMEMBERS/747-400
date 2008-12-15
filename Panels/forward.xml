@@ -1,0 +1,400 @@
+<PropertyList>
+
+	
+
+<path>forward.ac</path>
+
+
+
+ <animation>
+   <type>select</type>
+<condition>
+<or>
+      <equals>
+       <property>sim/current-view/view-number</property>
+       <value>0</value>
+      </equals>
+      <equals>
+       <property>sim/current-view/view-number</property>
+       <value>8</value>
+      </equals>
+</or>
+</condition>
+ </animation>
+
+<!-- IAS/MACH -->
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mesh25 ias_001 glares</object-name>
+<property>/autopilot/settings/target-speed-kt</property>
+   <factor>0.001</factor>
+   <step>100.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mesh26 ias_002 glares</object-name>
+<property>/autopilot/settings/target-speed-kt</property>
+   <factor>0.01</factor>
+   <step>10.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mesh27 ias_003 glares</object-name>
+<property>/autopilot/settings/target-speed-kt</property>
+   <factor>0.1</factor>
+   <step>1.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+<!-- HDG -->
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mesh22 hdg_001 glares</object-name>
+<property>/autopilot/settings/true-heading-deg</property>
+   <factor>0.001</factor>
+   <step>100.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mesh23 hdg_002 glares</object-name>
+<property>/autopilot/settings/true-heading-deg</property>
+   <factor>0.01</factor>
+   <step>10.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mesh24 hdg_003 glares</object-name>
+<property>/autopilot/settings/true-heading-deg</property>
+   <factor>0.1</factor>
+   <step>1.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+<!-- VS -->
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mesh12 vert_spd_001 g</object-name>
+<property>/autopilot/settings/vertical-speed-fpm</property>
+   <factor>0.00001</factor>
+   <step>10000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mesh13 vert_spd_002 g</object-name>
+<property>/autopilot/settings/vertical-speed-fpm</property>
+   <factor>0.0001</factor>
+   <step>1000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mesh14 vert_spd_003 g</object-name>
+<property>/autopilot/settings/vertical-speed-fpm</property>
+   <factor>0.001</factor>
+   <step>100.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mesh15 vert_spd_004 g</object-name>
+<property>/autopilot/settings/vertical-speed-fpm</property>
+   <factor>0.01</factor>
+   <step>10.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mesh16 vert_spd_005 g</object-name>
+<property>/autopilot/settings/vertical-speed-fpm</property>
+   <factor>0.1</factor>
+   <step>1.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+<!-- ALT -->
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mesh19 alt_001 glares</object-name>
+<property>/autopilot/settings/target-altitude-ft</property>
+   <factor>0.00001</factor>
+   <step>10000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mesh18 alt_002 glares</object-name>
+<property>/autopilot/settings/target-altitude-ft</property>
+   <factor>0.0001</factor>
+   <step>1000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mesh17 alt_003 glares</object-name>
+<property>/autopilot/settings/target-altitude-ft</property>
+   <factor>0.001</factor>
+   <step>100.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mesh20 alt_004 glares</object-name>
+<property>/autopilot/settings/target-altitude-ft</property>
+   <factor>0.01</factor>
+   <step>10.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mesh21 alt_005 glares</object-name>
+<property>/autopilot/settings/target-altitude-ft</property>
+   <factor>0.1</factor>
+   <step>1.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+<!-- BUTTONS -->
+
+  <animation>
+  <type>pick</type>
+  <object-name>Mesh8 Group6 glareshi_1</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-cycle</command>
+    <property>/autopilot/locks/heading</property>
+    <value type="string">wing-leveler</value>
+    <value type="string"></value>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>/autopilot/buttons/heading-wing-leveler</property>
+    <value type="string">0</value>
+    <value type="string">1</value>
+   </binding>
+  </action>
+ </animation>
+
+  <animation>
+  <type>pick</type>
+  <object-name>Mesh10 Group8 glaresh_1</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+            
+    <command>property-cycle</command>
+  
+      <property>/autopilot/locks/altitude</property>
+      <value type="string">vertical-speed-hold</value>
+      <value type="string"></value>
+
+   </binding>  
+   <binding>
+    <command>property-toggle</command>
+    <property>/autopilot/buttons/altitude-vs-hold</property>
+    <value type="string">0</value>
+    <value type="string">1</value>
+   </binding>
+  </action>
+ </animation>
+
+<animation>
+        
+<type>pick</type>
+        
+<object-name>Mesh11 Group9 glaresh_1</object-name>
+	
+        
+<action>
+            
+ <button>0</button>
+            
+ <repeatable>false</repeatable>
+            
+   <binding>
+            
+    <command>property-cycle</command>
+            
+    <property>/autopilot/locks/altitude</property>
+	      
+    <value type="string">altitude-hold</value>
+
+    <value type="string"></value>
+
+   </binding>
+        
+   <binding>
+    <command>property-toggle</command>
+    <property>/autopilot/buttons/altitude-hold</property>
+    <value type="string">0</value>
+    <value type="string">1</value>
+   </binding>
+</action>
+    
+</animation>
+
+  <animation>
+  <type>pick</type>
+  <object-name>Mesh5 Group3 glareshi_1</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-cycle</command>
+    <property>/autopilot/locks/speed</property>
+    <value type="string">speed-with-throttle</value>
+    <value type="string"></value>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>/autopilot/buttons/speed-with-throttle</property>
+    <value type="string">0</value>
+    <value type="string">1</value>
+   </binding>
+  </action>
+ </animation>
+
+<!-- LIGHTS -->
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mesh8 Group6 glareshi_1</object-name>
+   <property>autopilot/buttons/heading-wing-leveler</property>
+   <factor>0.0838</factor>
+   <step>1.0</step>
+   <axis>
+     <x>0</x>
+     <y>-1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mesh10 Group8 glaresh_1</object-name>
+   <property>autopilot/buttons/altitude-vs-hold</property>
+   <factor>0.0838</factor>
+   <step>1.0</step>
+   <axis>
+     <x>0</x>
+     <y>-1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mesh11 Group9 glaresh_1</object-name>
+   <property>autopilot/buttons/altitude-hold</property>
+   <factor>0.0838</factor>
+   <step>1.0</step>
+   <axis>
+     <x>0</x>
+     <y>-1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mesh5 Group3 glareshi_1</object-name>
+   <property>autopilot/buttons/speed-with-throttle</property>
+   <factor>0.0838</factor>
+   <step>1.0</step>
+   <axis>
+     <x>0</x>
+     <y>-1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+</PropertyList>
+
+

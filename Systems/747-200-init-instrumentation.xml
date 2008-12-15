@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+<!-- Initialize instrumentation  :
+
+-->
+
+<PropertyList>
+
+  <adf n="1">
+   <serviceable type="bool">true</serviceable>
+   <mode>adf</mode>
+  </adf>
+
+  <dme n="0">                                                                   <!-- specific DME -->
+   <frequencies>
+    <source>/instrumentation/nav[0]/frequencies/selected-mhz</source>
+   </frequencies>
+  </dme>
+
+  <dme n="1">
+   <serviceable type="bool">true</serviceable>
+   <frequencies>
+    <source>/instrumentation/nav[1]/frequencies/selected-mhz</source>
+   </frequencies>
+  </dme>
+
+  <hsi>
+   <serviceable type="bool" archive="y">true</serviceable>
+  </hsi>
+
+  <ins n="0">
+   <ground-speed-fps alias="/fdm/jsbsim/velocities/vg-fps"/>
+  </ins>
+
+  <inst-vertical-speed-indicator>
+   <serviceable type="bool" archive="y">true</serviceable>
+<!--
+   <indicated-speed-fps alias="/velocities/vertical-speed-fps"/>
+-->
+  </inst-vertical-speed-indicator>
+
+  <radio-altimeter>
+   <serviceable type="bool" archive="y">true</serviceable>
+   <indicated-altitude-ft alias="/position/altitude-agl-ft"/>
+  </radio-altimeter>
+
+</PropertyList>
