@@ -4,7 +4,7 @@
 <model> 
 <livery> 
 <name type="string">KLM Royal Dutch Airlines</name> 
-<texture-path>Textures/Livery/KLM/</texture-pat> 
+<texture-path>Textures/Livery/KLM/</texture-path> 
 </livery> 
 </model> 
 </sim> 
