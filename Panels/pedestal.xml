@@ -1,137 +1,67 @@
 <PropertyList>
 
-	
-
 <path>pedestal.ac</path>
-
-
-
- <animation>
-   <type>select</type>
-<condition>
-<or>
-      <equals>
-       <property>sim/current-view/view-number</property>
-       <value>0</value>
-      </equals>
-      <equals>
-       <property>sim/current-view/view-number</property>
-       <value>8</value>
-      </equals>
-</or>
-</condition>
- </animation>
 
 <!-- THROTTLE LEVER -->
 <!-- ENGINE 1 -->
 <animation>
-  
 <type>rotate</type>
-  
-<object-name>Mesh8 LHthrottle_3_2 </object-name>
- 
-<object-name>Mesh16 RHthrottle_0_3_0</object-name>
-<object-name>Mesh16 RHthrottle_0_3_1</object-name>
- 
-<object-name>Mesh4 RHthrottle_0_2 </object-name>
- 
+<object-name>throttle_eng.1</object-name>
+<object-name>reverser.1</object-name>
 <property>/controls/engines/engine/throttle</property>
-  
 <interpolation>
-    
-<entry>
+ <entry>
      <ind>0</ind>
      <dep>15</dep>
     </entry>
-        
-<entry>
+ <entry>
      <ind>1</ind>
      <dep>-20</dep>
     </entry>
- 
 </interpolation>
- 
-  
 <center>
-   
 <x-m>1.143</x-m>
-   
 <y-m>0</y-m>
-   
 <z-m>0.362</z-m>
-  
 </center>
-  
 <axis>
-   
 <x>0.0</x>
-   
 <y>1.0</y>
-   
 <z>0</z>
-  
 </axis>
- 
 </animation>
 
 <animation>
-  
 <type>rotate</type>
-  
-<object-name>Mesh4 RHthrottle_0_2 </object-name>
- 
+<object-name>reverser.1</object-name>
 <property>/controls/engines/engine/reverser</property>
-  
 <interpolation>
-    
 <entry>
      <ind>0</ind>
      <dep>0</dep>
     </entry>
-        
 <entry>
      <ind>1</ind>
      <dep>25</dep>
     </entry>
- 
 </interpolation>
- 
-  
 <center>
-   
 <x-m>1.12</x-m>
-   
 <y-m>0</y-m>
-   
 <z-m>0.54</z-m>
-  
 </center>
-  
 <axis>
-   
 <x>0.0</x>
-   
 <y>1.0</y>
-   
 <z>0</z>
-  
 </axis>
- 
 </animation>
 
 <!-- ENGINE 2 -->
 <animation>
-  
 <type>rotate</type>
-  
-<object-name>Mesh1 LHthrottle_2_1 </object-name>
- 
-<object-name>Mesh15 RHthrottle_0_4_0</object-name>
- 
-<object-name>Mesh15 RHthrottle_0_4_1</object-name>
- 
-<object-name>Mesh9 RHthrottle_0_3 </object-name>
- 
+<object-name>throttle_eng.2</object-name>
+<object-name>reverser.2</object-name>
 <property>/controls/engines/engine[1]/throttle</property>
   
 <interpolation>
@@ -147,513 +77,514 @@
     </entry>
  
 </interpolation>
- 
-  
 <center>
-   
 <x-m>1.143</x-m>
-   
 <y-m>0</y-m>
-   
 <z-m>0.362</z-m>
-  
 </center>
-  
 <axis>
-   
 <x>0.0</x>
-   
 <y>1.0</y>
-   
 <z>0</z>
-  
 </axis>
- 
 </animation>
 
 <animation>
-  
 <type>rotate</type>
-  
-<object-name>Mesh9 RHthrottle_0_3 </object-name>
- 
+<object-name>reverser.2</object-name>
 <property>/controls/engines/engine[1]/reverser</property>
-  
 <interpolation>
-    
 <entry>
      <ind>0</ind>
      <dep>0</dep>
     </entry>
-        
 <entry>
      <ind>1</ind>
      <dep>25</dep>
     </entry>
- 
 </interpolation>
- 
-  
 <center>
-   
 <x-m>1.12</x-m>
-   
 <y-m>0</y-m>
-   
 <z-m>0.54</z-m>
-  
 </center>
-  
 <axis>
-   
 <x>0.0</x>
-   
 <y>1.0</y>
-   
 <z>0</z>
-  
 </axis>
- 
 </animation>
 
 <!-- ENGINE 3 -->
 <animation>
-  
 <type>rotate</type>
-  
-<object-name>Mesh6 LHthrottle_2_2 </object-name>
- 
-<object-name>Mesh13 RHthrottle_0_5_0</object-name>
- 
-<object-name>Mesh13 RHthrottle_0_5_1</object-name>
- 
-<object-name>Mesh11 RHthrottle_0_4</object-name>
- 
+<object-name>throttle_eng.3</object-name>
+<object-name>reverser.3</object-name>
 <property>/controls/engines/engine[2]/throttle</property>
-  
 <interpolation>
-    
 <entry>
      <ind>0</ind>
      <dep>15</dep>
     </entry>
-        
 <entry>
      <ind>1</ind>
      <dep>-20</dep>
     </entry>
- 
 </interpolation>
- 
-  
 <center>
-   
 <x-m>1.143</x-m>
-   
 <y-m>0</y-m>
-   
 <z-m>0.362</z-m>
-  
 </center>
-  
 <axis>
-   
 <x>0.0</x>
-   
 <y>1.0</y>
-   
 <z>0</z>
-  
 </axis>
- 
 </animation>
 
 <animation>
-  
-<type>rotate</type>
-  
-<object-name>Mesh11 RHthrottle_0_4</object-name>
- 
+<type>rotate</type>  
+<object-name>reverser.3</object-name>
 <property>/controls/engines/engine[2]/reverser</property>
-  
 <interpolation>
-    
 <entry>
      <ind>0</ind>
      <dep>0</dep>
     </entry>
-        
 <entry>
      <ind>1</ind>
      <dep>25</dep>
     </entry>
- 
 </interpolation>
- 
-  
 <center>
-   
 <x-m>1.12</x-m>
-   
 <y-m>0</y-m>
-   
 <z-m>0.54</z-m>
-  
 </center>
-  
 <axis>
-   
 <x>0.0</x>
-   
 <y>1.0</y>
-   
 <z>0</z>
-  
 </axis>
- 
 </animation>
 
 <!-- ENGINE 4 -->
 <animation>
-  
 <type>rotate</type>
-  
-<object-name>Mesh7 LHthrottle_3_1 </object-name>
- 
-<object-name>Mesh14 RHthrottle_0_2_0</object-name>
- 
-<object-name>Mesh14 RHthrottle_0_2_1</object-name>
- 
-<object-name>Mesh2 RHthrottle_0_1 </object-name>
- 
+<object-name>throttle_eng.4</object-name>
+<object-name>reverser.4</object-name>
 <property>/controls/engines/engine[3]/throttle</property>
-  
 <interpolation>
-    
 <entry>
      <ind>0</ind>
      <dep>15</dep>
     </entry>
-        
 <entry>
      <ind>1</ind>
      <dep>-20</dep>
     </entry>
- 
-</interpolation>
- 
-  
+</interpolation>  
 <center>
-   
 <x-m>1.143</x-m>
-   
 <y-m>0</y-m>
-   
 <z-m>0.362</z-m>
-  
 </center>
-  
 <axis>
-   
 <x>0.0</x>
-   
 <y>1.0</y>
-   
 <z>0</z>
-  
 </axis>
- 
 </animation>
 
 <animation>
-  
 <type>rotate</type>
-  
-<object-name>Mesh2 RHthrottle_0_1 </object-name>
- 
+<object-name>reverser.4</object-name>
 <property>/controls/engines/engine[3]/reverser</property>
-  
 <interpolation>
-    
 <entry>
      <ind>0</ind>
      <dep>0</dep>
     </entry>
-        
 <entry>
      <ind>1</ind>
      <dep>25</dep>
     </entry>
- 
 </interpolation>
- 
-  
 <center>
-   
 <x-m>1.12</x-m>
-   
 <y-m>0</y-m>
-   
 <z-m>0.54</z-m>
-  
 </center>
-  
 <axis>
-   
 <x>0.0</x>
-   
 <y>1.0</y>
-   
 <z>0</z>
-  
 </axis>
- 
 </animation>
 
 <!-- FLAPS LEVER -->
+
 <animation>
-  
 <type>rotate</type>
-  
-<object-name>Mesh214 Group_4_1 Fla</object-name>
-  
+<object-name>flap_handle</object-name>
 <property>/controls/flight/flaps</property>
-  
 <interpolation>
-    
 <entry>
      <ind>0</ind>
      <dep>0</dep>
     </entry>
-       
 <entry>
      <ind>0.001</ind>
      <dep>9.7</dep>
     </entry>
-  
 <entry>
      <ind>0.167</ind>
      <dep>19.4</dep>
     </entry>
-  
 <entry>
      <ind>0.333</ind>
      <dep>29.1</dep>
     </entry>
- 
 <entry>
      <ind>0.667</ind>
      <dep>38.8</dep>
     </entry>
- 
 <entry>
      <ind>0.833</ind>
      <dep>48.5</dep>
     </entry>
- 
 <entry>
      <ind>1</ind>
      <dep>58.2</dep>
     </entry>
- 
 </interpolation>
- 
-  
 <center>
-   
 <x-m>1.143</x-m>
-   
 <y-m>0</y-m>
-   
 <z-m>0.362</z-m>
-  
 </center>
-  
 <axis>
-   
 <x>0.0</x>
-   
 <y>1.0</y>
-   
 <z>0</z>
-  
 </axis>
- 
+</animation>
+
+<!-- SPEEDBRAKE LEVER -->
+
+ <animation>
+  <type>pick</type>
+  <object-name>speedbrake</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/flight/speedbrake</property>
+   </binding>
+  </action>
+ </animation>
+
+<animation>
+<type>rotate</type>
+<object-name>speedbrake</object-name>
+<property>/controls/flight/speedbrake</property>
+<factor>58.2</factor>
+<center>
+<x-m>1.143</x-m>
+<y-m>0</y-m>
+<z-m>0.362</z-m>
+</center>
+<axis>
+<x>0</x>
+<y>1</y>
+<z>0</z>
+</axis>
+</animation>
+
+<!-- FUEL CONTROL -->
+
+ <animation>
+  <type>pick</type>
+  <object-name>fuel_ctrl.1</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/engines/engine/cutoff</property>
+   </binding>
+  </action>
+ </animation>
+
+<animation>
+<type>rotate</type>
+<object-name>fuel_ctrl.1</object-name>
+<property>/controls/engines/engine/cutoff</property>
+<factor>25</factor>
+<center>
+<x-m>1.236</x-m>
+<y-m>0</y-m>
+<z-m>0.462</z-m>
+</center>
+<axis>
+<x>0</x>
+<y>1</y>
+<z>0</z>
+</axis>
+</animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>fuel_ctrl.2</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/engines/engine[1]/cutoff</property>
+   </binding>
+  </action>
+ </animation>
+
+<animation>
+<type>rotate</type>
+<object-name>fuel_ctrl.2</object-name>
+<property>/controls/engines/engine[1]/cutoff</property>
+<factor>25</factor>
+<center>
+<x-m>1.236</x-m>
+<y-m>0</y-m>
+<z-m>0.462</z-m>
+</center>
+<axis>
+<x>0</x>
+<y>1</y>
+<z>0</z>
+</axis>
+</animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>fuel_ctrl.3</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/engines/engine[2]/cutoff</property>
+   </binding>
+  </action>
+ </animation>
+
+<animation>
+<type>rotate</type>
+<object-name>fuel_ctrl.3</object-name>
+<property>/controls/engines/engine[2]/cutoff</property>
+<factor>25</factor>
+<center>
+<x-m>1.236</x-m>
+<y-m>0</y-m>
+<z-m>0.462</z-m>
+</center>
+<axis>
+<x>0</x>
+<y>1</y>
+<z>0</z>
+</axis>
+</animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>fuel_ctrl.4</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/engines/engine[3]/cutoff</property>
+   </binding>
+  </action>
+ </animation>
+
+<animation>
+<type>rotate</type>
+<object-name>fuel_ctrl.4</object-name>
+<property>/controls/engines/engine[3]/cutoff</property>
+<factor>25</factor>
+<center>
+<x-m>1.236</x-m>
+<y-m>0</y-m>
+<z-m>0.462</z-m>
+</center>
+<axis>
+<x>0</x>
+<y>1</y>
+<z>0</z>
+</axis>
 </animation>
 
 <!-- RADIO -->
 <!-- ACTIVE -->
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh192 radio_active_</object-name>
-   <object-name>Mesh32 radio_active_0</object-name>
-   <object-name>Mesh202 radio_active_</object-name>
-<property>/instrumentation/comm/frequencies/selected-mhz</property>
-   <factor>0.001</factor>
-   <step>100.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh191 radio_active_</object-name>
-   <object-name>Mesh31 radio_active_0</object-name>
-   <object-name>Mesh204 radio_active_</object-name>
-<property>/instrumentation/comm/frequencies/selected-mhz</property>
-   <factor>0.01</factor>
-   <step>10.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh190 radio_active_</object-name>
-   <object-name>Mesh30 radio_active_0</object-name>
-   <object-name>Mesh22 radio_active_0</object-name>
-<property>/instrumentation/comm/frequencies/selected-mhz</property>
-   <factor>0.1</factor>
-   <step>1.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh189 radio_active_</object-name>
-   <object-name>Mesh29 radio_active_0</object-name>
-   <object-name>Mesh24 radio_active_0</object-name>
-<property>/instrumentation/comm/frequencies/selected-mhz</property>
-   <factor>1.0</factor>
-   <step>0.1</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh188 radio_active_</object-name>
-   <object-name>Mesh28 radio_active_0</object-name>
-   <object-name>Mesh26 radio_active_0</object-name>
-<property>/instrumentation/comm/frequencies/selected-mhz</property>
-   <factor>10.0</factor>
-   <step>0.01</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh193 radio_active_</object-name>
-   <object-name>Mesh39 radio_active_0</object-name>
-   <object-name>Mesh201 radio_active_</object-name>
-<property>/instrumentation/comm/frequencies/selected-mhz</property>
-   <factor>100.0</factor>
-   <step>0.001</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
+  <animation>
+    <type>textranslate</type>
+    <object-name>freq_active.1</object-name>
+ <property>/instrumentation/comm/frequencies/selected-mhz</property>
+    <factor>0.001</factor>
+    <step>100.0</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>textranslate</type>
+    <object-name>freq_active.2</object-name>
+ <property>/instrumentation/comm/frequencies/selected-mhz</property>
+    <factor>0.01</factor>
+    <step>10.0</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>textranslate</type>
+    <object-name>freq_active.3</object-name>
+<property>/instrumentation/comm/frequencies/selected-mhz</property>
+    <factor>0.1</factor>
+    <step>1.0</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>textranslate</type>
+    <object-name>freq_active.4</object-name>
+ <property>/instrumentation/comm/frequencies/selected-mhz</property>
+    <factor>1.0</factor>
+    <step>0.1</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>textranslate</type>
+    <object-name>freq_active.5</object-name>
+<property>/instrumentation/comm/frequencies/selected-mhz</property>
+    <factor>10.0</factor>
+    <step>0.01</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>textranslate</type>
+    <object-name>freq_active.6</object-name>
+    <property>/instrumentation/comm/frequencies/selected-mhz</property>
+    <factor>100.0</factor>
+    <step>0.001</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
 
 <!-- RADIO -->
-<!-- STANDBY -->
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh159 radio_stby_00</object-name>
-<property>/instrumentation/comm/frequencies/standby-mhz</property>
-   <factor>0.001</factor>
-   <step>100.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh158 radio_stby_00</object-name>
-<property>/instrumentation/comm/frequencies/standby-mhz</property>
-   <factor>0.01</factor>
-   <step>10.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh157 radio_stby_00</object-name>
-<property>/instrumentation/comm/frequencies/standby-mhz</property>
-   <factor>0.1</factor>
-   <step>1.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh156 radio_stby_00</object-name>
-<property>/instrumentation/comm/frequencies/standby-mhz</property>
-   <factor>1.0</factor>
-   <step>0.1</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh155 radio_stby_00</object-name>
-<property>/instrumentation/comm/frequencies/standby-mhz</property>
-   <factor>10.0</factor>
-   <step>0.01</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh160 radio_stby_00</object-name>
-<property>/instrumentation/comm/frequencies/standby-mhz</property>
-   <factor>100.0</factor>
-   <step>0.001</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
+<!-- STANDBY -->
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>freq_stby.1</object-name>
+ <property>/instrumentation/comm/frequencies/standby-mhz</property>
+    <factor>0.001</factor>
+    <step>100.0</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>textranslate</type>
+    <object-name>freq_stby.2</object-name>
+ <property>/instrumentation/comm/frequencies/standby-mhz</property>
+    <factor>0.01</factor>
+    <step>10.0</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>textranslate</type>
+    <object-name>freq_stby.3</object-name>
+<property>/instrumentation/comm/frequencies/standby-mhz</property>
+    <factor>0.1</factor>
+    <step>1.0</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>textranslate</type>
+    <object-name>freq_stby.4</object-name>
+ <property>/instrumentation/comm/frequencies/standby-mhz</property>
+    <factor>1.0</factor>
+    <step>0.1</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>textranslate</type>
+    <object-name>freq_stby.5</object-name>
+<property>/instrumentation/comm/frequencies/standby-mhz</property>
+    <factor>10.0</factor>
+    <step>0.01</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>textranslate</type>
+    <object-name>freq_stby.6</object-name>
+    <property>/instrumentation/comm/frequencies/standby-mhz</property>
+    <factor>100.0</factor>
+    <step>0.001</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
 
 </PropertyList>
 

@@ -1,378 +1,136 @@
 <PropertyList>
 
-
-     <model>
-                <name>Mule</name>
-		<path>Aircraft/747-400/Models/pushback.xml</path>
-		<offsets>
-			<x-m>-27.5</x-m>
-			<y-m>0</y-m>
-			<z-m>-4.9</z-m>
-			<pitch-deg>0</pitch-deg>
-		</offsets>
-	</model>
-
-        <animation>
-		<type>select</type>
-		<object-name>Mule</object-name>
-		<condition>
-                    <and>
-			<equals>
-                            <property>fdm/jsbsim/systems/mule/linked</property>
-                            <value>1</value>
-                        </equals>
-                    </and>
-		</condition>
-	</animation>
-
+<model>
+ <name>Pushback</name>
+ <path>Models\Airport\Pushback\Goldhofert.xml</path>
+ <offsets>
+  <x-m>-21.993</x-m>
+  <y-m>  0.000</y-m>
+  <z-m> -5.000</z-m>
+ </offsets>
+</model>
 
 <model>
  <path>Aircraft/747-400/Panels/cockpit.xml</path> 
  <offsets> 
-        
-  <x-m>-24.8</x-m>
-        
+  <x-m>-25.15</x-m>
   <y-m>0</y-m>
-        
-  <z-m>2.6</z-m>
-      
- <heading-deg>0</heading-deg>
+  <z-m>2.7</z-m>
  </offsets>
-
 </model>
 
 <model>
  <path>Aircraft/747-400/Models/747-400_fuselage.xml</path> 
- <offsets> 
-        
-  <x-m>0</x-m>
-        
-  <y-m>0</y-m>
-        
-  <z-m>0</z-m>
-      
- <heading-deg>0</heading-deg>
- </offsets>
-
 </model>
 
 <model>
  <path>Aircraft/747-400/Models/747-400_gear.xml</path> 
- <offsets> 
-        
-  <x-m>0</x-m>
-        
-  <y-m>0</y-m>
-        
-  <z-m>0</z-m>
-      
- <heading-deg>0</heading-deg>
- </offsets>
-
 </model>
 
 <model>
  <path>Aircraft/747-400/Models/747-400_tail.xml</path> 
- <offsets> 
-        
-  <x-m>0</x-m>
-        
-  <y-m>0</y-m>
-        
-  <z-m>0</z-m>
-      
- <heading-deg>0</heading-deg>
- </offsets>
-
 </model>
-
 
 <model>
  <path>Aircraft/747-400/Models/747-400_wings.xml</path> 
- <offsets> 
-        
-  <x-m>0</x-m>
-        
-  <y-m>0</y-m>
-        
-  <z-m>0</z-m>
-      
- <heading-deg>0</heading-deg>
+</model>
+
+<!-- LANDING LIGHTS WINGS -->
+
+<model>
+ <path>Aircraft/747-400/Models/lights/landinglight.xml</path>
+ <name>LandingLight.Left.1</name>
+ <offsets>
+  <x-m>-6.5</x-m>
+  <y-m>-6</y-m>
+  <z-m>-1</z-m>
  </offsets>
-
 </model>
 
-<!-- LANDING LIGHTS -->
-
 <model>
-        
-<path>Aircraft/747-400/Models/lights/landinglight.xml</path>
-  
-<name>StrobeLight.Tail</name>
-              
-<offsets>
-            
-<x-m>-7.5</x-m>
-            
-<y-m>-4.9</y-m>
-            
-<z-m>-1</z-m>
-        
-</offsets>
-    
+ <path>Aircraft/747-400/Models/lights/landinglight.xml</path>
+ <name>LandingLight.Left.2</name>
+ <offsets>
+  <x-m>-7.5</x-m>
+  <y-m>-4.9</y-m>
+  <z-m>-1</z-m>
+ </offsets>
 </model>
 
-
-
 <model>
-        
-<path>Aircraft/747-400/Models/lights/landinglight.xml</path>
-  
-<name>StrobeLight.Tail</name>
-              
-<offsets>
-            
-<x-m>-7.5</x-m>
-            
-<y-m>4.9</y-m>
-            
-<z-m>-1</z-m>
-        
-</offsets>
-    
+ <path>Aircraft/747-400/Models/lights/landinglight.xml</path>
+ <name>LandingLight.Right.2</name>
+ <offsets>
+  <x-m>-7.5</x-m>
+  <y-m>4.9</y-m>
+  <z-m>-1</z-m>
+ </offsets>
 </model>
 
-
-
 <model>
-        
-<path>Aircraft/747-400/Models/lights/landinglight.xml</path>
-  
-<name>StrobeLight.Tail</name>
-              
-<offsets>
-            
-<x-m>-6.5</x-m>
-            
-<y-m>-6</y-m>
-            
-<z-m>-1</z-m>
-        
-</offsets>
-    
+ <path>Aircraft/747-400/Models/lights/landinglight.xml</path>
+ <name>LandingLight.Right.1</name>
+ <offsets>
+  <x-m>-6.5</x-m>
+  <y-m>6</y-m>
+  <z-m>-1</z-m>
+ </offsets>
 </model>
 
-
+<!-- LANDING LIGHTS NOSE -->
 
 <model>
-        
-<path>Aircraft/747-400/Models/lights/landinglight.xml</path>
-  
-<name>StrobeLight.Tail</name>
-              
-<offsets>
-            
-<x-m>-6.5</x-m>
-            
-<y-m>6</y-m>
-            
-<z-m>-1</z-m>
-        
-</offsets>
-    
+ <path>Aircraft/747-400/Models/lights/landinglight.xml</path>
+ <name>LandingLight.Nose.1</name>
+ <offsets>
+  <x-m>-22.334</x-m>
+  <y-m>-0.174</y-m>
+  <z-m>-3.3</z-m>
+  <heading-deg>45</heading-deg>       
+ </offsets>
 </model>
 
-
-
-<!-- NOSE -->
 <model>
-        
-<path>Aircraft/747-400/Models/lights/landinglight.xml</path>
-  
-<name>StrobeLight.Tail</name>
-              
-<offsets>
-            
-<x-m>-22.334</x-m>
-            
-<y-m>-0.174</y-m>
-            
-<z-m>-3.3</z-m>
- 
-<heading-deg>45</heading-deg>       
-</offsets>
-    
+ <path>Aircraft/747-400/Models/lights/landinglight.xml</path>
+ <name>LandingLight.Nose.2</name>
+ <offsets>
+  <x-m>-22.334</x-m>
+  <y-m>0.174</y-m>
+  <z-m>-3.3</z-m>
+  <heading-deg>-45</heading-deg>       
+ </offsets>
 </model>
 
-
+<!-- ANTI-COLLISION LIGHTS -->
 
 <model>
-        
-<path>Aircraft/747-400/Models/lights/landinglight.xml</path>
-  
-<name>StrobeLight.Tail</name>
-              
-<offsets>
-            
-<x-m>-22.334</x-m>
-            
-<y-m>0.174</y-m>
-            
-<z-m>-3.3</z-m>
- 
-<heading-deg>-45</heading-deg>       
-</offsets>
-    
+ <path>Aircraft/747-400/Models/lights/flash.xml</path>
+ <name>StrobeLight.Tail</name>
+ <offsets>
+  <x-m>38.65</x-m>
+  <y-m>0</y-m>
+  <z-m>2.55</z-m>
+ </offsets>
 </model>
 
-
-
-<!-- LIGHTS -->
-
 <model>
-        
-<path>Aircraft/747-400/Models/lights/flash.xml</path>
-  
-<name>StrobeLight.Tail</name>
-              
-<offsets>
-            
-<x-m>38.65</x-m>
-            
-<y-m>0</y-m>
-            
-<z-m>2.55</z-m>
-        
-</offsets>
-    
+ <path>Aircraft/747-400/Models/lights/beacon.xml</path>
+ <name>Beacon.Lower</name>
+ <offsets>
+  <x-m>-5.6</x-m>
+  <y-m>0</y-m>
+  <z-m>-3.2</z-m>
+ </offsets>
 </model>
 
-
-
 <model>
-        
-<path>Aircraft/747-400/Models/lights/flash.xml</path>
-  
-<name>StrobeLight.L</name>
-              
-<offsets>
-            
-<x-m>18.6</x-m>
-            
-<y-m>32.2</y-m>
-            
-<z-m>1.35</z-m>
-        
-</offsets>
-    
-</model>
-
-
-
-<model>
-        
-<path>Aircraft/747-400/Models/lights/flash.xml</path>
-  
-<name>StrobeLight.R</name>
-              
-<offsets>
-            
-<x-m>18.6</x-m>
-            
-<y-m>-32.2</y-m>
-            
-<z-m>1.35</z-m>
-        
-</offsets>
-    
-</model>
-
-
-
-<model>
-        
-<path>Aircraft/747-400/Models/lights/beacon.xml</path>
-        
-        
-<name>StrobeLight.R</name>
- 
-<offsets>
-            
-<x-m>-5.6</x-m>
-            
-<y-m>0</y-m>
-            
-<z-m>-3.2</z-m>
-        
-</offsets>
-    
-</model>
-
- 
-
-<model>
-        
-<path>Aircraft/747-400/Models/lights/beacon.xml</path>
-        
-               
-        
-<name>StrobeLight.R</name>
- 
-<offsets>
-            
-<x-m>-15.75</x-m>
-            
-<y-m>0</y-m>
-            
-<z-m>5.15</z-m>
-        
-</offsets>
-    
-</model>
-
- 
-
-<model>
-        
-<path>Aircraft/747-400/Models/lights/GreenLight.xml</path>
-        
-              
-        
-<name>GreenLight</name>
- 
-<offsets>
-            
-<x-m>16.75</x-m>
-            
-<y-m>32</y-m>
-            
-<z-m>1.35</z-m>
-          
-</offsets>
-    
-</model>
-
- 
-
-<model>
-        
-<path>Aircraft/747-400/Models/lights/RedLight.xml</path>
-        
-               
-        
-<name>RedLight</name>
- 
-<offsets>
-            
-<x-m>16.75</x-m>
-            
-<y-m>-32</y-m>
-            
-<z-m>1.35</z-m>
-          
-</offsets>
-    
+ <path>Aircraft/747-400/Models/lights/beacon.xml</path>
+ <name>Beacon.Upper</name>
+ <offsets>
+  <x-m>-15.75</x-m>
+  <y-m>0</y-m>
+  <z-m>5.15</z-m>
+ </offsets>
 </model>
 
 </PropertyList>
- 

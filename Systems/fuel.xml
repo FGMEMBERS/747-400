@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<system name="fuel">
+    
+    <channel name="fuel">
+
+       <switch name="propulsion/tank[2]/x-feed">
+           <default value="/controls/fuel/tank[2]/x-feed"/>
+           <test  logic="OR" value="1">
+               propulsion/tank[3]/contents-lbs GT propulsion/tank[2]/contents-lbs
+               propulsion/tank[4]/contents-lbs GT propulsion/tank[5]/contents-lbs
+           </test>
+       </switch>
+
+       <switch name="propulsion/tank[3]/x-feed">
+           <default value="/controls/fuel/tank[3]/x-feed"/>
+           <test  logic="OR" value="1">
+               propulsion/tank[3]/contents-lbs GT propulsion/tank[2]/contents-lbs
+               propulsion/tank[4]/contents-lbs GT propulsion/tank[5]/contents-lbs
+           </test>
+       </switch>
+
+       <switch name="propulsion/tank[4]/x-feed">
+           <default value="/controls/fuel/tank[4]/x-feed"/>
+           <test  logic="OR" value="1">
+               propulsion/tank[3]/contents-lbs GT propulsion/tank[2]/contents-lbs
+               propulsion/tank[4]/contents-lbs GT propulsion/tank[5]/contents-lbs
+           </test>
+       </switch>
+
+       <switch name="propulsion/tank[5]/x-feed">
+           <default value="/controls/fuel/tank[5]/x-feed"/>
+           <test  logic="OR" value="1">
+               propulsion/tank[3]/contents-lbs GT propulsion/tank[2]/contents-lbs
+               propulsion/tank[4]/contents-lbs GT propulsion/tank[5]/contents-lbs
+           </test>
+       </switch>
+
+    </channel>
+
+</system>

@@ -1,100 +1,80 @@
 <PropertyList>
 
-	
-
 <path>yokes.ac</path>
-
-
-
- <animation>
-   <type>select</type>
-<condition>
-<or>
-      <equals>
-       <property>sim/current-view/view-number</property>
-       <value>0</value>
-      </equals>
-      <equals>
-       <property>sim/current-view/view-number</property>
-       <value>8</value>
-      </equals>
-</or>
-</condition>
- </animation>
 
 <!-- CAPTAIN -->
  
- <animation>
-  <type>rotate</type>
-   <object-name>Mesh10 Component_</object-name>
-   <object-name>Mesh9 fowheel2 Gr</object-name>
-   <property>controls/flight/elevator</property>
-   <factor>10</factor>
-   <center>
-    <x-m>1.10</x-m>
-    <y-m>0.0</y-m>
-    <z-m>-0.05</z-m>
-   </center>
-   <axis>
-    <x>0.0</x>
-    <y>-1.0</y>
-    <z>0.0</z>
-   </axis>
- </animation>
+<animation>
+ <type>rotate</type>
+ <object-name>left_column</object-name>
+ <object-name>left_yoke</object-name>
+ <property>controls/flight/elevator</property>
+ <factor>10</factor>
+ <center>
+  <x-m> 1.10</x-m>
+  <y-m>-0.533</y-m>
+  <z-m>-0.025</z-m>
+ </center>
+ <axis>
+  <x>0.0</x>
+  <y>-1.0</y>
+  <z>0.0</z>
+ </axis>
+</animation>
 
- <animation>
-  <type>rotate</type>
-   <object-name>Mesh9 fowheel2 Gr</object-name>
-  <property>controls/flight/aileron</property>
-  <factor>30</factor>
-  <center>
-   <x-m>-0.53</x-m>
-   <y-m>-0.533</y-m>
-   <z-m>0.729</z-m>
-  </center>
-  <axis>
-   <x>-1.0</x>
-   <y>0.0</y>
-   <z>0.0</z>
-  </axis>
- </animation>
+<animation>
+ <type>rotate</type>
+ <object-name>left_yoke</object-name>
+ <property>controls/flight/aileron</property>
+ <factor>30</factor>
+ <center>
+  <x-m> 1.047</x-m>
+  <y-m>-0.535</y-m>
+  <z-m> 0.727</z-m>
+ </center>
+ <axis>
+  <x>-1.0</x>
+  <y>0.0</y>
+  <z>0.0</z>
+ </axis>
+</animation>
 
 <!-- FIRST OFFICER -->
- <animation>
-  <type>rotate</type>
-   <object-name>Mesh4 fowheel1 Gr</object-name>
-   <object-name>Mesh5 Component_1</object-name>
-   <property>controls/flight/elevator</property>
-   <factor>10</factor>
-   <center>
-    <x-m>1.10</x-m>
-    <y-m>0.0</y-m>
-    <z-m>-0.05</z-m>
-   </center>
-   <axis>
-    <x>0.0</x>
-    <y>-1.0</y>
-    <z>0.0</z>
-   </axis>
-  </animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>right_column</object-name>
+ <object-name>right_yoke</object-name>
+ <property>controls/flight/elevator</property>
+ <factor>10</factor>
+ <center>
+  <x-m> 1.10</x-m>
+  <y-m> 0.533</y-m>
+  <z-m>-0.025</z-m>
+ </center>
+ <axis>
+  <x>0.0</x>
+  <y>-1.0</y>
+  <z>0.0</z>
+ </axis>
+</animation>
  
- <animation>
-  <type>rotate</type>
-   <object-name>Mesh4 fowheel1 Gr</object-name>
-  <property>controls/flight/aileron</property>
-  <factor>30</factor>
-  <center>
-   <x-m>0.53</x-m>
-   <y-m>0.533</y-m>
-   <z-m>0.729</z-m>
-  </center>
-  <axis>
-   <x>-1.0</x>
-   <y>0.0</y>
-   <z>0.0</z>
-  </axis>
- </animation>
+<animation>
+ <type>rotate</type>
+ <object-name>right_yoke</object-name>
+ <property>controls/flight/aileron</property>
+ <factor>30</factor>
+ <center>
+  <x-m> 1.047</x-m>
+  <y-m> 0.535</y-m>
+  <z-m> 0.727</z-m>
+ </center>
+ <axis>
+  <x>-1.0</x>
+  <y>0.0</y>
+  <z>0.0</z>
+ </axis>
+</animation>
 
 </PropertyList>
-
 

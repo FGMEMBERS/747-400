@@ -2,40 +2,46 @@
 
 <PropertyList>
 
-  <path>flash.ac</path>
-
-  <animation>
-    <!-- Objets opaques -->
-
-    <!-- Objets transparents -->
-    <object-name>flash</object-name>
-  </animation>
+  <path>WhiteLight.ac</path>
 
   <animation>
     <type>noshadow</type>
-    <object-name>flash</object-name>
+    <object-name>Light</object-name>
   </animation>
 
   <animation>
-    <type>flash</type>
-    <object-name>flash</object-name>
-    <center>
-      <x-m> 0.000 </x-m>
-      <y-m> 0.000 </y-m>
-      <z-m> 0.000 </z-m>
-    </center>
-    <axis>
-      <x> -1 </x>
-      <y>  0 </y>
-      <z>  0 </z>
-    </axis>
-    <power>2</power>
-    <factor>2</factor>
-    <offset>0</offset>
-    <two-sides type="bool">false</two-sides>
-    <min>0.5</min>
-    <max>2</max>
+    <type>alpha-test</type>
+    <alpha-factor>0.01</alpha-factor>
   </animation>
 
+  <animation>
+    <type>billboard</type>
+    <object-name>Light</object-name>
+    <spherical type="bool">true</spherical>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>Light</object-name>
+    <condition>
+      <property>/sim/model/lights/strobe/state</property>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>dist-scale</type>
+    <object-name>Light</object-name>
+    <interpolation>
+      <entry>
+        <ind>0</ind>
+        <dep>2</dep>
+      </entry>
+      <entry>
+        <ind>1500</ind>
+        <dep>20</dep>
+      </entry>
+    </interpolation>
+  </animation>
 
 </PropertyList>
+

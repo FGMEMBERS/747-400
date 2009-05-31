@@ -8,7 +8,7 @@
         <author> Gijs de Rooy </author>
         <filecreationdate> 2008 </filecreationdate>
         <version> 1.01 </version>
-        <description> 747-400 with GE_CF6-80C2A8 </description>
+        <description> 747-400 with GE_CF6-80C2B1F </description>
         <note>maximum takeoff weight 875,000 lb.</note>
         <note>extended range fuel 54,388 US gal (364,400 lb).</note>
         <note>center of gravity between 13.0 % and 33.0 % of MAC.</note>
@@ -102,7 +102,7 @@
         <chord unit="FT"> 27.54 </chord>                                                  <!-- aeromatic 28.11 -->
         <htailarea unit="FT2"> 1470.35 </htailarea>                                       <!-- aeromatic 1375.00 -->
         <htailarm unit="FT"> 106.63 </htailarm>                                           <!-- aeromatic 104.33 -->
-        <vtailarea unit="FT2"> 829.9 </vtailarea>                                         <!-- aeromatic 1100.00 -->
+        <vtailarea unit="FT2"> 1060 </vtailarea>                                         <!-- aeromatic 1100.00 -->
         <vtailarm unit="FT"> 0 </vtailarm>
         <!-- AC_LV        98.43     -->                        <!-- ft -->                <!-- aeromatic 104.33 -->
         <wing_incidence unit="DEG"> 2 </wing_incidence>
@@ -138,18 +138,10 @@
         <iyz unit="SLUG*FT2"> 0 </iyz>
         <emptywt unit="LBS"> 393263  </emptywt>
         <location name="CG" unit="IN">
-            <x> 0 </x>
+            <x> -150 </x>
             <y> 0 </y>
             <z> 0 </z>
         </location>
-        <pointmass name="payload">
-            <weight unit="LBS"> 92270 </weight>
-            <location name="payload" unit="IN">
-                <x> -300 </x>
-                <y> 0 </y>
-                <z> 0 </z>
-            </location>
-        </pointmass>
     </mass_balance>
 
     <ground_reactions>
@@ -344,7 +336,7 @@
     </ground_reactions>
     <propulsion>
 
-        <engine file="GE_CF6-80C2A8">
+        <engine file="GE_CF6-80C2B1F">
             <location unit="IN">
                 <x> 50 </x>
                 <y> -835 </y>                                                                 <!-- aeromatic -391.34 -->
@@ -356,9 +348,6 @@
                 <yaw> 0 </yaw>
             </orient>
             <feed>0</feed>
-            <feed>1</feed>
-            <feed>2</feed>
-            <feed>5</feed>
             <thruster file="direct">
                 <location unit="IN">
                     <x> 50 </x>
@@ -373,7 +362,7 @@
             </thruster>
         </engine>
 
-        <engine file="GE_CF6-80C2A8">
+        <engine file="GE_CF6-80C2B1F">
             <location unit="IN">
                 <x> -250 </x>
                 <y> -530 </y>                                                                 <!-- aeromatic -391.34 -->
@@ -385,9 +374,6 @@
                 <yaw> 0 </yaw>
             </orient>
             <feed>0</feed>
-            <feed>1</feed>
-            <feed>2</feed>
-            <feed>5</feed>
             <thruster file="direct">
                 <location unit="IN">
                     <x> -250 </x>
@@ -402,7 +388,7 @@
             </thruster>
         </engine>
 
-        <engine file="GE_CF6-80C2A8">
+        <engine file="GE_CF6-80C2B1F">
             <location unit="IN">
                 <x>-250 </x>
                 <y> 530 </y>
@@ -414,9 +400,6 @@
                 <yaw> 0 </yaw>
             </orient>
             <feed>0</feed>
-            <feed>3</feed>
-            <feed>4</feed>
-            <feed>6</feed>
             <thruster file="direct">
                 <location unit="IN">
                     <x> -250 </x>
@@ -431,7 +414,7 @@
             </thruster>
         </engine>
 
-        <engine file="GE_CF6-80C2A8">
+        <engine file="GE_CF6-80C2B1F">
             <location unit="IN">
                 <x> 50 </x>
                 <y> 835 </y>
@@ -443,9 +426,6 @@
                 <yaw> 0 </yaw>
             </orient>
             <feed>0</feed>
-            <feed>3</feed>
-            <feed>4</feed>
-            <feed>6</feed>
             <thruster file="direct">
                 <location unit="IN">
                     <x> 50 </x>
@@ -456,35 +436,6 @@
                     <roll> 0.0 </roll>
                     <pitch> 0.0 </pitch>
                     <yaw> 0.0 </yaw>
-                </orient>
-            </thruster>
-        </engine>
-
-        <engine file="pushback">
-            <location unit="IN">
-                <x> -1050 </x>
-                <y> 0 </y>
-                <z> -100 </z>
-            </location>
-            <orient unit="DEG">
-                <roll> 0.0 </roll>
-                <pitch> 0 </pitch>
-                <yaw> 180 </yaw>
-            </orient>
-            <feed>0</feed>
-            <feed>3</feed>
-            <feed>4</feed>
-            <feed>6</feed>
-            <thruster file="direct">
-                <location unit="IN">
-                    <x> -1050 </x>
-                    <y> 0 </y>
-                    <z> -100 </z>
-                </location>
-                <orient unit="DEG">
-                    <roll> 0.0 </roll>
-                    <pitch> 0.0 </pitch>
-                    <yaw> 180.0 </yaw>
                 </orient>
             </thruster>
         </engine>
@@ -576,11 +527,13 @@
                 <z> 100 </z>
             </location>
             <capacity unit="LBS"> 22110 </capacity>
-            <contents unit="LBS"> 0 </contents>
+            <contents unit="LBS"> 11055 </contents>
         </tank>
     </propulsion>
 
-    <system file="mule"/>
+    <system file="autobrake"/>
+    <system file="fuel"/>
+    <system file="pushback"/>
 
     <flight_control name="747-400">
      <property>fcs/LE-flap-cmd-norm</property>
@@ -599,8 +552,8 @@
         <aerosurface_scale name="Elevator Control">
             <input>fcs/pitch-trim-sum</input>
             <range>
-                <min>-0.35</min>
-                <max>0.3</max>
+                <min>-0.26</min>
+                <max>0.44</max>
             </range>
             <output>fcs/elevator-pos-rad</output>
         </aerosurface_scale>
@@ -628,8 +581,8 @@
         <aerosurface_scale name="Left Aileron Control">
             <input>fcs/roll-trim-sum</input>
             <range>
-                <min>-0.35</min>
-                <max>0.35</max>
+                <min>-0.61</min>
+                <max>0.61</max>
             </range>
             <output>fcs/left-aileron-pos-rad</output>
         </aerosurface_scale>
@@ -645,8 +598,8 @@
         <aerosurface_scale name="Right Aileron Control">
             <input>-fcs/roll-trim-sum</input>
             <range>
-                <min>-0.35</min>
-                <max>0.35</max>
+                <min>-0.61</min>
+                <max>0.61</max>
             </range>
             <output>fcs/right-aileron-pos-rad</output>
         </aerosurface_scale>
@@ -725,8 +678,8 @@
         <aerosurface_scale name="Rudder Control">
             <input>fcs/rudder-sum</input>
             <range>
-                <min>-0.3500</min>
-                <max>0.3500</max>
+                <min>-0.61</min>
+                <max>0.61</max>
             </range>
             <output>fcs/rudder-pos-rad</output>
         </aerosurface_scale>
@@ -794,11 +747,36 @@
                 </setting>
                 <setting>
                     <position>1.0000</position>
-                    <time>20.0000</time>
+                    <time>25.0000</time>
                 </setting>
             </traverse>
             <output>gear/gear-pos-norm</output>
         </kinematic>
+
+        <fcs_function name="Rear Wheel Steering">
+          <function name="fcs/steer-rear-deg">
+            <description>Steering command for rear trucks</description>
+            <product>
+              <table>
+                 <independentVar lookup="row">fcs/steer-pos-deg</independentVar>
+                 <independentVar lookup="column">velocities/vg-fps</independentVar>
+                 <tableData>
+                      0  34  40  45
+                -70  13  13   0   0 
+                -20   0   0   0   0
+                  0   0   0   0   0
+                 20   0   0   0   0
+                 70 -13 -13   0   0 
+                 </tableData>
+              </table> 
+            </product>
+          </function>
+          <output>fcs/steer-pos-deg[2]</output>
+        </fcs_function>
+        <summer name="Rear Wheel Tie Rod">
+            <input>fcs/steer-pos-deg[2]</input>
+            <output>fcs/steer-pos-deg[3]</output>
+      </summer>
 
         <kinematic name="Speedbrake Control">
             <input>fcs/speedbrake-cmd-norm</input>
@@ -809,7 +787,7 @@
                 </setting>
                 <setting>
                     <position>1.0000</position>
-                    <time>1.0000</time>
+                    <time>1.5000</time>
                 </setting>
             </traverse>
             <output>fcs/speedbrake-pos-norm</output>
@@ -852,8 +830,8 @@
             <input>fcs/LE-flap-cmd-norm</input>
             <traverse>
                 <setting>
-                    <position>0.0000</position>
-                    <time>0.0000</time>
+                    <position>0.0100</position>
+                    <time>0.0100</time>
                 </setting>
                 <setting>
                     <position>0.6670</position>
@@ -866,6 +844,7 @@
             </traverse>
             <output>fcs/LE-flap-pos-norm</output>
         </kinematic>
+
      </channel>
     </flight_control>
     <aerodynamics>
@@ -976,7 +955,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/speedbrake-pos-norm</property>
-                    <value>0.0</value>
+                    <value>0.02</value>
                 </product>
             </function>
             <function name="aero/coefficient/CDbeta">
@@ -1122,7 +1101,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/elevator-pos-rad</property>
-                    <value>0.2000</value>
+                    <value>0.3200</value>
                 </product>
             </function>
         </axis>
@@ -1287,11 +1266,11 @@
 
      <external_reactions>
 
-        <force name="mule" frame="BODY">
+        <force name="pushback" frame="BODY">
         <location unit="IN">
-            <x>  -139 </x>
-            <y>    0.0 </y>
-            <z>  -71.0 </z>
+                <x> -1050 </x>
+                <y> 0 </y>
+                <z> -100 </z>
         </location>
         <direction>
             <x>1</x>

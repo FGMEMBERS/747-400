@@ -8,48 +8,9 @@ Syd Adams, Josh Wilson
  <path>nd.ac</path>
 
  <animation>
-   <type>select</type>
-   <object-name>Radarscreen</object-name>
-    <object-name>NDscreen</object-name>
-   <condition>
-   <equals>
-    <property>sim/current-view/view-number</property>
-    <value>0</value>
-   </equals>
-  </condition>
- </animation>
-
- <animation>
-   <type>select</type>
-   <object-name>path</object-name>
-   <condition>
-   <equals>
-    <property>sim/current-view/view-number</property>
-    <value>0</value>
-   </equals>
-  </condition>
- </animation>
-
- <animation>
-   <type>select</type>
-   <object-name>hdg</object-name>
-   <condition>
-   <equals>
-    <property>sim/current-view/view-number</property>
-    <value>0</value>
-   </equals>
-  </condition>
- </animation>
-
- <animation>
-   <type>select</type>
-   <object-name>NDhdg</object-name>
-   <condition>
-   <equals>
-    <property>sim/current-view/view-number</property>
-    <value>0</value>
-   </equals>
-  </condition>
+  <type>range</type>
+  <min-m>0</min-m>
+  <max-m>10</max-m>
  </animation>
 
    <animation>
@@ -66,17 +27,6 @@ Syd Adams, Josh Wilson
      <y>0</y>
      <z>-1</z>
    </axis>
- </animation>
- 
- <animation>
-   <type>select</type>
-   <object-name>mfdhdg</object-name>
-   <condition>
-   <equals>
-    <property>sim/current-view/view-number</property>
-    <value>0</value>
-   </equals>
-  </condition>
  </animation>
 
 <animation>
@@ -160,17 +110,6 @@ Syd Adams, Josh Wilson
 
 
 -->
- 
- <animation>
-   <type>select</type>
-   <object-name>hdgtext</object-name>
-   <condition>
-   <equals>
-    <property>sim/current-view/view-number</property>
-    <value>0</value>
-   </equals>
-  </condition>
- </animation>
 
  <animation>
    <type>textranslate</type>
@@ -186,17 +125,6 @@ Syd Adams, Josh Wilson
  </animation>
 
  <animation>
-   <type>select</type>
-   <object-name>hdgtext.001</object-name>
-   <condition>
-   <equals>
-    <property>sim/current-view/view-number</property>
-    <value>0</value>
-   </equals>
-  </condition>
- </animation>
-
- <animation>
    <type>textranslate</type>
    <object-name>hdgtext.001</object-name>
    <property>/orientation/heading-magnetic-deg</property>
@@ -207,17 +135,6 @@ Syd Adams, Josh Wilson
      <y>1</y>
      <z>0</z>
    </axis>
- </animation>
-
- <animation>
-   <type>select</type>
-   <object-name>hdgtext.002</object-name>
-   <condition>
-   <equals>
-    <property>sim/current-view/view-number</property>
-    <value>0</value>
-   </equals>
-  </condition>
  </animation>
 
  <animation>
@@ -237,16 +154,10 @@ Syd Adams, Josh Wilson
    <type>select</type>
 <object-name>rng.001</object-name>
 <condition>
-<and>
-   <equals>
-    <property>sim/current-view/view-number</property>
-    <value>0</value>
-   </equals>
 <equals>
 <property>/instrumentation/wxradar/switch</property>
 <value>on</value>
 </equals>
-</and>
 </condition>
  </animation>
 
@@ -254,16 +165,10 @@ Syd Adams, Josh Wilson
    <type>select</type>
 <object-name>rng.002</object-name>
 <condition>
-<and>
-   <equals>
-    <property>sim/current-view/view-number</property>
-    <value>0</value>
-   </equals>
 <equals>
 <property>/instrumentation/wxradar/switch</property>
 <value>on</value>
 </equals>
-</and>
 </condition>
  </animation>
 
@@ -271,16 +176,10 @@ Syd Adams, Josh Wilson
    <type>select</type>
 <object-name>rng.003</object-name>
 <condition>
-<and>
-   <equals>
-    <property>sim/current-view/view-number</property>
-    <value>0</value>
-   </equals>
 <equals>
 <property>/instrumentation/wxradar/switch</property>
 <value>on</value>
 </equals>
-</and>
 </condition>
  </animation>
 
@@ -288,16 +187,10 @@ Syd Adams, Josh Wilson
    <type>select</type>
 <object-name>wxr.annun</object-name>
 <condition>
-<and>
-   <equals>
-    <property>sim/current-view/view-number</property>
-    <value>0</value>
-   </equals>
 <equals>
 <property>/instrumentation/wxradar/switch</property>
 <value>on</value>
 </equals>
-</and>
 </condition>
  </animation>
 
@@ -345,10 +238,6 @@ Syd Adams, Josh Wilson
 <object-name>waypoint1a</object-name>
 <condition>
 <and>
-<equals>
-<property>sim/current-view/view-number</property>
-<value>0</value>
-</equals>
 <equals>
 <property>instrumentation/radar/range[0]</property>
 <value>10</value>
@@ -415,10 +304,6 @@ Syd Adams, Josh Wilson
 <condition>
 <and>
 <equals>
-<property>sim/current-view/view-number</property>
-<value>0</value>
-</equals>
-<equals>
 <property>instrumentation/radar/range[0]</property>
 <value>20</value>
 </equals>
@@ -483,10 +368,6 @@ Syd Adams, Josh Wilson
 <object-name>waypoint1c</object-name>
 <condition>
 <and>
-<equals>
-<property>sim/current-view/view-number</property>
-<value>0</value>
-</equals>
 <equals>
 <property>instrumentation/radar/range[0]</property>
 <value>40</value>
@@ -553,10 +434,6 @@ Syd Adams, Josh Wilson
 <condition>
 <and>
 <equals>
-<property>sim/current-view/view-number</property>
-<value>0</value>
-</equals>
-<equals>
 <property>instrumentation/radar/range[0]</property>
 <value>80</value>
 </equals>
@@ -621,10 +498,6 @@ Syd Adams, Josh Wilson
 <object-name>waypoint1e</object-name>
 <condition>
 <and>
-<equals>
-<property>sim/current-view/view-number</property>
-<value>0</value>
-</equals>
 <equals>
 <property>instrumentation/radar/range[0]</property>
 <value>160</value>
@@ -691,10 +564,6 @@ Syd Adams, Josh Wilson
 <condition>
 <and>
 <equals>
-<property>sim/current-view/view-number</property>
-<value>0</value>
-</equals>
-<equals>
 <property>instrumentation/radar/range[0]</property>
 <value>320</value>
 </equals>
@@ -759,10 +628,6 @@ Syd Adams, Josh Wilson
 <object-name>waypoint1g</object-name>
 <condition>
 <and>
-<equals>
-<property>sim/current-view/view-number</property>
-<value>0</value>
-</equals>
 <equals>
 <property>instrumentation/radar/range[0]</property>
 <value>640</value>

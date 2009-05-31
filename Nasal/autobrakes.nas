@@ -1,13 +1,13 @@
 ###########################################
 ##                                       ##
 ## AUTOBRAKING SYSTEM for BOEING 747-400 ##
-## 5 December 2008          Gijs de Rooy ##
+## 21 Mai 2009              Gijs de Rooy ##
 ##                                       ##
 ###########################################
 
 var autobrake = func {
 
-        if (getprop("/gear/gear/wow") == 1 and getprop("/controls/engines/engine/throttle") == 0) {				  
+        if (getprop("/gear/gear/wow") == 1 and getprop("/controls/engines/engine/throttle") == 0 and getprop("/controls/engines/engine[1]/throttle") == 0 and getprop("/controls/engines/engine[2]/throttle") == 0 and getprop("/controls/engines/engine[3]/throttle") == 0) {				  
 	  # brakes enable after touchdown of nose wheel
 	
         if (getprop("/controls/gear/autobrakes") == 0) {

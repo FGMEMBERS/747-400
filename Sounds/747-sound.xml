@@ -126,32 +126,32 @@
    </volume>
   </stall>
 
-    <click>
-        <name>click1</name>
-        <path>Sounds/click.wav</path>
-        <condition>
-            <property>sim/sound/click</property>
-        </condition>
-        <volume>
-            <property>sim/sound/Cvolume</property>
-            <factor>0.3</factor>
-        </volume>
-        <position>
-            <x>5</x>
-            <y>0</y>
-            <z>0</z>
-        </position>
-        <reference-dist>2.5</reference-dist>
-        <max-dist>5.0</max-dist>
-    </click>
+  <click>
+   <name>click1</name>
+   <path>Sounds/click.wav</path>
+   <condition>
+    <property>sim/sound/click</property>
+   </condition>
+   <volume>
+    <property>sim/sound/Cvolume</property>
+    <factor>0.3</factor>
+   </volume>
+   <position>
+    <x>5</x>
+    <y>0</y>
+    <z>0</z>
+   </position>
+   <reference-dist>2.5</reference-dist>
+   <max-dist>5.0</max-dist>
+  </click>
   
   <switch>
    <name>click on</name>
    <mode>once</mode>
    <path>Aircraft/747-400/Sounds/FastenSeatbelt.wav</path>
    <condition>
-   <property>controls/switches/seatbelt-sign</property>
-  </condition>
+    <property>controls/switches/seatbelt-sign</property>
+   </condition>
    <volume>
     <factor>1</factor>
    </volume>

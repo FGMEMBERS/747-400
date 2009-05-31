@@ -1,7 +1,23 @@
-var pushback = func {
-if (getprop("controls/pushback") == 1){ 
- setprop("sim/current-view/view-number",9)
+# =====
+# Pushback
+# =====
+
+Pushback = {};
+
+Pushback.new = func {
+   obj = { parents : [Pushback],
+           pushback : aircraft.door.new("sim/model/pushback", 10.0),
+         };
+   return obj;
+};
+Pushback.pushbackexport = func {
+   me.pushback.toggle();
 }
 
-settimer(pushback, 0.1);
-}
+
+# ==============
+# Initialization
+# ==============
+
+# objects must be here, otherwise local to init()
+pushbacksystem = Pushback.new();

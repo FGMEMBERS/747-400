@@ -4,8 +4,19 @@
 <model> 
 <livery> 
 <name type="string">KLM Royal Dutch Airlines</name> 
-<texture-path>Textures/Livery/KLM/</texture-path> 
 </livery> 
+<engine>
+<texture>747-400_engine.png</texture>
+</engine>
+<fuselage>
+<texture>747-400_fuselage.png</texture>
+</fuselage>
+<rudder>
+<texture>747-400_rudder.png</texture>
+</rudder>
+<misc>
+<texture>747-400_misc.png</texture>
+</misc>
 </model> 
 </sim> 
 </PropertyList> 

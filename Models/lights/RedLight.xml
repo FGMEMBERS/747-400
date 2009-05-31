@@ -37,12 +37,8 @@
         <dep>1</dep>
       </entry>
       <entry>
-        <ind>20</ind>
-        <dep>2</dep>
-      </entry>
-      <entry>
         <ind>1500</ind>
-        <dep>2</dep>
+        <dep>20</dep>
       </entry>
     </interpolation>
   </animation>

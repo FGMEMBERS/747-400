@@ -21,7 +21,7 @@ sweat by maggse
 
 	<condition>
 		 <equals>
-			 <property>controls/engines/engine[0]/on-fire</property>
+			 <property>controls/engines/engine/on-fire</property>
 			 <value>1</value>
 		 </equals>
 	</condition>
@@ -108,7 +108,7 @@ sweat by maggse
 	 
 	 <program>
 		 <fluid>air</fluid>
-		 <gravity type="bool">true</gravity>
+		 <gravity type="bool">false</gravity>
 		 <wind type="bool">true</wind>
 	 </program>
 	 

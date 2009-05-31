@@ -1,593 +1,91 @@
 <PropertyList>
 
-	
+ <animation>
+  <type>range</type>
+  <min-m>0</min-m>
+  <max-m>20</max-m>
+ </animation>
 
 <model>
-    
 <name>yokes</name>
-    
 <path>Aircraft/747-400/Panels/yokes.xml</path>
-    
 <offsets>
-      
-  <x-m>0</x-m>
-		
-  <y-m>0</y-m>
-		
-  <z-m>0</z-m>
-        
+ <x-m>0</x-m>
+ <y-m>0</y-m>
+ <z-m>0</z-m>
 </offsets>
-  
+ 
 </model>
 
 <model>
-    
-<name>overhead</name>
-    
-<path>Aircraft/747-400/Panels/overhead.xml</path>
-    
-<offsets>
-      
+ <name>overhead</name>
+ <path>Aircraft/747-400/Panels/overhead.xml</path>
+ <offsets>
   <x-m>1.138</x-m>
-		
   <y-m>0</y-m>
-		
   <z-m>1.408</z-m>
-    
-  <pitch-deg>150</pitch-deg>    
-</offsets>
-  
+  <pitch-deg>150</pitch-deg>
+ </offsets>
 </model>
 
 <model>
-    
-<name>seats</name>
-    
-<path>Aircraft/747-400/Panels/seats.ac</path>
-    
-<offsets>
-      
+ <name>seats</name>
+ <path>Aircraft/747-400/Panels/seats.ac</path>
+ <offsets>
   <x-m>0</x-m>
-		
   <y-m>0</y-m>
-		
   <z-m>0</z-m>
-        
-</offsets>
-  
+ </offsets>
 </model>
 
 <model>
-    
-<name>pedestal</name>
-    
-<path>Aircraft/747-400/Panels/pedestal.xml</path>
-    
-<offsets>
-      
+ <name>pedestal</name>
+ <path>Aircraft/747-400/Panels/pedestal.xml</path>
+ <offsets>
   <x-m>0</x-m>
-		
   <y-m>0</y-m>
-		
   <z-m>0</z-m>
-        
-</offsets>
-  
+ </offsets>
 </model>
 
 <model>
-    
-<name>forward</name>
-    
-<path>Aircraft/747-400/Panels/forward.xml</path>
-    
-<offsets>
-      
+ <name>forward</name>
+ <path>Aircraft/747-400/Panels/forward.xml</path>
+ <offsets>
   <x-m>0</x-m>
-		
   <y-m>0</y-m>
-		
   <z-m>0</z-m>
-        
-</offsets>
-  
+ </offsets>
 </model>
 
 <model>
-    
-<name>shell</name>
-    
-<path>Aircraft/747-400/Panels/cockpit_shell.xml</path>
-    
-<offsets>
-      
+ <name>glareshield</name>
+ <path>Aircraft/747-400/Panels/glareshield.xml</path>
+ <offsets>
   <x-m>0</x-m>
-		
   <y-m>0</y-m>
-		
   <z-m>0</z-m>
-        
-</offsets>
-  
+ </offsets>
 </model>
 
-<!-- PANELS -->
-
 <model>
-    
-<name>EICAS</name>
-    
-<path>Aircraft/747-400/Panels/Instruments/eicas-upper.xml</path>
-    
-<offsets>
-      
-  <x-m>0.689</x-m>
-		
+ <name>shell</name>
+ <path>Aircraft/747-400/Panels/cockpit_shell.xml</path>
+ <offsets>
+  <x-m>0</x-m>
   <y-m>0</y-m>
-		
-  <z-m>0.641</z-m>
-    
-<pitch-deg>-22</pitch-deg>
-    
-</offsets>
-  
+  <z-m>0</z-m>
+ </offsets>
 </model>
-  
-
 
 <model>
-    
-<name>EICAS</name>
-    
-<path>Aircraft/747-400/Panels/Instruments/lower_eicas.xml</path>
-    
-<offsets>
-      
-  <x-m>0.838</x-m>
-		
-  <y-m>0</y-m>
-		
-  <z-m>0.49</z-m>
-    
-<pitch-deg>-75</pitch-deg>
-    
-</offsets>
-  
+ <name>Magnetic Compass</name>
+ <path>Aircraft/747-400/Panels/Instruments/mag-compass.xml</path>
+ <offsets>
+  <x-m>0.715</x-m>
+  <y-m>0.00</y-m>
+  <z-m>1.2</z-m>
+ </offsets>
 </model>
-  
- 
-
-
-<!-- instruments -->
-
-
-<model>
-    
-<name>PFD1</name>
-    
-<path>Aircraft/747-400/Panels/Instruments/pfd.xml</path>
-    
-<offsets>
-      
- <x-m>0.6854</x-m>
-      
- <y-m>-0.537</y-m>
-      
- <z-m>0.65</z-m>
-      
-<pitch-deg>-22</pitch-deg>
-    
-</offsets>
-  
-</model>
-  
-	
-
-<model>
-    
-<name>PFD2</name>
-    
-<path>Aircraft/747-400/Panels/Instruments/pfd.xml</path>
-    
-<offsets>
-      
- <x-m>0.6854</x-m>
-  
-      
- <y-m>0.537</y-m>
-      
- <z-m>0.65</z-m>
-      
-<pitch-deg>-22</pitch-deg>
-    
-</offsets>
-  
-</model>
-
- 
-
-<model>
-    
-<name>ND1</name>
-    
-<path>Aircraft/747-400/Panels/Instruments/nd.xml</path>
-    
-<offsets>
-      
- <x-m>0.6854</x-m>
-       
- <y-m>-0.3207</y-m>
-      
- <z-m>0.65</z-m>
-      
-<pitch-deg>-21</pitch-deg>
-    
-</offsets>
-  
-</model>
-  
-	
-
-<model>
-    
-<name>ND2</name>
-    
-<path>Aircraft/747-400/Panels/Instruments/nd.xml</path>
-    
-<offsets>
-      
- <x-m>0.6854</x-m>
-  
-      
- <y-m>0.3207</y-m>
-     
- <z-m>0.65</z-m>
-      
-<pitch-deg>-22</pitch-deg>
-    
-</offsets>
-  
-</model>
-
- 
-
-<model>
-    
-<name>CLOCK1</name>
-    
-<path>Aircraft/747-400/Panels/Instruments2/clock.xml</path>
-    
-<offsets>
-      
- <x-m>0.672</x-m>
-      
- <y-m>-0.692</y-m>
-      
- <z-m>0.696</z-m>
-      
-<pitch-deg>-22</pitch-deg>
-    
-</offsets>
-  
-</model>
-  
-	
-
-<model>
-    
-<name>CLOCK2</name>
-    
-<path>Aircraft/747-400/Panels/Instruments2/clock.xml</path>
-    
-<offsets>
-      
- <x-m>0.672</x-m>
-      
- <y-m>0.692</y-m>
-      
- <z-m>0.696</z-m>
-      
-<pitch-deg>-22</pitch-deg>
-    
-</offsets>
-  
-</model>
- 
-
-<model>
-    
-<name>STBY-AI</name>
-    
-<path>Aircraft/747-400/Panels/Instruments2/stby-ai.xml</path>
-    
-<offsets>
-      
- <x-m>0.665</x-m>
-      
- <y-m>-0.160</y-m>
-      
- <z-m>0.73</z-m>
-      
-<pitch-deg>-21</pitch-deg>
-    
-</offsets>
-  
-</model>
- 
-
-<model>
-    
-<name>STBY-ASI</name>
-    
-<path>Aircraft/747-400/Panels/Instruments2/stby-asi.xml</path>
-    
-<offsets>
-      
- <x-m>0.692</x-m>
-      
- <y-m>-0.160</y-m>
-      
- <z-m>0.644</z-m>
-      
-<pitch-deg>-22</pitch-deg>
-    
-</offsets>
-  
-</model>
- 
-
-<model>
-    
-<name>STBY-ALT</name>
-    
-<path>Aircraft/747-400/Panels/Instruments2/stby-alt.xml</path>
-    
-<offsets>
-      
- <x-m>0.727</x-m>
-      
- <y-m>-0.160</y-m>
-      
- <z-m>0.559</z-m>
-      
-<pitch-deg>-22</pitch-deg>
-    
-</offsets>
-  
-</model>
- 
-
-<!-- PANEL LIGHTING -->
- <animation>
-  <type>material</type>
-  <object-name>Mesh35 forward_main_p</object-name>
-  <emission>
-    <red>1</red>
-    <green>0.9</green>
-    <blue>0.4</blue>
-  <factor-prop>controls/lighting/panel</factor-prop>
-  </emission>
- </animation>
-
-<!-- ANIMATIONS -->
-<!-- YOKES -->
-<!-- CAPTAIN -->
- 
- <animation>
-  <type>rotate</type>
-   <object-name>Mesh10 Group5 Group4 </object-name>
-   <object-name>Mesh9 fowheel2 Group5</object-name>
-   <property>controls/flight/elevator</property>
-   <factor>10</factor>
-   <center>
-    <x-m>1.10</x-m>
-    <y-m>0.0</y-m>
-    <z-m>-0.05</z-m>
-   </center>
-   <axis>
-    <x>0.0</x>
-    <y>-1.0</y>
-    <z>0.0</z>
-   </axis>
- </animation>
-
- <animation>
-  <type>rotate</type>
-   <object-name>Mesh9 fowheel2 Group5</object-name>
-  <property>controls/flight/aileron</property>
-  <factor>30</factor>
-  <center>
-   <x-m>-0.53</x-m>
-   <y-m>-0.6</y-m>
-   <z-m>0.73</z-m>
-  </center>
-  <axis>
-   <x>-1.0</x>
-   <y>0.0</y>
-   <z>0.0</z>
-  </axis>
- </animation>
-
-<!-- FIRST OFFICER -->
- <animation>
-  <type>rotate</type>
-   <object-name>Mesh3 fowheel1 Group2</object-name>
-   <object-name>Mesh4 Group2 Group1 c</object-name>
-   <property>controls/flight/elevator</property>
-   <factor>10</factor>
-   <center>
-    <x-m>1.10</x-m>
-    <y-m>0.0</y-m>
-    <z-m>-0.05</z-m>
-   </center>
-   <axis>
-    <x>0.0</x>
-    <y>-1.0</y>
-    <z>0.0</z>
-   </axis>
-  </animation>
- 
- <animation>
-  <type>rotate</type>
-   <object-name>Mesh3 fowheel1 Group2</object-name>
-  <property>controls/flight/aileron</property>
-  <factor>30</factor>
-  <center>
-   <x-m>0.53</x-m>
-   <y-m>0.6</y-m>
-   <z-m>0.73</z-m>
-  </center>
-  <axis>
-   <x>-1.0</x>
-   <y>0.0</y>
-   <z>0.0</z>
-  </axis>
- </animation>
-
-<!-- SWITCHES -->
-<!-- FD -->
-
- <animation>
-   <type>rotate</type>
-   <object-name>Mesh13 fd_switch glar</object-name>
-   <object-name>Mesh14 fd_switch1 gla</object-name>
-   <property>autopilot/locks/passive-mode</property>
-   <factor>-60</factor>
-   <center>
-     <x-m>0.929</x-m>
-     <y-m>0</y-m>
-     <z-m>0.961</z-m>
-   </center>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
-<animation>
-        
- <type>pick</type>
-        
-	
-  <object-name>Mesh13 fd_switch glar</object-name>
-        
-   <action>
-            
-    <button>0</button>
-            
-    <repeatable>false</repeatable>
-            
-        <binding>
-            
-            <command>property-toggle</command>
-            
-            <property>autopilot/locks/passive-mode</property>
-        
-        </binding>
-   
-        <binding>
-            <command>property-toggle</command>
-            <property>sim/sound/click</property>
-        </binding>     
-   </action>
-    
-</animation>
-   
-
-<animation>
-        
- <type>pick</type>
-        
-	
-   
-  <object-name>Mesh14 fd_switch1 gla</object-name>
-     
-   <action>
-            
-    <button>0</button>
-            
-    <repeatable>false</repeatable>
-            
-        <binding>
-            
-            <command>property-toggle</command>
-            
-            <property>autopilot/locks/passive-mode</property>
-        
-        </binding>
-   
-        <binding>
-            <command>property-toggle</command>
-            <property>sim/sound/click</property>
-        </binding>     
-   </action>
-    
-</animation>
- 
-
-<!-- GEAR HANDLE -->
- <animation>
-   <type>rotate</type>
-   <object-name>Mesh16 gear_handle_kn</object-name>
-   <object-name>Mesh17 gear_handle_st</object-name>
-     <property>controls/gear/gear-down</property>
-   <factor>45</factor>
-   <center>
-     <x-m>0.531</x-m>
-     <y-m>0</y-m>
-     <z-m>0.578</z-m>
-   </center>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
-<animation>
-        
- <type>pick</type>
-        
-	
-   <object-name>Mesh16 gear_handle_kn</object-name>
-   <action>
-            
-    <button>0</button>
-            
-    <repeatable>false</repeatable>
-            
-        <binding>
-            
-            <command>property-toggle</command>
-            
-            <property>controls/gear/gear-down</property>
-        
-        </binding>
-       
-   </action>
-    
-</animation>
-  
-
-<!-- AUTOBRAKE -->
- <animation>
-   <type>rotate</type>
-   <object-name>Mesh168 rcvr_lt_knob3</object-name>
-   <object-name>Mesh169 rcvr_lt_knob3</object-name>
-     <property>controls/switches/autobrake</property>
-   <factor>-32</factor>
-   <center>
-     <x-m>1.565</x-m>
-     <y-m>0.12</y-m>
-     <z-m>0</z-m>
-   </center>
-   <axis>
-     <x>0</x>
-     <y>0</y>
-     <z>1</z>
-   </axis>
- </animation>
 
 </PropertyList>
-

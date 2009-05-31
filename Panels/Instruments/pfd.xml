@@ -6,8 +6,14 @@ Syd Adams
 <PropertyList>
 
  <path>pfd.ac</path>
+
+ <animation>
+  <type>range</type>
+  <min-m>0</min-m>
+  <max-m>10</max-m>
+ </animation>
  
- <model>
+<model>
 <name>FDcross</name>
 <path>Aircraft/747-400/Panels/Instruments/FDcross.xml</path>
 <offsets>

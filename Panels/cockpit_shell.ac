@@ -1,9 +1,9 @@
 AC3Db
 MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0   spec 0.5 0.5 0.5  shi 64  trans 0
-MATERIAL "FrontColor" rgb 1 1 1 amb 0.5 0.5 0.5 emis 0 0 0 spec 0.33 0.33 0.33 shi 32 trans 0
-MATERIAL "cockpit_window" rgb 0.117647 0.141176 0.117647 amb 0.5 0.5 0.5 emis 0 0 0 spec 0.33 0.33 0.33 shi 32 trans 0.66
-MATERIAL "panel_color" rgb 0.556863 0.494118 0.364706 amb 0.5 0.5 0.5 emis 0 0 0 spec 0.33 0.33 0.33 shi 32 trans 0
-MATERIAL "Carpet_Loop_Pattern" rgb 0.094118 0.082353 0.062745 amb 0.5 0.5 0.5 emis 0 0 0 spec 0.33 0.33 0.33 shi 32 trans 0
+MATERIAL "FrontColor" rgb 1 1 1 amb 1 1 1 emis 0 0 0 spec 0.33 0.33 0.33 shi 32 trans 0
+MATERIAL "cockpit_window" rgb 0.42 0.42 0.42 amb 0.42 0.42 0.42 emis 0 0 0 spec 1 1 1 shi 32 trans 0.66
+MATERIAL "panel_color" rgb 0.556863 0.494118 0.364706 amb 0.556863 0.494118 0.364706 emis 0 0 0 spec 0.33 0.33 0.33 shi 32 trans 0
+MATERIAL "Carpet_Loop_Pattern" rgb 1 1 1 amb 1 1 1 emis 0 0 0 spec 0.33 0.33 0.33 shi 32 trans 0
 OBJECT world
 kids 1
 OBJECT group
@@ -5626,7 +5626,7 @@ OBJECT poly
 name "Mesh1 shell Model_1"
 data 17
 Mesh1 shell Model
-texture "Carpet_Loop_Pattern.jpg"
+texture "Carpet_Loop_Pattern.png"
 texrep 1 1
 crease 30.000000
 numvert 12

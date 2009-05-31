@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<system name="autobrake">
+  <property>/sim/systems/autobrake/target-deceleration-ft_sec2</property>
+  <channel name="Autobrake">
+
+    <switch name="systems/autobrake/enabled">
+      <default value="0"/>
+      <test value="1">
+        /gear/gear/wow == 1
+        /sim/systems/autobrake/enabled == 1
+        /controls/engines/engine/throttle == 0
+        /controls/engines/engine[1]/throttle == 0
+        /controls/engines/engine[2]/throttle == 0
+        /controls/engines/engine[3]/throttle == 0
+      </test>
+    </switch>
+
+    <summer name="systems/autobrake/speed-error">
+      <input>/sim/systems/autobrake/target-deceleration-ft_sec2</input>
+      <input>-accelerations/a-pilot-x-ft_sec2</input>
+    </summer>
+
+    <switch name="Autobrake Left">
+      <default value="0"/>
+      <test logic="AND" value="1">
+        systems/autobrake/enabled == 1
+	  systems/autobrake/speed-error lt 0
+      </test>
+      <test logic="AND" value="0">
+        systems/autobrake/enabled == 1
+	  systems/autobrake/speed-error gt 0
+      </test>
+      <output>/controls/gear/brake-left</output>
+    </switch>
+
+    <switch name="Autobrake Right">
+      <default value="0"/>
+      <test logic="AND" value="1">
+        systems/autobrake/enabled == 1
+	  systems/autobrake/speed-error lt 0
+      </test>
+      <test logic="AND" value="0">
+        systems/autobrake/enabled == 1
+	  systems/autobrake/speed-error gt 0
+      </test>
+      <output>/controls/gear/brake-right</output>
+    </switch>
+
+  </channel>
+</system>

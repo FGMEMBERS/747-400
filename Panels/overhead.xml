@@ -1,25 +1,208 @@
 <PropertyList>
 
-	
-
 <path>overhead.ac</path>
 
+ <animation>
+  <type>pick</type>
+  <object-name>battery</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/electric/battery-switch</property>
+   </binding>
+  </action>
+ </animation>
 
+ <animation>
+  <type>pick</type>
+  <object-name>fire_eng.1</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/engines/engine/cutoff</property>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/pneumatic/engine/bleed</property>
+   </binding>
+  </action>
+ </animation>
 
- <animation>
-   <type>select</type>
-<condition>
-<or>
-      <equals>
-       <property>sim/current-view/view-number</property>
-       <value>0</value>
-      </equals>
-      <equals>
-       <property>sim/current-view/view-number</property>
-       <value>8</value>
-      </equals>
-</or>
-</condition>
+ <animation>
+  <type>pick</type>
+  <object-name>fire_eng.2</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/engines/engine[1]/cutoff</property>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/pneumatic/engine[1]/bleed</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>fire_eng.3</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/engines/engine[2]/cutoff</property>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/pneumatic/engine[2]/bleed</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>fire_eng.4</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/engines/engine[3]/cutoff</property>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/pneumatic/engine[3]/bleed</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>anti-ice_eng.1</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/anti-ice/engine/carb-heat</property>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/anti-ice/engine/inlet-heat</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>anti-ice_eng.2</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/anti-ice/engine[1]/carb-heat</property>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/anti-ice/engine[1]/inlet-heat</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>anti-ice_eng.3</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/anti-ice/engine[2]/carb-heat</property>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/anti-ice/engine[2]/inlet-heat</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>anti-ice_eng.4</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/anti-ice/engine[3]/carb-heat</property>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/anti-ice/engine[3]/inlet-heat</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- FUEL PANEL -->
+
+ <animation>
+  <type>pick</type>
+  <object-name>fuel_x-feed.1</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/fuel/tank[2]/x-feed</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>fuel_x-feed.2</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/fuel/tank[3]/x-feed</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>fuel_x-feed.3</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/fuel/tank[4]/x-feed</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>fuel_x-feed.4</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/fuel/tank[5]/x-feed</property>
+   </binding>
+  </action>
  </animation>
 
 </PropertyList>

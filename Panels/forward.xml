@@ -1,400 +1,173 @@
 <PropertyList>
 
-	
-
 <path>forward.ac</path>
 
+<!-- PANELS -->
 
-
- <animation>
-   <type>select</type>
-<condition>
-<or>
-      <equals>
-       <property>sim/current-view/view-number</property>
-       <value>0</value>
-      </equals>
-      <equals>
-       <property>sim/current-view/view-number</property>
-       <value>8</value>
-      </equals>
-</or>
-</condition>
- </animation>
-
-<!-- IAS/MACH -->
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh25 ias_001 glares</object-name>
-<property>/autopilot/settings/target-speed-kt</property>
-   <factor>0.001</factor>
-   <step>100.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh26 ias_002 glares</object-name>
-<property>/autopilot/settings/target-speed-kt</property>
-   <factor>0.01</factor>
-   <step>10.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh27 ias_003 glares</object-name>
-<property>/autopilot/settings/target-speed-kt</property>
-   <factor>0.1</factor>
-   <step>1.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
-<!-- HDG -->
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh22 hdg_001 glares</object-name>
-<property>/autopilot/settings/true-heading-deg</property>
-   <factor>0.001</factor>
-   <step>100.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh23 hdg_002 glares</object-name>
-<property>/autopilot/settings/true-heading-deg</property>
-   <factor>0.01</factor>
-   <step>10.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh24 hdg_003 glares</object-name>
-<property>/autopilot/settings/true-heading-deg</property>
-   <factor>0.1</factor>
-   <step>1.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
-<!-- VS -->
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh12 vert_spd_001 g</object-name>
-<property>/autopilot/settings/vertical-speed-fpm</property>
-   <factor>0.00001</factor>
-   <step>10000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh13 vert_spd_002 g</object-name>
-<property>/autopilot/settings/vertical-speed-fpm</property>
-   <factor>0.0001</factor>
-   <step>1000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh14 vert_spd_003 g</object-name>
-<property>/autopilot/settings/vertical-speed-fpm</property>
-   <factor>0.001</factor>
-   <step>100.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh15 vert_spd_004 g</object-name>
-<property>/autopilot/settings/vertical-speed-fpm</property>
-   <factor>0.01</factor>
-   <step>10.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh16 vert_spd_005 g</object-name>
-<property>/autopilot/settings/vertical-speed-fpm</property>
-   <factor>0.1</factor>
-   <step>1.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
-<!-- ALT -->
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh19 alt_001 glares</object-name>
-<property>/autopilot/settings/target-altitude-ft</property>
-   <factor>0.00001</factor>
-   <step>10000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh18 alt_002 glares</object-name>
-<property>/autopilot/settings/target-altitude-ft</property>
-   <factor>0.0001</factor>
-   <step>1000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh17 alt_003 glares</object-name>
-<property>/autopilot/settings/target-altitude-ft</property>
-   <factor>0.001</factor>
-   <step>100.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh20 alt_004 glares</object-name>
-<property>/autopilot/settings/target-altitude-ft</property>
-   <factor>0.01</factor>
-   <step>10.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh21 alt_005 glares</object-name>
-<property>/autopilot/settings/target-altitude-ft</property>
-   <factor>0.1</factor>
-   <step>1.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
-<!-- BUTTONS -->
-
-  <animation>
-  <type>pick</type>
-  <object-name>Mesh8 Group6 glareshi_1</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>  
-   <binding>
-    <command>property-cycle</command>
-    <property>/autopilot/locks/heading</property>
-    <value type="string">wing-leveler</value>
-    <value type="string"></value>
-   </binding>
-   <binding>
-    <command>property-toggle</command>
-    <property>/autopilot/buttons/heading-wing-leveler</property>
-    <value type="string">0</value>
-    <value type="string">1</value>
-   </binding>
-  </action>
- </animation>
-
-  <animation>
-  <type>pick</type>
-  <object-name>Mesh10 Group8 glaresh_1</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>
-   <binding>
-            
-    <command>property-cycle</command>
+<model>
+ <name>EICAS-upper</name>
+ <path>Aircraft/747-400/Panels/Instruments/eicas/eicas-upper.xml</path>
+ <offsets>
+  <x-m>0.689</x-m>
+  <y-m>0</y-m>
+  <z-m>0.641</z-m>
+  <pitch-deg>-22</pitch-deg>
+ </offsets>
+</model>
   
-      <property>/autopilot/locks/altitude</property>
-      <value type="string">vertical-speed-hold</value>
-      <value type="string"></value>
+<model>
+ <name>EICAS-lower</name>
+ <path>Aircraft/747-400/Panels/Instruments/eicas/eicas-lower.xml</path>
+ <offsets>
+  <x-m>0.838</x-m>
+  <y-m>0</y-m>
+  <z-m>0.49</z-m>
+  <pitch-deg>-75</pitch-deg>
+ </offsets>
+</model>
 
-   </binding>  
-   <binding>
-    <command>property-toggle</command>
-    <property>/autopilot/buttons/altitude-vs-hold</property>
-    <value type="string">0</value>
-    <value type="string">1</value>
-   </binding>
-  </action>
- </animation>
+<!-- instruments -->
 
+<model>
+ <name>PFD1</name>
+ <path>Aircraft/747-400/Panels/Instruments/pfd.xml</path>
+ <offsets>
+  <x-m>0.6854</x-m>
+  <y-m>-0.537</y-m>
+  <z-m>0.65</z-m>
+  <pitch-deg>-22</pitch-deg>
+ </offsets>
+</model>
+
+<model>
+ <name>PFD2</name>
+ <path>Aircraft/747-400/Panels/Instruments/pfd.xml</path>
+ <offsets>
+  <x-m>0.6854</x-m>
+  <y-m>0.537</y-m>
+  <z-m>0.65</z-m>
+  <pitch-deg>-22</pitch-deg>
+ </offsets>
+</model>
+
+<model>
+ <name>ND1</name>
+ <path>Aircraft/747-400/Panels/Instruments/nd.xml</path>
+ <offsets>
+  <x-m>0.6854</x-m>
+  <y-m>-0.3207</y-m>
+  <z-m>0.65</z-m>
+  <pitch-deg>-21</pitch-deg>
+ </offsets>
+</model>
+  
+<model>
+ <name>ND2</name>
+ <path>Aircraft/747-400/Panels/Instruments/nd.xml</path>
+ <offsets>
+  <x-m>0.6854</x-m>
+  <y-m>0.3207</y-m>
+  <z-m>0.65</z-m>
+  <pitch-deg>-22</pitch-deg>
+ </offsets>
+</model>
+
+<model>
+ <name>CLOCK1</name>
+ <path>Aircraft/747-400/Panels/Instruments2/clock.xml</path>
+ <offsets>
+  <x-m>0.672</x-m>
+  <y-m>-0.692</y-m>
+  <z-m>0.696</z-m>
+  <pitch-deg>-22</pitch-deg>
+ </offsets>
+</model>
+
+<model>
+ <name>CLOCK2</name>
+ <path>Aircraft/747-400/Panels/Instruments2/clock.xml</path>
+ <offsets>
+  <x-m>0.672</x-m>
+  <y-m>0.692</y-m>
+  <z-m>0.696</z-m>
+  <pitch-deg>-22</pitch-deg>
+ </offsets>
+</model>
+ 
+<model>
+ <name>STBY-AI</name>
+ <path>Aircraft/747-400/Panels/Instruments2/stby-ai.xml</path>
+ <offsets>
+  <x-m>0.665</x-m>
+  <y-m>-0.160</y-m>
+  <z-m>0.73</z-m>
+  <pitch-deg>-21</pitch-deg>
+ </offsets>
+</model>
+ 
+<model>
+ <name>STBY-ASI</name>
+ <path>Aircraft/747-400/Panels/Instruments2/stby-asi.xml</path>
+ <offsets>
+  <x-m>0.692</x-m>
+  <y-m>-0.160</y-m>
+  <z-m>0.644</z-m>
+  <pitch-deg>-22</pitch-deg>
+ </offsets>
+</model>
+ 
+<model>
+ <name>STBY-ALT</name>
+ <path>Aircraft/747-400/Panels/Instruments2/stby-alt.xml</path>
+ <offsets>
+  <x-m>0.727</x-m>
+  <y-m>-0.160</y-m>
+  <z-m>0.559</z-m>
+  <pitch-deg>-22</pitch-deg>
+ </offsets>
+</model>
+ 
+<!-- PANEL LIGHTING -->
 <animation>
-        
-<type>pick</type>
-        
-<object-name>Mesh11 Group9 glaresh_1</object-name>
-	
-        
-<action>
-            
- <button>0</button>
-            
- <repeatable>false</repeatable>
-            
-   <binding>
-            
-    <command>property-cycle</command>
-            
-    <property>/autopilot/locks/altitude</property>
-	      
-    <value type="string">altitude-hold</value>
-
-    <value type="string"></value>
-
-   </binding>
-        
-   <binding>
-    <command>property-toggle</command>
-    <property>/autopilot/buttons/altitude-hold</property>
-    <value type="string">0</value>
-    <value type="string">1</value>
-   </binding>
-</action>
-    
+ <type>material</type>
+ <object-name>forward_panel</object-name>
+ <emission>
+  <red>1</red>
+  <green>0.9</green>
+  <blue>0.4</blue>
+  <factor-prop>controls/lighting/panel</factor-prop>
+ </emission>
 </animation>
 
-  <animation>
-  <type>pick</type>
-  <object-name>Mesh5 Group3 glareshi_1</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>  
-   <binding>
-    <command>property-cycle</command>
-    <property>/autopilot/locks/speed</property>
-    <value type="string">speed-with-throttle</value>
-    <value type="string"></value>
-   </binding>
-   <binding>
-    <command>property-toggle</command>
-    <property>/autopilot/buttons/speed-with-throttle</property>
-    <value type="string">0</value>
-    <value type="string">1</value>
-   </binding>
-  </action>
- </animation>
+<!-- GEAR HANDLE -->
+<animation>
+ <type>rotate</type>
+ <object-name>gear_handle</object-name>
+ <property>controls/gear/gear-down</property>
+ <factor>45</factor>
+ <center>
+  <x-m>0.531</x-m>
+  <y-m>0</y-m>
+  <z-m>0.578</z-m>
+ </center>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
 
-<!-- LIGHTS -->
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh8 Group6 glareshi_1</object-name>
-   <property>autopilot/buttons/heading-wing-leveler</property>
-   <factor>0.0838</factor>
-   <step>1.0</step>
-   <axis>
-     <x>0</x>
-     <y>-1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh10 Group8 glaresh_1</object-name>
-   <property>autopilot/buttons/altitude-vs-hold</property>
-   <factor>0.0838</factor>
-   <step>1.0</step>
-   <axis>
-     <x>0</x>
-     <y>-1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh11 Group9 glaresh_1</object-name>
-   <property>autopilot/buttons/altitude-hold</property>
-   <factor>0.0838</factor>
-   <step>1.0</step>
-   <axis>
-     <x>0</x>
-     <y>-1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>Mesh5 Group3 glareshi_1</object-name>
-   <property>autopilot/buttons/speed-with-throttle</property>
-   <factor>0.0838</factor>
-   <step>1.0</step>
-   <axis>
-     <x>0</x>
-     <y>-1</y>
-     <z>0</z>
-   </axis>
- </animation>
+<animation>
+ <type>pick</type>
+ <object-name>gear_handle</object-name>
+ <action>
+  <button>0</button>
+  <repeatable>false</repeatable>
+  <binding>
+   <command>property-toggle</command>
+   <property>controls/gear/gear-down</property>
+  </binding>
+ </action>
+</animation>
 
 </PropertyList>
-
-
