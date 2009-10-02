@@ -1,15 +1,15 @@
 AC3Db
-MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0   spec 0.5 0.5 0.5  shi 64  trans 0
-MATERIAL "Lights.006" rgb 1 1 1 amb 0 0 0 emis 1 1 1 spec 0 0 0 shi 0 trans 0
-MATERIAL "DimLight" rgb 1 1 1 amb 0 0 0 emis 0.53622 0.53622 0.53622 spec 0 0 0 shi 0 trans 0
-MATERIAL "ac3dmat1.007" rgb 1 1 1 amb 0.2 0.2 0.2 emis 0.498 0.498 0.498 spec 0.502 0.502 0.502 shi 10 trans 0
+MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 1 1 1   spec 0.5 0.5 0.5  shi 64  trans 0
+MATERIAL "Lights.006" rgb 1 1 1 amb 1 1 1 emis 1 1 1 spec 0 0 0 shi 0 trans 0
+MATERIAL "DimLight" rgb 1 1 1 amb 1 1 1 emis 1 1 1 spec 0 0 0 shi 0 trans 0
+MATERIAL "ac3dmat1.007" rgb 1 1 1 amb 1 1 1 emis 1 1 1 spec 0.502 0.502 0.502 shi 10 trans 0
 OBJECT world
 kids 60
 OBJECT poly
 name "AI1a"
 data 9
 Mesh.1074
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 6
@@ -46,7 +46,7 @@ OBJECT poly
 name "AI2a"
 data 9
 Mesh.1073
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 6
@@ -83,7 +83,7 @@ OBJECT poly
 name "AI3a"
 data 9
 Mesh.1072
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 6
@@ -120,7 +120,7 @@ OBJECT poly
 name "AI4a"
 data 9
 Mesh.1077
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 6
@@ -157,7 +157,7 @@ OBJECT poly
 name "AI5a"
 data 9
 Mesh.1076
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 6
@@ -194,7 +194,7 @@ OBJECT poly
 name "AI6a"
 data 9
 Mesh.1075
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 6
@@ -231,7 +231,7 @@ OBJECT poly
 name "MP1a"
 data 9
 Mesh.1085
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 6
@@ -268,7 +268,7 @@ OBJECT poly
 name "MP2a"
 data 9
 Mesh.1086
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 6
@@ -305,7 +305,7 @@ OBJECT poly
 name "MP3a"
 data 9
 Mesh.1087
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 6
@@ -342,7 +342,7 @@ OBJECT poly
 name "MP4a"
 data 9
 Mesh.1082
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 6
@@ -379,7 +379,7 @@ OBJECT poly
 name "MP5a"
 data 9
 Mesh.1083
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 6
@@ -416,7 +416,7 @@ OBJECT poly
 name "MP6a"
 data 9
 Mesh.1084
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 6
@@ -537,7 +537,7 @@ OBJECT poly
 name "NDscreen"
 data 9
 Mesh.1081
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 22
@@ -567,79 +567,79 @@ numsurf 17
 SURF 0x00
 mat 1
 refs 3
-2 0.11328125 0.703125
-13 0.0234375 0.96875
-1 0.0390625 0.63671875
+2 0.148308113217 0.715206444263
+13 0.011862386018 0.952930808067
+1 0.0243483074009 0.618895471096
 SURF 0x00
 mat 1
 refs 3
-3 0.19921875 0.7578125
-13 0.0234375 0.96875
-2 0.11328125 0.703125
+3 0.227945193648 0.764006912708
+13 0.011862386018 0.952930808067
+2 0.148308113217 0.715206444263
 SURF 0x00
 mat 1
 refs 3
-4 0.296875 0.80078125
-13 0.0234375 0.96875
-3 0.19921875 0.7578125
+4 0.314237058163 0.799747347832
+13 0.011862386018 0.952930808067
+3 0.227945193648 0.764006912708
 SURF 0x00
 mat 1
 refs 3
-5 0.39453125 0.8203125
-13 0.0234375 0.96875
-4 0.296875 0.80078125
+5 0.405055195093 0.821550786495
+13 0.011862386018 0.952930808067
+4 0.314237058163 0.799747347832
 SURF 0x00
 mat 1
 refs 4
-6 0.5 0.828125
-14 0.5 0.96875
-13 0.0234375 0.96875
-5 0.39453125 0.8203125
+6 0.498163819313 0.82888251543
+14 0.498163819313 0.952920854092
+13 0.011862386018 0.952930808067
+5 0.405055195093 0.821550786495
 SURF 0x00
 mat 1
 refs 4
-7 0.59765625 0.8203125
-15 0.97265625 0.96875
-14 0.5 0.96875
-6 0.5 0.828125
+7 0.591277122498 0.821550786495
+15 0.984464943409 0.952930569649
+14 0.498163819313 0.952920854092
+6 0.498163819313 0.82888251543
 SURF 0x00
 mat 1
 refs 3
-8 0.6953125 0.80078125
-15 0.97265625 0.96875
-7 0.59765625 0.8203125
+8 0.682095348835 0.799747347832
+15 0.984464943409 0.952930569649
+7 0.591277122498 0.821550786495
 SURF 0x00
 mat 1
 refs 3
-9 0.79296875 0.7578125
-15 0.97265625 0.96875
-8 0.6953125 0.80078125
+9 0.768382191658 0.764006495476
+15 0.984464943409 0.952930569649
+8 0.682095348835 0.799747347832
 SURF 0x00
 mat 1
 refs 3
-10 0.87890625 0.703125
-15 0.97265625 0.96875
-9 0.79296875 0.7578125
+10 0.848019421101 0.715206086636
+15 0.984464943409 0.952930569649
+9 0.768382191658 0.764006495476
 SURF 0x00
 mat 1
 refs 3
-0 0.953125 0.63671875
-15 0.97265625 0.96875
-10 0.87890625 0.703125
+0 0.971979141235 0.618895471096
+15 0.984464943409 0.952930569649
+10 0.848019421101 0.715206086636
 SURF 0x00
 mat 1
 refs 4
-15 0.97265625 0.96875
-0 0.953125 0.63671875
-11 0.953125 0.23828125
-16 0.96875 -0.01953125
+15 0.984464943409 0.952930569649
+0 0.971979141235 0.618895471096
+11 0.971106290817 0.0216101594269
+16 0.984464943409 0.000718909315765
 SURF 0x00
 mat 1
 refs 4
-12 0.0390625 0.23828125
-1 0.0390625 0.63671875
-13 0.0234375 0.96875
-17 0.0234375 -0.01953125
+12 0.0252212174237 0.0216105766594
+1 0.0243483074009 0.618895471096
+13 0.011862386018 0.952930808067
+17 0.011862475425 0.000719296745956
 SURF 0x00
 mat 1
 refs 4
@@ -671,10 +671,10 @@ refs 4
 SURF 0x00
 mat 1
 refs 4
-18 0.381038188934 0.853336811066
-20 0.381038188934 0.966975688934
-21 0.267399311066 0.966975688934
-19 0.267399311066 0.853336811066
+18 0.127598196268 0.873816788197
+20 0.127598196268 0.987455666065
+21 0.0139593183994 0.987455666065
+19 0.0139593183994 0.873816788197
 kids 0
 OBJECT poly
 name "Radarscreen"
@@ -854,7 +854,7 @@ OBJECT poly
 name "hdg"
 data 8
 Mesh.016
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 6
@@ -1048,8 +1048,6 @@ OBJECT poly
 name "mfdhdg"
 data 9
 Mesh.1071
-texture "ati.rgb"
-texrep 1 1
 crease 30.000000
 numvert 27
 0.005839 0.069628 0.000439
@@ -1140,7 +1138,7 @@ OBJECT poly
 name "nav1a"
 data 9
 Mesh.1088
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 22
@@ -1221,7 +1219,7 @@ OBJECT poly
 name "nav1b"
 data 8
 Mesh.001
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 22
@@ -1302,7 +1300,7 @@ OBJECT poly
 name "nav1c"
 data 8
 Mesh.002
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 22
@@ -1383,7 +1381,7 @@ OBJECT poly
 name "nav1d"
 data 8
 Mesh.003
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 22
@@ -1464,7 +1462,7 @@ OBJECT poly
 name "nav1e"
 data 8
 Mesh.004
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 22
@@ -1545,7 +1543,7 @@ OBJECT poly
 name "nav1f"
 data 8
 Mesh.005
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 22
@@ -1626,7 +1624,7 @@ OBJECT poly
 name "nav1g"
 data 8
 Mesh.006
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 22
@@ -2650,7 +2648,7 @@ OBJECT poly
 name "path"
 data 9
 Mesh.1115
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 16
@@ -2861,7 +2859,7 @@ OBJECT poly
 name "waypoint1a"
 data 8
 Mesh.015
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 9
@@ -2908,7 +2906,7 @@ OBJECT poly
 name "waypoint1b"
 data 8
 Mesh.022
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 9
@@ -2955,7 +2953,7 @@ OBJECT poly
 name "waypoint1c"
 data 8
 Mesh.023
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 9
@@ -3002,7 +3000,7 @@ OBJECT poly
 name "waypoint1d"
 data 8
 Mesh.024
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 9
@@ -3049,7 +3047,7 @@ OBJECT poly
 name "waypoint1e"
 data 8
 Mesh.025
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 9
@@ -3096,7 +3094,7 @@ OBJECT poly
 name "waypoint1f"
 data 8
 Mesh.026
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
 numvert 9
@@ -3143,48 +3141,50 @@ OBJECT poly
 name "waypoint1g"
 data 8
 Mesh.027
-texture "nd.rgb"
+texture "nd.png"
 texrep 1 1
 crease 30.000000
-numvert 9
-0.007683 -0.047328 0.000848
-0.007683 -0.047328 -0.000881
-0.007683 -0.045665 0.000854
-0.007683 -0.045665 -0.000888
-0.007683 -0.047678 -1.7e-005
-0.007683 -0.045321 -1.7e-005
-0.007683 -0.046496 0.001216
-0.007683 -0.046496 -0.001249
-0.007683 -0.0465 -1.7e-005
-numsurf 4
-SURF 0x00
+numvert 8
+0.007631 -0.045495 -0.001021
+0.007631 -0.046516 -0.002989
+0.007631 -0.047537 -0.001021
+0.007631 -0.049505 0
+0.007631 -0.047537 0.001021
+0.007631 -0.046516 0.002989
+0.007631 -0.045495 0.001021
+0.007631 -0.043527 0
+numsurf 5
+SURF 0x10
 mat 1
 refs 4
-5 0.442712455988 0.538987159729
-8 0.442712455988 0.538512289524
-7 0.446511238813 0.538512289524
-3 0.445561558008 0.538987159729
-SURF 0x00
+0 0.360764741898 0.548228442669
+6 0.339037537575 0.548228442669
+4 0.339037537575 0.526501297951
+2 0.360764741898 0.526501297951
+SURF 0x10
 mat 1
-refs 4
-8 0.442712455988 0.538512289524
-4 0.442712455988 0.538037419319
-1 0.447460979223 0.538037419319
-7 0.446511238813 0.538512289524
-SURF 0x00
+refs 3
+2 0.360764741898 0.526501297951
+4 0.339037537575 0.526501297951
+3 0.349901139736 0.505552172661
+SURF 0x10
 mat 1
-refs 4
-6 0.438913673162 0.538512289524
-0 0.437963932753 0.538037419319
-4 0.442712455988 0.538037419319
-8 0.442712455988 0.538512289524
-SURF 0x00
+refs 3
+0 0.360764741898 0.548228442669
+2 0.360764741898 0.526501297951
+1 0.381713867188 0.537364900112
+SURF 0x10
 mat 1
-refs 4
-8 0.442712455988 0.538512289524
-5 0.442712455988 0.538987159729
-2 0.439863353968 0.538987159729
-6 0.438913673162 0.538512289524
+refs 3
+0 0.360764741898 0.548228442669
+7 0.349901139736 0.569177627563
+6 0.339037537575 0.548228442669
+SURF 0x10
+mat 1
+refs 3
+4 0.339037537575 0.526501297951
+6 0.339037537575 0.548228442669
+5 0.318088471889 0.537364900112
 kids 0
 OBJECT poly
 name "wxr.annun"

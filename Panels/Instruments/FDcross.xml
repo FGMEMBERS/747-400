@@ -18,10 +18,10 @@
    <type>translate</type>
    <object-name>Mesh1 FDBarH1 skp209B</object-name>
    <object-name>Mesh2 FDBarV1 skp209B</object-name>
-   <property>/instrumentation/nav/gs-needle-deflection-norm</property>
+   <property>/instrumentation/nav/gs-needle-deflection</property>
 <interpolation>
      <entry>
-       <ind> -1.0</ind>
+       <ind> -10.0</ind>
        <dep>-0.0308</dep>
      </entry>
      <entry>
@@ -29,7 +29,7 @@
        <dep>0.0</dep>
      </entry>
      <entry>
-       <ind> 1.0</ind>
+       <ind> 10.0</ind>
        <dep>0.0308</dep>
      </entry>
 </interpolation>

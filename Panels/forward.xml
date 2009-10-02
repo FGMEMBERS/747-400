@@ -2,6 +2,19 @@
 
 <path>forward.ac</path>
 
+<!-- PANEL LIGHTING -->
+
+<animation>
+ <type>material</type>
+ <object-name>forward_panel</object-name>
+ <emission>
+  <red>0.5</red>
+  <green>0.45</green>
+  <blue>0.2</blue>
+  <factor-prop>controls/lighting/panel-norm</factor-prop>
+ </emission>
+</animation>
+
 <!-- PANELS -->
 
 <model>
@@ -74,7 +87,7 @@
 
 <model>
  <name>CLOCK1</name>
- <path>Aircraft/747-400/Panels/Instruments2/clock.xml</path>
+ <path>Aircraft/747-400/Panels/Instruments/clock.xml</path>
  <offsets>
   <x-m>0.672</x-m>
   <y-m>-0.692</y-m>
@@ -85,7 +98,7 @@
 
 <model>
  <name>CLOCK2</name>
- <path>Aircraft/747-400/Panels/Instruments2/clock.xml</path>
+ <path>Aircraft/747-400/Panels/Instruments/clock.xml</path>
  <offsets>
   <x-m>0.672</x-m>
   <y-m>0.692</y-m>
@@ -96,7 +109,7 @@
  
 <model>
  <name>STBY-AI</name>
- <path>Aircraft/747-400/Panels/Instruments2/stby-ai.xml</path>
+ <path>Aircraft/747-400/Panels/Instruments/stby-ai.xml</path>
  <offsets>
   <x-m>0.665</x-m>
   <y-m>-0.160</y-m>
@@ -107,7 +120,7 @@
  
 <model>
  <name>STBY-ASI</name>
- <path>Aircraft/747-400/Panels/Instruments2/stby-asi.xml</path>
+ <path>Aircraft/747-400/Panels/Instruments/stby-asi.xml</path>
  <offsets>
   <x-m>0.692</x-m>
   <y-m>-0.160</y-m>
@@ -118,7 +131,7 @@
  
 <model>
  <name>STBY-ALT</name>
- <path>Aircraft/747-400/Panels/Instruments2/stby-alt.xml</path>
+ <path>Aircraft/747-400/Panels/Instruments/stby-alt.xml</path>
  <offsets>
   <x-m>0.727</x-m>
   <y-m>-0.160</y-m>
@@ -126,29 +139,18 @@
   <pitch-deg>-22</pitch-deg>
  </offsets>
 </model>
- 
-<!-- PANEL LIGHTING -->
-<animation>
- <type>material</type>
- <object-name>forward_panel</object-name>
- <emission>
-  <red>1</red>
-  <green>0.9</green>
-  <blue>0.4</blue>
-  <factor-prop>controls/lighting/panel</factor-prop>
- </emission>
-</animation>
 
 <!-- GEAR HANDLE -->
+
 <animation>
  <type>rotate</type>
  <object-name>gear_handle</object-name>
  <property>controls/gear/gear-down</property>
- <factor>45</factor>
+ <factor>80</factor>
  <center>
-  <x-m>0.531</x-m>
-  <y-m>0</y-m>
-  <z-m>0.578</z-m>
+  <x-m>0.632</x-m>
+  <y-m>0.130</y-m>
+  <z-m>0.619</z-m>
  </center>
  <axis>
   <x>0</x>

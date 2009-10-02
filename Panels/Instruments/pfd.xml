@@ -13,15 +13,66 @@ Syd Adams
   <max-m>10</max-m>
  </animation>
  
-<model>
-<name>FDcross</name>
-<path>Aircraft/747-400/Panels/Instruments/FDcross.xml</path>
-<offsets>
-  <x-m>0</x-m>
-  <y-m>0</y-m>
-  <z-m>0</z-m>
-</offsets>
-</model>
+<animation>
+   <type>select</type>
+   <object-name>FDbars</object-name>
+   <condition>
+       <equals>
+         <property>/instrumentation/flightdirector/fd-on</property>
+         <value>1</value>
+       </equals>
+   </condition>
+ </animation>
+
+ <animation>
+   <type>translate</type>
+   <object-name>FDbars</object-name>
+   <property>/instrumentation/nav/gs-needle-deflection</property>
+<interpolation>
+     <entry>
+       <ind> -10.0</ind>
+       <dep>-0.0308</dep>
+     </entry>
+     <entry>
+       <ind> 0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind> 10.0</ind>
+       <dep>0.0308</dep>
+     </entry>
+</interpolation>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <animation>
+   <type>translate</type>
+   <object-name>FDbars</object-name>
+   <property>/instrumentation/nav/heading-needle-deflection</property>
+<interpolation>
+     <entry>
+       <ind> -10.0</ind>
+       <dep>-0.0253</dep>
+     </entry>
+     <entry>
+       <ind> 0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind> 10.0</ind>
+       <dep>0.0253</dep>
+     </entry>
+</interpolation> 
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
 
 <animation>
     <name>Alpha Sort</name>
@@ -36,17 +87,38 @@ Syd Adams
     <object-name>AI</object-name>
     <object-name>PFDscreen</object-name>
 </animation>
- 
+
 <animation>
    <type>select</type>
-   <object-name>FDbars</object-name>
+   <object-name>risingrunway</object-name>
    <condition>
-       <equals>
-         <property>/instrumentation/flightdirector/fd-on</property>
-         <value>1</value>
-       </equals>
+       <less-than>
+         <property>/position/altitude-agl-ft</property>
+         <value>200.1</value>
+       </less-than>
    </condition>
  </animation>
+
+<animation>
+ <type>translate</type>
+ <object-name>risingrunway</object-name>
+ <property>/position/altitude-agl-ft</property>
+ <interpolation>
+  <entry>
+   <ind> 16.0</ind>
+   <dep> 0</dep>
+  </entry>
+  <entry>
+   <ind> 200.0</ind>
+   <dep> 0.03</dep>
+  </entry>
+ </interpolation>
+ <axis>
+  <x>0</x>
+  <y>0</y>
+  <z>-1</z>
+ </axis>
+</animation>
 
 <animation>
    <type>select</type>
@@ -85,10 +157,10 @@ Syd Adams
  <animation>
    <type>translate</type>
    <object-name>GSneedle</object-name>
-   <property>/instrumentation/nav/gs-needle-deflection-norm</property>
+   <property>/instrumentation/nav/gs-needle-deflection</property>
 <interpolation>
      <entry>
-       <ind> -1.0</ind>
+       <ind> -10.0</ind>
        <dep>-0.0308</dep>
      </entry>
      <entry>
@@ -96,7 +168,7 @@ Syd Adams
        <dep>0.0</dep>
      </entry>
      <entry>
-       <ind> 1.0</ind>
+       <ind> 10.0</ind>
        <dep>0.0308</dep>
      </entry>
 </interpolation>
@@ -218,41 +290,6 @@ Syd Adams
    </center>
  </animation>
 
-
-
- <animation>
-   <type>rotate</type>
-   <object-name>FDbars</object-name>
-   <property>/instrumentation/flightdirector/vbar-roll</property>
-   <axis>
-     <x>1.0</x>
-     <y>0.0</y>
-     <z>0.0</z>
-   </axis>
-   <center>
-     <x-m>0.007</x-m>
-     <y-m>-0.014</y-m>
-     <z-m>0.005</z-m>
-   </center>
- </animation>
-
- <animation>
-   <type>translate</type>
-   <object-name>FDbars</object-name>
-   <property>/instrumentation/flightdirector/vbar-pitch</property>
-<factor>0.0014</factor>
-<axis>
-     <x>0.0</x>
-     <y>0.0</y>
-     <z>1.0</z>
-   </axis>
-   <center>
-     <x-m>0.007</x-m>
-     <y-m>-0.014</y-m>
-     <z-m>0.005</z-m>
-   </center>
- </animation>
-
  <animation>
    <type>texmultiple</type>
    <object-name>AI</object-name>
@@ -334,10 +371,10 @@ Syd Adams
   <animation>
    <type>translate</type>
    <object-name>GSneedle</object-name>
-   <property>/instrumentation/nav/gs-needle-deflection-norm</property>
+   <property>/instrumentation/nav/gs-needle-deflection</property>
    <interpolation>
      <entry>
-       <ind>-1.0</ind>
+       <ind>-10.0</ind>
        <dep>-0.0160</dep>
      </entry>
      <entry>
@@ -345,7 +382,7 @@ Syd Adams
        <dep>0.0</dep>
      </entry>
      <entry>
-       <ind>1.0</ind>
+       <ind>10.0</ind>
        <dep>0.0160</dep>
      </entry>
    </interpolation>
@@ -633,32 +670,6 @@ Syd Adams
 
  <animation>
    <type>textranslate</type>
-   <object-name>pitch.001</object-name>
-   <property>/instrumentation/efis/fixed-pitch</property>
-   <factor>0.01</factor>
-   <step>10</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>pitch.002</object-name>
-   <property>/instrumentation/efis/fixed-pitch</property>
-   <factor>0.1</factor>
-   <step>1</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
    <object-name>inhg</object-name>
    <property>/instrumentation/efis/baro-mode</property>
    <factor>0.059</factor>
@@ -719,17 +730,6 @@ Syd Adams
      <y>1</y>
      <z>0</z>
    </axis>
- </animation>
-
- <animation>
-   <type>select</type>
-   <object-name>pitch.003</object-name>
-   <condition>
-<less-than>   
-<property>/orientation/pitch-deg</property>
-   <value>0.0</value>
-   </less-than>
-</condition>
  </animation>
 
 

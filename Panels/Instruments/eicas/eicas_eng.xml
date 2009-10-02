@@ -6,6 +6,57 @@
 
 <path>eicas_eng.ac</path>
 
+<!-- WARNINGS -->
+<!-- ENGINE FIRE -->
+
+<animation>
+ <type>select</type>
+ <object-name>fire_engine_1</object-name>
+ <object-name>fire_engine_1.1</object-name>
+ <condition>
+  <equals>
+   <property>/controls/engines/engine[0]/on-fire</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>fire_engine_2</object-name>
+ <object-name>fire_engine_2.1</object-name>
+ <condition>
+  <equals>
+   <property>/controls/engines/engine[1]/on-fire</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>fire_engine_3</object-name>
+ <object-name>fire_engine_3.1</object-name>
+ <condition>
+  <equals>
+   <property>/controls/engines/engine[2]/on-fire</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>fire_engine_4</object-name>
+ <object-name>fire_engine_4.1</object-name>
+ <condition>
+  <equals>
+   <property>/controls/engines/engine[3]/on-fire</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
 <!-- GEAR -->
 
 <animation>
@@ -1015,7 +1066,7 @@
     </entry>
     <entry>
       <ind>100</ind>
-      <dep>-1.24</dep>
+      <dep>-0.62</dep>
     </entry>
    </interpolation>
  <axis>
@@ -1038,7 +1089,7 @@
     </entry>
     <entry>
       <ind>100</ind>
-      <dep>-1.24</dep>
+      <dep>-0.62</dep>
     </entry>
   </interpolation>
    <axis>
@@ -1061,7 +1112,7 @@
     </entry>
     <entry>
       <ind>100</ind>
-      <dep>-1.24</dep>
+      <dep>-0.62</dep>
     </entry>
   </interpolation>
    <axis>
@@ -1084,7 +1135,7 @@
     </entry>
     <entry>
       <ind>100</ind>
-      <dep>-1.24</dep>
+      <dep>-0.62</dep>
     </entry>
   </interpolation>
    <axis>

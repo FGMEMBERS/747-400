@@ -12,11 +12,11 @@
 -->
 
 <turbine_engine name="GE CF6-80C2B1F">
-  <milthrust> 63737.0 </milthrust>
-  <bypassratio>     5.1 </bypassratio>
-  <tsfc>            0.8 </tsfc>
+  <milthrust>   63737.0 </milthrust>
+  <bypassratio>     5.15 </bypassratio>
+  <tsfc>            0.605 </tsfc>
   <bleed>           0.03</bleed>
-  <idlen1>         30.0 </idlen1>
+  <idlen1>         35.0 </idlen1>
   <idlen2>         60.0 </idlen2>
   <maxn1>         100.0 </maxn1>
   <maxn2>         100.0 </maxn2>

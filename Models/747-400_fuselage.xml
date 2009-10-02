@@ -2,30 +2,114 @@
 
 <path>747-400_fuselage.ac</path>
 
-<nasal>
- <load>
-            var livery_update = aircraft.livery_update.new("Aircraft/747-400/Models/Liveries", 10,
-			func { print("747-400 fuselage livery update") });
- </load>
- <unload>
-            livery_update.stop();
- </unload>
-</nasal> 
+<!-- SUN SCREENS -->
 
-<animation> 
- <type>material</type> 
- <object-name>fuselage</object-name>
- <property-base>sim/model/fuselage</property-base> 
- <texture-prop>texture</texture-prop> 
- <texture>747-400_fuselage.png</texture> 
-</animation> 
+ <animation>
+  <type>pick</type>
+  <object-name>side_windows_sun_l3</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/electric/sunscreens/l3</property>
+   </binding>
+  </action>
+ </animation>
+
+<animation>
+<type>translate</type>
+<object-name>side_windows_sun_l3</object-name>
+<property>/controls/electric/sunscreens/l3</property>
+<factor>1</factor>
+<axis>
+<x>0</x>
+<y>0</y>
+<z>-0.5</z>
+</axis>
+</animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>side_windows_sun_l2</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/electric/sunscreens/l2</property>
+   </binding>
+  </action>
+ </animation>
+
+<animation>
+<type>translate</type>
+<object-name>side_windows_sun_l2</object-name>
+<property>/controls/electric/sunscreens/l2</property>
+<factor>0.6</factor>
+<axis>
+<x>-0.15</x>
+<y>-0.2</y>
+<z>-0.5</z>
+</axis>
+</animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>side_windows_sun_r2</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/electric/sunscreens/r2</property>
+   </binding>
+  </action>
+ </animation>
+
+<animation>
+<type>translate</type>
+<object-name>side_windows_sun_r2</object-name>
+<property>/controls/electric/sunscreens/r2</property>
+<factor>0.6</factor>
+<axis>
+<x>-0.15</x>
+<y> 0.2</y>
+<z>-0.5</z>
+</axis>
+</animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>side_windows_sun_r3</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>  
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/electric/sunscreens/r3</property>
+   </binding>
+  </action>
+ </animation>
+
+<animation>
+<type>translate</type>
+<object-name>side_windows_sun_r3</object-name>
+<property>/controls/electric/sunscreens/r3</property>
+<factor>1</factor>
+<axis>
+<x>0</x>
+<y>0</y>
+<z>-0.5</z>
+</axis>
+</animation>
 
  <!-- DOORS -->
  <!-- LARGE DOORS -->
 
 <animation>
  <type>rotate</type>
- <object-name>nlg_left_large_door</object-name>
+ <object-name>nlg_left_large</object-name>
  <property>gear/gear[0]/position-norm</property>
  <interpolation>
   <entry>
@@ -57,7 +141,7 @@
 
 <animation>
  <type>rotate</type>
- <object-name>nlg_right_large_door</object-name>
+ <object-name>nlg_right_large</object-name>
  <property>gear/gear[0]/position-norm</property>
  <interpolation>
   <entry>
@@ -84,72 +168,6 @@
   <x2-m>-23.439</x2-m>
   <y2-m>  0.871</y2-m>
   <z2-m> -1.867</z2-m>
- </axis>
-</animation>
-
-<!-- SMALL DOORS -->
-
-<animation>
- <type>rotate</type>
- <object-name>nlg_left_small_door</object-name>
- <property>gear/gear[0]/position-norm</property>
- <interpolation>
-  <entry>
-   <ind>0.0</ind>
-   <dep>-70</dep>
-  </entry>
-  <entry>
-   <ind>0.1</ind>
-   <dep>-70</dep>
-  </entry>
-  <entry>
-   <ind>0.6</ind>
-   <dep>0</dep>
-  </entry>
-  <entry>
-   <ind>1.0</ind>
-   <dep>0</dep>
-  </entry>
- </interpolation>
- <axis>
-  <x1-m>-22.778</x1-m>
-  <y1-m>0.568</y1-m>
-  <z1-m>-2.071</z1-m>
-  <x2-m>-21.731</x2-m>
-  <y2-m>0.554</y2-m>
-  <z2-m>-2.215</z2-m>
- </axis>
-</animation>
-
-<animation>
- <type>rotate</type>
- <object-name>nlg_right_small_door</object-name>
- <property>gear/gear[0]/position-norm</property>
- <interpolation>
-  <entry>
-   <ind>0.0</ind>
-   <dep>70</dep>
-  </entry>
-  <entry>
-   <ind>0.1</ind>
-   <dep>70</dep>
-  </entry>
-  <entry>
-   <ind>0.6</ind>
-   <dep>0</dep>
-  </entry>
-  <entry>
-    <ind>1.0</ind>
-    <dep>0</dep>
-   </entry>
- </interpolation>
- <axis>
-  <x1-m>-22.778</x1-m>
-  <y1-m>-0.568</y1-m>
-  <z1-m>-2.071</z1-m>
-  <x2-m>-21.731</x2-m>
-  <y2-m>-0.554</y2-m>
-  <z2-m>-2.215</z2-m>
  </axis>
 </animation>
 
@@ -354,5 +372,60 @@
   <z2-m>-2.939</z2-m>
  </axis>
 </animation>
+
+<!-- RAIN -->
+
+	<animation>
+		<type>select</type>
+		<nopreview/>
+		<object-name>side_windows_rain</object-name>
+		<condition>
+			<greater-than>
+				<property>environment/metar/rain-norm</property>
+				<value>0.01</value>
+			</greater-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>side_windows</object-name>
+		<condition>
+			<less-than-equals>
+				<property>environment/metar/rain-norm</property>
+				<value>0.01</value>
+			</less-than-equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>side_windows_rain</object-name>
+		<transparency>
+			<alpha-prop>environment/metar/rain-norm</alpha-prop>
+				 <interpolation>
+  <entry>
+   <ind>0.0</ind>
+   <dep>0.75</dep>
+  </entry>
+  <entry>
+   <ind>1.0</ind>
+   <dep>0</dep>
+  </entry>
+ </interpolation>
+		</transparency>
+	</animation>
+
+	<animation>
+		<type>textranslate</type>
+		<object-name>side_windows_rain</object-name>
+		<property>velocities/airspeed-kt</property>
+		<factor>0.5</factor>
+		<axis>
+			<x>-1</x>
+			<y>0.5</y>
+			<z>0</z>
+		</axis>
+	</animation>
 
 </PropertyList>

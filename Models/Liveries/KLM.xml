@@ -11,6 +11,9 @@
 <fuselage>
 <texture>747-400_fuselage.png</texture>
 </fuselage>
+<fuselagelit>
+<texture>747-400_fuselagelit.png</texture>
+</fuselagelit>
 <rudder>
 <texture>747-400_rudder.png</texture>
 </rudder>

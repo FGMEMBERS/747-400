@@ -117,21 +117,16 @@
 <!-- NOSE -->
 
 <animation>
- <name>GearNoseWheels</name>
- <object-name>nlg</object-name>
- <object-name>Mesh18</object-name>
- <object-name>Mesh27_1_1</object-name>
- <object-name>Mesh27_1_0</object-name>
-</animation>
-
-<animation>
  <name>GearNose</name>
- <object-name>nlg_main_upper</object-name>
- <object-name>nlg_main_lower</object-name>
+ <object-name>GearNoseTorqueLinkLow</object-name>
+ <object-name>GearNoseTorqueLinkUpp</object-name>
+ <object-name>GearNoseMainStrutCyli</object-name>
+ <object-name>GearNoseMainStrutColl</object-name>
+ <object-name>GearNoseMainStrutPist</object-name>
+ <object-name>GearNoseWheels</object-name>
  <object-name>Mesh20</object-name>
  <object-name>Mesh22</object-name>
  <object-name>Mesh25</object-name>
- <object-name>GearNoseWheels</object-name>
 </animation>
 
 <animation>
@@ -181,6 +176,9 @@
 
 <animation>
  <type>rotate</type>
+ <object-name>GearNoseTorqueLinkLow</object-name>
+ <object-name>GearNoseTorqueLinkUpp</object-name>
+ <object-name>GearNoseMainStrutPist</object-name>
  <object-name>GearNoseWheels</object-name>
  <condition>
   <less-than>
@@ -204,7 +202,8 @@
 
 <animation>
  <type>translate</type>
- <object-name>nlg_main_lower</object-name>
+ <object-name>GearNoseTorqueLinkLow</object-name>
+ <object-name>GearNoseMainStrutPist</object-name>
  <object-name>GearNoseWheels</object-name>
  <property>gear/gear[0]/compression-norm</property>
  <factor>0.3</factor>
@@ -212,6 +211,40 @@
   <x>0</x>
   <y>0</y>
   <z>1</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>GearNoseTorqueLinkLow</object-name>
+ <property>gear/gear[0]/compression-norm</property>
+ <factor>-16</factor>
+ <center>
+  <x-m>-22.204</x-m>
+  <y-m>  0.000</y-m>
+  <z-m> -5.517</z-m>
+ </center>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>GearNoseTorqueLinkUpp</object-name>
+ <property>gear/gear[0]/compression-norm</property>
+ <factor>16</factor>
+ <center>
+  <x-m>-22.206</x-m>
+  <y-m>  0.000</y-m>
+  <z-m> -3.653</z-m>
+ </center>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
  </axis>
 </animation>
 

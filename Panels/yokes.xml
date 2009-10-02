@@ -9,7 +9,7 @@
  <object-name>left_column</object-name>
  <object-name>left_yoke</object-name>
  <property>controls/flight/elevator</property>
- <factor>10</factor>
+ <factor>15</factor>
  <center>
   <x-m> 1.10</x-m>
   <y-m>-0.533</y-m>
@@ -26,7 +26,7 @@
  <type>rotate</type>
  <object-name>left_yoke</object-name>
  <property>controls/flight/aileron</property>
- <factor>30</factor>
+ <factor>90</factor>
  <center>
   <x-m> 1.047</x-m>
   <y-m>-0.535</y-m>
@@ -46,7 +46,7 @@
  <object-name>right_column</object-name>
  <object-name>right_yoke</object-name>
  <property>controls/flight/elevator</property>
- <factor>10</factor>
+ <factor>15</factor>
  <center>
   <x-m> 1.10</x-m>
   <y-m> 0.533</y-m>
@@ -63,7 +63,7 @@
  <type>rotate</type>
  <object-name>right_yoke</object-name>
  <property>controls/flight/aileron</property>
- <factor>30</factor>
+ <factor>90</factor>
  <center>
   <x-m> 1.047</x-m>
   <y-m> 0.535</y-m>
@@ -74,6 +74,66 @@
   <y>0.0</y>
   <z>0.0</z>
  </axis>
+</animation>
+
+<!-- PEDALS -->
+
+<animation>
+ <type>translate</type>
+ <object-name>pedals_l</object-name>
+ <property>controls/flight/rudder</property>
+ <factor>0.06</factor>
+ <axis>
+  <x>1.0</x>
+  <y>0.0</y>
+  <z>0.0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>translate</type>
+ <object-name>pedals_r</object-name>
+ <property>controls/flight/rudder</property>
+ <factor>-0.06</factor>
+ <axis>
+  <x>1.0</x>
+  <y>0.0</y>
+  <z>0.0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>pedals_l</object-name>
+ <property>controls/gear/brake-left</property>
+ <factor>-10</factor>
+ <axis>
+  <x>0.0</x>
+  <y>1.0</y>
+  <z>0.0</z>
+ </axis>
+ <center>
+  <x-m>0.757</x-m>
+  <y-m>0</y-m>
+  <z-m>0.057</z-m>
+ </center>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>pedals_r</object-name>
+ <property>controls/gear/brake-right</property>
+ <factor>-10</factor>
+ <axis>
+  <x>0.0</x>
+  <y>1.0</y>
+  <z>0.0</z>
+ </axis>
+ <center>
+  <x-m>0.757</x-m>
+  <y-m>0</y-m>
+  <z-m>0.057</z-m>
+ </center>
 </animation>
 
 </PropertyList>

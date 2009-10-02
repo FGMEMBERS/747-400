@@ -143,14 +143,11 @@ setlistener("/sim/signals/fdm-initialized", func {
 
 var init_electrical = func{
 
-    setprop("controls/lighting/instruments-norm",0.8);
-    setprop("controls/lighting/eng-norm",0.8);
-    setprop("controls/lighting/efis-norm",0.8);
-    setprop("controls/lighting/panel-norm",0.8);
+    setprop("controls/lighting/instruments-norm",0);
+    setprop("controls/lighting/eng-norm",0);
+    setprop("controls/lighting/efis-norm",0);
+    setprop("controls/lighting/panel-norm",0);
 
-    append(switch_list,"controls/electric/wipers/switch");
-    append(output_list,"wipers");
-    append(load_list,0.5);
     append(switch_list,"controls/engines/engine[0]/starter");
     append(output_list,"starter[0]");
     append(load_list,10.0);

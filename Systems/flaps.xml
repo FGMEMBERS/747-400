@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<!-- # FLAPS system for BOEING 747-400 #
+     # by Gijs de Rooy			   # -->
+
+<system name="flaps">
+    
+    <channel name="flaps">
+
+        <switch name="controls/flight/flaps">
+          <default value="/controls/flight/flaps"/>
+            <test  logic="AND" value="0.667">
+                /velocities/airspeed-kt gt 205
+                /controls/flight/flaps == 0.833
+            </test>
+            <test  logic="AND" value="0.833">
+                /velocities/airspeed-kt gt 180
+                /controls/flight/flaps == 1.000
+            </test>
+		<output>/controls/flight/flaps</output>
+       </switch>
+
+    </channel>
+
+</system>

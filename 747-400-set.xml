@@ -4,8 +4,8 @@
  <sim>
 
   <description>Boeing 747-400</description>
-  <author>Gijs de Rooy</author>
-  <status>earle-production</status>
+  <author>Gijs de Rooy, Jentron</author>
+  <status>early-production</status>
   <aircraft-version>noftp</aircraft-version>
   <flight-model>jsb</flight-model>
   <aero>747-400</aero>
@@ -40,11 +40,8 @@
 
   <systems>
    <autopilot>
-    <path>Aircraft/747-400/Systems/747-autopilot.xml</path>
+    <path>Aircraft/747-400/Systems/autopilot.xml</path>
    </autopilot>
-   <autobrake>
-    <target-deceleration-ft_sec2>0</target-deceleration-ft_sec2>
-   </autobrake>
   </systems>
 
   <hud>   
@@ -60,7 +57,7 @@
    <config>
     <x-offset-m type="double">-0.55</x-offset-m>
     <y-offset-m type="double">3.8</y-offset-m>
-    <z-offset-m type="double">-23.5</z-offset-m>
+    <z-offset-m type="double">-23.75</z-offset-m>
     <pitch-offset-deg>-10</pitch-offset-deg>
     <default-field-of-view-deg type="double">65.0</default-field-of-view-deg>
    </config>
@@ -76,7 +73,7 @@
     <ground-level-nearplane-m type="double">6f</ground-level-nearplane-m>
     <x-offset-m type="double">0.55</x-offset-m>
     <y-offset-m type="double">3.8</y-offset-m>
-    <z-offset-m type="double">-23.5</z-offset-m>
+    <z-offset-m type="double">-23.75</z-offset-m>
     <pitch-offset-deg>-10</pitch-offset-deg>
     <default-field-of-view-deg type="double">65.0</default-field-of-view-deg>
    </config>
@@ -103,13 +100,6 @@
    <!-- Flaps 30: landing -->  
   </flaps>
 
-  <instrumentation>
-   <mk-viii>
-    <name>mk-viii</name>
-    <number>0</number>
-   </mk-viii>
-  </instrumentation>
-
   <help>
    <title>Boeing 747-400</title>
 
@@ -126,19 +116,38 @@
     <desc>Walk for-/backwards</desc>
    </key>
 
+   <text>
+===Startup======
+1. Press the continuous ignition switch on the overhead panel.
+2. Pull the start select switch for engine #4.
+3. Set the cutoff switch on the pedestal to RUN.
+4. Now repeat step 2 and 3 for engines #1, #2 and #3. 
+
+===Takeoff======
+1.  Set flaps to 20, it will take a minute to extend, so you'd better do this during taxi.
+2. Smoothly apply full throttle.
+3. Push the stick slightly forward until atleast 80 kts.
+4. Around 160 kts, slowly pull the stick back.
+5. The plane should takeoff around 180 kts.
+6. Retract gear as soon as the aircraft is climbing with atleast 500 ft per minute. 
+
+===Shutdown=====
+1. Set all cutoff switches to OFF.
+2. Turn continuous ignition OFF. 
+   </text>
+
   </help>
   
-  <!--
   <tutorials>
    <tutorial include="Tutorials/747-400_Preflight.xml"/>
    <tutorial include="Tutorials/747-400_Pushback_and_Start.xml"/>
    <tutorial include="Tutorials/747-400_Taxi_and_Takeoff.xml"/>
   </tutorials>
-  -->
 
   <menubar>
    <default>
     <menu n="5">
+
      <item n="10">
       <label>Pushback</label>
       <name>pushback</name>
@@ -147,11 +156,13 @@
        <dialog-name>pushback</dialog-name>
       </binding>
      </item>
+
     </menu>
 
     <menu n="10">
      <label>Boeing 747-400</label>
      <enabled type="bool">true</enabled>
+
      <item>
       <label>Malfunctions</label>
       <binding>
@@ -176,6 +187,20 @@
    </default>
   </menubar>
 
+  <multiplay>
+   <generic>			
+    <int n="0" alias="/controls/lighting/landing-light-inbdl"/> 
+    <int n="1" alias="/controls/lighting/landing-light-inbdr"/> 
+    <int n="2" alias="/controls/lighting/landing-light-outbdl"/> 
+    <int n="3" alias="/controls/lighting/landing-light-outbdr"/> 
+   </generic>
+  </multiplay>
+
+  <instrumentation>
+   <name>mk-viii</name>
+   <number>0</number>
+  </instrumentation>
+
  </sim>
 
  <consumables>
@@ -193,19 +218,19 @@
 
  <engines>
   <engine n="0">
-   <running>true</running>
+   <running>false</running>
    <reverser-position type="double">0.000000</reverser-position>
   </engine>
   <engine n="1">
-   <running>true</running>
+   <running>false</running>
    <reverser-position type="double">0.000000</reverser-position>
   </engine>
   <engine n="2">
-   <running>true</running>
+   <running>false</running>
    <reverser-position type="double">0.000000</reverser-position>
   </engine>
   <engine n="3">
-   <running>true</running>
+   <running>false</running>
    <reverser-position type="double">0.000000</reverser-position>
   </engine>   
   <engine n="4">
@@ -246,7 +271,15 @@
    <nav-lights>1</nav-lights>
    <strobe>1</strobe>
    <taxi-light>0</taxi-light>
+   <panel-norm>0</panel-norm>
   </lighting>
+
+  <electric>
+   <wipers>
+    <switch type = "bool">0</switch>
+    <position-norm type = "double">0</position-norm>
+   </wipers>
+  </electric>
 
  </controls>
 
@@ -314,9 +347,35 @@
   <radar>
    <range type="int" archive="y">20</range>
   </radar>
+  <mk-viii>
+   <serviceable>true</serviceable>
+   <configuration-module>
+    <category-1>1</category-1>
+   </configuration-module>
+   <inputs>
+    <arinc429>
+     <decision-height-ncd>false</decision-height-ncd>
+     <decision-height>200</decision-height>
+    </arinc429>
+   </inputs>
+   <speaker>
+    <volume>1</volume>
+    <max-dist>0.5</max-dist>
+    <reference-dist>0.3</reference-dist>
+    <position>
+     <x>-4.5</x>
+     <y>0</y>
+     <z>0</z>
+    </position>
+   </speaker>
+  </mk-viii>
  </instrumentation>
 
  <limits>
+  <max-flap-extension-speed>
+   <flaps>0.033</flaps>
+   <speed>285</speed>
+  </max-flap-extension-speed>
   <max-flap-extension-speed>
    <flaps>0.167</flaps>
    <speed>260</speed>
@@ -351,7 +410,9 @@
    <file>Aircraft/747-400/Nasal/flightdirector.nas</file>
    <file>Aircraft/Generic/limits.nas</file>
    <file>Aircraft/747-400/Nasal/AFDS.nas</file>
+   <file>Aircraft/747-400/Nasal/ins.nas</file>
    <file>Aircraft/747-400/Nasal/liveries.nas</file>
+   <file>Aircraft/747-400/Nasal/wipers.nas</file>
   </Boeing747>
   <walk>
    <file>Aircraft/747-400/Nasal/walk.nas</file>
@@ -361,6 +422,6 @@
   </reversethrust>
  </nasal>
 
- <surface-positions include="Systems/747-400-init-surface.xml"/>
+ <surface-positions include="Systems/init-surface.xml"/>
 
 </PropertyList>

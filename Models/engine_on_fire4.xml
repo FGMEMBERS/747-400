@@ -26,10 +26,10 @@ sweat by maggse
 		 </equals>
 	</condition>
 		 
-	 <attach>world</attach>
+	 <attach>local</attach>
 	 
 	 <placer>
-		 <type>point</type>
+		 <type>sector</type>
 	 </placer>
 	 
 	 <shooter>
@@ -100,15 +100,15 @@ sweat by maggse
 			 </size>
 		 </end>
 		 <life-sec>
-			 <value>2.0</value>
+			 <value>10.0</value>
 		 </life-sec>
-		 <mass-kg>1.3</mass-kg>
+		 <mass-kg>0.1</mass-kg>
 		 <radius-m>0.03</radius-m>
 	 </particle>
 	 
 	 <program>
 		 <fluid>air</fluid>
-		 <gravity type="bool">false</gravity>
+		 <gravity type="bool">true</gravity>
 		 <wind type="bool">true</wind>
 	 </program>
 	 

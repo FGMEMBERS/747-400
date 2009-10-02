@@ -1,11 +1,23 @@
 <!--
-Syd Adams, Josh Wilson
-787 ND 
+Syd Adams, Josh Wilson, Gijs de Rooy
+747-400 ND 
 -->
 
 <PropertyList>
 
- <path>nd.ac</path>
+<path>nd.ac</path>
+
+<nasal>
+ <open>
+
+  var wplat = getprop("/autopilot/route-manager/route/wp/latitude-deg");
+  var wplon = getprop("/autopilot/route-manager/route/wp/longitude-deg");
+
+ </open>
+
+ <close>
+ </close>
+</nasal>
 
  <animation>
   <type>range</type>

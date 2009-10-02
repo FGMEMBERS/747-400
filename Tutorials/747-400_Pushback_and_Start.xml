@@ -2,25 +2,10 @@
 
     <name>Pushback and Start</name>
     <description>
-We're now fully configured to begin our pushback and engine start. The passengers are on board and
-you've just been given your clearance. As things start to happen very quickly from here on out, don't be
-afraid to pause your sim between steps.
+We're now fully configured to begin our pushback and engine start. The passengers are on board and you've just been given your clearance. As things start to happen very quickly from here on out, don't be afraid to pause your sim between steps.
     </description>
     <audio-dir>Aircraft/747-400/tutorial</audio-dir>
     <timeofday>noon</timeofday>
-    <presets>
-      <airport-id>KSFO</airport-id>
-      <on-ground>1</on-ground>
-      <runway>28R</runway>
-      <altitude-ft>0</altitude-ft>
-      <latitude-deg>37.61838</latitude-deg>
-      <longitude-deg>-122.39193</longitude-deg>
-      <heading-deg>0</heading-deg>
-      <airspeed-kt>0</airspeed-kt>
-      <glideslope-deg>0</glideslope-deg>
-      <offset-azimuth>0</offset-azimuth>
-      <offset-distance>0</offset-distance>
-    </presets>
 
     <init>
       <set>
@@ -62,36 +47,24 @@ afraid to pause your sim between steps.
     </step>
 
     <step>
-      <message>Right click on the RST button on the pushback guage</message>
-    </step>
-
-    <step>
-      <message>Adjust DIST and DEG.</message>
-    </step>
-
-    <step>
-      <message>As soon DIST and DEG are entered, left click on the RST button.</message>
-    </step>
-
-    <step>
       <message>Turn ON the BEACON lights.</message>
+	<view>
+		<heading-offset-deg>319.9</heading-offset-deg>
+		<pitch-offset-deg>26.2</pitch-offset-deg>
+		<roll-offset-deg>0.0</roll-offset-deg>
+		<x-offset-m>-0.55</x-offset-m>
+		<y-offset-m>3.8</y-offset-m>
+		<z-offset-m>-23.5</z-offset-m>
+		<field-of-view>57</field-of-view>
+	</view>
 	<exit>
-            
 	<condition>
-                
-                    
 		<equals>
-                        
 			<property>/controls/lighting/beacon</property>
-                        
-			<value>true</value>
-                    
+			<value>1</value>
 		</equals>
-     
 	</condition>
-        
 	</exit>
- 
     </step>
 
     <step>
@@ -112,51 +85,44 @@ afraid to pause your sim between steps.
 
     <step>
       <message>Turn ON continuous ignition.</message>
+      <marker>
+		<x-m> 0.0198</x-m>
+		<y-m>-0.0835</y-m>
+		<z-m>-0.0033</z-m>
+		<scale>1.6777</scale>
+	</marker>
+	<exit>
+	<condition>
+		<equals>
+			<property>/controls/engines/con-ignition</property>
+			<value>1</value>
+		</equals>
+	</condition>
+	</exit>
     </step>
 
     <step>
       <message>Ensure all throttles are at idle</message>
 	<exit>
-            
 	<condition>
-                
-                    
 		<equals>
-                        
-			<property>/controls/engines/engine/throttle</property>
-                        
+			<property>/controls/engines/engine[0]/throttle</property>
 			<value>0</value>
-                    
 		</equals>
-     
 		<equals>
-                        
 			<property>/controls/engines/engine[1]/throttle</property>
-                        
 			<value>0</value>
-                    
 		</equals>
-     
 		<equals>
-                        
 			<property>/controls/engines/engine[2]/throttle</property>
-                        
 			<value>0</value>
-                    
 		</equals>
-     
 		<equals>
-                        
 			<property>/controls/engines/engine[3]/throttle</property>
-                        
 			<value>0</value>
-                    
 		</equals>
-     
 	</condition>
-        
 	</exit>
- 
     </step>
 
     <step>
@@ -165,67 +131,90 @@ afraid to pause your sim between steps.
 
     <step>
       <message>Press the ENG button on the EICAS MCP.</message>
+      <marker>
+		<x-m>0.4174</x-m>
+		<y-m>0.2041</y-m>
+		<z-m>0.2595</z-m>
+		<scale>0.9174</scale>
+	</marker>
+	<exit>
+	<condition>
+		<equals>
+			<property>/instrumentation/eicas/display</property>
+			<value>ENG</value>
+		</equals>
+	</condition>
+	</exit>
     </step>
 
     <step>
       <message>Pull the Engine Start Selector for Engine 4.</message>
+      <marker>
+		<x-m>-0.0207</x-m>
+		<y-m>0.0116</y-m>
+		<z-m>-0.0033</z-m>
+		<scale>1.2810</scale>
+	</marker>
+	<exit>
+	<condition>
+		<equals>
+			<property>/controls/engines/engine[3]/starter</property>
+			<value>1</value>
+		</equals>
+	</condition>
+	</exit>
     </step>
 
     <step>
       <message>When the N2% RPM indicator on the EICAS reaches the magenta line (around 14%), switch the Fuel Control Switch for Engine 4 to RUN.</message>
+	<exit>
+	<condition>
+		<equals>
+			<property>/controls/engines/engine[3]/cutoff</property>
+			<value>0</value>
+		</equals>
+	</condition>
+	</exit>
     </step>
 
     <step>
       <message>Repeat this process for engine 1. Pull the Start Selector, wait for N2 to reach the magenta line, set Fuel Control to RUN.</message>
+	<exit>
+	<condition>
+		<equals>
+			<property>/controls/engines/engine[0]/cutoff</property>
+			<value>0</value>
+		</equals>
+	</condition>
+	</exit>
     </step>
 
     <step>
       <message>Now do the same thing for engines 2 and 3.</message>
+	<exit>
+	<condition>
+		<equals>
+			<property>/controls/engines/engine[1]/cutoff</property>
+			<value>0</value>
+		</equals>
+		<equals>
+			<property>/controls/engines/engine[2]/cutoff</property>
+			<value>0</value>
+		</equals>
+	</condition>
+	</exit>
     </step>
 
     <step>
       <message>Turn OFF the APU.</message>
 	<exit>
-            
 	<condition>
-                
-                    
 		<equals>
-                        
-			<property>/controls/engines/engine/throttle</property>
-                        
+			<property>/controls/APU/off-start-run</property>
 			<value>0</value>
-                    
 		</equals>
-     
-		<equals>
-                        
-			<property>/controls/engines/engine[1]/throttle</property>
-                        
-			<value>0</value>
-                    
-		</equals>
-     
-		<equals>
-                        
-			<property>/controls/engines/engine[2]/throttle</property>
-                        
-			<value>0</value>
-                    
-		</equals>
-     
-		<equals>
-                        
-			<property>/controls/engines/engine[3]/throttle</property>
-                        
-			<value>0</value>
-                    
-		</equals>
-     
 	</condition>
-        
 	</exit>
- 
     </step>
 
     <step>

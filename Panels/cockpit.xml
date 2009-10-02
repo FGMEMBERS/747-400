@@ -3,27 +3,21 @@
  <animation>
   <type>range</type>
   <min-m>0</min-m>
-  <max-m>20</max-m>
+  <max-m>30</max-m>
  </animation>
 
 <model>
 <name>yokes</name>
 <path>Aircraft/747-400/Panels/yokes.xml</path>
-<offsets>
- <x-m>0</x-m>
- <y-m>0</y-m>
- <z-m>0</z-m>
-</offsets>
- 
 </model>
 
 <model>
  <name>overhead</name>
  <path>Aircraft/747-400/Panels/overhead.xml</path>
  <offsets>
-  <x-m>1.138</x-m>
+  <x-m>1.30</x-m>
   <y-m>0</y-m>
-  <z-m>1.408</z-m>
+  <z-m>1.37</z-m>
   <pitch-deg>150</pitch-deg>
  </offsets>
 </model>
@@ -68,7 +62,7 @@
  </offsets>
 </model>
 
-<model>
+<!-- <model>
  <name>shell</name>
  <path>Aircraft/747-400/Panels/cockpit_shell.xml</path>
  <offsets>
@@ -76,7 +70,7 @@
   <y-m>0</y-m>
   <z-m>0</z-m>
  </offsets>
-</model>
+</model> -->
 
 <model>
  <name>Magnetic Compass</name>

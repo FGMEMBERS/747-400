@@ -98,6 +98,9 @@
  <object-name>flap_right_h.3.1</object-name>
  <object-name>flap_right_h.4.1</object-name>
  <object-name>winglet_right</object-name>
+ <object-name>LEinbR.1</object-name>
+ <object-name>LEinbR.2</object-name>
+ <object-name>LEinbR.3</object-name>
  <property>fdm/jsbsim/aero/coefficient/CLalpha</property>
  <factor>-0.0000040</factor>
  <offset-deg>0</offset-deg>
@@ -213,6 +216,9 @@
  <object-name>flap_left_h.3.1</object-name>
  <object-name>flap_left_h.4.1</object-name>
  <object-name>winglet_left</object-name>
+ <object-name>LEinbL.1</object-name>
+ <object-name>LEinbL.2</object-name>
+ <object-name>LEinbL.3</object-name>
  <property>fdm/jsbsim/aero/coefficient/CLalpha</property>
  <factor>-0.0000040</factor>
  <offset-deg>0</offset-deg>
@@ -740,6 +746,180 @@
  </axis>
 </animation>
 
+<!-- LEADING EDGE FLAPS
+     LEFT INBOARD      -->
+
+<animation>
+ <type>rotate</type>
+ <object-name>LEinbL.1</object-name>
+ <property>surface-positions/flap-pos-norm</property>
+ <interpolation>
+  <entry>
+   <ind>0.0</ind>
+   <dep>0.0</dep>
+  </entry>
+  <entry>
+   <ind>0.033</ind>
+   <dep>-100</dep>
+  </entry>
+  <entry>
+   <ind>1.0</ind>
+   <dep>-100</dep>
+  </entry>
+ </interpolation>
+ <axis>   
+  <x1-m> -4.920</x1-m>
+  <y1-m> -6.991</y1-m>
+  <z1-m> -1.118</z1-m>
+  <x2-m> -3.131</x2-m>
+  <y2-m> -8.985</y2-m>
+  <z2-m> -0.872</z2-m>
+ </axis>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>LEinbL.2</object-name>
+ <property>surface-positions/flap-pos-norm</property>
+ <interpolation>
+  <entry>
+   <ind>0.0</ind>
+   <dep>0.0</dep>
+  </entry>
+  <entry>
+   <ind>0.033</ind>
+   <dep>-100</dep>
+  </entry>
+  <entry>
+   <ind>1.0</ind>
+   <dep>-100</dep>
+  </entry>
+ </interpolation>
+ <axis>   
+  <x1-m> -3.131</x1-m>
+  <y1-m> -8.985</y1-m>
+  <z1-m> -0.872</z1-m>
+  <x2-m> -1.343</x2-m>
+  <y2-m>-10.979</y2-m>
+  <z2-m> -0.626</z2-m>
+ </axis>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>LEinbL.3</object-name>
+ <property>surface-positions/flap-pos-norm</property>
+ <interpolation>
+  <entry>
+   <ind>0.0</ind>
+   <dep>0.0</dep>
+  </entry>
+  <entry>
+   <ind>0.033</ind>
+   <dep>-100</dep>
+  </entry>
+  <entry>
+   <ind>1.0</ind>
+   <dep>-100</dep>
+  </entry>
+ </interpolation>
+ <axis>   
+  <x1-m> -1.343</x1-m>
+  <y1-m>-10.979</y1-m>
+  <z1-m> -0.626</z1-m>
+  <x2-m>  0.450</x2-m>
+  <y2-m>-13.028</y2-m>
+  <z2-m> -0.446</z2-m>
+ </axis>
+</animation>
+
+<!-- LEADING EDGE FLAPS
+     RIGHTT INBOARD     -->
+
+<animation>
+ <type>rotate</type>
+ <object-name>LEinbR.1</object-name>
+ <property>surface-positions/flap-pos-norm</property>
+ <interpolation>
+  <entry>
+   <ind>0.0</ind>
+   <dep>0.0</dep>
+  </entry>
+  <entry>
+   <ind>0.033</ind>
+   <dep>100</dep>
+  </entry>
+  <entry>
+   <ind>1.0</ind>
+   <dep>100</dep>
+  </entry>
+ </interpolation>
+ <axis>   
+  <x1-m> -4.920</x1-m>
+  <y1-m>  6.991</y1-m>
+  <z1-m> -1.118</z1-m>
+  <x2-m> -3.131</x2-m>
+  <y2-m>  8.985</y2-m>
+  <z2-m> -0.872</z2-m>
+ </axis>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>LEinbR.2</object-name>
+ <property>surface-positions/flap-pos-norm</property>
+ <interpolation>
+  <entry>
+   <ind>0.0</ind>
+   <dep>0.0</dep>
+  </entry>
+  <entry>
+   <ind>0.033</ind>
+   <dep>100</dep>
+  </entry>
+  <entry>
+   <ind>1.0</ind>
+   <dep>100</dep>
+  </entry>
+ </interpolation>
+ <axis>   
+  <x1-m> -3.131</x1-m>
+  <y1-m>  8.985</y1-m>
+  <z1-m> -0.872</z1-m>
+  <x2-m> -1.343</x2-m>
+  <y2-m> 10.979</y2-m>
+  <z2-m> -0.626</z2-m>
+ </axis>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>LEinbR.3</object-name>
+ <property>surface-positions/flap-pos-norm</property>
+ <interpolation>
+  <entry>
+   <ind>0.0</ind>
+   <dep>0.0</dep>
+  </entry>
+  <entry>
+   <ind>0.033</ind>
+   <dep>100</dep>
+  </entry>
+  <entry>
+   <ind>1.0</ind>
+   <dep>100</dep>
+  </entry>
+ </interpolation>
+ <axis>   
+  <x1-m> -1.343</x1-m>
+  <y1-m> 10.979</y1-m>
+  <z1-m> -0.626</z1-m>
+  <x2-m>  0.450</x2-m>
+  <y2-m> 13.028</y2-m>
+  <z2-m> -0.446</z2-m>
+ </axis>
+</animation>
+
 <!-- FLAPS LEFT INNER -->
 
 <animation>
@@ -780,6 +960,10 @@
  <interpolation>
   <entry>
    <ind>0.0</ind>
+   <dep>0.0</dep>
+  </entry>
+  <entry>
+   <ind>0.033</ind>
    <dep>0.0</dep>
   </entry>
   <entry>
@@ -925,6 +1109,10 @@
    <dep>0.0</dep>
   </entry>
   <entry>
+   <ind>0.033</ind>
+   <dep>0.0</dep>
+  </entry>
+  <entry>
    <ind>0.167</ind>
    <dep>1.0</dep>
   </entry>
@@ -1067,6 +1255,10 @@
    <dep>0.0</dep>
   </entry>
   <entry>
+   <ind>0.033</ind>
+   <dep>0.0</dep>
+  </entry>
+  <entry>
    <ind>0.167</ind>
    <dep>0.5</dep>
   </entry>
@@ -1206,6 +1398,10 @@
  <interpolation>
   <entry>
    <ind>0.0</ind>
+   <dep>0.0</dep>
+  </entry>
+  <entry>
+   <ind>0.033</ind>
    <dep>0.0</dep>
   </entry>
   <entry>
