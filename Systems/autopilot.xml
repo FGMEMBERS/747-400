@@ -729,4 +729,41 @@
 	  </config>
   </pid-controller-->
   
+  <pid-controller>
+      <name>AUTOBRAKE FCS</name>
+     <debug>false</debug>
+     <enable>
+         <prop>autopilot/autobrake/engaged</prop>
+         <value>true</value>
+     </enable>
+     <input>
+         <prop>autopilot/autobrake/actual-decel-fts-sec</prop>
+     </input>
+     <reference>
+         <prop>autopilot/autobrake/target-decel-fts-sec</prop>
+     </reference>
+     <output>
+         <prop>autopilot/autobrake/fcs-brake</prop>
+     </output>
+     <config>
+         <Kp>
+             <value>0.06</value>
+         </Kp>
+         <beta>1.0</beta>
+         <alpha>0.2</alpha>
+         <gamma>0.0</gamma>
+         <Ti>
+             <value>1.0</value>
+         </Ti>
+         <Td>
+             <value>0.0</value>
+         </Td>
+         <u_min>
+             <value>0</value>
+         </u_min>
+         <u_max>
+             <value>1</value>
+         </u_max>
+     </config>
+ </pid-controller>
 </PropertyList>

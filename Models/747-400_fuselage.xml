@@ -2,6 +2,25 @@
 
 <path>747-400_fuselage.ac</path>
 
+<animation> 
+ <type>material</type> 
+ <object-name>fuselage</object-name>
+ <object-name>nlg_left_large</object-name>
+ <object-name>nlg_right_large</object-name>
+ <property-base>sim/model/livery</property-base> 
+ <texture-prop>fuselage</texture-prop> 
+ <texture>747-400_fuselage.png</texture> 
+</animation>
+
+<animation>
+ <type>shader</type>
+ <shader>chrome</shader>
+ <texture>glass_shader.png</texture>
+ <object-name>side_windows</object-name>
+ <object-name>left_window</object-name>
+ <object-name>right_window</object-name>
+</animation>
+
 <!-- SUN SCREENS -->
 
  <animation>

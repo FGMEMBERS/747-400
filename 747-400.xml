@@ -152,9 +152,9 @@
 
         <contact type="BOGEY" name="NOSE">
             <location unit="IN">
-                <x> -865 </x>
-                <y> 0 </y>
-                <z> -236.22 </z>
+                <x> -865.79 </x>
+                <y>    0.00 </y>
+                <z> -221.46 </z>
             </location>
             <static_friction> 0.8 </static_friction>
             <dynamic_friction> 0.5 </dynamic_friction>
@@ -167,9 +167,9 @@
         </contact>
         <contact type="BOGEY" name="LEFT_WING">
             <location unit="IN">
-                <x> 115 </x>
-                <y> -216.5 </y>
-                <z> -196.85 </z>
+                <x>  113.50 </x>
+                <y> -238.90 </y>
+                <z> -203.27 </z>
             </location>
             <static_friction> 0.8 </static_friction>
             <dynamic_friction> 0.5 </dynamic_friction>
@@ -182,9 +182,9 @@
         </contact>
         <contact type="BOGEY" name="LEFT_BODY">
             <location unit="IN">
-                <x> 245 </x>
-                <y> -75.5 </y>
-                <z> -196.85 </z>
+                <x>  245 </x>
+                <y>  -75.5 </y>
+                <z> -203.27 </z>
             </location>
             <static_friction> 0.8 </static_friction>
             <dynamic_friction> 0.5 </dynamic_friction>
@@ -197,9 +197,9 @@
         </contact>
         <contact type="BOGEY" name="RIGHT_BODY">
             <location unit="IN">
-                <x> 245 </x>
-                <y> 75.5 </y>
-                <z> -196.85 </z>
+                <x>  245 </x>
+                <y>   75.5 </y>
+                <z> -203.27 </z>
             </location>
             <static_friction> 0.8 </static_friction>
             <dynamic_friction> 0.5 </dynamic_friction>
@@ -212,9 +212,9 @@
         </contact>
         <contact type="BOGEY" name="RIGHT_WING">
             <location unit="IN">
-                <x> 115 </x>
-                <y> 216.5 </y>
-                <z> -196.85 </z>
+                <x>  113.50 </x>
+                <y>  238.90 </y>
+                <z> -203.27 </z>
             </location>
             <static_friction> 0.8 </static_friction>
             <dynamic_friction> 0.5 </dynamic_friction>

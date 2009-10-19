@@ -1,25 +1,18 @@
 <?xml version="1.0"?> 
 <PropertyList> 
+
 <sim> 
-<model> 
-<livery> 
-<name type="string">KLM Royal Dutch Airlines</name> 
-</livery> 
-<engine>
-<texture>747-400_engine.png</texture>
-</engine>
-<fuselage>
-<texture>747-400_fuselage.png</texture>
-</fuselage>
-<fuselagelit>
-<texture>747-400_fuselagelit.png</texture>
-</fuselagelit>
-<rudder>
-<texture>747-400_rudder.png</texture>
-</rudder>
-<misc>
-<texture>747-400_misc.png</texture>
-</misc>
-</model> 
+ <model> 
+  <livery> 
+   <name type="string">KLM Royal Dutch Airlines</name> 
+   <engine>747-400_engine.png</engine>
+   <fuselage>747-400_fuselage.png</fuselage>
+   <misc>747-400_misc.png</misc>
+   <rudder>747-400_rudder.png</rudder>
+   <wingbottom>747-400_wingbottom.png</wingbottom>
+   <wingtop>747-400_wingtop.png</wingtop>
+  </livery> 
+ </model> 
 </sim> 
+
 </PropertyList> 

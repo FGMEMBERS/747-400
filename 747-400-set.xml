@@ -28,7 +28,7 @@
   <model>
    <path>Aircraft/747-400/Models/747-400.xml</path>
    <pushback>
-    <kp type="double">100</kp>
+    <kp type="double">500</kp>
     <ki type="double">25</ki>
     <kd type="double">0</kd>
     <position-norm type="double">0</position-norm>
@@ -266,12 +266,17 @@
 
   <lighting>
    <beacon>1</beacon>
-   <landing-lights>0</landing-lights>
+   <landing-light-inbdl>0</landing-light-inbdl>
+   <landing-light-inbdr>0</landing-light-inbdr>
+   <landing-light-outbdl>0</landing-light-outbdl>
+   <landing-light-outbdr>0</landing-light-outbdr>
    <logo-lights>1</logo-lights>
    <nav-lights>1</nav-lights>
-   <strobe>1</strobe>
-   <taxi-light>0</taxi-light>
    <panel-norm>0</panel-norm>
+   <strobe>1</strobe>
+   <taxi-lights>0</taxi-lights>
+   <turnoff-light-l>0</turnoff-light-l>
+   <turnoff-light-r>0</turnoff-light-r>
   </lighting>
 
   <electric>

@@ -5,20 +5,8 @@
 <!-- GEAR SMOKE ON TOUCHDOWN -->
 
 <model>
- <name>gear_smoke_nlg</name>
- <path>Aircraft/747-400/Models/gear_smoke.xml</path>
- <condition>
-  <and>
-   <greater-than>
-    <property>velocities/airspeed-kt</property>
-    <value>115</value>
-   </greater-than>
-   <greater-than>
-    <property>/gear/gear[0]/compression-norm</property>
-    <value>0.50</value>
-   </greater-than>
-  </and>
- </condition>
+ <name>tyre-smoke-n</name>
+ <path>Aircraft/Generic/Effects/tyre-smoke-nose.xml</path>
  <offsets>
   <x-m>-21.993</x-m>
   <y-m>  0.000</y-m>
@@ -27,20 +15,8 @@
 </model>
 
 <model>
- <name>gear_smoke_wl</name>
- <path>Aircraft/747-400/Models/gear_smoke.xml</path>
- <condition>
-  <and>
-   <greater-than>
-    <property>velocities/airspeed-kt</property>
-    <value>115</value>
-   </greater-than>
-   <greater-than>
-    <property>/gear/gear[1]/compression-norm</property>
-    <value>0.25</value>
-   </greater-than>
-  </and>
- </condition>
+ <name>tyre-smoke-p</name>
+ <path>Aircraft/Generic/Effects/tyre-smoke-port.xml</path>
  <offsets>
   <x-m>  1.607</x-m>
   <y-m> -5.511</y-m>
@@ -49,20 +25,8 @@
 </model>
 
 <model>
- <name>gear_smoke_bl</name>
- <path>Aircraft/747-400/Models/gear_smoke.xml</path>
- <condition>
-  <and>
-   <greater-than>
-    <property>velocities/airspeed-kt</property>
-    <value>115</value>
-   </greater-than>
-   <greater-than>
-    <property>/gear/gear[2]/compression-norm</property>
-    <value>0.25</value>
-   </greater-than>
-  </and>
- </condition>
+ <name>tyre-smoke-p</name>
+ <path>Aircraft/Generic/Effects/tyre-smoke-port.xml</path>
  <offsets>
   <x-m>  5.473</x-m>
   <y-m> -1.904</y-m>
@@ -71,20 +35,8 @@
 </model>
 
 <model>
- <name>gear_smoke_br</name>
- <path>Aircraft/747-400/Models/gear_smoke.xml</path>
- <condition>
-  <and>
-   <greater-than>
-    <property>velocities/airspeed-kt</property>
-    <value>115</value>
-   </greater-than>
-   <greater-than>
-    <property>/gear/gear[3]/compression-norm</property>
-    <value>0.25</value>
-   </greater-than>
-  </and>
- </condition>
+ <name>tyre-smoke-s</name>
+ <path>Aircraft/Generic/Effects/tyre-smoke-stbd.xml</path>
  <offsets>
   <x-m>  5.473</x-m>
   <y-m>  1.904</y-m>
@@ -93,20 +45,8 @@
 </model>
 
 <model>
- <name>gear_smoke_wr</name>
- <path>Aircraft/747-400/Models/gear_smoke.xml</path>
- <condition>
-  <and>
-   <greater-than>
-    <property>velocities/airspeed-kt</property>
-    <value>115</value>
-   </greater-than>
-   <greater-than>
-    <property>/gear/gear[4]/compression-norm</property>
-    <value>0.25</value>
-   </greater-than>
-  </and>
- </condition>
+ <name>tyre-smoke-s</name>
+ <path>Aircraft/Generic/Effects/tyre-smoke-stbd.xml</path>
  <offsets>
   <x-m>  1.607</x-m>
   <y-m>  5.511</y-m>
@@ -205,7 +145,7 @@
  <object-name>GearNoseTorqueLinkLow</object-name>
  <object-name>GearNoseMainStrutPist</object-name>
  <object-name>GearNoseWheels</object-name>
- <property>gear/gear[0]/compression-norm</property>
+ <property>gear/gear[0]/compression-ft</property>
  <factor>0.3</factor>
  <axis>
   <x>0</x>
@@ -336,11 +276,11 @@
   </entry>
   <entry>
    <ind>23</ind>
-   <dep>-45</dep>
+   <dep>-60</dep>
   </entry>
   <entry>
    <ind>100</ind>
-   <dep>-45</dep>
+   <dep>-60</dep>
   </entry>
  </interpolation>
  <center>
@@ -535,11 +475,11 @@
   </entry>
   <entry>
    <ind>23</ind>
-   <dep>45</dep>
+   <dep>60</dep>
   </entry>
   <entry>
    <ind>100</ind>
-   <dep>45</dep>
+   <dep>60</dep>
   </entry>
  </interpolation>
  <center>

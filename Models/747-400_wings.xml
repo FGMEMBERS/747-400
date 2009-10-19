@@ -14,29 +14,31 @@
 
 <animation> 
  <type>material</type> 
- <object-name>winglet_left</object-name>
- <object-name>winglet_right</object-name>
- <property-base>sim/model/misc</property-base> 
- <texture-prop>texture</texture-prop> 
- <texture>747-400_misc.png</texture> 
-</animation> 
-
-<!--
-<animation> 
- <type>material</type> 
  <object-name>eng.1_reverser</object-name>
  <object-name>eng.2_reverser</object-name>
  <object-name>eng.3_reverser</object-name>
  <object-name>eng.4_reverser</object-name>
- <object-name>eng.1</object-name>
- <object-name>eng.2</object-name>
- <object-name>eng.3</object-name>
- <object-name>eng.4</object-name>
- <property-base>sim/model/engine</property-base> 
- <texture-prop>texture</texture-prop> 
+ <object-name>eng.1_1</object-name>
+ <object-name>eng.2_1</object-name>
+ <object-name>eng.3_1</object-name>
+ <object-name>eng.4_1</object-name>
+ <property-base>sim/model/livery</property-base> 
+ <texture-prop>engine</texture-prop> 
  <texture>747-400_engine.png</texture> 
 </animation>
- -->
+
+<animation> 
+ <type>material</type> 
+ <object-name>eng.1_2</object-name>
+ <object-name>eng.2_2</object-name>
+ <object-name>eng.3_2</object-name>
+ <object-name>eng.4_2</object-name>
+ <object-name>winglet_left</object-name>
+ <object-name>winglet_right</object-name>
+ <property-base>sim/model/livery</property-base> 
+ <texture-prop>misc</texture-prop> 
+ <texture>747-400_misc.png</texture> 
+</animation> 
 
 <!-- FUEL JETTISON -->
 
