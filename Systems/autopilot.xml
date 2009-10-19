@@ -145,9 +145,9 @@
     <input>
       <prop>/autopilot/internal/true-heading-error-deg</prop>
     </input>
-    <target>
-      <prop>0.0</prop>
-    </target>
+    <reference>
+      <value>0.0</value>
+    </reference>
     <output>
       <prop>/autopilot/internal/target-roll-deg</prop>
     </output>
@@ -198,7 +198,7 @@
 
   <!-- Stage #1 sets target roll based on diff between current heading -->
   <!-- and target heading. -->
-  <pi-simple-controller>
+  <pid-controller>
     <name>Nav1 Hold Stage 1</name>
     <debug>false</debug>
     <enable>
@@ -224,7 +224,7 @@
       <u_min>-30.0</u_min> <!-- minimum output clamp -->
       <u_max>30.0</u_max>  <!-- maximum output clamp -->
     </config>
-  </pi-simple-controller>
+  </pid-controller>
 
   <!-- Stage #2 drives the ailerons to achieve the desired roll deg. -->
   <pid-controller>
@@ -732,6 +732,44 @@
   <pid-controller>
       <name>AUTOBRAKE FCS</name>
      <debug>false</debug>
+     <enable>
+         <prop>autopilot/autobrake/engaged</prop>
+         <value>true</value>
+     </enable>
+     <input>
+         <prop>autopilot/autobrake/actual-decel-fts-sec</prop>
+     </input>
+     <reference>
+         <prop>autopilot/autobrake/target-decel-fts-sec</prop>
+     </reference>
+     <output>
+         <prop>autopilot/autobrake/fcs-brake</prop>
+     </output>
+     <config>
+         <Kp>
+             <value>0.06</value>
+         </Kp>
+         <beta>1.0</beta>
+         <alpha>0.2</alpha>
+         <gamma>0.0</gamma>
+         <Ti>
+             <value>1.0</value>
+         </Ti>
+         <Td>
+             <value>0.0</value>
+         </Td>
+         <u_min>
+             <value>0</value>
+         </u_min>
+         <u_max>
+             <value>1</value>
+         </u_max>
+     </config>
+ </pid-controller>
+
+<pid-controller>
+      <name>AUTOBRAKE FCS</name>
+     <debug>true</debug>
      <enable>
          <prop>autopilot/autobrake/engaged</prop>
          <value>true</value>

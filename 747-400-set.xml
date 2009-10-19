@@ -335,6 +335,16 @@
    <max-aileron type="float">0.5</max-aileron>
    <indicated-heading-magnetic type="bool">true</indicated-heading-magnetic>
   </config>
+
+  <autobrake>
+      <config>
+          <num-steps type="int">5</num-steps>
+          <rto-step type="int">-2</rto-step>
+          <rto-engage-kts type="double">85</rto-engage-kts>
+          <rto-decel-fts-sec type="double">11</rto-decel-fts-sec>
+          <max-decel-fts-sec type="double">11</max-decel-fts-sec>
+      </config>
+  </autobrake>
  </autopilot>
 
  <!-- INSTRUMENTATION -->
