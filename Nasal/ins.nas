@@ -70,10 +70,9 @@ ins.del = func (funct = "true") {
 }
 ins.nav = func {
 	# Integration
-	me.nvelfps += getprop("/accelerations/ned/north-accel-fps_sec")*me.dtime;
-	me.evelfps += getprop("/accelerations/ned/east-accel-fps_sec")*me.dtime;
-	me.vspeed -= getprop("/accelerations/ned/down-accel-fps_sec")*60*me.dtime;
-	me.vspeed += limit(60*getprop("/velocities/vertical-speed-fps")-me.vspeed,-me.dtime,me.dtime);
+	me.nvelfps = getprop("/velocities/speed-north-fps");
+	me.evelfps = getprop("/velocities/speed-east-fps");
+	me.vspeed = 60*getprop("/velocities/vertical-speed-fps");
 	me.gndspd = math.sqrt(me.nvelfps*me.nvelfps + me.evelfps*me.evelfps) * .592483801295896;
 	me.track = math.atan2(me.evelfps,me.nvelfps) * 180 / math.pi;
 	me.track = me.track < 0 ? me.track+360 : me.track;

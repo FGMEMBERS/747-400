@@ -15,7 +15,7 @@
 </model>
 
 <model>
- <name>tyre-smoke-p</name>
+ <name>tyre-smoke-po</name>
  <path>Aircraft/Generic/Effects/tyre-smoke-port.xml</path>
  <offsets>
   <x-m>  1.607</x-m>
@@ -25,7 +25,7 @@
 </model>
 
 <model>
- <name>tyre-smoke-p</name>
+ <name>tyre-smoke-pi</name>
  <path>Aircraft/Generic/Effects/tyre-smoke-port.xml</path>
  <offsets>
   <x-m>  5.473</x-m>
@@ -35,7 +35,7 @@
 </model>
 
 <model>
- <name>tyre-smoke-s</name>
+ <name>tyre-smoke-si</name>
  <path>Aircraft/Generic/Effects/tyre-smoke-stbd.xml</path>
  <offsets>
   <x-m>  5.473</x-m>
@@ -45,7 +45,7 @@
 </model>
 
 <model>
- <name>tyre-smoke-s</name>
+ <name>tyre-smoke-so</name>
  <path>Aircraft/Generic/Effects/tyre-smoke-stbd.xml</path>
  <offsets>
   <x-m>  1.607</x-m>
@@ -276,11 +276,11 @@
   </entry>
   <entry>
    <ind>23</ind>
-   <dep>-60</dep>
+   <dep>60</dep>
   </entry>
   <entry>
    <ind>100</ind>
-   <dep>-60</dep>
+   <dep>60</dep>
   </entry>
  </interpolation>
  <center>

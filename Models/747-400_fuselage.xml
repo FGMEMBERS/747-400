@@ -4,123 +4,16 @@
 
 <animation> 
  <type>material</type> 
- <object-name>fuselage</object-name>
+ <object-name>fuselage_1.002_1__1_1</object-name>
  <object-name>nlg_left_large</object-name>
  <object-name>nlg_right_large</object-name>
+ <object-name>wlg_left_door.1</object-name>
+ <object-name>wlg_left_door.2</object-name>
+ <object-name>wlg_right_door.1</object-name>
+ <object-name>wlg_right_door.2</object-name>
  <property-base>sim/model/livery</property-base> 
  <texture-prop>fuselage</texture-prop> 
  <texture>747-400_fuselage.png</texture> 
-</animation>
-
-<animation>
- <type>shader</type>
- <shader>chrome</shader>
- <texture>glass_shader.png</texture>
- <object-name>side_windows</object-name>
- <object-name>left_window</object-name>
- <object-name>right_window</object-name>
-</animation>
-
-<!-- SUN SCREENS -->
-
- <animation>
-  <type>pick</type>
-  <object-name>side_windows_sun_l3</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>  
-   <binding>
-    <command>property-toggle</command>
-    <property>controls/electric/sunscreens/l3</property>
-   </binding>
-  </action>
- </animation>
-
-<animation>
-<type>translate</type>
-<object-name>side_windows_sun_l3</object-name>
-<property>/controls/electric/sunscreens/l3</property>
-<factor>1</factor>
-<axis>
-<x>0</x>
-<y>0</y>
-<z>-0.5</z>
-</axis>
-</animation>
-
- <animation>
-  <type>pick</type>
-  <object-name>side_windows_sun_l2</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>  
-   <binding>
-    <command>property-toggle</command>
-    <property>controls/electric/sunscreens/l2</property>
-   </binding>
-  </action>
- </animation>
-
-<animation>
-<type>translate</type>
-<object-name>side_windows_sun_l2</object-name>
-<property>/controls/electric/sunscreens/l2</property>
-<factor>0.6</factor>
-<axis>
-<x>-0.15</x>
-<y>-0.2</y>
-<z>-0.5</z>
-</axis>
-</animation>
-
- <animation>
-  <type>pick</type>
-  <object-name>side_windows_sun_r2</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>  
-   <binding>
-    <command>property-toggle</command>
-    <property>controls/electric/sunscreens/r2</property>
-   </binding>
-  </action>
- </animation>
-
-<animation>
-<type>translate</type>
-<object-name>side_windows_sun_r2</object-name>
-<property>/controls/electric/sunscreens/r2</property>
-<factor>0.6</factor>
-<axis>
-<x>-0.15</x>
-<y> 0.2</y>
-<z>-0.5</z>
-</axis>
-</animation>
-
- <animation>
-  <type>pick</type>
-  <object-name>side_windows_sun_r3</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>  
-   <binding>
-    <command>property-toggle</command>
-    <property>controls/electric/sunscreens/r3</property>
-   </binding>
-  </action>
- </animation>
-
-<animation>
-<type>translate</type>
-<object-name>side_windows_sun_r3</object-name>
-<property>/controls/electric/sunscreens/r3</property>
-<factor>1</factor>
-<axis>
-<x>0</x>
-<y>0</y>
-<z>-0.5</z>
-</axis>
 </animation>
 
  <!-- DOORS -->

@@ -65,18 +65,18 @@
 
 <model>
  <name>ND1</name>
- <path>Aircraft/747-400/Panels/Instruments/nd.xml</path>
+ <path>Aircraft/747-400/Panels/Instruments/MFD/ND.xml</path>
  <offsets>
   <x-m>0.6854</x-m>
   <y-m>-0.3207</y-m>
   <z-m>0.65</z-m>
-  <pitch-deg>-21</pitch-deg>
+  <pitch-deg>-22</pitch-deg>
  </offsets>
 </model>
   
 <model>
  <name>ND2</name>
- <path>Aircraft/747-400/Panels/Instruments/nd.xml</path>
+ <path>Aircraft/747-400/Panels/Instruments/MFD/ND.xml</path>
  <offsets>
   <x-m>0.6854</x-m>
   <y-m>0.3207</y-m>

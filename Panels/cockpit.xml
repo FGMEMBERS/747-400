@@ -1,14 +1,18 @@
 <PropertyList>
 
- <animation>
-  <type>range</type>
-  <min-m>0</min-m>
-  <max-m>30</max-m>
- </animation>
+<animation>
+ <type>range</type>
+ <min-m>0</min-m>
+ <max-m>30</max-m>
+</animation>
 
 <model>
-<name>yokes</name>
-<path>Aircraft/747-400/Panels/yokes.xml</path>
+ <name>yokes</name>
+ <path>Aircraft/747-400/Panels/yokes.xml</path>
+</model>
+
+<model>
+ <path>Models/Aircraft/marker.xml</path>
 </model>
 
 <model>
@@ -62,23 +66,13 @@
  </offsets>
 </model>
 
-<!-- <model>
- <name>shell</name>
- <path>Aircraft/747-400/Panels/cockpit_shell.xml</path>
- <offsets>
-  <x-m>0</x-m>
-  <y-m>0</y-m>
-  <z-m>0</z-m>
- </offsets>
-</model> -->
-
 <model>
  <name>Magnetic Compass</name>
  <path>Aircraft/747-400/Panels/Instruments/mag-compass.xml</path>
  <offsets>
-  <x-m>0.715</x-m>
+  <x-m>0.85</x-m>
   <y-m>0.00</y-m>
-  <z-m>1.2</z-m>
+  <z-m>1.10</z-m>
  </offsets>
 </model>
 

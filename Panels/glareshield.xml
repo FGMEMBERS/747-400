@@ -23,210 +23,210 @@
 
 <!-- WARNING/CAUTION -->
 
- <animation>
-  <type>pick</type>
-  <object-name>warning_lit</object-name>
-  <object-name>warning_unlit</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>  
-   <binding>
-    <command>property-toggle</command>
+<animation>
+ <type>pick</type>
+ <object-name>warning_lit</object-name>
+ <object-name>warning_unlit</object-name>
+ <action>
+  <button>0</button>
+  <repeatable>false</repeatable>  
+  <binding>
+   <command>property-toggle</command>
+   <property>/instrumentation/annunciators/master-warning</property>
+  </binding>
+ </action>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>warning_lit</object-name>
+ <condition>
+  <equals>
+   <property>/instrumentation/annunciators/master-warning</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>warning_unlit</object-name>
+ <condition>
+  <not>
+   <equals>
     <property>/instrumentation/annunciators/master-warning</property>
-   </binding>
-  </action>
- </animation>
+    <value>1</value>
+   </equals>
+  </not>
+ </condition>
+</animation>
 
-  <animation>
-    <type>select</type>
-    <object-name>warning_lit</object-name>
-    <condition>
-      <equals>
-        <property>/instrumentation/annunciators/master-warning</property>
-        <value>1</value>
-      </equals>
-    </condition>
-  </animation>
+<animation>
+ <type>pick</type>
+ <object-name>caution_lit</object-name>
+ <object-name>caution_unlit</object-name>
+ <action>
+  <button>0</button>
+  <repeatable>false</repeatable>  
+  <binding>
+   <command>property-toggle</command>
+   <property>/instrumentation/annunciators/master-caution</property>
+  </binding>
+ </action>
+</animation>
 
-  <animation>
-    <type>select</type>
-    <object-name>warning_unlit</object-name>
-    <condition>
-      <not>
-      <equals>
-        <property>/instrumentation/annunciators/master-warning</property>
-        <value>1</value>
-      </equals>
-      </not>
-    </condition>
-  </animation>
+<animation>
+ <type>select</type>
+ <object-name>caution_lit</object-name>
+ <condition>
+  <equals>
+   <property>/instrumentation/annunciators/master-caution</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
 
- <animation>
-  <type>pick</type>
-  <object-name>caution_lit</object-name>
-  <object-name>caution_unlit</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>  
-   <binding>
-    <command>property-toggle</command>
+<animation>
+ <type>select</type>
+ <object-name>caution_unlit</object-name>
+ <condition>
+  <not>
+   <equals>
     <property>/instrumentation/annunciators/master-caution</property>
-   </binding>
-  </action>
- </animation>
-
-  <animation>
-    <type>select</type>
-    <object-name>caution_lit</object-name>
-    <condition>
-      <equals>
-        <property>/instrumentation/annunciators/master-caution</property>
-        <value>1</value>
-      </equals>
-    </condition>
-  </animation>
-
-  <animation>
-    <type>select</type>
-    <object-name>caution_unlit</object-name>
-    <condition>
-      <not>
-      <equals>
-        <property>/instrumentation/annunciators/master-caution</property>
-        <value>1</value>
-      </equals>
-      </not>
-    </condition>
-  </animation>
+    <value>1</value>
+   </equals>
+  </not>
+ </condition>
+</animation>
 
 <!-- IAS/MACH display -->
 
-   <animation>
-    <type>textranslate</type>
-    <object-name>IAS.1</object-name>
-    <property>/autopilot/settings/target-speed-kt</property>   
-    <factor>0.001</factor>
-    <step>100.0</step>
-    <axis>
-      <x>0</x>
-      <y>1</y>
-      <z>0</z>
-    </axis>
-   </animation>
+<animation>
+ <type>textranslate</type>
+ <object-name>IAS.1</object-name>
+ <property>/autopilot/settings/target-speed-kt</property>   
+ <factor>0.001</factor>
+ <step>100.0</step>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
 
-   <animation>
-    <type>textranslate</type>
-    <object-name>IAS.2</object-name>
-    <property>/autopilot/settings/target-speed-kt</property>
-    <factor>0.01</factor>
-    <step>10.0</step>
-    <axis>
-      <x>0</x>
-      <y>1</y>
-      <z>0</z>
-    </axis>
-  </animation>
+<animation>
+ <type>textranslate</type>
+ <object-name>IAS.2</object-name>
+ <property>/autopilot/settings/target-speed-kt</property>
+ <factor>0.01</factor>
+ <step>10.0</step>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
 
-   <animation>
-    <type>textranslate</type>
-    <object-name>IAS.3</object-name>
-    <property>/autopilot/settings/target-speed-kt</property>
-    <factor>0.1</factor>
-    <step>1.0</step>
-    <axis>
-      <x>0</x>
-      <y>1</y>
-      <z>0</z>
-    </axis>
-  </animation>
+<animation>
+ <type>textranslate</type>
+ <object-name>IAS.3</object-name>
+ <property>/autopilot/settings/target-speed-kt</property>
+ <factor>0.1</factor>
+ <step>1.0</step>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
 
 <!-- HDG display-->
 
-   <animation>
-    <type>textranslate</type>
-    <object-name>HDG.1</object-name>
-    <property>/autopilot/settings/true-heading-deg</property>
-    <factor>0.001</factor>
-    <step>100.0</step>
-    <axis>
-      <x>0</x>
-      <y>1</y>
-      <z>0</z>
-    </axis>
-  </animation>
+<animation>
+ <type>textranslate</type>
+ <object-name>HDG.1</object-name>
+ <property>/autopilot/settings/true-heading-deg</property>
+ <factor>0.001</factor>
+ <step>100.0</step>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
 
-   <animation>
-    <type>textranslate</type>
-    <object-name>HDG.2</object-name>
-    <property>/autopilot/settings/true-heading-deg</property>
-    <factor>0.01</factor>
-    <step>10.0</step>
-    <axis>
-      <x>0</x>
-      <y>1</y>
-      <z>0</z>
-    </axis>
-  </animation>
+<animation>
+ <type>textranslate</type>
+ <object-name>HDG.2</object-name>
+ <property>/autopilot/settings/true-heading-deg</property>
+ <factor>0.01</factor>
+ <step>10.0</step>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
 
-   <animation>
-    <type>textranslate</type>
-    <object-name>HDG.3</object-name>
-    <property>/autopilot/settings/true-heading-deg</property>
-    <factor>0.1</factor>
-    <step>1.0</step>
-    <axis>
-      <x>0</x>
-      <y>1</y>
-      <z>0</z>
-    </axis>
-  </animation>
+<animation>
+ <type>textranslate</type>
+ <object-name>HDG.3</object-name>
+ <property>/autopilot/settings/true-heading-deg</property>
+ <factor>0.1</factor>
+ <step>1.0</step>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
 
 <!-- VS -->
 
- <animation>
-  <type>pick</type>
-  <object-name>VS_dn</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>true</repeatable>  
-   <binding>
-    <command>property-adjust</command>
-    <property>/autopilot/settings/vertical-speed-fpm</property>
-    <step>-100</step>
-    <min>-8000</min>
-    <max>6000</max>
-   </binding>
-  </action>
- </animation>
+<animation>
+ <type>pick</type>
+ <object-name>VS_dn</object-name>
+ <action>
+  <button>0</button>
+  <repeatable>true</repeatable>  
+  <binding>
+   <command>property-adjust</command>
+   <property>/autopilot/settings/vertical-speed-fpm</property>
+   <step>-100</step>
+   <min>-8000</min>
+   <max>6000</max>
+  </binding>
+ </action>
+</animation>
 
- <animation>
-  <type>pick</type>
-  <object-name>VS_up</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>true</repeatable>  
-   <binding>
-    <command>property-adjust</command>
-    <property>/autopilot/settings/vertical-speed-fpm</property>
-    <step>100</step>
-    <min>-8000</min>
-    <max>6000</max>
-   </binding>
-  </action>
- </animation>
+<animation>
+ <type>pick</type>
+ <object-name>VS_up</object-name>
+ <action>
+  <button>0</button>
+  <repeatable>true</repeatable>  
+  <binding>
+   <command>property-adjust</command>
+   <property>/autopilot/settings/vertical-speed-fpm</property>
+   <step>100</step>
+   <min>-8000</min>
+   <max>6000</max>
+  </binding>
+ </action>
+</animation>
 
- <animation>
-    <type>textranslate</type>
-    <object-name>VS.1</object-name>
-    <property>/autopilot/settings/vertical-speed-fpm</property>
-    <factor>0.00001</factor>
-    <step>10000.0</step>
-    <axis>
-      <x>0</x>
-      <y>1</y>
-      <z>0</z>
-    </axis>
-  </animation>
+<animation>
+ <type>textranslate</type>
+ <object-name>VS.1</object-name>
+ <property>/autopilot/settings/vertical-speed-fpm</property>
+ <factor>0.00001</factor>
+ <step>10000.0</step>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
 
  <animation>
     <type>textranslate</type>

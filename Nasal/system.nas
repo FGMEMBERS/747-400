@@ -55,55 +55,24 @@ setlistener("/controls/engines/auto-ignition", func(autoig){
     }
 },0,0);
 
-setlistener("/sim/model/start-idling", func(idle){
-    var run= idle.getBoolValue();
-    if(run){
-    Startup();
-    }else{
-    Shutdown();
-    }
-},0,0);
+## FG Autostart/Shutdown ##
 
-var Startup = func{
-setprop("controls/lighting/nav-lights",1);
-setprop("controls/lighting/beacon",1);
-setprop("controls/lighting/strobe",1);
-setprop("controls/lighting/wing-lights",1);
-setprop("controls/lighting/taxi-lights",1);
-setprop("controls/lighting/logo-lights",1);
-setprop("controls/lighting/cabin-lights",1);
-setprop("controls/lighting/landing-lights",1);
-setprop("controls/engines/con-ignition",1);
-setprop("controls/engines/engine[0]/starter",1);
-setprop("controls/engines/engine[1]/starter",1);
-setprop("controls/engines/engine[2]/starter",1);
-setprop("controls/engines/engine[3]/starter",1);
-setprop("controls/engines/engine[0]/cutoff",0);
-setprop("controls/engines/engine[1]/cutoff",0);
-setprop("controls/engines/engine[2]/cutoff",0);
-setprop("controls/engines/engine[3]/cutoff",0);
-setprop("controls/engines/engine[0]/starter",0);
-setprop("controls/engines/engine[1]/starter",0);
-setprop("controls/engines/engine[2]/starter",0);
-setprop("controls/engines/engine[3]/starter",0);
-}
+var gijstimer = func {
 
-var Shutdown = func{
-setprop("controls/lighting/nav-lights",0);
-setprop("controls/lighting/beacon",0);
-setprop("controls/lighting/strobe",0);
-setprop("controls/lighting/wing-lights",0);
-setprop("controls/lighting/taxi-lights",0);
-setprop("controls/lighting/logo-lights",0);
-setprop("controls/lighting/cabin-lights",0);
-setprop("controls/lighting/landing-lights",0);
-setprop("controls/engines/con-ignition",0);
-setprop("controls/engines/engine[0]/starter",0);
-setprop("controls/engines/engine[1]/starter",0);
-setprop("controls/engines/engine[2]/starter",0);
-setprop("controls/engines/engine[3]/starter",0);
-setprop("controls/engines/engine[0]/cutoff",1);
-setprop("controls/engines/engine[1]/cutoff",1);
-setprop("controls/engines/engine[2]/cutoff",1);
-setprop("controls/engines/engine[3]/cutoff",1);
+setprop("/controls/engines/engine[0]/starter",1);
+setprop("/controls/engines/engine[1]/starter",1);
+setprop("/controls/engines/engine[2]/starter",1);
+setprop("/controls/engines/engine[3]/starter",1);
+setprop("/controls/engines/engine[0]/cutoff",1);
+setprop("/controls/engines/engine[1]/cutoff",1);
+setprop("/controls/engines/engine[2]/cutoff",1);
+setprop("/controls/engines/engine[3]/cutoff",1);
+	if (getprop("/engines/engine[0]/n2") > 25) {
+		setprop("/controls/engines/engine[0]/cutoff",0);
+		setprop("/controls/engines/engine[1]/cutoff",0);
+		setprop("/controls/engines/engine[2]/cutoff",0);
+		setprop("/controls/engines/engine[3]/cutoff",0);
+		setprop("/controls/engines/autostart",0);
+	}
+	if (getprop("/controls/engines/autostart")) settimer(gijstimer,0);
 }

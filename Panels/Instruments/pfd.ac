@@ -670,7 +670,7 @@ OBJECT poly
 name "PFDscreen"
 data 8
 Mesh.008
-texture "pfd1.rgb"
+texture "pfd1.png"
 texrep 1 1
 crease 30.000000
 numvert 4
