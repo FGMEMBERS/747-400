@@ -194,6 +194,18 @@ left mouse button and counter clockwise using the middle mouse button.
      </item>
 
      <item>
+      <label>Yoke chart</label>
+      <binding>
+       <command>nasal</command>
+       <script>
+	  var mal = gui.Dialog.new("/sim/gui/dialogs/Boeing747/menu/dialog", 
+                                                              "Aircraft/747-400/Dialogs/yokechart-dialog.xml");
+        mal.open();
+       </script>
+      </binding>
+     </item>
+
+     <item>
       <label>Select Livery</label>
       <binding>
        <command>nasal</command>
@@ -405,6 +417,9 @@ left mouse button and counter clockwise using the middle mouse button.
     <display-mode>APP</display-mode>
    </mfd>
   </efis>
+  <groundradar>
+   <range>2</range>
+  </groundradar>
   <mk-viii>
    <serviceable>1</serviceable>
    <speaker>
@@ -448,14 +463,6 @@ left mouse button and counter clockwise using the middle mouse button.
    <limit-deg type="int">360</limit-deg>
   </radar>
  </instrumentation>
-
- <systems>
-  <electrical>
-   <outputs>
-    <efis>20</efis>
-   </outputs>
-  </electrical>
- </systems>
 
  <limits>
   <max-flap-extension-speed>
