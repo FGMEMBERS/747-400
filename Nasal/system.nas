@@ -57,7 +57,7 @@ setlistener("/controls/engines/auto-ignition", func(autoig){
 
 ## FG Autostart/Shutdown ##
 
-var gijstimer = func {
+var autostart = func {
 
 setprop("/controls/engines/engine[0]/starter",1);
 setprop("/controls/engines/engine[1]/starter",1);
@@ -74,5 +74,21 @@ setprop("/controls/engines/engine[3]/cutoff",1);
 		setprop("/controls/engines/engine[3]/cutoff",0);
 		setprop("/controls/engines/autostart",0);
 	}
-	if (getprop("/controls/engines/autostart")) settimer(gijstimer,0);
+	if (getprop("/controls/engines/autostart")) settimer(autostart,0);
+}
+
+## Forced gear down on ground ##
+
+controls.gearDown = func(v) {
+
+    if (v < 0) {
+
+        if(!getprop("gear/gear[1]/wow"))setprop("/controls/gear/gear-down", 0);
+
+    } elsif (v > 0) {
+
+      setprop("/controls/gear/gear-down", 1);
+
+    }
+
 }

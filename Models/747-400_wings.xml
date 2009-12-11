@@ -40,6 +40,16 @@
  <texture>747-400_misc.png</texture> 
 </animation> 
 
+<animation>
+ <type>select</type>
+ <condition>
+  <equals>
+   <property>/controls/failures/wings/broken</property>
+   <value>0</value>
+  </equals>
+ </condition>
+</animation>
+
 <!-- FUEL JETTISON -->
 
 <model>
@@ -309,12 +319,30 @@
  </offsets>
 </model>
 
+<model>
+ <path>Aircraft/747-400/Models/Effects/smoke.xml</path> 
+ <offsets> 
+  <x-m>40.5</x-m>
+  <y-m>-21.23</y-m>
+  <z-m>-1.97</z-m>
+ </offsets>
+</model>
+
 <!-- ENGINE #2 FIRE -->
 
 <model>
  <path>Aircraft/747-400/Models/engine_on_fire2.xml</path> 
  <offsets> 
   <x-m>3</x-m>
+  <y-m>-13.447</y-m>
+  <z-m>-2.575</z-m>
+ </offsets>
+</model>
+
+<model>
+ <path>Aircraft/747-400/Models/Effects/smoke.xml</path> 
+ <offsets> 
+  <x-m>33</x-m>
   <y-m>-13.447</y-m>
   <z-m>-2.575</z-m>
  </offsets>
@@ -331,12 +359,30 @@
  </offsets>
 </model>
  
+<model>
+ <path>Aircraft/747-400/Models/Effects/smoke.xml</path> 
+ <offsets> 
+  <x-m>33</x-m>
+  <y-m>13.447</y-m>
+  <z-m>-2.575</z-m>
+ </offsets>
+</model>
+ 
 <!-- ENGINE #4 FIRE -->
 
 <model>
  <path>Aircraft/747-400/Models/engine_on_fire4.xml</path> 
  <offsets> 
   <x-m>10.5</x-m>
+  <y-m>21.23</y-m>
+  <z-m>-1.97</z-m>
+ </offsets>
+</model>
+
+<model>
+ <path>Aircraft/747-400/Models/Effects/smoke.xml</path> 
+ <offsets> 
+  <x-m>40.5</x-m>
   <y-m>21.23</y-m>
   <z-m>-1.97</z-m>
  </offsets>

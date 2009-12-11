@@ -7,17 +7,18 @@
     
     <channel name="flaps">
 
-        <switch name="controls/flight/flaps">
-          <default value="/controls/flight/flaps"/>
+        <switch name="fcs/autoflap-cmd-norm">
+          <default value="fcs/flap-cmd-norm"/>
             <test  logic="AND" value="0.667">
                 /velocities/airspeed-kt gt 205
-                /controls/flight/flaps == 0.833
+                fcs/flap-pos-norm GT 0.667
+                fcs/flap-pos-norm LT 0.833
             </test>
             <test  logic="AND" value="0.833">
-                /velocities/airspeed-kt gt 180
-                /controls/flight/flaps == 1.000
+                /velocities/airspeed-kt GT 180
+                fcs/flap-pos-norm GT 0.833
             </test>
-		<output>/controls/flight/flaps</output>
+		<output>fcs/flap-cmd-norm</output>
        </switch>
 
     </channel>
