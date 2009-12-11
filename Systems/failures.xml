@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<!-- # FAILURE system for BOEING 747-400 #
+     # by Gijs de Rooy			     # -->
+
+<system name="failures">
+    
+    <channel name="gear">
+
+        <switch name="fcs/failures-gear-broken">
+          <default value="/controls/failures/gear/broken"/>
+            <test  logic="AND" value="1">
+                gear/gear-cmd-norm GT 0
+                /velocities/airspeed-kt GT 270
+            </test>
+		<output>/controls/failures/gear/broken</output>
+       </switch>
+
+    </channel>
+
+    <channel name="wings">
+
+        <switch name="fcs/failures-wings-broken">
+          <default value="/controls/failures/wings/broken"/>
+            <test  logic="AND" value="1">
+                /accelerations/pilot-gdamped GT 3
+            </test>
+		<output>/controls/failures/wings/broken</output>
+       </switch>
+
+        <switch name="fcs/failures-wings-lift">
+          <default value="1"/>
+            <test  logic="AND" value="0">
+                /controls/failures/wings/broken == 1
+            </test>
+		<output>/controls/failures/wings/lift</output>
+       </switch>
+
+    </channel>
+
+</system>
