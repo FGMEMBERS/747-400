@@ -33,18 +33,44 @@
    <path>Sounds/gear-hrn.wav</path>
    <condition>
     <and>
-    <less-than>
-     <property>/controls/engines/engine/throttle</property>
-     <value>0.25</value>
-    </less-than>
-    <less-than>
-     <property>/velocities/groundspeed-kt</property>
-     <value>270</value>
-    </less-than>
-    <equals>
-     <property>/controls/gear/gear-down</property>
-     <value>0</value>
-    </equals>
+     <equals>
+      <property>/gear/gear[2]/wow</property>
+      <value>0</value>
+     </equals>
+     <equals>
+      <property>/controls/gear/gear-down</property>
+      <value>0</value>
+     </equals>
+     <or>
+      <and>
+       <or>
+        <equals>
+         <property>/controls/engines/engine[0]/throttle</property>
+         <value>0</value>
+        </equals>
+        <equals>
+         <property>/controls/engines/engine[1]/throttle</property>
+         <value>0</value>
+        </equals>
+        <equals>
+         <property>/controls/engines/engine[2]/throttle</property>
+         <value>0</value>
+        </equals>
+        <equals>
+         <property>/controls/engines/engine[3]/throttle</property>
+         <value>0</value>
+        </equals>
+       </or>
+       <less-than>
+        <property>/position/altitude-agl-ft</property>
+        <value>800</value>
+       </less-than>
+      </and>
+      <greater-than>
+       <property>/controls/flight/flaps</property>
+       <value>0.667</value>
+      </greater-than>
+     </or>
     </and>
    </condition>
   </gear>
@@ -156,6 +182,94 @@
     <factor>1</factor>
    </volume>
   </switch>
+
+  <switch>
+   <name>click on2</name>
+   <mode>once</mode>
+   <path>Aircraft/747-400/Sounds/autopilot-disengage.wav</path>
+   <condition>
+    <not>
+     <and>
+      <property>sim/gui/dialogs/autopilot/altitude-active</property>
+      <property>sim/gui/dialogs/autopilot/heading-active</property>
+      <property>sim/gui/dialogs/autopilot/speed-active</property>
+     </and>
+	</not>
+   </condition>
+   <volume>
+    <factor>1</factor>
+   </volume>
+  </switch>
+  
+  <!-- engines -->
+   
+  <engine>
+   <name>engine1run</name>
+   <path>Aircraft/747-400/Sounds/engine-run.wav</path>
+   <mode>looped</mode>
+   <condition>
+    <greater-than>
+     <property>/engines/engine[0]/n2</property>
+	 <value>30</value>
+	</greater-than>
+   </condition>
+   <volume>
+    <property>/engines/engine[0]/n2</property>
+    <type>ln</type>
+    <factor>0.035</factor>
+   </volume>
+  </engine>
+  
+  <engine>
+   <name>engine2run</name>
+   <path>Aircraft/747-400/Sounds/engine-run.wav</path>
+   <mode>looped</mode>
+   <condition>
+    <greater-than>
+     <property>/engines/engine[1]/n2</property>
+	 <value>30</value>
+	</greater-than>
+   </condition>
+   <volume>
+    <property>/engines/engine[1]/n2</property>
+    <type>ln</type>
+    <factor>0.035</factor>
+   </volume>
+  </engine>
+  
+  <engine>
+   <name>engine3run</name>
+   <path>Aircraft/747-400/Sounds/engine-run.wav</path>
+   <mode>looped</mode>
+   <condition>
+    <greater-than>
+     <property>/engines/engine[2]/n2</property>
+	 <value>30</value>
+	</greater-than>
+   </condition>
+   <volume>
+    <property>/engines/engine[2]/n2</property>
+    <type>ln</type>
+    <factor>0.035</factor>
+   </volume>
+  </engine>
+  
+  <engine>
+   <name>engine4run</name>
+   <path>Aircraft/747-400/Sounds/engine-run.wav</path>
+   <mode>looped</mode>
+   <condition>
+    <greater-than>
+     <property>/engines/engine[3]/n2</property>
+	 <value>30</value>
+	</greater-than>
+   </condition>
+   <volume>
+    <property>/engines/engine[3]/n2</property>
+    <type>ln</type>
+    <factor>0.035</factor>
+   </volume>
+  </engine>
 
 <!-- custom GPWS-->
 

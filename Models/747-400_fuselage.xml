@@ -2,21 +2,205 @@
 
 <path>747-400_fuselage.ac</path>
 
+    <nasal>
+        <load>
+            var livery_update = aircraft.livery_update.new("Aircraft/747-400/Models");
+        </load>
+
+        <unload>
+            livery_update.stop();
+        </unload>
+    </nasal> 
+
 <animation> 
  <type>material</type> 
- <object-name>fuselage_1.002_1__1_1</object-name>
- <object-name>nlg_left_large</object-name>
- <object-name>nlg_right_large</object-name>
- <object-name>wlg_left_door.1</object-name>
- <object-name>wlg_left_door.2</object-name>
- <object-name>wlg_right_door.1</object-name>
- <object-name>wlg_right_door.2</object-name>
  <property-base>sim/model/livery</property-base> 
- <texture-prop>fuselage</texture-prop> 
- <texture>747-400_fuselage.png</texture> 
+ <texture-prop>texture</texture-prop> 
+ <texture>BOE.png</texture> 
 </animation>
 
- <!-- DOORS -->
+<!-- NOSE CONE -->
+<animation>
+ <type>translate</type>
+ <object-name>nosecone</object-name>
+ <property>controls/doors/nosecone/position-norm</property>
+ <factor>0.20</factor>
+ <center>
+  <x-m>-28.701</x-m>
+  <y-m> -1.002</y-m>
+  <z-m>  1.075</z-m>
+ </center>
+ <axis>
+  <x>1</x>
+  <y>-1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>nosecone</object-name>
+ <property>controls/doors/nosecone/position-norm</property>
+ <factor>90</factor>
+ <center>
+  <x-m>-28.701</x-m>
+  <y-m> -1.002</y-m>
+  <z-m>  1.075</z-m>
+ </center>
+ <axis>
+  <x>0</x>
+  <y>0</y>
+  <z>1</z>
+ </axis>
+</animation>
+
+<!-- DOORS-->
+
+<!-- UPPERDECK LEFT -->
+
+<animation>
+ <type>rotate</type>
+ <object-name>door_upperdeck_left</object-name>
+ <property>controls/doors/upperdeckleft/position-norm</property>
+ <factor>-55</factor>
+ <axis>
+  <x1-m>-15.022</x1-m>
+  <y1-m> -1.607</y1-m>
+  <z1-m>  4.476</z1-m>
+  <x2-m>-14.158</x2-m>
+  <y2-m> -1.610</y2-m>
+  <z2-m>  4.476</z2-m>
+ </axis>
+</animation>
+
+<!-- UPPERDECK RIGHT -->
+
+<animation>
+ <type>rotate</type>
+ <object-name>door_upperdeck_right</object-name>
+ <property>controls/doors/upperdeckright/position-norm</property>
+ <factor>55</factor>
+ <axis>
+  <x1-m>-15.022</x1-m>
+  <y1-m>  1.607</y1-m>
+  <z1-m>  4.476</z1-m>
+  <x2-m>-14.158</x2-m>
+  <y2-m>  1.610</y2-m>
+  <z2-m>  4.476</z2-m>
+ </axis>
+</animation>
+
+<!-- ENTRY 1 LEFT -->
+
+<animation>
+ <type>rotate</type>
+ <object-name>door_entry1_left</object-name>
+ <property>controls/doors/entry1left/position-norm</property>
+ <interpolation>
+  <entry>
+   <ind>0.0</ind>
+   <dep>0</dep>
+  </entry>
+  <entry>
+   <ind>0.3</ind>
+   <dep>0</dep>
+  </entry>
+  <entry>
+   <ind>1.0</ind>
+   <dep>-160</dep>
+  </entry>
+ </interpolation>
+ <axis>
+  <x1-m>-20.867</x1-m>
+  <y1-m> -2.778</y1-m>
+  <z1-m>  0.179</z1-m>
+  <x2-m>-20.867</x2-m>
+  <y2-m> -2.858</y2-m>
+  <z2-m>  1.390</z2-m>
+ </axis>
+</animation>
+
+<animation>
+ <type>translate</type>
+ <object-name>door_entry1_left</object-name>
+ <property>controls/doors/entry1left/position-norm</property>
+ <interpolation>
+  <entry>
+   <ind>0.0</ind>
+   <dep>0</dep>
+  </entry>
+  <entry>
+   <ind>0.3</ind>
+   <dep>0.15</dep>
+  </entry>
+  <entry>
+   <ind>1.0</ind>
+   <dep>0.15</dep>
+  </entry>
+ </interpolation>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<!-- ENTRY 4 LEFT -->
+
+<animation>
+ <type>rotate</type>
+ <object-name>door_entry4_left</object-name>
+ <property>controls/doors/entry4left/position-norm</property>
+ <interpolation>
+  <entry>
+   <ind>0.0</ind>
+   <dep>0</dep>
+  </entry>
+  <entry>
+   <ind>0.3</ind>
+   <dep>0</dep>
+  </entry>
+  <entry>
+   <ind>1.0</ind>
+   <dep>-160</dep>
+  </entry>
+ </interpolation>
+ <axis>
+  <x1-m> 10.375</x1-m>
+  <y1-m> -3.188</y1-m>
+  <z1-m>  0.121</z1-m>
+  <x2-m> 10.375</x2-m>
+  <y2-m> -3.188</y2-m>
+  <z2-m>  1.484</z2-m>
+ </axis>
+</animation>
+
+<animation>
+ <type>translate</type>
+ <object-name>door_entry4_left</object-name>
+ <property>controls/doors/entry4left/position-norm</property>
+ <interpolation>
+  <entry>
+   <ind>0.0</ind>
+   <dep>0</dep>
+  </entry>
+  <entry>
+   <ind>0.3</ind>
+   <dep>0.15</dep>
+  </entry>
+  <entry>
+   <ind>1.0</ind>
+   <dep>0.15</dep>
+  </entry>
+ </interpolation>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+ <!-- GEAR DOORS -->
  <!-- LARGE DOORS -->
 
 <animation>
@@ -284,60 +468,5 @@
   <z2-m>-2.939</z2-m>
  </axis>
 </animation>
-
-<!-- RAIN -->
-
-	<animation>
-		<type>select</type>
-		<nopreview/>
-		<object-name>side_windows_rain</object-name>
-		<condition>
-			<greater-than>
-				<property>environment/metar/rain-norm</property>
-				<value>0.01</value>
-			</greater-than>
-		</condition>
-	</animation>
-
-	<animation>
-		<type>select</type>
-		<object-name>side_windows</object-name>
-		<condition>
-			<less-than-equals>
-				<property>environment/metar/rain-norm</property>
-				<value>0.01</value>
-			</less-than-equals>
-		</condition>
-	</animation>
-
-	<animation>
-		<type>material</type>
-		<object-name>side_windows_rain</object-name>
-		<transparency>
-			<alpha-prop>environment/metar/rain-norm</alpha-prop>
-				 <interpolation>
-  <entry>
-   <ind>0.0</ind>
-   <dep>0.75</dep>
-  </entry>
-  <entry>
-   <ind>1.0</ind>
-   <dep>0</dep>
-  </entry>
- </interpolation>
-		</transparency>
-	</animation>
-
-	<animation>
-		<type>textranslate</type>
-		<object-name>side_windows_rain</object-name>
-		<property>velocities/airspeed-kt</property>
-		<factor>0.5</factor>
-		<axis>
-			<x>-1</x>
-			<y>0.5</y>
-			<z>0</z>
-		</axis>
-	</animation>
 
 </PropertyList>
