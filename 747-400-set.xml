@@ -6,7 +6,6 @@
   <description>Boeing 747-400</description>
   <author>Gijs de Rooy, Jentron</author>
   <status>early-production</status>
-  <aircraft-version>noftp</aircraft-version>
   <flight-model>jsb</flight-model>
   <aero>747-400</aero>
 
