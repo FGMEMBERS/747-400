@@ -40,7 +40,7 @@
 
   <systems>
    <autopilot>
-    <path>Aircraft/747-400/Systems/autopilot.xml</path>
+    <path>Aircraft/747-400/Systems/777-autopilot.xml</path>
    </autopilot>
   </systems>
 
@@ -214,6 +214,18 @@ left mouse button and counter clockwise using the middle mouse button.
        </script>
       </binding>
      </item>
+	 
+	 <item>
+      <label>CDU</label>
+      <binding>
+       <command>nasal</command>
+       <script>
+	  var mal = gui.Dialog.new("/sim/gui/dialogs/Boeing747/menu/dialog", 
+                                                              "Aircraft/747-400/Dialogs/cdu-dialog.xml");
+        mal.open();
+       </script>
+      </binding>
+     </item>
 
      <item>
       <label>Repair</label>
@@ -246,11 +258,11 @@ left mouse button and counter clockwise using the middle mouse button.
  <consumables>
   <fuel>
    <tank n="0"><name>Center</name></tank>
-   <tank n="1"><name>Res #2</name></tank>
-   <tank n="2"><name>Main #1</name></tank>
-   <tank n="3"><name>Main #2</name></tank>
-   <tank n="4"><name>Main #3</name></tank>
-   <tank n="5"><name>Main #4</name></tank>
+   <tank n="1"><name>Main #1</name></tank>
+   <tank n="2"><name>Main #2</name></tank>
+   <tank n="3"><name>Main #3</name></tank>
+   <tank n="4"><name>Main #4</name></tank>
+   <tank n="5"><name>Res #2</name></tank>
    <tank n="6"><name>Res #3</name></tank>
    <tank n="7"><name>Stab</name></tank>
   </fuel>
@@ -306,17 +318,17 @@ left mouse button and counter clockwise using the middle mouse button.
   </flight>
 
   <fuel>
+   <tank n="1">
+    <x-feed>1</x-feed>
+   </tank>
    <tank n="2">
-    <x-feed>0</x-feed>
+    <x-feed>1</x-feed>
    </tank>
    <tank n="3">
-    <x-feed>0</x-feed>
+    <x-feed>1</x-feed>
    </tank>
    <tank n="4">
-    <x-feed>0</x-feed>
-   </tank>
-   <tank n="5">
-    <x-feed>0</x-feed>
+    <x-feed>1</x-feed>
    </tank>
   </fuel>
 
@@ -408,6 +420,11 @@ left mouse button and counter clockwise using the middle mouse button.
  <!-- INSTRUMENTATION -->
 
  <instrumentation>
+  <annunciators>
+   <gpws>
+    <volume>1</volume>
+   </gpws>
+  </annunciators>
   <efis>
    <mfd>
     <display-mode>APP</display-mode>
@@ -502,8 +519,10 @@ left mouse button and counter clockwise using the middle mouse button.
 
  <nasal>
   <Boeing747>
+   <file>Aircraft/747-400/Nasal/AFDS.nas</file>
    <file>Aircraft/747-400/Nasal/doors.nas</file>
    <file>Aircraft/747-400/Nasal/Electrical.nas</file>
+   <file>Aircraft/747-400/Nasal/flightdirector.nas</file>
    <file>Aircraft/747-400/Nasal/ins.nas</file>
    <file>Aircraft/747-400/Nasal/liveries.nas</file>
    <file>Aircraft/747-400/Nasal/system.nas</file>

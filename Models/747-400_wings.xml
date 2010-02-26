@@ -18,13 +18,13 @@
  <object-name>eng.2_reverser</object-name>
  <object-name>eng.3_reverser</object-name>
  <object-name>eng.4_reverser</object-name>
- <object-name>eng.1_1</object-name>
- <object-name>eng.2_1</object-name>
- <object-name>eng.3_1</object-name>
- <object-name>eng.4_1</object-name>
+ <object-name>eng.1_1_1</object-name>
+ <object-name>eng.2_1_1</object-name>
+ <object-name>eng.3_1_1</object-name>
+ <object-name>eng.4_1_1</object-name>
  <property-base>sim/model/livery</property-base> 
  <texture-prop>engine</texture-prop> 
- <texture>747-400_engine.png</texture> 
+ <texture>BOE.png</texture> 
 </animation>
 
 <animation> 
@@ -479,6 +479,128 @@
   <x>1</x>
   <y>0</y>
   <z>0</z>
+ </axis>
+</animation>
+
+<!-- SPOILERS RIGHT -->
+
+<animation>
+ <type>rotate</type>
+ <object-name>speedbrake_right.2</object-name>
+ <property>surface-positions/right-aileron-pos-norm</property>
+ <interpolation>
+  <entry>
+   <ind>-1.0</ind>
+   <dep>0.0</dep>
+  </entry>
+  <entry>
+   <ind>0.0</ind>
+   <dep>0.0</dep>
+  </entry>
+  <entry>
+   <ind>1.0</ind>
+   <dep>-30</dep>
+  </entry>
+ </interpolation>
+ <axis>   
+  <x1-m> 4.91</x1-m>
+  <y1-m> 7.11</y1-m>
+  <z1-m>-1.05</z1-m>
+  <x2-m> 5.90</x2-m>
+  <y2-m>11.21</y2-m>
+  <z2-m>-0.52</z2-m>
+ </axis>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>speedbrake_right.3</object-name>
+ <object-name>speedbrake_right.4</object-name>
+ <object-name>speedbrake_right.5</object-name>
+ <object-name>speedbrake_right.6</object-name>
+ <property>surface-positions/right-aileron-pos-norm</property>
+ <interpolation>
+  <entry>
+   <ind>-1.0</ind>
+   <dep>0.0</dep>
+  </entry>
+  <entry>
+   <ind>0.0</ind>
+   <dep>0.0</dep>
+  </entry>
+  <entry>
+   <ind>1.0</ind>
+   <dep>-30</dep>
+  </entry>
+ </interpolation>
+ <axis>   
+  <x1-m>  8.02</x1-m>
+  <y1-m> 14.38</y1-m>
+  <z1-m> -0.34</z1-m>
+  <x2-m> 11.85</x2-m>
+  <y2-m> 20.58</y2-m>
+  <z2-m>  0.36</z2-m>
+ </axis>
+</animation>
+
+<!-- SPOILERS LEFT -->
+
+<animation>
+ <type>rotate</type>
+ <object-name>speedbrake_left.2</object-name>
+ <property>surface-positions/left-aileron-pos-norm</property>
+ <interpolation>
+  <entry>
+   <ind>-1.0</ind>
+   <dep>30.0</dep>
+  </entry>
+  <entry>
+   <ind>0.0</ind>
+   <dep>0.0</dep>
+  </entry>
+  <entry>
+   <ind>1.0</ind>
+   <dep>0</dep>
+  </entry>
+ </interpolation>
+ <axis>   
+  <x1-m>  4.91</x1-m>
+  <y1-m> -7.11</y1-m>
+  <z1-m> -1.05</z1-m>
+  <x2-m>  5.90</x2-m>
+  <y2-m>-11.21</y2-m>
+  <z2-m> -0.52</z2-m>
+ </axis>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>speedbrake_left.3</object-name>
+ <object-name>speedbrake_left.4</object-name>
+ <object-name>speedbrake_left.5</object-name>
+ <object-name>speedbrake_left.6</object-name>
+ <property>surface-positions/left-aileron-pos-norm</property>
+ <interpolation>
+  <entry>
+   <ind>-1.0</ind>
+   <dep>30.0</dep>
+  </entry>
+  <entry>
+   <ind>0.0</ind>
+   <dep>0.0</dep>
+  </entry>
+  <entry>
+   <ind>1.0</ind>
+   <dep>0</dep>
+  </entry>
+ </interpolation>
+ <axis>   
+  <x1-m>  8.02</x1-m>
+  <y1-m>-14.38</y1-m>
+  <z1-m> -0.34</z1-m>
+  <x2-m> 11.85</x2-m>
+  <y2-m>-20.58</y2-m>
+  <z2-m>  0.36</z2-m>
  </axis>
 </animation>
 

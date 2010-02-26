@@ -207,33 +207,45 @@
    <name>engine1run</name>
    <path>Aircraft/747-400/Sounds/engine-run.wav</path>
    <mode>looped</mode>
-   <condition>
-    <greater-than>
-     <property>/engines/engine[0]/n2</property>
-	 <value>30</value>
-	</greater-than>
-   </condition>
+   <property>engines/engine[0]/thrust_lb</property>
+   <pitch>
+    <property>/engines/engine[0]/thrust_lb</property>
+    <offset>0</offset>
+    <factor>0.02</factor>
+    <min>0.0</min>
+    <max>2.0</max>
+   </pitch>
    <volume>
-    <property>/engines/engine[0]/n2</property>
-    <type>ln</type>
-    <factor>0.035</factor>
+    <property>engines/engine[0]/thrust_lb</property>
+    <factor>0.1</factor>
+    <min>0.0</min>
+    <max>0.6</max>
    </volume>
-  </engine>
+   <volume>
+    <property>sim/sound/volume</property>
+   </volume>
+   </engine>
   
   <engine>
    <name>engine2run</name>
    <path>Aircraft/747-400/Sounds/engine-run.wav</path>
    <mode>looped</mode>
-   <condition>
-    <greater-than>
-     <property>/engines/engine[1]/n2</property>
-	 <value>30</value>
-	</greater-than>
-   </condition>
+   <property>engines/engine[1]/thrust_lb</property>
+   <pitch>
+    <property>/engines/engine[1]/thrust_lb</property>
+    <offset>0</offset>
+    <factor>0.02</factor>
+    <min>0.0</min>
+    <max>2.0</max>
+   </pitch>
    <volume>
-    <property>/engines/engine[1]/n2</property>
-    <type>ln</type>
-    <factor>0.035</factor>
+    <property>engines/engine[1]/thrust_lb</property>
+    <factor>0.1</factor>
+    <min>0.0</min>
+    <max>0.6</max>
+   </volume>
+   <volume>
+    <property>sim/sound/volume</property>
    </volume>
   </engine>
   
@@ -241,16 +253,22 @@
    <name>engine3run</name>
    <path>Aircraft/747-400/Sounds/engine-run.wav</path>
    <mode>looped</mode>
-   <condition>
-    <greater-than>
-     <property>/engines/engine[2]/n2</property>
-	 <value>30</value>
-	</greater-than>
-   </condition>
+   <property>engines/engine[2]/thrust_lb</property>
+   <pitch>
+    <property>/engines/engine[2]/thrust_lb</property>
+    <offset>0</offset>
+    <factor>0.02</factor>
+    <min>0.0</min>
+    <max>2.0</max>
+   </pitch>
    <volume>
-    <property>/engines/engine[2]/n2</property>
-    <type>ln</type>
-    <factor>0.035</factor>
+    <property>engines/engine[2]/thrust_lb</property>
+    <factor>0.1</factor>
+    <min>0.0</min>
+    <max>0.6</max>
+   </volume>
+   <volume>
+    <property>sim/sound/volume</property>
    </volume>
   </engine>
   
@@ -258,18 +276,114 @@
    <name>engine4run</name>
    <path>Aircraft/747-400/Sounds/engine-run.wav</path>
    <mode>looped</mode>
-   <condition>
-    <greater-than>
-     <property>/engines/engine[3]/n2</property>
-	 <value>30</value>
-	</greater-than>
-   </condition>
+   <property>engines/engine[3]/thrust_lb</property>
+   <pitch>
+    <property>/engines/engine[3]/thrust_lb</property>
+    <offset>0</offset>
+    <factor>0.02</factor>
+    <min>0.0</min>
+    <max>2.0</max>
+   </pitch>
    <volume>
-    <property>/engines/engine[3]/n2</property>
-    <type>ln</type>
-    <factor>0.035</factor>
+    <property>engines/engine[3]/thrust_lb</property>
+    <factor>0.1</factor>
+    <min>0.0</min>
+    <max>0.6</max>
+   </volume>
+   <volume>
+    <property>sim/sound/volume</property>
    </volume>
   </engine>
+  
+  <!-- reversers -->
+  
+    <engines>
+        <name>engine1 reverse-thrust</name>
+        <mode>looped</mode>
+        <path>Sounds/exhaust_loop.wav</path>
+        <condition>
+            <property>engines/engine[0]/running</property>
+        </condition>
+        <volume>
+            <property>engines/engine[0]/reverser-pos-norm</property>
+        </volume>
+		<volume>
+            <property>sim/sound/volume</property>
+        </volume>
+        <position>
+            <x>2.75</x>
+            <y>9.8</y>
+            <z>-3</z>
+        </position>
+        <reference-dist>250.0</reference-dist>
+        <max-dist>500.0</max-dist>
+    </engines>
+
+    <engines>
+        <name>engine2 reverse-thrust</name>
+        <mode>looped</mode>
+        <path>Sounds/exhaust_loop.wav</path>
+        <condition>
+            <property>engines/engine[1]/running</property>
+        </condition>
+        <volume>
+            <property>engines/engine[1]/reverser-pos-norm</property>
+        </volume>
+		<volume>
+            <property>sim/sound/volume</property>
+        </volume>
+        <position>
+            <x>2.75</x>
+            <y>9.8</y>
+            <z>-3</z>
+        </position>
+        <reference-dist>250.0</reference-dist>
+        <max-dist>500.0</max-dist>
+    </engines>
+	
+	<engines>
+        <name>engine3 reverse-thrust</name>
+        <mode>looped</mode>
+        <path>Sounds/exhaust_loop.wav</path>
+        <condition>
+            <property>engines/engine[2]/running</property>
+        </condition>
+        <volume>
+            <property>engines/engine[2]/reverser-pos-norm</property>
+        </volume>
+		<volume>
+            <property>sim/sound/volume</property>
+        </volume>
+        <position>
+            <x>2.75</x>
+            <y>9.8</y>
+            <z>-3</z>
+        </position>
+        <reference-dist>250.0</reference-dist>
+        <max-dist>500.0</max-dist>
+    </engines>
+	
+	<engines>
+        <name>engine4 reverse-thrust</name>
+        <mode>looped</mode>
+        <path>Sounds/exhaust_loop.wav</path>
+        <condition>
+            <property>engines/engine[3]/running</property>
+        </condition>
+        <volume>
+            <property>engines/engine[3]/reverser-pos-norm</property>
+        </volume>
+        <volume>
+            <property>sim/sound/volume</property>
+        </volume>
+        <position>
+            <x>2.75</x>
+            <y>9.8</y>
+            <z>-3</z>
+        </position>
+        <reference-dist>250.0</reference-dist>
+        <max-dist>500.0</max-dist>
+    </engines>
 
 <!-- custom GPWS-->
 
@@ -283,7 +397,7 @@
 			<and>
 				<less-than>
                     		<property>velocities/vertical-speed-fps</property>
-                    		<value>0.0</value>
+                    		<value>-0.5</value>
                   	</less-than>
 				<less-than-equals>
                     		<property>position/altitude-agl-ft</property>
@@ -311,7 +425,7 @@
 			<and>
 				<less-than>
                     		<property>velocities/vertical-speed-fps</property>
-                    		<value>0.0</value>
+                    		<value>-0.5</value>
                   	</less-than>
 				<less-than-equals>
                     		<property>position/altitude-agl-ft</property>
@@ -339,7 +453,7 @@
 			<and>
 				<less-than>
                     		<property>velocities/vertical-speed-fps</property>
-                    		<value>0.0</value>
+                    		<value>-0.5</value>
                   	</less-than>
 				<less-than-equals>
                     		<property>position/altitude-agl-ft</property>
@@ -367,7 +481,7 @@
 			<and>
 				<less-than>
                     		<property>velocities/vertical-speed-fps</property>
-                    		<value>0.0</value>
+                    		<value>-0.5</value>
                   	</less-than>
 				<less-than-equals>
                     		<property>position/altitude-agl-ft</property>
@@ -395,7 +509,7 @@
 			<and>
 				<less-than>
                     		<property>velocities/vertical-speed-fps</property>
-                    		<value>0.0</value>
+                    		<value>-0.5</value>
                   	</less-than>
 				<less-than-equals>
                     		<property>position/altitude-agl-ft</property>
@@ -423,7 +537,7 @@
 			<and>
 				<less-than>
                     		<property>velocities/vertical-speed-fps</property>
-                    		<value>0.0</value>
+                    		<value>-0.5</value>
                   	</less-than>
 				<less-than-equals>
                     		<property>position/altitude-agl-ft</property>
@@ -440,6 +554,62 @@
                 <z>0</z>
             </position>
         </altitude6>
+		
+		<altitude7>
+            <name>minimums</name>
+            <reference-dist>1.0</reference-dist>
+            <max-dist>2.0</max-dist>
+            <mode>once</mode>
+            <path>Aircraft/747-400/Sounds/minimums.wav</path>
+            <condition>
+			<and>
+				<less-than>
+                    		<property>velocities/vertical-speed-fps</property>
+                    		<value>-0.5</value>
+                  	</less-than>
+				<less-than-equals>
+                    		<property>position/altitude-agl-ft</property>
+                    		<value>200</value>
+                  	</less-than-equals>
+			</and>
+            </condition>
+            <volume>
+                <property>instrumentation/annunciators/gpws/volume</property>
+            </volume>
+            <position>
+                <x>-5</x>
+                <y>0</y>
+                <z>0</z>
+            </position>
+        </altitude7>
+		
+		<altitude8>
+            <name>approaching-minimums</name>
+            <reference-dist>1.0</reference-dist>
+            <max-dist>2.0</max-dist>
+            <mode>once</mode>
+            <path>Aircraft/747-400/Sounds/approaching-minimums.wav</path>
+            <condition>
+			<and>
+				<less-than>
+                    		<property>velocities/vertical-speed-fps</property>
+                    		<value>-0.5</value>
+                  	</less-than>
+				<less-than-equals>
+                    		<property>position/altitude-agl-ft</property>
+                    		<value>300</value>
+                  	</less-than-equals>
+			</and>
+            </condition>
+            <volume>
+                <property>instrumentation/annunciators/gpws/volume</property>
+            </volume>
+            <position>
+                <x>-5</x>
+                <y>0</y>
+                <z>0</z>
+            </position>
+        </altitude8>
 
 </fx>
  

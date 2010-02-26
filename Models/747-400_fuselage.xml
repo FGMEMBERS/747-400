@@ -19,6 +19,13 @@
  <texture>BOE.png</texture> 
 </animation>
 
+<animation>
+ <type>shader</type>
+ <shader>chrome</shader>
+ <texture>glass_shader.png</texture>
+ <object-name>windows</object-name>
+</animation>
+
 <!-- NOSE CONE -->
 <animation>
  <type>translate</type>
@@ -56,7 +63,7 @@
 
 <!-- DOORS-->
 
-<!-- UPPERDECK LEFT -->
+<!-- UPPERDECK LEFT 
 
 <animation>
  <type>rotate</type>
@@ -73,7 +80,8 @@
  </axis>
 </animation>
 
-<!-- UPPERDECK RIGHT -->
+-->
+<!-- UPPERDECK RIGHT 
 
 <animation>
  <type>rotate</type>
@@ -90,7 +98,9 @@
  </axis>
 </animation>
 
-<!-- ENTRY 1 LEFT -->
+-->
+
+<!-- ENTRY 1 LEFT 
 
 <animation>
  <type>rotate</type>
@@ -145,7 +155,8 @@
  </axis>
 </animation>
 
-<!-- ENTRY 4 LEFT -->
+-->
+<!-- ENTRY 4 LEFT 
 
 <animation>
  <type>rotate</type>
@@ -200,8 +211,9 @@
  </axis>
 </animation>
 
+-->
  <!-- GEAR DOORS -->
- <!-- LARGE DOORS -->
+ <!-- LARGE DOORS 
 
 <animation>
  <type>rotate</type>
@@ -267,7 +279,8 @@
  </axis>
 </animation>
 
-<!-- WING DOORS -->
+-->
+<!-- WING DOORS 
 
 <animation>
  <type>rotate</type>
@@ -468,5 +481,7 @@
   <z2-m>-2.939</z2-m>
  </axis>
 </animation>
+
+-->
 
 </PropertyList>

@@ -45,23 +45,8 @@
 -->
 
         <reference
-          refID="FAA certificate, a20we"
-          author="FAA"
-          title="http://www.airweb.faa.gov/Regulatory_and_Guidance_Library/rgMakeModel.nsf/MainFrame?OpenFrameSet"
-          date="23 December 1970, 747-200B"/>
-        <documentation>
-          MAC : 327.8 in.
-          Datum : 
-          - balance arm datum corresponds to body station 0, at 90 in. forward of nose.
-          - horizontal distance of datum to nose gear jack points in 384.7 in.
-          Leading edge of MAC : 1258 in.
-
-          MAC starts at 1168 in. from nose, and continues above the gears.
-        </documentation>
-
-        <reference
           refID="747 airplane characteristics, D6-58236"
-          author="Boeing"
+          author="The Boeing Company"
           title="http://www.boeing.com/"
           date="May 1984"/>
         <documentation>
@@ -70,6 +55,12 @@
           Gear stearing.
           Tanks typical quantities.
         </documentation>
+		
+		<reference
+          refID=""
+          author="The Boeing Company"
+          title="747-469/-4F6 Flight Crew Operations Manual, Philipine Airlines"
+          date="2 September 1993"/>
 
         <documentation>
           - http://www.aoe.vt.edu/~mason/Mason_f/M96SC02.pdf/ (Willian H. Mason) :
@@ -355,7 +346,8 @@
                 <pitch> 0 </pitch>
                 <yaw> 0 </yaw>
             </orient>
-            <feed>2</feed>
+            <feed>0</feed>
+             <feed>1</feed>
             <thruster file="direct">
                 <location unit="IN">
                     <x> 50 </x>
@@ -381,7 +373,8 @@
                 <pitch> 0 </pitch>
                 <yaw> 0 </yaw>
             </orient>
-            <feed>3</feed>
+            <feed>0</feed>
+             <feed>2</feed>
             <thruster file="direct">
                 <location unit="IN">
                     <x> -250 </x>
@@ -407,7 +400,8 @@
                 <pitch> 0 </pitch>
                 <yaw> 0 </yaw>
             </orient>
-            <feed>4</feed>
+            <feed>0</feed>
+             <feed>3</feed>
             <thruster file="direct">
                 <location unit="IN">
                     <x> -250 </x>
@@ -433,7 +427,8 @@
                 <pitch> 0 </pitch>
                 <yaw> 0 </yaw>
             </orient>
-            <feed>5</feed>
+            <feed>0</feed>
+             <feed>4</feed>
             <thruster file="direct">
                 <location unit="IN">
                     <x> 50 </x>
@@ -458,89 +453,90 @@
           - reference width is 195 ft 8 in (wing span)
         </documentation>
 
-        <tank type="FUEL">    <!-- Tank number 0 center wing--> 
+        <tank type="FUEL">    <!-- Tank number 0 == center wing--> 
             <location unit="IN">
                 <x> 0 </x>
                 <y> 0 </y>
                 <z> 0 </z>
             </location>
             <capacity unit="LBS"> 114972 </capacity>
-            <contents unit="LBS">  57486 </contents>
+            <contents unit="LBS"> 114972 </contents>
         </tank>
-
-        <tank type="FUEL">    <!-- Tank number 1 --> 
-            <location unit="IN">
-                <x> 500 </x>
-                <y> -1000 </y>
-                <z> 0 </z>
-            </location>
-            <capacity unit="LBS"> 17715 </capacity>
-            <contents unit="LBS">  8857 </contents>
-        </tank>
-
-        <tank type="FUEL">    <!-- Tank number 2 --> 
+		
+		<tank type="FUEL">    <!-- Tank number 1 == main #1--> 
             <location unit="IN">
                 <x> 300 </x>
                 <y> -700 </y>
                 <z> 0 </z>
             </location>
             <capacity unit="LBS"> 30029 </capacity>
-            <contents unit="LBS"> 15014 </contents>
+            <contents unit="LBS"> 30029 </contents>
         </tank>
 
-        <tank type="FUEL">    <!-- Tank number 3 --> 
+        <tank type="FUEL">    <!-- Tank number 2 == main #2--> 
             <location unit="IN">
                 <x> 100 </x>
                 <y> -300 </y>
                 <z> 0 </z>
             </location>
             <capacity unit="LBS"> 84058 </capacity>
-            <contents unit="LBS"> 42029 </contents>
+            <contents unit="LBS"> 84058 </contents>
         </tank>
 
-        <tank type="FUEL">    <!-- Tank number 4 --> 
+        <tank type="FUEL">    <!-- Tank number 3 == main #3--> 
             <location unit="IN">
                 <x> 100 </x>
                 <y> 300 </y>
                 <z> 0 </z>
             </location>
             <capacity unit="LBS"> 84058 </capacity>
-            <contents unit="LBS"> 42029 </contents>
+            <contents unit="LBS"> 84058 </contents>
         </tank>
 
-        <tank type="FUEL">    <!-- Tank number 5 --> 
+        <tank type="FUEL">    <!-- Tank number 4 == Main #4--> 
             <location unit="IN">
                 <x> 300 </x>
                 <y> 700 </y>
                 <z> 0 </z>
             </location>
             <capacity unit="LBS"> 30029 </capacity>
-            <contents unit="LBS"> 15014 </contents>
+            <contents unit="LBS"> 30029 </contents>
+        </tank>
+		
+        <tank type="FUEL">    <!-- Tank number 5 == resesrve #2--> 
+            <location unit="IN">
+                <x> 500 </x>
+                <y> -1000 </y>
+                <z> 0 </z>
+            </location>
+            <capacity unit="LBS"> 17715 </capacity>
+            <contents unit="LBS"> 17715 </contents>
         </tank>
 
-        <tank type="FUEL">    <!-- Tank number 6 --> 
+        <tank type="FUEL">    <!-- Tank number 6 == reserve #3--> 
             <location unit="IN">
                 <x> 500 </x>
                 <y> 1000 </y>
                 <z> 0 </z>
             </location>
             <capacity unit="LBS"> 17715 </capacity>
-            <contents unit="LBS">  8857 </contents>
+            <contents unit="LBS"> 17715 </contents>
         </tank>
 
-        <tank type="FUEL">    <!-- Tank number 7 --> 
+        <tank type="FUEL">    <!-- Tank number 7 == stab--> 
             <location unit="IN">
                 <x> 1400 </x>
                 <y> 0 </y>
                 <z> 100 </z>
             </location>
             <capacity unit="LBS"> 22110 </capacity>
-            <contents unit="LBS"> 11055 </contents>
+            <contents unit="LBS"> 22110 </contents>
         </tank>
     </propulsion>
 
     <system file="failures"/>
     <system file="flaps"/>
+	<system file="fuel"/>
     <system file="pushback"/>
 
     <flight_control name="747-400">

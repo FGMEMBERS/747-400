@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+
+<system name="fuel">
+
+	<channel name="fuel">
+		
+		<switch name="propulsion/systems/tank[1]/transfer-switch">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				/controls/fuel/tank[1]/x-feed == 1
+			</test>
+       </switch>
+	   
+	   <switch name="propulsion/systems/tank[2]/transfer-switch">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				/controls/fuel/tank[2]/x-feed == 1
+			</test>
+       </switch>
+		
+		<switch name="propulsion/systems/tank[3]/transfer-switch">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				/controls/fuel/tank[3]/x-feed == 1
+			</test>
+       </switch>
+	   
+	   <switch name="propulsion/systems/tank[4]/transfer-switch">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				/controls/fuel/tank[4]/x-feed == 1
+			</test>
+       </switch>
+	   
+	   <!-- calculate whether fuel is transfered from 1 to 2 or vice versa -->
+	   
+	   <switch name="propulsion/systems/transfer-1-2-qty">
+			<default value="0"/>
+			<test logic="AND" value="5">
+				propulsion/systems/tank[1]/transfer-switch == 1
+				propulsion/systems/tank[2]/transfer-switch == 1
+				propulsion/tank[1]/contents-lbs gt propulsion/tank[2]/contents-lbs
+			</test>
+			<test logic="AND" value="-5">
+				propulsion/systems/tank[1]/transfer-switch == 1
+				propulsion/systems/tank[2]/transfer-switch == 1
+				propulsion/tank[1]/contents-lbs lt propulsion/tank[2]/contents-lbs
+			</test>
+       </switch>
+	   
+	   <!-- calculate whether fuel is transfered from 3 to 4 or vice versa -->
+	   
+	   <switch name="propulsion/systems/transfer-3-4-qty">
+			<default value="0"/>
+			<test logic="AND" value="-5">
+				propulsion/systems/tank[3]/transfer-switch == 1
+				propulsion/systems/tank[4]/transfer-switch == 1
+				propulsion/tank[3]/contents-lbs gt propulsion/tank[4]/contents-lbs
+			</test>
+			<test logic="AND" value="5">
+				propulsion/systems/tank[3]/transfer-switch == 1
+				propulsion/systems/tank[4]/transfer-switch == 1
+				propulsion/tank[3]/contents-lbs lt propulsion/tank[4]/contents-lbs
+			</test>
+       </switch>
+	   
+	   <!-- calculate whether fuel is transfered from stabilizer tank to CWT 
+			true when CWT fuel quantity is less than 80400 lbs -->
+	   
+	   <switch name="propulsion/systems/transfer-0-7-qty">
+			<default value="0"/>
+			<test logic="AND" value="5">
+				propulsion/tank[0]/contents-lbs lt 80400
+				propulsion/tank[7]/contents-lbs gt 0
+			</test>
+       </switch>
+		
+		<!-- transfer fuel to tank 1 -->
+		
+		<summer name="propulsion/tank[1]/new-contents-lbs">
+            <input>propulsion/tank[1]/contents-lbs</input>
+            <input>-propulsion/systems/transfer-1-2-qty</input>
+            <clipto>
+                <min>0</min>
+                <max>30029</max>
+            </clipto>
+			<output>propulsion/tank[1]/contents-lbs</output>
+        </summer>
+		
+		<!-- transfer fuel to tank 2 -->
+		
+		<summer name="propulsion/tank[2]/new-contents-lbs">
+            <input>propulsion/tank[2]/contents-lbs</input>
+            <input>propulsion/systems/transfer-1-2-qty</input>
+            <clipto>
+                <min>0</min>
+                <max>84058</max>
+            </clipto>
+			<output>propulsion/tank[2]/contents-lbs</output>
+        </summer>
+		
+		<!-- transfer fuel to tank 3 -->
+		
+		<summer name="propulsion/tank[3]/new-contents-lbs">
+            <input>propulsion/tank[3]/contents-lbs</input>
+            <input>propulsion/systems/transfer-3-4-qty</input>
+            <clipto>
+                <min>0</min>
+                <max>84058</max>
+            </clipto>
+			<output>propulsion/tank[3]/contents-lbs</output>
+        </summer>
+		
+		<!-- transfer fuel from tank 4 -->
+		
+		<summer name="propulsion/tank[4]/new-contents-lbs">
+            <input>propulsion/tank[4]/contents-lbs</input>
+            <input>-propulsion/systems/transfer-3-4-qty</input>
+            <clipto>
+                <min>0</min>
+                <max>30029</max>
+            </clipto>
+			<output>propulsion/tank[4]/contents-lbs</output>
+        </summer>
+		
+		<!-- transfer fuel from stabilitzer tank to CWT -->
+		
+		<summer name="propulsion/tank[0]/new-contents-lbs">
+            <input>propulsion/tank[0]/contents-lbs</input>
+            <input>propulsion/systems/transfer-0-7-qty</input>
+            <clipto>
+                <min>0</min>
+                <max>114972</max>
+            </clipto>
+			<output>propulsion/tank[0]/contents-lbs</output>
+        </summer>
+		
+		<summer name="propulsion/tank[7]/new-contents-lbs">
+            <input>propulsion/tank[7]/contents-lbs</input>
+            <input>-propulsion/systems/transfer-0-7-qty</input>
+            <clipto>
+                <min>0</min>
+                <max>22110</max>
+            </clipto>
+			<output>propulsion/tank[7]/contents-lbs</output>
+        </summer>
+	   
+    </channel>
+	
+</system>
