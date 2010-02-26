@@ -23,7 +23,6 @@
   <description>Boeing 747-400 (First Officer)</description>
   <author>Gijs de Rooy</author>
   <status>early-production</status>
-  <aircraft-version>noftp</aircraft-version>
   <flight-model>null</flight-model>
 
   <sound>
