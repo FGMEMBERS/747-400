@@ -38,12 +38,6 @@
    </livery> 
   </model>	
 
-  <systems>
-   <autopilot>
-    <path>Aircraft/747-400/Systems/777-autopilot.xml</path>
-   </autopilot>
-  </systems>
-
   <instrumentation>
    <path>Aircraft/747-400/Systems/instrumentation.xml</path>
   </instrumentation>
@@ -210,18 +204,6 @@ left mouse button and counter clockwise using the middle mouse button.
        <script>
 	  var mal = gui.Dialog.new("/sim/gui/dialogs/Boeing747/menu/dialog", 
                                                               "Aircraft/747-400/Dialogs/yokechart-dialog.xml");
-        mal.open();
-       </script>
-      </binding>
-     </item>
-	 
-	 <item>
-      <label>CDU</label>
-      <binding>
-       <command>nasal</command>
-       <script>
-	  var mal = gui.Dialog.new("/sim/gui/dialogs/Boeing747/menu/dialog", 
-                                                              "Aircraft/747-400/Dialogs/cdu-dialog.xml");
         mal.open();
        </script>
       </binding>
@@ -519,10 +501,8 @@ left mouse button and counter clockwise using the middle mouse button.
 
  <nasal>
   <Boeing747>
-   <file>Aircraft/747-400/Nasal/AFDS.nas</file>
    <file>Aircraft/747-400/Nasal/doors.nas</file>
    <file>Aircraft/747-400/Nasal/Electrical.nas</file>
-   <file>Aircraft/747-400/Nasal/flightdirector.nas</file>
    <file>Aircraft/747-400/Nasal/ins.nas</file>
    <file>Aircraft/747-400/Nasal/liveries.nas</file>
    <file>Aircraft/747-400/Nasal/system.nas</file>
