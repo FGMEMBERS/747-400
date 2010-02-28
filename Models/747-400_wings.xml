@@ -27,19 +27,6 @@
  <texture>BOE.png</texture> 
 </animation>
 
-<animation> 
- <type>material</type> 
- <object-name>eng.1_2</object-name>
- <object-name>eng.2_2</object-name>
- <object-name>eng.3_2</object-name>
- <object-name>eng.4_2</object-name>
- <object-name>winglet_left</object-name>
- <object-name>winglet_right</object-name>
- <property-base>sim/model/livery</property-base> 
- <texture-prop>misc</texture-prop> 
- <texture>747-400_misc.png</texture> 
-</animation> 
-
 <animation>
  <type>select</type>
  <condition>
@@ -53,7 +40,7 @@
 <!-- FUEL JETTISON -->
 
 <model>
- <path>Aircraft/747-400/Models/fuel_jettison.xml</path>
+ <path>Aircraft/747-400/Models/Effects/fuel_jettison.xml</path>
  <name>fueldump.1</name>
  <offsets>
   <x-m>0.5</x-m>
@@ -63,7 +50,7 @@
 </model>
 
 <model>
- <path>Aircraft/747-400/Models/fuel_jettison.xml</path>
+ <path>Aircraft/747-400/Models/Effects/fuel_jettison.xml</path>
  <name>fueldump.2</name>
  <offsets>
   <x-m>0.5</x-m>

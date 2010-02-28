@@ -344,6 +344,63 @@
 	</axis>
 </animation>
 
+<animation>
+	<type>pick</type>
+	<object-name>fuel-to-remain</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>true</repeatable>  
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/fuel/fuel-to-remain</property>
+			<step>1000</step>
+			<min>0</min>
+			<max>400000</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>fuel-to-remain</object-name>
+	<action>
+		<button>1</button>
+		<repeatable>true</repeatable>  
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/fuel/fuel-to-remain</property>
+			<step>-1000</step>
+			<min>0</min>
+			<max>400000</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>fuel_nozzle.l</object-name>
+	<object-name>fuel_nozzle.r</object-name>
+	<object-name>fuel_nozzle.l.ON</object-name>
+	<object-name>fuel_nozzle.r.ON</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/fuel/dump-valve</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>fuel_nozzle.l.ON</object-name>
+	<object-name>fuel_nozzle.r.ON</object-name>
+	<condition>
+		<property>/controls/fuel/dump-valve</property>
+	</condition>
+</animation>
+
 <!-- Fire Protection -->
 
 <animation>
@@ -748,54 +805,86 @@
 
 <animation>
 	<type>pick</type>
-	<object-name>fuel_x-feed.1</object-name>
+	<object-name>x-feed.1</object-name>
 	<action>
    <button>0</button>
    <repeatable>false</repeatable>  
    <binding>
     <command>property-toggle</command>
-    <property>/controls/fuel/tank[2]/x-feed</property>
+    <property>controls/fuel/tank[1]/x-feed</property>
    </binding>
   </action>
 </animation>
 
 <animation>
+	<type>select</type>
+	<object-name>x-feed.1.BAR</object-name>
+	<condition>
+		<property>controls/fuel/tank[1]/x-feed</property>
+	</condition>
+</animation>
+
+<animation>
 	<type>pick</type>
-	<object-name>fuel_x-feed.2</object-name>
+	<object-name>x-feed.2</object-name>
 	<action>
    <button>0</button>
    <repeatable>false</repeatable>  
    <binding>
     <command>property-toggle</command>
-    <property>/controls/fuel/tank[3]/x-feed</property>
+    <property>controls/fuel/tank[2]/x-feed</property>
    </binding>
   </action>
 </animation>
 
 <animation>
+	<type>select</type>
+	<object-name>x-feed.2.BAR</object-name>
+	<condition>
+		<property>controls/fuel/tank[2]/x-feed</property>
+	</condition>
+</animation>
+
+<animation>
 	<type>pick</type>
-	<object-name>fuel_x-feed.3</object-name>
+	<object-name>x-feed.3</object-name>
 	<action>
    <button>0</button>
    <repeatable>false</repeatable>  
    <binding>
     <command>property-toggle</command>
-    <property>/controls/fuel/tank[4]/x-feed</property>
+    <property>controls/fuel/tank[3]/x-feed</property>
    </binding>
   </action>
 </animation>
 
 <animation>
+	<type>select</type>
+	<object-name>x-feed.3.BAR</object-name>
+	<condition>
+		<property>controls/fuel/tank[3]/x-feed</property>
+	</condition>
+</animation>
+
+<animation>
 	<type>pick</type>
-	<object-name>fuel_x-feed.4</object-name>
+	<object-name>x-feed.4</object-name>
 	<action>
    <button>0</button>
    <repeatable>false</repeatable>  
    <binding>
     <command>property-toggle</command>
-    <property>/controls/fuel/tank[5]/x-feed</property>
+    <property>controls/fuel/tank[4]/x-feed</property>
    </binding>
   </action>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>x-feed.4.BAR</object-name>
+	<condition>
+		<property>controls/fuel/tank[4]/x-feed</property>
+	</condition>
 </animation>
 
 <!-- IRS/INS -->

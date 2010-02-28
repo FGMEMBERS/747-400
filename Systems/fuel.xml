@@ -32,6 +32,23 @@
 			</test>
        </switch>
 	   
+	   <switch name="propulsion/systems/tank[7]/pump-switch">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				/controls/fuel/tank[7]/pump == 1
+			</test>
+       </switch>
+	   
+	   <!-- calculate/check whether fuel is being jettisoned -->
+	   
+	   <switch name="propulsion/systems/jettison-qty">
+			<default value="0"/>
+			<test logic="AND" value="3">
+				/controls/fuel/dump-valve == 1
+				propulsion/total-fuel-lbs gt /controls/fuel/fuel-to-remain
+			</test>
+       </switch>
+	   
 	   <!-- calculate whether fuel is transfered from 1 to 2 or vice versa -->
 	   
 	   <switch name="propulsion/systems/transfer-1-2-qty">
@@ -72,6 +89,7 @@
 			<test logic="AND" value="5">
 				propulsion/tank[0]/contents-lbs lt 80400
 				propulsion/tank[7]/contents-lbs gt 0
+				propulsion/systems/tank[7]/pump-switch == 1
 			</test>
        </switch>
 		
@@ -80,6 +98,7 @@
 		<summer name="propulsion/tank[1]/new-contents-lbs">
             <input>propulsion/tank[1]/contents-lbs</input>
             <input>-propulsion/systems/transfer-1-2-qty</input>
+			<input>-propulsion/systems/jettison-qty</input>
             <clipto>
                 <min>0</min>
                 <max>30029</max>
@@ -92,6 +111,7 @@
 		<summer name="propulsion/tank[2]/new-contents-lbs">
             <input>propulsion/tank[2]/contents-lbs</input>
             <input>propulsion/systems/transfer-1-2-qty</input>
+			<input>-propulsion/systems/jettison-qty</input>
             <clipto>
                 <min>0</min>
                 <max>84058</max>
@@ -104,6 +124,7 @@
 		<summer name="propulsion/tank[3]/new-contents-lbs">
             <input>propulsion/tank[3]/contents-lbs</input>
             <input>propulsion/systems/transfer-3-4-qty</input>
+			<input>-propulsion/systems/jettison-qty</input>
             <clipto>
                 <min>0</min>
                 <max>84058</max>
@@ -116,6 +137,7 @@
 		<summer name="propulsion/tank[4]/new-contents-lbs">
             <input>propulsion/tank[4]/contents-lbs</input>
             <input>-propulsion/systems/transfer-3-4-qty</input>
+			<input>-propulsion/systems/jettison-qty</input>
             <clipto>
                 <min>0</min>
                 <max>30029</max>
@@ -128,6 +150,7 @@
 		<summer name="propulsion/tank[0]/new-contents-lbs">
             <input>propulsion/tank[0]/contents-lbs</input>
             <input>propulsion/systems/transfer-0-7-qty</input>
+			<input>-propulsion/systems/jettison-qty</input>
             <clipto>
                 <min>0</min>
                 <max>114972</max>
@@ -138,6 +161,7 @@
 		<summer name="propulsion/tank[7]/new-contents-lbs">
             <input>propulsion/tank[7]/contents-lbs</input>
             <input>-propulsion/systems/transfer-0-7-qty</input>
+			<input>-propulsion/systems/jettison-qty</input>
             <clipto>
                 <min>0</min>
                 <max>22110</max>

@@ -9,7 +9,7 @@
 
     <nasal>
         <load>
-            var livery_update = aircraft.livery_update.new("Aircraft/747-400/Models/Liveries", 10);
+            var livery_update = aircraft.livery_update.new("Aircraft/747-400/Models");
         </load>
 
         <unload>
@@ -22,8 +22,8 @@
 <object-name>rudder</object-name> 
 <object-name>vstab</object-name> 
 <property-base>sim/model/livery</property-base> 
-<texture-prop>rudder</texture-prop> 
-<texture>747-400_rudder.png</texture> 
+<texture-prop>texture</texture-prop> 
+<texture>BOE.png</texture> 
 </animation> 
  
  <!-- RUDDER -->
