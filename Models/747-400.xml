@@ -2,7 +2,7 @@
 
 <model>
  <name>Pushback</name>
- <path>Models\Airport\Pushback\Goldhofert.xml</path>
+ <path>Models/Airport/Pushback/Goldhofert.xml</path>
  <offsets>
   <x-m>-21.993</x-m>
   <y-m>  0.000</y-m>
@@ -11,17 +11,7 @@
 </model>
 
 <model>
- <path>Aircraft/747-400/Panels/cockpit.xml</path> 
- <offsets> 
-  <x-m>-25.75</x-m>
-  <y-m>  0.0</y-m>
-  <z-m>  2.55</z-m>
- </offsets>
-</model>
-
-<model>
- <name>wipers</name>
- <path>Aircraft/747-400/Panels/wipers.xml</path>
+ <path>Aircraft/747-400/Models/Cockpit/cockpit.xml</path> 
 </model>
 
 <model>
@@ -43,7 +33,7 @@
 <!-- LANDING LIGHTS WINGS -->
 
 <model>
- <path>Aircraft/747-400/Models/lights/landinglight.xml</path>
+ <path>Aircraft/747-400/Models/lights/light-cone.xml</path>
  <name>LandingLight.Outbd.Left</name>
  <offsets>
   <x-m>-6.5</x-m>
@@ -61,7 +51,7 @@
 </animation>
 
 <model>
- <path>Aircraft/747-400/Models/lights/landinglight.xml</path>
+ <path>Aircraft/747-400/Models/lights/light-cone.xml</path>
  <name>LandingLight.Inbd.Left</name>
  <offsets>
   <x-m>-7.5</x-m>
@@ -79,7 +69,7 @@
 </animation>
 
 <model>
- <path>Aircraft/747-400/Models/lights/landinglight.xml</path>
+ <path>Aircraft/747-400/Models/lights/light-cone.xml</path>
  <name>LandingLight.Inbd.Right</name>
  <offsets>
   <x-m>-7.5</x-m>
@@ -97,7 +87,7 @@
 </animation>
 
 <model>
- <path>Aircraft/747-400/Models/lights/landinglight.xml</path>
+ <path>Aircraft/747-400/Models/lights/light-cone.xml</path>
  <name>LandingLight.Outbd.Right</name>
  <offsets>
   <x-m>-6.5</x-m>
@@ -117,7 +107,7 @@
 <!-- LANDING LIGHTS NOSE -->
 
 <model>
- <path>Aircraft/747-400/Models/lights/landinglight.xml</path>
+ <path>Aircraft/747-400/Models/lights/light-cone.xml</path>
  <name>LandingLight.Taxi</name>
  <offsets>
   <x-m>-21.995</x-m>
@@ -127,7 +117,7 @@
 </model>
 
 <model>
- <path>Aircraft/747-400/Models/lights/landinglight.xml</path>
+ <path>Aircraft/747-400/Models/lights/light-cone.xml</path>
  <name>LandingLight.Taxi</name>
  <offsets>
   <x-m>-21.995</x-m>
@@ -137,7 +127,7 @@
 </model>
 
 <model>
- <path>Aircraft/747-400/Models/lights/landinglight.xml</path>
+ <path>Aircraft/747-400/Models/lights/light-cone.xml</path>
  <name>LandingLight.Turnoff.Left</name>
  <offsets>
   <x-m>-22.349</x-m>
@@ -148,7 +138,7 @@
 </model>
 
 <model>
- <path>Aircraft/747-400/Models/lights/landinglight.xml</path>
+ <path>Aircraft/747-400/Models/lights/light-cone.xml</path>
  <name>LandingLight.Turnoff.Right</name>
  <offsets>
   <x-m>-22.349</x-m>

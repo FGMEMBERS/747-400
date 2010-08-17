@@ -1,8 +1,10 @@
-Boeing 747-400
+Boeing 747-400, Authors
 
-Authors
+Gijs de Rooy 	- Main developer
 
-Gijs de Rooy - Main author
+With the help of:
 
-Syd Adams - Nasal, PFD and ND displays
-Jentron - FDM (body gear steering)
+Ivan Ngeow 		- 2D panels, Nasal (Electric and Hydraulic systems)
+Jentron 		- Body gear steering (FDM)
+Syd Adams 		- Nasal, PFD and ND displays
+Torsten Dreyer  - Autopilot support

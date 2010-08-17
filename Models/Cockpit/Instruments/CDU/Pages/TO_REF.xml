@@ -1,0 +1,253 @@
+<PropertyList>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.000</y-m>
+		<z-m> 0.110</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text type="string">TAKEOFF REF</text>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m>-0.031</y-m>
+		<z-m> 0.105</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text type="string">FLAP/ACCEL HT</text>
+			<character-size type="double">0.004</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m>-0.041</y-m>
+		<z-m> 0.098</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/fmc/to-flap</property>
+			<format type="string">%02.0f</format>
+			<factor>1</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.039</y-m>
+		<z-m> 0.104</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text type="string">REF V1</text>
+			<character-size type="double">0.004</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.041</y-m>
+		<z-m> 0.098</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/fmc/vspeeds/V1</property>
+			<format type="string">%03.0f</format>
+			<factor>1</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.039</y-m>
+		<z-m> 0.091</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text type="string">REF VR</text>
+			<character-size type="double">0.004</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.041</y-m>
+		<z-m> 0.085</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/fmc/vspeeds/VR</property>
+			<format type="string">%03.0f</format>
+			<factor>1</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.039</y-m>
+		<z-m> 0.079</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text type="string">REF V2</text>
+			<character-size type="double">0.004</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.041</y-m>
+		<z-m> 0.073</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/fmc/vspeeds/V2</property>
+			<format type="string">%03.0f</format>
+			<factor>1</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m>-0.040</y-m>
+		<z-m> 0.034</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text type="string">&lt;INDEX</text>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.037</y-m>
+		<z-m> 0.034</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text type="string">POS INIT&gt;</text>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.000</y-m>
+		<z-m> 0.024</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/input</property>
+			<format type="string">%03.1f</format>
+			<factor>1</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+</PropertyList>

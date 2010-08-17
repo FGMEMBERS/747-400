@@ -1,0 +1,870 @@
+<PropertyList>
+
+<path>cdu.ac</path>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/CDU/Pages/MENU.xml</path>
+	<condition>
+		<equals>
+			<property>/instrumentation/cdu/display</property>
+			<value>MENU</value>
+		</equals>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/CDU/Pages/APP_REF.xml</path>
+	<condition>
+		<equals>
+			<property>/instrumentation/cdu/display</property>
+			<value>APP_REF</value>
+		</equals>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/CDU/Pages/DEP_ARR_INDEX.xml</path>
+	<condition>
+		<equals>
+			<property>/instrumentation/cdu/display</property>
+			<value>DEP_ARR_INDEX</value>
+		</equals>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/CDU/Pages/IDENT.xml</path>
+	<condition>
+		<equals>
+			<property>/instrumentation/cdu/display</property>
+			<value>IDENT</value>
+		</equals>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/CDU/Pages/INIT_REF.xml</path>
+	<condition>
+		<equals>
+			<property>/instrumentation/cdu/display</property>
+			<value>INIT_REF</value>
+		</equals>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/CDU/Pages/NAV_RAD.xml</path>
+	<condition>
+		<equals>
+			<property>/instrumentation/cdu/display</property>
+			<value>NAV_RAD</value>
+		</equals>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/CDU/Pages/PERF_INIT.xml</path>
+	<condition>
+		<equals>
+			<property>/instrumentation/cdu/display</property>
+			<value>PERF_INIT</value>
+		</equals>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/CDU/Pages/POS_INIT.xml</path>
+	<condition>
+		<equals>
+			<property>/instrumentation/cdu/display</property>
+			<value>POS_INIT</value>
+		</equals>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/CDU/Pages/POS_REF.xml</path>
+	<condition>
+		<equals>
+			<property>/instrumentation/cdu/display</property>
+			<value>POS_REF</value>
+		</equals>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/CDU/Pages/TO_REF.xml</path>
+	<condition>
+		<equals>
+			<property>/instrumentation/cdu/display</property>
+			<value>TO_REF</value>
+		</equals>
+	</condition>
+</model>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.side.l.1</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>INIT_REF</value>
+				</equals>
+			</condition>
+			<command>property-assign</command>
+			<property>/instrumentation/cdu/display</property>
+			<value type="string">IDENT</value>
+		</binding>
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>NAV_RAD</value>
+				</equals>
+			</condition>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/nav[0]/frequencies/selected-mhz",getprop("/instrumentation/cdu/input"));
+					setprop("/instrumentation/cdu/input","");</script>
+		</binding>
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>TO_REF</value>
+				</equals>
+			</condition>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/fmc/to-flap",getprop("/instrumentation/cdu/input"));
+					setprop("/instrumentation/cdu/input","");</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.side.r.1</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>NAV_RAD</value>
+				</equals>
+			</condition>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/nav[1]/frequencies/selected-mhz",getprop("/instrumentation/cdu/input"));
+					setprop("/instrumentation/cdu/input","");</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.side.l.2</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>INIT_REF</value>
+				</equals>
+			</condition>
+			<command>property-assign</command>
+			<property>/instrumentation/cdu/display</property>
+			<value type="string">POS_INIT</value>
+		</binding>
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>POS_INIT</value>
+				</equals>
+			</condition>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/fmc/ref-airport",getprop("/instrumentation/cdu/input"));
+					setprop("/instrumentation/cdu/input","");</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.side.l.3</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>INIT_REF</value>
+				</equals>
+			</condition>
+			<command>property-assign</command>
+			<property>/instrumentation/cdu/display</property>
+			<value type="string">PERF_INIT</value>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.side.l.5</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>INIT_REF</value>
+				</equals>
+			</condition>
+			<command>property-assign</command>
+			<property>/instrumentation/cdu/display</property>
+			<value type="string">TO_REF</value>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.side.l.6</object-name>
+	<action>
+		<button>0</button>
+		<binding>
+			<condition>
+				<or>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>INIT_REF</value>
+				</equals>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>APP_REF</value>
+				</equals>
+				</or>
+			</condition>
+			<command>property-cycle</command>
+			<property>/instrumentation/cdu/display</property>
+			<value type="string">APP_REF</value>
+			<value type="string">INIT_REF</value>
+		</binding>
+		<binding>
+			<condition>
+				<or>
+					<equals>
+						<property>/instrumentation/cdu/display</property>
+						<value>IDENT</value>
+					</equals>
+					<equals>
+						<property>/instrumentation/cdu/display</property>
+						<value>PERF_INIT</value>
+					</equals>
+					<equals>
+						<property>/instrumentation/cdu/display</property>
+						<value>POS_INIT</value>
+					</equals>
+					<equals>
+						<property>/instrumentation/cdu/display</property>
+						<value>POS_REF</value>
+					</equals>
+					<equals>
+						<property>/instrumentation/cdu/display</property>
+						<value>TO_REF</value>
+					</equals>
+				</or>
+			</condition>
+			<command>property-assign</command>
+			<property>/instrumentation/cdu/display</property>
+			<value type="string">INIT_REF</value>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.side.r.6</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<condition>
+				<or>
+					<equals>
+						<property>/instrumentation/cdu/display</property>
+						<value>IDENT</value>
+					</equals>
+					<equals>
+						<property>/instrumentation/cdu/display</property>
+						<value>TO_REF</value>
+					</equals>
+				</or>
+			</condition>
+			<command>property-assign</command>
+			<property>/instrumentation/cdu/display</property>
+			<value type="string">POS_INIT</value>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.init-ref</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>property-assign</command>
+			<property>/instrumentation/cdu/display</property>
+			<value type="string">INIT_REF</value>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.nav-rad</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>property-assign</command>
+			<property>/instrumentation/cdu/display</property>
+			<value type="string">NAV_RAD</value>
+		</binding>
+	</action>
+</animation>
+ 
+<animation>
+	<type>pick</type>
+	<object-name>Btn.dep-arr</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>property-assign</command>
+			<property>/instrumentation/cdu/display</property>
+			<value type="string">DEP_ARR_INDEX</value>
+		</binding>
+	</action>
+</animation>
+ 
+<animation>
+	<type>pick</type>
+	<object-name>Btn.menu</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>property-assign</command>
+			<property>/instrumentation/cdu/display</property>
+			<value type="string">MENU</value>
+		</binding>
+	</action>
+</animation>
+
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.zero</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'0');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.num1</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'1');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.num2</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'2');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.num3</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'3');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.num4</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'4');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.num5</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'5');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.num6</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'6');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.num7</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'7');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.num8</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'8');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.num9</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'9');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.A</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'A');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.B</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'B');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.C</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'C');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.D</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'D');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.E</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'E');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.F</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'F');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.G</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'G');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.H</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'H');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.I</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'I');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.J</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'J');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.K</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'K');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.L</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'L');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.M</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'M');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.N</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'N');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.O</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'O');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.P</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'P');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.Q</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'Q');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.R</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'R');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.S</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'S');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.T</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'T');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.U</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'U');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.V</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'V');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.W</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'W');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.X</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'X');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.Y</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'Y');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.Z</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'Z');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.period</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'.');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.clr</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>setprop("/instrumentation/cdu/input","");</script>
+		</binding>
+	</action>
+</animation>
+
+</PropertyList>

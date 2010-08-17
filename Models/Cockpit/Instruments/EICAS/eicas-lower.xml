@@ -1,0 +1,33 @@
+<PropertyList>
+
+<model>
+ <path>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/eicas_eng.xml</path>
+ <condition>
+  <equals>
+   <property>/instrumentation/eicas/display</property>
+   <value>ENG</value>
+  </equals>
+ </condition>
+</model>
+
+<model>
+ <path>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/eicas_fuel.xml</path>
+ <condition>
+  <equals>
+   <property>/instrumentation/eicas/display</property>
+   <value>FUEL</value>
+  </equals>
+ </condition>
+</model>
+
+<model>
+ <path>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/eicas_gear.xml</path>
+ <condition>
+  <equals>
+   <property>/instrumentation/eicas/display</property>
+   <value>GEAR</value>
+  </equals>
+ </condition>
+</model>
+
+</PropertyList>

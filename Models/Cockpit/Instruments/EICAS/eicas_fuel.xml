@@ -1,0 +1,596 @@
+<PropertyList>
+
+<!-- # # # # # # # # # # # # # # # # # # # # # -->
+<!-- # Boeing 747-400 EICAS by Gijs de Rooy  # -->
+<!-- # # # # # # # # # # # # # # # # # # # # # -->
+
+ <path>eicas_fuel.ac</path>
+
+<!-- Total Fuel-->
+ <animation>
+   <type>select</type>
+   <object-name>total.1</object-name>
+   <condition>
+    <greater-than>
+     <property>/fdm/jsbsim/propulsion/total-fuel-lbs</property>
+     <value>99995</value>
+    </greater-than>
+   </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>total.1</object-name>
+<property>/fdm/jsbsim/propulsion/total-fuel-lbs</property>
+   <factor>0.000001</factor>
+   <step>100000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>total.2</object-name>
+   <condition>
+    <greater-than>
+     <property>/fdm/jsbsim/propulsion/total-fuel-lbs</property>
+     <value>9995</value>
+    </greater-than>
+   </condition>
+ </animation>
+
+<animation>
+   <type>textranslate</type>
+   <object-name>total.2</object-name>
+<property>/fdm/jsbsim/propulsion/total-fuel-lbs</property>
+   <factor>0.00001</factor>
+   <step>10000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>total.3</object-name>
+<property>/fdm/jsbsim/propulsion/total-fuel-lbs</property>
+   <factor>0.0001</factor>
+   <step>1000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>total.4</object-name>
+<property>/fdm/jsbsim/propulsion/total-fuel-lbs</property>
+   <factor>0.001</factor>
+   <step>100.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+<!-- Center-->
+
+ <animation>
+   <type>select</type>
+   <object-name>center.1</object-name>
+   <condition>
+    <greater-than>
+     <property>/consumables/fuel/tank/level-lbs</property>
+     <value>99995</value>
+    </greater-than>
+   </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>center.1</object-name>
+<property>/consumables/fuel/tank/level-lbs</property>
+   <factor>0.000001</factor>
+   <step>100000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>center.2</object-name>
+   <condition>
+    <greater-than>
+     <property>/consumables/fuel/tank/level-lbs</property>
+     <value>9995</value>
+    </greater-than>
+   </condition>
+ </animation>
+
+<animation>
+   <type>textranslate</type>
+   <object-name>center.2</object-name>
+<property>/consumables/fuel/tank/level-lbs</property>
+   <factor>0.00001</factor>
+   <step>10000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>center.3</object-name>
+<property>/consumables/fuel/tank/level-lbs</property>
+   <factor>0.0001</factor>
+   <step>1000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>center.4</object-name>
+<property>/consumables/fuel/tank/level-lbs</property>
+   <factor>0.001</factor>
+   <step>100.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+<!-- Main #1-->
+
+ <animation>
+   <type>select</type>
+   <object-name>main1.1</object-name>
+   <condition>
+    <greater-than>
+     <property>/consumables/fuel/tank[1]/level-lbs</property>
+     <value>99995</value>
+    </greater-than>
+   </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>main1.1</object-name>
+<property>/consumables/fuel/tank[1]/level-lbs</property>
+   <factor>0.000001</factor>
+   <step>100000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>main1.2</object-name>
+   <condition>
+    <greater-than>
+     <property>/consumables/fuel/tank[1]/level-lbs</property>
+     <value>9995</value>
+    </greater-than>
+   </condition>
+ </animation>
+
+<animation>
+   <type>textranslate</type>
+   <object-name>main1.2</object-name>
+<property>/consumables/fuel/tank[2]/level-lbs</property>
+   <factor>0.00001</factor>
+   <step>10000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>main1.3</object-name>
+<property>/consumables/fuel/tank[1]/level-lbs</property>
+   <factor>0.0001</factor>
+   <step>1000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>main1.4</object-name>
+<property>/consumables/fuel/tank[1]/level-lbs</property>
+   <factor>0.001</factor>
+   <step>100.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+<!-- Main #2-->
+
+ <animation>
+   <type>select</type>
+   <object-name>main2.1</object-name>
+   <condition>
+    <greater-than>
+     <property>/consumables/fuel/tank[2]/level-lbs</property>
+     <value>9995</value>
+    </greater-than>
+   </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>main2.1</object-name>
+<property>/consumables/fuel/tank[2]/level-lbs</property>
+   <factor>0.00001</factor>
+   <step>10000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+<animation>
+   <type>textranslate</type>
+   <object-name>main2.2</object-name>
+<property>/consumables/fuel/tank[2]/level-lbs</property>
+   <factor>0.0001</factor>
+   <step>1000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>main2.3</object-name>
+<property>/consumables/fuel/tank[2]/level-lbs</property>
+   <factor>0.001</factor>
+   <step>100.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+<!-- Main #3-->
+
+ <animation>
+   <type>select</type>
+   <object-name>main3.1</object-name>
+   <condition>
+    <greater-than>
+     <property>/consumables/fuel/tank[3]/level-lbs</property>
+     <value>9995</value>
+    </greater-than>
+   </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>main3.1</object-name>
+<property>/consumables/fuel/tank[3]/level-lbs</property>
+   <factor>0.00001</factor>
+   <step>10000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+<animation>
+   <type>textranslate</type>
+   <object-name>main3.2</object-name>
+<property>/consumables/fuel/tank[3]/level-lbs</property>
+   <factor>0.0001</factor>
+   <step>1000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>main3.3</object-name>
+<property>/consumables/fuel/tank[3]/level-lbs</property>
+   <factor>0.001</factor>
+   <step>100.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+<!-- Main #4-->
+
+ <animation>
+   <type>select</type>
+   <object-name>main4.1</object-name>
+   <condition>
+    <greater-than>
+     <property>/consumables/fuel/tank[4]/level-lbs</property>
+     <value>99995</value>
+    </greater-than>
+   </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>main4.1</object-name>
+   <property>/consumables/fuel/tank[4]/level-lbs</property>
+   <factor>0.000001</factor>
+   <step>100000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>main4.2</object-name>
+   <condition>
+    <greater-than>
+     <property>/consumables/fuel/tank[4]/level-lbs</property>
+     <value>9995</value>
+    </greater-than>
+   </condition>
+ </animation>
+
+<animation>
+   <type>textranslate</type>
+   <object-name>main4.2</object-name>
+<property>/consumables/fuel/tank[4]/level-lbs</property>
+   <factor>0.00001</factor>
+   <step>10000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>main4.3</object-name>
+<property>/consumables/fuel/tank[4]/level-lbs</property>
+   <factor>0.0001</factor>
+   <step>1000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>main4.4</object-name>
+<property>/consumables/fuel/tank[4]/level-lbs</property>
+   <factor>0.001</factor>
+   <step>100.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+<!-- Res #2-->
+
+ <animation>
+   <type>select</type>
+   <object-name>res2.1</object-name>
+   <condition>
+    <greater-than>
+     <property>/consumables/fuel/tank[5]/level-lbs</property>
+     <value>9995</value>
+    </greater-than>
+   </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>res2.1</object-name>
+   <property>/consumables/fuel/tank[5]/level-lbs</property>
+   <factor>0.00001</factor>
+   <step>10000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+<animation>
+   <type>textranslate</type>
+   <object-name>res2.2</object-name>
+<property>/consumables/fuel/tank[5]/level-lbs</property>
+   <factor>0.0001</factor>
+   <step>1000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>res2.3</object-name>
+<property>/consumables/fuel/tank[5]/level-lbs</property>
+   <factor>0.001</factor>
+   <step>100.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+<!-- Res #3-->
+
+ <animation>
+   <type>select</type>
+   <object-name>res3.1</object-name>
+   <condition>
+    <greater-than>
+     <property>/consumables/fuel/tank[6]/level-lbs</property>
+     <value>9995</value>
+    </greater-than>
+   </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>res3.1</object-name>
+<property>/consumables/fuel/tank[6]/level-lbs</property>
+   <factor>0.00001</factor>
+   <step>10000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+<animation>
+   <type>textranslate</type>
+   <object-name>res3.2</object-name>
+<property>/consumables/fuel/tank[6]/level-lbs</property>
+   <factor>0.0001</factor>
+   <step>1000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>res3.3</object-name>
+<property>/consumables/fuel/tank[6]/level-lbs</property>
+   <factor>0.001</factor>
+   <step>100.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+<!-- Stab -->
+
+ <animation>
+   <type>select</type>
+   <object-name>stab.1</object-name>
+   <condition>
+    <greater-than>
+     <property>/consumables/fuel/tank[7]/level-lbs</property>
+     <value>99995</value>
+    </greater-than>
+   </condition>
+ </animation>
+
+<animation>
+   <type>textranslate</type>
+   <object-name>stab.1</object-name>
+   <property>/consumables/fuel/tank[7]/level-lbs</property>
+   <factor>0.000001</factor>
+   <step>100000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>select</type>
+   <object-name>stab.2</object-name>
+   <condition>
+    <greater-than>
+     <property>/consumables/fuel/tank[7]/level-lbs</property>
+     <value>9995</value>
+    </greater-than>
+   </condition>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>stab.2</object-name>
+   <property>/consumables/fuel/tank[7]/level-lbs</property>
+   <factor>0.00001</factor>
+   <step>10000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>stab.3</object-name>
+   <property>/consumables/fuel/tank[7]/level-lbs</property>
+   <factor>0.0001</factor>
+   <step>1000.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>stab.4</object-name>
+   <property>/consumables/fuel/tank[7]/level-lbs</property>
+   <factor>0.001</factor>
+   <step>100.0</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+</PropertyList>

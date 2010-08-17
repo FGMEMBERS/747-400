@@ -43,9 +43,9 @@
  <path>Aircraft/747-400/Models/Effects/fuel_jettison.xml</path>
  <name>fueldump.1</name>
  <offsets>
-  <x-m>0.5</x-m>
-  <y-m>-26</y-m>
-  <z-m>0</z-m>
+  <x-m>  0.5</x-m>
+  <y-m>-26  </y-m>
+  <z-m>  0  </z-m>
  </offsets>
 </model>
 
@@ -53,11 +53,103 @@
  <path>Aircraft/747-400/Models/Effects/fuel_jettison.xml</path>
  <name>fueldump.2</name>
  <offsets>
-  <x-m>0.5</x-m>
-  <y-m>26</y-m>
-  <z-m>0</z-m>
+  <x-m> 0.5</x-m>
+  <y-m>26  </y-m>
+  <z-m> 0  </z-m>
  </offsets>
 </model>
+
+<!-- ENGINE #1 FIRE -->
+
+<model>
+ <path>Aircraft/747-400/Models/Effects/fire.xml</path> 
+ <name>enginefire.1</name>
+ <offsets> 
+  <x-m> 10.5 </x-m>
+  <y-m>-21.23</y-m>
+  <z-m> -1.97</z-m>
+ </offsets>
+</model>
+
+<animation>
+ <type>select</type>
+ <object-name>enginefire.1</object-name>
+ <condition>
+  <equals>
+   <property>controls/engines/engine[0]/on-fire</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<!-- ENGINE #2 FIRE -->
+
+<model>
+ <path>Aircraft/747-400/Models/Effects/fire.xml</path> 
+ <name>enginefire.2</name>
+ <offsets> 
+  <x-m>  3    </x-m>
+  <y-m>-13.447</y-m>
+  <z-m> -2.575</z-m>
+ </offsets>
+</model>
+
+<animation>
+ <type>select</type>
+ <object-name>enginefire.2</object-name>
+ <condition>
+  <equals>
+   <property>controls/engines/engine[1]/on-fire</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<!-- ENGINE #3 FIRE -->
+
+<model>
+ <path>Aircraft/747-400/Models/Effects/fire.xml</path> 
+ <name>enginefire.3</name>
+ <offsets> 
+  <x-m> 3    </x-m>
+  <y-m>13.447</y-m>
+  <z-m>-2.575</z-m>
+ </offsets>
+</model>
+
+<animation>
+ <type>select</type>
+ <object-name>enginefire.3</object-name>
+ <condition>
+  <equals>
+   <property>controls/engines/engine[2]/on-fire</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+ 
+<!-- ENGINE #4 FIRE -->
+
+<model>
+ <path>Aircraft/747-400/Models/Effects/fire.xml</path> 
+ <name>enginefire.4</name>
+ <offsets> 
+  <x-m>10.5</x-m>
+  <y-m>21.23</y-m>
+  <z-m>-1.97</z-m>
+ </offsets>
+</model>
+
+<animation>
+ <type>select</type>
+ <object-name>enginefire.4</object-name>
+ <condition>
+  <equals>
+   <property>controls/engines/engine[3]/on-fire</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
 
 <!-- WING FLEX RIGHT -->
 
@@ -71,9 +163,11 @@
  <object-name>eng.3</object-name>
  <object-name>eng.3_fan</object-name>
  <object-name>eng.3_reverser</object-name>
+ <object-name>enginefire.3</object-name>
  <object-name>eng.4</object-name>
  <object-name>eng.4_fan</object-name>
  <object-name>eng.4_reverser</object-name>
+ <object-name>enginefire.4</object-name>
  <object-name>aileron_right_inner</object-name>
  <object-name>aileron_right_outer</object-name>
  <object-name>speedbrake_right.1</object-name>
@@ -100,6 +194,7 @@
  <object-name>LEinbR.1</object-name>
  <object-name>LEinbR.2</object-name>
  <object-name>LEinbR.3</object-name>
+ <object-name>fueldump.2</object-name>
  <property>fdm/jsbsim/aero/coefficient/CLalpha</property>
  <factor>-0.0000040</factor>
  <offset-deg>0</offset-deg>
@@ -121,12 +216,10 @@
  <object-name>wing_right.3</object-name>
  <object-name>GreenLight</object-name>
  <object-name>StrobeLight.R</object-name>
- <object-name>eng.3</object-name>
- <object-name>eng.3_fan</object-name>
- <object-name>eng.3_reverser</object-name>
  <object-name>eng.4</object-name>
  <object-name>eng.4_fan</object-name>
  <object-name>eng.4_reverser</object-name>
+ <object-name>enginefire.4</object-name>
  <object-name>aileron_right_outer</object-name>
  <object-name>speedbrake_right.3</object-name>
  <object-name>speedbrake_right.4</object-name>
@@ -140,9 +233,9 @@
  <object-name>flap_right_h.3.1</object-name>
  <object-name>flap_right_h.4.1</object-name>
  <object-name>winglet_right</object-name>
- <property>fdm/jsbsim/aero/coefficient/CLalpha</property>
- <factor>-0.0000040</factor>
- <offset-deg>0</offset-deg>
+ <object-name>fueldump.2</object-name>
+ <property>fdm/jsbsim/forces/wing[3]</property>
+ <factor>-0.0004</factor>
  <center>
   <x-m>0</x-m>
   <y-m>13.0</y-m>
@@ -162,9 +255,9 @@
  <object-name>StrobeLight.R</object-name>
  <object-name>aileron_right_outer</object-name>
  <object-name>winglet_right</object-name>
- <property>fdm/jsbsim/aero/coefficient/CLalpha</property>
- <factor>-0.0000040</factor>
- <offset-deg>0</offset-deg>
+ <object-name>fueldump.2</object-name>
+ <property>fdm/jsbsim/forces/wing[4]</property>
+ <factor>-0.0004</factor>
  <center>
   <x-m>0</x-m>
   <y-m>21.5</y-m>
@@ -189,9 +282,11 @@
  <object-name>eng.1</object-name>
  <object-name>eng.1_fan</object-name>
  <object-name>eng.1_reverser</object-name>
+ <object-name>enginefire.1</object-name>
  <object-name>eng.2</object-name>
  <object-name>eng.2_fan</object-name>
  <object-name>eng.2_reverser</object-name>
+ <object-name>enginefire.2</object-name>
  <object-name>aileron_left_inner</object-name>
  <object-name>aileron_left_outer</object-name>
  <object-name>speedbrake_left.1</object-name>
@@ -218,6 +313,7 @@
  <object-name>LEinbL.1</object-name>
  <object-name>LEinbL.2</object-name>
  <object-name>LEinbL.3</object-name>
+ <object-name>fueldump.1</object-name>
  <property>fdm/jsbsim/aero/coefficient/CLalpha</property>
  <factor>-0.0000040</factor>
  <offset-deg>0</offset-deg>
@@ -242,9 +338,7 @@
  <object-name>eng.1</object-name>
  <object-name>eng.1_fan</object-name>
  <object-name>eng.1_reverser</object-name>
- <object-name>eng.2</object-name>
- <object-name>eng.2_fan</object-name>
- <object-name>eng.2_reverser</object-name>
+ <object-name>enginefire.1</object-name>
  <object-name>aileron_left_outer</object-name>
  <object-name>speedbrake_left.3</object-name>
  <object-name>speedbrake_left.4</object-name>
@@ -258,9 +352,9 @@
  <object-name>flap_left_h.3.1</object-name>
  <object-name>flap_left_h.4.1</object-name>
  <object-name>winglet_left</object-name>
- <property>fdm/jsbsim/aero/coefficient/CLalpha</property>
- <factor>-0.0000040</factor>
- <offset-deg>0</offset-deg>
+ <object-name>fueldump.1</object-name>
+ <property>fdm/jsbsim/forces/wing[2]</property>
+ <factor>-0.0004</factor>
  <center>
   <x-m>0</x-m>
   <y-m>-13.0</y-m>
@@ -280,9 +374,9 @@
  <object-name>StrobeLight.L</object-name>
  <object-name>aileron_left_outer</object-name>
  <object-name>winglet_left</object-name>
- <property>fdm/jsbsim/aero/coefficient/CLalpha</property>
- <factor>-0.0000040</factor>
- <offset-deg>0</offset-deg>
+ <object-name>fueldump.1</object-name>
+ <property>fdm/jsbsim/forces/wing[1]</property>
+ <factor>-0.0004</factor>
  <center>
   <x-m>0</x-m>
   <y-m>-21.5</y-m>
@@ -294,86 +388,6 @@
   <z>0</z>
  </axis>
 </animation>
-
-<!-- ENGINE #1 FIRE -->
-
-<model>
- <path>Aircraft/747-400/Models/engine_on_fire1.xml</path> 
- <offsets> 
-  <x-m>10.5</x-m>
-  <y-m>-21.23</y-m>
-  <z-m>-1.97</z-m>
- </offsets>
-</model>
-
-<model>
- <path>Aircraft/747-400/Models/Effects/smoke.xml</path> 
- <offsets> 
-  <x-m>40.5</x-m>
-  <y-m>-21.23</y-m>
-  <z-m>-1.97</z-m>
- </offsets>
-</model>
-
-<!-- ENGINE #2 FIRE -->
-
-<model>
- <path>Aircraft/747-400/Models/engine_on_fire2.xml</path> 
- <offsets> 
-  <x-m>3</x-m>
-  <y-m>-13.447</y-m>
-  <z-m>-2.575</z-m>
- </offsets>
-</model>
-
-<model>
- <path>Aircraft/747-400/Models/Effects/smoke.xml</path> 
- <offsets> 
-  <x-m>33</x-m>
-  <y-m>-13.447</y-m>
-  <z-m>-2.575</z-m>
- </offsets>
-</model>
-
-<!-- ENGINE #3 FIRE -->
-
-<model>
- <path>Aircraft/747-400/Models/engine_on_fire3.xml</path> 
- <offsets> 
-  <x-m>3</x-m>
-  <y-m>13.447</y-m>
-  <z-m>-2.575</z-m>
- </offsets>
-</model>
- 
-<model>
- <path>Aircraft/747-400/Models/Effects/smoke.xml</path> 
- <offsets> 
-  <x-m>33</x-m>
-  <y-m>13.447</y-m>
-  <z-m>-2.575</z-m>
- </offsets>
-</model>
- 
-<!-- ENGINE #4 FIRE -->
-
-<model>
- <path>Aircraft/747-400/Models/engine_on_fire4.xml</path> 
- <offsets> 
-  <x-m>10.5</x-m>
-  <y-m>21.23</y-m>
-  <z-m>-1.97</z-m>
- </offsets>
-</model>
-
-<model>
- <path>Aircraft/747-400/Models/Effects/smoke.xml</path> 
- <offsets> 
-  <x-m>40.5</x-m>
-  <y-m>21.23</y-m>
-  <z-m>-1.97</z-m>
- </offsets>
-</model>
 
 <!-- AILERON LEFT INNER -->
 

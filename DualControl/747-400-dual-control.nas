@@ -14,7 +14,11 @@ var DCT = dual_control_tools;
 
 # Pilot/copilot aircraft identifiers. Used by dual_control.
 var pilot_type   = "Aircraft/747-400/Models/747-400.xml";
-var copilot_type = "";
+var copilot_type = "Aircraft/747-400/Models/747-400-fo.xml";
+
+props.globals.initNode("/sim/remote/pilot-callsign", "", "STRING");
+
+######################################################################
 
 var copilot_view = "First Officer";
 

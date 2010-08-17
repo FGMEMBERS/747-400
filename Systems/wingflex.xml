@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+
+<!-- # WING FLEX system for BOEING 747-400 #
+     # by Gijs de Rooy			           # -->
+
+<system name="wingflex">
+    
+    <channel name="wingflex">
+		
+		<fcs_function name="Wing 1 flex">
+			<function name="forces/wing[1]-flex">
+                <description>Wing_one_flex</description>
+                <sum>
+					<product>
+						<property>propulsion/tank[1]/contents-lbs</property>
+						<value>-0.15</value>
+					</product>
+					<product>
+						<property>aero/coefficient/CLalpha</property>
+						<value>0.05</value>
+					</product>
+                </sum>
+			</function>
+			<output>forces/wing[1]</output>
+        </fcs_function>
+		
+		<fcs_function name="Wing 2 flex">
+			<function name="forces/wing[2]-flex">
+                <description>Wing_two_flex</description>
+                <sum>
+					<product>
+						<property>propulsion/tank[2]/contents-lbs</property>
+						<value>-0.1</value>
+					</product>
+					<product>
+						<property>aero/coefficient/CLalpha</property>
+						<value>0.05</value>
+					</product>
+                </sum>
+			</function>
+			<output>forces/wing[2]</output>
+        </fcs_function>
+		
+		<fcs_function name="Wing 3 flex">
+			<function name="forces/wing[3]-flex">
+                <description>Wing_three_flex</description>
+                <sum>
+					<product>
+						<property>propulsion/tank[3]/contents-lbs</property>
+						<value>-0.1</value>
+					</product>
+					<product>
+						<property>aero/coefficient/CLalpha</property>
+						<value>0.05</value>
+					</product>
+                </sum>
+			</function>
+			<output>forces/wing[3]</output>
+        </fcs_function>
+		
+		<fcs_function name="Wing 4 flex">
+			<function name="forces/wing[4]-flex">
+                <description>Wing_four_flex</description>
+                <sum>
+					<product>
+						<property>propulsion/tank[4]/contents-lbs</property>
+						<value>-0.15</value>
+					</product>
+					<product>
+						<property>aero/coefficient/CLalpha</property>
+						<value>0.05</value>
+					</product>
+                </sum>
+			</function>
+			<output>forces/wing[4]</output>
+        </fcs_function>
+
+    </channel>
+
+</system>

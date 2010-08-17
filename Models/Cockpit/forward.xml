@@ -1,0 +1,175 @@
+<PropertyList>
+
+<path>forward2.ac</path>
+
+<!-- PANEL LIGHTING -->
+
+<animation>
+	<type>material</type>
+	<object-name>forward_panel</object-name>
+	<emission>
+		<red>0.5</red>
+		<green>0.45</green>
+		<blue>0.2</blue>
+		<factor-prop>controls/lighting/panel-norm</factor-prop>
+	</emission>
+</animation>
+
+<!-- PANELS -->
+
+<model>
+	<name>EICAS-upper</name>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/eicas_eng.xml</path>
+	<offsets>
+		<x-m>0.689</x-m>
+		<y-m>0</y-m>
+		<z-m>0.641</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
+</model>
+  
+<model>
+ <name>EICAS-lower</name>
+ <path>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/eicas-lower.xml</path>
+ <offsets>
+  <x-m>0.838</x-m>
+  <y-m>0</y-m>
+  <z-m>0.49</z-m>
+  <pitch-deg>-75</pitch-deg>
+ </offsets>
+</model>
+
+<!-- instruments -->
+
+<model>
+ <name>PFD1</name>
+ <path>Aircraft/747-400/Models/Cockpit/Instruments/PFD/PFD.xml</path>
+ <offsets>
+  <x-m>0.6854</x-m>
+  <y-m>-0.537</y-m>
+  <z-m>0.65</z-m>
+  <pitch-deg>-22</pitch-deg>
+ </offsets>
+</model>
+
+<model>
+ <name>PFD2</name>
+ <path>Aircraft/747-400/Models/Cockpit/Instruments/PFD/PFD.xml</path>
+ <offsets>
+  <x-m>0.6854</x-m>
+  <y-m>0.537</y-m>
+  <z-m>0.65</z-m>
+  <pitch-deg>-22</pitch-deg>
+ </offsets>
+</model>
+
+<model>
+ <name>ND1</name>
+ <path>Aircraft/747-400/Models/Cockpit/Instruments/MFD/ND.xml</path>
+ <offsets>
+  <x-m>0.6854</x-m>
+  <y-m>-0.3207</y-m>
+  <z-m>0.65</z-m>
+  <pitch-deg>-22</pitch-deg>
+ </offsets>
+</model>
+  
+<model>
+ <name>ND2</name>
+ <path>Aircraft/747-400/Models/Cockpit/Instruments/MFD/ND.xml</path>
+ <offsets>
+  <x-m>0.6854</x-m>
+  <y-m>0.3207</y-m>
+  <z-m>0.65</z-m>
+  <pitch-deg>-22</pitch-deg>
+ </offsets>
+</model>
+
+<model>
+ <name>CLOCK1</name>
+ <path>Aircraft/747-400/Models/Cockpit/Instruments/clock.xml</path>
+ <offsets>
+  <x-m>0.672</x-m>
+  <y-m>-0.692</y-m>
+  <z-m>0.696</z-m>
+  <pitch-deg>-22</pitch-deg>
+ </offsets>
+</model>
+
+<model>
+ <name>CLOCK2</name>
+ <path>Aircraft/747-400/Models/Cockpit/Instruments/clock.xml</path>
+ <offsets>
+  <x-m>0.672</x-m>
+  <y-m>0.692</y-m>
+  <z-m>0.696</z-m>
+  <pitch-deg>-22</pitch-deg>
+ </offsets>
+</model>
+ 
+<model>
+ <name>STBY-AI</name>
+ <path>Aircraft/747-400/Models/Cockpit/Instruments/stby-ai.xml</path>
+ <offsets>
+  <x-m>0.665</x-m>
+  <y-m>-0.160</y-m>
+  <z-m>0.73</z-m>
+  <pitch-deg>-21</pitch-deg>
+ </offsets>
+</model>
+ 
+<model>
+ <name>STBY-ASI</name>
+ <path>Aircraft/747-400/Models/Cockpit/Instruments/stby-asi.xml</path>
+ <offsets>
+  <x-m>0.692</x-m>
+  <y-m>-0.160</y-m>
+  <z-m>0.644</z-m>
+  <pitch-deg>-22</pitch-deg>
+ </offsets>
+</model>
+ 
+<model>
+ <name>STBY-ALT</name>
+ <path>Aircraft/747-400/Models/Cockpit/Instruments/stby-alt.xml</path>
+ <offsets>
+  <x-m>0.727</x-m>
+  <y-m>-0.160</y-m>
+  <z-m>0.559</z-m>
+  <pitch-deg>-22</pitch-deg>
+ </offsets>
+</model>
+
+<!-- GEAR HANDLE -->
+
+<animation>
+ <type>rotate</type>
+ <object-name>gear_handle</object-name>
+ <property>controls/gear/gear-down</property>
+ <factor>80</factor>
+ <center>
+  <x-m>0.632</x-m>
+  <y-m>0.130</y-m>
+  <z-m>0.619</z-m>
+ </center>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>pick</type>
+ <object-name>gear_handle</object-name>
+ <action>
+  <button>0</button>
+  <repeatable>false</repeatable>
+  <binding>
+   <command>property-toggle</command>
+   <property>controls/gear/gear-down</property>
+  </binding>
+ </action>
+</animation>
+
+</PropertyList>

@@ -14,7 +14,7 @@ rv3 = "/engines/engine[2]/reverser-pos-norm";
 rv4 = "/engines/engine[3]/reverser-pos-norm"; 
 
 val = getprop(rv1);
-if (val == 0 or val == nil) {
+if ((val == 0 or val == nil) and (getprop("/controls/engines/engine[0]/throttle") == 0) and (getprop("/controls/engines/engine[1]/throttle") == 0) and (getprop("/controls/engines/engine[2]/throttle") == 0) and (getprop("/controls/engines/engine[3]/throttle") == 0)) {
 interpolate(rv1, 1.0, 1.4); 
 interpolate(rv2, 1.0, 1.4);  
 interpolate(rv3, 1.0, 1.4); 

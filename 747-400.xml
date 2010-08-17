@@ -442,6 +442,32 @@
                 </orient>
             </thruster>
         </engine>
+		
+	  <engine file="APU_PW901">
+            <location unit="IN">
+                <x> 100 </x>
+                <y> 0 </y>
+                <z> 10 </z>
+            </location>
+            <orient unit="DEG">
+                <roll> 0.0 </roll>
+                <pitch> 0 </pitch>
+                <yaw> 0 </yaw>
+            </orient>
+            <feed>2</feed>
+            <thruster file="direct">
+                <location unit="IN">
+                    <x> 0 </x>
+                    <y> 0 </y>
+                    <z> 10 </z>
+                </location>
+                <orient unit="DEG">
+                    <roll> 0.0 </roll>
+                    <pitch> 0.0 </pitch>
+                    <yaw> 0.0 </yaw>
+                </orient>
+            </thruster>
+        </engine>
 
         <documentation>
           - tank arm and lateral position is a guess : must fit inside the wing,
@@ -538,6 +564,7 @@
     <system file="flaps"/>
 	<system file="fuel"/>
     <system file="pushback"/>
+	<system file="wingflex"/>
 
     <flight_control name="747-400">
      <property>fcs/LE-flap-cmd-norm</property>
@@ -582,39 +609,105 @@
             </clipto>
         </summer>
 
-        <aerosurface_scale name="Left Aileron Control">
+        <aerosurface_scale name="Left Outboard Aileron Control">
             <input>fcs/roll-trim-sum</input>
             <range>
                 <min>-0.61</min>
                 <max>0.61</max>
             </range>
-            <output>fcs/left-aileron-pos-rad</output>
+            <output>fcs/left-outboard-aileron-pos-rad</output>
         </aerosurface_scale>
-        <aerosurface_scale name="Left Aileron Position Normalizer">
+        <aerosurface_scale name="Left Outboard Aileron Position Normalizer">
             <input>fcs/roll-trim-sum</input>
             <range>
                 <min>-1</min>
                 <max>1</max>
             </range>
-            <output>fcs/left-aileron-pos-norm</output>
+            <output>fcs/left-outboard-aileron-pos-norm</output>
         </aerosurface_scale>
-
-        <aerosurface_scale name="Right Aileron Control">
-            <input>-fcs/roll-trim-sum</input>
+		
+		<aerosurface_scale name="Right Outboard Aileron Control">
+            <input>fcs/roll-trim-sum</input>
             <range>
                 <min>-0.61</min>
                 <max>0.61</max>
             </range>
-            <output>fcs/right-aileron-pos-rad</output>
+            <output>fcs/right-outboard-aileron-pos-rad</output>
         </aerosurface_scale>
-        <aerosurface_scale name="Right Aileron Position Normalizer">
+        <aerosurface_scale name="Right Outboard Aileron Position Normalizer">
             <input>fcs/roll-trim-sum</input>
             <range>
                 <min>-1</min>
                 <max>1</max>
             </range>
-            <output>fcs/right-aileron-pos-norm</output>
+            <output>fcs/right-outboard-aileron-pos-norm</output>
         </aerosurface_scale>
+		
+		<switch name="fcs/outboard-ailerons-lockout">
+          <default value="1"/>
+            <test  logic="AND" value="0">
+                /velocities/airspeed-kt > 238
+				/controls/flight/flaps == 0
+            </test>
+			<test  logic="AND" value="0">
+				/velocities/mach > 0.53
+				/controls/flight/flaps == 0
+            </test>
+			<output>fcs/outboard-ailerons-unlocked</output>
+       </switch>
+		
+		<aerosurface_scale name="Left Inboard Aileron Control">
+            <input>fcs/roll-trim-sum</input>
+            <range>
+                <min>-0.61</min>
+                <max>0.61</max>
+            </range>
+            <output>fcs/left-inboard-aileron-pos-rad</output>
+        </aerosurface_scale>
+        <aerosurface_scale name="Left Inboard Aileron Position Normalizer">
+            <input>fcs/roll-trim-sum</input>
+            <range>
+                <min>-1</min>
+                <max>1</max>
+            </range>
+            <output>fcs/left-inboard-aileron-pos-norm</output>
+        </aerosurface_scale>
+		
+		<aerosurface_scale name="Right Inboard Aileron Control">
+            <input>fcs/roll-trim-sum</input>
+            <range>
+                <min>-0.61</min>
+                <max>0.61</max>
+            </range>
+            <output>fcs/right-inboard-aileron-pos-rad</output>
+        </aerosurface_scale>
+        <aerosurface_scale name="Right Inboard Aileron Position Normalizer">
+            <input>fcs/roll-trim-sum</input>
+            <range>
+                <min>-1</min>
+                <max>1</max>
+            </range>
+            <output>fcs/right-inboard-aileron-pos-norm</output>
+        </aerosurface_scale>
+		
+		<fcs_function name="Average Aileron Deflection">
+          <function name="fcs/total-aileron-pos-rad">
+                <description>Average_aileron_pos_rad</description>
+                <avg>
+					<product>
+						<property>fcs/left-outboard-aileron-pos-rad</property>
+						<property>fcs/outboard-ailerons-unlocked</property>
+					</product>
+                    <property>fcs/left-inboard-aileron-pos-rad</property>
+                    <property>fcs/right-inboard-aileron-pos-rad</property>
+					<product>
+						<property>fcs/right-outboard-aileron-pos-rad</property>
+						<property>fcs/outboard-ailerons-unlocked</property>
+					</product>
+                </avg>
+        </function>
+          <output>fcs/aileron-pos-rad</output>
+        </fcs_function>
 
      </channel>
      <channel name="Yaw">
@@ -814,7 +907,7 @@
 
         <kinematic name="Spoiler Control">
             <documentation>
-               added : 35 deg.
+               35 degrees spoiler movement
             </documentation>
             <input>fcs/spoiler-cmd-norm</input>
             <traverse>
@@ -865,6 +958,26 @@
         </kinematic>
 
      </channel>
+     
+     <property>/autopilot/autobrake/left-brake-output</property>
+     <property>/autopilot/autobrake/right-brake-output</property>
+     
+     <channel name="Brakes">
+         <fcs_function name="fcs/left-brake-cmd">
+             <function>
+              <property>/autopilot/autobrake/left-brake-output</property>
+             </function>
+             <output>fcs/left-brake-cmd-norm</output>
+        </fcs_function>
+        
+        <fcs_function name="fcs/right-brake-cmd">
+             <function>
+              <property>/autopilot/autobrake/right-brake-output</property>
+             </function>
+             <output>fcs/right-brake-cmd-norm</output>
+        </fcs_function>
+    </channel>
+     
     </flight_control>
     <aerodynamics>
         <documentation>
@@ -941,6 +1054,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/flap-pos-norm</property>
+					<property>/controls/failures/wings/lift</property>
                     <value>0.0500</value>
                 </product>
             </function>
@@ -953,6 +1067,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/LE-flap-pos-norm</property>
+					<property>/controls/failures/wings/lift</property>
                     <value>0.0050</value>
                 </product>
             </function>
@@ -974,6 +1089,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/speedbrake-pos-norm</property>
+					<property>/controls/failures/wings/lift</property>
                     <value>0.02</value>
                 </product>
             </function>
@@ -1053,6 +1169,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/LE-flap-pos-norm</property>
+					<property>/controls/failures/wings/lift</property>
                       <table>
                           <independentVar>aero/alpha-rad</independentVar>
                           <tableData>
@@ -1079,6 +1196,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>aero/function/kCLge</property>
+					<property>/controls/failures/wings/lift</property>
                       <table>
                           <independentVar>fcs/flap-pos-deg</independentVar>
                           <tableData>
@@ -1099,6 +1217,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/speedbrake-pos-norm</property>
+					<property>/controls/failures/wings/lift</property>
                     <value>0.0000</value>
                 </product>
             </function>
@@ -1112,6 +1231,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/spoiler-pos-norm</property>
+					<property>/controls/failures/wings/lift</property>
                     <value>-1.0000</value>
                 </product>
             </function>
@@ -1165,7 +1285,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>metrics/bw-ft</property>
-                    <property>fcs/left-aileron-pos-rad</property>
+                    <property>fcs/aileron-pos-rad</property>
                       <table>
                           <independentVar>velocities/mach</independentVar>
                           <tableData>
@@ -1276,7 +1396,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>metrics/bw-ft</property>
-                    <property>fcs/left-aileron-pos-rad</property>
+                    <property>fcs/aileron-pos-rad</property>
                     <value>0.0000</value>
                 </product>
             </function>

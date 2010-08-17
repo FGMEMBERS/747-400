@@ -1,0 +1,103 @@
+<PropertyList>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.000</y-m>
+		<z-m> 0.110</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text type="string">IDENT</text>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m>-0.040</y-m>
+		<z-m> 0.098</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text type="string">747-400</text>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.038</y-m>
+		<z-m> 0.098</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text type="string">-80C2B1F</text>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m>-0.040</y-m>
+		<z-m> 0.034</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text type="string">&lt;INDEX</text>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.040</y-m>
+		<z-m> 0.034</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text type="string">POS INIT&gt;</text>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+</PropertyList>

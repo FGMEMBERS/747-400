@@ -59,7 +59,7 @@
 <animation>
  <name>GearNose</name>
  <object-name>GearNoseTorqueLinkLow</object-name>
- <object-name>GearNoseTorqueLinkUpp</object-name>
+ <object-name>GearNoseTorqueLinkUp</object-name>
  <object-name>GearNoseMainStrutCyli</object-name>
  <object-name>GearNoseMainStrutColl</object-name>
  <object-name>GearNoseMainStrutPist</object-name>
@@ -387,6 +387,42 @@
  </axis>
 </animation>
 
+<!-- GEAR WING LEFT SPIN -->
+
+<animation>
+ <type>spin</type>
+ <object-name>wlg.lf</object-name>
+ <property>/gear/gear[1]/rollspeed-ms</property>
+ <factor>4</factor>
+ <center>
+  <x-m> 1.284</x-m>
+  <y-m>-5.514</y-m>
+  <z-m>-4.538</z-m>
+ </center>
+ <axis>
+  <x> 0</x>
+  <y>-1</y>
+  <z> 0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>spin</type>
+ <object-name>wlg.lr</object-name>
+ <property>/gear/gear[1]/rollspeed-ms</property>
+ <factor>4</factor>
+ <center>
+  <x-m> 2.883</x-m>
+  <y-m>-5.514</y-m>
+  <z-m>-4.538</z-m>
+ </center>
+ <axis>
+  <x> 0</x>
+  <y>-1</y>
+  <z> 0</z>
+ </axis>
+</animation>
+
 <!-- WING -->
 <!-- RIGHT -->
 
@@ -583,6 +619,42 @@
   <x>1</x>
   <y>0</y>
   <z>0</z>
+ </axis>
+</animation>
+
+<!-- GEAR WING LEFT SPIN -->
+
+<animation>
+ <type>spin</type>
+ <object-name>wlg.rf</object-name>
+ <property>/gear/gear[4]/rollspeed-ms</property>
+ <factor>4</factor>
+ <center>
+  <x-m> 1.284</x-m>
+  <y-m> 5.514</y-m>
+  <z-m>-4.538</z-m>
+ </center>
+ <axis>
+  <x> 0</x>
+  <y>-1</y>
+  <z> 0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>spin</type>
+ <object-name>wlg.rr</object-name>
+ <property>/gear/gear[4]/rollspeed-ms</property>
+ <factor>4</factor>
+ <center>
+  <x-m> 2.883</x-m>
+  <y-m> 5.514</y-m>
+  <z-m>-4.538</z-m>
+ </center>
+ <axis>
+  <x> 0</x>
+  <y>-1</y>
+  <z> 0</z>
  </axis>
 </animation>
 

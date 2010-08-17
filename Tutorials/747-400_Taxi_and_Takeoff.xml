@@ -6,164 +6,107 @@ you've just been given your clearance. As things start to happen very quickly fr
 afraid to pause your sim between steps.
     </description>
     <audio-dir>Aircraft/747-400/tutorial</audio-dir>
-    <timeofday>noon</timeofday>
-    <presets>
-      <airport-id>KSFO</airport-id>
-      <on-ground>1</on-ground>
-      <runway>28R</runway>
-      <altitude-ft>0</altitude-ft>
-      <latitude-deg>37.61838</latitude-deg>
-      <longitude-deg>-122.39193</longitude-deg>
-      <heading-deg>0</heading-deg>
-      <airspeed-kt>0</airspeed-kt>
-      <glideslope-deg>0</glideslope-deg>
-      <offset-azimuth>0</offset-azimuth>
-      <offset-distance>0</offset-distance>
-    </presets>
 
-    <init>
-      <set>
-        <property>/controls/gear/brake-parking</property>
-        <value>1</value>
-      </set>
-      <set>
-        <property>/controls/flight/flaps</property>
-        <value>0.0</value>
-      </set>
-      <set>
-        <property>/controls/engines/engine/magnetos</property>
-        <value>0</value>
-      </set>
-      <set>
-        <property>/controls/engines/engine/throttle</property>
-        <value>0</value>
-      </set>
-      <set>
-        <property>/engines/engine/running</property>
-        <value>false</value>
-      </set>
-      <set>
-        <property>/instrumentation/adf/frequencies/selected-khz</property>
-        <value>340</value>
-      </set>
-      <set>
-        <property>/environment/weather-scenario</property>
-        <value>Fair weather</value>
-      </set>
-      <set>
-        <property>/controls/flight/elevator-trim</property>
-        <value>0.17</value>
-      </set>
-    </init>
+	<step>
+		<message>Turn TAXI LIGHT ON.</message>
+		<exit>           
+			<condition>                   
+				<equals>
+					<property>/controls/lighting/taxi-light</property>
+					<value>1</value>
+				</equals>
+			</condition>
+		</exit>
+	</step>
 
-<step>
-<message>Turn TAXI LIGHT ON.</message>
-<exit>           
-<condition>                   
-<equals>
-<property>/controls/lighting/taxi-light</property>
-<value>1</value>
-</equals>
-</condition>
-</exit>
-</step>
+	<step>
+		<message>Set flaps to 20.</message>
+		<exit>
+			<condition>    
+				<equals>         
+					<property>/controls/flight/flaps</property>
+					<value>0.667</value>
+				</equals>
+			</condition>
+		</exit>
+	</step>
 
-<step>
-<message>Set flaps to 20.</message>
-<exit>
-<condition>    
-<equals>         
-<property>/controls/flight/flaps</property>
-<value>0.667</value>
-</equals>
-</condition>
-</exit>
-</step>
+	<step>
+		<message>Release parking brake and taxi to runway 28R</message>
+		<exit>
+			<condition>
+				<property>/controls/gear/brake-parking</property>
+				<value>0</value>		
+			</condition>
+		</exit>
+	</step>
 
-<step>
-<message>Release parking brake and taxi to runway 28R</message>
-<exit>
-<condition>
-<property>/controls/gear/brake-parking</property>
-<value>0</value>		
-</condition>
-</exit>
-</step>
+	<step>
+		<message>Taxi onto the runway and stop.</message>
+	</step>
 
-<step>
-<message>Taxi onto the runway and stop.</message>
-</step>
+	<step>
+		<message>Turn LANDING and STROBE lights ON.</message>
+		<exit>
+			<condition>            
+				<equals>    
+					<property>/controls/lighting/landing-lights</property>
+					<value>1</value>
+				</equals>
+				<equals> 
+					<property>/controls/lighting/strobe</property>
+					<value>1</value>
+				</equals>
+			</condition>
+		</exit>
+	 </step>
 
-<step>
-<message>Turn LANDING and STROBE lights ON.</message>
-<exit>
-<condition>            
-<equals>    
-<property>/controls/lighting/landing-lights</property>
-<value>1</value>
-</equals>
-<equals> 
-<property>/controls/lighting/strobe</property>
-<value>1</value>
-</equals>
-</condition>
-</exit>
- </step>
+	<step>
+		<message>Enable Autothrottle.</message>
+	</step>
 
-<step>
- <message>Enable Autothrottle.</message>
- <exit>
-<condition>  
-<equals>    
-<property>/controls/autoflight/autothrottle-engage</property>
-<value>1</value>
-</equals>  
-</condition>
-</exit>
-</step>
+	<step>
+	<message>Ensure that F/D is ON, runway heading (283) is set in HDG, IAS is set to V2, LNAV and VNAV are armed, and that altitude is 10,000.</message>
+		<exit>
+			<condition>  
+				<equals>    
+				<property>/autopilot/locks/passive-mode</property>
+				<value>1</value>
+				</equals>          
+				<equals>    
+				<property>/autopilot/settings/target/true-heading-deg</property>
+				<value>283</value>
+				</equals>
+				<equals> 
+				<property>/autopilot/settings/target-speed-kt</property>
+				<value>185</value>
+				</equals>
+				<equals> 
+				<property>/autopilot/settings/target-altitude-feet</property>
+				<value>10000</value>
+				</equals>
+			</condition>
+		</exit>
+	</step>
 
-<step>
-<message>Ensure that F/D is ON, runway heading (283) is set in HDG, IAS is set to V2, LNAV and VNAV are armed, and that altitude is 10,000.</message>
-<exit>
-<condition>  
-<equals>    
-<property>/autopilot/locks/passive-mode</property>
-<value>1</value>
-</equals>          
-<equals>    
-<property>/autopilot/settings/target/true-heading-deg</property>
-<value>283</value>
-</equals>
-<equals> 
-<property>/autopilot/settings/target-speed-kt</property>
-<value>185</value>
-</equals>
-<equals> 
-<property>/autopilot/settings/target-altitude-feet</property>
-<value>10000</value>
-</equals>
-</condition>
-</exit>
-</step>
+	<step>
+		<message>At Rotate, slowly and smoothly pull back on the controls to become airborne.</message>
+	</step>
 
-<step>
-<message>At Rotate, slowly and smoothly pull back on the controls to become airborne.</message>
-</step>
+	<step>
+		<message>Adjust pitch and roll with the controls to center the flight director indictors.</message>
+	</step>
 
-<step>
-<message>Adjust pitch and roll with the controls to center the flight director indictors.</message>
-</step>
-
-<step>
-<message>As soon as you're clear of the runway and your climb rate is at least 500 feet per minute, set the landing gear to UP.</message>
-<exit>
-<condition>             
-<equals> 
-<property>/controls/gear/gear-down</property>
-<value>0</value>
-</equals>
-</condition>
-</exit>
-</step>
+	<step>
+		<message>As soon as you're clear of the runway and your climb rate is at least 500 feet per minute, set the landing gear to UP.</message>
+		<exit>
+			<condition>             
+				<equals> 
+					<property>/controls/gear/gear-down</property>
+					<value>0</value>
+				</equals>
+			</condition>
+		</exit>
+	</step>
 
 </PropertyList>

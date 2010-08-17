@@ -21,8 +21,8 @@
  <sim>
 
   <description>Boeing 747-400 (First Officer)</description>
-  <author>Gijs de Rooy</author>
-  <status>early-production</status>
+  <author>Gijs de Rooy, Ivan Ngeow</author>
+  <status>beta</status>
   <flight-model>null</flight-model>
 
   <sound>
@@ -66,7 +66,7 @@
     <ground-level-nearplane-m type="double">6f</ground-level-nearplane-m>
     <x-offset-m type="double">0.55</x-offset-m>
     <y-offset-m type="double">3.7</y-offset-m>
-    <z-offset-m type="double">-23.8</z-offset-m>
+    <z-offset-m type="double">-24.05</z-offset-m>
     <pitch-offset-deg>-10</pitch-offset-deg>
     <default-field-of-view-deg type="double">65.0</default-field-of-view-deg>
    </config>
@@ -85,7 +85,7 @@
     <ground-level-nearplane-m type="double">6f</ground-level-nearplane-m>
     <x-offset-m type="double">-0.55</x-offset-m>
     <y-offset-m type="double">3.7</y-offset-m>
-    <z-offset-m type="double">-23.8</z-offset-m>
+    <z-offset-m type="double">-24.05</z-offset-m>
     <pitch-offset-deg>-10</pitch-offset-deg>
     <default-field-of-view-deg type="double">65.0</default-field-of-view-deg>
    </config>

@@ -384,7 +384,7 @@ var FlightDirector = {
 
 var in_range=0;
 var Defl = props.globals.getNode("/instrumentation/nav/heading-needle-deflection");
-var GSDefl = props.globals.getNode("/instrumentation/nav/gs-needle-deflection");
+var GSDefl = props.globals.getNode("/instrumentation/nav/gs-needle-deflection-norm");
 var DH = props.globals.getNode("/autopilot/route-manager/min-lock-altitude-agl-ft",1);
 
 setlistener("/sim/signals/fdm-initialized", func {
