@@ -48,21 +48,37 @@ afraid to pause your sim between steps.
 	<step>
 		<message>Turn LANDING and STROBE lights ON.</message>
 		<exit>
-			<condition>            
-				<equals>    
-					<property>/controls/lighting/landing-lights</property>
-					<value>1</value>
-				</equals>
-				<equals> 
-					<property>/controls/lighting/strobe</property>
-					<value>1</value>
-				</equals>
+			<condition>   
+				<and>
+					<equals>    
+						<property>/controls/lighting/landing-lights</property>
+						<value>1</value>
+					</equals>
+					<equals> 
+						<property>/controls/lighting/strobe</property>
+						<value>1</value>
+					</equals>
+				</and>
 			</condition>
 		</exit>
 	 </step>
 
 	<step>
 		<message>Enable Autothrottle.</message>
+		<exit>
+			<condition>            
+				<or>
+					<equals>    
+						<property>/autopilot/locks/speed</property>
+						<value>speed-with-throttle-ias</value>
+					</equals>
+					<equals> 
+						<property>/autopilot/locks/speed</property>
+						<value>speed-with-throttle-mach</value>
+					</equals>
+				</or>
+			</condition>
+		</exit>
 	</step>
 
 	<step>

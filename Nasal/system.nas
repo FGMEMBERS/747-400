@@ -1,10 +1,9 @@
+## Lights ##
+
 strobe_switch = props.globals.getNode("controls/switches/strobe", 1);
 var beacon = aircraft.light.new( "/sim/model/lights/beacon", [0.05, 1.2,], "/controls/lighting/beacon" );
-
 beacon_switch = props.globals.getNode("controls/lighting/beacon", 1);
 var strobe = aircraft.light.new( "/sim/model/lights/strobe", [0.05, 3,], "/controls/lighting/strobe" );
-
-
 
 ## Continious Ignition ##
 
@@ -59,14 +58,30 @@ setlistener("/controls/engines/auto-ignition", func(autoig){
 
 var autostart = func {
 
-setprop("/controls/engines/engine[0]/starter",1);
-setprop("/controls/engines/engine[1]/starter",1);
-setprop("/controls/engines/engine[2]/starter",1);
-setprop("/controls/engines/engine[3]/starter",1);
-setprop("/controls/engines/engine[0]/cutoff",1);
-setprop("/controls/engines/engine[1]/cutoff",1);
-setprop("/controls/engines/engine[2]/cutoff",1);
-setprop("/controls/engines/engine[3]/cutoff",1);
+	setprop("/controls/engines/engine[0]/starter",1);
+	setprop("/controls/engines/engine[1]/starter",1);
+	setprop("/controls/engines/engine[2]/starter",1);
+	setprop("/controls/engines/engine[3]/starter",1);
+	setprop("/controls/engines/engine[0]/cutoff",1);
+	setprop("/controls/engines/engine[1]/cutoff",1);
+	setprop("/controls/engines/engine[2]/cutoff",1);
+	setprop("/controls/engines/engine[3]/cutoff",1);
+	setprop("/controls/lighting/beacon",1);
+	setprop("/controls/lighting/nav-lights",1);
+	setprop("/controls/lighting/strobe",1);
+	setprop("/controls/fuel/tank[1]/x-feed",1);
+	setprop("/controls/fuel/tank[2]/x-feed",1);
+	setprop("/controls/fuel/tank[3]/x-feed",1);
+	setprop("/controls/fuel/tank[4]/x-feed",1);
+	setprop("/controls/fuel/tank[1]/pump-aft",1);
+	setprop("/controls/fuel/tank[1]/pump-fwd",1);
+	setprop("/controls/fuel/tank[2]/pump-aft",1);
+	setprop("/controls/fuel/tank[2]/pump-fwd",1);
+	setprop("/controls/fuel/tank[3]/pump-aft",1);
+	setprop("/controls/fuel/tank[3]/pump-fwd",1);
+	setprop("/controls/fuel/tank[4]/pump-aft",1);
+	setprop("/controls/fuel/tank[4]/pump-fwd",1);
+	setprop("/controls/fuel/tank[7]/pump",1);
 	if (getprop("/engines/engine[0]/n2") > 25) {
 		setprop("/controls/engines/engine[0]/cutoff",0);
 		setprop("/controls/engines/engine[1]/cutoff",0);
@@ -77,18 +92,15 @@ setprop("/controls/engines/engine[3]/cutoff",1);
 	if (getprop("/controls/engines/autostart")) settimer(autostart,0);
 }
 
-## Forced gear down on ground ##
+## Prevent gear from being retracted on ground ##
 
 controls.gearDown = func(v) {
 
     if (v < 0) {
-
         if(!getprop("gear/gear[1]/wow"))setprop("/controls/gear/gear-down", 0);
-
-    } elsif (v > 0) {
-
+    }
+	elsif (v > 0) {
       setprop("/controls/gear/gear-down", 1);
-
     }
 
 }

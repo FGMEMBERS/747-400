@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <sim>
+    <systems>
+      <electrical>
+	<path>Aircraft/747-400/Systems/744_elec.xml</path>
+      </electrical>
+    </systems>
+  </sim>
+
+  <engines>
+    <apu>
+      <n1 alias="/engines/engine[4]/n1" />
+      <n2 alias="/engines/engine[4]/n2" />
+      <egt-degf alias="/engines/engine[4]/egt_degf" />
+    </apu>
+  </engines>
+
+  <controls>
+    <electric>
+      <apu>0</apu>
+    </electric>
+  </controls>
+
+  <nasal>
+    <electrical>
+      <file>Aircraft/747-400/Nasal/744_elec.nas</file>
+    </electrical>
+  </nasal>
+</PropertyList>

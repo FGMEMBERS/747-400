@@ -1,11 +1,6 @@
 <?xml version="1.0"?>
 
-<!DOCTYPE PropertyList SYSTEM "panel.dtd">
 <!--
-objects:
-eng_pump_sw.1234[.ON|PRESS]
-dem_pump_sw.1234
-
 props:
 controls/hydraulic/
   demand-pump[0]

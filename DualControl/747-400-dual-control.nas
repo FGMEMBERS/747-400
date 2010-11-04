@@ -44,6 +44,8 @@ var copilot_connect_pilot = func (pilot) {
 	pilot.getNode(p, 1).alias(props.globals.getNode(p));
 	p = "orientation/heading-magnetic-deg";
 	pilot.getNode(p, 1).alias(props.globals.getNode(p));
+	p = "controls/electric/battery";
+	pilot.getNode(p, 1).alias(props.globals.getNode(p));
 	return[];
 
 }

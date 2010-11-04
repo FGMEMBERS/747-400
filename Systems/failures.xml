@@ -4,6 +4,7 @@
      # by Gijs de Rooy			     # -->
 
 <system name="failures">
+	<property>/accelerations/pilot-gdamped</property>
     
     <channel name="gear">
 
@@ -11,7 +12,7 @@
           <default value="/controls/failures/gear/broken"/>
             <test  logic="AND" value="1">
                 gear/gear-cmd-norm GT 0
-                /velocities/airspeed-kt GT 270
+                velocities/vc-kts GT 270
             </test>
 		<output>/controls/failures/gear/broken</output>
        </switch>

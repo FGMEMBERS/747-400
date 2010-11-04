@@ -54,6 +54,92 @@
  </offsets>
 </model>
 
+<!-- GEAR FIRE -->
+
+<model>
+ <path>Aircraft/747-400/Models/Effects/fire.xml</path> 
+ <name>gearfire.1</name>
+ <offsets> 
+  <x-m> 2.88</x-m>
+  <y-m>-6.07</y-m>
+  <z-m>-5.16</z-m>
+ </offsets>
+</model>
+
+<animation>
+ <type>select</type>
+ <object-name>gearfire.1</object-name>
+ <condition>
+  <equals>
+   <property>/gear/gear[1]/abnormal-temperature</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<model>
+ <path>Aircraft/747-400/Models/Effects/fire.xml</path> 
+ <name>gearfire.2</name>
+ <offsets> 
+  <x-m> 6.22</x-m>
+  <y-m>-1.92</y-m>
+  <z-m>-5.16</z-m>
+ </offsets>
+</model>
+
+<animation>
+ <type>select</type>
+ <object-name>gearfire.2</object-name>
+ <condition>
+  <equals>
+   <property>/gear/gear[2]/abnormal-temperature</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<model>
+ <path>Aircraft/747-400/Models/Effects/fire.xml</path> 
+ <name>gearfire.3</name>
+ <offsets> 
+  <x-m> 6.22</x-m>
+  <y-m> 1.92</y-m>
+  <z-m>-5.16</z-m>
+ </offsets>
+</model>
+
+<animation>
+ <type>select</type>
+ <object-name>gearfire.3</object-name>
+ <condition>
+  <equals>
+   <property>/gear/gear[3]/abnormal-temperature</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<model>
+ <path>Aircraft/747-400/Models/Effects/fire.xml</path> 
+ <name>gearfire.4</name>
+ <offsets> 
+  <x-m> 2.88</x-m>
+  <y-m> 6.07</y-m>
+  <z-m>-5.16</z-m>
+ </offsets>
+</model>
+
+<animation>
+ <type>select</type>
+ <object-name>gearfire.4</object-name>
+ <condition>
+  <equals>
+   <property>/gear/gear[4]/abnormal-temperature</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
 <!-- NOSE -->
 
 <animation>

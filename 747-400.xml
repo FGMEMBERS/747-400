@@ -347,7 +347,7 @@
                 <yaw> 0 </yaw>
             </orient>
             <feed>0</feed>
-             <feed>1</feed>
+            <feed>1</feed>
             <thruster file="direct">
                 <location unit="IN">
                     <x> 50 </x>
@@ -374,7 +374,7 @@
                 <yaw> 0 </yaw>
             </orient>
             <feed>0</feed>
-             <feed>2</feed>
+            <feed>2</feed>
             <thruster file="direct">
                 <location unit="IN">
                     <x> -250 </x>
@@ -401,7 +401,7 @@
                 <yaw> 0 </yaw>
             </orient>
             <feed>0</feed>
-             <feed>3</feed>
+            <feed>3</feed>
             <thruster file="direct">
                 <location unit="IN">
                     <x> -250 </x>
@@ -428,7 +428,7 @@
                 <yaw> 0 </yaw>
             </orient>
             <feed>0</feed>
-             <feed>4</feed>
+            <feed>4</feed>
             <thruster file="direct">
                 <location unit="IN">
                     <x> 50 </x>
@@ -563,6 +563,7 @@
     <system file="failures"/>
     <system file="flaps"/>
 	<system file="fuel"/>
+	<!-- <system file="gear"/> -->
     <system file="pushback"/>
 	<system file="wingflex"/>
 
@@ -646,11 +647,11 @@
 		<switch name="fcs/outboard-ailerons-lockout">
           <default value="1"/>
             <test  logic="AND" value="0">
-                /velocities/airspeed-kt > 238
+                velocities/vc-kts > 238
 				/controls/flight/flaps == 0
             </test>
 			<test  logic="AND" value="0">
-				/velocities/mach > 0.53
+				velocities/mach > 0.53
 				/controls/flight/flaps == 0
             </test>
 			<output>fcs/outboard-ailerons-unlocked</output>
@@ -800,7 +801,7 @@
                     <time>0.0000</time>
                 </setting>
                 <setting>
-                    <position>0.0330</position>
+                    <position>1.000</position>
                     <time>25.0000</time>
                 </setting>
                 <setting>
@@ -963,15 +964,15 @@
      <property>/autopilot/autobrake/right-brake-output</property>
      
      <channel name="Brakes">
-         <fcs_function name="fcs/left-brake-cmd">
-             <function>
+         <fcs_function name="left brake">
+             <function name="fcs/left-brake-cmd">
               <property>/autopilot/autobrake/left-brake-output</property>
              </function>
              <output>fcs/left-brake-cmd-norm</output>
         </fcs_function>
         
-        <fcs_function name="fcs/right-brake-cmd">
-             <function>
+        <fcs_function name="right brake">
+             <function name="fcs/right-brake-cmd">
               <property>/autopilot/autobrake/right-brake-output</property>
              </function>
              <output>fcs/right-brake-cmd-norm</output>

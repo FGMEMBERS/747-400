@@ -443,6 +443,38 @@
 </animation>
 
 <animation>
+ <type>pick</type>
+ <object-name>HDG_knob</object-name>
+ <action>
+  <button>0</button>
+  <repeatable>true</repeatable>  
+  <binding>
+   <command>property-adjust</command>
+   <property>/autopilot/settings/heading-bug-deg</property>
+   <step>1</step>
+   <min>000</min>
+   <max>359</max>
+  </binding>
+ </action>
+</animation>
+
+<animation>
+ <type>pick</type>
+ <object-name>HDG_knob</object-name>
+ <action>
+  <button>1</button>
+  <repeatable>true</repeatable>  
+  <binding>
+   <command>property-adjust</command>
+   <property>/autopilot/settings/heading-bug-deg</property>
+   <step>-1</step>
+   <min>000</min>
+   <max>359</max>
+  </binding>
+ </action>
+</animation>
+
+<animation>
   <type>pick</type>
   <object-name>HDG_HOLD</object-name>
   <action>
@@ -863,63 +895,63 @@
   </action>
  </animation>
  
- <animation>
-  <type>select</type>
-  <object-name>CMD_L_lit</object-name>
-  <object-name>CMD_C_lit</object-name>
-  <object-name>CMD_R_lit</object-name>
-  <condition>
-   <and>
-    <not>
-     <property>sim/gui/dialogs/autopilot/altitude-active</property>
-	 <property>sim/gui/dialogs/autopilot/heading-active</property>
-	 <property>sim/gui/dialogs/autopilot/speed-active</property>
-    </not>
-   </and>
-  </condition>
- </animation>
+<animation>
+	<type>select</type>
+	<object-name>CMD_L_lit</object-name>
+	<object-name>CMD_C_lit</object-name>
+	<object-name>CMD_R_lit</object-name>
+	<condition>
+		<and>
+			<property>sim/gui/dialogs/autopilot/altitude-active</property>
+			<property>sim/gui/dialogs/autopilot/heading-active</property>
+			<property>sim/gui/dialogs/autopilot/speed-active</property>
+		</and>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>CMD_L_unlit</object-name>
+	<object-name>CMD_C_unlit</object-name>
+	<object-name>CMD_R_unlit</object-name>
+	<condition>
+		<and>
+			<not>
+				<property>sim/gui/dialogs/autopilot/altitude-active</property>
+				<property>sim/gui/dialogs/autopilot/heading-active</property>
+				<property>sim/gui/dialogs/autopilot/speed-active</property>
+			</not>
+		</and>
+	</condition>
+</animation>
 
  <animation>
-  <type>select</type>
-  <object-name>CMD_L_unlit</object-name>
-  <object-name>CMD_C_unlit</object-name>
-  <object-name>CMD_R_unlit</object-name>
-  <condition>
-   <and>
-    <property>sim/gui/dialogs/autopilot/altitude-active</property>
-	<property>sim/gui/dialogs/autopilot/heading-active</property>
-	<property>sim/gui/dialogs/autopilot/speed-active</property>
-   </and>
-  </condition>
- </animation>
-
- <animation>
-  <type>pick</type>
-  <object-name>disengage</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>  
-   <binding>
-    <command>property-set</command>
-    <property>/autopilot/locks/passive-mode</property>
-	<value>1</value>
-   </binding>
-   <binding>
-    <command>property-set</command>
-    <property>sim/gui/dialogs/autopilot/altitude-active</property>
-	<value>0</value>
-   </binding>
-   <binding>
-    <command>property-set</command>
-    <property>sim/gui/dialogs/autopilot/heading-active</property>
-	<value>0</value>
-   </binding>
-   <binding>
-    <command>property-set</command>
-    <property>sim/gui/dialogs/autopilot/speed-active</property>
-	<value>0</value>
-   </binding>
-  </action>
+	<type>pick</type>
+	<object-name>disengage</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>property-set</command>
+			<property>/autopilot/locks/passive-mode</property>
+			<value>1</value>
+		</binding>
+		<binding>
+			<command>property-set</command>
+			<property>sim/gui/dialogs/autopilot/altitude-active</property>
+			<value>0</value>
+		</binding>
+		<binding>
+			<command>property-set</command>
+			<property>sim/gui/dialogs/autopilot/heading-active</property>
+			<value>0</value>
+		</binding>
+		<binding>
+			<command>property-set</command>
+			<property>sim/gui/dialogs/autopilot/speed-active</property>
+			<value>0</value>
+		</binding>
+	</action>
  </animation>
 
 <!-- EICAS -->

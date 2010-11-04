@@ -1,0 +1,60 @@
+     <channel name="Aeromechanical">
+        <fcs_function name="systems/fcu-flap-relief">
+         <function> 
+          <table>
+           <independentVar lookup="row">velocities/vc-kts</independentVar>
+           <independentVar lookup="colum">flap-cmd-norm</independentVar>
+            <tableData>
+                0.000 0.033 0.666 0.667 0.832 0.833 0.999 1.0
+              0 0.000 0.000 0.666 0.667 0.832 0.833 0.999 1.0
+            179 0.000 0.000 0.666 0.667 0.832 0.833 0.999 1.0
+            180 0.000 0.000 0.666 0.667 0.832 0.833 0.833 0.833
+            204 0.000 0.000 0.666 0.667 0.832 0.833 0.833 0.833
+            205 0.000 0.000 0.666 0.667 0.667 0.667 0.667 0.667
+            </tableData>
+          </table>
+         </function>
+         <output>fcs/flap-fcu-cmd</output>
+        </fcs_function>
+        <kinematic name="Flaps Control">
+            <input>fcs/flap-fcu-cmd</input>
+            <traverse>
+                <setting>
+                    <position>0.0</position>
+                    <time>0.0000</time>
+                </setting>
+                <setting>
+                    <position>5.0000</position>
+                    <time>25.0000</time>
+                </setting>
+                <setting>
+                    <position>10.0000</position>
+                    <time>12.0000</time>
+                </setting>
+                <setting>
+                    <position>20.0000</position>
+                    <time>12.0000</time>
+                </setting>
+                <setting>
+                    <position>25.0000</position>
+                    <time>12.0000</time>
+                </setting>
+                <setting>
+                    <position>30.0000</position>
+                    <time>12.0000</time>
+                </setting>
+            </traverse>
+            <output>fcs/flap-pos-deg</output>
+        </kinematic> 
+        <aerosurface_scale name="Flap Position Normalizer">
+          <input>fcs/flap-pos-deg</input>
+          <domain>
+            <min>0</min>
+            <max>30</max>
+          </domain>
+          <range>
+            <min>0</min>
+            <max>1</max>
+          </range>
+          <output>fcs/flap-pos-norm</output>
+        </aerosurface_scale> 

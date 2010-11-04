@@ -4,593 +4,501 @@
 <!-- # Boeing 747-400 EICAS by Gijs de Rooy  # -->
 <!-- # # # # # # # # # # # # # # # # # # # # # -->
 
- <path>eicas_fuel.ac</path>
+<path>eicas_fuel.ac</path>
 
 <!-- Total Fuel-->
- <animation>
-   <type>select</type>
-   <object-name>total.1</object-name>
-   <condition>
-    <greater-than>
-     <property>/fdm/jsbsim/propulsion/total-fuel-lbs</property>
-     <value>99995</value>
-    </greater-than>
-   </condition>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>total.1</object-name>
-<property>/fdm/jsbsim/propulsion/total-fuel-lbs</property>
-   <factor>0.000001</factor>
-   <step>100000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>select</type>
-   <object-name>total.2</object-name>
-   <condition>
-    <greater-than>
-     <property>/fdm/jsbsim/propulsion/total-fuel-lbs</property>
-     <value>9995</value>
-    </greater-than>
-   </condition>
- </animation>
-
-<animation>
-   <type>textranslate</type>
-   <object-name>total.2</object-name>
-<property>/fdm/jsbsim/propulsion/total-fuel-lbs</property>
-   <factor>0.00001</factor>
-   <step>10000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>total.3</object-name>
-<property>/fdm/jsbsim/propulsion/total-fuel-lbs</property>
-   <factor>0.0001</factor>
-   <step>1000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>total.4</object-name>
-<property>/fdm/jsbsim/propulsion/total-fuel-lbs</property>
-   <factor>0.001</factor>
-   <step>100.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
+ <model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0</y-m>
+		<z-m> 0.084</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/fdm/jsbsim/propulsion/total-fuel-lbs</property>
+			<format type="string">%03.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
 
 <!-- Center-->
 
- <animation>
-   <type>select</type>
-   <object-name>center.1</object-name>
-   <condition>
-    <greater-than>
-     <property>/consumables/fuel/tank/level-lbs</property>
-     <value>99995</value>
-    </greater-than>
-   </condition>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>center.1</object-name>
-<property>/consumables/fuel/tank/level-lbs</property>
-   <factor>0.000001</factor>
-   <step>100000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>select</type>
-   <object-name>center.2</object-name>
-   <condition>
-    <greater-than>
-     <property>/consumables/fuel/tank/level-lbs</property>
-     <value>9995</value>
-    </greater-than>
-   </condition>
- </animation>
-
-<animation>
-   <type>textranslate</type>
-   <object-name>center.2</object-name>
-<property>/consumables/fuel/tank/level-lbs</property>
-   <factor>0.00001</factor>
-   <step>10000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>center.3</object-name>
-<property>/consumables/fuel/tank/level-lbs</property>
-   <factor>0.0001</factor>
-   <step>1000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>center.4</object-name>
-<property>/consumables/fuel/tank/level-lbs</property>
-   <factor>0.001</factor>
-   <step>100.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0</y-m>
+		<z-m> 0.028</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[0]/level-lbs</property>
+			<format type="string">%03.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
 
 <!-- Main #1-->
 
- <animation>
-   <type>select</type>
-   <object-name>main1.1</object-name>
-   <condition>
-    <greater-than>
-     <property>/consumables/fuel/tank[1]/level-lbs</property>
-     <value>99995</value>
-    </greater-than>
-   </condition>
- </animation>
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.071</y-m>
+		<z-m>-0.031</z-m>
+	</offsets>
+	<condition>
+		<greater-than-equals>
+			<property>/consumables/fuel/tank[1]/level-lbs</property>
+			<value>1985</value>
+		</greater-than-equals>
+	</condition>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[1]/level-lbs</property>
+			<format type="string">%02.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
 
- <animation>
-   <type>textranslate</type>
-   <object-name>main1.1</object-name>
-<property>/consumables/fuel/tank[1]/level-lbs</property>
-   <factor>0.000001</factor>
-   <step>100000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>select</type>
-   <object-name>main1.2</object-name>
-   <condition>
-    <greater-than>
-     <property>/consumables/fuel/tank[1]/level-lbs</property>
-     <value>9995</value>
-    </greater-than>
-   </condition>
- </animation>
-
-<animation>
-   <type>textranslate</type>
-   <object-name>main1.2</object-name>
-<property>/consumables/fuel/tank[2]/level-lbs</property>
-   <factor>0.00001</factor>
-   <step>10000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>main1.3</object-name>
-<property>/consumables/fuel/tank[1]/level-lbs</property>
-   <factor>0.0001</factor>
-   <step>1000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>main1.4</object-name>
-<property>/consumables/fuel/tank[1]/level-lbs</property>
-   <factor>0.001</factor>
-   <step>100.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.071</y-m>
+		<z-m>-0.031</z-m>
+	</offsets>
+	<condition>
+		<less-than>
+			<property>/consumables/fuel/tank[1]/level-lbs</property>
+			<value>1985</value>
+		</less-than>
+	</condition>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[1]/level-lbs</property>
+			<format type="string">%02.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
 
 <!-- Main #2-->
 
- <animation>
-   <type>select</type>
-   <object-name>main2.1</object-name>
-   <condition>
-    <greater-than>
-     <property>/consumables/fuel/tank[2]/level-lbs</property>
-     <value>9995</value>
-    </greater-than>
-   </condition>
- </animation>
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.037</y-m>
+		<z-m>-0.017</z-m>
+	</offsets>
+	<condition>
+		<greater-than-equals>
+			<property>/consumables/fuel/tank[2]/level-lbs</property>
+			<value>1985</value>
+		</greater-than-equals>
+	</condition>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[2]/level-lbs</property>
+			<format type="string">%03.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
 
- <animation>
-   <type>textranslate</type>
-   <object-name>main2.1</object-name>
-<property>/consumables/fuel/tank[2]/level-lbs</property>
-   <factor>0.00001</factor>
-   <step>10000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
-<animation>
-   <type>textranslate</type>
-   <object-name>main2.2</object-name>
-<property>/consumables/fuel/tank[2]/level-lbs</property>
-   <factor>0.0001</factor>
-   <step>1000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>main2.3</object-name>
-<property>/consumables/fuel/tank[2]/level-lbs</property>
-   <factor>0.001</factor>
-   <step>100.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.037</y-m>
+		<z-m>-0.017</z-m>
+	</offsets>
+	<condition>
+		<less-than>
+			<property>/consumables/fuel/tank[2]/level-lbs</property>
+			<value>1985</value>
+		</less-than>
+	</condition>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[2]/level-lbs</property>
+			<format type="string">%03.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
 
 <!-- Main #3-->
 
- <animation>
-   <type>select</type>
-   <object-name>main3.1</object-name>
-   <condition>
-    <greater-than>
-     <property>/consumables/fuel/tank[3]/level-lbs</property>
-     <value>9995</value>
-    </greater-than>
-   </condition>
- </animation>
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0.037</y-m>
+		<z-m>-0.017</z-m>
+	</offsets>
+	<condition>
+		<greater-than-equals>
+			<property>/consumables/fuel/tank[3]/level-lbs</property>
+			<value>1985</value>
+		</greater-than-equals>
+	</condition>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[3]/level-lbs</property>
+			<format type="string">%03.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
 
- <animation>
-   <type>textranslate</type>
-   <object-name>main3.1</object-name>
-<property>/consumables/fuel/tank[3]/level-lbs</property>
-   <factor>0.00001</factor>
-   <step>10000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
-<animation>
-   <type>textranslate</type>
-   <object-name>main3.2</object-name>
-<property>/consumables/fuel/tank[3]/level-lbs</property>
-   <factor>0.0001</factor>
-   <step>1000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>main3.3</object-name>
-<property>/consumables/fuel/tank[3]/level-lbs</property>
-   <factor>0.001</factor>
-   <step>100.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0.037</y-m>
+		<z-m>-0.017</z-m>
+	</offsets>
+	<condition>
+		<less-than>
+			<property>/consumables/fuel/tank[3]/level-lbs</property>
+			<value>1985</value>
+		</less-than>
+	</condition>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[3]/level-lbs</property>
+			<format type="string">%03.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
 
 <!-- Main #4-->
 
- <animation>
-   <type>select</type>
-   <object-name>main4.1</object-name>
-   <condition>
-    <greater-than>
-     <property>/consumables/fuel/tank[4]/level-lbs</property>
-     <value>99995</value>
-    </greater-than>
-   </condition>
- </animation>
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0.071</y-m>
+		<z-m>-0.031</z-m>
+	</offsets>
+	<condition>
+		<greater-than-equals>
+			<property>/consumables/fuel/tank[4]/level-lbs</property>
+			<value>1985</value>
+		</greater-than-equals>
+	</condition>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[4]/level-lbs</property>
+			<format type="string">%02.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
 
- <animation>
-   <type>textranslate</type>
-   <object-name>main4.1</object-name>
-   <property>/consumables/fuel/tank[4]/level-lbs</property>
-   <factor>0.000001</factor>
-   <step>100000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>select</type>
-   <object-name>main4.2</object-name>
-   <condition>
-    <greater-than>
-     <property>/consumables/fuel/tank[4]/level-lbs</property>
-     <value>9995</value>
-    </greater-than>
-   </condition>
- </animation>
-
-<animation>
-   <type>textranslate</type>
-   <object-name>main4.2</object-name>
-<property>/consumables/fuel/tank[4]/level-lbs</property>
-   <factor>0.00001</factor>
-   <step>10000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>main4.3</object-name>
-<property>/consumables/fuel/tank[4]/level-lbs</property>
-   <factor>0.0001</factor>
-   <step>1000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>main4.4</object-name>
-<property>/consumables/fuel/tank[4]/level-lbs</property>
-   <factor>0.001</factor>
-   <step>100.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0.071</y-m>
+		<z-m>-0.031</z-m>
+	</offsets>
+	<condition>
+		<less-than>
+			<property>/consumables/fuel/tank[4]/level-lbs</property>
+			<value>1985</value>
+		</less-than>
+	</condition>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[4]/level-lbs</property>
+			<format type="string">%02.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
 
 <!-- Res #2-->
 
- <animation>
-   <type>select</type>
-   <object-name>res2.1</object-name>
-   <condition>
-    <greater-than>
-     <property>/consumables/fuel/tank[5]/level-lbs</property>
-     <value>9995</value>
-    </greater-than>
-   </condition>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>res2.1</object-name>
-   <property>/consumables/fuel/tank[5]/level-lbs</property>
-   <factor>0.00001</factor>
-   <step>10000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
-<animation>
-   <type>textranslate</type>
-   <object-name>res2.2</object-name>
-<property>/consumables/fuel/tank[5]/level-lbs</property>
-   <factor>0.0001</factor>
-   <step>1000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>res2.3</object-name>
-<property>/consumables/fuel/tank[5]/level-lbs</property>
-   <factor>0.001</factor>
-   <step>100.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.037</y-m>
+		<z-m>-0.045</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[5]/level-lbs</property>
+			<format type="string">%01.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
 
 <!-- Res #3-->
 
- <animation>
-   <type>select</type>
-   <object-name>res3.1</object-name>
-   <condition>
-    <greater-than>
-     <property>/consumables/fuel/tank[6]/level-lbs</property>
-     <value>9995</value>
-    </greater-than>
-   </condition>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>res3.1</object-name>
-<property>/consumables/fuel/tank[6]/level-lbs</property>
-   <factor>0.00001</factor>
-   <step>10000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
-<animation>
-   <type>textranslate</type>
-   <object-name>res3.2</object-name>
-<property>/consumables/fuel/tank[6]/level-lbs</property>
-   <factor>0.0001</factor>
-   <step>1000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
-
- <animation>
-   <type>textranslate</type>
-   <object-name>res3.3</object-name>
-<property>/consumables/fuel/tank[6]/level-lbs</property>
-   <factor>0.001</factor>
-   <step>100.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0.037</y-m>
+		<z-m>-0.045</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[6]/level-lbs</property>
+			<format type="string">%01.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
 
 <!-- Stab -->
 
- <animation>
-   <type>select</type>
-   <object-name>stab.1</object-name>
-   <condition>
-    <greater-than>
-     <property>/consumables/fuel/tank[7]/level-lbs</property>
-     <value>99995</value>
-    </greater-than>
-   </condition>
- </animation>
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0</y-m>
+		<z-m>-0.073</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/consumables/fuel/tank[7]/level-lbs</property>
+			<format type="string">%02.1f</format>
+			<factor>0.001</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">1.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">1.0</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
 
 <animation>
-   <type>textranslate</type>
-   <object-name>stab.1</object-name>
-   <property>/consumables/fuel/tank[7]/level-lbs</property>
-   <factor>0.000001</factor>
-   <step>100000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
+	<type>select</type>
+	<object-name>pump7</object-name>
+	<condition>
+		<property>controls/fuel/tank[1]/pump</property>
+	</condition>
+</animation>
 
- <animation>
-   <type>select</type>
-   <object-name>stab.2</object-name>
-   <condition>
-    <greater-than>
-     <property>/consumables/fuel/tank[7]/level-lbs</property>
-     <value>9995</value>
-    </greater-than>
-   </condition>
- </animation>
+<animation>
+	<type>select</type>
+	<object-name>xfeedvalve.1</object-name>
+	<condition>
+		<not>
+			<property>controls/fuel/tank[1]/x-feed</property>
+		</not>
+	</condition>
+</animation>
 
- <animation>
-   <type>textranslate</type>
-   <object-name>stab.2</object-name>
-   <property>/consumables/fuel/tank[7]/level-lbs</property>
-   <factor>0.00001</factor>
-   <step>10000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
+<animation>
+	<type>select</type>
+	<object-name>xfeedvalve.2</object-name>
+	<condition>
+		<not>
+			<property>controls/fuel/tank[2]/x-feed</property>
+		</not>
+	</condition>
+</animation>
 
- <animation>
-   <type>textranslate</type>
-   <object-name>stab.3</object-name>
-   <property>/consumables/fuel/tank[7]/level-lbs</property>
-   <factor>0.0001</factor>
-   <step>1000.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
+<animation>
+	<type>select</type>
+	<object-name>xfeedvalve.3</object-name>
+	<condition>
+		<not>
+			<property>controls/fuel/tank[3]/x-feed</property>
+		</not>
+	</condition>
+</animation>
 
- <animation>
-   <type>textranslate</type>
-   <object-name>stab.4</object-name>
-   <property>/consumables/fuel/tank[7]/level-lbs</property>
-   <factor>0.001</factor>
-   <step>100.0</step>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
- </animation>
+<animation>
+	<type>select</type>
+	<object-name>xfeedvalve.4</object-name>
+	<condition>
+		<not>
+			<property>controls/fuel/tank[4]/x-feed</property>
+		</not>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.res2</object-name>
+	<condition>
+		<property>fdm/jsbsim/propulsion/systems/transfer-5-2-qty</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.res3</object-name>
+	<condition>
+		<property>fdm/jsbsim/propulsion/systems/transfer-6-3-qty</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.stab</object-name>
+	<condition>
+		<property>fdm/jsbsim/propulsion/systems/transfer-0-7-qt</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.0</object-name>
+	<condition>
+		<property>/controls/fuel/tank[0]/pump</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.1.fwd</object-name>
+	<condition>
+		<property>/controls/fuel/tank[1]/pump-fwd</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.1.aft</object-name>
+	<condition>
+		<property>/controls/fuel/tank[1]/pump-aft</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.2.fwd</object-name>
+	<condition>
+		<property>/controls/fuel/tank[2]/pump-fwd</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.2.aft</object-name>
+	<condition>
+		<property>/controls/fuel/tank[2]/pump-aft</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.3.fwd</object-name>
+	<condition>
+		<property>/controls/fuel/tank[3]/pump-fwd</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.3.aft</object-name>
+	<condition>
+		<property>/controls/fuel/tank[3]/pump-aft</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.4.fwd</object-name>
+	<condition>
+		<property>/controls/fuel/tank[4]/pump-fwd</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>pump.4.aft</object-name>
+	<condition>
+		<property>/controls/fuel/tank[4]/pump-aft</property>
+	</condition>
+</animation>
 
 </PropertyList>

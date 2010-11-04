@@ -160,10 +160,12 @@
  <object-name>wing_right.3</object-name>
  <object-name>GreenLight</object-name>
  <object-name>StrobeLight.R</object-name>
+ <object-name>engine.3</object-name>
  <object-name>eng.3</object-name>
  <object-name>eng.3_fan</object-name>
  <object-name>eng.3_reverser</object-name>
  <object-name>enginefire.3</object-name>
+ <object-name>engine.4</object-name>
  <object-name>eng.4</object-name>
  <object-name>eng.4_fan</object-name>
  <object-name>eng.4_reverser</object-name>
@@ -216,6 +218,7 @@
  <object-name>wing_right.3</object-name>
  <object-name>GreenLight</object-name>
  <object-name>StrobeLight.R</object-name>
+ <object-name>engine.4</object-name>
  <object-name>eng.4</object-name>
  <object-name>eng.4_fan</object-name>
  <object-name>eng.4_reverser</object-name>
@@ -279,10 +282,12 @@
  <object-name>wing_left.3</object-name>
  <object-name>RedLight</object-name>
  <object-name>StrobeLight.L</object-name>
+ <object-name>engine.1</object-name>
  <object-name>eng.1</object-name>
  <object-name>eng.1_fan</object-name>
  <object-name>eng.1_reverser</object-name>
  <object-name>enginefire.1</object-name>
+ <object-name>engine.2</object-name>
  <object-name>eng.2</object-name>
  <object-name>eng.2_fan</object-name>
  <object-name>eng.2_reverser</object-name>
@@ -335,6 +340,7 @@
  <object-name>wing_left.3</object-name>
  <object-name>RedLight</object-name>
  <object-name>StrobeLight.L</object-name>
+ <object-name>engine.1</object-name>
  <object-name>eng.1</object-name>
  <object-name>eng.1_fan</object-name>
  <object-name>eng.1_reverser</object-name>
@@ -843,79 +849,71 @@
 
 <!-- FAN ENGINE #1 -->
 
-<animation>
- <type>spin</type>
- <object-name>eng.1_fan</object-name>
- <property>/engines/engine[0]/n1</property>
- <factor>2.5</factor>
- <center>
-  <x-m>0</x-m>
-  <y-m>-21.23</y-m>
-  <z-m>-1.97</z-m>
- </center>
- <axis>
-  <x>-1.0</x>
-  <y>0</y>
-  <z>0</z>
- </axis>
-</animation>
+<model>
+	<path>Aircraft/747-400/Models/Engines/GE_CF6-80C2B1F.xml</path> 
+	<name>engine.1</name>
+	<offsets> 
+		<x-m>  4.83</x-m>
+		<y-m>-21.23</y-m>
+		<z-m> -1.99</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<n1>/engines/engine[0]/n1</n1>
+		</params>
+	</overlay>
+</model>
 
 <!-- FAN ENGINE #2 -->
 
-<animation>
- <type>spin</type>
- <object-name>eng.2_fan</object-name>
- <property>/engines/engine[1]/n1</property>
- <factor>2.5</factor>
- <center>
-  <x-m>0</x-m>
-  <y-m>-13.447</y-m>
-  <z-m>-2.575</z-m>
- </center>
- <axis>
-  <x>-1.0</x>
-  <y>0</y>
-  <z>0</z>
- </axis>
-</animation>
+<model>
+	<path>Aircraft/747-400/Models/Engines/GE_CF6-80C2B1F.xml</path> 
+	<name>engine.2</name>
+	<offsets> 
+		<x-m> -2.67</x-m>
+		<y-m>-13.46</y-m>
+		<z-m> -2.60</z-m>
+	</offsets>
+ 	<overlay>
+		<params>
+			<n1>/engines/engine[1]/n1</n1>
+		</params>
+	</overlay>
+</model>
 
 <!-- FAN ENGINE #3 -->
 
-<animation>
- <type>spin</type>
- <object-name>eng.3_fan</object-name>
- <property>/engines/engine[2]/n1</property>
- <factor>2.5</factor>
- <center>
-  <x-m>0</x-m>
-  <y-m>13.447</y-m>
-  <z-m>-2.575</z-m>
- </center>
- <axis>
-  <x>-1.0</x>
-  <y>0</y>
-  <z>0</z>
- </axis>
-</animation>
+<model>
+	<path>Aircraft/747-400/Models/Engines/GE_CF6-80C2B1F.xml</path> 
+	<name>engine.3</name>
+	<offsets> 
+		<x-m> -2.67</x-m>
+		<y-m> 13.46</y-m>
+		<z-m> -2.60</z-m>
+	</offsets>
+ 	<overlay>
+		<params>
+			<n1>/engines/engine[2]/n1</n1>
+		</params>
+	</overlay>
+</model>
 
 <!-- FAN ENGINE #4 -->
 
-<animation>
- <type>spin</type>
- <object-name>eng.4_fan</object-name>
- <property>/engines/engine[3]/n1</property>
- <factor>2.5</factor>
- <center>
-  <x-m>0</x-m>
-  <y-m>21.23</y-m>
-  <z-m>-1.97</z-m>
- </center>
- <axis>
-  <x>-1.0</x>
-  <y>0</y>
-  <z>0</z>
- </axis>
-</animation>
+<model>
+	<path>Aircraft/747-400/Models/Engines/GE_CF6-80C2B1F.xml</path> 
+	<name>engine.4</name>
+	<offsets> 
+		<x-m>  4.83</x-m>
+		<y-m> 21.23</y-m>
+		<z-m> -1.99</z-m>
+	</offsets>
+ 	<overlay>
+		<params>
+			<n1>/engines/engine[3]/n1</n1>
+		</params>
+	</overlay>
+</model>
 
 <!-- LEADING EDGE FLAPS
      LEFT INBOARD      -->

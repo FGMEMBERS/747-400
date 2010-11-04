@@ -485,110 +485,110 @@
  </animation>
 
 <animation>
-<type>rotate</type>
-<object-name>fuel_ctrl.1</object-name>
-<property>/controls/engines/engine/cutoff</property>
-<factor>-50</factor>
-<center>
-   <x-m>1.230</x-m>
-   <y-m>0</y-m>
-   <z-m>0.465</z-m>
-</center>
-<axis>
-<x>0</x>
-<y>1</y>
-<z>0</z>
-</axis>
+	<type>rotate</type>
+	<object-name>fuel_ctrl.1</object-name>
+	<property>/controls/engines/engine/cutoff</property>
+	<factor>80</factor>
+	<center>
+		<x-m>1.239</x-m>
+		<y-m>0</y-m>
+		<z-m>0.465</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
 </animation>
-
- <animation>
-  <type>pick</type>
-  <object-name>fuel_ctrl.2</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>  
-   <binding>
-    <command>property-toggle</command>
-    <property>/controls/engines/engine[1]/cutoff</property>
-   </binding>
-  </action>
- </animation>
 
 <animation>
-<type>rotate</type>
-<object-name>fuel_ctrl.2</object-name>
-<property>/controls/engines/engine[1]/cutoff</property>
-<factor>-50</factor>
-<center>
-   <x-m>1.230</x-m>
-   <y-m>0</y-m>
-   <z-m>0.465</z-m>
-</center>
-<axis>
-<x>0</x>
-<y>1</y>
-<z>0</z>
-</axis>
+	<type>pick</type>
+	<object-name>fuel_ctrl.2</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine[1]/cutoff</property>
+		</binding>
+	</action>
 </animation>
-
- <animation>
-  <type>pick</type>
-  <object-name>fuel_ctrl.3</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>  
-   <binding>
-    <command>property-toggle</command>
-    <property>/controls/engines/engine[2]/cutoff</property>
-   </binding>
-  </action>
- </animation>
 
 <animation>
-<type>rotate</type>
-<object-name>fuel_ctrl.3</object-name>
-<property>/controls/engines/engine[2]/cutoff</property>
-<factor>-50</factor>
-<center>
-   <x-m>1.230</x-m>
-   <y-m>0</y-m>
-   <z-m>0.465</z-m>
-</center>
-<axis>
-<x>0</x>
-<y>1</y>
-<z>0</z>
-</axis>
+	<type>rotate</type>
+	<object-name>fuel_ctrl.2</object-name>
+	<property>/controls/engines/engine[1]/cutoff</property>
+	<factor>80</factor>
+	<center>
+		<x-m>1.239</x-m>
+		<y-m>0</y-m>
+		<z-m>0.465</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
 </animation>
 
- <animation>
-  <type>pick</type>
-  <object-name>fuel_ctrl.4</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>  
-   <binding>
-    <command>property-toggle</command>
-    <property>/controls/engines/engine[3]/cutoff</property>
-   </binding>
-  </action>
- </animation>
+<animation>
+	<type>pick</type>
+	<object-name>fuel_ctrl.3</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine[2]/cutoff</property>
+		</binding>
+	</action>
+</animation>
 
- <animation>
-  <type>rotate</type>
-  <object-name>fuel_ctrl.4</object-name>
-  <property>/controls/engines/engine[3]/cutoff</property>
-  <factor>-50</factor>
-  <center>
-   <x-m>1.230</x-m>
-   <y-m>0</y-m>
-   <z-m>0.465</z-m>
-  </center>
-  <axis>
-   <x>0</x>
-   <y>1</y>
-   <z>0</z>
-  </axis>
+<animation>
+	<type>rotate</type>
+	<object-name>fuel_ctrl.3</object-name>
+	<property>/controls/engines/engine[2]/cutoff</property>
+	<factor>80</factor>
+	<center>
+		<x-m>1.239</x-m>
+		<y-m>0</y-m>
+		<z-m>0.465</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>fuel_ctrl.4</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine[3]/cutoff</property>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>fuel_ctrl.4</object-name>
+	<property>/controls/engines/engine[3]/cutoff</property>
+	<factor>80</factor>
+	<center>
+		<x-m>1.239</x-m>
+		<y-m>0</y-m>
+		<z-m>0.465</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
  </animation>
 
 <!-- RADIOS -->
@@ -596,7 +596,7 @@
   <animation>
     <type>textranslate</type>
     <object-name>freq_active.1</object-name>
- <property>/instrumentation/comm/frequencies/selected-mhz</property>
+	<property>/instrumentation/comm/frequencies/selected-mhz</property>
     <factor>0.001</factor>
     <step>100.0</step>
     <axis>
@@ -609,7 +609,7 @@
    <animation>
     <type>textranslate</type>
     <object-name>freq_active.2</object-name>
- <property>/instrumentation/comm/frequencies/selected-mhz</property>
+	<property>/instrumentation/comm/frequencies/selected-mhz</property>
     <factor>0.01</factor>
     <step>10.0</step>
     <axis>
@@ -622,7 +622,7 @@
    <animation>
     <type>textranslate</type>
     <object-name>freq_active.3</object-name>
-<property>/instrumentation/comm/frequencies/selected-mhz</property>
+	<property>/instrumentation/comm/frequencies/selected-mhz</property>
     <factor>0.1</factor>
     <step>1.0</step>
     <axis>
@@ -635,7 +635,7 @@
    <animation>
     <type>textranslate</type>
     <object-name>freq_active.4</object-name>
- <property>/instrumentation/comm/frequencies/selected-mhz</property>
+	<property>/instrumentation/comm/frequencies/selected-mhz</property>
     <factor>1.0</factor>
     <step>0.1</step>
     <axis>
@@ -648,7 +648,7 @@
    <animation>
     <type>textranslate</type>
     <object-name>freq_active.5</object-name>
-<property>/instrumentation/comm/frequencies/selected-mhz</property>
+	<property>/instrumentation/comm/frequencies/selected-mhz</property>
     <factor>10.0</factor>
     <step>0.01</step>
     <axis>
@@ -676,7 +676,7 @@
   <animation>
     <type>textranslate</type>
     <object-name>freq_stby.1</object-name>
- <property>/instrumentation/comm/frequencies/standby-mhz</property>
+	<property>/instrumentation/comm/frequencies/standby-mhz</property>
     <factor>0.001</factor>
     <step>100.0</step>
     <axis>
@@ -689,7 +689,7 @@
    <animation>
     <type>textranslate</type>
     <object-name>freq_stby.2</object-name>
- <property>/instrumentation/comm/frequencies/standby-mhz</property>
+	<property>/instrumentation/comm/frequencies/standby-mhz</property>
     <factor>0.01</factor>
     <step>10.0</step>
     <axis>
@@ -702,7 +702,7 @@
    <animation>
     <type>textranslate</type>
     <object-name>freq_stby.3</object-name>
-<property>/instrumentation/comm/frequencies/standby-mhz</property>
+	<property>/instrumentation/comm/frequencies/standby-mhz</property>
     <factor>0.1</factor>
     <step>1.0</step>
     <axis>
@@ -715,7 +715,7 @@
    <animation>
     <type>textranslate</type>
     <object-name>freq_stby.4</object-name>
- <property>/instrumentation/comm/frequencies/standby-mhz</property>
+	<property>/instrumentation/comm/frequencies/standby-mhz</property>
     <factor>1.0</factor>
     <step>0.1</step>
     <axis>
@@ -728,7 +728,7 @@
    <animation>
     <type>textranslate</type>
     <object-name>freq_stby.5</object-name>
-<property>/instrumentation/comm/frequencies/standby-mhz</property>
+	<property>/instrumentation/comm/frequencies/standby-mhz</property>
     <factor>10.0</factor>
     <step>0.01</step>
     <axis>

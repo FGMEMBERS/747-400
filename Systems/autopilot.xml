@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
  
 <PropertyList>
-
+  
 	<!-- Heading hold --> 
 	
 	<pi-simple-controller>
@@ -11,7 +11,7 @@
 			<Kp>45.0</Kp>
 			<Ki>0.40</Ki>
 		</config>
-		<input>/instruments/nav[0]/heading-needle-deflection</input>
+		<input>/instrumentation/nav[0]/heading-needle-deflection</input>
 		<output>/autopilot/internal/course-error-deg</output>
 		<min>-45.0</min>
 		<max>45.0</max>

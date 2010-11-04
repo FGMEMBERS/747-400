@@ -538,7 +538,7 @@
       <x>54</x><y>43</y>
       <w>38</w><h>19</h>
       <layers><layer><layer>
-	<texture><x1>0.375</x1><x2>0.5</x2></texture>
+	<texture><x1>0.625</x1><x2>0.75</x2></texture>
       </layer></layer></layers>
       <actions><action><binding>
 	<command>nasal</command>
@@ -567,7 +567,7 @@
       <x>120</x><y>43</y>
       <w>38</w><h>19</h>
       <layers><layer><layer>
-	<texture><x1>0.375</x1><x2>0.5</x2></texture>
+	<texture><x1>0.625</x1><x2>0.75</x2></texture>
       </layer></layer></layers>
       <actions><action><binding>
 	<command>nasal</command>
@@ -596,7 +596,7 @@
       <x>199</x><y>43</y>
       <w>38</w><h>19</h>
       <layers><layer><layer>
-	<texture><x1>0.375</x1><x2>0.5</x2></texture>
+	<texture><x1>0.625</x1><x2>0.75</x2></texture>
       </layer></layer></layers>
       <actions><action><binding>
 	<command>nasal</command>
@@ -625,7 +625,7 @@
       <x>265</x><y>43</y>
       <w>38</w><h>19</h>
       <layers><layer><layer>
-	<texture><x1>0.375</x1><x2>0.5</x2></texture>
+	<texture><x1>0.625</x1><x2>0.75</x2></texture>
       </layer></layer></layers>
       <actions><action><binding>
 	<command>nasal</command>

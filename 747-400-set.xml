@@ -42,6 +42,10 @@
 			<name>Autobrake System</name>
 			<path>Aircraft/747-400/Systems/autobrake.xml</path>
 		</autopilot>
+		<autopilot>
+			<name>Autospoilers System</name>
+			<path>Aircraft/747-400/Systems/autospoilers.xml</path>
+		</autopilot>
 		<electrical>
 			<path>Aircraft/747-400/Systems/744_elec.xml</path>
 		</electrical>
@@ -65,7 +69,7 @@
 		<internal type="bool">true</internal>
 		<config>
 			<x-offset-m type="double">-0.55</x-offset-m>
-			<y-offset-m type="double">3.7</y-offset-m>
+			<y-offset-m type="double">3.8</y-offset-m>
 			<z-offset-m type="double">-24.05</z-offset-m>
 			<pitch-offset-deg>-10</pitch-offset-deg>
 			<default-field-of-view-deg type="double">65.0</default-field-of-view-deg>
@@ -99,7 +103,7 @@
 			<from-model-idx type="int">0</from-model-idx>
 			<ground-level-nearplane-m type="double">6f</ground-level-nearplane-m>
 			<x-offset-m type="double">0.55</x-offset-m>
-			<y-offset-m type="double">3.7</y-offset-m>
+			<y-offset-m type="double">3.8</y-offset-m>
 			<z-offset-m type="double">-24.05</z-offset-m>
 			<pitch-offset-deg>-10</pitch-offset-deg>
 			<default-field-of-view-deg type="double">65.0</default-field-of-view-deg>
@@ -342,16 +346,16 @@ left mouse button and counter clockwise using the middle mouse button.
 
 	<fuel>
 		<tank n="1">
-			<x-feed>1</x-feed>
+			<x-feed>0</x-feed>
 		</tank>
 		<tank n="2">
-			<x-feed>1</x-feed>
+			<x-feed>0</x-feed>
 		</tank>
 		<tank n="3">
-			<x-feed>1</x-feed>
+			<x-feed>0</x-feed>
 		</tank>
 		<tank n="4">
-			<x-feed>1</x-feed>
+			<x-feed>0</x-feed>
 		</tank>
 	</fuel>
 
@@ -398,7 +402,7 @@ left mouse button and counter clockwise using the middle mouse button.
 		<turnoff-light-l>0</turnoff-light-l>
 		<turnoff-light-r>0</turnoff-light-r>
 	</lighting>
-
+	
 </controls>
 
 <input>
@@ -452,6 +456,21 @@ left mouse button and counter clockwise using the middle mouse button.
 	</keyboard>
 </input>
 
+<aircraft>
+	<jetway-pos>
+		<x-tra>0</x-tra>
+		<y-rot>2</y-rot>
+		<z-rot>16</z-rot>
+		<hood-rot>0</hood-rot>
+	</jetway-pos>
+	<jetway2-pos>
+		<x-tra>2.5</x-tra>
+		<y-rot>4</y-rot>
+		<z-rot>47</z-rot>
+		<hood-rot>0</hood-rot>
+	</jetway2-pos>
+</aircraft>
+
 <autopilot>
     <autobrake>
 		<step type="int">-1</step> <!-- OFF on selection -->
@@ -461,6 +480,12 @@ left mouse button and counter clockwise using the middle mouse button.
 			<pilot-input type="double">0.25</pilot-input>
 		</config>
 	</autobrake>
+	<autospoilers>
+		<step type="int">0</step> <!-- OFF on selection -->
+		<config>
+			<idle-throttle type="double">0.10</idle-throttle>
+		</config>
+	</autospoilers>
 	<config>
 		<min-climb-speed-kt type="float">150.0</min-climb-speed-kt>
 		<best-climb-speed-kt type="float">200.0</best-climb-speed-kt>
@@ -630,7 +655,7 @@ left mouse button and counter clockwise using the middle mouse button.
 		<file>Aircraft/747-400/Nasal/eicas.nas</file>
 		<!-- <file>Aircraft/747-400/Nasal/Electrical.nas</file> -->
 		<file>Aircraft/747-400/Nasal/flightdirector.nas</file>
-		<file>Aircraft/747-400/Nasal/ins.nas</file>
+		<!-- <file>Aircraft/747-400/Nasal/ins.nas</file>-->
 		<file>Aircraft/747-400/Nasal/liveries.nas</file>
 		<file>Aircraft/747-400/Nasal/system.nas</file>
 		<file>Aircraft/747-400/Nasal/vspeeds.nas</file>

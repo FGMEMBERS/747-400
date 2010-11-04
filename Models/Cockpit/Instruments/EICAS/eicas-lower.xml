@@ -1,6 +1,16 @@
 <PropertyList>
 
 <model>
+ <path>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/eicas_elec.xml</path>
+ <condition>
+  <equals>
+   <property>/instrumentation/eicas/display</property>
+   <value>ELEC</value>
+  </equals>
+ </condition>
+</model>
+
+<model>
  <path>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/eicas_eng.xml</path>
  <condition>
   <equals>

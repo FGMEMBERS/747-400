@@ -56,18 +56,20 @@ You just stepped through the cockpit door of the cold and dark 747-400, the most
     <step>
 		<message>Set the GEN CONT (generator control) switches ON.</message>
 		<exit>
-			<condition>
-				<property>/controls/electric/generator-control[0]</property>
-			</condition>
-			<condition>
-				<property>/controls/electric/generator-control[1]</property>
-			</condition>
-			<condition>	
-				<property>/controls/electric/generator-control[2]</property>
-			</condition>
-			<condition>
-				<property>/controls/electric/generator-control[3]</property>
-			</condition>
+			<and>
+				<condition>
+					<property>/controls/electric/generator-control[0]</property>
+				</condition>
+				<condition>
+					<property>/controls/electric/generator-control[1]</property>
+				</condition>
+				<condition>	
+					<property>/controls/electric/generator-control[2]</property>
+				</condition>
+				<condition>
+					<property>/controls/electric/generator-control[3]</property>
+				</condition>
+			</and>
 		</exit>
     </step>
 
@@ -78,23 +80,31 @@ You just stepped through the cockpit door of the cold and dark 747-400, the most
     <step>
 		<message>Turn the ENGINE hydraulic pump selectors ON.</message>
 		<exit>
-			<condition>
-				<property>/controls/hydraulic/system/engine-pump</property>
-			</condition>
-			<condition>	
-				<property>/controls/hydraulic/system[1]/engine-pump</property>
-			</condition>
-			<condition>
-				<property>/controls/hydraulic/system[2]/engine-pump</property>
-			</condition>
-			<condition>
-				<property>/controls/hydraulic/system[3]/engine-pump</property>
-			</condition>
+			<and>
+				<condition>
+					<property>/controls/hydraulic/system/engine-pump</property>
+				</condition>
+				<condition>	
+					<property>/controls/hydraulic/system[1]/engine-pump</property>
+				</condition>
+				<condition>
+					<property>/controls/hydraulic/system[2]/engine-pump</property>
+				</condition>
+				<condition>
+					<property>/controls/hydraulic/system[3]/engine-pump</property>
+				</condition>
+			</and>
 		</exit>
     </step>
 
     <step>
 		<message>Turn on EXT PWR 1 and, if available, EXT PWR 2.</message>
+		<marker>
+			<x-m>-24.285</x-m>
+			<y-m>-0.338</y-m>
+			<z-m>4.112</z-m>
+			<scale>2.4</scale>
+		</marker>
 		<exit>
 			<condition>
 				<equals>
@@ -196,23 +206,45 @@ You just stepped through the cockpit door of the cold and dark 747-400, the most
     <step>
 		<message>Ensure all fuel pumps are OFF.</message>
 		<exit>
-			<condition>       
-				<equals>       
-					<property>/controls/engines/engine/fuel-pomp</property>
-					<value>1</value>
-				</equals>
-				<equals>
-					<property>/controls/engines/engine[1]/fuel-pomp</property>
-					<value>1</value>
-				</equals>
-				<equals>
-					<property>/controls/engines/engine[2]/fuel-pomp</property>
-					<value>1</value>
-				</equals>
-				<equals>
-					<property>/controls/engines/engine[3]/fuel-pomp</property>
-					<value>1</value>
-				</equals>
+			<condition>    
+				<and>
+					<equals>       
+						<property>/controls/fuel/tank[1]/pump-fwd</property>
+						<value>0</value>
+					</equals>
+					<equals>       
+						<property>/controls/fuel/tank[1]/pump-aft</property>
+						<value>0</value>
+					</equals>
+					<equals>       
+						<property>/controls/fuel/tank[2]/pump-fwd</property>
+						<value>0</value>
+					</equals>
+					<equals>       
+						<property>/controls/fuel/tank[2]/pump-aft</property>
+						<value>0</value>
+					</equals>       
+					<equals>       
+						<property>/controls/fuel/tank[3]/pump-fwd</property>
+						<value>0</value>
+					</equals>
+					<equals>       
+						<property>/controls/fuel/tank[3]/pump-aft</property>
+						<value>0</value>
+					</equals>       
+					<equals>       
+						<property>/controls/fuel/tank[4]/pump-fwd</property>
+						<value>0</value>
+					</equals>
+					<equals>       
+						<property>/controls/fuel/tank[4]/pump-aft</property>
+						<value>0</value>
+					</equals>
+					<equals>       
+						<property>/controls/fuel/tank[7]/pump</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 		</exit>
     </step>
@@ -231,6 +263,12 @@ You just stepped through the cockpit door of the cold and dark 747-400, the most
 
     <step>
 		<message>Rotate the APU switch to START.</message>
+		<marker>
+			<x-m>-24.240</x-m>
+			<y-m>-0.188</y-m>
+			<z-m>4.126</z-m>
+			<scale>3.0</scale>
+		</marker>
 		<exit>
 			<condition> 
 				<equals> 
@@ -245,10 +283,16 @@ You just stepped through the cockpit door of the cold and dark 747-400, the most
 		<message>Turn ON APU GEN 1 and APU GEN 2.</message>
 		<exit>
 			<condition> 
-				<equals> 
-					<property>/controls/electric/APU-generator</property>
-					<value>1</value>
-				</equals>
+				<and>
+					<equals> 
+						<property>/systems/electrical/apu-generator[0]</property>
+						<value>2</value>
+					</equals>
+					<equals> 
+						<property>/systems/electrical/apu-generator[1]</property>
+						<value>2</value>
+					</equals>
+				</and>
 			</condition>
 		</exit>
     </step>
@@ -271,14 +315,54 @@ You just stepped through the cockpit door of the cold and dark 747-400, the most
 
     <step>
 		<message>Turn all three PACK switches to NORM.</message>
+		<exit>
+			<condition> 
+				<and>
+					<equals> 
+						<property>/controls/pneumatic/pack-control[0]</property>
+						<value>1</value>
+					</equals>
+					<equals> 
+						<property>/controls/pneumatic/pack-control[1]</property>
+						<value>1</value>
+					</equals>
+					<equals> 
+						<property>/controls/pneumatic/pack-control[2]</property>
+						<value>1</value>
+					</equals>
+				</and>
+			</condition>
+		</exit>
     </step>
 
     <step>
 		<message>Ensure the ISLN switches are open.</message>
+		<exit>
+			<condition> 
+				<and>
+					<equals> 
+						<property>/controls/pneumatic/isolation-valve[0]</property>
+						<value>1</value>
+					</equals>
+					<equals> 
+						<property>/controls/pneumatic/isolation-valve[1]</property>
+						<value>1</value>
+					</equals>
+				</and>
+			</condition>
+		</exit>
     </step>
 
     <step>
 		<message>Turn ON APU Bleed.</message>
+		<exit>
+			<condition>  
+				<equals>
+					<property>/controls/pneumatic/APU-bleed</property>
+					<value>1</value>
+				</equals>
+			</condition>
+		</exit>
     </step>
 
     <step>
@@ -286,19 +370,19 @@ You just stepped through the cockpit door of the cold and dark 747-400, the most
 		<exit>
 			<condition>     
 				<equals>  
-					<property>/controls/pneumatic/engine/bleed</property> 
+					<property>/controls/pneumatic/engine-bleed[0]</property> 
 					<value>1</value>
 				</equals>
 				<equals>
-					<property>/controls/pneumatic/engine[1]/bleed</property>
+					<property>/controls/pneumatic/engine-bleed[1]</property>
 					<value>1</value>
 				</equals>
 				<equals> 
-					<property>/controls/pneumatic/engine[2]/bleed</property>
+					<property>/controls/pneumatic/engine-bleed[2]</property>
 					<value>1</value>
 				</equals>
 				<equals>
-					<property>/controls/pneumatic/engine[3]/bleed</property>
+					<property>/controls/pneumatic/engine-bleed[3]</property>
 					<value>1</value>
 				</equals>
 			</condition>
@@ -308,9 +392,37 @@ You just stepped through the cockpit door of the cold and dark 747-400, the most
     <step>
 		<message>Turn the F/D (Flight Director) ON.</message>
     </step>
+	
+	<step>
+		<message>Press the INIT REF button on one of the CDUs on the pedestal.</message>
+		<exit>
+			<condition>  
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>INIT_REF</value>
+				</equals>
+			</condition>
+		</exit>
+    </step>
+	
+	<step>
+		<message>Then click the button next to TAKEOFF.</message>
+		<exit>
+			<condition>  
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>TO_REF</value>
+				</equals>
+			</condition>
+		</exit>
+    </step>
+	
+	<step>
+		<message>Type the flap setting you will be using on takeoff, making use of the digits pad, then press the button next to the flap setting (upper left side button).</message>
+    </step>
 
     <step>
-		<message>Enter V2 speed into the IAS/MACH indicator.</message>
+		<message>Enter V2 speed (as seen on the CDU) into the IAS/MACH indicator.</message>
     </step>
 
     <step>
@@ -320,12 +432,12 @@ You just stepped through the cockpit door of the cold and dark 747-400, the most
     <step>
 		<message>Set ALT to 10000.</message>
 		<exit>
-		<condition>  
-			<equals>
-				<property>/autopilot/settings/target-altitude-ft</property>
-				<value>10000</value>
-			</equals>
-		</condition>
+			<condition>  
+				<equals>
+					<property>/autopilot/settings/target-altitude-ft</property>
+					<value>10000</value>
+				</equals>
+			</condition>
 		</exit>
     </step>
 
@@ -335,6 +447,28 @@ You just stepped through the cockpit door of the cold and dark 747-400, the most
 
     <step>
 		<message>Ensure that fuel control switches are set at CUTOFF</message>
+		<exit>
+			<condition> 
+				<and>
+					<equals>  
+						<property>/controls/engines/engine[0]/cutoff</property> 
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>/controls/enginesc/engine[1]/cutoff</property>
+						<value>1</value>
+					</equals>
+					<equals> 
+						<property>/controls/engines/engine[2]/cutoff</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>/controls/engines/engine[3]/cutoff</property>
+						<value>1</value>
+					</equals>
+				</and>
+			</condition>
+		</exit>
     </step>
 
     <step>
@@ -343,6 +477,14 @@ You just stepped through the cockpit door of the cold and dark 747-400, the most
 
     <step>
 		<message>Set AUTOBRAKES to RTO.</message>
+		<exit>
+			<condition>  
+				<equals>
+					<property>/autopilot/autobrake/step</property>
+					<value>0</value>
+				</equals>
+			</condition>
+		</exit>
     </step>
 
     <step>
@@ -359,6 +501,14 @@ You just stepped through the cockpit door of the cold and dark 747-400, the most
 
     <step>
 		<message>Ensure that NO SMOKING and SEATBELTS selectors are set to AUTO.</message>
+		<exit>
+			<condition>  
+				<equals>
+					<property>/controls/switches/seatbelt-sign</property>
+					<value>1</value>
+				</equals>
+			</condition>
+		</exit>
     </step>
 
     <step>

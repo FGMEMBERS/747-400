@@ -58,7 +58,7 @@ drive-disconnect[4]
     <prop>/systems/electrical/suppliers/idg-v[0]</prop>
     <kind>alternator</kind>
     <rpm-source>/engines/engine[0]/n2</rpm-source>
-    <rpm-threshold>55</rpm-threshold>
+    <rpm-threshold>30</rpm-threshold>
     <volts>115</volts>
     <amps>90</amps>
   </supplier>
@@ -68,7 +68,7 @@ drive-disconnect[4]
     <prop>/systems/electrical/suppliers/idg-v[1]</prop>
     <kind>alternator</kind>
     <rpm-source>/engines/engine[1]/n2</rpm-source>
-    <rpm-threshold>55</rpm-threshold>
+    <rpm-threshold>30</rpm-threshold>
     <volts>115</volts>
     <amps>90</amps>
   </supplier>
@@ -78,7 +78,7 @@ drive-disconnect[4]
     <prop>/systems/electrical/suppliers/idg-v[2]</prop>
     <kind>alternator</kind>
     <rpm-source>/engines/engine[2]/n2</rpm-source>
-    <rpm-threshold>55</rpm-threshold>
+    <rpm-threshold>30</rpm-threshold>
     <volts>115</volts>
     <amps>90</amps>
   </supplier>
@@ -88,7 +88,7 @@ drive-disconnect[4]
     <prop>/systems/electrical/suppliers/idg-v[3]</prop>
     <kind>alternator</kind>
     <rpm-source>/engines/engine[3]/n2</rpm-source>
-    <rpm-threshold>55</rpm-threshold>
+    <rpm-threshold>30</rpm-threshold>
     <volts>115</volts>
     <amps>90</amps>
   </supplier>
@@ -145,8 +145,8 @@ dc-bus[4]
     <prop>/systems/electrical/outputs/dc-bus-v[1]</prop>
     <prop>/systems/electrical/outputs/dc-bus-v[2]</prop>
     <prop>/systems/electrical/outputs/dc-bus-v[3]</prop>
-        <prop>/systems/electrical/outputs/adf</prop>
-        <prop>/systems/electrical/outputs/nav[0]</prop>
+    <prop>/systems/electrical/outputs/adf</prop>
+    <prop>/systems/electrical/outputs/nav[0]</prop>
   </bus>
 
   <!-- Generic Outputs -->

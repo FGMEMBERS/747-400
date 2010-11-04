@@ -14,9 +14,24 @@
 
 <animation> 
 	<type>material</type> 
+	<object-name>cargodoor1</object-name> 
+	<object-name>fuselage</object-name> 
+	<object-name>nosecone</object-name> 
+	<object-name>rudder</object-name> 
+	<object-name>vstab</object-name> 
 	<property-base>sim/model/livery</property-base> 
 	<texture-prop>texture</texture-prop> 
 	<texture>BOE.png</texture> 
+</animation>
+
+<animation> 
+	<type>material</type> 
+	<object-name>fuselage.lit</object-name> 
+	<object-name>rudder.lit</object-name> 
+	<object-name>vstab.lit</object-name> 
+	<property-base>sim/model/livery</property-base> 
+	<texture-prop>texture-lit</texture-prop> 
+	<texture>BOE-Lights.png</texture> 
 </animation>
 
 <animation>
@@ -304,42 +319,104 @@
 	</axis>
 </animation>
 
-<!-- NOSE CONE -->
-<animation>
- <type>translate</type>
- <object-name>nosecone</object-name>
- <property>controls/doors/nosecone/position-norm</property>
- <factor>0.20</factor>
- <center>
-  <x-m>-28.701</x-m>
-  <y-m> -1.002</y-m>
-  <z-m>  1.075</z-m>
- </center>
- <axis>
-  <x>1</x>
-  <y>-1</y>
-  <z>0</z>
- </axis>
-</animation>
+<!-- RUDDER -->
 
 <animation>
- <type>rotate</type>
- <object-name>nosecone</object-name>
- <property>controls/doors/nosecone/position-norm</property>
- <factor>90</factor>
- <center>
-  <x-m>-28.701</x-m>
-  <y-m> -1.002</y-m>
-  <z-m>  1.075</z-m>
- </center>
- <axis>
-  <x>0</x>
-  <y>0</y>
-  <z>1</z>
- </axis>
+	<type>select</type>
+	<object-name>fuselage.lit</object-name>
+	<object-name>rudder.lit</object-name>
+	<object-name>vstab.lit</object-name>
+	<condition>
+		<property>controls/lighting/logo-lights</property>
+	</condition>
+</animation>
+ 
+<animation>
+	<type>rotate</type>
+	<object-name>rudder</object-name> 
+	<object-name>rudder.lit</object-name>
+	<property>surface-positions/rudder-pos-norm</property>
+	<factor>50</factor>
+	<axis>
+		<x1-m>33</x1-m>
+		<y1-m>0.0</y1-m>
+		<z1-m>3.86</z1-m>
+		<x2-m>39.5</x2-m>
+		<y2-m>0.0</y2-m>
+		<z2-m>13.24</z2-m>
+	</axis>
+</animation>
+
+<!-- ELEVATORS -->
+<!-- RIGHT ELEVATOR-->
+
+<animation>
+	<type>rotate</type>
+	<object-name>elevator_right</object-name>
+	<property>surface-positions/elevator-pos-norm</property>
+	<factor>25</factor>
+	<axis>
+		<x1-m>34.90</x1-m>
+		<y1-m>0.95</y1-m>
+		<z1-m>2.35</z1-m>
+		<x2-m>38.95</x2-m>
+		<y2-m>9.3</y2-m>
+		<z2-m>3.5</z2-m>
+	</axis>
+</animation>
+
+<!-- LEFT ELEVATOR-->
+<animation>
+	<type>rotate</type>
+	<object-name>elevator_left</object-name>
+	<property>surface-positions/elevator-pos-norm</property>
+	<factor>-25</factor>
+	<axis>
+		<x1-m>34.90</x1-m>
+		<y1-m>-0.95</y1-m>
+		<z1-m>2.35</z1-m>
+		<x2-m>38.95</x2-m>
+		<y2-m>-9.3</y2-m>
+		<z2-m>3.5</z2-m>
+	</axis>
 </animation>
 
 <!-- DOORS-->
+
+<!-- NOSE CONE -->
+<animation>
+	<type>translate</type>
+	<object-name>nosecone</object-name>
+	<property>controls/doors/nosecone/position-norm</property>
+	<factor>0.20</factor>
+	<center>
+		<x-m>-28.701</x-m>
+		<y-m> -1.002</y-m>
+		<z-m>  1.075</z-m>
+	</center>
+	<axis>
+		<x>1</x>
+		<y>-1</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>nosecone</object-name>
+	<property>controls/doors/nosecone/position-norm</property>
+	<factor>90</factor>
+	<center>
+		<x-m>-28.701</x-m>
+		<y-m> -1.002</y-m>
+		<z-m>  1.075</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>0</y>
+		<z>1</z>
+	</axis>
+</animation>
 
 <!-- CARGO 1 DOOR -->
 
@@ -520,276 +597,267 @@
 </animation>
 
 -->
- <!-- GEAR DOORS -->
- <!-- LARGE DOORS 
+
+<!-- NOSE GEAR DOORS -->
 
 <animation>
- <type>rotate</type>
- <object-name>nlg_left_large</object-name>
- <property>gear/gear[0]/position-norm</property>
- <interpolation>
-  <entry>
-   <ind>0.0</ind>
-   <dep>0</dep>
-  </entry>
-  <entry>
-   <ind>0.1</ind>
-   <dep>-80</dep>
-  </entry>
-  <entry>
-   <ind>0.9</ind>
-   <dep>-80</dep>
-  </entry>
-  <entry>
-   <ind>1.0</ind>
-   <dep>0</dep>
-  </entry>
- </interpolation>
- <axis>
-  <x1-m>-26.304</x1-m>
-  <y1-m> -0.885</y1-m>
-  <z1-m> -1.401</z1-m>
-  <x2-m>-23.439</x2-m>
-  <y2-m> -0.871</y2-m>
-  <z2-m> -1.867</z2-m>
- </axis>
+	<type>rotate</type>
+	<object-name>nlg_large_door.left</object-name>
+	<property>gear/gear[0]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>0.0</ind>
+			<dep>0</dep>
+		</entry>
+		<entry>
+			<ind>0.1</ind>
+			<dep>-80</dep>
+		</entry>
+		<entry>
+			<ind>0.9</ind>
+			<dep>-80</dep>
+		</entry>
+		<entry>
+			<ind>1.0</ind>
+			<dep>0</dep>
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m>-26.350</x1-m>
+		<y1-m> -0.880</y1-m>
+		<z1-m> -1.497</z1-m>
+		<x2-m>-23.460</x2-m>
+		<y2-m> -0.880</y2-m>
+		<z2-m> -2.225</z2-m>
+	</axis>
 </animation>
 
 <animation>
- <type>rotate</type>
- <object-name>nlg_right_large</object-name>
- <property>gear/gear[0]/position-norm</property>
- <interpolation>
-  <entry>
-   <ind>0.0</ind>
-   <dep>0</dep>
-  </entry>
-  <entry>
-   <ind>0.1</ind>
-   <dep>80</dep>
-  </entry>
-  <entry>
-   <ind>0.9</ind>
-   <dep>80</dep>
-  </entry>
-  <entry>
-   <ind>1.0</ind>
-   <dep>0</dep>
-  </entry>
- </interpolation>
- <axis>
-  <x1-m>-26.304</x1-m>
-  <y1-m>  0.885</y1-m>
-  <z1-m> -1.401</z1-m>
-  <x2-m>-23.439</x2-m>
-  <y2-m>  0.871</y2-m>
-  <z2-m> -1.867</z2-m>
- </axis>
-</animation>
-
--->
-<!-- WING DOORS 
+	<type>rotate</type>
+	<object-name>nlg_large_door.right</object-name>
+	<property>gear/gear[0]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>0.0</ind>
+			<dep>0</dep>
+		</entry>
+		<entry>
+			<ind>0.1</ind>
+			<dep>80</dep>
+		</entry>
+		<entry>
+			<ind>0.9</ind>
+			<dep>80</dep>
+		</entry>
+		<entry>
+			<ind>1.0</ind>
+			<dep>0</dep>
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m>-26.350</x1-m>
+		<y1-m>  0.880</y1-m>
+		<z1-m> -1.497</z1-m>
+		<x2-m>-23.460</x2-m>
+		<y2-m>  0.880</y2-m>
+		<z2-m> -2.225</z2-m>
+	</axis>
+</animation>	
 
 <animation>
- <type>rotate</type>
- <object-name>wlg_right_door.1</object-name>
- <property>gear/gear[3]/position-norm</property>
- <interpolation>
-  <entry>
-   <ind>0.0</ind>
-   <dep>0</dep>
-  </entry>
-  <entry>
-   <ind>0.15</ind>
-   <dep>-100</dep>
-  </entry>
-  <entry>
-   <ind>0.65</ind>
-   <dep>-100</dep>
-  </entry>
-  <entry>
-   <ind>1.0</ind>
-   <dep>0</dep>
-  </entry>
- </interpolation>
- <center>
-  <x-m> 2.472</x-m>
-  <y-m> 0.300</y-m>
-  <z-m>-3.046</z-m>
- </center>
- <axis>
-  <x>1</x>
-  <y>0</y>
-  <z>0</z>
- </axis>
+	<type>rotate</type>
+	<object-name>nlg_small_door.left</object-name>
+	<property>gear/gear[0]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>0.0</ind>
+			<dep>0</dep>
+		</entry>
+		<entry>
+			<ind>0.1</ind>
+			<dep>0</dep>
+		</entry>
+		<entry>
+			<ind>0.9</ind>
+			<dep>-100</dep>
+		</entry>
+		<entry>
+			<ind>1.0</ind>
+			<dep>-100</dep>
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m>-22.780</x1-m>
+		<y1-m> -0.575</y1-m>
+		<z1-m> -2.383</z1-m>
+		<x2-m>-21.731</x2-m>
+		<y2-m> -0.575</y2-m>
+		<z2-m> -2.518</z2-m>
+	</axis>
 </animation>
 
 <animation>
- <type>rotate</type>
- <object-name>wlg_right_door.2</object-name>
- <property>gear/gear[3]/position-norm</property>
- <interpolation>
-  <entry>
-   <ind>0.0</ind>
-   <dep>0</dep>
-  </entry>
-  <entry>
-   <ind>0.15</ind>
-   <dep>-100</dep>
-  </entry>
-  <entry>
-   <ind>0.65</ind>
-   <dep>-100</dep>
-  </entry>
-  <entry>
-   <ind>1.0</ind>
-   <dep>0</dep>
-  </entry>
- </interpolation>
- <center>
-  <x-m> 2.472</x-m>
-  <y-m> 0.300</y-m>
-  <z-m>-3.046</z-m>
- </center>
- <axis>
-  <x>1</x>
-  <y>0</y>
-  <z>0</z>
- </axis>
+	<type>rotate</type>
+	<object-name>nlg_small_door.right</object-name>
+	<property>gear/gear[0]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>0.0</ind>
+			<dep>0</dep>
+		</entry>
+		<entry>
+			<ind>0.1</ind>
+			<dep>0</dep>
+		</entry>
+		<entry>
+			<ind>0.9</ind>
+			<dep>100</dep>
+		</entry>
+		<entry>
+			<ind>1.0</ind>
+			<dep>100</dep>
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m>-22.780</x1-m>
+		<y1-m>  0.575</y1-m>
+		<z1-m> -2.383</z1-m>
+		<x2-m>-21.731</x2-m>
+		<y2-m>  0.575</y2-m>
+		<z2-m> -2.518</z2-m>
+	 </axis>
+</animation>
+
+<!-- WING GEAR DOORS -->
+
+<animation>
+	<type>rotate</type>
+	<object-name>wlg_inner_door.left</object-name>
+	<object-name>wlg_outer_door.left</object-name>
+	<property>gear/gear[2]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>0.0</ind>
+			<dep>0</dep>
+		</entry>
+		<entry>
+			<ind>0.15</ind>
+			<dep>100</dep>
+		</entry>
+		<entry>
+			<ind>0.65</ind>
+			<dep>100</dep>
+		</entry>
+		<entry>
+			<ind>1.0</ind>
+			<dep>0</dep>
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m>-0.008</x1-m>
+		<y1-m>-0.300</y1-m>
+		<z1-m>-2.919</z1-m>
+		<x2-m> 3.994</x2-m>
+		<y2-m>-0.300</y2-m>
+		<z2-m>-2.919</z2-m>
+	</axis>
 </animation>
 
 <animation>
- <type>rotate</type>
- <object-name>wlg_right_door.2</object-name>
- <property>gear/gear[3]/position-norm</property>
- <interpolation>
-  <entry>
-   <ind>0.0</ind>
-   <dep>0</dep>
-  </entry>
-  <entry>
-   <ind>0.15</ind>
-   <dep>119</dep>
-  </entry>
-  <entry>
-   <ind>0.65</ind>
-   <dep>119</dep>
-  </entry>
-  <entry>
-   <ind>1.0</ind>
-   <dep>0</dep>
-  </entry>
- </interpolation>
- <axis>
-  <x1-m>-0.008</x1-m>
-  <y1-m> 2.129</y1-m>
-  <z1-m>-3.069</z1-m>
-  <x2-m> 3.994</x2-m>
-  <y2-m> 2.024</y2-m>
-  <z2-m>-2.939</z2-m>
- </axis>
+	<type>rotate</type>
+	<object-name>wlg_inner_door.right</object-name>
+	<object-name>wlg_outer_door.right</object-name>
+	<property>gear/gear[3]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>0.0</ind>
+			<dep>0</dep>
+		</entry>
+		<entry>
+			<ind>0.15</ind>
+			<dep>-100</dep>
+		</entry>
+		<entry>
+			<ind>0.65</ind>
+			<dep>-100</dep>
+		</entry>
+		<entry>
+			<ind>1.0</ind>
+			<dep>0</dep>
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m>-0.008</x1-m>
+		<y1-m> 0.300</y1-m>
+		<z1-m>-2.919</z1-m>
+		<x2-m> 3.994</x2-m>
+		<y2-m> 0.300</y2-m>
+		<z2-m>-2.919</z2-m>
+	</axis>
 </animation>
 
 <animation>
- <type>rotate</type>
- <object-name>wlg_left_door.1</object-name>
- <property>gear/gear[2]/position-norm</property>
- <interpolation>
-  <entry>
-   <ind>0.0</ind>
-   <dep>0</dep>
-  </entry>
-  <entry>
-   <ind>0.15</ind>
-   <dep>100</dep>
-  </entry>
-  <entry>
-   <ind>0.65</ind>
-   <dep>100</dep>
-  </entry>
-  <entry>
-   <ind>1.0</ind>
-   <dep>0</dep>
-  </entry>
- </interpolation>
- <center>
-  <x-m> 2.472</x-m>
-  <y-m>-0.300</y-m>
-  <z-m>-3.046</z-m>
- </center>
- <axis>
-  <x>1</x>
-  <y>0</y>
-  <z>0</z>
- </axis>
+	<type>rotate</type>
+	<object-name>wlg_outer_door.left</object-name>
+	<property>gear/gear[2]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>0.0</ind>
+			<dep>0</dep>
+		</entry>
+		<entry>
+			<ind>0.15</ind>
+			<dep>-190</dep>
+		</entry>
+		<entry>
+			<ind>0.65</ind>
+			<dep>-190</dep>
+		</entry>
+		<entry>
+			<ind>1.0</ind>
+			<dep>0</dep>
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m>-0.008</x1-m>
+		<y1-m>-1.918</y1-m>
+		<z1-m>-2.792</z1-m>
+		<x2-m> 3.994</x2-m>
+		<y2-m>-1.918</y2-m>
+		<z2-m>-2.792</z2-m>
+	</axis>
 </animation>
 
 <animation>
- <type>rotate</type>
- <object-name>wlg_left_door.2</object-name>
- <property>gear/gear[2]/position-norm</property>
- <interpolation>
-  <entry>
-   <ind>0.0</ind>
-   <dep>0</dep>
-  </entry>
-  <entry>
-   <ind>0.15</ind>
-   <dep>100</dep>
-  </entry>
-  <entry>
-   <ind>0.65</ind>
-   <dep>100</dep>
-  </entry>
-  <entry>
-   <ind>1.0</ind>
-   <dep>0</dep>
-  </entry>
- </interpolation>
- <center>
-  <x-m> 2.472</x-m>
-  <y-m>-0.300</y-m>
-  <z-m>-3.046</z-m>
- </center>
- <axis>
-  <x>1</x>
-  <y>0</y>
-  <z>0</z>
- </axis>
+	<type>rotate</type>
+	<object-name>wlg_outer_door.right</object-name>
+	<property>gear/gear[3]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>0.0</ind>
+			<dep>0</dep>
+		</entry>
+		<entry>
+			<ind>0.15</ind>
+			<dep>190</dep>
+		</entry>
+		<entry>
+			<ind>0.65</ind>
+			<dep>190</dep>
+		</entry>
+		<entry>
+			<ind>1.0</ind>
+			<dep>0</dep>
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m>-0.008</x1-m>
+		<y1-m> 1.918</y1-m>
+		<z1-m>-2.792</z1-m>
+		<x2-m> 3.994</x2-m>
+		<y2-m> 1.918</y2-m>
+		<z2-m>-2.792</z2-m>
+	</axis>
 </animation>
-
-<animation>
- <type>rotate</type>
- <object-name>wlg_left_door.2</object-name>
- <property>gear/gear[2]/position-norm</property>
- <interpolation>
-  <entry>
-   <ind>0.0</ind>
-   <dep>0</dep>
-  </entry>
-  <entry>
-   <ind>0.15</ind>
-   <dep>-119</dep>
-  </entry>
-  <entry>
-   <ind>0.65</ind>
-   <dep>-119</dep>
-  </entry>
-  <entry>
-   <ind>1.0</ind>
-   <dep>0</dep>
-  </entry>
- </interpolation>
- <axis>
-  <x1-m>-0.008</x1-m>
-  <y1-m>-2.129</y1-m>
-  <z1-m>-3.069</z1-m>
-  <x2-m> 3.994</x2-m>
-  <y2-m>-2.024</y2-m>
-  <z2-m>-2.939</z2-m>
- </axis>
-</animation>
-
--->
 
 </PropertyList>

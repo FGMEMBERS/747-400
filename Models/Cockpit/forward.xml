@@ -26,63 +26,81 @@
 		<z-m>0.641</z-m>
 		<pitch-deg>-22</pitch-deg>
 	</offsets>
+	<condition>
+		<property>/controls/electric/battery</property>
+	</condition>
 </model>
   
 <model>
- <name>EICAS-lower</name>
- <path>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/eicas-lower.xml</path>
- <offsets>
-  <x-m>0.838</x-m>
-  <y-m>0</y-m>
-  <z-m>0.49</z-m>
-  <pitch-deg>-75</pitch-deg>
- </offsets>
+	<name>EICAS-lower</name>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/eicas-lower.xml</path>
+	<offsets>
+		<x-m>0.838</x-m>
+		<y-m>0</y-m>
+		<z-m>0.49</z-m>
+		<pitch-deg>-75</pitch-deg>
+	</offsets>
+	<condition>
+		<property>/controls/electric/battery</property>
+	</condition>
 </model>
 
 <!-- instruments -->
 
 <model>
- <name>PFD1</name>
- <path>Aircraft/747-400/Models/Cockpit/Instruments/PFD/PFD.xml</path>
- <offsets>
-  <x-m>0.6854</x-m>
-  <y-m>-0.537</y-m>
-  <z-m>0.65</z-m>
-  <pitch-deg>-22</pitch-deg>
- </offsets>
+	<name>PFD1</name>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/PFD/PFD.xml</path>
+	<offsets>
+		<x-m>0.6854</x-m>
+		<y-m>-0.537</y-m>
+		<z-m>0.65</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
+	<condition>
+		<property>/controls/electric/battery</property>
+	</condition>
 </model>
 
 <model>
- <name>PFD2</name>
- <path>Aircraft/747-400/Models/Cockpit/Instruments/PFD/PFD.xml</path>
- <offsets>
-  <x-m>0.6854</x-m>
-  <y-m>0.537</y-m>
-  <z-m>0.65</z-m>
-  <pitch-deg>-22</pitch-deg>
- </offsets>
+	<name>PFD2</name>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/PFD/PFD.xml</path>
+	<offsets>
+		<x-m>0.6854</x-m>
+		<y-m>0.537</y-m>
+		<z-m>0.65</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
+	<condition>
+		<property>/controls/electric/battery</property>
+	</condition>
 </model>
 
 <model>
- <name>ND1</name>
- <path>Aircraft/747-400/Models/Cockpit/Instruments/MFD/ND.xml</path>
- <offsets>
-  <x-m>0.6854</x-m>
-  <y-m>-0.3207</y-m>
-  <z-m>0.65</z-m>
-  <pitch-deg>-22</pitch-deg>
- </offsets>
+	<name>ND1</name>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/MFD/ND.xml</path>
+	<offsets>
+		<x-m>0.6854</x-m>
+		<y-m>-0.3207</y-m>
+		<z-m>0.65</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
+	<condition>
+		<property>/controls/electric/battery</property>
+	</condition>
 </model>
   
 <model>
- <name>ND2</name>
- <path>Aircraft/747-400/Models/Cockpit/Instruments/MFD/ND.xml</path>
- <offsets>
-  <x-m>0.6854</x-m>
-  <y-m>0.3207</y-m>
-  <z-m>0.65</z-m>
-  <pitch-deg>-22</pitch-deg>
- </offsets>
+	<name>ND2</name>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/MFD/ND.xml</path>
+	<offsets>
+		<x-m>0.6854</x-m>
+		<y-m>0.3207</y-m>
+		<z-m>0.65</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
+	<condition>
+		<property>/controls/electric/battery</property>
+	</condition>
 </model>
 
 <model>

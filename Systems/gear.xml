@@ -10,75 +10,165 @@
 	<!-- GEAR 1 -->
 
         <summer name="gear/unit[0]/tyre-speed-dif-switch">
-            <input>-/velocities/uBody-fps</input>
+            <input>-velocities/u-aero-fps</input>
             <input>gear/unit[0]/wheel-speed-fps</input>
             <output>gear/unit[0]/tyre-speed-dif</output>
         </summer>
 
         <switch name="/gear/gear[0]/tyre-smoke-switch">
-          <default value="0"/>
+			<default value="0"/>
             <test  logic="AND" value="1">
                 gear/unit[0]/tyre-speed-dif lt -2
-                /gear/gear[0]/wow == 1
+                gear/unit[0]/WOW == 1
             </test>
-		<output>/gear/gear[0]/tyre-smoke</output>
-       </switch>
+			<output>/gear/gear[0]/tyre-smoke</output>
+		</switch>
 
 	<!-- GEAR 2 -->
 
         <summer name="gear/unit[1]/tyre-speed-dif-switch">
-            <input>-/velocities/uBody-fps</input>
+            <input>-velocities/u-aero-fps</input>
             <input>gear/unit[1]/wheel-speed-fps</input>
             <output>gear/unit[1]/tyre-speed-dif</output>
         </summer>
 
         <switch name="/gear/gear[1]/tyre-smoke-switch">
-          <default value="0"/>
+			<default value="0"/>
             <test  logic="AND" value="1">
                 gear/unit[1]/tyre-speed-dif lt -2
-                /gear/gear[1]/wow == 1
+                gear/unit[1]/WOW == 1
             </test>
-		<output>/gear/gear[1]/tyre-smoke</output>
-       </switch>
+			<output>/gear/gear[1]/tyre-smoke</output>
+		</switch>
+		
+		<switch name="/gear/gear[1]/abnormal-braking-switch">
+			<test  logic="AND" value="0">
+				/controls/gear/brake-left == 0
+				/gear/gear[1]/abnormal-braking lt 1
+            </test>
+            <test  logic="AND" value="1">
+                gear/unit[1]/wheel-speed-fps gt 50
+                gear/unit[1]/WOW == 1
+				/controls/gear/brake-left gt 0.5
+            </test>
+			<test  logic="AND" value="1">
+                /gear/gear[1]/abnormal-braking == 1
+            </test>
+			<output>/gear/gear[1]/abnormal-braking</output>
+		</switch>
+	   
+	    <kinematic name="/gear/gear[1]/abnormal-temperature">
+            <input>/gear/gear[1]/abnormal-braking</input>
+            <traverse>
+                <setting>
+					<position>0</position>
+					<time>0</time>
+                </setting>
+                <setting>
+					<position>1</position>
+					<time>10</time>
+				</setting>
+            </traverse>
+        </kinematic>
 
 	<!-- GEAR 3 -->
 
         <summer name="gear/unit[2]/tyre-speed-dif-switch">
-            <input>-/velocities/uBody-fps</input>
+            <input>-velocities/u-aero-fps</input>
             <input>gear/unit[2]/wheel-speed-fps</input>
             <output>gear/unit[2]/tyre-speed-dif</output>
         </summer>
 
         <switch name="/gear/gear[2]/tyre-smoke-switch">
-          <default value="0"/>
+			<default value="0"/>
             <test  logic="AND" value="1">
                 gear/unit[2]/tyre-speed-dif lt -2
-                /gear/gear[2]/wow == 1
+                gear/unit[2]/WOW == 1
             </test>
-		<output>/gear/gear[2]/tyre-smoke</output>
-       </switch>
+			<output>/gear/gear[2]/tyre-smoke</output>
+		</switch>
+		
+		<switch name="/gear/gear[2]/abnormal-braking-switch">
+			<test  logic="AND" value="0">
+				/controls/gear/brake-left == 0
+				/gear/gear[2]/abnormal-braking lt 1
+            </test>
+            <test  logic="AND" value="1">
+                gear/unit[2]/wheel-speed-fps gt 50
+                gear/unit[2]/WOW == 1
+				/controls/gear/brake-left gt 0.5
+            </test>
+			<test  logic="AND" value="1">
+                /gear/gear[2]/abnormal-braking == 1
+            </test>
+			<output>/gear/gear[2]/abnormal-braking</output>
+		</switch>
+	   
+	    <kinematic name="/gear/gear[2]/abnormal-temperature">
+            <input>/gear/gear[2]/abnormal-braking</input>
+            <traverse>
+                <setting>
+					<position>0</position>
+					<time>0</time>
+                </setting>
+                <setting>
+					<position>1</position>
+					<time>10</time>
+				</setting>
+            </traverse>
+        </kinematic>
 
 	<!-- GEAR 4 -->
 
         <summer name="gear/unit[3]/tyre-speed-dif-switch">
-            <input>-/velocities/uBody-fps</input>
+            <input>-velocities/u-aero-fps</input>
             <input>gear/unit[3]/wheel-speed-fps</input>
             <output>gear/unit[3]/tyre-speed-dif</output>
         </summer>
 
         <switch name="/gear/gear[3]/tyre-smoke-switch">
-          <default value="0"/>
+			<default value="0"/>
             <test  logic="AND" value="1">
                 gear/unit[3]/tyre-speed-dif lt -2
-                /gear/gear[3]/wow == 1
+                gear/unit[3]/WOW == 1
             </test>
-		<output>/gear/gear[3]/tyre-smoke</output>
-       </switch>
+			<output>/gear/gear[3]/tyre-smoke</output>
+		</switch>
+	   
+	    <switch name="/gear/gear[3]/abnormal-braking-switch">
+			<test  logic="AND" value="0">
+				/controls/gear/brake-left == 0
+				/gear/gear[3]/abnormal-braking lt 1
+            </test>
+            <test  logic="AND" value="1">
+                gear/unit[3]/wheel-speed-fps gt 50
+                gear/unit[3]/WOW == 1
+				/controls/gear/brake-left gt 0.5
+            </test>
+			<test  logic="AND" value="1">
+                /gear/gear[3]/abnormal-braking == 1
+            </test>
+			<output>/gear/gear[3]/abnormal-braking</output>
+		</switch>
+	   
+	    <kinematic name="/gear/gear[3]/abnormal-temperature">
+            <input>/gear/gear[3]/abnormal-braking</input>
+            <traverse>
+                <setting>
+					<position>0</position>
+					<time>0</time>
+                </setting>
+                <setting>
+					<position>1</position>
+					<time>10</time>
+				</setting>
+            </traverse>
+        </kinematic>
 
 	<!-- GEAR 5 -->
 
         <summer name="gear/unit[4]/tyre-speed-dif-switch">
-            <input>-/velocities/uBody-fps</input>
+            <input>-velocities/u-aero-fps</input>
             <input>gear/unit[4]/wheel-speed-fps</input>
             <output>gear/unit[4]/tyre-speed-dif</output>
         </summer>
@@ -87,10 +177,40 @@
           <default value="0"/>
             <test  logic="AND" value="1">
                 gear/unit[4]/tyre-speed-dif lt -2
-                /gear/gear[4]/wow == 1
+                gear/unit[4]/WOW == 1
             </test>
-		<output>/gear/gear[4]/tyre-smoke</output>
-       </switch>
+			<output>/gear/gear[4]/tyre-smoke</output>
+		</switch>
+	   
+		<switch name="/gear/gear[4]/abnormal-braking-switch">
+			<test  logic="AND" value="0">
+				/controls/gear/brake-left == 0
+				/gear/gear[4]/abnormal-braking lt 1
+            </test>
+            <test  logic="AND" value="1">
+                gear/unit[4]/wheel-speed-fps gt 50
+                gear/unit[4]/WOW == 1
+				/controls/gear/brake-left gt 0.5
+            </test>
+			<test  logic="AND" value="1">
+                /gear/gear[4]/abnormal-braking == 1
+            </test>
+			<output>/gear/gear[4]/abnormal-braking</output>
+		</switch>
+	   
+	    <kinematic name="/gear/gear[4]/abnormal-temperature">
+            <input>/gear/gear[4]/abnormal-braking</input>
+            <traverse>
+                <setting>
+					<position>0</position>
+					<time>0</time>
+                </setting>
+                <setting>
+					<position>1</position>
+					<time>10</time>
+				</setting>
+            </traverse>
+        </kinematic>
 
     </channel>
 

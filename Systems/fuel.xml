@@ -1,6 +1,15 @@
 <?xml version="1.0"?>
 
 <system name="fuel">
+	<!--
+	<property>/controls/fuel/tank[1]/x-feed</property>
+	<property>/controls/fuel/tank[2]/x-feed</property>
+	<property>/controls/fuel/tank[3]/x-feed</property>
+	<property>/controls/fuel/tank[4]/x-feed</property>
+	<property>/controls/fuel/tank[7]/pump</property>
+	<property>/controls/fuel/dump-valve</property>
+	-->
+	<property>/controls/fuel/fuel-to-remain</property>
 
 	<channel name="fuel">
 		
@@ -202,6 +211,8 @@
             <input>propulsion/tank[0]/contents-lbs</input>
             <input>-propulsion/systems/transfer-0-2-qty</input>
 			<input>-propulsion/systems/transfer-0-3-qty</input>
+			<input>propulsion/systems/transfer-0-7-qty</input>
+			<input>-propulsion/systems/jettison-qty</input>
             <clipto>
                 <min>0</min>
                 <max>114972</max>
@@ -234,18 +245,7 @@
         </summer>
 		
 		<!-- transfer fuel from stabilitzer tank to CWT -->
-		
-		<summer name="propulsion/tank[0]/new-contents-lbs">
-            <input>propulsion/tank[0]/contents-lbs</input>
-            <input>propulsion/systems/transfer-0-7-qty</input>
-			<input>-propulsion/systems/jettison-qty</input>
-            <clipto>
-                <min>0</min>
-                <max>114972</max>
-            </clipto>
-			<output>propulsion/tank[0]/contents-lbs</output>
-        </summer>
-		
+				
 		<summer name="propulsion/tank[7]/new-contents-lbs">
             <input>propulsion/tank[7]/contents-lbs</input>
             <input>-propulsion/systems/transfer-0-7-qty</input>
