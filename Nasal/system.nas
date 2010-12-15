@@ -66,6 +66,7 @@ var autostart = func {
 	setprop("/controls/engines/engine[1]/cutoff",1);
 	setprop("/controls/engines/engine[2]/cutoff",1);
 	setprop("/controls/engines/engine[3]/cutoff",1);
+	setprop("/controls/electric/battery",1);
 	setprop("/controls/lighting/beacon",1);
 	setprop("/controls/lighting/nav-lights",1);
 	setprop("/controls/lighting/strobe",1);

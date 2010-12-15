@@ -5,8 +5,8 @@
 <!-- GEAR SMOKE ON TOUCHDOWN -->
 
 <model>
- <name>tyre-smoke-n</name>
- <path>Aircraft/Generic/Effects/tyre-smoke-nose.xml</path>
+ <name>tyre-smoke-0</name>
+ <path>Aircraft/747-400/Models/Effects/tyre-smoke-0.xml</path>
  <offsets>
   <x-m>-21.993</x-m>
   <y-m>  0.000</y-m>
@@ -15,8 +15,8 @@
 </model>
 
 <model>
- <name>tyre-smoke-po</name>
- <path>Aircraft/Generic/Effects/tyre-smoke-port.xml</path>
+ <name>tyre-smoke-1</name>
+ <path>Aircraft/747-400/Models/Effects/tyre-smoke-1.xml</path>
  <offsets>
   <x-m>  1.607</x-m>
   <y-m> -5.511</y-m>
@@ -25,8 +25,8 @@
 </model>
 
 <model>
- <name>tyre-smoke-pi</name>
- <path>Aircraft/Generic/Effects/tyre-smoke-port.xml</path>
+ <name>tyre-smoke-2</name>
+ <path>Aircraft/747-400/Models/Effects/tyre-smoke-2.xml</path>
  <offsets>
   <x-m>  5.473</x-m>
   <y-m> -1.904</y-m>
@@ -35,8 +35,8 @@
 </model>
 
 <model>
- <name>tyre-smoke-si</name>
- <path>Aircraft/Generic/Effects/tyre-smoke-stbd.xml</path>
+ <name>tyre-smoke-3</name>
+ <path>Aircraft/747-400/Models/Effects/tyre-smoke-3.xml</path>
  <offsets>
   <x-m>  5.473</x-m>
   <y-m>  1.904</y-m>
@@ -45,8 +45,8 @@
 </model>
 
 <model>
- <name>tyre-smoke-so</name>
- <path>Aircraft/Generic/Effects/tyre-smoke-stbd.xml</path>
+ <name>tyre-smoke-4</name>
+ <path>Aircraft/747-400/Models/Effects/tyre-smoke-4.xml</path>
  <offsets>
   <x-m>  1.607</x-m>
   <y-m>  5.511</y-m>

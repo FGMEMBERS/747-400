@@ -44,7 +44,7 @@
    <path>Aircraft/747-400/Models/747-400-fo.xml</path>
   </model>	
 
-  <hud>   
+  <hud n="1">  
    <enable3d>false</enable3d>
   </hud>
 

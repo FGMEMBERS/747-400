@@ -19,6 +19,8 @@
   </color>
  </params>
 
+ <path>null.ac</path>
+
  <text>
   <name>text</name>
   <axis-alignment>yz-plane</axis-alignment>
@@ -32,7 +34,7 @@
   <draw-text type="bool">true</draw-text>
   <draw-alignment type="bool">false</draw-alignment>
   <draw-boundingbox type="bool">false</draw-boundingbox>
-  <alignment>center-center</alignment>
+  <alignment alias="../../params/alignment"/>
   <character-size alias="../../params/character-size"/>
  </text>
 

@@ -22,17 +22,17 @@
  <text>
   <name>text</name>
   <axis-alignment>yz-plane</axis-alignment>
-  <type type="string">literal</type>
-  <text alias="../../params/text"/>
+  <type type="string">text-value</type>
+  <property alias="../../params/property"/>
   <scale alias="../../params/factor"/>
   <offset alias="../../params/offset"/>
-  <format alias="../../params/format"/>
+  <format>%s</format>
   <truncate type="bool">false</truncate>
   <font type="string">Helvetica.txf</font>
   <draw-text type="bool">true</draw-text>
   <draw-alignment type="bool">false</draw-alignment>
   <draw-boundingbox type="bool">false</draw-boundingbox>
-  <alignment>center-center</alignment>
+  <alignment alias="../../params/alignment"/>
   <character-size alias="../../params/character-size"/>
  </text>
 

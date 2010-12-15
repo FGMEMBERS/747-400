@@ -19,6 +19,14 @@
 	<object-name>nosecone</object-name> 
 	<object-name>rudder</object-name> 
 	<object-name>vstab</object-name> 
+	<object-name>nlg_small_door.left</object-name> 
+	<object-name>nlg_large_door.left</object-name> 
+	<object-name>nlg_large_door.right</object-name> 
+	<object-name>nlg_small_door.right</object-name> 
+	<object-name>wlg_inner_door.left</object-name>
+	<object-name>wlg_outer_door.left</object-name>
+	<object-name>wlg_inner_door.right</object-name>
+	<object-name>wlg_outer_door.right</object-name>
 	<property-base>sim/model/livery</property-base> 
 	<texture-prop>texture</texture-prop> 
 	<texture>BOE.png</texture> 
@@ -689,10 +697,10 @@
 	<axis>
 		<x1-m>-22.780</x1-m>
 		<y1-m> -0.575</y1-m>
-		<z1-m> -2.383</z1-m>
+		<z1-m> -2.387</z1-m>
 		<x2-m>-21.731</x2-m>
 		<y2-m> -0.575</y2-m>
-		<z2-m> -2.518</z2-m>
+		<z2-m> -2.522</z2-m>
 	</axis>
 </animation>
 
@@ -708,7 +716,7 @@
 		<entry>
 			<ind>0.1</ind>
 			<dep>0</dep>
-		</entry>
+		</entry>	
 		<entry>
 			<ind>0.9</ind>
 			<dep>100</dep>
@@ -721,10 +729,10 @@
 	<axis>
 		<x1-m>-22.780</x1-m>
 		<y1-m>  0.575</y1-m>
-		<z1-m> -2.383</z1-m>
+		<z1-m> -2.387</z1-m>
 		<x2-m>-21.731</x2-m>
 		<y2-m>  0.575</y2-m>
-		<z2-m> -2.518</z2-m>
+		<z2-m> -2.522</z2-m>
 	 </axis>
 </animation>
 

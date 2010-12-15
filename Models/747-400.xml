@@ -22,10 +22,6 @@
 	<path>Aircraft/747-400/Models/747-400_gear.xml</path> 
 </model>
 
-<!--<model>
- <path>Aircraft/747-400/Models/747-400_tail.xml</path> 
-</model>-->
-
 <model>
 	<path>Aircraft/747-400/Models/747-400_wings.xml</path> 
 </model>

@@ -128,6 +128,26 @@
 	<path>Aircraft/747-400/Models/Cockpit/display-text.xml</path>
 	<offsets>
 		<x-m> 0.004</x-m>
+		<y-m> 0.000</y-m>
+		<z-m> 0.040</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<text type="string">------------------------</text>
+			<character-size type="double">0.012</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-text.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
 		<y-m>-0.040</y-m>
 		<z-m> 0.034</z-m>
 	</offsets>

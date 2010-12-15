@@ -59,7 +59,7 @@
 		<path>Aircraft/747-400/Panels/744_hyd_panel.xml</path>
 	</panel>
 
-	<hud>   
+	<hud n="1">   
 		<enable3d>false</enable3d>
 	</hud>
 
@@ -357,6 +357,9 @@ left mouse button and counter clockwise using the middle mouse button.
 		<tank n="4">
 			<x-feed>0</x-feed>
 		</tank>
+		<tank n="7">
+			<pump>0</pump>
+		</tank>
 	</fuel>
 
 	<gear>
@@ -502,6 +505,9 @@ left mouse button and counter clockwise using the middle mouse button.
 	<locks>
 		<roc-lock>1</roc-lock>
 	</locks>
+	<route-manager>
+		<input>@CLEAR</input>
+	</route-manager>
 	<!-- settings when power first applied -->
 	<settings>
 		<target-altitude-ft>10000</target-altitude-ft>
@@ -547,17 +553,8 @@ left mouse button and counter clockwise using the middle mouse button.
 	<mk-viii>
 		<serviceable>1</serviceable>
 		<configuration-module>
-			<category-1>   0 </category-1>
-			<category-3>   2 </category-3>
-			<category-4>  13 </category-4>
-			<category-5>   0 </category-5>
-			<category-6>   1 </category-6>
-			<category-7> 124 </category-7>
-			<category-8>   2 </category-8>
-			<category-9>   3 </category-9>
-			<category-10>  6 </category-10>
-			<category-13>  7 </category-13>
-			<category-14>  0 </category-14>
+			<category-1> 254 </category-1>
+			<category-4>  11 </category-4>
 		</configuration-module>
 		<inputs>
 			<arinc429>
@@ -568,7 +565,7 @@ left mouse button and counter clockwise using the middle mouse button.
 		<speaker>
 			<max-dist>2</max-dist>
 			<reference-dist>1</reference-dist>
-			<volume>0.4</volume>
+			<volume>0.8</volume>
 		</speaker>
 	</mk-viii>
 	<radar>
@@ -608,6 +605,12 @@ left mouse button and counter clockwise using the middle mouse button.
 </instrumentation>
 
 <limits>
+	<mass-and-balance>
+		<!--<maximum-ramp-mass-lbs></maximum-ramp-mass-lbs> -->
+		<maximum-takeoff-mass-lbs>875000</maximum-takeoff-mass-lbs>
+		<maximum-landing-mass-lbs>652000</maximum-landing-mass-lbs>
+		<maximum-zero-fuel-mass-lbs>394100</maximum-zero-fuel-mass-lbs>
+	</mass-and-balance>
 	<max-flap-extension-speed>
 		<flaps>0.033</flaps>
 		<speed>285</speed>
@@ -641,15 +644,15 @@ left mouse button and counter clockwise using the middle mouse button.
 	<electrical>
 		<outputs>
 			<efis>20</efis>
+			<mk-viii>25</mk-viii>
 		</outputs>
 	</electrical>
 </systems>
 
- <!-- NASAL -->
-
 <nasal>
 	<Boeing747>
 		<!--<file>Aircraft/747-400/Nasal/AFDS.nas</file>-->
+		<file>Aircraft/747-400/Nasal/brakesystem.nas</file>
 		<file>Aircraft/747-400/Nasal/copilot.nas</file>
 		<file>Aircraft/747-400/Nasal/doors.nas</file>
 		<file>Aircraft/747-400/Nasal/eicas.nas</file>
@@ -658,7 +661,9 @@ left mouse button and counter clockwise using the middle mouse button.
 		<!-- <file>Aircraft/747-400/Nasal/ins.nas</file>-->
 		<file>Aircraft/747-400/Nasal/liveries.nas</file>
 		<file>Aircraft/747-400/Nasal/system.nas</file>
+		<file>Aircraft/747-400/Nasal/tyresmoke.nas</file>
 		<file>Aircraft/747-400/Nasal/vspeeds.nas</file>
+		<file>Aircraft/747-400/Models/Cockpit/Instruments/CDU/CDU.nas</file>
 		<file>Aircraft/747-400/Nasal/wipers.nas</file>
 		<file>Aircraft/Generic/limits.nas</file>
 	</Boeing747>
@@ -671,9 +676,6 @@ left mouse button and counter clockwise using the middle mouse button.
 	<reversethrust>
 		<file>Aircraft/747-400/Nasal/reverse-thrust.nas</file>
 	</reversethrust>
-	<tyresmoke>
-		<file>Aircraft/747-400/Nasal/tyresmoke.nas</file>
-	</tyresmoke>
 	<walk>
 		<file>Aircraft/747-400/Nasal/walk.nas</file>
 	</walk>

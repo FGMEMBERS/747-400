@@ -3,6 +3,429 @@
 <path>cdu.ac</path>
 
 <model>
+	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.000</y-m>
+		<z-m> 0.110</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/output/title</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>center-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m>-0.052</y-m>
+		<z-m> 0.098</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/output/line1/left</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>left-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.000</y-m>
+		<z-m> 0.098</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/output/line1/center</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>center-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.052</y-m>
+		<z-m> 0.098</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/output/line1/right</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>right-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m>-0.052</y-m>
+		<z-m> 0.085</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/output/line2/left</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>left-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.000</y-m>
+		<z-m> 0.085</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/output/line2/center</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>center-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.052</y-m>
+		<z-m> 0.085</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/output/line2/right</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>right-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m>-0.052</y-m>
+		<z-m> 0.072</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/output/line3/left</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>left-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.000</y-m>
+		<z-m> 0.072</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/output/line3/center</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>center-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.052</y-m>
+		<z-m> 0.072</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/output/line3/right</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>right-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m>-0.052</y-m>
+		<z-m> 0.059</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/output/line4/left</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>left-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.000</y-m>
+		<z-m> 0.059</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/output/line4/center</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>center-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.052</y-m>
+		<z-m> 0.059</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/output/line4/right</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>right-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m>-0.052</y-m>
+		<z-m> 0.046</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/output/line5/left</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>left-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.000</y-m>
+		<z-m> 0.046</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/output/line5/center</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>center-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.052</y-m>
+		<z-m> 0.046</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/output/line5/right</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>right-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m>-0.052</y-m>
+		<z-m> 0.033</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/output/line6/left</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>left-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.000</y-m>
+		<z-m> 0.033</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/output/line6/center</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>center-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.052</y-m>
+		<z-m> 0.033</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/output/line6/right</property>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>right-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
+	<offsets>
+		<x-m> 0.004</x-m>
+		<y-m> 0.000</y-m>
+		<z-m> 0.024</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/cdu/input</property>
+			<format type="string">%03.1f</format>
+			<factor>1</factor>
+			<character-size type="double">0.007</character-size>
+			<color>
+				<red   type="double">0.1</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.1</blue>
+			</color>
+			<alignment>center-center</alignment>
+		</params>
+	</overlay>
+</model>
+
+<!--
+<model>
 	<path>Aircraft/747-400/Models/Cockpit/Instruments/CDU/Pages/MENU.xml</path>
 	<condition>
 		<equals>
@@ -23,11 +446,41 @@
 </model>
 
 <model>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/CDU/Pages/DEP.xml</path>
+	<condition>
+		<equals>
+			<property>/instrumentation/cdu/display</property>
+			<value>DEP</value>
+		</equals>
+	</condition>
+</model>
+
+<model>
 	<path>Aircraft/747-400/Models/Cockpit/Instruments/CDU/Pages/DEP_ARR_INDEX.xml</path>
 	<condition>
 		<equals>
 			<property>/instrumentation/cdu/display</property>
 			<value>DEP_ARR_INDEX</value>
+		</equals>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/CDU/Pages/EICAS_MODES.xml</path>
+	<condition>
+		<equals>
+			<property>/instrumentation/cdu/display</property>
+			<value>EICAS_MODES</value>
+		</equals>
+	</condition>
+</model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/CDU/Pages/EICAS_SYN.xml</path>
+	<condition>
+		<equals>
+			<property>/instrumentation/cdu/display</property>
+			<value>EICAS_SYN</value>
 		</equals>
 	</condition>
 </model>
@@ -93,6 +546,16 @@
 </model>
 
 <model>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/CDU/Pages/RTE1_1.xml</path>
+	<condition>
+		<equals>
+			<property>/instrumentation/cdu/display</property>
+			<value>RTE1_1</value>
+		</equals>
+	</condition>
+</model>
+
+<model>
 	<path>Aircraft/747-400/Models/Cockpit/Instruments/CDU/Pages/TO_REF.xml</path>
 	<condition>
 		<equals>
@@ -101,13 +564,46 @@
 		</equals>
 	</condition>
 </model>
-
+-->
 <animation>
 	<type>pick</type>
 	<object-name>Btn.side.l.1</object-name>
 	<action>
 		<button>0</button>
-		<repeatable>false</repeatable>  
+		<repeatable>false</repeatable> 
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>DEP_ARR_INDEX</value>
+				</equals>
+			</condition>
+			<command>property-assign</command>
+			<property>/instrumentation/cdu/display</property>
+			<value type="string">RTE1_DEP</value>
+		</binding>
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>EICAS_MODES</value>
+				</equals>
+			</condition>
+			<command>property-assign</command>
+			<property>/instrumentation/eicas/display</property>
+			<value type="string">ENG</value>
+		</binding>
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>EICAS_SYN</value>
+				</equals>
+			</condition>
+			<command>property-assign</command>
+			<property>/instrumentation/eicas/display</property>
+			<value type="string">ELEC</value>
+		</binding>
 		<binding>
 			<condition>
 				<equals>
@@ -134,6 +630,17 @@
 			<condition>
 				<equals>
 					<property>/instrumentation/cdu/display</property>
+					<value>RTE1_1</value>
+				</equals>
+			</condition>
+			<command>nasal</command>
+			<script>setprop("/autopilot/route-manager/departure/airport",getprop("/instrumentation/cdu/input"));
+					setprop("/instrumentation/cdu/input","");</script>
+		</binding>
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
 					<value>TO_REF</value>
 				</equals>
 			</condition>
@@ -154,11 +661,44 @@
 			<condition>
 				<equals>
 					<property>/instrumentation/cdu/display</property>
+					<value>EICAS_MODES</value>
+				</equals>
+			</condition>
+			<command>property-assign</command>
+			<property>/instrumentation/eicas/display</property>
+			<value type="string">FUEL</value>
+		</binding>
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>EICAS_SYN</value>
+				</equals>
+			</condition>
+			<command>property-assign</command>
+			<property>/instrumentation/eicas/display</property>
+			<value type="string">HYD</value>
+		</binding>
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
 					<value>NAV_RAD</value>
 				</equals>
 			</condition>
 			<command>nasal</command>
 			<script>setprop("/instrumentation/nav[1]/frequencies/selected-mhz",getprop("/instrumentation/cdu/input"));
+					setprop("/instrumentation/cdu/input","");</script>
+		</binding>
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>RTE1_1</value>
+				</equals>
+			</condition>
+			<command>nasal</command>
+			<script>setprop("/autopilot/route-manager/destination/airport",getprop("/instrumentation/cdu/input"));
 					setprop("/instrumentation/cdu/input","");</script>
 		</binding>
 	</action>
@@ -170,6 +710,28 @@
 	<action>
 		<button>0</button>
 		<repeatable>false</repeatable>  
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>EICAS_MODES</value>
+				</equals>
+			</condition>
+			<command>property-assign</command>
+			<property>/instrumentation/eicas/display</property>
+			<value type="string">STAT</value>
+		</binding>
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>EICAS_SYN</value>
+				</equals>
+			</condition>
+			<command>property-assign</command>
+			<property>/instrumentation/eicas/display</property>
+			<value type="string">ECS</value>
+		</binding>
 		<binding>
 			<condition>
 				<equals>
@@ -191,6 +753,48 @@
 			<command>nasal</command>
 			<script>setprop("/instrumentation/fmc/ref-airport",getprop("/instrumentation/cdu/input"));
 					setprop("/instrumentation/cdu/input","");</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.side.r.2</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>DEP_ARR_INDEX</value>
+				</equals>
+			</condition>
+			<command>property-assign</command>
+			<property>/instrumentation/eicas/display</property>
+			<value type="string">RTE1_ARR</value>
+		</binding>
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>EICAS_MODES</value>
+				</equals>
+			</condition>
+			<command>property-assign</command>
+			<property>/instrumentation/eicas/display</property>
+			<value type="string">GEAR</value>
+		</binding>
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>EICAS_SYN</value>
+				</equals>
+			</condition>
+			<command>property-assign</command>
+			<property>/instrumentation/eicas/display</property>
+			<value type="string">DRS</value>
 		</binding>
 	</action>
 </animation>
@@ -313,6 +917,64 @@
 			<property>/instrumentation/cdu/display</property>
 			<value type="string">POS_INIT</value>
 		</binding>
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>EICAS_MODES</value>
+				</equals>
+			</condition>
+			<command>property-assign</command>
+			<property>/instrumentation/cdu/display</property>
+			<value type="string">EICAS_SYN</value>
+		</binding>
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>EICAS_SYN</value>
+				</equals>
+			</condition>
+			<command>property-assign</command>
+			<property>/instrumentation/cdu/display</property>
+			<value type="string">EICAS_MODES</value>
+		</binding>
+		<binding>
+			<condition>
+				<or>
+					<equals>
+						<property>/instrumentation/cdu/display</property>
+						<value>POS_INIT</value>
+					</equals>
+					<equals>
+						<property>/instrumentation/cdu/display</property>
+						<value>DEP</value>
+					</equals>
+					<equals>
+						<property>/instrumentation/cdu/display</property>
+						<value>RTE1_ARR</value>
+					</equals>
+					<equals>
+						<property>/instrumentation/cdu/display</property>
+						<value>RTE1_DEP</value>
+					</equals>
+				</or>
+			</condition>
+			<command>property-assign</command>
+			<property>/instrumentation/cdu/display</property>
+			<value type="string">RTE1_1</value>
+		</binding>
+		<binding>
+			<condition>
+				<equals>
+					<property>/instrumentation/cdu/display</property>
+					<value>RTE1_1</value>
+				</equals>
+			</condition>
+			<command>property-assign</command>
+			<property>/autopilot/route-manager/input</property>
+			<value type="string">@activate</value>
+		</binding>
 	</action>
 </animation>
 
@@ -326,6 +988,20 @@
 			<command>property-assign</command>
 			<property>/instrumentation/cdu/display</property>
 			<value type="string">INIT_REF</value>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.rte</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>property-assign</command>
+			<property>/instrumentation/cdu/display</property>
+			<value type="string">RTE1_1</value>
 		</binding>
 	</action>
 </animation>
@@ -381,7 +1057,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'0');</script>
+			<script>Boeing747.CDUinput('0');</script>
 		</binding>
 	</action>
 </animation>
@@ -394,7 +1070,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'1');</script>
+			<script>Boeing747.CDUinput('1');</script>
 		</binding>
 	</action>
 </animation>
@@ -407,7 +1083,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'2');</script>
+			<script>Boeing747.CDUinput('2');</script>
 		</binding>
 	</action>
 </animation>
@@ -420,7 +1096,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'3');</script>
+			<script>Boeing747.CDUinput('3');</script>
 		</binding>
 	</action>
 </animation>
@@ -433,7 +1109,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'4');</script>
+			<script>Boeing747.CDUinput('4');</script>
 		</binding>
 	</action>
 </animation>
@@ -446,7 +1122,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'5');</script>
+			<script>Boeing747.CDUinput('5');</script>
 		</binding>
 	</action>
 </animation>
@@ -459,7 +1135,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'6');</script>
+			<script>Boeing747.CDUinput('6');</script>
 		</binding>
 	</action>
 </animation>
@@ -472,7 +1148,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'7');</script>
+			<script>Boeing747.CDUinput('7');</script>
 		</binding>
 	</action>
 </animation>
@@ -485,7 +1161,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'8');</script>
+			<script>Boeing747.CDUinput('8');</script>
 		</binding>
 	</action>
 </animation>
@@ -498,7 +1174,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'9');</script>
+			<script>Boeing747.CDUinput('9');</script>
 		</binding>
 	</action>
 </animation>
@@ -511,7 +1187,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'A');</script>
+			<script>Boeing747.CDUinput('A');</script>
 		</binding>
 	</action>
 </animation>
@@ -524,7 +1200,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'B');</script>
+			<script>Boeing747.CDUinput('B');</script>
 		</binding>
 	</action>
 </animation>
@@ -537,7 +1213,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'C');</script>
+			<script>Boeing747.CDUinput('C');</script>
 		</binding>
 	</action>
 </animation>
@@ -550,7 +1226,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'D');</script>
+			<script>Boeing747.CDUinput('D');</script>
 		</binding>
 	</action>
 </animation>
@@ -563,7 +1239,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'E');</script>
+			<script>Boeing747.CDUinput('E');</script>
 		</binding>
 	</action>
 </animation>
@@ -576,7 +1252,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'F');</script>
+			<script>Boeing747.CDUinput('F');</script>
 		</binding>
 	</action>
 </animation>
@@ -589,7 +1265,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'G');</script>
+			<script>Boeing747.CDUinput('G');</script>
 		</binding>
 	</action>
 </animation>
@@ -602,7 +1278,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'H');</script>
+			<script>Boeing747.CDUinput('H');</script>
 		</binding>
 	</action>
 </animation>
@@ -615,7 +1291,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'I');</script>
+			<script>Boeing747.CDUinput('I');</script>
 		</binding>
 	</action>
 </animation>
@@ -628,7 +1304,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'J');</script>
+			<script>Boeing747.CDUinput('J');</script>
 		</binding>
 	</action>
 </animation>
@@ -641,7 +1317,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'K');</script>
+			<script>Boeing747.CDUinput('K');</script>
 		</binding>
 	</action>
 </animation>
@@ -654,7 +1330,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'L');</script>
+			<script>Boeing747.CDUinput('L');</script>
 		</binding>
 	</action>
 </animation>
@@ -667,7 +1343,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'M');</script>
+			<script>Boeing747.CDUinput('M');</script>
 		</binding>
 	</action>
 </animation>
@@ -680,7 +1356,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'N');</script>
+			<script>Boeing747.CDUinput('N');</script>
 		</binding>
 	</action>
 </animation>
@@ -693,7 +1369,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'O');</script>
+			<script>Boeing747.CDUinput('O');</script>
 		</binding>
 	</action>
 </animation>
@@ -706,7 +1382,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'P');</script>
+			<script>Boeing747.CDUinput('P');</script>
 		</binding>
 	</action>
 </animation>
@@ -719,7 +1395,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'Q');</script>
+			<script>Boeing747.CDUinput('Q');</script>
 		</binding>
 	</action>
 </animation>
@@ -732,7 +1408,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'R');</script>
+			<script>Boeing747.CDUinput('R');</script>
 		</binding>
 	</action>
 </animation>
@@ -745,7 +1421,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'S');</script>
+			<script>Boeing747.CDUinput('S');</script>
 		</binding>
 	</action>
 </animation>
@@ -758,7 +1434,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'T');</script>
+			<script>Boeing747.CDUinput('T');</script>
 		</binding>
 	</action>
 </animation>
@@ -771,7 +1447,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'U');</script>
+			<script>Boeing747.CDUinput('U');</script>
 		</binding>
 	</action>
 </animation>
@@ -784,7 +1460,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'V');</script>
+			<script>Boeing747.CDUinput('V');</script>
 		</binding>
 	</action>
 </animation>
@@ -797,7 +1473,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'W');</script>
+			<script>Boeing747.CDUinput('W');</script>
 		</binding>
 	</action>
 </animation>
@@ -810,7 +1486,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'X');</script>
+			<script>Boeing747.CDUinput('X');</script>
 		</binding>
 	</action>
 </animation>
@@ -823,7 +1499,7 @@
 		<repeatable>false</repeatable>
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'Y');</script>
+			<script>Boeing747.CDUinput('Y');</script>
 		</binding>
 	</action>
 </animation>
@@ -836,7 +1512,7 @@
 		<repeatable>false</repeatable>
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'Z');</script>
+			<script>Boeing747.CDUinput('Z');</script>
 		</binding>
 	</action>
 </animation>
@@ -849,7 +1525,7 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>nasal</command>
-			<script>setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~'.');</script>
+			<script>Boeing747.CDUinput('.');</script>
 		</binding>
 	</action>
 </animation>

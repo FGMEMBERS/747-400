@@ -13,142 +13,144 @@
 </nasal> 
 
 <animation> 
- <type>material</type> 
- <object-name>eng.1_reverser</object-name>
- <object-name>eng.2_reverser</object-name>
- <object-name>eng.3_reverser</object-name>
- <object-name>eng.4_reverser</object-name>
- <object-name>eng.1_1_1</object-name>
- <object-name>eng.2_1_1</object-name>
- <object-name>eng.3_1_1</object-name>
- <object-name>eng.4_1_1</object-name>
- <property-base>sim/model/livery</property-base> 
- <texture-prop>engine</texture-prop> 
- <texture>BOE.png</texture> 
+	<type>material</type> 
+	<object-name>eng.1_reverser</object-name>
+	<object-name>eng.2_reverser</object-name>
+	<object-name>eng.3_reverser</object-name>
+	<object-name>eng.4_reverser</object-name>
+	<object-name>eng.1_1_1</object-name>
+	<object-name>eng.2_1_1</object-name>
+	<object-name>eng.3_1_1</object-name>
+	<object-name>eng.4_1_1</object-name>
+	<object-name>winglet_left</object-name>
+	<object-name>winglet_right</object-name>
+	<property-base>sim/model/livery</property-base> 
+	<texture-prop>texture</texture-prop> 
+	<texture>BOE.png</texture> 
 </animation>
 
 <animation>
- <type>select</type>
- <condition>
-  <equals>
-   <property>/controls/failures/wings/broken</property>
-   <value>0</value>
-  </equals>
- </condition>
+	<type>select</type>
+	<condition>
+		<equals>
+			<property>/controls/failures/wings/broken</property>
+			<value>0</value>
+		</equals>
+	</condition>
 </animation>
 
 <!-- FUEL JETTISON -->
 
 <model>
- <path>Aircraft/747-400/Models/Effects/fuel_jettison.xml</path>
- <name>fueldump.1</name>
- <offsets>
-  <x-m>  0.5</x-m>
-  <y-m>-26  </y-m>
-  <z-m>  0  </z-m>
- </offsets>
+	<path>Aircraft/747-400/Models/Effects/fuel_jettison.xml</path>
+	<name>fueldump.1</name>
+	<offsets>
+		<x-m>  0.5</x-m>
+		<y-m>-26  </y-m>
+		<z-m>  0  </z-m>
+	</offsets>
 </model>
 
 <model>
- <path>Aircraft/747-400/Models/Effects/fuel_jettison.xml</path>
- <name>fueldump.2</name>
- <offsets>
-  <x-m> 0.5</x-m>
-  <y-m>26  </y-m>
-  <z-m> 0  </z-m>
- </offsets>
+	<path>Aircraft/747-400/Models/Effects/fuel_jettison.xml</path>
+	<name>fueldump.2</name>
+	<offsets>
+		<x-m> 0.5</x-m>
+		<y-m>26  </y-m>
+		<z-m> 0  </z-m>
+	</offsets>
 </model>
 
 <!-- ENGINE #1 FIRE -->
 
 <model>
- <path>Aircraft/747-400/Models/Effects/fire.xml</path> 
- <name>enginefire.1</name>
- <offsets> 
-  <x-m> 10.5 </x-m>
-  <y-m>-21.23</y-m>
-  <z-m> -1.97</z-m>
- </offsets>
+	<path>Aircraft/747-400/Models/Effects/fire.xml</path> 
+	<name>enginefire.1</name>
+	<offsets> 
+		<x-m> 10.5 </x-m>
+		<y-m>-21.23</y-m>
+		<z-m> -1.97</z-m>
+	</offsets>
 </model>
 
 <animation>
- <type>select</type>
- <object-name>enginefire.1</object-name>
- <condition>
-  <equals>
-   <property>controls/engines/engine[0]/on-fire</property>
-   <value>1</value>
-  </equals>
- </condition>
+	<type>select</type>
+	<object-name>enginefire.1</object-name>
+	<condition>
+		<equals>
+			<property>controls/engines/engine[0]/on-fire</property>
+			<value>1</value>
+		</equals>
+	</condition>
 </animation>
 
 <!-- ENGINE #2 FIRE -->
 
 <model>
- <path>Aircraft/747-400/Models/Effects/fire.xml</path> 
- <name>enginefire.2</name>
- <offsets> 
-  <x-m>  3    </x-m>
-  <y-m>-13.447</y-m>
-  <z-m> -2.575</z-m>
- </offsets>
+	<path>Aircraft/747-400/Models/Effects/fire.xml</path> 
+	<name>enginefire.2</name>
+	<offsets> 
+		<x-m>  3    </x-m>
+		<y-m>-13.447</y-m>
+		<z-m> -2.575</z-m>
+	</offsets>
 </model>
 
 <animation>
- <type>select</type>
- <object-name>enginefire.2</object-name>
- <condition>
-  <equals>
-   <property>controls/engines/engine[1]/on-fire</property>
-   <value>1</value>
-  </equals>
- </condition>
+	<type>select</type>
+	<object-name>enginefire.2</object-name>
+	<condition>
+		<equals>
+			<property>controls/engines/engine[1]/on-fire</property>
+			<value>1</value>
+		</equals>
+	</condition>
 </animation>
 
 <!-- ENGINE #3 FIRE -->
 
 <model>
- <path>Aircraft/747-400/Models/Effects/fire.xml</path> 
- <name>enginefire.3</name>
- <offsets> 
-  <x-m> 3    </x-m>
-  <y-m>13.447</y-m>
-  <z-m>-2.575</z-m>
- </offsets>
+	<path>Aircraft/747-400/Models/Effects/fire.xml</path> 
+	<name>enginefire.3</name>
+	<offsets> 
+		<x-m> 3    </x-m>
+		<y-m>13.447</y-m>
+		<z-m>-2.575</z-m>
+	</offsets>
 </model>
 
 <animation>
- <type>select</type>
- <object-name>enginefire.3</object-name>
- <condition>
-  <equals>
-   <property>controls/engines/engine[2]/on-fire</property>
-   <value>1</value>
-  </equals>
- </condition>
+	<type>select</type>
+	<object-name>enginefire.3</object-name>
+	<condition>
+		<equals>
+			<property>controls/engines/engine[2]/on-fire</property>
+			<value>1</value>
+		</equals>
+	</condition>
 </animation>
  
 <!-- ENGINE #4 FIRE -->
 
 <model>
- <path>Aircraft/747-400/Models/Effects/fire.xml</path> 
- <name>enginefire.4</name>
- <offsets> 
-  <x-m>10.5</x-m>
-  <y-m>21.23</y-m>
-  <z-m>-1.97</z-m>
- </offsets>
+	<path>Aircraft/747-400/Models/Effects/fire.xml</path> 
+	<name>enginefire.4</name>
+	<offsets> 
+		<x-m>10.5</x-m>
+		<y-m>21.23</y-m>
+		<z-m>-1.97</z-m>
+	</offsets>
 </model>
 
 <animation>
- <type>select</type>
- <object-name>enginefire.4</object-name>
- <condition>
-  <equals>
-   <property>controls/engines/engine[3]/on-fire</property>
-   <value>1</value>
-  </equals>
- </condition>
+	<type>select</type>
+	<object-name>enginefire.4</object-name>
+	<condition>
+		<equals>
+			<property>controls/engines/engine[3]/on-fire</property>
+			<value>1</value>
+		</equals>
+	</condition>
 </animation>
 
 <!-- WING FLEX RIGHT -->
@@ -374,241 +376,110 @@
 </animation>
 
 <animation>
- <type>rotate</type>
- <object-name>wing_left.3</object-name>
- <object-name>RedLight</object-name>
- <object-name>StrobeLight.L</object-name>
- <object-name>aileron_left_outer</object-name>
- <object-name>winglet_left</object-name>
- <object-name>fueldump.1</object-name>
- <property>fdm/jsbsim/forces/wing[1]</property>
- <factor>-0.0004</factor>
- <center>
-  <x-m>0</x-m>
-  <y-m>-21.5</y-m>
-  <z-m>-1.25</z-m>
- </center>
- <axis>
-  <x>1</x>
-  <y>0</y>
-  <z>0</z>
- </axis>
+	<type>rotate</type>
+	<object-name>wing_left.3</object-name>
+	<object-name>RedLight</object-name>
+	<object-name>StrobeLight.L</object-name>
+	<object-name>aileron_left_outer</object-name>
+	<object-name>winglet_left</object-name>
+	<object-name>fueldump.1</object-name>
+	<property>fdm/jsbsim/forces/wing[1]</property>
+	<factor>-0.0004</factor>
+	<center>
+		<x-m>0</x-m>
+		<y-m>-21.5</y-m>
+		<z-m>-1.25</z-m>
+	</center>
+	<axis>
+		<x>1</x>
+		<y>0</y>
+		<z>0</z>
+	</axis>
 </animation>
 
 <!-- AILERON LEFT INNER -->
 
 <animation>
- <type>rotate</type>
- <object-name>aileron_left_inner</object-name> 
- <property>surface-positions/left-aileron-pos-norm</property>
- <factor>-30</factor>   
- <axis>
-  <x1-m>7.23</x1-m>
-  <y1-m>-11.25</y1-m>
-  <z1-m>-1.14</z1-m>
-  <x2-m>7.23</x2-m>
-  <y2-m>-13.02</y2-m>
-  <z2-m>-0.99</z2-m>
- </axis>
+	<type>rotate</type>
+	<object-name>aileron_left_inner</object-name> 
+	<property>surface-positions/left-inboard-aileron-pos-norm</property>
+	<factor>-30</factor>   
+	<axis>
+		<x1-m>7.23</x1-m>
+		<y1-m>-11.25</y1-m>
+		<z1-m>-1.14</z1-m>
+		<x2-m>7.23</x2-m>
+		<y2-m>-13.02</y2-m>
+		<z2-m>-0.99</z2-m>
+	</axis>
 </animation>
 
 <!-- AILERON LEFT OUTER -->
 
 <animation>
- <type>rotate</type>
- <object-name>aileron_left_outer</object-name>
- <property>surface-positions/left-aileron-pos-norm</property>
- <factor>-30</factor>  
- <axis>
-  <x1-m>12.88</x1-m>
-  <y1-m>-21.6</y1-m>
-  <z1-m>0.20</z1-m>
-  <x2-m>17.11</x2-m>
-  <y2-m>-28.4</y2-m>
-  <z2-m>0.74</z2-m>
- </axis>
+	<type>rotate</type>
+	<object-name>aileron_left_outer</object-name>
+	<property>surface-positions/left-outboard-aileron-pos-norm</property>
+	<factor>-30</factor>  
+	<axis>
+		<x1-m>12.88</x1-m>
+		<y1-m>-21.6</y1-m>
+		<z1-m>0.20</z1-m>
+		<x2-m>17.11</x2-m>
+		<y2-m>-28.4</y2-m>
+		<z2-m>0.74</z2-m>
+	</axis>
 </animation>
 
 <!-- AILERON RIGHT INNER -->
 
 <animation>
- <type>rotate</type>
- <object-name>aileron_right_inner</object-name>
- <property>surface-positions/left-aileron-pos-norm</property>
- <factor>-30</factor>   
- <axis>
-  <x1-m>7.23</x1-m>
-  <y1-m>11.25</y1-m>
-  <z1-m>-1.14</z1-m>
-  <x2-m>7.23</x2-m>
-  <y2-m>13.02</y2-m>
-  <z2-m>-0.99</z2-m>
- </axis>
+	<type>rotate</type>
+	<object-name>aileron_right_inner</object-name>
+	<property>surface-positions/right-inboard-aileron-pos-norm</property>
+	<factor>-30</factor>   
+	<axis>
+		<x1-m>7.23</x1-m>
+		<y1-m>11.25</y1-m>
+		<z1-m>-1.14</z1-m>
+		<x2-m>7.23</x2-m>
+		<y2-m>13.02</y2-m>
+		<z2-m>-0.99</z2-m>
+	</axis>
 </animation>
 
 <!-- AILERON RIGHT OUTER -->
 
 <animation>
- <type>rotate</type>
- <object-name>aileron_right_outer</object-name>
- <property>surface-positions/left-aileron-pos-norm</property>
- <factor>-30</factor>  
- <axis>
-  <x1-m>12.88</x1-m>
-  <y1-m>21.6</y1-m>
-  <z1-m>0.20</z1-m>
-  <x2-m>17.11</x2-m>
-  <y2-m>28.4</y2-m>
-  <z2-m>0.74</z2-m>
- </axis>
+	<type>rotate</type>
+	<object-name>aileron_right_outer</object-name>
+	<property>surface-positions/left-outboard-aileron-pos-norm</property>
+	<factor>-30</factor>  
+	<axis>
+		<x1-m>12.88</x1-m>
+		<y1-m>21.6</y1-m>
+		<z1-m>0.20</z1-m>
+		<x2-m>17.11</x2-m>
+		<y2-m>28.4</y2-m>
+		<z2-m>0.74</z2-m>
+	</axis>
 </animation>
 
 <!-- THRUST REVERSERS -->
 
 <animation>
- <type>translate</type>
- <object-name>eng.1_reverser</object-name>
- <object-name>eng.2_reverser</object-name>
- <object-name>eng.3_reverser</object-name>
- <object-name>eng.4_reverser</object-name>
- <property>engines/engine/reverser-pos-norm</property>
- <interpolation>
-  <entry>
-   <ind>0</ind>
-   <dep>0.0</dep>
-  </entry>
-  <entry>
-   <ind>1</ind>
-   <dep>0.6</dep>
-  </entry>
- </interpolation>
- <axis>
-  <x>1</x>
-  <y>0</y>
-  <z>0</z>
- </axis>
-</animation>
-
-<!-- SPOILERS RIGHT -->
-
-<animation>
- <type>rotate</type>
- <object-name>speedbrake_right.2</object-name>
- <property>surface-positions/right-aileron-pos-norm</property>
- <interpolation>
-  <entry>
-   <ind>-1.0</ind>
-   <dep>0.0</dep>
-  </entry>
-  <entry>
-   <ind>0.0</ind>
-   <dep>0.0</dep>
-  </entry>
-  <entry>
-   <ind>1.0</ind>
-   <dep>-30</dep>
-  </entry>
- </interpolation>
- <axis>   
-  <x1-m> 4.91</x1-m>
-  <y1-m> 7.11</y1-m>
-  <z1-m>-1.05</z1-m>
-  <x2-m> 5.90</x2-m>
-  <y2-m>11.21</y2-m>
-  <z2-m>-0.52</z2-m>
- </axis>
-</animation>
-
-<animation>
- <type>rotate</type>
- <object-name>speedbrake_right.3</object-name>
- <object-name>speedbrake_right.4</object-name>
- <object-name>speedbrake_right.5</object-name>
- <object-name>speedbrake_right.6</object-name>
- <property>surface-positions/right-aileron-pos-norm</property>
- <interpolation>
-  <entry>
-   <ind>-1.0</ind>
-   <dep>0.0</dep>
-  </entry>
-  <entry>
-   <ind>0.0</ind>
-   <dep>0.0</dep>
-  </entry>
-  <entry>
-   <ind>1.0</ind>
-   <dep>-30</dep>
-  </entry>
- </interpolation>
- <axis>   
-  <x1-m>  8.02</x1-m>
-  <y1-m> 14.38</y1-m>
-  <z1-m> -0.34</z1-m>
-  <x2-m> 11.85</x2-m>
-  <y2-m> 20.58</y2-m>
-  <z2-m>  0.36</z2-m>
- </axis>
-</animation>
-
-<!-- SPOILERS LEFT -->
-
-<animation>
- <type>rotate</type>
- <object-name>speedbrake_left.2</object-name>
- <property>surface-positions/left-aileron-pos-norm</property>
- <interpolation>
-  <entry>
-   <ind>-1.0</ind>
-   <dep>30.0</dep>
-  </entry>
-  <entry>
-   <ind>0.0</ind>
-   <dep>0.0</dep>
-  </entry>
-  <entry>
-   <ind>1.0</ind>
-   <dep>0</dep>
-  </entry>
- </interpolation>
- <axis>   
-  <x1-m>  4.91</x1-m>
-  <y1-m> -7.11</y1-m>
-  <z1-m> -1.05</z1-m>
-  <x2-m>  5.90</x2-m>
-  <y2-m>-11.21</y2-m>
-  <z2-m> -0.52</z2-m>
- </axis>
-</animation>
-
-<animation>
- <type>rotate</type>
- <object-name>speedbrake_left.3</object-name>
- <object-name>speedbrake_left.4</object-name>
- <object-name>speedbrake_left.5</object-name>
- <object-name>speedbrake_left.6</object-name>
- <property>surface-positions/left-aileron-pos-norm</property>
- <interpolation>
-  <entry>
-   <ind>-1.0</ind>
-   <dep>30.0</dep>
-  </entry>
-  <entry>
-   <ind>0.0</ind>
-   <dep>0.0</dep>
-  </entry>
-  <entry>
-   <ind>1.0</ind>
-   <dep>0</dep>
-  </entry>
- </interpolation>
- <axis>   
-  <x1-m>  8.02</x1-m>
-  <y1-m>-14.38</y1-m>
-  <z1-m> -0.34</z1-m>
-  <x2-m> 11.85</x2-m>
-  <y2-m>-20.58</y2-m>
-  <z2-m>  0.36</z2-m>
- </axis>
+	<type>translate</type>
+	<object-name>eng.1_reverser</object-name>
+	<object-name>eng.2_reverser</object-name>
+	<object-name>eng.3_reverser</object-name>
+	<object-name>eng.4_reverser</object-name>
+	<property>engines/engine/reverser-pos-norm</property>
+	<factor>0.6</factor>
+	<axis>
+		<x>1</x>
+		<y>0</y>
+		<z>0</z>
+	</axis>
 </animation>
 
 <!-- SPEEDBRAKES RIGHT INNER -->
@@ -616,7 +487,7 @@
 <animation>
  <type>rotate</type>
  <object-name>speedbrake_right.1</object-name>
- <property>surface-positions/speedbrake-pos-norm</property>
+ <property>surface-positions/right-spoiler-pos-norm</property>
  <interpolation>
   <entry>
    <ind>0.0</ind>
@@ -644,7 +515,7 @@
 <animation>
  <type>rotate</type>
  <object-name>speedbrake_right.2</object-name>
- <property>surface-positions/speedbrake-pos-norm</property>
+ <property>surface-positions/right-spoiler-pos-norm</property>
  <interpolation>
   <entry>
    <ind>0.0</ind>
@@ -675,7 +546,7 @@
  <type>rotate</type>
  <object-name>speedbrake_right.3</object-name>
  <object-name>speedbrake_right.4</object-name>
- <property>surface-positions/speedbrake-pos-norm</property>
+ <property>surface-positions/right-spoiler-pos-norm</property>
  <interpolation>
   <entry>
    <ind>0.0</ind>
@@ -704,7 +575,7 @@
  <type>rotate</type>
  <object-name>speedbrake_right.5</object-name>
  <object-name>speedbrake_right.6</object-name>
- <property>surface-positions/speedbrake-pos-norm</property>
+ <property>surface-positions/right-spoiler-pos-norm</property>
  <interpolation>
   <entry>
    <ind>0.0</ind>
@@ -734,7 +605,7 @@
 <animation>
  <type>rotate</type>
  <object-name>speedbrake_left.1</object-name>
- <property>surface-positions/speedbrake-pos-norm</property>
+ <property>surface-positions/left-spoiler-pos-norm</property>
  <interpolation>
   <entry>
    <ind>0.0</ind>
@@ -762,7 +633,7 @@
 <animation>
  <type>rotate</type>
  <object-name>speedbrake_left.2</object-name>
- <property>surface-positions/speedbrake-pos-norm</property>
+ <property>surface-positions/left-spoiler-pos-norm</property>
  <interpolation>
   <entry>
    <ind>0.0</ind>
@@ -793,7 +664,7 @@
  <type>rotate</type>
  <object-name>speedbrake_left.3</object-name>
  <object-name>speedbrake_left.4</object-name>
- <property>surface-positions/speedbrake-pos-norm</property>
+ <property>surface-positions/left-spoiler-pos-norm</property>
  <interpolation>
   <entry>
    <ind>0</ind>
@@ -822,7 +693,7 @@
  <type>rotate</type>
  <object-name>speedbrake_left.5</object-name>
  <object-name>speedbrake_left.6</object-name>
- <property>surface-positions/speedbrake-pos-norm</property>
+ <property>surface-positions/left-spoiler-pos-norm</property>
  <interpolation>
   <entry>
    <ind>0.0</ind>

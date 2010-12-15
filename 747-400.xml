@@ -129,14 +129,14 @@
         <iyz unit="SLUG*FT2"> 0 </iyz>
         <emptywt unit="LBS"> 393263  </emptywt>
         <location name="CG" unit="IN">
-            <x> -150 </x>
+            <x> -75 </x>
             <y> 0 </y>
             <z> 0 </z>
         </location>
-		<pointmass name="Pilot">
+		<pointmass name="Passengers and crew">
             <weight unit="LBS"> 50000 </weight>
             <location name="POINTMASS" unit="IN">
-            <x> -150 </x>
+            <x> 25 </x>
             <y> 0 </y>
             <z> 0 </z>
             </location>
@@ -609,6 +609,28 @@
                 <max>1</max>
             </clipto>
         </summer>
+		
+		<summer name="Left Spoiler">
+			<input>/controls/flight/speedbrake</input>
+            <input>-fcs/left-inboard-aileron-pos-rad</input>
+            <clipto>
+                <min>0</min>
+                <max>1</max>
+            </clipto>
+			<output>fcs/left-spoiler-pos-norm</output>
+			<output>/surface-positions/left-spoiler-pos-norm</output>
+		</summer>
+		
+		<summer name="Right Spoiler">
+			<input>/controls/flight/speedbrake</input>
+            <input>fcs/right-inboard-aileron-pos-rad</input>
+            <clipto>
+                <min>0</min>
+                <max>1</max>
+            </clipto>
+			<output>fcs/right-spoiler-pos-norm</output>
+			<output>/surface-positions/right-spoiler-pos-norm</output>
+		</summer>
 
         <aerosurface_scale name="Left Outboard Aileron Control">
             <input>fcs/roll-trim-sum</input>
@@ -625,6 +647,7 @@
                 <max>1</max>
             </range>
             <output>fcs/left-outboard-aileron-pos-norm</output>
+			<output>/surface-positions/left-outboard-aileron-pos-norm</output>
         </aerosurface_scale>
 		
 		<aerosurface_scale name="Right Outboard Aileron Control">
@@ -642,10 +665,11 @@
                 <max>1</max>
             </range>
             <output>fcs/right-outboard-aileron-pos-norm</output>
+			<output>/surface-positions/right-outboard-aileron-pos-norm</output>
         </aerosurface_scale>
 		
 		<switch name="fcs/outboard-ailerons-lockout">
-          <default value="1"/>
+			<default value="1"/>
             <test  logic="AND" value="0">
                 velocities/vc-kts > 238
 				/controls/flight/flaps == 0
@@ -655,7 +679,7 @@
 				/controls/flight/flaps == 0
             </test>
 			<output>fcs/outboard-ailerons-unlocked</output>
-       </switch>
+		</switch>
 		
 		<aerosurface_scale name="Left Inboard Aileron Control">
             <input>fcs/roll-trim-sum</input>
@@ -672,6 +696,7 @@
                 <max>1</max>
             </range>
             <output>fcs/left-inboard-aileron-pos-norm</output>
+			<output>/surface-positions/left-inboard-aileron-pos-norm</output>
         </aerosurface_scale>
 		
 		<aerosurface_scale name="Right Inboard Aileron Control">
@@ -689,25 +714,28 @@
                 <max>1</max>
             </range>
             <output>fcs/right-inboard-aileron-pos-norm</output>
+			<output>/surface-positions/right-inboard-aileron-pos-norm</output>
         </aerosurface_scale>
 		
 		<fcs_function name="Average Aileron Deflection">
-          <function name="fcs/total-aileron-pos-rad">
+			<function name="fcs/total-aileron-pos-rad">
                 <description>Average_aileron_pos_rad</description>
                 <avg>
 					<product>
 						<property>fcs/left-outboard-aileron-pos-rad</property>
 						<property>fcs/outboard-ailerons-unlocked</property>
 					</product>
+					<property>fcs/left-spoiler-pos-norm</property>
                     <property>fcs/left-inboard-aileron-pos-rad</property>
                     <property>fcs/right-inboard-aileron-pos-rad</property>
+					<property>fcs/right-spoiler-pos-norm</property>
 					<product>
 						<property>fcs/right-outboard-aileron-pos-rad</property>
 						<property>fcs/outboard-ailerons-unlocked</property>
 					</product>
                 </avg>
-        </function>
-          <output>fcs/aileron-pos-rad</output>
+			</function>
+			<output>fcs/aileron-pos-rad</output>
         </fcs_function>
 
      </channel>
