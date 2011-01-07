@@ -18,10 +18,10 @@
  <name>overhead</name>
  <path>Aircraft/747-400/Models/Cockpit/overhead.xml</path>
  <offsets>
-  <x-m>-24.30</x-m>
+  <x-m>-24.14</x-m>
   <y-m>  0.0 </y-m>
-  <z-m>  4.10</z-m>
-  <pitch-deg>160</pitch-deg>
+  <z-m>  4.02</z-m>
+  <pitch-deg>162</pitch-deg>
  </offsets>
 </model>
 

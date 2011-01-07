@@ -4,7 +4,8 @@
 <sim>
 	<description>Boeing 747-400</description>
 	<author>Gijs de Rooy, Ivan Ngeow</author>
-	<status>beta</status>
+	<status>Development</status>
+	<version>20101219</version>
 	<flight-model>jsb</flight-model>
 	<aero>747-400</aero>
 
@@ -206,7 +207,7 @@ left mouse button and counter clockwise using the middle mouse button.
 					</binding>
 				</item>
 
-				<item>
+				<!-- <item>
 					<label>Doors</label>
 					<binding>
 						<command>nasal</command>
@@ -215,7 +216,7 @@ left mouse button and counter clockwise using the middle mouse button.
 							mal.open();
 						</script>
 				  </binding>
-				</item>
+				</item> -->
 
 				<item>
 					<label>Malfunctions</label>
@@ -252,10 +253,21 @@ left mouse button and counter clockwise using the middle mouse button.
 				</item>
 
 				<item>
-					<label>Select Livery</label>
+					<label>Select livery</label>
 					<binding>
 						<command>nasal</command>
 						<script>aircraft.livery.dialog.open()</script>
+					</binding>
+				</item>
+				
+				<item>
+					<label>Select MP-copilot</label>
+					<binding>
+						<command>nasal</command>
+						<script>
+							dual_control_tools.
+							copilot_dialog.show(aircraft_dual_control.copilot_type);
+						</script>
 					</binding>
 				</item>
 				 
@@ -273,6 +285,13 @@ left mouse button and counter clockwise using the middle mouse button.
 			</menu>
 		</default>
 	</menubar>
+	
+	<multiplay>
+		<generic>
+			<float n="1" alias="/controls/flight/flaps"/>
+			<string n="1" type="string"></string> <!-- MP TDM1 -->
+		</generic>
+	</multiplay>
 
 </sim>
 
@@ -667,6 +686,15 @@ left mouse button and counter clockwise using the middle mouse button.
 		<file>Aircraft/747-400/Nasal/wipers.nas</file>
 		<file>Aircraft/Generic/limits.nas</file>
 	</Boeing747>
+	<dual_control_tools>
+		<file>Aircraft/Generic/DualControl/dual-control-tools.nas</file>
+	</dual_control_tools>
+	<aircraft_dual_control>
+		<file>Aircraft/747-400/DualControl/747-400-dual-control.nas</file>
+	</aircraft_dual_control>
+	<dual_control>
+		<file>Aircraft/Generic/DualControl/pilot-dual-control.nas</file>
+	</dual_control>
 	<electrical>
 		<file>Aircraft/747-400/Nasal/744_elec.nas</file>
 	</electrical>
@@ -676,6 +704,9 @@ left mouse button and counter clockwise using the middle mouse button.
 	<reversethrust>
 		<file>Aircraft/747-400/Nasal/reverse-thrust.nas</file>
 	</reversethrust>
+	<tyresmoke>
+		<file>Aircraft/747-400/Nasal/tyresmoke.nas</file>
+	</tyresmoke>
 	<walk>
 		<file>Aircraft/747-400/Nasal/walk.nas</file>
 	</walk>

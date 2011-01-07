@@ -1667,7 +1667,7 @@ refs 3
 43 0.81388258934 0.96520447731
 kids 0
 OBJECT poly
-name "Mesh125.003_1"
+name "panel.elec"
 data 21
 Mesh125 Component.002
 texture "overhead_panel_orig.png"

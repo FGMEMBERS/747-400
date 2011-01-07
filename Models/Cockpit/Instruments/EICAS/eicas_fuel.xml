@@ -359,7 +359,7 @@
 
 <animation>
 	<type>select</type>
-	<object-name>pump7</object-name>
+	<object-name>pump.7</object-name>
 	<condition>
 		<property>controls/fuel/tank[1]/pump</property>
 	</condition>

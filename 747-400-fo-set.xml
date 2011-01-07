@@ -65,7 +65,7 @@
     <eye-roll-deg-path>/orientation/roll-deg</eye-roll-deg-path>
     <ground-level-nearplane-m type="double">6f</ground-level-nearplane-m>
     <x-offset-m type="double">0.55</x-offset-m>
-    <y-offset-m type="double">3.7</y-offset-m>
+    <y-offset-m type="double">3.8</y-offset-m>
     <z-offset-m type="double">-24.05</z-offset-m>
     <pitch-offset-deg>-10</pitch-offset-deg>
     <default-field-of-view-deg type="double">65.0</default-field-of-view-deg>
@@ -142,16 +142,12 @@
    </default>
   </menubar>
 
-  <multiplay>
-   <generic>			
-    <int n="0" alias="/controls/lighting/landing-light-inbdl"/> 
-    <int n="1" alias="/controls/lighting/landing-light-inbdr"/> 
-    <int n="2" alias="/controls/lighting/landing-light-outbdl"/> 
-    <int n="3" alias="/controls/lighting/landing-light-outbdr"/> 
-   </generic>
-  </multiplay>
-
  </sim>
 
+ <controls>
+  <flight>
+   <flaps type="double"/>
+  </flight>
+ </controls>
 
 </PropertyList>

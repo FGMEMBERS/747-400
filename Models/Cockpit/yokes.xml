@@ -24,6 +24,16 @@
  </offsets>
 </model>
 
+<animation>
+ <type>shader</type>
+ <object-name>left_column</object-name>
+ <object-name>right_column</object-name>
+ <object-name>left_yoke</object-name>
+ <object-name>right_yoke</object-name>
+ <shader>chrome</shader>
+ <texture>yokes_reflection.png</texture>
+</animation>
+
 <!-- CAPTAIN -->
  
 <animation>

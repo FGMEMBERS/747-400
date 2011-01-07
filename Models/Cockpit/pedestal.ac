@@ -29723,7 +29723,7 @@ OBJECT poly
 name "forward_panel_0"
 data 21
 Mesh58 G_747_cock.003
-texture "main.png"
+texture "forward.png"
 texrep 1 1
 crease 30.000000
 numvert 183
