@@ -5,7 +5,7 @@
 	<description>Boeing 747-400</description>
 	<author>Gijs de Rooy, Ivan Ngeow</author>
 	<status>Development</status>
-	<version>20101219</version>
+	<version>20110109</version>
 	<flight-model>jsb</flight-model>
 	<aero>747-400</aero>
 
@@ -37,7 +37,7 @@
 	<systems>
 		<autopilot>
 			<name>Primary Autopilot</name>
-			<path>Aircraft/747-400/Systems/autopilot.xml</path>
+			<path>Aircraft/747-400/Systems/autopilot_markus.xml</path>
 		</autopilot>
 		<autopilot>
 			<name>Autobrake System</name>
@@ -545,7 +545,7 @@ left mouse button and counter clockwise using the middle mouse button.
 	<cdu>
 		<display>IDENT</display>
 		<ident>
-			<type>747-400</type>
+			<model>747-400</model>
 			<engines>-80C2B1F</engines>
 		</ident>
 		<input type="string"/>
@@ -671,6 +671,7 @@ left mouse button and counter clockwise using the middle mouse button.
 <nasal>
 	<Boeing747>
 		<!--<file>Aircraft/747-400/Nasal/AFDS.nas</file>-->
+		<file>Aircraft/747-400/Nasal/autopilot.nas</file>
 		<file>Aircraft/747-400/Nasal/brakesystem.nas</file>
 		<file>Aircraft/747-400/Nasal/copilot.nas</file>
 		<file>Aircraft/747-400/Nasal/doors.nas</file>
@@ -682,10 +683,13 @@ left mouse button and counter clockwise using the middle mouse button.
 		<file>Aircraft/747-400/Nasal/system.nas</file>
 		<file>Aircraft/747-400/Nasal/tyresmoke.nas</file>
 		<file>Aircraft/747-400/Nasal/vspeeds.nas</file>
-		<file>Aircraft/747-400/Models/Cockpit/Instruments/CDU/CDU.nas</file>
+		<!--<file>Aircraft/747-400/Models/Cockpit/Instruments/CDU/CDU.nas</file>-->
 		<file>Aircraft/747-400/Nasal/wipers.nas</file>
 		<file>Aircraft/Generic/limits.nas</file>
 	</Boeing747>
+	<cdu>
+		<file>Aircraft/Instruments-3d/cdu/boeing.nas</file>
+	</cdu>
 	<dual_control_tools>
 		<file>Aircraft/Generic/DualControl/dual-control-tools.nas</file>
 	</dual_control_tools>

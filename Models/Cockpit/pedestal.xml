@@ -4,33 +4,42 @@
 
 <!-- CDU -->
 <model>
-	<path>Aircraft/747-400/Models/Cockpit/Instruments/CDU/CDU.xml</path>
+	<path>Aircraft/Instruments-3d/cdu/boeing.xml</path>
 	<offsets>
 		<x-m> 0.858</x-m>
 		<y-m>-0.186</y-m>
 		<z-m> 0.489</z-m>
 		<pitch-deg>-75</pitch-deg>
 	</offsets>
+	<overlay>
+		<texture>boeing_brown.png</texture>
+	</overlay>
 </model>
 
 <model>
-	<path>Aircraft/747-400/Models/Cockpit/Instruments/CDU/CDU.xml</path>
+	<path>Aircraft/Instruments-3d/cdu/boeing.xml</path>
 	<offsets>
 		<x-m> 0.858</x-m>
 		<y-m> 0.186</y-m>
 		<z-m> 0.489</z-m>
 		<pitch-deg>-75</pitch-deg>
 	</offsets>
+	<overlay>
+		<texture>boeing_brown.png</texture>
+	</overlay>
 </model>
 
 <model>
-	<path>Aircraft/747-400/Models/Cockpit/Instruments/CDU/CDU.xml</path>
+	<path>Aircraft/Instruments-3d/cdu/boeing.xml</path>
 	<offsets>
 		<x-m> 1.438</x-m>
 		<y-m> 0.000</y-m>
 		<z-m> 0.415</z-m>
 		<pitch-deg>-90</pitch-deg>
 	</offsets>
+	<overlay>
+		<texture>boeing_brown.png</texture>
+	</overlay>
 </model>
 
 <!-- AUTOBRAKE -->
