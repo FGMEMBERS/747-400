@@ -3,124 +3,147 @@
 <PropertyList>
 
 <fx>
+<!-- Avionics Hum -->
+ <avhum>
+  <path>aircraft/747-400/Sounds/FGOS_Avionics.wav</path>
+  <mode>looped</mode>
+  <type>avionics</type>
+ </avhum>
 
-  <gear>
-   <name>gear</name>
-   <mode>in-transit</mode>
-   <path>Sounds/gear.wav</path>
-   <property>/gear/gear[0]/position-norm</property>
-   <pitch>
-    <internal>dt_play</internal>
-    <offset>1.0</offset>
-    <factor>-0.001</factor>
-   </pitch>
-  </gear>
 
-  <gear>
-   <name>gear-lock</name>
-   <path>Sounds/gear-lck.wav</path>
-   <condition>
-    <equals>
-     <property>/gear/gear[0]/position-norm</property>
-     <value>0</value>
-    </equals>
-   </condition>
-  </gear>
-
-  <gear>
-   <name>gear-horn</name>
+<!-- Engine #1  -->
+  <engine>
+   <name>engine1</name>
+   <path>Aircraft/747-400/Sounds/FGOS_744Run.wav</path>
    <mode>looped</mode>
-   <path>Sounds/gear-hrn.wav</path>
    <condition>
-    <and>
-     <equals>
-      <property>/gear/gear[2]/wow</property>
-      <value>0</value>
-     </equals>
-     <equals>
-      <property>/controls/gear/gear-down</property>
-      <value>0</value>
-     </equals>
-     <or>
-      <and>
-       <or>
-        <equals>
-         <property>/controls/engines/engine[0]/throttle</property>
-         <value>0</value>
-        </equals>
-        <equals>
-         <property>/controls/engines/engine[1]/throttle</property>
-         <value>0</value>
-        </equals>
-        <equals>
-         <property>/controls/engines/engine[2]/throttle</property>
-         <value>0</value>
-        </equals>
-        <equals>
-         <property>/controls/engines/engine[3]/throttle</property>
-         <value>0</value>
-        </equals>
-       </or>
-       <less-than>
-        <property>/position/altitude-agl-ft</property>
-        <value>800</value>
-       </less-than>
-      </and>
-      <greater-than>
-       <property>/controls/flight/flaps</property>
-       <value>0.667</value>
-      </greater-than>
-     </or>
-    </and>
+   <property>engines/engine/running</property>
    </condition>
-  </gear>
-
-  <squeal>
-   <name>squeal</name>
-   <path>Sounds/squeal.wav</path>
-   <condition>
-    <or>
-     <property>/gear/gear[0]/wow</property>
-     <property>/gear/gear[1]/wow</property>
-     <property>/gear/gear[2]/wow</property>
-     <property>/gear/gear[3]/wow</property>
-     <property>/gear/gear[4]/wow</property>
-    </or>
-   </condition>
+   <position>
+    <x>-30.0</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
    <volume>
-    <property>/velocities/speed-down-fps</property>
-    <factor>0.05</factor>
-   </volume>
-   <volume>
-    <property>/velocities/airspeed-kt</property>
-    <factor>0.01</factor>
-   </volume>
-   <volume>
-    <internal>dt_stop</internal>
-    <factor>0.05</factor>
-    <max>1.0</max>
+    <property>/engines/engine[1]/n1</property>
+    <factor type="double">0.005</factor>
+    <offset type="double">0.025</offset>
    </volume>
    <pitch>
-    <property>/velocities/airspeed-kt</property>
-    <factor>0.0025</factor>
-    <offset>1.2</offset>
+    <property>/engines/engine[1]/n1</property>
+    <type>log</type>
+    <factor>0.5</factor>
+    <offset>0.65</offset>
    </pitch>
-  </squeal>
+  </engine>
 
+<!-- Engine #2  -->
+  <engine>
+   <name>engine2</name>
+   <path>Aircraft/747-400/Sounds/FGOS_744Run.wav</path>
+   <mode>looped</mode>
+   <condition>
+   <property>engines/engine/running</property>
+   </condition>
+   <position>
+    <x>-30.0</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
+   <volume>
+    <property>/engines/engine[2]/n1</property>
+    <factor type="double">0.005</factor>
+    <offset type="double">0.025</offset>
+   </volume>
+   <pitch>
+    <property>/engines/engine[2]/n1</property>
+    <type>log</type>
+    <factor>0.5</factor>
+    <offset>0.65</offset>
+   </pitch>
+  </engine>
+
+<!-- Engine #3  -->
+  <engine>
+   <name>engine3</name>
+   <path>Aircraft/747-400/Sounds/FGOS_744Run.wav</path>
+   <mode>looped</mode>
+   <condition>
+   <property>engines/engine/running</property>
+   </condition>
+   <position>
+    <x>-30.0</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
+   <volume>
+    <property>/engines/engine[3]/n1</property>
+    <factor type="double">0.005</factor>
+    <offset type="double">0.025</offset>
+   </volume>
+   <pitch>
+    <property>/engines/engine[3]/n1</property>
+    <type>log</type>
+    <factor>0.5</factor>
+    <offset>0.65</offset>
+   </pitch>
+  </engine>
+
+<!-- Engine #4  -->
+  <engine>
+   <name>engine4</name>
+   <path>Aircraft/747-400/Sounds/FGOS_744Run.wav</path>
+   <mode>looped</mode>
+   <condition>
+   <property>engines/engine/running</property>
+   </condition>
+   <position>
+    <x>-30.0</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
+   <volume>
+    <property>/engines/engine[4]/n1</property>
+    <factor type="double">0.005</factor>
+    <offset type="double">0.025</offset>
+   </volume>
+   <pitch>
+    <property>/engines/engine[4]/n1</property>
+    <type>log</type>
+    <factor>0.5</factor>
+    <offset>0.65</offset>
+   </pitch>
+  </engine>
+  
+
+<!-- Flaps -->
   <flap>
    <name>flaps</name>
    <mode>in-transit</mode>
-   <path>Sounds/flaps.wav</path>
+   <path>Aircraft/747-400/Sounds/FGOS_FlapXtndWClick.wav</path>
    <property>/surface-positions/flap-pos-norm</property>
    <volume>
-    <factor>0.45</factor>
+    <factor>0.15</factor>
    </volume>
   </flap>
-  
+
+  <stall>
+   <name>stall</name>
+   <path>Sounds/stall.wav</path>
+   <condition>
+   <property>/sim/alarms/stall-warning</property>
+   </condition>
+   <volume>
+    <property>/velocities/airspeed-kt</property>
+    <min>30.0</min>
+   </volume>
+  </stall>
+
+<!-- Warnings -->
   <config-flaps>
    <name>config-flaps</name>
    <mode>looped</mode>
-   <path>Aircraft/747-400/Sounds/config-warning.wav</path>
+   <path>Aircraft/747-400/Sounds/FGOS_Configuration_Warn.wav</path>
     <condition>
 	 <and>
 	  <equals>
@@ -146,7 +169,7 @@
   <config-park-brk>
    <name>config-park-brk</name>
    <mode>looped</mode>
-   <path>Aircraft/747-400/Sounds/config-warning.wav</path>
+   <path>Aircraft/747-400/Sounds/FGOS_Configuration_Warn.wav</path>
     <condition>
 	 <and>
 	  <equals>
@@ -177,85 +200,8 @@
     </condition>
   </overspeed>
   
-  <tcas-climb>
-	<name>tcas-climb</name>
-	<mode>looped</mode>
-	<path>Sounds/gear-hrn.wav</path>
-	<condition>
-	 <equals>
-      <property>/instrumentation/tcas/climb</property>
-      <value>1</value>
-	 </equals>
-	</condition>
-  </tcas-climb>
-  
-  <tcas-descend>
-	<name>tcas-descend</name>
-	<mode>looped</mode>
-	<path>Sounds/gear-hrn.wav</path>
-	<condition>
-	 <equals>
-	  <property>/instrumentation/tcas/descend</property>
-	  <value>1</value>
-	 </equals>
-	</condition>
-  </tcas-descend>
-
-  <wind>
-   <name>wind</name>
-   <mode>looped</mode>
-   <path>Sounds/wind-8khz.wav</path>
-   <property>/velocities/airspeed-kt</property>
-   <volume>
-    <property>/position/altitude-ft</property>
-    <factor>-0.000015</factor>
-    <offset>1.0</offset>
-    <min>0.1</min>
-    <max>1.0</max>
-   </volume>
-   <volume>
-     <property>/velocities/airspeed-kt</property>
-     <factor>0.0015</factor>
-     <min>0.03</min>
-     <max>0.25</max>
-   </volume>
-   <pitch>
-    <property>/velocities/airspeed-kt</property>
-    <factor>0.01</factor>
-    <offset>1.25</offset>
-   </pitch>
-  </wind>
-
-  <stall>
-   <name>stall</name>
-   <path>Sounds/stall.wav</path>
-   <property>/sim/alarms/stall-warning</property>
-   <volume>
-    <property>/velocities/airspeed-kt</property>
-    <min>125.0</min>
-   </volume>
-  </stall>
-
-  <click>
-   <name>click1</name>
-   <path>Sounds/click.wav</path>
-   <condition>
-    <property>sim/sound/click</property>
-   </condition>
-   <volume>
-    <property>sim/sound/Cvolume</property>
-    <factor>0.3</factor>
-   </volume>
-   <position>
-    <x>5</x>
-    <y>0</y>
-    <z>0</z>
-   </position>
-   <reference-dist>2.5</reference-dist>
-   <max-dist>5.0</max-dist>
-  </click>
-  
-  <switch>
+    <!-- Additions -->
+    <switch>
    <name>click on</name>
    <mode>once</mode>
    <path>Aircraft/747-400/Sounds/FastenSeatbelt.wav</path>
@@ -267,328 +213,6 @@
    </volume>
   </switch>
 
-  <switch>
-   <name>click on2</name>
-   <mode>once</mode>
-   <path>Aircraft/747-400/Sounds/autopilot-disengage.wav</path>
-   <condition>
-    <not>
-     <and>
-      <property>sim/gui/dialogs/autopilot/altitude-active</property>
-      <property>sim/gui/dialogs/autopilot/heading-active</property>
-      <property>sim/gui/dialogs/autopilot/speed-active</property>
-     </and>
-	</not>
-   </condition>
-   <volume>
-    <factor>1</factor>
-   </volume>
-  </switch>
-  
-  <!-- engines -->
-   <!--
-  <engine>
-   <name>engine1run</name>
-   <path>Aircraft/747-400/Sounds/engine-run.wav</path>
-   <mode>looped</mode>
-   <property>engines/engine[0]/thrust_lb</property>
-   <pitch>
-    <property>/engines/engine[0]/thrust_lb</property>
-    <offset>0</offset>
-    <factor>0.02</factor>
-    <min>0.0</min>
-    <max>2.0</max>
-   </pitch>
-   <volume>
-    <property>engines/engine[0]/thrust_lb</property>
-    <factor>0.1</factor>
-    <min>0.0</min>
-    <max>0.6</max>
-   </volume>
-   <volume>
-    <property>sim/sound/volume</property>
-   </volume>
-   </engine>
-  
-  <engine>
-   <name>engine2run</name>
-   <path>Aircraft/747-400/Sounds/engine-run.wav</path>
-   <mode>looped</mode>
-   <property>engines/engine[1]/thrust_lb</property>
-   <pitch>
-    <property>/engines/engine[1]/thrust_lb</property>
-    <offset>0</offset>
-    <factor>0.02</factor>
-    <min>0.0</min>
-    <max>2.0</max>
-   </pitch>
-   <volume>
-    <property>engines/engine[1]/thrust_lb</property>
-    <factor>0.1</factor>
-    <min>0.0</min>
-    <max>0.6</max>
-   </volume>
-   <volume>
-    <property>sim/sound/volume</property>
-   </volume>
-  </engine>
-  
-  <engine>
-   <name>engine3run</name>
-   <path>Aircraft/747-400/Sounds/engine-run.wav</path>
-   <mode>looped</mode>
-   <property>engines/engine[2]/thrust_lb</property>
-   <pitch>
-    <property>/engines/engine[2]/thrust_lb</property>
-    <offset>0</offset>
-    <factor>0.02</factor>
-    <min>0.0</min>
-    <max>2.0</max>
-   </pitch>
-   <volume>
-    <property>engines/engine[2]/thrust_lb</property>
-    <factor>0.1</factor>
-    <min>0.0</min>
-    <max>0.6</max>
-   </volume>
-   <volume>
-    <property>sim/sound/volume</property>
-   </volume>
-  </engine>
-  
-  <engine>
-   <name>engine4run</name>
-   <path>Aircraft/747-400/Sounds/engine-run.wav</path>
-   <mode>looped</mode>
-   <property>engines/engine[3]/thrust_lb</property>
-   <pitch>
-    <property>/engines/engine[3]/thrust_lb</property>
-    <offset>0</offset>
-    <factor>0.02</factor>
-    <min>0.0</min>
-    <max>2.0</max>
-   </pitch>
-   <volume>
-    <property>engines/engine[3]/thrust_lb</property>
-    <factor>0.1</factor>
-    <min>0.0</min>
-    <max>0.6</max>
-   </volume>
-   <volume>
-    <property>sim/sound/volume</property>
-   </volume>
-  </engine>
-  -->
-  
-  <engine>
-        <name>#1 n1</name>
-        <path>Sounds/whine.wav</path>
-        <mode>looped</mode>
-        <property>engines/engine[0]/n1</property>
-        <pitch>
-            <property>/engines/engine[0]/n1</property>
-            <offset>0</offset>
-            <factor>0.02</factor>
-            <min>0.0</min>
-            <max>2.0</max>
-        </pitch>
-        <volume>
-            <property>engines/engine[0]/rpm</property>
-            <factor>0.1</factor>
-            <min>0.0</min>
-            <max>0.6</max>
-        </volume>
-        <volume>
-            <property>sim/sound/volume</property>
-        </volume>
-        <position>
-            <x>  1.3</x>
-            <y>-21.2</y>
-            <z> -2.5</z>
-        </position>
-        <reference-dist>30.0</reference-dist>
-        <max-dist>30.0</max-dist>
-    </engine>
-	
-	<engine>
-        <name>#2 n1</name>
-        <path>Sounds/whine.wav</path>
-        <mode>looped</mode>
-        <property>engines/engine[1]/n1</property>
-        <pitch>
-            <property>/engines/engine[1]/n1</property>
-            <offset>0</offset>
-            <factor>0.02</factor>
-            <min>0.0</min>
-            <max>2.0</max>
-        </pitch>
-        <volume>
-            <property>engines/engine[1]/n1</property>
-            <factor>0.1</factor>
-            <min>0.0</min>
-            <max>0.6</max>
-        </volume>
-        <volume>
-            <property>sim/sound/volume</property>
-        </volume>
-        <position>
-            <x> -6.4</x>
-            <y>-13.5</y>
-            <z> -2.5</z>
-        </position>
-        <reference-dist>30.0</reference-dist>
-        <max-dist>30.0</max-dist>
-    </engine>
-	
-	<engine>
-        <name>#3 n1</name>
-        <path>Sounds/whine.wav</path>
-        <mode>looped</mode>
-        <property>engines/engine[2]/n1</property>
-        <pitch>
-            <property>/engines/engine[2]/n1</property>
-            <offset>0</offset>
-            <factor>0.02</factor>
-            <min>0.0</min>
-            <max>2.0</max>
-        </pitch>
-        <volume>
-            <property>engines/engine[2]/n1</property>
-            <factor>0.1</factor>
-            <min>0.0</min>
-            <max>0.6</max>
-        </volume>
-        <volume>
-            <property>sim/sound/volume</property>
-        </volume>
-        <position>
-            <x> -6.4</x>
-            <y> 13.5</y>
-            <z> -2.5</z>
-        </position>
-        <reference-dist>30.0</reference-dist>
-        <max-dist>30.0</max-dist>
-    </engine>
-	
-	<engine>
-        <name>#4 n1</name>
-        <path>Sounds/whine.wav</path>
-        <mode>looped</mode>
-        <property>engines/engine[3]/n1</property>
-        <pitch>
-            <property>/engines/engine[3]/n1</property>
-            <offset>0</offset>
-            <factor>0.02</factor>
-            <min>0.0</min>
-            <max>2.0</max>
-        </pitch>
-        <volume>
-            <property>engines/engine[3]/n1</property>
-            <factor>0.1</factor>
-            <min>0.0</min>
-            <max>0.6</max>
-        </volume>
-        <volume>
-            <property>sim/sound/volume</property>
-        </volume>
-        <position>
-            <x>  1.3</x>
-            <y> 21.2</y>
-            <z> -2.5</z>
-        </position>
-        <reference-dist>30.0</reference-dist>
-        <max-dist>30.0</max-dist>
-    </engine>
-	
-  <!-- reversers -->
-  
-    <engines>
-        <name>engine1 reverse-thrust</name>
-        <mode>looped</mode>
-        <path>Sounds/exhaust_loop.wav</path>
-        <condition>
-            <property>engines/engine[0]/running</property>
-        </condition>
-        <volume>
-            <property>engines/engine[0]/reverser-pos-norm</property>
-        </volume>
-		<volume>
-            <property>sim/sound/volume</property>
-        </volume>
-        <position>
-            <x>2.75</x>
-            <y>9.8</y>
-            <z>-3</z>
-        </position>
-        <reference-dist>250.0</reference-dist>
-        <max-dist>500.0</max-dist>
-    </engines>
-
-    <engines>
-        <name>engine2 reverse-thrust</name>
-        <mode>looped</mode>
-        <path>Sounds/exhaust_loop.wav</path>
-        <condition>
-            <property>engines/engine[1]/running</property>
-        </condition>
-        <volume>
-            <property>engines/engine[1]/reverser-pos-norm</property>
-        </volume>
-		<volume>
-            <property>sim/sound/volume</property>
-        </volume>
-        <position>
-            <x>2.75</x>
-            <y>9.8</y>
-            <z>-3</z>
-        </position>
-        <reference-dist>250.0</reference-dist>
-        <max-dist>500.0</max-dist>
-    </engines>
-	
-	<engines>
-        <name>engine3 reverse-thrust</name>
-        <mode>looped</mode>
-        <path>Sounds/exhaust_loop.wav</path>
-        <condition>
-            <property>engines/engine[2]/running</property>
-        </condition>
-        <volume>
-            <property>engines/engine[2]/reverser-pos-norm</property>
-        </volume>
-		<volume>
-            <property>sim/sound/volume</property>
-        </volume>
-        <position>
-            <x>2.75</x>
-            <y>9.8</y>
-            <z>-3</z>
-        </position>
-        <reference-dist>250.0</reference-dist>
-        <max-dist>500.0</max-dist>
-    </engines>
-	
-	<engines>
-        <name>engine4 reverse-thrust</name>
-        <mode>looped</mode>
-        <path>Sounds/exhaust_loop.wav</path>
-        <condition>
-            <property>engines/engine[3]/running</property>
-        </condition>
-        <volume>
-            <property>engines/engine[3]/reverser-pos-norm</property>
-        </volume>
-        <volume>
-            <property>sim/sound/volume</property>
-        </volume>
-        <position>
-            <x>2.75</x>
-            <y>9.8</y>
-            <z>-3</z>
-        </position>
-        <reference-dist>250.0</reference-dist>
-        <max-dist>500.0</max-dist>
-    </engines>
 
 </fx>
  
