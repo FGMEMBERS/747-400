@@ -549,6 +549,7 @@ left mouse button and counter clockwise using the middle mouse button.
 			<engines>-80C2B1F</engines>
 		</ident>
 		<input type="string"/>
+		<serviceable>1</serviceable>
 	</cdu>
 	<efis>
 		<mfd>
