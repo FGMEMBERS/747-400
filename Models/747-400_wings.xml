@@ -3,13 +3,16 @@
 <path>747-400_wings.ac</path>
 
 <nasal>
- <load>
-            var livery_update = aircraft.livery_update.new("Aircraft/747-400/Models/Liveries", 10,
-			func { print("747-400 fuselage livery update") });
- </load>
- <unload>
-            livery_update.stop();
- </unload>
+	<load>
+		var livery_update = aircraft.livery_update.new("Aircraft/747-400/Models/Liveries", 10,
+		func { print("747-400 fuselage livery update") });
+		
+		var rplayer = cmdarg();
+		rplayer.getNode("controls/failures/wings/broken", 1).alias(rplayer.getNode("sim/multiplay/generic/int[0]"));
+	</load>
+	<unload>
+		livery_update.stop();
+	</unload>
 </nasal> 
 
 <animation> 

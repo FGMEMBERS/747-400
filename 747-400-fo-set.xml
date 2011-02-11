@@ -22,7 +22,8 @@
 
   <description>Boeing 747-400 (First Officer)</description>
   <author>Gijs de Rooy, Ivan Ngeow</author>
-  <status>beta</status>
+  <status>Development</status>
+  <version>20110211</version>
   <flight-model>null</flight-model>
 
   <sound>
