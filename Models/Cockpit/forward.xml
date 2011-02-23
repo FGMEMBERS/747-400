@@ -194,8 +194,8 @@
   <button>0</button>
   <repeatable>false</repeatable>
   <binding>
-   <command>property-toggle</command>
-   <property>controls/gear/gear-down</property>
+   <command>nasal</command>
+   <script>controls.gearDown();</script>
   </binding>
  </action>
 </animation>

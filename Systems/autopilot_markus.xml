@@ -81,6 +81,30 @@
 						<value>pitch-hold</value>
 					</equals>
 				</or>
+				<equals>
+					<property>/gear/gear[0]/wow</property>
+					<value>0.0</value>
+				</equals>
+				<equals>
+					<property>/gear/gear[1]/wow</property>
+					<value>0.0</value>
+				</equals>
+				<equals>
+					<property>/gear/gear[2]/wow</property>
+					<value>0.0</value>
+				</equals>
+				<equals>
+					<property>/gear/gear[3]/wow</property>
+					<value>0.0</value>
+				</equals>
+				<equals>
+					<property>/gear/gear[4]/wow</property>
+					<value>0.0</value>
+				</equals>
+				<equals>
+					<property>/gear/gear[5]/wow</property>
+					<value>0.0</value>
+				</equals>
 			</condition>
 		</enable>
 		<input>
@@ -329,40 +353,6 @@
 		</config>
 	</pid-controller>
 
-<!--
-	<pid-controller>
-		<name>Vertical Speed Hold with throttle</name>
-		<debug>true</debug>
-		<enable>
-			<condition>
-				<equals>
-					<property>/autopilot/locks/altitude</property>
-					<value>vertical-speed-hold</value>
-				</equals>
-			</condition>
-		</enable>
-		<input>
-			<property>/velocities/vertical-speed-fps</property>
-		</input>
-		<reference>
-			<property>/velocities/vertical-speed-fps</property>
-		</reference>
-		<output>
-			<property>/controls/engines/engine[0]/throttle</property>
-			<property>/controls/engines/engine[1]/throttle</property>
-			<property>/controls/engines/engine[2]/throttle</property>
-			<property>/controls/engines/engine[3]/throttle</property>
-		</output>
-		<config>
-			<Kp>-0.6</Kp>
-			<Ti>1000.0</Ti>
-			<Td>0.4</Td>
-			<u_min>0.0</u_min>
-			<u_max>0.5</u_max>
-		</config>
-	</pid-controller>
--->
-
 
   <!-- =============================================================== -->
   <!-- Heading Bug Hold.  2 stage cascade controller.                  -->
@@ -609,6 +599,21 @@
 			<property>/orientation/roll-deg</property>
 		</input>
 		<reference>
+			<condition>
+				<equals>
+					<property>/autopilot/internal/route-manager-waypoint-near-by</property>
+					<value>1</value>
+				</equals>
+			</condition>
+			<value>0</value><!-- hold wing level -->
+		</reference>
+		<reference>
+			<condition>
+				<equals>
+					<property>/autopilot/internal/route-manager-waypoint-near-by</property>
+					<value>0</value>
+				</equals>
+			</condition>
 			<property>/autopilot/internal/target-roll-deg</property>
 		</reference>
 		<output>
@@ -697,6 +702,7 @@
 		</enable>
 		<input>
 			<property>/autopilot/internal/nav1-track-error-deg</property>
+			<scale>1.5</scale>
 		</input>
 		<reference>0.0</reference>
 		<output>
@@ -946,15 +952,15 @@
 		</input>
 		<reference>
 			<property>/autopilot/internal/gs-rate-of-climb-near-far-filtered</property>
-			<scale>0.6</scale>
+			<scale>/autopilot/internal/gs-rate-of-climb-scale-factor</scale>
 		</reference>
 		<output>
 			<property>/autopilot/internal/elevator-servo</property>
 		</output>
 		<config>
-			<Kp>-0.017</Kp>
-			<Ti>100</Ti>
-			<Td>0.16</Td>
+			<Kp>/autopilot/internal/target-kp-for-altitude-vspeed-hold</Kp>
+			<Ti>/autopilot/internal/target-ti-for-altitude-vspeed-hold</Ti>
+			<Td>/autopilot/internal/target-td-for-altitude-vspeed-hold</Td>
 			<u_min>-1.0</u_min>
 			<u_max>1.0</u_max>
 		</config>
@@ -977,6 +983,32 @@
 					<property>/autopilot/internal/nav1-pitch-deg-ground-mode</property>
 					<value>0.0</value>
 				</greater-than>
+				<or>
+					<equals>
+						<property>/gear/gear[0]/wow</property>
+						<value>0.0</value>
+					</equals>
+					<equals>
+						<property>/gear/gear[1]/wow</property>
+						<value>0.0</value>
+					</equals>
+					<equals>
+						<property>/gear/gear[2]/wow</property>
+						<value>0.0</value>
+					</equals>
+					<equals>
+						<property>/gear/gear[3]/wow</property>
+						<value>0.0</value>
+					</equals>
+					<equals>
+						<property>/gear/gear[4]/wow</property>
+						<value>0.0</value>
+					</equals>
+					<equals>
+						<property>/gear/gear[5]/wow</property>
+						<value>0.0</value>
+					</equals>
+				</or>
 			</condition>
 		</enable>
 		<input>
@@ -1030,10 +1062,10 @@
 		</output>
 		<config>
 			<Kp>/autopilot/internal/nav1-kp-for-throttle-ground-mode</Kp>
-			<Ti>1000.0</Ti>
+			<Ti>2000.0</Ti>
 			<Td>0.4</Td>
 			<u_min>0.0</u_min>
-			<u_max>0.5</u_max>
+			<u_max>0.75</u_max>
 		</config>
 	</pid-controller>
 
@@ -1056,11 +1088,11 @@
             <prop>/autopilot/settings/target-speed-kt</prop>
         </reference>
         <output>
-            <prop>/autopilot/internal/throttle-cmd</prop>
+            <prop>/autopilot/internal/throttle-servo</prop>
         </output>
         <config>
-            <Kp>0.15</Kp>
-            <Ti>20.0</Ti>
+            <Kp>0.2</Kp>
+            <Ti>40.0</Ti>
             <Td>0.00001</Td>
             <u_min>0.0</u_min>
             <u_max>1.0</u_max>
@@ -1081,41 +1113,15 @@
             <prop>/autopilot/settings/target-speed-mach</prop>
         </reference>
         <output>
-            <prop>/autopilot/internal/throttle-cmd</prop>
+            <prop>/autopilot/internal/throttle-servo</prop>
         </output>
         <config>
-            <Kp>150</Kp>
+            <Kp>200</Kp>
             <Ti>20.0</Ti>
-            <Td>0.00001</Td>
+            <Td>5.0</Td>
             <u_min>0.0</u_min>
             <u_max>1.0</u_max>
         </config>
 	</pid-controller>
 	
-	<filter>
-		<name>SERVO-DRIVER:throttle-ias</name>
-		<debug>false</debug>
-		<feedback-if-disabled>true</feedback-if-disabled>
-		<enable>
-			<condition>
-				<or>
-					<equals>
-						<property>/autopilot/locks/speed</property>
-						<value>speed-with-throttle-ias</value>
-					</equals>
-					<equals>
-						<property>/autopilot/locks/speed</property>
-						<value>speed-with-throttle-mach</value>
-					</equals>
-				</or>
-			</condition>
-		</enable>
-		<input>/autopilot/internal/throttle-cmd</input>
-		<output>
-			<prop>/autopilot/internal/throttle-servo</prop>
-		</output>
-		<type>noise-spike</type>
-		<max-rate-of-change>0.1</max-rate-of-change>
-	</filter>
-
 </PropertyList>

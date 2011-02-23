@@ -37,9 +37,17 @@ var listenerApInitFunc = func {
 	setprop("/autopilot/internal/nav1-vspeed-ground-mode", 0);
 	setprop("/autopilot/internal/nav1-vspeed-ground-mode-value", -450.0);
 	setprop("/autopilot/internal/nav1-kp-for-throttle-ground-mode", 0.03);
+	setprop("/autopilot/internal/gs-rate-of-climb-scale-factor", 1.0);
+
+	setprop("/autopilot/internal/route-manager-waypoint-near-by", 0);
 }
 setlistener("/sim/signals/fdm-initialized", listenerApInitFunc);
 
+
+###############################################
+## altitude hold,                            ##
+## vertical speed hold - objects/functions   ##
+###############################################
 
 ## special pid-control-adjust for altitude-hold
 # Params: Kp, Kp-max, Kp-min, Ti, Td
@@ -182,7 +190,7 @@ var AltitudeHoldPidControllerAdjust = {
 		me.correctedKp = me.kp;
 
 		if (airspeedKt < 190.0) {
-			me.correctedKp = -0.017;
+			me.correctedKp = -0.015;
 		}
 		else {
 			# deal with weight
@@ -258,7 +266,8 @@ var AltitudeHoldPidControllerAdjust = {
 		# experimental me.td: initial: 1.5
 
 		if (airspeedKt < 190.0) {
-			setprop("/autopilot/internal/target-td-for-altitude-vspeed-hold", 0.16);
+			#setprop("/autopilot/internal/target-td-for-altitude-vspeed-hold", 0.16);
+			setprop("/autopilot/internal/target-td-for-altitude-vspeed-hold", 0.002);
  		}
 		else {
 			var td = me.td;
@@ -290,7 +299,7 @@ var AltitudeHoldPidControllerAdjust = {
 	adjustTi : func(lbs, airspeedKt, altitudeFt) {
 
 		if (airspeedKt < 190.0) {
-			me.ti = 100.0;
+			me.ti = 50.0;
 		}
 		else {
 			me.ti = 10.0;
@@ -308,7 +317,7 @@ var AltitudeHoldPidControllerAdjust = {
 		#print ("Airspeed-KT=", airspeedKt);
 
 		if (airspeedKt < 190.0) {
-			airspeedKp = 0.01;
+			airspeedKp = 0.02;
 		}
 		else {
 			airspeedDiff = (airspeedKt - 240.0);
@@ -339,13 +348,6 @@ var AltitudeHoldPidControllerAdjust = {
 	}
 };
 
-
-###############################################
-## altitude hold,                            ##
-## vertical speed hold - functions           ##
-###############################################
-
-# adjustment for altitude/vspeed PID-controller
 
 var altitudePidControllerAdjust = AltitudeHoldPidControllerAdjust.new(-0.0095, -0.017, -0.002, 10.0, 1.5);
 
@@ -431,7 +433,8 @@ var airspeedKt = 0.0;
 var listenerApAltitudeKpFunc = func {
 
 	if (  getprop("/autopilot/locks/altitude") == "altitude-hold" or
-		getprop("/autopilot/locks/altitude") == "vertical-speed-hold") {
+		getprop("/autopilot/locks/altitude") == "vertical-speed-hold" or
+		getprop("/autopilot/locks/altitude") == "gs1-hold") {
 
 		#print("listenerApAltitudeKpFunc -> altitude-hold");
 
@@ -668,6 +671,19 @@ setlistener("/autopilot/locks/heading", listenerApHeadingFunc);
 
 
 #################################################
+## GS hold                                     ##
+#################################################
+
+var listenerApGSInterpolationFunc = func {
+	if (getprop("/autopilot/locks/altitude") == "gs1-hold") {
+		setprop("/autopilot/internal/kp-for-gs-hold", 0.0);
+		interpolate("/autopilot/internal/kp-for-gs-hold", -0.015, 2);
+	}
+}
+setlistener("/autopilot/locks/altitude", listenerApGSInterpolationFunc);
+
+
+#################################################
 ## NAV1 hold                                   ##
 #################################################
 
@@ -690,7 +706,7 @@ var listenerApNav1NearFarFunc = func {
 				getprop("/instrumentation/nav[0]/gs-rate-of-climb"));
 		}
 		else {
-			setprop("/autopilot/internal/gs-rate-of-climb-near-far-filtered", 0.0);
+			setprop("/autopilot/internal/gs-rate-of-climb-near-far-filtered", 1.67); # 100 fpm
 		}
 		settimer(listenerApNav1NearFarFunc, 0.05);
 	}
@@ -705,7 +721,7 @@ setlistener("/autopilot/locks/heading", listenerApNav1NearFarFunc);
 var nav1StearGroundMode = 0;
 var nav1PitchDegGroundMode = 0.0;
 var nav1VspeedGroundMode = 0;
-var nav1KpForThrottle = 0.6;
+var nav1KpForThrottle = 0.0;
 
 var listenerApNav1GroundModeFunc = func {
 
@@ -737,11 +753,11 @@ var listenerApNav1GroundModeFunc = func {
 				# print("totalFuelLbs=", totalFuelLbs);
 
 				# calculate 'Kp' for 'glideslope with throttle' on ground-mode
-				nav1KpForThrottle = 0.6;
+				nav1KpForThrottle = 0.9;
 				if (totalFuelLbs < 100000.0) {
-					nav1KpForThrottle = 0.6 - ((100000.0 - totalFuelLbs) * 0.000004);
+					nav1KpForThrottle = 0.9 - ((100000.0 - totalFuelLbs) * 0.000004);
 					if (nav1KpForThrottle < 0.3) {
-						nav1KpForThrottle = 0.3;
+						nav1KpForThrottle = 0.4;
 					}
 				}
 
@@ -757,7 +773,15 @@ var listenerApNav1GroundModeFunc = func {
 
 				# print("airspeed-kt=", getprop("/velocities/airspeed-kt"));
 				# print("altitude-agl-ft=", altitudeAglFt);
-				# print("nav-distance=", getprop("/instrumentation/nav[0]/nav-distance"));
+
+				# calculate scale factor for gs (rate of climb, need higher factor on more distance)
+				var navDistance = getprop("/instrumentation/nav[0]/nav-distance");
+				# print("nav-distance=", navDistance);
+				if (navDistance < 10000.0) {
+					var gsRateOfClimbScaleFactor = 1.0 - ((10000.0 - navDistance) * 0.0001);
+					gsRateOfClimbScaleFactor = (gsRateOfClimbScaleFactor < 0.6 ? 0.6 : gsRateOfClimbScaleFactor);
+					setprop("/autopilot/internal/gs-rate-of-climb-scale-factor", gsRateOfClimbScaleFactor);
+				}
 
 				# calculate pitch for gs1-hold - ground-mode (NOTICE: 'nav1PitchDegGroundMode' must be set in
 				# each 'if-elsif'-block instead of the last, which activates only speedbeaks !!!)
@@ -765,7 +789,7 @@ var listenerApNav1GroundModeFunc = func {
 				if (altitudeAglFt < 40.0) {
 					if (getprop("/controls/flight/flaps") < 0.833) {
 						if (totalFuelLbs > 160000) {
-							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 5.0, 7.0);
+							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 5.0, 8.0);
 						}
 						else {
 							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 4.5, 4.5);
@@ -773,7 +797,7 @@ var listenerApNav1GroundModeFunc = func {
 					}
 					else {
 						if (totalFuelLbs > 160000) {
-							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 5.0, 7.0);
+							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 5.0, 9.0);
 						}
 						else {
 							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 4.5, 5.5);
@@ -793,18 +817,18 @@ var listenerApNav1GroundModeFunc = func {
 				elsif (altitudeAglFt < 80.0) {
 					if (getprop("/controls/flight/flaps") < 0.833) {
 						if (totalFuelLbs > 160000) {
-							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.5, 7.0);
+							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 5.0, 8.0);
 						}
 						else {
-							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.5, 4.0);
+							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 4.5, 5.0);
 						}
 					}
 					else {
 						if (totalFuelLbs > 160000) {
-							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.5, 7.0);
+							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 5.0, 9.0);
 						}
 						else {
-							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 4.0, 5.5);
+							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 4.0, 6.5);
 						}
 					}
 
@@ -829,18 +853,18 @@ var listenerApNav1GroundModeFunc = func {
 				elsif (altitudeAglFt < 120.0) {
 					if (getprop("/controls/flight/flaps") < 0.833) {
 						if (totalFuelLbs > 160000) {
-							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.0, 7.0);
+							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.0, 9.0);
 						}
 						else {
-							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.0, 4.0);
+							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.0, 5.0);
 						}
 					}
 					else {
 						if (totalFuelLbs > 160000) {
-							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.5, 7.0);
+							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.5, 10.0);
 						}
 						else {
-							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.5, 5.0);
+							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.5, 6.0);
 						}
 					}
 
@@ -874,18 +898,18 @@ var listenerApNav1GroundModeFunc = func {
 				elsif (altitudeAglFt < 220.0) {
 					if (getprop("/controls/flight/flaps") < 0.833) {
 						if (totalFuelLbs > 160000) {
-							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.0, 7.0);
+							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.0, 9.0);
 						}
 						else {
-							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.0, 4.0);
+							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.0, 5.0);
 						}
 					}
 					else {
 						if (totalFuelLbs > 160000) {
-							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.5, 7.0);
+							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.5, 10.0);
 						}
 						else {
-							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.5, 5.0);
+							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.5, 6.0);
 						}
 					}
 
@@ -911,18 +935,18 @@ var listenerApNav1GroundModeFunc = func {
 				elsif (altitudeAglFt < 400.0) {
 					if (getprop("/controls/flight/flaps") < 0.833) {
 						if (totalFuelLbs > 160000) {
-							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.0, 7.0);
+							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.0, 9.0);
 						}
 						else {
-							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.0, 4.0);
+							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.0, 5.0);
 						}
 					}
 					else {
 						if (totalFuelLbs > 160000) {
-							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.5, 7.0);
+							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 4.0, 10.0);
 						}
 						else {
-							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.5, 5.0);
+							nav1PitchDegGroundMode = maxclambed(getprop("/orientation/pitch-deg"), 3.0, 6.0);
 						}
 					}
 
@@ -1005,8 +1029,10 @@ var listenerApNav1GroundModeFunc = func {
 								setprop("/controls/engines/engine[1]/throttle", 0.0);
 								setprop("/controls/engines/engine[2]/throttle", 0.0);
 								setprop("/controls/engines/engine[3]/throttle", 0.0);
-								reversethrust.togglereverser();
-								settimer(reverserProgramFunc, 0.5);
+							
+								interpolate("/controls/flight/elevator", 0.0, 3.0);
+
+								settimer(startReverserProgram, 1.5);
 							}
 						}
 					}
@@ -1049,8 +1075,6 @@ var listenerApNav1GroundModeFunc = func {
 						setprop("/autopilot/locks/heading", "");
 						setprop("/autopilot/locks/altitude", "");
 
-						interpolate("/controls/flight/elevator", 0.0, 5.0);
-
 						# if reversers still running, stop them now
 						if (getprop("/engines/engine[0]/reversed") == 1) {
 							reversethrust.togglereverser();
@@ -1073,55 +1097,57 @@ var listenerApNav1GroundModeFunc = func {
 }
 
 ## handle thrust-reversers for NAV1 ground-mode ##
+var startReverserProgram = func {
+	reversethrust.togglereverser();
+	settimer(reverserProgramFunc, 0.5);
+}
 var reverserProgramFunc = func {
 	if (getprop("/autopilot/locks/altitude") == "gs1-hold") {
 
 		if (getprop("/engines/engine[0]/reversed") == 1) {
 			if (getprop("/velocities/airspeed-kt") > 80.0) {
 				if (	getprop("/controls/engines/engine[0]/throttle") < 0.8) {
-					setprop("/controls/engines/engine[0]/throttle", getprop("/controls/engines/engine[0]/throttle") + 0.02);
+					setprop("/controls/engines/engine[0]/throttle", getprop("/controls/engines/engine[0]/throttle") + 0.005);
 				}
 				if (	getprop("/controls/engines/engine[1]/throttle") < 0.8) {
-					setprop("/controls/engines/engine[1]/throttle", getprop("/controls/engines/engine[1]/throttle") + 0.02);
+					setprop("/controls/engines/engine[1]/throttle", getprop("/controls/engines/engine[1]/throttle") + 0.005);
 				}
 				if (	getprop("/controls/engines/engine[2]/throttle") < 0.8) {
-					setprop("/controls/engines/engine[2]/throttle", getprop("/controls/engines/engine[2]/throttle") + 0.02);
+					setprop("/controls/engines/engine[2]/throttle", getprop("/controls/engines/engine[2]/throttle") + 0.005);
 				}
 				if (	getprop("/controls/engines/engine[3]/throttle") < 0.8) {
-					setprop("/controls/engines/engine[3]/throttle", getprop("/controls/engines/engine[3]/throttle") + 0.02);
+					setprop("/controls/engines/engine[3]/throttle", getprop("/controls/engines/engine[3]/throttle") + 0.005);
 				}
 			}
 			else {
 				if (	getprop("/controls/engines/engine[0]/throttle") > 0.0) {
-					setprop("/controls/engines/engine[0]/throttle", getprop("/controls/engines/engine[0]/throttle") - 0.02);
+					setprop("/controls/engines/engine[0]/throttle", getprop("/controls/engines/engine[0]/throttle") - 0.005);
 				}
 				if (	getprop("/controls/engines/engine[1]/throttle") > 0.0) {
-					setprop("/controls/engines/engine[1]/throttle", getprop("/controls/engines/engine[1]/throttle") - 0.02);
+					setprop("/controls/engines/engine[1]/throttle", getprop("/controls/engines/engine[1]/throttle") - 0.005);
 				}
 				if (	getprop("/controls/engines/engine[2]/throttle") > 0.0) {
-					setprop("/controls/engines/engine[2]/throttle", getprop("/controls/engines/engine[2]/throttle") - 0.02);
+					setprop("/controls/engines/engine[2]/throttle", getprop("/controls/engines/engine[2]/throttle") - 0.005);
 				}
 				if (	getprop("/controls/engines/engine[3]/throttle") > 0.0) {
-					setprop("/controls/engines/engine[3]/throttle", getprop("/controls/engines/engine[3]/throttle") - 0.02);
+					setprop("/controls/engines/engine[3]/throttle", getprop("/controls/engines/engine[3]/throttle") - 0.005);
+				}
+				if (	getprop("/controls/engines/engine[0]/throttle") <= 0.01 and
+					getprop("/controls/engines/engine[1]/throttle") <= 0.01 and
+					getprop("/controls/engines/engine[2]/throttle") <= 0.01 and
+					getprop("/controls/engines/engine[3]/throttle") <= 0.01) {
+
+					setprop("/controls/engines/engine[0]/throttle", 0.0);
+					setprop("/controls/engines/engine[1]/throttle", 0.0);
+					setprop("/controls/engines/engine[2]/throttle", 0.0);
+					setprop("/controls/engines/engine[3]/throttle", 0.0);
+					if (getprop("/engines/engine[0]/reversed") == 1) {
+						reversethrust.togglereverser();
+					}
 				}
 			}
 
-			if (	getprop("/controls/engines/engine[0]/throttle") < 0.02 and
-				getprop("/controls/engines/engine[1]/throttle") < 0.02 and
-				getprop("/controls/engines/engine[2]/throttle") < 0.02 and
-				getprop("/controls/engines/engine[3]/throttle") < 0.02) {
-
-				setprop("/controls/engines/engine[0]/throttle", 0.0);
-				setprop("/controls/engines/engine[1]/throttle", 0.0);
-				setprop("/controls/engines/engine[2]/throttle", 0.0);
-				setprop("/controls/engines/engine[3]/throttle", 0.0);
-				if (getprop("/engines/engine[0]/reversed") == 1) {
-					reversethrust.togglereverser();
-				}
-			}
-			else {
-				settimer(reverserProgramFunc, 0.05);
-			}
+			settimer(reverserProgramFunc, 0.1);
 		}
 	}
 }

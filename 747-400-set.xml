@@ -5,7 +5,7 @@
 	<description>Boeing 747-400</description>
 	<author>Gijs de Rooy, Ivan Ngeow</author>
 	<status>Development</status>
-	<version>20110211</version>
+	<version>20110220</version>
 	<flight-model>jsb</flight-model>
 	<aero>747-400</aero>
 
@@ -340,11 +340,12 @@ left mouse button and counter clockwise using the middle mouse button.
 <controls>
 
 	<electric>
+		<apu>0</apu>
+		<battery>0</battery>
 		<wipers>
 			<switch type = "bool">0</switch>
 			<position-norm type = "double">0</position-norm>
 		</wipers>
-		<apu>0</apu>
 	</electric>
  
 	<engines>
@@ -672,20 +673,17 @@ left mouse button and counter clockwise using the middle mouse button.
 
 <nasal>
 	<Boeing747>
-		<!--<file>Aircraft/747-400/Nasal/AFDS.nas</file>-->
 		<file>Aircraft/747-400/Nasal/autopilot.nas</file>
+		<file>Aircraft/747-400/Nasal/autopilot-routemanager.nas</file>
 		<file>Aircraft/747-400/Nasal/brakesystem.nas</file>
 		<file>Aircraft/747-400/Nasal/copilot.nas</file>
 		<file>Aircraft/747-400/Nasal/doors.nas</file>
 		<file>Aircraft/747-400/Nasal/eicas.nas</file>
-		<!-- <file>Aircraft/747-400/Nasal/Electrical.nas</file> -->
 		<file>Aircraft/747-400/Nasal/flightdirector.nas</file>
-		<!-- <file>Aircraft/747-400/Nasal/ins.nas</file>-->
 		<file>Aircraft/747-400/Nasal/liveries.nas</file>
 		<file>Aircraft/747-400/Nasal/system.nas</file>
 		<file>Aircraft/747-400/Nasal/tyresmoke.nas</file>
 		<file>Aircraft/747-400/Nasal/vspeeds.nas</file>
-		<!--<file>Aircraft/747-400/Models/Cockpit/Instruments/CDU/CDU.nas</file>-->
 		<file>Aircraft/747-400/Nasal/wipers.nas</file>
 		<file>Aircraft/Generic/limits.nas</file>
 	</Boeing747>

@@ -70,6 +70,7 @@ var autostart = func {
 	setprop("/controls/lighting/beacon",1);
 	setprop("/controls/lighting/nav-lights",1);
 	setprop("/controls/lighting/strobe",1);
+	setprop("/controls/lighting/logo-lights",1);
 	setprop("/controls/fuel/tank[1]/x-feed",1);
 	setprop("/controls/fuel/tank[2]/x-feed",1);
 	setprop("/controls/fuel/tank[3]/x-feed",1);

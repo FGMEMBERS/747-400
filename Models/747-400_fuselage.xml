@@ -32,22 +32,14 @@
 	<texture>BOE.png</texture> 
 </animation>
 
-<animation> 
-	<type>material</type> 
-	<object-name>fuselage.lit</object-name> 
-	<object-name>rudder.lit</object-name> 
-	<object-name>vstab.lit</object-name> 
-	<property-base>sim/model/livery</property-base> 
-	<texture-prop>texture-lit</texture-prop> 
-	<texture>BOE-Lights.png</texture> 
-</animation>
-
 <effect>
 	<inherits-from>Effects/lightmap</inherits-from>
 	<parameters>
 		<texture n="1">
 			<image>Aircraft/747-400/Models/Effects/lightmap.png</image>
 		</texture>
+		<condition><use>/controls/lighting/logo-lights</use>
+		</condition>
 	</parameters>
 	<object-name>cargodoor1</object-name> 
 	<object-name>fuselage</object-name> 
@@ -64,6 +56,7 @@
 		<texture n="1">
 			<image>Aircraft/747-400/Models/Effects/lightmap.png</image>
 		</texture>
+		<condition><use>/controls/lighting/logo-lights</use></condition>
 	</parameters>
 	<object-name>rudder</object-name> 
 	<object-name>vstab</object-name> 
@@ -355,22 +348,10 @@
 </animation>
 
 <!-- RUDDER -->
-
-<animation>
-	<type>select</type>
-	<object-name>fuselage.lit</object-name>
-	<object-name>rudder.lit</object-name>
-	<object-name>vstab.lit</object-name>
-	<object-name>cabinlighting</object-name>
-	<condition>
-		<property>controls/lighting/logo-lightss</property>
-	</condition>
-</animation>
  
 <animation>
 	<type>rotate</type>
 	<object-name>rudder</object-name> 
-	<object-name>rudder.lit</object-name>
 	<property>surface-positions/rudder-pos-norm</property>
 	<factor>50</factor>
 	<axis>

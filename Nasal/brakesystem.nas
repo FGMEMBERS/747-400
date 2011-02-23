@@ -40,7 +40,7 @@ var BrakeSystem =
        # Manually tune this value: a total energy output
        # at "/gear/brake-thermal-energy" > 1.0 means overheated brakes,
        # anything below <= 1.0 means energy absorbed by brakes is OK. 
-       m.ScalingDivisor= 900000*450.0;
+       m.ScalingDivisor= 1300000*450.0;
        
        m.LastSimTime   = 0.0;
        m.SmokeActive   = 0;
@@ -68,7 +68,7 @@ var BrakeSystem =
             if (getprop("/controls/gear/brake-parking"))
                 var BrakeLevel=1.0;
             else
-                var BrakeLevel = getprop("/gear/gear[1]/has-brake");
+                var BrakeLevel = (getprop("/autopilot/autobrake/left-brake-output")+getprop("/autopilot/autobrake/right-brake-output"))/2;
             if ((OnGround)and(BrakeLevel>0))
             {
                 # absorb more energy
