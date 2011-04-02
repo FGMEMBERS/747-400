@@ -115,7 +115,7 @@
 
 <model>
  <name>CLOCK1</name>
- <path>Aircraft/747-400/Models/Cockpit/Instruments/clock.xml</path>
+ <path>Aircraft/Instruments-3d/chronometer/chronometer.xml</path>
  <offsets>
   <x-m>0.672</x-m>
   <y-m>-0.692</y-m>
@@ -126,7 +126,7 @@
 
 <model>
  <name>CLOCK2</name>
- <path>Aircraft/747-400/Models/Cockpit/Instruments/clock.xml</path>
+ <path>Aircraft/Instruments-3d/chronometer/chronometer.xml</path>
  <offsets>
   <x-m>0.672</x-m>
   <y-m>0.692</y-m>
