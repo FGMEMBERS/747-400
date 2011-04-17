@@ -38,8 +38,6 @@
 		<texture n="1">
 			<image>Aircraft/747-400/Models/Effects/lightmap.png</image>
 		</texture>
-		<condition><use>/controls/lighting/logo-lights</use>
-		</condition>
 	</parameters>
 	<object-name>cargodoor1</object-name> 
 	<object-name>fuselage</object-name> 

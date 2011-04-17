@@ -6,7 +6,6 @@
 		<livery> 
 			<name type="string">KLM Royal Dutch Airlines</name> 
 			<texture>Liveries/KLM.png</texture>
-			<texture-lit>Liveries/KLM-Lights.png</texture-lit>
 		</livery> 
 	</model> 
 </sim> 

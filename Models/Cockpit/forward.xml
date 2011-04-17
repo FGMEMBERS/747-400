@@ -12,19 +12,6 @@
 	<object-name>forward_panel</object-name>
 </effect>
 
-<!-- PANEL LIGHTING -->
-
-<animation>
-	<type>material</type>
-	<object-name>forward_panel</object-name>
-	<emission>
-		<red>0.5</red>
-		<green>0.45</green>
-		<blue>0.2</blue>
-		<factor-prop>controls/lighting/panel-norm</factor-prop>
-	</emission>
-</animation>
-
 <!-- PANELS -->
 
 <model>
@@ -61,9 +48,9 @@
 	<name>PFD1</name>
 	<path>Aircraft/747-400/Models/Cockpit/Instruments/PFD/PFD.xml</path>
 	<offsets>
-		<x-m>0.6854</x-m>
+		<x-m> 0.6854</x-m>
 		<y-m>-0.537</y-m>
-		<z-m>0.65</z-m>
+		<z-m> 0.65</z-m>
 		<pitch-deg>-22</pitch-deg>
 	</offsets>
 	<condition>
@@ -89,9 +76,9 @@
 	<name>ND1</name>
 	<path>Aircraft/747-400/Models/Cockpit/Instruments/MFD/ND.xml</path>
 	<offsets>
-		<x-m>0.6854</x-m>
+		<x-m> 0.6854</x-m>
 		<y-m>-0.3207</y-m>
-		<z-m>0.65</z-m>
+		<z-m> 0.65</z-m>
 		<pitch-deg>-22</pitch-deg>
 	</offsets>
 	<condition>
@@ -114,18 +101,16 @@
 </model>
 
 <model>
- <name>CLOCK1</name>
  <path>Aircraft/Instruments-3d/chronometer/chronometer.xml</path>
  <offsets>
-  <x-m>0.672</x-m>
+  <x-m> 0.672</x-m>
   <y-m>-0.692</y-m>
-  <z-m>0.696</z-m>
+  <z-m> 0.696</z-m>
   <pitch-deg>-22</pitch-deg>
  </offsets>
 </model>
 
 <model>
- <name>CLOCK2</name>
  <path>Aircraft/Instruments-3d/chronometer/chronometer.xml</path>
  <offsets>
   <x-m>0.672</x-m>
@@ -139,9 +124,9 @@
  <name>STBY-AI</name>
  <path>Aircraft/747-400/Models/Cockpit/Instruments/stby-ai.xml</path>
  <offsets>
-  <x-m>0.665</x-m>
+  <x-m> 0.665</x-m>
   <y-m>-0.160</y-m>
-  <z-m>0.73</z-m>
+  <z-m> 0.73</z-m>
   <pitch-deg>-21</pitch-deg>
  </offsets>
 </model>

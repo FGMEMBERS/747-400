@@ -146,6 +146,7 @@
  <name>GearNose</name>
  <object-name>GearNoseTorqueLinkLow</object-name>
  <object-name>GearNoseTorqueLinkUp</object-name>
+ <object-name>GearNoseTorqueLinkUpp</object-name>
  <object-name>GearNoseMainStrutCyli</object-name>
  <object-name>GearNoseMainStrutColl</object-name>
  <object-name>GearNoseMainStrutPist</object-name>
@@ -153,6 +154,7 @@
  <object-name>Mesh20</object-name>
  <object-name>Mesh22</object-name>
  <object-name>Mesh25</object-name>
+ <object-name>Plane</object-name>
 </animation>
 
 <animation>
@@ -203,6 +205,7 @@
 <animation>
  <type>rotate</type>
  <object-name>GearNoseTorqueLinkLow</object-name>
+ <object-name>GearNoseTorqueLinkUpp</object-name>
  <object-name>GearNoseTorqueLinkUpp</object-name>
  <object-name>GearNoseMainStrutPist</object-name>
  <object-name>GearNoseWheels</object-name>
@@ -259,6 +262,7 @@
 
 <animation>
  <type>rotate</type>
+ <object-name>GearNoseTorqueLinkUpp</object-name>
  <object-name>GearNoseTorqueLinkUpp</object-name>
  <property>gear/gear[0]/compression-norm</property>
  <factor>16</factor>

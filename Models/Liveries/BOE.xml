@@ -6,7 +6,6 @@
 		<livery> 
 			<name type="string">Boeing</name> 
 			<texture>BOE.png</texture>
-			<texture-lit>BOE-Lights.png</texture-lit>
 		</livery> 
 	</model> 
 </sim> 

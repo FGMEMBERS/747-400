@@ -481,18 +481,17 @@ left mouse button and counter clockwise using the middle mouse button.
 </input>
 
 <aircraft>
-	<jetway-pos>
-		<x-tra>0</x-tra>
-		<y-rot>2</y-rot>
-		<z-rot>16</z-rot>
-		<hood-rot>0</hood-rot>
-	</jetway-pos>
-	<jetway2-pos>
-		<x-tra>2.5</x-tra>
-		<y-rot>4</y-rot>
-		<z-rot>47</z-rot>
-		<hood-rot>0</hood-rot>
-	</jetway2-pos>
+	<door n="0">
+			<x-m>18.09</x-m>
+			<y-m> 8.70</y-m>
+			<z-m> 6.64</z-m>
+	</door>
+	<door n="1">
+			<x-m>23.82</x-m>
+			<y-m> 8.9</y-m>
+			<z-m> 7.37</z-m>
+	</door>
+	<jetway-hood-deg type="double">HOOD_DEG</jetway-hood-deg>
 </aircraft>
 
 <autopilot>
@@ -684,6 +683,7 @@ left mouse button and counter clockwise using the middle mouse button.
 		<file>Aircraft/747-400/Nasal/system.nas</file>
 		<file>Aircraft/747-400/Nasal/tyresmoke.nas</file>
 		<file>Aircraft/747-400/Nasal/vspeeds.nas</file>
+		<file>Aircraft/747-400/Nasal/warnsystem.nas</file>
 		<file>Aircraft/747-400/Nasal/wipers.nas</file>
 		<file>Aircraft/Generic/limits.nas</file>
 	</Boeing747>
