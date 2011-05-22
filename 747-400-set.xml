@@ -8,6 +8,7 @@
 	<version>20110220</version>
 	<flight-model>jsb</flight-model>
 	<aero>747-400</aero>
+	<virtual-cockpit>true</virtual-cockpit>
 
 	<sound>
 		<path>Aircraft/747-400/Sounds/747-sound.xml</path>
