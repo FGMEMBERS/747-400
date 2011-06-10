@@ -8,6 +8,7 @@
 		<texture n="1">
 			<image>Aircraft/747-400/Models/Effects/lightmap_forward.png</image>
 		</texture>
+		<factor><use>/controls/lighting/panel-norm</use></factor>
 	</parameters>
 	<object-name>forward_panel</object-name>
 </effect>
