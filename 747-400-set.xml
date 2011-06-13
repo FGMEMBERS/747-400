@@ -4,8 +4,15 @@
 <sim>
 	<description>Boeing 747-400</description>
 	<author>Gijs de Rooy, Ivan Ngeow</author>
-	<status>Development</status>
+	<status>early production</status>
+	<rating>
+		<FDM type="int">3</FDM>
+		<systems type="int">3</systems>
+		<cockpit type="int">3</cockpit>
+		<model type="int">3</model>
+	</rating>
 	<version>20110220</version>
+	
 	<flight-model>jsb</flight-model>
 	<aero>747-400</aero>
 	<virtual-cockpit>true</virtual-cockpit>
