@@ -13,7 +13,7 @@
     <apu>
       <n1 alias="/engines/engine[4]/n1" />
       <n2 alias="/engines/engine[4]/n2" />
-      <egt-degf alias="/engines/engine[4]/egt_degf" />
+      <egt-degf alias="/engines/engine[4]/egt-degf" />
     </apu>
   </engines>
 

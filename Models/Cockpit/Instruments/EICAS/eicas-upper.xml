@@ -373,7 +373,7 @@
   </offsets>
   <overlay>
    <params>
-    <property type="string">/engines/engine[0]/egt_degf</property>
+    <property type="string">/engines/engine[0]/egt-degf</property>
     <format type="string">%03.1f</format>
 	<character-size type="double">0.012</character-size>
     <color>
@@ -394,7 +394,7 @@
   </offsets>
   <overlay>
    <params>
-    <property type="string">/engines/engine[1]/egt_degf</property>
+    <property type="string">/engines/engine[1]/egt-degf</property>
     <format type="string">%03.1f</format>
 	<character-size type="double">0.012</character-size>
     <color>
@@ -415,7 +415,7 @@
   </offsets>
   <overlay>
    <params>
-    <property type="string">/engines/engine[2]/egt_degf</property>
+    <property type="string">/engines/engine[2]/egt-degf</property>
     <format type="string">%03.1f</format>
 	<character-size type="double">0.012</character-size>
     <color>
@@ -436,7 +436,7 @@
   </offsets>
   <overlay>
    <params>
-    <property type="string">/engines/engine[3]/egt_degf</property>
+    <property type="string">/engines/engine[3]/egt-degf</property>
     <format type="string">%03.1f</format>
 	<character-size type="double">0.012</character-size>
     <color>

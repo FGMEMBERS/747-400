@@ -15,10 +15,24 @@
 		</offsets>
 
 		<condition>
-				<greater-than>
-						<property>fdm/jsbsim/propulsion/systems/jettison-qty</property>
-						<value>0</value>
-				</greater-than>
+			<or>
+				<less-than>
+					<property>propulsion/tank[0]/external-flow-rate/jettison</property>
+					<value>0</value>
+				</less-than>
+				<less-than>
+					<property>propulsion/tank[2]/external-flow-rate/jettison</property>
+					<value>0</value>
+				</less-than>
+				<less-than>
+					<property>propulsion/tank[3]/external-flow-rate/jettison</property>
+					<value>0</value>
+				</less-than>
+				<less-than>
+					<property>propulsion/tank[7]/external-flow-rate/jettison</property>
+					<value>0</value>
+				</less-than>
+			</or>
 		</condition>
 
 		<attach>world</attach>

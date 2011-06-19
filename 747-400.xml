@@ -485,8 +485,8 @@
                 <y> 0 </y>
                 <z> 0 </z>
             </location>
-            <capacity unit="LBS"> 114972 </capacity>
-            <contents unit="LBS"> 114972 </contents>
+            <capacity unit="LBS"> 114972.0 </capacity>
+            <contents unit="LBS"> 114972.0 </contents>
         </tank>
 		
 		<tank type="FUEL">    <!-- Tank number 1 == main #1--> 
@@ -495,8 +495,8 @@
                 <y> -700 </y>
                 <z> 0 </z>
             </location>
-            <capacity unit="LBS"> 30029 </capacity>
-            <contents unit="LBS"> 30029 </contents>
+            <capacity unit="LBS"> 30029.0 </capacity>
+            <contents unit="LBS"> 30029.0 </contents>
         </tank>
 
         <tank type="FUEL">    <!-- Tank number 2 == main #2--> 
@@ -505,8 +505,8 @@
                 <y> -300 </y>
                 <z> 0 </z>
             </location>
-            <capacity unit="LBS"> 84058 </capacity>
-            <contents unit="LBS"> 84058 </contents>
+            <capacity unit="LBS"> 84058.0 </capacity>
+            <contents unit="LBS"> 84058.0 </contents>
         </tank>
 
         <tank type="FUEL">    <!-- Tank number 3 == main #3--> 
@@ -515,8 +515,8 @@
                 <y> 300 </y>
                 <z> 0 </z>
             </location>
-            <capacity unit="LBS"> 84058 </capacity>
-            <contents unit="LBS"> 84058 </contents>
+            <capacity unit="LBS"> 84058.0 </capacity>
+            <contents unit="LBS"> 84058.0 </contents>
         </tank>
 
         <tank type="FUEL">    <!-- Tank number 4 == Main #4--> 
@@ -525,8 +525,8 @@
                 <y> 700 </y>
                 <z> 0 </z>
             </location>
-            <capacity unit="LBS"> 30029 </capacity>
-            <contents unit="LBS"> 30029 </contents>
+            <capacity unit="LBS"> 30029.0 </capacity>
+            <contents unit="LBS"> 30029.0 </contents>
         </tank>
 		
         <tank type="FUEL">    <!-- Tank number 5 == resesrve #2--> 
@@ -535,8 +535,8 @@
                 <y> -1000 </y>
                 <z> 0 </z>
             </location>
-            <capacity unit="LBS"> 17715 </capacity>
-            <contents unit="LBS"> 17715 </contents>
+            <capacity unit="LBS"> 17715.0 </capacity>
+            <contents unit="LBS"> 17715.0 </contents>
         </tank>
 
         <tank type="FUEL">    <!-- Tank number 6 == reserve #3--> 
@@ -545,8 +545,8 @@
                 <y> 1000 </y>
                 <z> 0 </z>
             </location>
-            <capacity unit="LBS"> 17715 </capacity>
-            <contents unit="LBS"> 17715 </contents>
+            <capacity unit="LBS"> 17715.0 </capacity>
+            <contents unit="LBS"> 17715.0 </contents>
         </tank>
 
         <tank type="FUEL">    <!-- Tank number 7 == stab--> 
@@ -555,8 +555,8 @@
                 <y> 0 </y>
                 <z> 100 </z>
             </location>
-            <capacity unit="LBS"> 22110 </capacity>
-            <contents unit="LBS"> 22110 </contents>
+            <capacity unit="LBS"> 22110.0 </capacity>
+            <contents unit="LBS"> 22110.0 </contents>
         </tank>
     </propulsion>
 

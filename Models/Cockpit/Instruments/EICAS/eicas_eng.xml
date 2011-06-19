@@ -713,7 +713,7 @@
 	</offsets>
 	<overlay>
 		<params>
-			<property type="string">/engines/engine[0]/egt_degf</property>
+			<property type="string">/engines/engine[0]/egt-degf</property>
 			<format type="string">%03.0f</format>
 			<character-size type="double">0.008</character-size>
 			<color>
@@ -736,7 +736,7 @@
 	</offsets>
 	<overlay>
 		<params>
-			<property type="string">/engines/engine[1]/egt_degf</property>
+			<property type="string">/engines/engine[1]/egt-degf</property>
 			<format type="string">%03.0f</format>
 			<character-size type="double">0.008</character-size>
 			<color>
@@ -759,7 +759,7 @@
 	</offsets>
 	<overlay>
 		<params>
-			<property type="string">/engines/engine[2]/egt_degf</property>
+			<property type="string">/engines/engine[2]/egt-degf</property>
 			<format type="string">%03.0f</format>
 			<character-size type="double">0.008</character-size>
 			<color>
@@ -782,7 +782,7 @@
 	</offsets>
 	<overlay>
 		<params>
-			<property type="string">/engines/engine[3]/egt_degf</property>
+			<property type="string">/engines/engine[3]/egt-degf</property>
 			<format type="string">%03.0f</format>
 			<character-size type="double">0.008</character-size>
 			<color>
@@ -1033,7 +1033,7 @@
  <animation>
  <type>textranslate</type>
  <object-name>EGT.001</object-name>
-     <property>/engines/engine[0]/egt_degf</property>
+     <property>/engines/engine[0]/egt-degf</property>
    <interpolation>
     <entry>
       <ind>0</ind>
@@ -1056,7 +1056,7 @@
  <animation>
  <type>textranslate</type>
  <object-name>EGT.002</object-name>
-     <property>/engines/engine[1]/egt_degf</property>
+     <property>/engines/engine[1]/egt-degf</property>
    <interpolation>
     <entry>
       <ind>0</ind>
@@ -1079,7 +1079,7 @@
  <animation>
  <type>textranslate</type>
  <object-name>EGT.003</object-name>
-     <property>/engines/engine[2]/egt_degf</property>
+     <property>/engines/engine[2]/egt-degf</property>
    <interpolation>
     <entry>
       <ind>0</ind>
@@ -1102,7 +1102,7 @@
  <animation>
  <type>textranslate</type>
  <object-name>EGT.004</object-name>
-     <property>/engines/engine[3]/egt_degf</property>
+     <property>/engines/engine[3]/egt-degf</property>
    <interpolation>
     <entry>
       <ind>0</ind>

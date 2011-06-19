@@ -174,7 +174,7 @@ Syd Adams
  <animation>
    <type>rotate</type>
    <object-name>L-EGT.needle</object-name>
-<property>/engines/engine/egt_degf</property>
+<property>/engines/engine/egt-degf</property>
    <interpolation>
      <entry>
        <ind> 0.0</ind>
@@ -211,7 +211,7 @@ Syd Adams
  <animation>
    <type>textranslate</type>
    <object-name>EGT.001</object-name>
-<property>/engines/engine/egt_degf</property>
+<property>/engines/engine/egt-degf</property>
    <factor>0.001</factor>
    <step>100</step>
    <axis>
@@ -235,7 +235,7 @@ Syd Adams
  <animation>
    <type>textranslate</type>
    <object-name>EGT.002</object-name>
-<property>/engines/engine/egt_degf</property>
+<property>/engines/engine/egt-degf</property>
    <factor>0.01</factor>
    <step>10</step>
    <axis>
@@ -259,7 +259,7 @@ Syd Adams
  <animation>
    <type>textranslate</type>
    <object-name>EGT.003</object-name>
-<property>/engines/engine/egt_degf</property>
+<property>/engines/engine/egt-degf</property>
    <factor>0.1</factor>
    <step>1</step>
    <axis>
@@ -283,7 +283,7 @@ Syd Adams
  <animation>
    <type>textranslate</type>
    <object-name>EGT.004</object-name>
-<property>/engines/engine/egt_degf</property>
+<property>/engines/engine/egt-degf</property>
    <factor>1.0</factor>
    <step>0.1</step>
    <axis>
@@ -443,7 +443,7 @@ Syd Adams
  <animation>
    <type>rotate</type>
    <object-name>R-EGT.needle</object-name>
-<property>/engines/engine[1]/egt_degf</property>
+<property>/engines/engine[1]/egt-degf</property>
    <interpolation>
      <entry>
        <ind> 0.0</ind>
@@ -480,7 +480,7 @@ Syd Adams
  <animation>
    <type>textranslate</type>
    <object-name>EGT.101</object-name>
-<property>/engines/engine[1]/egt_degf</property>
+<property>/engines/engine[1]/egt-degf</property>
    <factor>0.001</factor>
    <step>100</step>
    <axis>
@@ -504,7 +504,7 @@ Syd Adams
  <animation>
    <type>textranslate</type>
    <object-name>EGT.102</object-name>
-<property>/engines/engine[1]/egt_degf</property>
+<property>/engines/engine[1]/egt-degf</property>
    <factor>0.01</factor>
    <step>10</step>
    <axis>
@@ -528,7 +528,7 @@ Syd Adams
  <animation>
    <type>textranslate</type>
    <object-name>EGT.103</object-name>
-<property>/engines/engine[1]/egt_degf</property>
+<property>/engines/engine[1]/egt-degf</property>
    <factor>0.1</factor>
    <step>1</step>
    <axis>
@@ -552,7 +552,7 @@ Syd Adams
  <animation>
    <type>textranslate</type>
    <object-name>EGT.104</object-name>
-<property>/engines/engine[1]/egt_degf</property>
+<property>/engines/engine[1]/egt-degf</property>
    <factor>1.0</factor>
    <step>0.1</step>
    <axis>
