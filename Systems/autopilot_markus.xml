@@ -156,7 +156,7 @@
 	<filter>
 		<name>SERVO-DRIVER:throttle</name>
 		<debug>false</debug>
-		<feedback-if-disabled>false</feedback-if-disabled>
+		<feedback-if-disabled>true</feedback-if-disabled>
 		<enable>
 			<condition>
 				<or>
@@ -168,6 +168,17 @@
 						<property>/autopilot/locks/speed</property>
 						<value>speed-with-throttle-mach</value>
 					</equals>
+					<and>
+						<equals>
+							<property>/autopilot/locks/altitude</property>
+							<value>gs1-hold</value>
+						</equals>
+						<property>/instrumentation/nav[0]/gs-in-range</property>
+						<equals>
+							<property>/autopilot/internal/nav1-vspeed-ground-mode</property>
+							<value>1</value>
+						</equals>
+					</and>
 				</or>
 			</condition>
 		</enable>
@@ -404,7 +415,7 @@
 
 	<!-- Stage #1 sets target roll based on diff between current heading and heading bug. -->
 	<pid-controller>
-		<name>Heading Bug Hold (FDM mag heading based) Stage 1</name>
+		<name>Heading Bug Hold Stage 1</name>
 		<debug>false</debug>
 		<enable>
 			<condition>
@@ -487,7 +498,7 @@
 			<property>/autopilot/internal/rudder-servo</property>
 		</output>
 		<config>
-			<Kp>-0.005</Kp>
+			<Kp>/autopilot/internal/target-kp-for-heading-hold-rudder</Kp>
 			<u_min>-0.4</u_min>
 			<u_max>0.4</u_max>
 		</config>
@@ -530,6 +541,7 @@
 					<value>true-heading-hold</value>
 				</equals>
 			</condition>
+
 		</enable>
 		<type>gain</type>
 		<input>
@@ -550,7 +562,7 @@
 	<!-- Stage #1 sets target roll based on diff between current heading -->
 	<!-- and heading bug. (stable over speed 190 kts) -->
 	<pid-controller>
-		<name>True Heading Hold (FDM mag heading based) Stage 1</name>
+		<name>True Heading Hold Stage 1</name>
 		<debug>false</debug>
 		<enable>
 			<condition>
@@ -623,8 +635,8 @@
 			<Kp>/autopilot/internal/target-kp-for-heading-hold-clambed</Kp>
 			<Ti>/autopilot/internal/target-ti-for-heading-hold</Ti>
 			<Td>/autopilot/internal/target-td-for-heading-hold</Td>
-			<u_min>-0.4</u_min>
-			<u_max>0.4</u_max>
+			<u_min>-1.0</u_min>
+			<u_max>1.0</u_max>
 		</config>
 	</pid-controller>
 
@@ -648,7 +660,7 @@
 			<property>/autopilot/internal/rudder-servo</property>
 		</output>
 		<config>
-			<Kp>-0.004</Kp>
+			<Kp>/autopilot/internal/target-kp-for-heading-hold-rudder</Kp>
 			<u_min>-0.4</u_min>
 			<u_max>0.4</u_max>
 		</config>
@@ -757,6 +769,22 @@
 			<property>/orientation/roll-deg</property>
 		</input>
 		<reference>
+			<!-- hold wing level ('smooting' behaviour at VOR-transition) -->
+			<condition>
+				<equals>
+					<property>/autopilot/internal/VOR-near-by</property>
+					<value>1</value>
+				</equals>
+			</condition>
+			<property>/autopilot/internal/target-roll-deg-for-VOR-near-by</property>
+		</reference>
+		<reference>
+			<condition>
+				<equals>
+					<property>/autopilot/internal/VOR-near-by</property>
+					<value>0</value>
+				</equals>
+			</condition>
 			<property>/autopilot/internal/target-roll-deg</property>
 		</reference>
 		<output>
@@ -928,7 +956,7 @@
 	<!-- Airborne-mode: drives the elevator to achieve the desired climb rate. -->
 
 	<pid-controller>
-		<name>Glideslop Hold</name>
+		<name>Glideslope Hold</name>
 		<debug>false</debug>
 		<enable>
 			<condition>
@@ -952,8 +980,7 @@
 		</input>
 		<reference>
 			<property>/autopilot/internal/gs-rate-of-climb-near-far-filtered</property>
-			<scale>/autopilot/internal/gs-rate-of-climb-scale-factor</scale>
-		</reference>
+			<scale>1.0</scale>		</reference>
 		<output>
 			<property>/autopilot/internal/elevator-servo</property>
 		</output>
@@ -967,10 +994,10 @@
 	</pid-controller>
 
 
-	<!-- Ground-mode: drives the elevator to asure pitch hold -->
+	<!-- Near-Ground-mode: drives the elevator to asure pitch hold -->
 
 	<pid-controller>
-		<name>Glideslop Hold: ground-mode fallback to pitch hold</name>
+		<name>Glideslope Hold: ground-mode fallback to pitch hold</name>
 		<debug>false</debug>
 		<enable>
 			<condition>
@@ -983,7 +1010,7 @@
 					<property>/autopilot/internal/nav1-pitch-deg-ground-mode</property>
 					<value>0.0</value>
 				</greater-than>
-				<or>
+				<and>
 					<equals>
 						<property>/gear/gear[0]/wow</property>
 						<value>0.0</value>
@@ -1008,7 +1035,7 @@
 						<property>/gear/gear[5]/wow</property>
 						<value>0.0</value>
 					</equals>
-				</or>
+				</and>
 			</condition>
 		</enable>
 		<input>
@@ -1029,10 +1056,10 @@
 		</config>
 	</pid-controller>
 
-	<!-- Ground-mode: drives the throttle to asure vertical speed -->
+	<!-- Near-Ground-mode: drives the throttle to asure vertical speed -->
 
 	<pid-controller>
-		<name>Glideslop Hold: ground-mode fallback to vertical speed hold with throttle</name>
+		<name>Glideslope Hold: ground-mode fallback to vertical speed hold with throttle</name>
 		<debug>false</debug>
 		<enable>
 			<condition>
@@ -1055,17 +1082,14 @@
 			<scale>0.03</scale>
 		</reference>
 		<output>
-			<property>/controls/engines/engine[0]/throttle</property>
-			<property>/controls/engines/engine[1]/throttle</property>
-			<property>/controls/engines/engine[2]/throttle</property>
-			<property>/controls/engines/engine[3]/throttle</property>
+            <property>/autopilot/internal/throttle-servo</property>
 		</output>
 		<config>
 			<Kp>/autopilot/internal/nav1-kp-for-throttle-ground-mode</Kp>
-			<Ti>2000.0</Ti>
+			<Ti>400.0</Ti>
 			<Td>0.4</Td>
 			<u_min>0.0</u_min>
-			<u_max>0.75</u_max>
+			<u_max>0.4</u_max>
 		</config>
 	</pid-controller>
 
@@ -1078,17 +1102,17 @@
         <name>Auto throttle (IAS)</name>
         <debug>false</debug>
         <enable>
-			<prop>/autopilot/locks/speed</prop>
+			<property>/autopilot/locks/speed</property>
 			<value>speed-with-throttle-ias</value>
         </enable>
         <input>
-            <prop>/instrumentation/airspeed-indicator/indicated-speed-kt</prop>
+            <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
         </input>
         <reference>
-            <prop>/autopilot/settings/target-speed-kt</prop>
+            <property>/autopilot/settings/target-speed-kt</property>
         </reference>
         <output>
-            <prop>/autopilot/internal/throttle-servo</prop>
+            <property>/autopilot/internal/throttle-servo</property>
         </output>
         <config>
             <Kp>0.2</Kp>
@@ -1107,6 +1131,8 @@
 			<value>speed-with-throttle-mach</value>
         </enable>
         <input>
+
+
             <prop>/instrumentation/airspeed-indicator/indicated-mach</prop>
         </input>
         <reference>

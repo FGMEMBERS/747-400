@@ -9,19 +9,19 @@
 ##############################################################################
 
 
-var listenerApInitFunc = func {
+var listenerApRouteManagerInitFunc = func {
 	# do initializations of new properties
 
 	setprop("/autopilot/internal/route-manager-waypoint-near-by", 0);
 	setprop("autopilot/locks/passive-mode", 0);
 }
-setlistener("/sim/signals/fdm-initialized", listenerApInitFunc);
+setlistener("/sim/signals/fdm-initialized", listenerApRouteManagerInitFunc);
 
 
 # notes:
 # if 'passive-mode' is switched on, the autopilot is controlled by the route-manager, that means the settings for 'true-heading-hold'
 # and 'altitude-hold' come from the route-manager, additionally the route-manager activates 'true-heading-hold'.
-# This procedure calculates the appropriate vertical-speed and activated 'vertical-speed-hold', 'altitude-hold' as needed.
+# This procedure calculates the appropriate vertical-speed and activates 'vertical-speed-hold', 'altitude-hold' as needed.
 # Also provides a 'smooting'-procedure on the transition of waypoints.
 
 var waypointIdPrev = nil;
@@ -80,9 +80,13 @@ var apHeadingWaypointSetVSpeed = func {
 			}
 			# clamb: limit vspeed to min., max. values
 			if (vspeed > 0) {
-				vspeed = (vspeed > 2000.0) ? 2000.0 : vspeed;
+				var maxVSpeed = 2000.0;
+				if (getTotalFuelLbs() > 200000.0) {
+					maxVSpeed = 1500.0;
+				}
+				vspeed = (vspeed > maxVSpeed) ? maxVSpeed : vspeed;
 				if (getprop("/position/altitude-agl-ft") < 5000) {
-					vspeed = (vspeed < 1500.0) ? 1500.0 : vspeed;
+					vspeed = (vspeed < maxVSpeed) ? maxVSpeed : vspeed;
 				}
 				else {
 					vspeed = (vspeed < 500.0) ? 500.0 : vspeed;
@@ -149,6 +153,7 @@ var switchedToAltHold = 0;
 setlistener("autopilot/route-manager/current-wp", func {switchedToAltHold = 0;} );
 setlistener("autopilot/route-manager/current-wp", listenerApHeadingClambFunc);
 
+var waypointDistanceNmHold = 1.0;
 var listenerApPassiveMode = func {
 
 	var routeManagerWaypointNearBy = 0;
@@ -174,13 +179,18 @@ var listenerApPassiveMode = func {
 				if (waypointId == waypointIdPrev) {
 					# 'smoothing' on waypoint-transition:
 					# avoid heading change near active waypoint due to great angle difference -> keep actual heading
-					if (waypointDistanceNm < 1.0) {
+					if (getprop("autopilot/internal/route-manager-waypoint-near-by") == 0) {
+						waypointDistanceNmHold = 1.0 + (groundspeedKt * 0.001);
+					}
+					if (waypointDistanceNm < waypointDistanceNmHold)  {
 						if (getprop("autopilot/internal/route-manager-waypoint-near-by") == 0) {
+	
 							# smoothing: interpolate Kp for heading-hold
 							var kpForHeadingHold = getprop("/autopilot/internal/target-kp-for-heading-hold-clambed");
 							setprop("/autopilot/internal/target-kp-for-heading-hold-clambed", 0.0);
-							interpolate("/autopilot/internal/target-kp-for-heading-hold-clambed", kpForHeadingHold, 2);
+							interpolate("/autopilot/internal/target-kp-for-heading-hold-clambed", kpForHeadingHold, 5);
 						}
+
 						routeManagerWaypointNearBy = 1;
 					}
 					# don't need to do this, the route manager does it already
@@ -197,12 +207,9 @@ var listenerApPassiveMode = func {
 
 					routeManagerWaypointNearBy = 1;
 					settimer(apHeadingWaypointSetVSpeedStart , 1.0);
-
-					# set higher timer-interval to keep 'near-by-mode' for some seconds after crossing waypoint
-					# (hopefully this avoids sporadically occuring 360 degree turns, if we wait until route-manager has completed calculation of new heading)
 				}
 
-				var altitudeFt = getprop("position/altitude-ft");
+				var altitudeFt = getprop("instrumentation/altimeter/indicated-altitude-ft");
 				var autopilotSettingAltitudeFt = getprop("autopilot/settings/target-altitude-ft");
 				var waypointAlt = getprop("autopilot/route-manager/route/wp["~currentWaypointIndex~"]/altitude-ft");
 				if (autopilotSettingAltitudeFt == nil or autopilotSettingAltitudeFt < 0) {
@@ -213,11 +220,12 @@ var listenerApPassiveMode = func {
 						autopilotSettingAltitudeFt = 0.0;
 					}
 				}
+
 				var altitudeDistFt = autopilotSettingAltitudeFt - altitudeFt;
 				var altitudeDistFtSwitch = 350.0;
-				if (getprop("velocities/vertical-speed-fps") < 25.0) {
+				if (abs(getprop("velocities/vertical-speed-fps")) < 25.0) {
 					# abs(vspeed) < 1500.0 fpm -> switch to altitude-hold a bit later
-					altitudeDistFtSwitch -= ((25.0 - abs(getprop("velocities/vertical-speed-fps")) * 10.0));
+					altitudeDistFtSwitch -= (25.0 - abs(getprop("velocities/vertical-speed-fps"))) * 10.0;
 				}
 				var waypointDistanceNmSwitch = 1.0 + (groundspeedKt * 0.003);
 				if (abs(altitudeDistFt) < altitudeDistFtSwitch or waypointDistanceNm < waypointDistanceNmSwitch) {

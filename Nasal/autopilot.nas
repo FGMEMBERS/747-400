@@ -31,12 +31,16 @@ var listenerApInitFunc = func {
 	setprop("/autopilot/internal/target-kp-for-heading-hold-clambed", 0.05);
 	setprop("/autopilot/internal/target-ti-for-heading-hold", 15.0);
 	setprop("/autopilot/internal/target-td-for-heading-hold", 0.0005);
+	setprop("/autopilot/internal/target-kp-for-heading-hold-rudder", -0.005);
 
 	setprop("/autopilot/internal/nav1-stear-ground-mode", 0.0);
 	setprop("/autopilot/internal/nav1-pitch-deg-ground-mode", 0.0);
 	setprop("/autopilot/internal/nav1-vspeed-ground-mode", 0);
 	setprop("/autopilot/internal/nav1-vspeed-ground-mode-value", -450.0);
 	setprop("/autopilot/internal/nav1-kp-for-throttle-ground-mode", 0.03);
+	setprop("/autopilot/internal/VOR-near-by", 0);
+	setprop("/autopilot/internal/target-roll-deg-for-VOR-near-by", 0.0);
+	setprop("/autopilot/internal/kp-for-gs-hold", -0.015);
 	setprop("/autopilot/internal/gs-rate-of-climb-scale-factor", 1.0);
 
 	setprop("/autopilot/internal/route-manager-waypoint-near-by", 0);
@@ -383,13 +387,14 @@ var apAltitudeClambClimbRate = func(interpolateSeconds) {
 
 	# set min-/max-climbrate
 	var initMaxClimbRate = 30.0;
+	var initMinClimbRate = -18.0;
 	if (getprop("/velocities/airspeed-kt") < 190.0) {
 		initMaxClimbRate -= (190.0 - getprop("/velocities/airspeed-kt")) * 0.6;
 		initMaxClimbRate = (initMaxClimbRate < 1 ? 1 : initMaxClimbRate);
 	}
 
 	interpolate("/autopilot/internal/target-climp-rate-fps-for-altitude-hold-clambed-min",
-			(initMaxClimbRate * (-1)), interpolateSeconds);
+			initMinClimbRate, interpolateSeconds);
 	interpolate("/autopilot/internal/target-climp-rate-fps-for-altitude-hold-clambed-max",
 			initMaxClimbRate, interpolateSeconds);
 }
@@ -551,10 +556,10 @@ var listenerApHeadingFunc = func {
 		# interpolate 'Kp' according to airspeed
 		var kpForHeadingHold = getprop("/autopilot/internal/target-kp-for-heading-hold-clambed");
 		if (airspeedKt < 250.0) {
-			if (kpForHeadingHold > 0.09) {
+			if (kpForHeadingHold > 0.12) {
 				setprop("/autopilot/internal/target-kp-for-heading-hold-clambed", kpForHeadingHold - 0.003);
 			}
-			elsif (kpForHeadingHold < 0.09) {
+			elsif (kpForHeadingHold < 0.12) {
 				setprop("/autopilot/internal/target-kp-for-heading-hold-clambed", kpForHeadingHold + 0.003);
 			}
 		}
@@ -664,6 +669,14 @@ var listenerApHeadingFunc = func {
 		}
 		#print ("target-td-for-heading-hold=", getprop("/autopilot/internal/target-td-for-heading-hold"));
 
+		# Kp for rudder
+		var targetKpRudder = -0.005;
+		if (airspeedKt < 190.0) {
+			targetKpRudder += (190.0 - airspeedKt) * 0.0002;
+			targetKpRudder = (targetKpRudder > 0.0 ? 0.0 : targetKpRudder);
+		}
+		setprop("/autopilot/internal/target-kp-for-heading-hold-rudder", targetKpRudder);
+
 		settimer(listenerApHeadingFunc, 0.2);
 	}
 }
@@ -693,9 +706,15 @@ var listenerApNav1ClambFunc = func {
 		#print ("-> listenerApNav1ClambFunc -> installed");
 		setprop("/autopilot/internal/target-kp-for-nav1-hold-clambed", 0.0);
 		interpolate("/autopilot/internal/target-kp-for-nav1-hold-clambed", -0.6, 10);
+
+		var targetKpForHeadingHoldClambed = getprop("/autopilot/internal/target-kp-for-heading-hold-clambed");
+		setprop("/autopilot/internal/target-kp-for-heading-hold-clambed", 0.0);
+		interpolate("/autopilot/internal/target-kp-for-heading-hold-clambed", targetKpForHeadingHoldClambed, 8);
 	}
 }
 setlistener("/autopilot/locks/heading", listenerApNav1ClambFunc);
+setlistener("/instrumentation/nav[0]/nav-id", listenerApNav1ClambFunc);
+setlistener("/instrumentation/nav/radials/selected-deg", listenerApNav1ClambFunc);
 
 setprop("/autopilot/internal/gs-rate-of-climb-near-far-filtered", 0.0);
 var listenerApNav1NearFarFunc = func {
@@ -708,6 +727,28 @@ var listenerApNav1NearFarFunc = func {
 		else {
 			setprop("/autopilot/internal/gs-rate-of-climb-near-far-filtered", 1.67); # 100 fpm
 		}
+
+		# 'smooth' VOR-transition
+		if (getprop("instrumentation/nav[0]/gs-in-range") == 0 and getprop("instrumentation/nav[0]/nav-distance") < 2000.0) {
+			if (getprop("/autopilot/internal/VOR-near-by") == 0) {
+				listenerApNav1ClambFunc();
+
+				var targetRollDeg = getprop("/autopilot/internal/target-roll-deg");
+				setprop("/autopilot/internal/target-roll-deg-for-VOR-near-by", 0.0);
+
+				setprop("/autopilot/internal/VOR-near-by", 1);
+
+				interpolate("/autopilot/internal/target-roll-deg-for-VOR-near-by", targetRollDeg, 8.0);
+			}
+		}
+		else {
+			if (getprop("/autopilot/internal/VOR-near-by") == 1) {
+				listenerApNav1ClambFunc();
+
+				setprop("/autopilot/internal/VOR-near-by", 0);
+			}
+		}
+
 		settimer(listenerApNav1NearFarFunc, 0.05);
 	}
 }
@@ -753,11 +794,11 @@ var listenerApNav1GroundModeFunc = func {
 				# print("totalFuelLbs=", totalFuelLbs);
 
 				# calculate 'Kp' for 'glideslope with throttle' on ground-mode
-				nav1KpForThrottle = 0.9;
+				nav1KpForThrottle = 0.5;
 				if (totalFuelLbs < 100000.0) {
-					nav1KpForThrottle = 0.9 - ((100000.0 - totalFuelLbs) * 0.000004);
-					if (nav1KpForThrottle < 0.3) {
-						nav1KpForThrottle = 0.4;
+					nav1KpForThrottle = 0.5 - ((100000.0 - totalFuelLbs) * 0.000004);
+					if (nav1KpForThrottle < 0.2) {
+						nav1KpForThrottle = 0.2;
 					}
 				}
 
@@ -774,14 +815,6 @@ var listenerApNav1GroundModeFunc = func {
 				# print("airspeed-kt=", getprop("/velocities/airspeed-kt"));
 				# print("altitude-agl-ft=", altitudeAglFt);
 
-				# calculate scale factor for gs (rate of climb, need higher factor on more distance)
-				var navDistance = getprop("/instrumentation/nav[0]/nav-distance");
-				# print("nav-distance=", navDistance);
-				if (navDistance < 10000.0) {
-					var gsRateOfClimbScaleFactor = 1.0 - ((10000.0 - navDistance) * 0.0001);
-					gsRateOfClimbScaleFactor = (gsRateOfClimbScaleFactor < 0.6 ? 0.6 : gsRateOfClimbScaleFactor);
-					setprop("/autopilot/internal/gs-rate-of-climb-scale-factor", gsRateOfClimbScaleFactor);
-				}
 
 				# calculate pitch for gs1-hold - ground-mode (NOTICE: 'nav1PitchDegGroundMode' must be set in
 				# each 'if-elsif'-block instead of the last, which activates only speedbeaks !!!)
@@ -918,12 +951,14 @@ var listenerApNav1GroundModeFunc = func {
 
 					if (totalFuelLbs < 100000) {
 						# vspeed depends on ground-speed to hold a constand angle of decent
-						gsRateOfClimb = getprop("velocities/groundspeed-kt") * -0.1;
+						gsRateOfClimb = getprop("velocities/groundspeed-kt") * -0.12;
 					}
 					else {
 						# vspeed depends on ground-speed to hold a constand angle of decent
-						gsRateOfClimb = getprop("velocities/groundspeed-kt") * -0.09;
+						gsRateOfClimb = getprop("velocities/groundspeed-kt") * -0.095;
 					}
+					gsRateOfClimb = (gsRateOfClimb < -20.0 ? -20.0 : gsRateOfClimb);
+					gsRateOfClimb = (gsRateOfClimb > -10.0 ? -10.0 : gsRateOfClimb);
 					setprop("/autopilot/internal/nav1-vspeed-ground-mode-value", gsRateOfClimb * 33.333);
 
 					nav1VspeedGroundMode = 1;
@@ -955,34 +990,15 @@ var listenerApNav1GroundModeFunc = func {
 					gsRateOfClimb = getprop("/instrumentation/nav[0]/gs-rate-of-climb");
 
 					if (totalFuelLbs < 100000) {
-						if (gsRateOfClimb < -18.0) {
-							#gsRateOfClimb = -18.0;
-
-							# vspeed depends on ground-speed to hold a constand angle of decent
-							gsRateOfClimb = getprop("velocities/groundspeed-kt") * -0.12;
-
-						}
-						elsif (gsRateOfClimb > -12.5) {
-							#gsRateOfClimb = -12.5;
-
-							# vspeed depends on ground-speed to hold a constand angle of decent
-							gsRateOfClimb = getprop("velocities/groundspeed-kt") * -0.9;
-						}
+						# vspeed depends on ground-speed to hold a constand angle of decent
+						gsRateOfClimb = getprop("velocities/groundspeed-kt") * -0.12;
 					}
 					else {
-						if (gsRateOfClimb < -18.0) {
-							#gsRateOfClimb = -18.0;
-
-							# vspeed depends on ground-speed to hold a constand angle of decent
-							gsRateOfClimb = getprop("velocities/groundspeed-kt") * -0.09;
-						}
-						elsif (gsRateOfClimb > -14.0) {
-							#gsRateOfClimb = -14.0;
-
-							# vspeed depends on ground-speed to hold a constand angle of decent
-							gsRateOfClimb = getprop("velocities/groundspeed-kt") * -0.09;
-						}
+						# vspeed depends on ground-speed to hold a constand angle of decent
+						gsRateOfClimb = getprop("velocities/groundspeed-kt") * -0.09;
 					}
+					gsRateOfClimb = (gsRateOfClimb < -20.0 ? -20.0 : gsRateOfClimb);
+					gsRateOfClimb = (gsRateOfClimb > -10.0 ? -10.0 : gsRateOfClimb);
 					setprop("/autopilot/internal/nav1-vspeed-ground-mode-value", gsRateOfClimb * 33.333);
 
 					nav1VspeedGroundMode = 1;
@@ -1070,6 +1086,7 @@ var listenerApNav1GroundModeFunc = func {
 						setprop("/controls/engines/engine[3]/throttle", 0.0);
 
 						setprop("/controls/gear/brake-right", 0.0);
+
 						setprop("/controls/gear/brake-left", 0.0);
 
 						setprop("/autopilot/locks/heading", "");
