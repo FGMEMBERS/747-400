@@ -120,25 +120,75 @@
           - empty CG at 23 % MAC (no payload).
           - the point mass is the equivalent payload to get 833000 lb; adjusted so that
             CG at empty fuel is 33 % MAC (1276 in.), full load 20 % (1232 in.).
+			
+			inertia from http://www.wseas.us/e-library/conferences/2007istanbul/papers/557-095.pdf
         </documentation>
-        <ixx unit="SLUG*FT2"> 3.80337e+07 </ixx>
-        <iyy unit="SLUG*FT2"> 6.02827e+07 </iyy>
-        <izz unit="SLUG*FT2"> 9.79195e+07 </izz>
+        <ixx unit="SLUG*FT2"> 1.82e+07 </ixx>
+        <iyy unit="SLUG*FT2"> 3.31e+07 </iyy>
+        <izz unit="SLUG*FT2"> 4.97e+07 </izz>
         <ixy unit="SLUG*FT2"> 0 </ixy>
-        <ixz unit="SLUG*FT2"> 0 </ixz>
+        <ixz unit="SLUG*FT2"> 9.70e+05 </ixz>
         <iyz unit="SLUG*FT2"> 0 </iyz>
-        <emptywt unit="LBS"> 393263  </emptywt>
-        <location name="CG" unit="IN">
-            <x> -75 </x>
-            <y> 0 </y>
-            <z> 0 </z>
+        <emptywt unit="LBS"> 259583  </emptywt> <!-- minus 2 wings and 4 engines -->
+        <location name="CG" unit="M">
+            <x>-7.0 </x>
+            <y> 0   </y>
+            <z> 0   </z>
         </location>
 		<pointmass name="Passengers and crew">
             <weight unit="LBS"> 50000 </weight>
-            <location name="POINTMASS" unit="IN">
-            <x> 25 </x>
-            <y> 0 </y>
-            <z> 0 </z>
+            <location name="POINTMASS" unit="M">
+            <x>-2.0 </x>
+            <y> 0   </y>
+            <z> 0   </z>
+            </location>
+        </pointmass>
+		<pointmass name="Left Wing">
+            <weight unit="LBS"> 47500 </weight>
+            <location name="POINTMASS" unit="M">
+            <x>  2.65 </x>
+            <y>-13.0  </y>
+            <z> -0.45 </z>
+            </location>
+        </pointmass>
+		<pointmass name="Right Wing">
+            <weight unit="LBS"> 47500 </weight>
+            <location name="POINTMASS" unit="M">
+            <x> 2.65 </x>
+            <y>13.0  </y>
+            <z>-0.45 </z>
+            </location>
+        </pointmass>
+		<pointmass name="Engine 1">
+            <weight unit="LBS"> 9670 </weight>
+            <location name="POINTMASS" unit="M">
+            <x>  6.02 </x>
+            <y>-21.23 </y>
+            <z> -1.98 </z>
+            </location>
+        </pointmass>
+		<pointmass name="Engine 2">
+            <weight unit="LBS"> 9670 </weight>
+            <location name="POINTMASS" unit="M">
+            <x> -1.48 </x>
+            <y>-13.46 </y>
+            <z> -2.59 </z>
+            </location>
+        </pointmass>
+		<pointmass name="Engine 3">
+            <weight unit="LBS"> 9670 </weight>
+            <location name="POINTMASS" unit="M">
+            <x>-1.48 </x>
+            <y>13.46 </y>
+            <z>-2.59 </z>
+            </location>
+        </pointmass>
+		<pointmass name="Engine 4">
+            <weight unit="LBS"> 9670 </weight>
+            <location name="POINTMASS" unit="M">
+            <x> 6.02 </x>
+            <y>21.23 </y>
+            <z>-1.98 </z>
             </location>
         </pointmass>
     </mass_balance>
@@ -443,7 +493,7 @@
             </thruster>
         </engine>
 		
-	  <engine file="APU_PW901">
+	    <engine file="APU_PW901">
             <location unit="IN">
                 <x> 100 </x>
                 <y> 0 </y>
@@ -480,80 +530,80 @@
         </documentation>
 
         <tank type="FUEL">    <!-- Tank number 0 == center wing--> 
-            <location unit="IN">
-                <x> 0 </x>
-                <y> 0 </y>
-                <z> 0 </z>
+            <location unit="M">
+                <x>-2.5 </x>
+                <y> 0   </y>
+                <z>-1.0 </z>
             </location>
             <capacity unit="LBS"> 114972.0 </capacity>
             <contents unit="LBS"> 114972.0 </contents>
         </tank>
 		
 		<tank type="FUEL">    <!-- Tank number 1 == main #1--> 
-            <location unit="IN">
-                <x> 300 </x>
-                <y> -700 </y>
-                <z> 0 </z>
+            <location unit="M">
+                <x>  7.8 </x>
+                <y>-17.1 </y>
+                <z> -0.1 </z>
             </location>
             <capacity unit="LBS"> 30029.0 </capacity>
             <contents unit="LBS"> 30029.0 </contents>
         </tank>
 
         <tank type="FUEL">    <!-- Tank number 2 == main #2--> 
-            <location unit="IN">
-                <x> 100 </x>
-                <y> -300 </y>
-                <z> 0 </z>
+            <location unit="M">
+                <x> 2.0 </x>
+                <y>-8.2 </y>
+                <z>-0.7 </z>
             </location>
             <capacity unit="LBS"> 84058.0 </capacity>
             <contents unit="LBS"> 84058.0 </contents>
         </tank>
 
         <tank type="FUEL">    <!-- Tank number 3 == main #3--> 
-            <location unit="IN">
-                <x> 100 </x>
-                <y> 300 </y>
-                <z> 0 </z>
+            <location unit="M">
+                <x> 2.0 </x>
+                <y> 8.2 </y>
+                <z>-0.7 </z>
             </location>
             <capacity unit="LBS"> 84058.0 </capacity>
             <contents unit="LBS"> 84058.0 </contents>
         </tank>
 
         <tank type="FUEL">    <!-- Tank number 4 == Main #4--> 
-            <location unit="IN">
-                <x> 300 </x>
-                <y> 700 </y>
-                <z> 0 </z>
+            <location unit="M">
+                <x> 7.8 </x>
+                <y>17.1 </y>
+                <z>-0.1 </z>
             </location>
             <capacity unit="LBS"> 30029.0 </capacity>
             <contents unit="LBS"> 30029.0 </contents>
         </tank>
 		
         <tank type="FUEL">    <!-- Tank number 5 == resesrve #2--> 
-            <location unit="IN">
-                <x> 500 </x>
-                <y> -1000 </y>
-                <z> 0 </z>
+            <location unit="M">
+                <x> 14.0 </x>
+                <y>-26.3 </y>
+                <z>  0.9   </z>
             </location>
             <capacity unit="LBS"> 17715.0 </capacity>
             <contents unit="LBS"> 17715.0 </contents>
         </tank>
 
         <tank type="FUEL">    <!-- Tank number 6 == reserve #3--> 
-            <location unit="IN">
-                <x> 500 </x>
-                <y> 1000 </y>
-                <z> 0 </z>
+            <location unit="M">
+                <x>14.0 </x>
+                <y>26.3 </y>
+                <z> 0.9   </z>
             </location>
             <capacity unit="LBS"> 17715.0 </capacity>
             <contents unit="LBS"> 17715.0 </contents>
         </tank>
 
         <tank type="FUEL">    <!-- Tank number 7 == stab--> 
-            <location unit="IN">
-                <x> 1400 </x>
-                <y> 0 </y>
-                <z> 100 </z>
+            <location unit="M">
+                <x>32.0 </x>
+                <y> 0   </y>
+                <z> 2.5 </z>
             </location>
             <capacity unit="LBS"> 22110.0 </capacity>
             <contents unit="LBS"> 22110.0 </contents>
@@ -867,9 +917,9 @@
           </range>
           <output>fcs/flap-pos-norm</output>
         </aerosurface_scale>
-
-        <kinematic name="Gear Control">
-            <input>gear/gear-cmd-norm</input>
+		
+		<kinematic>
+            <input>gear/unit[0]/pos-cmd-norm</input>
             <traverse>
                 <setting>
                     <position>0.0000</position>
@@ -880,23 +930,68 @@
                     <time>25.0000</time>
                 </setting>
             </traverse>
-            <output>gear/gear-pos-norm</output>
+            <output>gear/unit[0]/pos-norm</output>
+        </kinematic>
+		<kinematic>
+            <input>gear/unit[1]/pos-cmd-norm</input>
+            <traverse>
+                <setting>
+                    <position>0.0000</position>
+                    <time>0.0000</time>
+                </setting>
+                <setting>
+                    <position>1.0000</position>
+                    <time>25.0000</time>
+                </setting>
+            </traverse>
+            <output>gear/unit[1]/pos-norm</output>
+        </kinematic>
+		<kinematic>
+            <input>gear/unit[2]/pos-cmd-norm</input>
+            <traverse>
+                <setting>
+                    <position>0.0000</position>
+                    <time>0.0000</time>
+                </setting>
+                <setting>
+                    <position>1.0000</position>
+                    <time>25.0000</time>
+                </setting>
+            </traverse>
+            <output>gear/unit[2]/pos-norm</output>
+        </kinematic>
+		<kinematic>
+            <input>gear/unit[3]/pos-cmd-norm</input>
+            <traverse>
+                <setting>
+                    <position>0.0000</position>
+                    <time>0.0000</time>
+                </setting>
+                <setting>
+                    <position>1.0000</position>
+                    <time>25.0000</time>
+                </setting>
+            </traverse>
+            <output>gear/unit[3]/pos-norm</output>
+        </kinematic>
+		<kinematic>
+            <input>gear/unit[4]/pos-cmd-norm</input>
+            <traverse>
+                <setting>
+                    <position>0.0000</position>
+                    <time>0.0000</time>
+                </setting>
+                <setting>
+                    <position>1.0000</position>
+                    <time>25.0000</time>
+                </setting>
+            </traverse>
+            <output>gear/unit[4]/pos-norm</output>
         </kinematic>
 
-
-        <summer name="Gear Controlled">
-            <input>gear/gear-pos-norm</input>
-            <input>-/controls/failures/gear/broken</input>
-            <clipto>
-                <min>0</min>
-                <max>1</max>
-            </clipto>
-            <output>gear/gear-pos-norm</output>
-        </summer>
-
-        <fcs_function name="Rear Wheel Steering">
-          <function name="fcs/steer-rear-deg">
-            <description>Steering command for rear trucks</description>
+        <fcs_function name="Rear Wheel Steering 2">
+          <function name="fcs/steer-rear-deg[2]">
+            <description>Steering command for left body gear</description>
             <product>
               <table>
                  <independentVar lookup="row">fcs/steer-pos-deg</independentVar>
@@ -904,20 +999,39 @@
                  <tableData>
                       0  34  40  45
                 -70  13  13   0   0 
+                -65  13  13   0   0
                 -20   0   0   0   0
                   0   0   0   0   0
                  20   0   0   0   0
-                 70 -13 -13   0   0 
+                 70 -10 -10   0   0 
                  </tableData>
               </table> 
             </product>
           </function>
           <output>fcs/steer-pos-deg[2]</output>
         </fcs_function>
-        <summer name="Rear Wheel Tie Rod">
-            <input>fcs/steer-pos-deg[2]</input>
-            <output>fcs/steer-pos-deg[3]</output>
-      </summer>
+		
+        <fcs_function name="Rear Wheel Steering 3">
+          <function name="fcs/steer-rear-deg[3]">
+            <description>Steering command for right body gear</description>
+            <product>
+              <table>
+                 <independentVar lookup="row">fcs/steer-pos-deg</independentVar>
+                 <independentVar lookup="column">velocities/vg-fps</independentVar>
+                 <tableData>
+                      0  34  40  45
+                -70  10  10   0   0 
+                -20   0   0   0   0
+                  0   0   0   0   0
+                 20   0   0   0   0
+                 65 -13 -13   0   0
+                 70 -13 -13   0   0 
+                 </tableData>
+              </table> 
+            </product>
+          </function>
+          <output>fcs/steer-pos-deg[3]</output>
+        </fcs_function>
 
         <kinematic name="Speedbrake Control">
             <input>fcs/speedbrake-cmd-norm</input>

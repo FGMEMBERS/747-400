@@ -162,7 +162,7 @@
  <object-name>GearNose</object-name>
  <condition>
   <greater-than>
-   <property>gear/gear[1]/position-norm</property>
+   <property>gear/gear[0]/position-norm</property>
    <value>0.0</value>
   </greater-than>
  </condition>

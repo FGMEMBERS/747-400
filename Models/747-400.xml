@@ -27,7 +27,7 @@
 </model>
 
 <!-- LANDING LIGHTS WINGS -->
-
+<!--
 <model>
 	<path>Aircraft/747-400/Models/lights/light-cone.xml</path>
 	<name>LandingLight.Outbd.Left</name>
@@ -99,9 +99,9 @@
 		<property>controls/lighting/landing-light-outbdr</property>
 	</condition>
 </animation>
-
+-->
 <!-- LANDING LIGHTS NOSE -->
-
+<!--
 <model>
 	<path>Aircraft/747-400/Models/lights/light-cone.xml</path>
 	<name>LandingLight.Taxi</name>
@@ -195,7 +195,7 @@
 		</and>
 	</condition>
 </animation> 
-
+-->
 <!-- ANTI-COLLISION LIGHTS -->
 
 <model>

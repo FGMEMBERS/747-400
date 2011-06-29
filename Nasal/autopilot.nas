@@ -307,6 +307,11 @@ var AltitudeHoldPidControllerAdjust = {
 		}
 		else {
 			me.ti = 10.0;
+			if (lbs > 160000.0) {
+				if (airspeedKt < 250.0) {
+					me.ti = 30.0;
+				}
+			}
 		}
 		#print ("AltitudeHoldPidControllerAdjust: me.ti=", me.ti);
 		setprop("/autopilot/internal/target-ti-for-altitude-vspeed-hold", me.ti);
@@ -387,7 +392,12 @@ var apAltitudeClambClimbRate = func(interpolateSeconds) {
 
 	# set min-/max-climbrate
 	var initMaxClimbRate = 30.0;
+	var totalFuelLbs = getTotalFuelLbs();
 	var initMinClimbRate = -18.0;
+	if (totalFuelLbs > 160000.0) {
+		initMaxClimbRate = 18.0;
+		initMinClimbRate = -15.0;
+	}
 	if (getprop("/velocities/airspeed-kt") < 190.0) {
 		initMaxClimbRate -= (190.0 - getprop("/velocities/airspeed-kt")) * 0.6;
 		initMaxClimbRate = (initMaxClimbRate < 1 ? 1 : initMaxClimbRate);
@@ -446,6 +456,7 @@ var listenerApAltitudeKpFunc = func {
 		# get live parameter
 		lbs = getTotalFuelLbs();
 		altitudeFt = getprop("/position/altitude-ft");
+		altitudeFtError = getprop("/autopilot/settings/target-altitude-ft") - getprop("/instrumentation/altimeter/indicated-altitude-ft");
 		airspeedKt = getprop("/velocities/airspeed-kt");
 		pitchDeg = getprop("/orientation/pitch-deg");
 
@@ -1047,6 +1058,7 @@ var listenerApNav1GroundModeFunc = func {
 								setprop("/controls/engines/engine[3]/throttle", 0.0);
 							
 								interpolate("/controls/flight/elevator", 0.0, 3.0);
+								interpolate("/controls/flight/elevator-trim", 0.0, 3.0);
 
 								settimer(startReverserProgram, 1.5);
 							}

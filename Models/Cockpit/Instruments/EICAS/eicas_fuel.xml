@@ -407,30 +407,6 @@
 
 <animation>
 	<type>select</type>
-	<object-name>flowbar.res2</object-name>
-	<condition>
-		<property>fdm/jsbsim/propulsion/systems/transfer-5-2-qty</property>
-	</condition>
-</animation>
-
-<animation>
-	<type>select</type>
-	<object-name>flowbar.res3</object-name>
-	<condition>
-		<property>fdm/jsbsim/propulsion/systems/transfer-6-3-qty</property>
-	</condition>
-</animation>
-
-<animation>
-	<type>select</type>
-	<object-name>flowbar.stab</object-name>
-	<condition>
-		<property>fdm/jsbsim/propulsion/systems/transfer-0-7-qt</property>
-	</condition>
-</animation>
-
-<animation>
-	<type>select</type>
 	<object-name>pump.0</object-name>
 	<condition>
 		<property>/controls/fuel/tank[0]/pump</property>
@@ -498,6 +474,142 @@
 	<object-name>pump.4.aft</object-name>
 	<condition>
 		<property>/controls/fuel/tank[4]/pump-aft</property>
+	</condition>
+</animation>
+
+<!-- flowbars -->
+<animation>
+	<type>select</type>
+	<object-name>flowbar.res2</object-name>
+	<condition>
+		<property>fdm/jsbsim/propulsion/tank[5]/external-flow-rate/tank[2]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.res3</object-name>
+	<condition>
+		<property>fdm/jsbsim/propulsion/tank[6]/external-flow-rate/tank[3]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.stab</object-name>
+	<condition>
+		<property>fdm/jsbsim/propulsion/tank[7]/external-flow-rate/tank[0]</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.xfeed</object-name>
+	<condition>
+		<or>
+			<property>fdm/jsbsim/propulsion/tank[0]/external-flow-rate/tank[2]</property>
+			<property>fdm/jsbsim/propulsion/tank[0]/external-flow-rate/tank[3]</property>
+		</or>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.xfeed.1</object-name>
+	<condition>
+		<and>
+			<or>
+				<property>fdm/jsbsim/propulsion/tank[1]/external-flow-rate/tank[2]</property>
+				<property>fdm/jsbsim/propulsion/tank[2]/external-flow-rate/tank[1]</property>
+			</or>
+			<property>/controls/fuel/tank[1]/x-feed</property>
+		</and>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.xfeed.2</object-name>
+	<condition>
+		<and>
+			<or>
+				<property>fdm/jsbsim/propulsion/tank[1]/external-flow-rate/tank[2]</property>
+				<property>fdm/jsbsim/propulsion/tank[2]/external-flow-rate/tank[1]</property>
+			</or>
+			<property>/controls/fuel/tank[2]/x-feed</property>
+		</and>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.xfeed.3</object-name>
+	<condition>
+		<and>
+			<or>
+				<property>fdm/jsbsim/propulsion/tank[4]/external-flow-rate/tank[3]</property>
+				<property>fdm/jsbsim/propulsion/tank[3]/external-flow-rate/tank[4]</property>
+			</or>
+			<property>/controls/fuel/tank[3]/x-feed</property>
+		</and>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.xfeed.4</object-name>
+	<condition>
+		<and>
+			<or>
+				<property>fdm/jsbsim/propulsion/tank[4]/external-flow-rate/tank[3]</property>
+				<property>fdm/jsbsim/propulsion/tank[3]/external-flow-rate/tank[4]</property>
+			</or>
+			<property>/controls/fuel/tank[4]/x-feed</property>
+		</and>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.pump.1</object-name>
+	<condition>
+		<or>
+			<property>/controls/fuel/tank[1]/pump-aft</property>
+			<property>/controls/fuel/tank[1]/pump-fwd</property>
+		</or>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.pump.2</object-name>
+	<condition>
+		<or>
+			<property>/controls/fuel/tank[2]/pump-aft</property>
+			<property>/controls/fuel/tank[2]/pump-fwd</property>
+		</or>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.pump.3</object-name>
+	<condition>
+		<or>
+			<property>/controls/fuel/tank[3]/pump-aft</property>
+			<property>/controls/fuel/tank[3]/pump-fwd</property>
+		</or>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>flowbar.pump.4</object-name>
+	<condition>
+		<or>
+			<property>/controls/fuel/tank[4]/pump-aft</property>
+			<property>/controls/fuel/tank[4]/pump-fwd</property>
+		</or>
 	</condition>
 </animation>
 

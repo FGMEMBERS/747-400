@@ -34,6 +34,24 @@
 
 	<model>
 		<path>Aircraft/747-400/Models/747-400.xml</path>
+		<door>
+			<position-x-m type="float">-20.38</position-x-m>
+			<position-y-m type="float"> -2.89</position-y-m>
+			<position-z-m type="float"> -0.24</position-z-m>
+			<jetway-hood-deg type="float">6</jetway-hood-deg>
+		</door>
+		<door>
+			<position-x-m type="float">-11.32</position-x-m>
+			<position-y-m type="float"> -3.21</position-y-m>
+			<position-z-m type="float"> -0.24</position-z-m>
+			<jetway-hood-deg type="float">0</jetway-hood-deg>
+		</door>
+		<door>
+			<position-x-m type="float"> 0.55</position-x-m>
+			<position-y-m type="float">-3.21</position-y-m>
+			<position-z-m type="float">-0.24</position-z-m>
+			<jetway-hood-deg type="float">0</jetway-hood-deg>
+		</door>
 		<pushback>
 			<kp type="double">500</kp>
 			<ki type="double">25</ki>
@@ -215,17 +233,6 @@ left mouse button and counter clockwise using the middle mouse button.
 					</binding>
 				</item>
 
-				<!-- <item>
-					<label>Doors</label>
-					<binding>
-						<command>nasal</command>
-						<script>
-							var mal = gui.Dialog.new("/sim/gui/dialogs/Boeing747/menu/dialog","Aircraft/747-400/Dialogs/doors-dialog.xml");
-							mal.open();
-						</script>
-				  </binding>
-				</item> -->
-
 				<item>
 					<label>Malfunctions</label>
 					<binding>
@@ -256,6 +263,26 @@ left mouse button and counter clockwise using the middle mouse button.
 					<binding>
 						<command>property-assign</command>
 						<property>/controls/failures/wings/broken</property>
+						<value>0</value>
+					</binding>
+					<binding>
+						<command>property-assign</command>
+						<property>/controls/engines/engine[0]/on-fire</property>
+						<value>0</value>
+					</binding>
+					<binding>
+						<command>property-assign</command>
+						<property>/controls/engines/engine[1]/on-fire</property>
+						<value>0</value>
+					</binding>
+					<binding>
+						<command>property-assign</command>
+						<property>/controls/engines/engine[2]/on-fire</property>
+						<value>0</value>
+					</binding>
+					<binding>
+						<command>property-assign</command>
+						<property>/controls/engines/engine[3]/on-fire</property>
 						<value>0</value>
 					</binding>
 				</item>
@@ -351,8 +378,8 @@ left mouse button and counter clockwise using the middle mouse button.
 		<apu>0</apu>
 		<battery>0</battery>
 		<wipers>
-			<switch type = "bool">0</switch>
-			<position-norm type = "double">0</position-norm>
+			<switch type="bool">0</switch>
+			<position-norm type="double">0</position-norm>
 		</wipers>
 	</electric>
  
@@ -362,10 +389,23 @@ left mouse button and counter clockwise using the middle mouse button.
 
 	<failures>
 		<gear>
-			<broken type="int">0</broken>
+			<broken type="bool">0</broken>
+			<stuck type="bool">0</stuck>
+		</gear>
+		<gear n="1">
+			<stuck type="bool">0</stuck>
+		</gear>
+		<gear n="2">
+			<stuck type="bool">0</stuck>
+		</gear>
+		<gear n="3">
+			<stuck type="bool">0</stuck>
+		</gear>
+		<gear n="4">
+			<stuck type="bool">0</stuck>
 		</gear>
 		<wings>
-			<broken type="int">0</broken>
+			<broken type="bool">0</broken>
 		</wings>
 	</failures>
 
@@ -375,19 +415,19 @@ left mouse button and counter clockwise using the middle mouse button.
 
 	<fuel>
 		<tank n="1">
-			<x-feed>0</x-feed>
+			<x-feed type="bool">0</x-feed>
 		</tank>
 		<tank n="2">
-			<x-feed>0</x-feed>
+			<x-feed type="bool">0</x-feed>
 		</tank>
 		<tank n="3">
-			<x-feed>0</x-feed>
+			<x-feed type="bool">0</x-feed>
 		</tank>
 		<tank n="4">
-			<x-feed>0</x-feed>
+			<x-feed type="bool">0</x-feed>
 		</tank>
 		<tank n="7">
-			<pump>0</pump>
+			<pump type="bool">0</pump>
 		</tank>
 	</fuel>
 
@@ -422,17 +462,17 @@ left mouse button and counter clockwise using the middle mouse button.
 
 	<lighting>
 		<beacon>0</beacon>
-		<landing-light-inbdl>0</landing-light-inbdl>
-		<landing-light-inbdr>0</landing-light-inbdr>
-		<landing-light-outbdl>0</landing-light-outbdl>
-		<landing-light-outbdr>0</landing-light-outbdr>
+		<landing-light-inbdl type="bool">0</landing-light-inbdl>
+		<landing-light-inbdr type="bool">0</landing-light-inbdr>
+		<landing-light-outbdl type="bool">0</landing-light-outbdl>
+		<landing-light-outbdr type="bool">0</landing-light-outbdr>
 		<logo-lights>0</logo-lights>
 		<nav-lights>0</nav-lights>
 		<panel-norm>0</panel-norm>
 		<strobe>0</strobe>
 		<taxi-lights>0</taxi-lights>
-		<turnoff-light-l>0</turnoff-light-l>
-		<turnoff-light-r>0</turnoff-light-r>
+		<turnoff-light-l type="bool">0</turnoff-light-l>
+		<turnoff-light-r type="bool">0</turnoff-light-r>
 	</lighting>
 	
 </controls>
@@ -487,20 +527,6 @@ left mouse button and counter clockwise using the middle mouse button.
 		</key>
 	</keyboard>
 </input>
-
-<aircraft>
-	<door n="0">
-			<x-m>18.09</x-m>
-			<y-m> 8.70</y-m>
-			<z-m> 6.64</z-m>
-	</door>
-	<door n="1">
-			<x-m>23.82</x-m>
-			<y-m> 8.9</y-m>
-			<z-m> 7.37</z-m>
-	</door>
-	<jetway-hood-deg type="double">HOOD_DEG</jetway-hood-deg>
-</aircraft>
 
 <autopilot>
     <autobrake>
@@ -558,7 +584,7 @@ left mouse button and counter clockwise using the middle mouse button.
 			<engines>-80C2B1F</engines>
 		</ident>
 		<input type="string"/>
-		<serviceable>1</serviceable>
+		<serviceable type="bool">1</serviceable>
 	</cdu>
 	<efis>
 		<mfd>
@@ -578,6 +604,7 @@ left mouse button and counter clockwise using the middle mouse button.
 	</fmc>
 	<groundradar>
 		<range>2</range>
+		<id alias="/sim/presets/airport-id"/>
 	</groundradar>
 	<mk-viii>
 		<serviceable>1</serviceable>
@@ -726,13 +753,13 @@ left mouse button and counter clockwise using the middle mouse button.
 
 <surface-positions include="Systems/init-surface.xml"/>
 
-  <payload>
-  <weight>
-   <name type="string">Passengers and crew</name>
-   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
-   <min-lb type="double">3000.0</min-lb>
-   <max-lb type="double">90000.0</max-lb>
-  </weight>
- � </payload>
+<payload>
+	<weight>
+		<name type="string">Passengers and crew</name>
+		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
+		<min-lb type="double">3000.0</min-lb>
+		<max-lb type="double">90000.0</max-lb>
+	</weight>
+</payload>
  
 </PropertyList>

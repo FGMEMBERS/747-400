@@ -93,5 +93,67 @@
 		</checkbox>
 
 	</group>
+	
+	<hrule/>
+	
+  <text>
+    <label>Gear failure</label>
+  </text>
+  
+  <group>
+    <stretch>true</stretch>
+    <layout>table</layout>
+  
+		<checkbox>
+		  <row>0</row><col>3</col>
+		  <halign>left</halign>
+		  <property>/controls/failures/gear[0]/stuck</property>
+		  <binding>
+			<command>property-toggle</command>
+			<property>/controls/failures/gear[0]/stuck</property>
+		  </binding>
+		</checkbox>
+
+		<checkbox>
+		  <row>1</row><col>0</col>
+		  <halign>left</halign>
+		  <property>/controls/failures/gear[1]/stuck</property>
+		  <binding>
+			<command>property-toggle</command>
+			<property>/controls/failures/gear[1]/stuck</property>
+		  </binding>
+		</checkbox>
+		
+		<checkbox>
+		  <row>1</row><col>2</col>
+		  <halign>left</halign>
+		  <property>/controls/failures/gear[2]/stuck</property>
+		  <binding>
+			<command>property-toggle</command>
+			<property>/controls/failures/gear[2]/stuck</property>
+		  </binding>
+		</checkbox>
+		
+		<checkbox>
+		  <row>1</row><col>4</col>
+		  <halign>left</halign>
+		  <property>/controls/failures/gear[3]/stuck</property>
+		  <binding>
+			<command>property-toggle</command>
+			<property>/controls/failures/gear[3]/stuck</property>
+		  </binding>
+		</checkbox>
+		
+		<checkbox>
+		  <row>1</row><col>6</col>
+		  <halign>left</halign>
+		  <property>/controls/failures/gear[4]/stuck</property>
+		  <binding>
+			<command>property-toggle</command>
+			<property>/controls/failures/gear[4]/stuck</property>
+		  </binding>
+		</checkbox>
+
+	</group>
 
 </PropertyList>

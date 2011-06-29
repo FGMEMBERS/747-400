@@ -53,12 +53,12 @@
 	</filter>
 
   <!-- =============================================================== -->
-  <!-- elevator servo drivers.                                           -->
+  <!-- elevator-trim servo drivers.                                           -->
   <!-- =============================================================== -->
 
 	<!-- noise-spike filter: switches between the two different 'altitude-hold/vspeed-hold/gs-hold'-controller -->
 	<filter>
-		<name>SERVO-DRIVER:elevator (altitude/vspeed - below-xmoment-threshold)</name>
+		<name>SERVO-DRIVER:elevator-trim (altitude/vspeed - below-xmoment-threshold)</name>
 		<debug>false</debug>
 		<feedback-if-disabled>true</feedback-if-disabled>
 		<enable>
@@ -108,13 +108,12 @@
 			</condition>
 		</enable>
 		<input>
-			<property>/autopilot/internal/elevator-servo</property>
+			<property>/autopilot/internal/elevator-trim-servo</property>
 		</input>
-		<output>/controls/flight/elevator</output>
+		<output>/controls/flight/elevator-trim</output>
 		<type>noise-spike</type>
 		<max-rate-of-change>0.5</max-rate-of-change>
 	</filter>
-
 
   <!-- =============================================================== -->
   <!-- rudder servo driver.                                           -->
@@ -247,7 +246,7 @@
 			<property>/autopilot/settings/target-pitch-deg</property>
 		</reference>
 		<output>
-			<property>/autopilot/internal/elevator-servo</property>
+			<property>/autopilot/internal/elevator-trim-servo</property>
 		</output>
 		<config>
 			<Kp>-0.05</Kp>
@@ -314,7 +313,7 @@
 			<property>/autopilot/internal/target-climb-rate-fps</property>
 		</reference>
 		<output>
-			<property>/autopilot/internal/elevator-servo</property>
+			<property>/autopilot/internal/elevator-trim-servo</property>
 		</output>
 		<config>
 			<Kp>/autopilot/internal/target-kp-for-altitude-vspeed-hold</Kp>
@@ -353,7 +352,7 @@
 			<scale>0.0167</scale>
 		</reference>
 		<output>
-			<property>/autopilot/internal/elevator-servo</property>
+			<property>/autopilot/internal/elevator-trim-servo</property>
 		</output>
 		<config>
 			<Kp>/autopilot/internal/target-kp-for-altitude-vspeed-hold</Kp>
@@ -982,7 +981,7 @@
 			<property>/autopilot/internal/gs-rate-of-climb-near-far-filtered</property>
 			<scale>1.0</scale>		</reference>
 		<output>
-			<property>/autopilot/internal/elevator-servo</property>
+			<property>/autopilot/internal/elevator-trim-servo</property>
 		</output>
 		<config>
 			<Kp>/autopilot/internal/target-kp-for-altitude-vspeed-hold</Kp>
@@ -1045,7 +1044,7 @@
 			<property>/autopilot/internal/nav1-pitch-deg-ground-mode</property>
 		</reference>
 		<output>
-			<property>/autopilot/internal/elevator-servo</property>
+			<property>/autopilot/internal/elevator-trim-servo</property>
 		</output>
 		<config>
 			<Kp>-0.05</Kp>
@@ -1131,6 +1130,7 @@
 			<value>speed-with-throttle-mach</value>
         </enable>
         <input>
+
 
 
             <prop>/instrumentation/airspeed-indicator/indicated-mach</prop>
