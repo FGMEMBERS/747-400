@@ -1,5 +1,3 @@
-print("Initializing doors & seats");
-
 ## exterior
 
 var entry1left_door = aircraft.door.new("/controls/doors/entry1left", 6);

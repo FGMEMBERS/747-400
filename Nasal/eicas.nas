@@ -1,356 +1,217 @@
-configflapsline = 0;
-configgearline = 0;
-configparkbrkline = 0;
-eng1fireline = 0;
-eng2fireline = 0;
-eng3fireline = 0;
-eng4fireline = 0;
+var throttle		= 0;
+var radio_alt		= 0;
+var flaps			= 0;
+var parkbrake		= 0;
+var speed			= 0;
+var reverser		= 0;
+var apu_running		= 0;
+var gear_down		= 0;
+var gear_override	= 0;
+var flap_override	= 0;
+var ap_passive		= 1;
+var ap_disengaged	= 0;
+var rudder_trim		= 0;
+var elev_trim		= 0;
+var eng1fire		= 0;
+var eng2fire		= 0;
+var eng3fire		= 0;
+var eng4fire		= 0;
 
-var messages = func {
-	var throttle1 = getprop("/controls/engines/engine[0]/throttle");
-	var throttle2 = getprop("/controls/engines/engine[0]/throttle");
-	var throttle3 = getprop("/controls/engines/engine[0]/throttle");
-	var throttle4 = getprop("/controls/engines/engine[0]/throttle");
-	configflaps = (getprop("/gear/gear[0]/wow") == 1) and (getprop("/surface-positions/flap-pos-norm") < 0.33) and (throttle2 > 0.5) and (throttle3 > 0.5);
-	configgear = (getprop("/controls/gear/gear-down") != 1) and ((throttle1 == 0) or (throttle2 == 0) or (throttle3 == 0) or (throttle4 == 0)) and ((getprop("/controls/flight/flaps/") < 0.833) or (getprop("/instrumentation/altimter/indicated-altitude-ft") < 800));
-	configparkbrk = (getprop("/controls/gear/brake-parking") == 1) and (throttle2 > 0.5) and (throttle3 > 0.5);
-	eng1fire = getprop("/controls/engines/engine[0]/on-fire");
-	eng2fire = getprop("/controls/engines/engine[1]/on-fire");
-	eng3fire = getprop("/controls/engines/engine[2]/on-fire");
-	eng4fire = getprop("/controls/engines/engine[3]/on-fire");
-	line1 = getprop("/instrumentation/eicas/messages/line1");
-	line2 = getprop("/instrumentation/eicas/messages/line2");
-	line3 = getprop("/instrumentation/eicas/messages/line3");
-	line4 = getprop("/instrumentation/eicas/messages/line4");
-	
-	if (eng1fire == 1) {
-		if ((line1 == "") and ((eng1fireline == 0) or (eng1fireline > 1))){
-			line1 = "ENGINE FIRE 1";
-			eng1fireline = 1;
-			}
-		if ((line2 == "") and ((eng1fireline == 0) or (eng1fireline > 2))){
-			line2 = "ENGINE FIRE 1";
-			eng1fireline = 2;
-			}
-		if ((line3 == "") and ((eng1fireline == 0) or (eng1fireline > 3))){
-			line3 = "ENGINE FIRE 1";
-			eng1fireline = 3;
-			}
-		if ((line4 == "") and ((eng1fireline == 0) or (eng1fireline > 4))){
-			line4 = "ENGINE FIRE 1";
-			eng1fireline = 4;
-			}
-		if ((eng1fireline != 1) and (line1 == "ENGINE FIRE 1")){
-			line1 = "";
-			}
-		if ((eng1fireline != 2) and (line2 == "ENGINE FIRE 1")){
-			line2 = "";
-			}
-		if ((eng1fireline != 3) and (line3 == "ENGINE FIRE 1")){
-			line3 = "";
-			}
-		if ((eng1fireline != 4) and (line4 == "ENGINE FIRE 1")){
-			line4 = "";
-			}
-	}
-	elsif (eng1fire == 0){
-		if (eng1fireline == 1){
-			line1 = "";
-			}
-		if (eng1fireline == 2){
-			line2 = "";
-			}
-		if (eng1fireline == 3){
-			line3 = "";
-			}
-		if (eng1fireline == 4){
-			line4 = "";
-			}
-		eng1fireline = 0;
-	}
-	
-	if (eng2fire == 1) {
-		if ((line1 == "") and ((eng2fireline == 0) or (eng2fireline > 1))){
-			line1 = "ENGINE FIRE 2";
-			eng2fireline = 1;
-			}
-		if ((line2 == "") and ((eng2fireline == 0) or (eng2fireline > 2))){
-			line2 = "ENGINE FIRE 2";
-			eng2fireline = 2;
-			}
-		if ((line3 == "") and ((eng2fireline == 0) or (eng2fireline > 3))){
-			line3 = "ENGINE FIRE 2";
-			eng2fireline = 3;
-			}
-		if ((line4 == "") and ((eng2fireline == 0) or (eng2fireline > 4))){
-			line4 = "ENGINE FIRE 2";
-			eng2fireline = 4;
-			}
-		if ((eng2fireline != 1) and (line1 == "ENGINE FIRE 2")){
-			line1 = "";
-			}
-		if ((eng2fireline != 2) and (line2 == "ENGINE FIRE 2")){
-			line2 = "";
-			}
-		if ((eng2fireline != 3) and (line3 == "ENGINE FIRE 2")){
-			line3 = "";
-			}
-		if ((eng2fireline != 4) and (line4 == "ENGINE FIRE 2")){
-			line4 = "";
-			}
-	}
-	elsif (eng2fire == 0){
-		if (eng2fireline == 1){
-			line1 = "";
-			}
-		if (eng2fireline == 2){
-			line2 = "";
-			}
-		if (eng2fireline == 3){
-			line3 = "";
-			}
-		if (eng2fireline == 4){
-			line4 = "";
-			}
-		eng2fireline = 0;
-	}
-	
-	if (eng3fire == 1) {
-		if ((line1 == "") and ((eng3fireline == 0) or (eng3fireline > 1))){
-			line1 = "ENGINE FIRE 3";
-			eng3fireline = 1;
-			}
-		if ((line2 == "") and ((eng3fireline == 0) or (eng3fireline > 2))){
-			line2 = "ENGINE FIRE 3";
-			eng3fireline = 2;
-			}
-		if ((line3 == "") and ((eng3fireline == 0) or (eng3fireline > 3))){
-			line3 = "ENGINE FIRE 3";
-			eng3fireline = 3;
-			}
-		if ((line4 == "") and ((eng3fireline == 0) or (eng3fireline > 4))){
-			line4 = "ENGINE FIRE 3";
-			eng3fireline = 4;
-			}
-		if ((eng3fireline != 1) and (line1 == "ENGINE FIRE 3")){
-			line1 = "";
-			}
-		if ((eng3fireline != 2) and (line2 == "ENGINE FIRE 3")){
-			line2 = "";
-			}
-		if ((eng3fireline != 3) and (line3 == "ENGINE FIRE 3")){
-			line3 = "";
-			}
-		if ((eng3fireline != 4) and (line4 == "ENGINE FIRE 3")){
-			line4 = "";
-			}
-	}
-	elsif (eng3fire == 0){
-		if (eng3fireline == 1){
-			line1 = "";
-			}
-		if (eng3fireline == 2){
-			line2 = "";
-			}
-		if (eng3fireline == 3){
-			line3 = "";
-			}
-		if (eng3fireline == 4){
-			line4 = "";
-			}
-		eng3fireline = 0;
-	}
-	
-	if (eng4fire == 1) {
-		if ((line1 == "") and ((eng4fireline == 0) or (eng4fireline > 1))){
-			line1 = "ENGINE FIRE 4";
-			eng4fireline = 1;
-			}
-		if ((line2 == "") and ((eng4fireline == 0) or (eng4fireline > 2))){
-			line2 = "ENGINE FIRE 4";
-			eng4fireline = 2;
-			}
-		if ((line3 == "") and ((eng4fireline == 0) or (eng4fireline > 3))){
-			line3 = "ENGINE FIRE 4";
-			eng4fireline = 3;
-			}
-		if ((line4 == "") and ((eng4fireline == 0) or (eng4fireline > 4))){
-			line4 = "ENGINE FIRE 4";
-			eng4fireline = 4;
-			}
-		if ((eng4fireline != 1) and (line1 == "ENGINE FIRE 4")){
-			line1 = "";
-			}
-		if ((eng4fireline != 2) and (line2 == "ENGINE FIRE 4")){
-			line2 = "";
-			}
-		if ((eng4fireline != 3) and (line3 == "ENGINE FIRE 4")){
-			line3 = "";
-			}
-		if ((eng4fireline != 4) and (line4 == "ENGINE FIRE 4")){
-			line4 = "";
-			}
-	}
-	elsif (eng4fire == 0){
-		if (eng4fireline == 1){
-			line1 = "";
-			}
-		if (eng4fireline == 2){
-			line2 = "";
-			}
-		if (eng4fireline == 3){
-			line3 = "";
-			}
-		if (eng4fireline == 4){
-			line4 = "";
-			}
-		eng4fireline = 0;
-	}
-	
-	if (configflaps) {
-		if ((line1 == "") and ((configflapsline == 0) or (configflapsline > 1))){
-			line1 = ">CONFIG FLAPS";
-			configflapsline = 1;
-			}
-		if ((line2 == "") and ((configflapsline == 0) or (configflapsline > 2))){
-			line2 = ">CONFIG FLAPS";
-			configflapsline = 2;
-			}
-		if ((line3 == "") and ((configflapsline == 0) or (configflapsline > 3))){
-			line3 = ">CONFIG FLAPS";
-			configflapsline = 3;
-			}
-		if ((line4 == "") and ((configflapsline == 0) or (configflapsline > 4))){
-			line4 = ">CONFIG FLAPS";
-			configflapsline = 4;
-			}
-		if ((configflapsline != 1) and (line1 == ">CONFIG FLAPS")){
-			line1 = "";
-			}
-		if ((configflapsline != 2) and (line2 == ">CONFIG FLAPS")){
-			line2 = "";
-			}
-		if ((configflapsline != 3) and (line3 == ">CONFIG FLAPS")){
-			line3 = "";
-			}
-		if ((configflapsline != 4) and (line4 == ">CONFIG FLAPS")){
-			line4 = "";
-			}
-	}
-	elsif (!configflaps){
-		if (configflapsline == 1){
-			line1 = "";
-			}
-		if (configflapsline == 2){
-			line2 = "";
-			}
-		if (configflapsline == 3){
-			line3 = "";
-			}
-		if (configflapsline == 4){
-			line4 = "";
-			}
-		configflapsline = 0;
-	}
-	
-	if (configgear) {
-		if ((line1 == "") and ((configgearline == 0) or (configgearline > 1))){
-			line1 = ">CONFIG GEAR";
-			configgearline = 1;
-			}
-		if ((line2 == "") and ((configgearline == 0) or (configgearline > 2))){
-			line2 = ">CONFIG GEAR";
-			configgearline = 2;
-			}
-		if ((line3 == "") and ((configgearline == 0) or (configgearline > 3))){
-			line3 = ">CONFIG GEAR";
-			configgearline = 3;
-			}
-		if ((line4 == "") and ((configgearline == 0) or (configgearline > 4))){
-			line4 = ">CONFIG GEAR";
-			configgearline = 4;
-			}
-		if ((configgearline != 1) and (line1 == ">CONFIG GEAR")){
-			line1 = "";
-			}
-		if ((configgearline != 2) and (line2 == ">CONFIG GEAR")){
-			line2 = "";
-			}
-		if ((configgearline != 3) and (line3 == ">CONFIG GEAR")){
-			line3 = "";
-			}
-		if ((configgearline != 4) and (line4 == ">CONFIG GEAR")){
-			line4 = "";
-			}
-	}
-	elsif (!configgear){
-		if (configgearline == 1){
-			line1 = "";
-			}
-		if (configgearline == 2){
-			line2 = "";
-			}
-		if (configgearline == 3){
-			line3 = "";
-			}
-		if (configgearline == 4){
-			line4 = "";
-			}
-		configgearline = 0;
-	}
-	
-	if (configparkbrk) {
-		if ((line1 == "") and ((configparkbrkline == 0) or (configparkbrkline > 1))){
-			line1 = ">CONFIG PARK BRK";
-			configparkbrkline = 1;
-			}
-		if ((line2 == "") and ((configparkbrkline == 0) or (configparkbrkline > 2))){
-			line2 = ">CONFIG PARK BRK";
-			configparkbrkline = 2;
-			}
-		if ((line3 == "") and ((configparkbrkline == 0) or (configparkbrkline > 3))){
-			line3 = ">CONFIG PARK BRK";
-			configparkbrkline = 3;
-			}
-		if ((line4 == "") and ((configparkbrkline == 0) or (configparkbrkline > 4))){
-			line4 = ">CONFIG PARK BRK";
-			configparkbrkline = 4;
-			}
-		if ((configparkbrkline != 1) and (line1 == ">CONFIG PARK BRK")){
-			line1 = "";
-			}
-		if ((configparkbrkline != 2) and (line2 == ">CONFIG PARK BRK")){
-			line2 = "";
-			}
-		if ((configparkbrkline != 3) and (line3 == ">CONFIG PARK BRK")){
-			line3 = "";
-			}
-		if ((configparkbrkline != 4) and (line4 == ">CONFIG PARK BRK")){
-			line4 = "";
-			}
-	}
-	elsif (!configparkbrk){
-		if (configparkbrkline == 1){
-			line1 = "";
-			}
-		if (configparkbrkline == 2){
-			line2 = "";
-			}
-		if (configparkbrkline == 3){
-			line3 = "";
-			}
-		if (configparkbrkline == 4){
-			line4 = "";
-			}
-		configparkbrkline = 0;
-	}
+msgs_warning = [];
+msgs_caution = [];
+msgs_advisory = [];
+msgs_memo = [];
 
-	setprop("/instrumentation/eicas/messages/line1",line1);
-	setprop("/instrumentation/eicas/messages/line2",line2);
-	setprop("/instrumentation/eicas/messages/line3",line3);
-	setprop("/instrumentation/eicas/messages/line4",line4);
+props.globals.initNode("/instrumentation/weu/state/stall-speed",-100);
+
+eicas = props.globals.initNode("/instrumentation/eicas");
+eicas_msg_warning	= eicas.initNode("msg/warning"," ","STRING");
+eicas_msg_caution	= eicas.initNode("msg/caution"," ","STRING");
+eicas_msg_advisory	= eicas.initNode("msg/advisory"," ","STRING");
+eicas_msg_memo		= eicas.initNode("msg/memo"," ","STRING");
+
+setlistener("sim/signals/fdm-initialized", func() {
+	setlistener("controls/gear/gear-down",          func { update_listener_inputs() } );
+	setlistener("controls/gear/brake-parking",      func { update_listener_inputs() } );
+	setlistener("controls/engines/engine/reverser", func { update_listener_inputs() } );
+	setlistener("controls/flight/rudder-trim",      func { update_listener_inputs() } );
+	setlistener("controls/flight/elevator-trim",    func { update_listener_inputs() } );
+	setlistener("sim/freeze/replay-state",          func { update_listener_inputs() } );
+	setlistener("/autopilot/autobrake/step",        func { update_listener_inputs() } );
+	setlistener("controls/engines/engine/throttle", func { update_throttle_input() } );
+
+	update_listener_inputs();
+	update_throttle_input();
+    update_system();
+});
+
+var update_eicas = func(warningmsgs,cautionmsgs,advisorymsgs,memomsgs) {
+	var msg="";
+	var spacer="";
+	for(var i=0; i<size(warningmsgs); i+=1)
+	{
+		msg = msg ~ warningmsgs[i] ~ "\n";
+		spacer = spacer ~ "\n";
+	}
+	eicas_msg_warning.setValue(msg);
+	msg=spacer;
+	for(var i=0; i<size(cautionmsgs); i+=1)
+	{
+		msg = msg ~ cautionmsgs[i] ~ "\n";
+		spacer = spacer ~ "\n";
+	}
+	eicas_msg_caution.setValue(msg);
+	msg=spacer;
+	for(var i=0; i<size(advisorymsgs); i+=1)
+	{
+		msg = msg ~ advisorymsgs[i] ~ "\n";
+		spacer = spacer ~ "\n";
+	}
+	eicas_msg_advisory.setValue(msg);
+	msg=spacer;
+	for(var i=0; i<size(memomsgs); i+=1)
+	{
+		msg = msg ~ memomsgs[i] ~ "\n";
+	}
+	eicas_msg_memo.setValue(msg);
+}
 	
-	settimer(messages, 0.1);
+var takeoff_config_warnings = func {
+	if ((throttle>=0.667)and
+		(!reverser))
+	{
+		if (((flaps<0.3)or(flaps>0.7)) and (speed < getprop("/instrumentation/fmc/vspeeds/V1")))
+			append(msgs_warning,">CONFIG FLAPS");
+		if (parkbrake)
+			append(msgs_warning,">CONFIG PARK BRK");
+   }
 }
 
-_setlistener("/sim/signals/fdm-initialized", messages);
+var approach_config_warnings = func {
+	# approach warnings below 800ft when thrust lever in idle...
+	# ... or flaps in landing configuration
+	if (((radio_alt<800) and (throttle<0.5)) or (flaps>0.6))
+	{
+		if (!gear_down)
+		{
+			append(msgs_alert,">CONFIG GEAR");
+		}
+	 }
+}
+
+var warning_messages = func {
+	if (eng1fire or eng2fire or eng3fire or eng4fire)
+		append(msgs_warning,"FIRE ENGINE 1, 2, 3, 4");
+}
+
+var caution_messages = func {
+	if ((getprop("/consumables/fuel/tank[1]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[2]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[3]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[4]/level-lbs") < 1985))
+		append(msgs_caution,"FUEL QTY LOW");
+	if (getprop("controls/failures/gear[0]/stuck") or getprop("controls/failures/gear[1]/stuck") or getprop("controls/failures/gear[2]/stuck") or getprop("controls/failures/gear[3]/stuck") or getprop("controls/failures/gear[4]/stuck"))
+		append(msgs_warning,"GEAR DISAGREE");
+}
+
+var advisory_messages = func {
+	if (math.abs((getprop("/consumables/fuel/tank[1]/level-lbs")-getprop("/consumables/fuel/tank[4]/level-lbs"))) > 3000)
+		append(msgs_advisory,">FUEL IMBAL 1-4");
+	if (math.abs((getprop("/consumables/fuel/tank[2]/level-lbs")-getprop("/consumables/fuel/tank[3]/level-lbs"))) > 6000)
+		append(msgs_advisory,">FUEL IMBAL 2-3");
+	if ((getprop("/consumables/fuel/tank[2]/level-lbs") <= getprop("/consumables/fuel/tank[1]/level-lbs")) or (getprop("/consumables/fuel/tank[3]/level-lbs") <= getprop("/consumables/fuel/tank[4]/level-lbs")))
+		append(msgs_advisory,">FUEL TANK/ENG");
+	if (((getprop("/consumables/fuel/tank[1]/level-lbs") != getprop("/consumables/fuel/tank[2]/level-lbs")) or (getprop("/consumables/fuel/tank[3]/level-lbs") != getprop("/consumables/fuel/tank[4]/level-lbs"))) and ((getprop("/controls/fuel/tank[1]/x-feed") != 1) or (getprop("/controls/fuel/tank[4]/x-feed") != 1)))
+		append(msgs_advisory,">X FEED CONFIG");
+	if ((getprop("/controls/anti-ice/engine[0]/carb-heat") or getprop("/controls/anti-ice/engine[1]/carb-heat") or getprop("/controls/anti-ice/engine[2]/carb-heat") or getprop("/controls/anti-ice/engine[3]/carb-heat") or getprop("/controls/anti-ice/wing-heat")) and getprop("/environment/temperature-degc") > 12)
+		append(msgs_advisory,">ANTI-ICE");
+	if (!getprop("/controls/electric/battery"))
+		append(msgs_advisory,">BATTERY OFF");
+	if (!getprop("/controls/electric/generator-control[0]"))
+		append(msgs_advisory,">ELEC GEN OFF 1");
+	if (!getprop("/controls/electric/generator-control[1]"))
+		append(msgs_advisory,">ELEC GEN OFF 2");
+	if (!getprop("/controls/electric/generator-control[2]"))
+		append(msgs_advisory,">ELEC GEN OFF 3");
+	if (!getprop("/controls/electric/generator-control[3]"))
+		append(msgs_advisory,">ELEC GEN OFF 4");
+}
+
+var memo_messages = func {
+	if (getprop("/controls/engines/con-ignition"))
+		append(msgs_memo,"CON IGNITION ON");
+	if (apu_running and (getprop("/engines/engine[4]/n1") > 95))
+		append(msgs_memo,"APU RUNNING");
+	if (parkbrake)
+		append(msgs_memo,">PARK BRK SET");
+	if (reverser)
+		append(msgs_memo,">L R THRUST REV SET");
+	if (getprop("/autopilot/autobrake/step") == -2)
+		append(msgs_memo,"AUTOBRAKES RTO");
+	if (getprop("/autopilot/autobrake/step") == 1)
+		append(msgs_memo,"AUTOBRAKES 1");
+	if (getprop("/autopilot/autobrake/step") == 2)
+		append(msgs_memo,"AUTOBRAKES 2");
+	if (getprop("/autopilot/autobrake/step") == 3)
+		append(msgs_memo,"AUTOBRAKES 3");
+	if (getprop("/autopilot/autobrake/step") == 4)
+		append(msgs_memo,"AUTOBRAKES 4");
+	if (getprop("/autopilot/autobrake/step") == 5)
+		append(msgs_memo,"AUTOBRAKES MAX");
+	if (getprop("/controls/switches/seatbelt-sign"))
+		append(msgs_memo,"SEATBELTS ON");
+		
+	if (!getprop("/controls/pneumatic/pack-control[0]") and !getprop("/controls/pneumatic/pack-control[1]") and !getprop("/controls/pneumatic/pack-control[2]"))
+		append(msgs_memo,"PACKS OFF");
+	else {
+		if (!getprop("/controls/pneumatic/pack-control[0]") and !getprop("/controls/pneumatic/pack-control[1]"))
+			append(msgs_memo,"PACKS 1+2 OFF");
+		if (!getprop("/controls/pneumatic/pack-control[0]") and !getprop("/controls/pneumatic/pack-control[2]"))
+			append(msgs_memo,"PACKS 1+3 OFF");
+		if (!getprop("/controls/pneumatic/pack-control[1]") and !getprop("/controls/pneumatic/pack-control[2]"))
+			append(msgs_memo,"PACKS 2+3 OFF");
+		if (!getprop("/controls/pneumatic/pack-control[0]") and (getprop("/controls/pneumatic/pack-control[1]") and getprop("/controls/pneumatic/pack-control[2]")))
+			append(msgs_memo,"PACK 1 OFF");
+		if (!getprop("/controls/pneumatic/pack-control[1]") and (getprop("/controls/pneumatic/pack-control[0]") and getprop("/controls/pneumatic/pack-control[2]")))
+			append(msgs_memo,"PACK 2 OFF");
+		if (!getprop("/controls/pneumatic/pack-control[2]") and (getprop("/controls/pneumatic/pack-control[0]") and getprop("/controls/pneumatic/pack-control[1]")))
+			append(msgs_memo,"PACK 3 OFF");
+	}
+	if (getprop("/controls/pneumatic/pack-high-flow"))
+		append(msgs_memo,"PACKS HIGH FLOW");
+}
+	
+var update_listener_inputs = func() {
+	# be nice to sim: some inputs rarely change. use listeners.
+	enabled       = (getprop("sim/freeze/replay-state")!=1);
+	reverser      = getprop("controls/engines/engine/reverser");
+	gear_down     = getprop("controls/gear/gear-down");
+	parkbrake     = getprop("controls/gear/brake-parking");
+	apu_running   = getprop("controls/electric/apu");
+	rudder_trim   = getprop("controls/flight/rudder-trim");
+	elev_trim     = getprop("controls/flight/elevator-trim");
+	eng1fire      = getprop("controls/engines/engine[0]/on-fire");
+	eng2fire      = getprop("controls/engines/engine[1]/on-fire");
+	eng3fire      = getprop("controls/engines/engine[2]/on-fire");
+	eng4fire      = getprop("controls/engines/engine[3]/on-fire");
+}
+
+var update_throttle_input = func() {
+	throttle = getprop("controls/engines/engine/throttle");
+}
+	
+var update_system = func() {
+	msgs_warning   = [];
+	msgs_caution = [];
+	msgs_advisory = [];
+	msgs_memo    = [];
+	
+	radio_alt	= getprop("position/altitude-agl-ft");
+	speed		= getprop("velocities/airspeed-kt");
+	
+	takeoff_config_warnings();
+	warning_messages();
+	advisory_messages();
+	memo_messages();
+	
+	update_eicas(msgs_warning,msgs_caution,msgs_advisory,msgs_memo);
+	
+	settimer(update_system,0.5);
+}

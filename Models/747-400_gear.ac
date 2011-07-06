@@ -190,7 +190,7 @@ OBJECT poly
 name "GearNoseMainStrutColl"
 data 21
 Mesh23 GearNoseMain_2
-texture "747-400_gear_t.png"
+texture "747-400_gear.png"
 texrep 1 1
 crease 30.000000
 numvert 16
@@ -308,7 +308,7 @@ OBJECT poly
 name "GearNoseMainStrutCyli"
 data 17
 Mesh23 GearNoseMa
-texture "747-400_gear_t.png"
+texture "747-400_gear.png"
 texrep 1 1
 crease 30.000000
 numvert 16
@@ -396,7 +396,7 @@ OBJECT poly
 name "GearNoseTorqueLinkUp"
 data 8
 Mesh.002
-texture "747-400_gear_t.png"
+texture "747-400_gear.png"
 texrep 1 1
 crease 30.000000
 numvert 73
@@ -1804,7 +1804,7 @@ OBJECT poly
 name "GearNoseTorqueLinkLow_1"
 data 8
 Mesh.001
-texture "747-400_gear_t.png"
+texture "747-400_gear.png"
 texrep 1 1
 crease 30.000000
 numvert 73
@@ -6785,7 +6785,7 @@ OBJECT poly
 name "GearNoseMainStrutPist"
 data 21
 Mesh15 GearNose_000_2
-texture "747-400_gear_t.png"
+texture "747-400_gear.png"
 texrep 1 1
 crease 30.000000
 numvert 16
@@ -7019,7 +7019,7 @@ OBJECT poly
 name "wlg_left_main_1"
 data 17
 Mesh30 GearWing_0
-texture "747-400_gear_t.png"
+texture "747-400_gear.png"
 texrep 1 1
 crease 30.000000
 numvert 16
@@ -8065,7 +8065,7 @@ OBJECT poly
 name "Plane"
 data 5
 Plane
-texture "747-400_gear_t.png"
+texture "747-400_gear.png"
 texrep 1 1
 crease 30.000000
 numvert 8

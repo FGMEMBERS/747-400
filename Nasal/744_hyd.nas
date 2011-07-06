@@ -151,4 +151,4 @@ var hyd_sys = [Hyd.new(0), Hyd.new(1), Hyd.new(2), Hyd.new(3)];
 
 resched_update();
 
-print('744_hyd: so far so good');
+print('747-400 hydraulic system: so far so good');

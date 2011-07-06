@@ -396,7 +396,6 @@
                 <pitch> 0 </pitch>
                 <yaw> 0 </yaw>
             </orient>
-            <feed>0</feed>
             <feed>1</feed>
             <thruster file="direct">
                 <location unit="IN">
@@ -423,7 +422,6 @@
                 <pitch> 0 </pitch>
                 <yaw> 0 </yaw>
             </orient>
-            <feed>0</feed>
             <feed>2</feed>
             <thruster file="direct">
                 <location unit="IN">
@@ -450,7 +448,6 @@
                 <pitch> 0 </pitch>
                 <yaw> 0 </yaw>
             </orient>
-            <feed>0</feed>
             <feed>3</feed>
             <thruster file="direct">
                 <location unit="IN">
@@ -477,7 +474,6 @@
                 <pitch> 0 </pitch>
                 <yaw> 0 </yaw>
             </orient>
-            <feed>0</feed>
             <feed>4</feed>
             <thruster file="direct">
                 <location unit="IN">
@@ -618,9 +614,9 @@
 	<system file="wingflex"/>
 
     <flight_control name="747-400">
-     <property>fcs/LE-flap-cmd-norm</property>
+    <property>fcs/LE-flap-cmd-norm</property>
 
-     <channel name="Pitch">
+    <channel name="Pitch">
 
         <summer name="Pitch Trim Sum">
             <input>fcs/elevator-cmd-norm</input>
@@ -918,7 +914,7 @@
           <output>fcs/flap-pos-norm</output>
         </aerosurface_scale>
 		
-		<kinematic>
+		<kinematic name="gear/unit[0]/pos">
             <input>gear/unit[0]/pos-cmd-norm</input>
             <traverse>
                 <setting>
@@ -930,9 +926,8 @@
                     <time>25.0000</time>
                 </setting>
             </traverse>
-            <output>gear/unit[0]/pos-norm</output>
         </kinematic>
-		<kinematic>
+		<kinematic name="gear/unit[1]/pos">
             <input>gear/unit[1]/pos-cmd-norm</input>
             <traverse>
                 <setting>
@@ -946,7 +941,7 @@
             </traverse>
             <output>gear/unit[1]/pos-norm</output>
         </kinematic>
-		<kinematic>
+		<kinematic name="gear/unit[2]/pos">
             <input>gear/unit[2]/pos-cmd-norm</input>
             <traverse>
                 <setting>
@@ -960,7 +955,7 @@
             </traverse>
             <output>gear/unit[2]/pos-norm</output>
         </kinematic>
-		<kinematic>
+		<kinematic name="gear/unit[3]/pos">
             <input>gear/unit[3]/pos-cmd-norm</input>
             <traverse>
                 <setting>
@@ -974,7 +969,7 @@
             </traverse>
             <output>gear/unit[3]/pos-norm</output>
         </kinematic>
-		<kinematic>
+		<kinematic name="gear/unit[4]/pos">
             <input>gear/unit[4]/pos-cmd-norm</input>
             <traverse>
                 <setting>
@@ -1197,7 +1192,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/flap-pos-norm</property>
-					<property>/controls/failures/wings/lift</property>
+					<property>fcs/failures-wings-lift</property>
                     <value>0.0500</value>
                 </product>
             </function>
@@ -1210,7 +1205,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/LE-flap-pos-norm</property>
-					<property>/controls/failures/wings/lift</property>
+					<property>fcs/failures-wings-lift</property>
                     <value>0.0050</value>
                 </product>
             </function>
@@ -1232,7 +1227,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/speedbrake-pos-norm</property>
-					<property>/controls/failures/wings/lift</property>
+					<property>fcs/failures-wings-lift</property>
                     <value>0.02</value>
                 </product>
             </function>
@@ -1286,7 +1281,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>aero/function/kCLge</property>
-                    <property>/controls/failures/wings/lift</property>
+                    <property>fcs/failures-wings-lift</property>
                       <table>
                           <independentVar lookup="row">aero/alpha-rad</independentVar>
                           <independentVar lookup="column">velocities/mach</independentVar>
@@ -1312,7 +1307,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/LE-flap-pos-norm</property>
-					<property>/controls/failures/wings/lift</property>
+					<property>fcs/failures-wings-lift</property>
                       <table>
                           <independentVar>aero/alpha-rad</independentVar>
                           <tableData>
@@ -1339,7 +1334,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>aero/function/kCLge</property>
-					<property>/controls/failures/wings/lift</property>
+					<property>fcs/failures-wings-lift</property>
                       <table>
                           <independentVar>fcs/flap-pos-deg</independentVar>
                           <tableData>
@@ -1360,7 +1355,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/speedbrake-pos-norm</property>
-					<property>/controls/failures/wings/lift</property>
+					<property>fcs/failures-wings-lift</property>
                     <value>0.0000</value>
                 </product>
             </function>
@@ -1374,7 +1369,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/spoiler-pos-norm</property>
-					<property>/controls/failures/wings/lift</property>
+					<property>fcs/failures-wings-lift</property>
                     <value>-1.0000</value>
                 </product>
             </function>

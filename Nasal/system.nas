@@ -1,10 +1,3 @@
-## Lights ##
-
-strobe_switch = props.globals.getNode("controls/switches/strobe", 1);
-var beacon = aircraft.light.new( "/sim/model/lights/beacon", [0.05, 1.2,], "/controls/lighting/beacon" );
-beacon_switch = props.globals.getNode("controls/lighting/beacon", 1);
-var strobe = aircraft.light.new( "/sim/model/lights/strobe", [0.05, 3,], "/controls/lighting/strobe" );
-
 ## Continious Ignition ##
 
 setlistener("/controls/engines/con-ignition", func(conig){
@@ -94,15 +87,61 @@ var autostart = func {
 	if (getprop("/controls/engines/autostart")) settimer(autostart,0);
 }
 
+## Mouse drag&drop handler ##
+
+var MouseHandler = {
+  new : func() {
+    var obj = { parents : [ MouseHandler ] };
+
+    obj.property = nil;
+    obj.factor = 1.0;
+
+    obj.YListenerId = setlistener( "devices/status/mice/mouse/accel-y", 
+      func(n) { obj.YListener(n); }, 1, 0 );
+
+    return obj;
+  },
+
+  YListener : func(n) {
+    me.property == nil and return;
+    me.factor == 0 and return;
+    n == nil and return;
+    var v = n.getValue();
+    v == nil and return;
+    fgcommand("property-adjust", props.Node.new({ 
+      "offset" : v,
+      "factor" : me.factor,
+      "property" : me.property
+    }));
+  },
+
+  set : func( property = nil, factor = 1.0 ) {
+    me.property = property;
+    me.factor = factor;
+  },
+
+};
+
+var mouseHandler = MouseHandler.new();
+
+## Lights ##
+
+strobe_switch = props.globals.getNode("controls/switches/strobe", 1);
+var beacon = aircraft.light.new( "/sim/model/lights/beacon", [0.05, 1.2,], "/controls/lighting/beacon" );
+beacon_switch = props.globals.getNode("controls/lighting/beacon", 1);
+var strobe = aircraft.light.new( "/sim/model/lights/strobe", [0.05, 3,], "/controls/lighting/strobe" );
+
+## Liveries ##
+
+aircraft.livery.init("Aircraft/747-400/Models/Liveries");
+
 ## Prevent gear from being retracted on ground ##
 
 controls.gearDown = func(v) {
-
     if (v < 0) {
         if(!getprop("gear/gear[1]/wow"))setprop("/controls/gear/gear-down", 0);
     }
 	elsif (v > 0) {
       setprop("/controls/gear/gear-down", 1);
     }
-
 }

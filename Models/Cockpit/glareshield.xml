@@ -9,6 +9,7 @@
 		<texture n="1">
 			<image>Aircraft/747-400/Models/Effects/lightmap_glareshield.png</image>
 		</texture>
+		<factor><use>/controls/lighting/panel-norm</use></factor>
 	</parameters>
 	<object-name>AFDS</object-name>
 	<object-name>EICAS</object-name>
@@ -160,6 +161,13 @@
 			<min>0</min>
 			<max>1</max>
 		</binding>
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/lighting/instruments-norm</property>
+			<step>0.05</step>
+			<min>0</min>
+			<max>1</max>
+		</binding>
 	</action>
 </animation>
 
@@ -176,31 +184,6 @@
 			<min>0</min>
 			<max>1</max>
 		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>instr_light_capt</object-name>
-	<action>
-		<button>0</button>
-		<repeatable>true</repeatable>  
-		<binding>
-			<command>property-adjust</command>
-			<property>/controls/lighting/instruments-norm</property>
-			<step>0.05</step>
-			<min>0</min>
-			<max>1</max>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>instr_light_capt</object-name>
-	<action>
-		<button>1</button>
-		<repeatable>true</repeatable>  
 		<binding>
 			<command>property-adjust</command>
 			<property>/controls/lighting/instruments-norm</property>
@@ -213,9 +196,6 @@
  
 <animation>
 	<type>material</type>
-	<object-name>AFDS</object-name>
-	<object-name>EFIS</object-name>
-	<object-name>EICAS</object-name>
 	<object-name>disengage</object-name>
 	<object-name>VS_dn</object-name>
 	<object-name>VS_up</object-name>
@@ -1032,24 +1012,14 @@
 		<button>0</button>
 		<repeatable>false</repeatable>  
 		<binding>
-			<command>property-set</command>
-			<property>/autopilot/locks/passive-mode</property>
-			<value>1</value>
-		</binding>
-		<binding>
-			<command>property-set</command>
-			<property>sim/gui/dialogs/autopilot/altitude-active</property>
-			<value>0</value>
-		</binding>
-		<binding>
-			<command>property-set</command>
-			<property>sim/gui/dialogs/autopilot/heading-active</property>
-			<value>0</value>
-		</binding>
-		<binding>
-			<command>property-set</command>
-			<property>sim/gui/dialogs/autopilot/speed-active</property>
-			<value>0</value>
+			<command>nasal</command>
+			<script>
+				setprop("/autopilot/locks/passive-mode", 0);
+				setprop("/autopilot/locks/heading", "");
+				setprop("/autopilot/locks/altitude", "");
+				setprop("/autopilot/locks/roc-lock", "");
+				setprop("/autopilot/locks/speed", "");
+			</script>
 		</binding>
 	</action>
  </animation>

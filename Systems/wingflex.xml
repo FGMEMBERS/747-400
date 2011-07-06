@@ -7,7 +7,7 @@
     
     <channel name="wingflex">
 		
-		<fcs_function name="Wing 1 flex">
+		<fcs_function name="forces/wing[1]">
 			<function name="forces/wing-flex[1]">
                 <description>Wing_one_flex</description>
                 <sum>
@@ -21,10 +21,9 @@
 					</product>
                 </sum>
 			</function>
-			<output>forces/wing[1]</output>
         </fcs_function>
 		
-		<fcs_function name="Wing 2 flex">
+		<fcs_function name="forces/wing[2]">
 			<function name="forces/wing-flex[2]">
                 <description>Wing_two_flex</description>
                 <sum>
@@ -38,10 +37,9 @@
 					</product>
                 </sum>
 			</function>
-			<output>forces/wing[2]</output>
         </fcs_function>
 		
-		<fcs_function name="Wing 3 flex">
+		<fcs_function name="forces/wing[3]">
 			<function name="forces/wing-flex[3]">
                 <description>Wing_three_flex</description>
                 <sum>
@@ -55,10 +53,9 @@
 					</product>
                 </sum>
 			</function>
-			<output>forces/wing[3]</output>
         </fcs_function>
 		
-		<fcs_function name="Wing 4 flex">
+		<fcs_function name="forces/wing[4]">
 			<function name="forces/wing-flex[4]">
                 <description>Wing_four_flex</description>
                 <sum>
@@ -72,7 +69,6 @@
 					</product>
                 </sum>
 			</function>
-			<output>forces/wing[4]</output>
         </fcs_function>
 
     </channel>

@@ -10,87 +10,77 @@
 		
 		<!-- 	gear should get stuck on retraction/extension above 
 				maximum extension speed -->
-		<switch>
+		<switch name="/controls/failures/gear[0]/stuck">
 			<default value="/controls/failures/gear[0]/stuck"/>
             <test  logic="AND" value="1">
                 velocities/vc-kts GT 270
             </test>
-			<output>/controls/failures/gear[0]/stuck</output>
 		</switch>
-		<switch>
+		<switch name="/controls/failures/gear[1]/stuck">
 			<default value="/controls/failures/gear[1]/stuck"/>
             <test  logic="AND" value="1">
                 velocities/vc-kts GT 270
             </test>
-			<output>/controls/failures/gear[1]/stuck</output>
 		</switch>
-		<switch>
+		<switch name="/controls/failures/gear[2]/stuck">
 			<default value="/controls/failures/gear[2]/stuck"/>
             <test  logic="AND" value="1">
                 velocities/vc-kts GT 270
             </test>
-			<output>/controls/failures/gear[2]/stuck</output>
 		</switch>
-		<switch>
+		<switch name="/controls/failures/gear[3]/stuck">
 			<default value="/controls/failures/gear[3]/stuck"/>
             <test  logic="AND" value="1">
                 velocities/vc-kts GT 270
             </test>
-			<output>/controls/failures/gear[3]/stuck</output>
 		</switch>
-		<switch>
+		<switch name="/controls/failures/gear[4]/stuck">
 			<default value="/controls/failures/gear[4]/stuck"/>
             <test  logic="AND" value="1">
                 velocities/vc-kts GT 270
             </test>
-			<output>/controls/failures/gear[4]/stuck</output>
 		</switch>
 		
 		<!-- gear is stuck at current position -->
-		<switch>
+		<switch name="gear/unit[0]/pos-cmd-norm">
             <test  logic="AND" value="gear/gear-cmd-norm">
                 /controls/failures/gear[0]/stuck == 0
             </test>
 			<test  logic="AND" value="gear/unit[0]/pos-cmd-norm">
                 /controls/failures/gear[0]/stuck == 1
             </test>
-			<output>gear/unit[0]/pos-cmd-norm</output>
 		</switch>
-		<switch>
+		<switch name="gear/unit[1]/pos-cmd-norm">
             <test  logic="AND" value="gear/gear-cmd-norm">
                 /controls/failures/gear[1]/stuck == 0
             </test>
 			<test  logic="AND" value="gear/unit[1]/pos-cmd-norm">
                 /controls/failures/gear[1]/stuck == 1
             </test>
-			<output>gear/unit[1]/pos-cmd-norm</output>
 		</switch>
-		<switch>
+		<switch name="gear/unit[2]/pos-cmd-norm">
             <test  logic="AND" value="gear/gear-cmd-norm">
                 /controls/failures/gear[2]/stuck == 0
             </test>
 			<test  logic="AND" value="gear/unit[2]/pos-cmd-norm">
                 /controls/failures/gear[2]/stuck == 1
             </test>
-			<output>gear/unit[2]/pos-cmd-norm</output>
 		</switch>
-		<switch>
+		<switch name="gear/unit[3]/pos-cmd-norm">
             <test  logic="AND" value="gear/gear-cmd-norm">
                 /controls/failures/gear[3]/stuck == 0
             </test>
 			<test  logic="AND" value="gear/unit[3]/pos-cmd-norm">
                 /controls/failures/gear[3]/stuck == 1
             </test>
-			<output>gear/unit[3]/pos-cmd-norm</output>
 		</switch>
-		<switch>
+		<switch name="gear/unit[4]/pos-cmd-norm">
             <test  logic="AND" value="gear/gear-cmd-norm">
                 /controls/failures/gear[4]/stuck == 0
             </test>
 			<test  logic="AND" value="gear/unit[4]/pos-cmd-norm">
                 /controls/failures/gear[4]/stuck == 1
             </test>
-			<output>gear/unit[4]/pos-cmd-norm</output>
 		</switch>
 
 	</channel>
@@ -103,14 +93,13 @@
 			<test  logic="AND" value="1">
 				/accelerations/pilot-gdamped GT 5
 			</test>
-		<output>/controls/failures/wings/broken</output>
+			<output>/controls/failures/wings/broken</output>
 		</switch>
 		<switch name="fcs/failures-wings-lift">
 			<default value="1"/>
 			<test  logic="AND" value="0">
 				/controls/failures/wings/broken == 1
 			</test>
-			<output>/controls/failures/wings/lift</output>
 		</switch>
 
 	</channel>

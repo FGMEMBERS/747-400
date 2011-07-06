@@ -22,12 +22,12 @@
    <transformations>
     <transformation>
      <type>y-shift</type>
-     <property>/orientation/pitch-deg</property>
+     <property>orientation/pitch-deg</property>
      <scale>-3.14</scale>
     </transformation>
     <transformation>
      <type>y-shift</type>
-     <property>/autopilot/internal/target-pitch-deg</property>
+     <property>autopilot/internal/target-pitch-deg</property>
      <scale>3.15</scale>
     </transformation>
    </transformations>
@@ -48,12 +48,12 @@
    <transformations>
     <transformation>
      <type>x-shift</type>
-     <property>/orientation/roll-deg</property>
+     <property>orientation/roll-deg</property>
      <scale>-1</scale>
     </transformation>
     <transformation>
      <type>x-shift</type>
-     <property>/autopilot/internal/target-roll-deg</property>
+     <property>autopilot/internal/target-roll-deg</property>
      <scale>1</scale>
     </transformation>
    </transformations>

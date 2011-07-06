@@ -7,7 +7,7 @@
     
     <channel name="flaps">
 
-        <switch name="fcs/autoflap-cmd-norm">
+        <switch name="fcs/flap-auto-retract">
           <default value="fcs/flap-cmd-norm"/>
             <test  logic="AND" value="0.667">
                 velocities/vc-kts GT 205

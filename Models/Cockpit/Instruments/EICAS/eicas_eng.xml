@@ -6,44 +6,24 @@
 
 <path>eicas_eng.ac</path>
 
+<!--
 <model>
 	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
 	<offsets>
 		<x-m> 0.008</x-m>
-		<y-m> 0.055</y-m>
+		<y-m> 0.025</y-m>
 		<z-m> 0.090</z-m>
 	</offsets>
 	<overlay>
 		<params>
-			<property type="string">/instrumentation/efis/eicas/msg/alert</property>
-			<character-size type="double">0.007</character-size>
-			<color>
-				<red   type="double">1.0</red>
-				<green type="double">0.0</green>
-				<blue  type="double">0.0</blue>
-			</color>
-			<alignment>center-center</alignment>
-		</params>
-	</overlay>
-</model>
-
-<model>
-	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
-	<offsets>
-		<x-m> 0.008</x-m>
-		<y-m> 0.055</y-m>
-		<z-m> 0.090</z-m>
-	</offsets>
-	<overlay>
-		<params>
-			<property type="string">/instrumentation/efis/eicas/msg/caution</property>
+			<property type="string">/instrumentation/eicas/msg/advisory</property>
 			<character-size type="double">0.007</character-size>
 			<color>
 				<red   type="double">0.8</red>
 				<green type="double">0.4</green>
 				<blue  type="double">0.0</blue>
 			</color>
-			<alignment>center-center</alignment>
+			<alignment>left-top</alignment>
 		</params>
 	</overlay>
 </model>
@@ -52,19 +32,19 @@
 	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
 	<offsets>
 		<x-m> 0.008</x-m>
-		<y-m> 0.055</y-m>
+		<y-m> 0.025</y-m>
 		<z-m> 0.090</z-m>
 	</offsets>
 	<overlay>
 		<params>
-			<property type="string">/instrumentation/efis/eicas/msg/info</property>
+			<property type="string">/instrumentation/eicas/msg/memo</property>
 			<character-size type="double">0.007</character-size>
 			<color>
 				<red   type="double">0.8</red>
 				<green type="double">0.8</green>
 				<blue  type="double">0.8</blue>
 			</color>
-			<alignment>center-center</alignment>
+			<alignment>left-top</alignment>
 		</params>
 	</overlay>
 </model>
@@ -73,81 +53,41 @@
 	<path>Aircraft/747-400/Models/Cockpit/display-text-value.xml</path>
 	<offsets>
 		<x-m> 0.008</x-m>
-		<y-m> 0.055</y-m>
+		<y-m> 0.025</y-m>
 		<z-m> 0.090</z-m>
 	</offsets>
 	<overlay>
 		<params>
-			<property>/instrumentation/eicas/messages/line1</property>
+			<property>/instrumentation/eicas/msg/warning</property>
 			<character-size type="double">0.007</character-size>
 			<color>
 				<red   type="double">1.0</red>
 				<green type="double">0.0</green>
 				<blue  type="double">0.0</blue>
 			</color>
+			<alignment>left-top</alignment>
 		</params>
 	</overlay>
-</model>
+</model>-->
 
-<model>
-	<path>Aircraft/747-400/Models/Cockpit/display-text-value.xml</path>
-	<offsets>
-		<x-m> 0.008</x-m>
-		<y-m> 0.055</y-m>
-		<z-m> 0.084</z-m>
-	</offsets>
-	<overlay>
-		<params>
-			<property>/instrumentation/eicas/messages/line2</property>
-			<character-size type="double">0.007</character-size>
-			<color>
-				<red   type="double">1.0</red>
-				<green type="double">0.0</green>
-				<blue  type="double">0.0</blue>
-			</color>
-		</params>
-	</overlay>
-</model>
-
-<model>
-	<path>Aircraft/747-400/Models/Cockpit/display-text-value.xml</path>
-	<offsets>
-		<x-m> 0.008</x-m>
-		<y-m> 0.055</y-m>
-		<z-m> 0.078</z-m>
-	</offsets>
-	<overlay>
-		<params>
-			<property>/instrumentation/eicas/messages/line3</property>
-			<character-size type="double">0.007</character-size>
-			<color>
-				<red   type="double">1.0</red>
-				<green type="double">0.0</green>
-				<blue  type="double">0.0</blue>
-			</color>
-		</params>
-	</overlay>
-</model>
-
-<model>
-	<path>Aircraft/747-400/Models/Cockpit/display-text-value.xml</path>
-	<offsets>
-		<x-m> 0.008</x-m>
-		<y-m> 0.055</y-m>
-		<z-m> 0.072</z-m>
-	</offsets>
-	<overlay>
-		<params>
-			<property>/instrumentation/eicas/messages/line4</property>
-			<character-size type="double">0.007</character-size>
-			<color>
-				<red   type="double">1.0</red>
-				<green type="double">0.0</green>
-				<blue  type="double">0.0</blue>
-			</color>
-		</params>
-	</overlay>
-</model>
+<panel>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/eicas-text-panel.xml</path>
+	<bottom-left>
+		<x-m>0.009</x-m>
+		<y-m>0.025</y-m>
+		<z-m>0.015</z-m>
+	</bottom-left>
+	<bottom-right>
+		<x-m>0.009</x-m>
+		<y-m>0.090</y-m>
+		<z-m>0.015</z-m>
+	</bottom-right>
+	<top-left>
+		<x-m>0.009</x-m>
+		<y-m>0.025</y-m>
+		<z-m>0.090</z-m>
+	</top-left>
+</panel>
 
 <!-- GEAR -->
 
@@ -287,6 +227,33 @@
 <!-- ENGINE 1 -->
 
 <model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.064</y-m>
+		<z-m> 0.074</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/autopilot/internal/throttle-servo</property>
+			<factor>1.92</factor>
+			<format type="string">%01.2f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">0.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.0</blue>
+			</color>
+		</params>
+	</overlay>
+	<condition>
+		<not>
+			<property>/engines/engine[0]/reverser-pos-norm</property>
+		</not>
+	</condition>
+</model>
+
+<model>
 	<path>Aircraft/747-400/Models/Cockpit/display-text.xml</path>
 	<offsets>
 		<x-m> 0.007</x-m>
@@ -366,6 +333,33 @@
 </model>
 
 <!-- ENGINE 2 -->
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.039</y-m>
+		<z-m> 0.074</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/autopilot/internal/throttle-servo</property>
+			<factor>1.92</factor>
+			<format type="string">%01.2f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">0.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.0</blue>
+			</color>
+		</params>
+	</overlay>
+	<condition>
+		<not>
+			<property>/engines/engine[1]/reverser-pos-norm</property>
+		</not>
+	</condition>
+</model>
 
 <model>
 	<path>Aircraft/747-400/Models/Cockpit/display-text.xml</path>
@@ -449,6 +443,33 @@
 <!-- ENGINE 3 -->
 
 <model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.014</y-m>
+		<z-m> 0.074</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/autopilot/internal/throttle-servo</property>
+			<factor>1.92</factor>
+			<format type="string">%01.2f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">0.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.0</blue>
+			</color>
+		</params>
+	</overlay>
+	<condition>
+		<not>
+			<property>/engines/engine[2]/reverser-pos-norm</property>
+		</not>
+	</condition>
+</model>
+
+<model>
 	<path>Aircraft/747-400/Models/Cockpit/display-text.xml</path>
 	<offsets>
 		<x-m> 0.007</x-m>
@@ -528,6 +549,33 @@
 </model>
 
 <!-- ENGINE 4 --> 
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0.011</y-m>
+		<z-m> 0.074</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/autopilot/internal/throttle-servo</property>
+			<factor>1.92</factor>
+			<format type="string">%01.2f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">0.0</red>
+				<green type="double">1.0</green>
+				<blue  type="double">0.0</blue>
+			</color>
+		</params>
+	</overlay>
+	<condition>
+		<not>
+			<property>/engines/engine[3]/reverser-pos-norm</property>
+		</not>
+	</condition>
+</model>
 
 <model>
 	<path>Aircraft/747-400/Models/Cockpit/display-text.xml</path>

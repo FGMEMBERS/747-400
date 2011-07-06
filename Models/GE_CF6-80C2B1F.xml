@@ -1,20 +1,7 @@
 <?xml version="1.0"?>
-
 <PropertyList>
-	<path>GE_CF6-80C2B1F.ac</path>
-	
-	<nasal>
-	<load>
-		var livery_update = aircraft.livery_update.new("Aircraft/747-400/Models/Liveries", 10,
-		func { print("747-400 fuselage livery update") });
-		
-		var rplayer = cmdarg();
-		rplayer.getNode("controls/failures/wings/broken", 1).alias(rplayer.getNode("sim/multiplay/generic/int[0]"));
-	</load>
-	<unload>
-		livery_update.stop();
-	</unload>
-</nasal> 
+
+<path>GE_CF6-80C2B1F.ac</path>
 
 <animation> 
 	<type>material</type> 

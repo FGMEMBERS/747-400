@@ -5,6 +5,8 @@ Syd Adams
 
 <PropertyList>
 
+ <path>EFIS.ac</path>
+
     <panel>
         <path>Aircraft/747-400/Models/Cockpit/Instruments/PFD/pfd-panel.xml</path>
         <bottom-left>

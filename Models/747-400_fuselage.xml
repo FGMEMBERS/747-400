@@ -2,16 +2,6 @@
 
 <path>747-400_fuselage.ac</path>
 
-    <nasal>
-        <load>
-            var livery_update = aircraft.livery_update.new("Aircraft/747-400/Models");
-        </load>
-
-        <unload>
-            livery_update.stop();
-        </unload>
-    </nasal> 
-
 <animation> 
 	<type>material</type> 
 	<object-name>cargodoor1</object-name> 

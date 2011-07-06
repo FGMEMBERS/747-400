@@ -32,15 +32,15 @@ doorsystem = Doors.new();
 # ==============
 
 var wiperl = func {
-	if (getprop("controls/electric/wiperl/switch") == 1 or getprop("controls/electric/wiperl/switch") == 2){
-		if (getprop("controls/electric/wiperl/position-norm") == 1 or getprop("controls/electric/wiperl/position-norm") == 0){
+	if (getprop("controls/electric/wiperl/switch") == 1 or getprop("controls/electric/wiperl/switch") == 2){
+		if (getprop("controls/electric/wiperl/position-norm") == 1 or getprop("controls/electric/wiperl/position-norm") == 0){
 			Boeing747.doorsystem.door1export();
 		}
  	}
  	if (getprop("controls/electric/wiperl/switch") == 0){
- 		if (getprop("controls/electric/wiperl/position-norm") == 1){
+ 		if (getprop("controls/electric/wiperl/position-norm") == 1){
  			Boeing747.doorsystem.door1export();
- 		}
+ 		}
  	}
 	if (getprop("controls/electric/wiperl/switch") == 1){
 		doorsystem.door1.swingtime = 0.75
@@ -48,22 +48,20 @@ var wiperl = func {
 	if (getprop("controls/electric/wiperl/switch") == 2){
 		doorsystem.door1.swingtime = 0.49
 	}
-
-	settimer(wiperl, 0);
-}
-
+	settimer(wiperl, 0);
+}
 _setlistener("/sim/signals/fdm-initialized", wiperl);
 
 var wiperr = func {
-	if (getprop("controls/electric/wiperr/switch") == 1 or getprop("controls/electric/wiperr/switch") == 2){
-		if (getprop("controls/electric/wiperr/position-norm") == 1 or getprop("controls/electric/wiperr/position-norm") == 0){
+	if (getprop("controls/electric/wiperr/switch") == 1 or getprop("controls/electric/wiperr/switch") == 2){
+		if (getprop("controls/electric/wiperr/position-norm") == 1 or getprop("controls/electric/wiperr/position-norm") == 0){
 			Boeing747.doorsystem.door2export();
 		}
 	}
 	if (getprop("controls/electric/wiperr/switch") == 0){
-		if (getprop("controls/electric/wiperr/position-norm") == 1){
+		if (getprop("controls/electric/wiperr/position-norm") == 1){
 			Boeing747.doorsystem.door2export();
-		}
+		}
 	}
 	if (getprop("controls/electric/wiperr/switch") == 1){
 		doorsystem.door2.swingtime = 0.75
@@ -71,8 +69,6 @@ var wiperr = func {
 	if (getprop("controls/electric/wiperr/switch") == 2){
 		doorsystem.door2.swingtime = 0.49
 	}
-
-	settimer(wiperr, 0);
-}
-
+	settimer(wiperr, 0);
+}
 _setlistener("/sim/signals/fdm-initialized", wiperr);

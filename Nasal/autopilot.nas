@@ -91,6 +91,9 @@ var AltitudeHoldPidControllerAdjust = {
 		m.xMoment = 320.0;
 		m.xMomentThreshold = 320.0;
 
+		m.counterForElevatorMovement = 0;
+		m.elevatorTrimPosAverages = [0.0, 0.0, 0.0, 0.0, 0.0];
+
 		return m;
 	},
 
@@ -133,6 +136,13 @@ var AltitudeHoldPidControllerAdjust = {
 		me.tdInterpolationCounter = 0;
 		me.tdInterpolationIncrement = 0.00001;
 		me.tdInterpolationIsRunning = 0;
+
+		me.counterForElevatorMovement = 0;
+		me.elevatorTrimPosAverages[0] = 0.0;
+		me.elevatorTrimPosAverages[1] = 0.0;
+		me.elevatorTrimPosAverages[2] = 0.0;
+		me.elevatorTrimPosAverages[3] = 0.0;
+		me.elevatorTrimPosAverages[4] = 0.0;
 	},
 
 	# may be called from outside, if smooth iterpolation of Kp value is required
@@ -173,63 +183,51 @@ var AltitudeHoldPidControllerAdjust = {
 		#print ("AltitudeHoldPidControllerAdjust: clambKp -> me.correctedKp=", me.correctedKp);
 	},
 
-	# deal with altitude
-	kpAltitudeFunc : func (altitudeFt, kp, kpFactor) {
-		if (altitudeFt > 10000.0) {
-			if (altitudeFt < 35000.0) {
-				kp = kp  + ((altitudeFt - 10000.0) * kpFactor);
-			}
-			else {
-				# substruction clambed at 35000 ft and higher
-				kp = kp  + ((35000.0 - 10000.0) * kpFactor);
-			}
-		}
-		return kp;
-	},
-
 	# overwrite this method from parent 'PidControllerKpAdjust'
 	# params: lbs : the total weight in lbs
 	calculateKp : func(lbs, airspeedKt, altitudeFt) {
 
 		me.correctedKp = me.kp;
 
-		if (airspeedKt < 190.0) {
-			me.correctedKp = -0.015;
+		#print("AltitudeHoldPidControllerAdjust: lbs=", lbs);
+		# deal with weight
+		if (lbs > 250000.0) {
+			if (airspeedKt < 190.0) {
+				me.correctedKp = -0.015;
+			}
+			else {
+				# -> gets about '-0.011' at 400.000 lbs
+				#me.correctedKp -= (lbs - 160000.0) * 0.000000006;
+				me.correctedKp -= (lbs - 250000.0) * 0.00000001;
+
+				if (airspeedKt > 350.0) {
+					# 340-390: -0.005
+					me.correctedKp += (airspeedKt - 340.0) * 0.00012;
+
+					if (airspeedKt > 390.0) {
+						# >390: -0.003
+						me.correctedKp += (airspeedKt - 390.0) * 0.0001;
+					}
+				}
+
+				# deal with altitude - >30000 ft: gets a substraction of '-0.003' at 400000 feet
+				if (altitudeFt > 20000.0) {
+					me.correctedKp += (altitudeFt - 20000.0) * 0.0000004;
+				}
+			}
 		}
 		else {
-			# deal with weight
-			if (lbs > 160000.0) {
-				# -> gets '-0.00149' at 400.0000 lbs
-				me.correctedKp += (lbs - 160000.0) * 0.000000037;
-
-				# deal with altitude - gets a substraction of '-0.0004' at 300000 feet
-				me.correctedKp = me.kpAltitudeFunc(altitudeFt, me.correctedKp, 0.00000002);
+			if (airspeedKt > 450.0) {
+				me.correctedKp = -0.0035;
+			}
+			else if (airspeedKt > 400.0) {
+				me.correctedKp = -0.0065;
+			}
+			else if (airspeedKt > 190.0) {
+				me.correctedKp = -0.0095;
 			}
 			else {
-				# deal with altitude - gets a substraction of '-0.0006' at 300000 feet
-				me.correctedKp = me.kpAltitudeFunc(altitudeFt, me.correctedKp, 0.00000003);
-			}
-
-			# experimental: Kp must depend on xMoment
-
-			me.calculateXMoment();
-
-			if (lbs < 200000.0 and airspeedKt < 270.0) {
-				me.correctedKp = me.correctedKp + ((me.xMomentThreshold - me.xMoment) * 0.000016);
-			}
-			else {
-				me.correctedKp = me.correctedKp - ((me.xMomentThreshold - me.xMoment) * 0.00003);
-				if (lbs < 250000.0) {
-					me.correctedKp = ((me.correctedKp < -0.008) ? -0.008 : me.correctedKp); # clamb
-				}
-				else {
-					me.correctedKp = ((me.correctedKp < -0.003) ? -0.003 : me.correctedKp); # clamb
-				}
-			}
-
-			if (airspeedKt > 360.0) {
-				me.correctedKp += (airspeedKt - 360.0) * 0.00004;
-				me.correctedKp = ((me.correctedKp > -0.001) ? -0.001 : me.correctedKp); # clamb
+				me.correctedKp = -0.011;
 			}
 		}
 	},
@@ -254,6 +252,41 @@ var AltitudeHoldPidControllerAdjust = {
 	},
 
 
+	# adjust elevator-position to avoid elevator-trim getting to it's end-position: alt-/vspeed-modes are driven by elevator-trim
+	adjustElevatorPosition : func() {
+		# experimental - move elevator if elevator-trim reaches end-position
+		if (me.counterForElevatorMovement >= size(me.elevatorTrimPosAverages)) {	# each 5-th iteration
+			var elevatorTrimPosAverage = 0.0;
+			for (var i=0; i < size(me.elevatorTrimPosAverages); i=i+1) {
+				elevatorTrimPosAverage += me.elevatorTrimPosAverages[i];
+			}
+			elevatorTrimPosAverage = elevatorTrimPosAverage / size(me.elevatorTrimPosAverages);
+			var elevatorPos = getprop("/controls/flight/elevator");
+			#print("AltitudeHoldPidControllerAdjust: adjustElevatorPosition=", elevatorTrimPosAverage);
+			if (elevatorTrimPosAverage < -0.5) {
+				if (elevatorPos >= -0.99) {
+					interpolate("/controls/flight/elevator", elevatorPos - 0.01, 0.9);
+					#print("AltitudeHoldPidControllerAdjust: adjustElevatorPosition=", getprop("/controls/flight/elevator"));
+				}
+			}
+			else if (elevatorTrimPosAverage > 0.5) {
+				if (elevatorPos <= 0.99) {
+					interpolate("/controls/flight/elevator", elevatorPos + 0.01, 0.9);
+					#print("AltitudeHoldPidControllerAdjust: adjustElevatorPosition=", getprop("/controls/flight/elevator"));
+				}
+			}
+
+			me.counterForElevatorMovement = 0;
+		}
+		else {
+			if (me.counterForElevatorMovement < size(me.elevatorTrimPosAverages)) {
+				me.elevatorTrimPosAverages[me.counterForElevatorMovement] = getprop("/controls/flight/elevator-trim");
+			}
+			me.counterForElevatorMovement += 1;
+		}
+	},
+
+
 	# may be called from outside, if smooth iterpolation of Td value is required
 	interpolateTd : func() {
 		#print ("AltitudeHoldPidControllerAdjust: interpolateTd ...");
@@ -270,7 +303,6 @@ var AltitudeHoldPidControllerAdjust = {
 		# experimental me.td: initial: 1.5
 
 		if (airspeedKt < 190.0) {
-			#setprop("/autopilot/internal/target-td-for-altitude-vspeed-hold", 0.16);
 			setprop("/autopilot/internal/target-td-for-altitude-vspeed-hold", 0.002);
  		}
 		else {
@@ -287,7 +319,6 @@ var AltitudeHoldPidControllerAdjust = {
 
 				me.tdInterpolate += me.tdInterpolationIncrement;
 				setprop("/autopilot/internal/target-td-for-altitude-vspeed-hold", me.tdInterpolate);
-				#print ("AltitudeHoldPidControllerAdjust: adjustTd -> me.tdInterpolate=", me.tdInterpolate);
 			}
 			else {
 				me.tdInterpolationCounter = 0;
@@ -303,11 +334,19 @@ var AltitudeHoldPidControllerAdjust = {
 	adjustTi : func(lbs, airspeedKt, altitudeFt) {
 
 		if (airspeedKt < 190.0) {
-			me.ti = 50.0;
+			if (lbs < 250000.0) {
+				# iterate to 120
+				me.ti = (me.ti < 120.0 ? (me.ti + 0.1) : me.ti);
+			}
+			else {
+				# iterate to 50
+				me.ti = (me.ti < 49.9 ? (me.ti + 0.1) : me.ti);
+				me.ti = (me.ti > 50.1 ? (me.ti - 0.1) : me.ti);
+			}
 		}
 		else {
 			me.ti = 10.0;
-			if (lbs > 160000.0) {
+			if (lbs > 250000.0) {
 				if (airspeedKt < 250.0) {
 					me.ti = 30.0;
 				}
@@ -393,10 +432,10 @@ var apAltitudeClambClimbRate = func(interpolateSeconds) {
 	# set min-/max-climbrate
 	var initMaxClimbRate = 30.0;
 	var totalFuelLbs = getTotalFuelLbs();
-	var initMinClimbRate = -18.0;
-	if (totalFuelLbs > 160000.0) {
-		initMaxClimbRate = 18.0;
-		initMinClimbRate = -15.0;
+	var initMinClimbRate = -15.0;
+	if (totalFuelLbs > 200000.0) {
+		initMaxClimbRate = 20.0;
+		initMinClimbRate = -12.0;
 	}
 	if (getprop("/velocities/airspeed-kt") < 190.0) {
 		initMaxClimbRate -= (190.0 - getprop("/velocities/airspeed-kt")) * 0.6;
@@ -451,7 +490,7 @@ var listenerApAltitudeKpFunc = func {
 		getprop("/autopilot/locks/altitude") == "vertical-speed-hold" or
 		getprop("/autopilot/locks/altitude") == "gs1-hold") {
 
-		#print("listenerApAltitudeKpFunc -> altitude-hold");
+		#print("listenerApAltitudeKpFunc -> activated");
 
 		# get live parameter
 		lbs = getTotalFuelLbs();
@@ -466,6 +505,7 @@ var listenerApAltitudeKpFunc = func {
 		altitudePidControllerAdjust.adjustKp(lbs, airspeedKt, altitudeFt);
 		altitudePidControllerAdjust.adjustTi(lbs, airspeedKt, altitudeFt);
 		altitudePidControllerAdjust.adjustTd(lbs, airspeedKt, altitudeFt);
+		altitudePidControllerAdjust.adjustElevatorPosition();
 
 		settimer(listenerApAltitudeKpFunc, 0.2);
 	}
@@ -482,10 +522,11 @@ setlistener("/autopilot/locks/altitude", listenerApAltitudeKpFunc);
 var listenerApHeadingClambFunc = func {
 	if (	getprop("/autopilot/locks/heading") == "dg-heading-hold" or
 		getprop("/autopilot/locks/heading") == "true-heading-hold" or
+		getprop("/autopilot/locks/heading") == "wing-leveler" or
 		getprop("/autopilot/locks/heading") == "nav1-hold") {
 
-		setprop("/autopilot/internal/target-kp-for-heading-hold-clambed", 0.0);
 		#print ("-> listenerApHeadingValueChangeClambFunc -> installed");
+		setprop("/autopilot/internal/target-kp-for-heading-hold-clambed", 0.0);
 	}
 }
 
@@ -499,6 +540,7 @@ setlistener("/autopilot/locks/heading", listenerApHeadingClambFunc);
 var listenerApHeadingFunc = func {
 	if (	getprop("/autopilot/locks/heading") == "dg-heading-hold" or
 		getprop("/autopilot/locks/heading") == "true-heading-hold" or
+		getprop("/autopilot/locks/heading") == "wing-leveler" or
 		getprop("/autopilot/locks/heading") == "nav1-hold") {
 
 		var tiAirspeedForHeadingHold = 10.0;

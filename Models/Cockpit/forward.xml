@@ -47,7 +47,7 @@
 
 <model>
 	<name>PFD1</name>
-	<path>Aircraft/747-400/Models/Cockpit/Instruments/PFD/PFD.xml</path>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/PFD/PFD3d.xml</path>
 	<offsets>
 		<x-m> 0.6854</x-m>
 		<y-m>-0.537</y-m>
@@ -61,7 +61,7 @@
 
 <model>
 	<name>PFD2</name>
-	<path>Aircraft/747-400/Models/Cockpit/Instruments/PFD/PFD.xml</path>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/PFD/PFD3d.xml</path>
 	<offsets>
 		<x-m>0.6854</x-m>
 		<y-m>0.537</y-m>
@@ -102,88 +102,89 @@
 </model>
 
 <model>
- <path>Aircraft/Instruments-3d/chronometer/chronometer.xml</path>
- <offsets>
-  <x-m> 0.672</x-m>
-  <y-m>-0.692</y-m>
-  <z-m> 0.696</z-m>
-  <pitch-deg>-22</pitch-deg>
- </offsets>
+	<path>Aircraft/Instruments-3d/chronometer/chronometer.xml</path>
+	<offsets>
+		<x-m> 0.672</x-m>
+		<y-m>-0.692</y-m>
+		<z-m> 0.696</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
 </model>
 
 <model>
- <path>Aircraft/Instruments-3d/chronometer/chronometer.xml</path>
- <offsets>
-  <x-m>0.672</x-m>
-  <y-m>0.692</y-m>
-  <z-m>0.696</z-m>
-  <pitch-deg>-22</pitch-deg>
- </offsets>
+	<path>Aircraft/Instruments-3d/chronometer/chronometer.xml</path>
+	<offsets>
+		<x-m>0.672</x-m>
+		<y-m>0.692</y-m>
+		<z-m>0.696</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
 </model>
  
 <model>
- <name>STBY-AI</name>
- <path>Aircraft/747-400/Models/Cockpit/Instruments/stby-ai.xml</path>
- <offsets>
-  <x-m> 0.665</x-m>
-  <y-m>-0.160</y-m>
-  <z-m> 0.73</z-m>
-  <pitch-deg>-21</pitch-deg>
- </offsets>
+	<name>STBY-AI</name>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/stby-ai.xml</path>
+	<offsets>
+		<x-m> 0.665</x-m>
+		<y-m>-0.160</y-m>
+		<z-m> 0.73</z-m>
+		<pitch-deg>-21</pitch-deg>
+	</offsets>
 </model>
  
 <model>
- <name>STBY-ASI</name>
- <path>Aircraft/747-400/Models/Cockpit/Instruments/stby-asi.xml</path>
- <offsets>
-  <x-m>0.692</x-m>
-  <y-m>-0.160</y-m>
-  <z-m>0.644</z-m>
-  <pitch-deg>-22</pitch-deg>
- </offsets>
+	<name>STBY-ASI</name>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/stby-asi.xml</path>
+	<offsets>
+		<x-m>0.692</x-m>
+		<y-m>-0.160</y-m>
+		<z-m>0.644</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
 </model>
  
 <model>
- <name>STBY-ALT</name>
- <path>Aircraft/747-400/Models/Cockpit/Instruments/stby-alt.xml</path>
- <offsets>
-  <x-m>0.727</x-m>
-  <y-m>-0.160</y-m>
-  <z-m>0.559</z-m>
-  <pitch-deg>-22</pitch-deg>
- </offsets>
+	<name>STBY-ALT</name>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/stby-alt.xml</path>
+	<offsets>
+		<x-m>0.727</x-m>
+		<y-m>-0.160</y-m>
+		<z-m>0.559</z-m>
+		<pitch-deg>-22</pitch-deg>
+	</offsets>
 </model>
 
 <!-- GEAR HANDLE -->
 
 <animation>
- <type>rotate</type>
- <object-name>gear_handle</object-name>
- <property>controls/gear/gear-down</property>
- <factor>80</factor>
- <center>
-  <x-m>0.632</x-m>
-  <y-m>0.130</y-m>
-  <z-m>0.619</z-m>
- </center>
- <axis>
-  <x>0</x>
-  <y>1</y>
-  <z>0</z>
- </axis>
+	<type>pick</type>
+	<object-name>gear_handle</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>controls.gearDown();</script>
+		</binding>
+	</action>
 </animation>
 
 <animation>
- <type>pick</type>
- <object-name>gear_handle</object-name>
- <action>
-  <button>0</button>
-  <repeatable>false</repeatable>
-  <binding>
-   <command>nasal</command>
-   <script>controls.gearDown();</script>
-  </binding>
- </action>
+	<type>rotate</type>
+	<object-name>gear_handle</object-name>
+	<property>controls/gear/gear-down</property>
+	<factor>80</factor>
+	<center>
+		<x-m>0.632</x-m>
+		<y-m>0.130</y-m>
+		<z-m>0.619</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
 </animation>
+
 
 </PropertyList>
