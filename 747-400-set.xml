@@ -260,11 +260,6 @@ left mouse button and counter clockwise using the middle mouse button.
 					<label>Repair</label>
 					<binding>
 						<command>property-assign</command>
-						<property>/controls/failures/gear/broken</property>
-						<value>0</value>
-					</binding>
-					<binding>
-						<command>property-assign</command>
 						<property>/controls/failures/wings/broken</property>
 						<value>0</value>
 					</binding>
@@ -286,6 +281,31 @@ left mouse button and counter clockwise using the middle mouse button.
 					<binding>
 						<command>property-assign</command>
 						<property>/controls/engines/engine[3]/on-fire</property>
+						<value>0</value>
+					</binding>
+					<binding>
+						<command>property-assign</command>
+						<property>/controls/failures/gear[0]/stuck</property>
+						<value>0</value>
+					</binding>
+					<binding>
+						<command>property-assign</command>
+						<property>/controls/failures/gear[1]/stuck</property>
+						<value>0</value>
+					</binding>
+					<binding>
+						<command>property-assign</command>
+						<property>/controls/failures/gear[2]/stuck</property>
+						<value>0</value>
+					</binding>
+					<binding>
+						<command>property-assign</command>
+						<property>/controls/failures/gear[3]/stuck</property>
+						<value>0</value>
+					</binding>
+					<binding>
+						<command>property-assign</command>
+						<property>/controls/failures/gear[4]/stuck</property>
 						<value>0</value>
 					</binding>
 				</item>
@@ -393,7 +413,6 @@ left mouse button and counter clockwise using the middle mouse button.
 
 	<failures>
 		<gear>
-			<broken type="bool">0</broken>
 			<stuck type="bool">0</stuck>
 		</gear>
 		<gear n="1">

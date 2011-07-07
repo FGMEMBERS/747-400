@@ -926,6 +926,7 @@
                     <time>25.0000</time>
                 </setting>
             </traverse>
+			<output>gear/unit[0]/pos-norm</output>
         </kinematic>
 		<kinematic name="gear/unit[1]/pos">
             <input>gear/unit[1]/pos-cmd-norm</input>
