@@ -11,7 +11,7 @@
 		<cockpit type="int">3</cockpit>
 		<model type="int">3</model>
 	</rating>
-	<version>20110706</version>
+	<version>20110716</version>
 	
 	<flight-model>jsb</flight-model>
 	<aero>747-400</aero>
@@ -52,6 +52,7 @@
 			<position-z-m type="float">-0.24</position-z-m>
 			<jetway-hood-deg type="float">0</jetway-hood-deg>
 		</door>
+		<hide-yoke type="bool">0</hide-yoke>
 		<pushback>
 			<kp type="double">500</kp>
 			<ki type="double">25</ki>
@@ -328,9 +329,17 @@ left mouse button and counter clockwise using the middle mouse button.
 						</script>
 					</binding>
 				</item>
+				
+				<item>
+					<label>Show/hide yokes</label>
+					<binding>
+						<command>property-toggle</command>
+						<property>sim/model/hide-yoke</property>
+					</binding>
+				</item>
 				 
 				<item>
-					<label>Yoke chart</label>
+					<label>Yoke charts</label>
 					<binding>
 						<command>nasal</command>
 						<script>
@@ -684,10 +693,10 @@ left mouse button and counter clockwise using the middle mouse button.
 
 <limits>
 	<mass-and-balance>
-		<!--<maximum-ramp-mass-lbs></maximum-ramp-mass-lbs> -->
+		<maximum-ramp-mass-lbs>877000</maximum-ramp-mass-lbs>
 		<maximum-takeoff-mass-lbs>875000</maximum-takeoff-mass-lbs>
-		<maximum-landing-mass-lbs>652000</maximum-landing-mass-lbs>
-		<maximum-zero-fuel-mass-lbs>394100</maximum-zero-fuel-mass-lbs>
+		<maximum-landing-mass-lbs>630000</maximum-landing-mass-lbs>
+		<maximum-zero-fuel-mass-lbs>542500</maximum-zero-fuel-mass-lbs>
 	</mass-and-balance>
 	<max-flap-extension-speed>
 		<flaps>0.033</flaps>
@@ -772,7 +781,7 @@ left mouse button and counter clockwise using the middle mouse button.
 
 <payload>
 	<weight>
-		<name type="string">Passengers and crew</name>
+		<name type="string">Passengers with baggage</name>
 		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
 		<min-lb type="double">3000.0</min-lb>
 		<max-lb type="double">90000.0</max-lb>

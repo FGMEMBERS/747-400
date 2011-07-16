@@ -891,10 +891,13 @@ var listenerApNav1GroundModeFunc = func {
 					}
 
 					if (gearTouchedGround == 0) { # to not confuse the reverser
-						setprop("/controls/engines/engine[0]/throttle", 0.0);
-						setprop("/controls/engines/engine[1]/throttle", 0.0);
-						setprop("/controls/engines/engine[2]/throttle", 0.0);
-						setprop("/controls/engines/engine[3]/throttle", 0.0);
+						if (	getprop("/autopilot/locks/speed") == "speed-with-throttle-ias" or
+							getprop("/autopilot/locks/speed") == "speed-with-throttle-mach") {
+							setprop("/controls/engines/engine[0]/throttle", 0.0);
+							setprop("/controls/engines/engine[1]/throttle", 0.0);
+							setprop("/controls/engines/engine[2]/throttle", 0.0);
+							setprop("/controls/engines/engine[3]/throttle", 0.0);
+						}
 					}
 					nav1VspeedGroundMode = 2; # avoid vspeed-controller running
 
@@ -919,17 +922,20 @@ var listenerApNav1GroundModeFunc = func {
 					}
 
 					if (nav1VspeedGroundMode < 2 and gearTouchedGround == 0) { # before touchdown, to not confuse the reverser
-						if (totalFuelLbs < 60000) {
-							interpolate("/controls/engines/engine[0]/throttle", 0.0, 0.2);
-							interpolate("/controls/engines/engine[1]/throttle", 0.0, 0.2);
-							interpolate("/controls/engines/engine[2]/throttle", 0.0, 0.2);
-							interpolate("/controls/engines/engine[3]/throttle", 0.0, 0.2);
-						}
-						else {
-							interpolate("/controls/engines/engine[0]/throttle", 0.0, 1.0);
-							interpolate("/controls/engines/engine[1]/throttle", 0.0, 1.0);
-							interpolate("/controls/engines/engine[2]/throttle", 0.0, 1.0);
-							interpolate("/controls/engines/engine[3]/throttle", 0.0, 1.0);
+						if (	getprop("/autopilot/locks/speed") == "speed-with-throttle-ias" or
+							getprop("/autopilot/locks/speed") == "speed-with-throttle-mach") {
+							if (totalFuelLbs < 60000) {
+								interpolate("/controls/engines/engine[0]/throttle", 0.0, 0.2);
+								interpolate("/controls/engines/engine[1]/throttle", 0.0, 0.2);
+								interpolate("/controls/engines/engine[2]/throttle", 0.0, 0.2);
+								interpolate("/controls/engines/engine[3]/throttle", 0.0, 0.2);
+							}
+							else {
+								interpolate("/controls/engines/engine[0]/throttle", 0.0, 1.0);
+								interpolate("/controls/engines/engine[1]/throttle", 0.0, 1.0);
+								interpolate("/controls/engines/engine[2]/throttle", 0.0, 1.0);
+								interpolate("/controls/engines/engine[3]/throttle", 0.0, 1.0);
+							}
 						}
 					}
 					nav1VspeedGroundMode = 2; # avoid vspeed-controller running
@@ -955,7 +961,6 @@ var listenerApNav1GroundModeFunc = func {
 					}
 
 					# control vertical speed with throttle, fixed vspeed (activate appropriate controller)
-					setprop("/autopilot/locks/speed", "");
 					if (totalFuelLbs < 100000) {
 						setprop("/autopilot/internal/nav1-vspeed-ground-mode-value", -450.0);
 					}
@@ -1000,7 +1005,6 @@ var listenerApNav1GroundModeFunc = func {
 					}
 
 					# control vertical speed with throttle (vspeed dependent on groundspeed)
-					setprop("/autopilot/locks/speed", "");
 
 					if (totalFuelLbs < 100000) {
 						# vspeed depends on ground-speed to hold a constand angle of decent
@@ -1039,7 +1043,6 @@ var listenerApNav1GroundModeFunc = func {
 					}
 
 					# control vertical speed with throttle, follow (clambed) glideslope-signal
-					setprop("/autopilot/locks/speed", "");
 					gsRateOfClimb = getprop("/instrumentation/nav[0]/gs-rate-of-climb");
 
 					if (totalFuelLbs < 100000) {
@@ -1067,7 +1070,7 @@ var listenerApNav1GroundModeFunc = func {
 
 
 			# calculate stearing-correction due to heading-error
-			if (	gearTouchedGround == 1) {
+			if (gearTouchedGround == 1) {
 
 				if (getprop("/autopilot/internal/nav1-stear-ground-mode-uncorrected") == nil) {
 					setprop("/autopilot/internal/nav1-stear-ground-mode-uncorrected", 0.0);
@@ -1094,62 +1097,85 @@ var listenerApNav1GroundModeFunc = func {
 						if (getprop("/velocities/airspeed-kt") > 100.0) {
 							if (getprop("/engines/engine/reversed") == 0) {
 								# start thrust-reversers
-								setprop("/controls/engines/engine[0]/throttle", 0.0);
-								setprop("/controls/engines/engine[1]/throttle", 0.0);
-								setprop("/controls/engines/engine[2]/throttle", 0.0);
-								setprop("/controls/engines/engine[3]/throttle", 0.0);
+								if (	getprop("/autopilot/locks/speed") == "speed-with-throttle-ias" or
+									getprop("/autopilot/locks/speed") == "speed-with-throttle-mach") {
+									setprop("/controls/engines/engine[0]/throttle", 0.0);
+									setprop("/controls/engines/engine[1]/throttle", 0.0);
+									setprop("/controls/engines/engine[2]/throttle", 0.0);
+									setprop("/controls/engines/engine[3]/throttle", 0.0);
 							
-								interpolate("/controls/flight/elevator", 0.0, 3.0);
-								interpolate("/controls/flight/elevator-trim", 0.0, 3.0);
+									interpolate("/controls/flight/elevator", 0.0, 3.0);
+									interpolate("/controls/flight/elevator-trim", 0.0, 3.0);
 
-								settimer(startReverserProgram, 1.5);
+									settimer(startReverserProgram, 1.5);
+								}
 							}
 						}
 					}
 
 					# breaks
 					if (getprop("/velocities/airspeed-kt") > 120.0) {
-						if (getprop("/controls/gear/brake-right") < 0.3) {
-							setprop("/controls/gear/brake-right", 0.3);
-						}
-						if (getprop("/controls/gear/brake-left") < 0.3) {
-							setprop("/controls/gear/brake-left", 0.3);
+						if (	getprop("/autopilot/locks/speed") == "speed-with-throttle-ias" or
+							getprop("/autopilot/locks/speed") == "speed-with-throttle-mach") {
+
+							if (getprop("/controls/gear/brake-right") < 0.3) {
+								setprop("/controls/gear/brake-right", 0.3);
+							}
+							if (getprop("/controls/gear/brake-left") < 0.3) {
+								setprop("/controls/gear/brake-left", 0.3);
+							}
 						}
 					}
 					elsif (getprop("/velocities/airspeed-kt") > 80.0) {
-						if (getprop("/controls/gear/brake-right") < 0.7) {
-							setprop("/controls/gear/brake-right", 0.7);
-						}
-						if (getprop("/controls/gear/brake-left") < 0.7) {
-							setprop("/controls/gear/brake-left", 0.7);
+						if (	getprop("/autopilot/locks/speed") == "speed-with-throttle-ias" or
+							getprop("/autopilot/locks/speed") == "speed-with-throttle-mach") {
+
+							if (getprop("/controls/gear/brake-right") < 0.5) {
+								setprop("/controls/gear/brake-right", 0.5);
+							}
+							if (getprop("/controls/gear/brake-left") < 0.5) {
+								setprop("/controls/gear/brake-left", 0.5);
+							}
 						}
 					}
 					elsif (getprop("/velocities/airspeed-kt") > 20.0) {
-						if (getprop("/controls/gear/brake-right") < 1.0) {
-							setprop("/controls/gear/brake-right", 1.0);
-						}
-						if (getprop("/controls/gear/brake-left") < 1.0) {
-							setprop("/controls/gear/brake-left", 1.0);
+						if (	getprop("/autopilot/locks/speed") == "speed-with-throttle-ias" or
+							getprop("/autopilot/locks/speed") == "speed-with-throttle-mach") {
+
+							if (getprop("/controls/gear/brake-right") < 1.0) {
+								setprop("/controls/gear/brake-right", 1.0);
+							}
+							if (getprop("/controls/gear/brake-left") < 1.0) {
+								setprop("/controls/gear/brake-left", 1.0);
+							}
 						}
 					}
 					else {
 						# stop breaking at 20 kts to keep some speed for taxiing
-						setprop("/controls/engines/engine[0]/throttle", 0.0);
-						setprop("/controls/engines/engine[1]/throttle", 0.0);
-						setprop("/controls/engines/engine[2]/throttle", 0.0);
-						setprop("/controls/engines/engine[3]/throttle", 0.0);
+						if (	getprop("/autopilot/locks/speed") == "speed-with-throttle-ias" or
+							getprop("/autopilot/locks/speed") == "speed-with-throttle-mach") {
 
-						setprop("/controls/gear/brake-right", 0.0);
+							setprop("/controls/engines/engine[0]/throttle", 0.0);
+							setprop("/controls/engines/engine[1]/throttle", 0.0);
+							setprop("/controls/engines/engine[2]/throttle", 0.0);
+							setprop("/controls/engines/engine[3]/throttle", 0.0);
 
-						setprop("/controls/gear/brake-left", 0.0);
+							setprop("/controls/gear/brake-right", 0.0);
+							setprop("/controls/gear/brake-left", 0.0);
+						}
 
 						setprop("/autopilot/locks/heading", "");
 						setprop("/autopilot/locks/altitude", "");
 
 						# if reversers still running, stop them now
-						if (getprop("/engines/engine[0]/reversed") == 1) {
-							reversethrust.togglereverser();
+						if (	getprop("/autopilot/locks/speed") == "speed-with-throttle-ias" or
+							getprop("/autopilot/locks/speed") == "speed-with-throttle-mach") {
+
+							if (getprop("/engines/engine[0]/reversed") == 1) {
+								reversethrust.togglereverser();
+							}
 						}
+						setprop("/autopilot/locks/speed", "");
 					}
 				}
 			}
@@ -1169,11 +1195,18 @@ var listenerApNav1GroundModeFunc = func {
 
 ## handle thrust-reversers for NAV1 ground-mode ##
 var startReverserProgram = func {
-	reversethrust.togglereverser();
-	settimer(reverserProgramFunc, 0.5);
+	if (	getprop("/autopilot/locks/speed") == "speed-with-throttle-ias" or
+		getprop("/autopilot/locks/speed") == "speed-with-throttle-mach") {
+
+		reversethrust.togglereverser();
+		settimer(reverserProgramFunc, 0.5);
+	}
 }
 var reverserProgramFunc = func {
 	if (getprop("/autopilot/locks/altitude") == "gs1-hold") {
+
+	if (	getprop("/autopilot/locks/speed") == "speed-with-throttle-ias" or
+		getprop("/autopilot/locks/speed") == "speed-with-throttle-mach") {
 
 		if (getprop("/engines/engine[0]/reversed") == 1) {
 			if (getprop("/velocities/airspeed-kt") > 80.0) {
@@ -1220,6 +1253,7 @@ var reverserProgramFunc = func {
 
 			settimer(reverserProgramFunc, 0.1);
 		}
+	}
 	}
 }
 

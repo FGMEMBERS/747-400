@@ -9,7 +9,7 @@
 		<texture n="1">
 			<image>Aircraft/747-400/Models/Effects/lightmap_glareshield.png</image>
 		</texture>
-		<factor><use>/controls/lighting/panel-norm</use></factor>
+		<factor><use>/controls/lighting/panel-glareshield-norm</use></factor>
 	</parameters>
 	<object-name>AFDS</object-name>
 	<object-name>EICAS</object-name>
@@ -169,11 +169,6 @@
 			<max>1</max>
 		</binding>
 	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>panel_light_capt</object-name>
 	<action>
 		<button>1</button>
 		<repeatable>true</repeatable>  
@@ -290,7 +285,7 @@
 
 <animation>
 	<type>pick</type>
-	<object-name>IAS_knob</object-name>
+	<object-name>sw.spd</object-name>
 	<action>
 		<button>0</button>
 		<repeatable>true</repeatable>  
@@ -323,11 +318,6 @@
 			<max>0.95</max>
 		</binding>
 	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>IAS_knob</object-name>
 	<action>
 		<button>1</button>
 		<repeatable>true</repeatable>  
@@ -400,7 +390,7 @@
 
 <animation>
 	<type>pick</type>
-	<object-name>ALT_knob</object-name>
+	<object-name>sw.alt</object-name>
 	<action>
 		<button>0</button>
 		<repeatable>true</repeatable>  
@@ -412,11 +402,6 @@
 			<max>50000</max>
 		</binding>
 	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>ALT_knob</object-name>
 	<action>
 		<button>1</button>
 		<repeatable>true</repeatable>  
@@ -466,29 +451,100 @@
 
 <animation>
 	<type>pick</type>
-	<object-name>HDG_knob</object-name>
+	<object-name>sw.bank-limit</object-name>
 	<action>
 		<button>0</button>
 		<repeatable>true</repeatable>  
 		<binding>
 			<command>property-adjust</command>
-			<property>/autopilot/settings/heading-bug-deg</property>
-			<step>1</step>
-			<min>000</min>
-			<max>359</max>
+			<property>/autopilot/settings/bank-limit</property>
+			<step>5</step>
+			<min>0</min>
+			<max>30</max>
 		</binding>
 	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>HDG_knob</object-name>
 	<action>
 		<button>1</button>
 		<repeatable>true</repeatable>  
 		<binding>
 			<command>property-adjust</command>
-			<property>/autopilot/settings/heading-bug-deg</property>
+			<property>/autopilot/settings/bank-limit</property>
+			<step>-5</step>
+			<min>0</min>
+			<max>30</max>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>sw.bank-limit</object-name>
+	<property>/autopilot/settings/bank-limit</property>
+	<factor>6</factor>
+	<axis>
+		<x1-m> 0.919</x1-m>
+		<y1-m>-0.096</y1-m>
+		<z1-m> 0.951</z1-m>
+		<x2-m> 0.913</x2-m>
+		<y2-m>-0.096</y2-m>
+		<z2-m> 0.949</z2-m>
+	</axis>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>sw.hdg</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>true</repeatable>  
+		<binding>
+			<condition>
+				<equals>
+					<property>/autopilot/settings/true-heading-deg</property>
+					<value>359</value>
+				</equals>
+			</condition>
+			<command>property-assign</command>
+			<property>/autopilot/settings/true-heading-deg</property>
+			<value>000</value>
+		</binding>
+		<binding>
+			<condition>
+				<not-equals>
+					<property>/autopilot/settings/true-heading-deg</property>
+					<value>359</value>
+				</not-equals>
+			</condition>
+			<command>property-adjust</command>
+			<property>/autopilot/settings/true-heading-deg</property>
+			<step>1</step>
+			<min>000</min>
+			<max>359</max>
+		</binding>
+	</action>
+	<action>
+		<button>1</button>
+		<repeatable>true</repeatable>  
+		<binding>
+			<condition>
+				<equals>
+					<property>/autopilot/settings/true-heading-deg</property>
+					<value>000</value>
+				</equals>
+			</condition>
+			<command>property-assign</command>
+			<property>/autopilot/settings/true-heading-deg</property>
+			<value>359</value>
+		</binding>
+		<binding>
+			<condition>
+				<not-equals>
+					<property>/autopilot/settings/true-heading-deg</property>
+					<value>000</value>
+				</not-equals>
+			</condition>
+			<command>property-adjust</command>
+			<property>/autopilot/settings/true-heading-deg</property>
 			<step>-1</step>
 			<min>000</min>
 			<max>359</max>
@@ -671,6 +727,39 @@
 	</condition>
 </animation>
 
+<animation>
+	<type>pick</type>
+	<object-name>sw.loc</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>property-assign</command>
+			<property>/autopilot/locks/heading/</property>
+			<value>nav1-hold</value>
+		</binding>
+	</action>
+</animation>
+ 
+<animation>
+	<type>pick</type>
+	<object-name>sw.app</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>property-assign</command>
+			<property>/autopilot/locks/heading/</property>
+			<value>nav1-hold</value>
+		</binding>
+		<binding>
+			<command>property-assign</command>
+			<property>/autopilot/locks/altitude</property>
+			<value>gs1-hold</value>
+		</binding>
+	</action>
+</animation>
+ 
 <animation>
 	<type>pick</type>
 	<object-name>THR</object-name>
@@ -1139,6 +1228,3 @@
 </animation>
 
 </PropertyList>
-
-
-

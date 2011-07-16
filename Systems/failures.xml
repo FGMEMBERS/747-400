@@ -18,7 +18,7 @@
 			</test>
 			<output>/controls/failures/gear[0]/stuck</output>
 		</switch>
-		<switch name="fcs/failures-gear-stuck[0]">
+		<switch name="fcs/failures-gear-stuck[1]">
 			<default value="/controls/failures/gear[1]/stuck"/>
 			<test  logic="AND" value="1">
 				velocities/vc-kts GT 270
@@ -26,7 +26,7 @@
 			</test>
 			<output>/controls/failures/gear[1]/stuck</output>
 		</switch>
-		<switch name="fcs/failures-gear-stuck[0]">
+		<switch name="fcs/failures-gear-stuck[2]">
 			<default value="/controls/failures/gear[2]/stuck"/>
 			<test  logic="AND" value="1">
 				velocities/vc-kts GT 270

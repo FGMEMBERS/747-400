@@ -159,15 +159,37 @@
 		<enable>
 			<condition>
 				<or>
-					<equals>
-						<property>/autopilot/locks/speed</property>
-						<value>speed-with-throttle-ias</value>
-					</equals>
-					<equals>
-						<property>/autopilot/locks/speed</property>
-						<value>speed-with-throttle-mach</value>
-					</equals>
 					<and>
+						<equals>
+							<property>/autopilot/locks/speed</property>
+							<value>speed-with-throttle-ias</value>
+						</equals>
+						<equals>
+							<property>/autopilot/internal/nav1-vspeed-ground-mode</property>
+							<value>0</value>
+						</equals>
+					</and>
+					<and>
+						<equals>
+							<property>/autopilot/locks/speed</property>
+							<value>speed-with-throttle-mach</value>
+						</equals>
+						<equals>
+							<property>/autopilot/internal/nav1-vspeed-ground-mode</property>
+							<value>0</value>
+						</equals>
+					</and>
+					<and>
+						<or>
+							<equals>
+								<property>/autopilot/locks/speed</property>
+								<value>speed-with-throttle-ias</value>
+							</equals>
+							<equals>
+								<property>/autopilot/locks/speed</property>
+								<value>speed-with-throttle-mach</value>
+							</equals>
+						</or>
 						<equals>
 							<property>/autopilot/locks/altitude</property>
 							<value>gs1-hold</value>
@@ -1103,6 +1125,16 @@
 					<property>/autopilot/internal/nav1-vspeed-ground-mode</property>
 					<value>1</value>
 				</equals>
+				<or>
+					<equals>
+						<property>/autopilot/locks/speed</property>
+						<value>speed-with-throttle-ias</value>
+					</equals>
+					<equals>
+						<property>/autopilot/locks/speed</property>
+						<value>speed-with-throttle-mach</value>
+					</equals>
+				</or>
 			</condition>
 		</enable>
 		<input>
@@ -1133,8 +1165,16 @@
         <name>Auto throttle (IAS)</name>
         <debug>false</debug>
         <enable>
-			<property>/autopilot/locks/speed</property>
-			<value>speed-with-throttle-ias</value>
+		<condition>
+			<equals>
+				<property>/autopilot/locks/speed</property>
+				<value>speed-with-throttle-ias</value>
+			</equals>
+			<equals>
+				<property>/autopilot/internal/nav1-vspeed-ground-mode</property>
+				<value>0</value>
+			</equals>
+		</condition>
         </enable>
         <input>
             <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
@@ -1156,22 +1196,27 @@
 	
 	<pid-controller>
         <name>Auto throttle (MACH)</name>
-        <debug>false</debug>
+        <debug>true</debug>
         <enable>
-			<prop>/autopilot/locks/speed</prop>
-			<value>speed-with-throttle-mach</value>
+		<condition>
+			<equals>
+				<property>/autopilot/locks/speed</property>
+				<value>speed-with-throttle-mach</value>
+			</equals>
+			<equals>
+				<property>/autopilot/internal/nav1-vspeed-ground-mode</property>
+				<value>0</value>
+			</equals>
+		</condition>
         </enable>
         <input>
-
-
-
-            <prop>/instrumentation/airspeed-indicator/indicated-mach</prop>
+            <property>/instrumentation/airspeed-indicator/indicated-mach</property>
         </input>
         <reference>
-            <prop>/autopilot/settings/target-speed-mach</prop>
+            <property>/autopilot/settings/target-speed-mach</property>
         </reference>
         <output>
-            <prop>/autopilot/internal/throttle-servo</prop>
+            <property>/autopilot/internal/throttle-servo</property>
         </output>
         <config>
             <Kp>200</Kp>

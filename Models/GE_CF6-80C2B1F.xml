@@ -16,13 +16,13 @@
 	<inherits-from>Effects/744reflect</inherits-from>
 	<object-name>engine_body</object-name>
 	<object-name>engine_reverser</object-name>
-	<object-name>engine_chrome</object-name>
+	<!--<object-name>engine_chrome</object-name>-->
 </effect>
 
 <animation>
 	<type>shader</type>
 	<shader>chrome</shader>
-	<texture>Aircraft/747-400/Models/chrome.png</texture>
+	<texture>Aircraft/747-400/Models/Effects/chrome.png</texture>
 	<object-name>engine_chrome</object-name>
 </animation>
 

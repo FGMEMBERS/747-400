@@ -145,3 +145,18 @@ controls.gearDown = func(v) {
       setprop("/controls/gear/gear-down", 1);
     }
 }
+
+## Switch click sound ##
+var click_reset = func(propName) {
+	setprop(propName,0);
+}
+controls.click = func {
+	if (getprop("sim/freeze/replay-state"))
+		return;
+	var propName="sim/sound/click";
+	setprop(propName,1);
+	settimer(func { click_reset(propName) },0.4);
+}
+
+## Yoke charts ##
+setprop("/instrumentation/groundradar/id", getprop("/sim/airport/closest-airport-id"));

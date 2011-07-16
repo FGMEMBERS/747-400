@@ -15,7 +15,6 @@
         <note>spoilers, leading edge flaps.</note>
         <note>gear height adjusted by 3D model, supposed accurate.</note>
 
-        <limitation>steering of body gear has no hysteresis.</limitation>
         <limitation>at landing the arm of CG must be weak, otherwise pitch control is too slow to react at touch-down.</limitation>
 
 <!--
@@ -63,7 +62,7 @@
           date="2 September 1993"/>
 
         <documentation>
-          - http://www.aoe.vt.edu/~mason/Mason_f/M96SC02.pdf/ (Willian H. Mason) :
+          - http://www.aoe.vt.edu/~mason/Mason_f/M96SC02.pdf (Willian H. Mason) :
 
           CG range : 13.0 / 33.0 %  MAC.
 
@@ -116,10 +115,8 @@
 
     <mass_balance>
         <documentation>
-          - operational empty weight = 376170 lb + 160 lb for extended fuel range.
-          - empty CG at 23 % MAC (no payload).
-          - the point mass is the equivalent payload to get 833000 lb; adjusted so that
-            CG at empty fuel is 33 % MAC (1276 in.), full load 20 % (1232 in.).
+          - operational empty weight = 394088 lb
+          - empty CG at 23 % MAC (no payload)
 			
 			inertia from http://www.wseas.us/e-library/conferences/2007istanbul/papers/557-095.pdf
         </documentation>
@@ -131,14 +128,14 @@
         <iyz unit="SLUG*FT2"> 0 </iyz>
         <emptywt unit="LBS"> 259583  </emptywt> <!-- minus 2 wings and 4 engines -->
         <location name="CG" unit="M">
-            <x>-7.0 </x>
+            <x>-2.0 </x>
             <y> 0   </y>
             <z> 0   </z>
         </location>
 		<pointmass name="Passengers and crew">
-            <weight unit="LBS"> 50000 </weight>
+            <weight unit="LBS"> 88300 </weight> <!-- 420 passengers and baggage -->
             <location name="POINTMASS" unit="M">
-            <x>-2.0 </x>
+            <x>-3.0 </x>
             <y> 0   </y>
             <z> 0   </z>
             </location>
@@ -622,15 +619,17 @@
             <input>fcs/elevator-cmd-norm</input>
             <input>fcs/pitch-trim-cmd-norm</input>
             <clipto>
-                <min>-1</min>
-                <max>1</max>
+                <min>-2</min>
+                <max>2</max>
             </clipto>
         </summer>
 
         <aerosurface_scale name="Elevator Control">
             <input>fcs/pitch-trim-sum</input>
             <range>
-                <min>-0.26</min>
+                <!--<min>-0.26</min>
+                <max>0.44</max>-->
+				<min>-0.26</min>
                 <max>0.44</max>
             </range>
             <output>fcs/elevator-pos-rad</output>
