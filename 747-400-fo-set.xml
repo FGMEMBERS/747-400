@@ -21,9 +21,16 @@
  <sim>
 
   <description>Boeing 747-400 (First Officer)</description>
-  <author>Gijs de Rooy, Ivan Ngeow</author>
-  <status>Development</status>
+  <author>Gijs de Rooy, Ivan Ngeow, Markus Bulik</author>
+  <status>early production</status>
+  <rating>
+   <FDM type="int">3</FDM>
+   <systems type="int">3</systems>
+   <cockpit type="int">3</cockpit>
+   <model type="int">3</model>
+  </rating>
   <version>20110211</version>
+  
   <flight-model>null</flight-model>
 
   <sound>
@@ -45,8 +52,8 @@
    <path>Aircraft/747-400/Models/747-400-fo.xml</path>
   </model>	
 
-  <hud n="1">  
-   <enable3d>false</enable3d>
+  <hud>   
+   <enable3d n="1">false</enable3d>
   </hud>
 
   <!-- VIEWS -->

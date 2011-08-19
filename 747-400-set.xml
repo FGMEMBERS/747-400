@@ -90,8 +90,8 @@
 		<path>Aircraft/747-400/Panels/744_hyd_panel.xml</path>
 	</panel>
 
-	<hud n="1">   
-		<enable3d>false</enable3d>
+	<hud>   
+		<enable3d n="1">false</enable3d>
 	</hud>
 
 	<view n="0">
