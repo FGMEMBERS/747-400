@@ -357,7 +357,7 @@ OBJECT poly
 name "panel.fuel"
 data 21
 Mesh125 Component.001
-texture "overhead_panel_orig.png"
+texture "overhead_panel.png"
 texrep 1 1
 crease 30.000000
 numvert 105
@@ -1667,7 +1667,7 @@ OBJECT poly
 name "panel.electric"
 data 21
 Mesh125 Component.002
-texture "overhead_panel_orig.png"
+texture "overhead_panel.png"
 texrep 1 1
 crease 30.000000
 numvert 25
@@ -2197,7 +2197,7 @@ OBJECT poly
 name "panel.engine_star"
 data 17
 Mesh160 Model.002
-texture "overhead_panel_orig.png"
+texture "overhead_panel.png"
 texrep 1 1
 crease 30.000000
 numvert 20
@@ -2335,7 +2335,7 @@ OBJECT poly
 name "panel.engine_start"
 data 13
 Mesh160 Model
-texture "overhead_panel_orig.png"
+texture "overhead_panel.png"
 texrep 1 1
 crease 30.000000
 numvert 20
@@ -12682,7 +12682,7 @@ OBJECT poly
 name "panel.irs"
 data 17
 Mesh160 Model.001
-texture "overhead_panel_orig.png"
+texture "overhead_panel.png"
 texrep 1 1
 crease 30.000000
 numvert 37
@@ -38473,7 +38473,7 @@ OBJECT poly
 name "panel.hydraulic"
 data 17
 Mesh160 Model.007
-texture "overhead_panel_orig.png"
+texture "overhead_panel.png"
 texrep 1 1
 crease 30.000000
 numvert 24
@@ -38634,7 +38634,7 @@ OBJECT poly
 name "panel.pneumatic"
 data 17
 Mesh160 Model.009
-texture "overhead_panel_orig.png"
+texture "overhead_panel.png"
 texrep 1 1
 crease 30.000000
 numvert 24
@@ -65662,7 +65662,7 @@ OBJECT poly
 name "panel.air"
 data 17
 Mesh160 Model.017
-texture "overhead_panel_orig.png"
+texture "overhead_panel.png"
 texrep 1 1
 crease 30.000000
 numvert 49
@@ -65883,7 +65883,7 @@ OBJECT poly
 name "panel.anti_ice"
 data 17
 Mesh160 Model.004
-texture "overhead_panel_orig.png"
+texture "overhead_panel.png"
 texrep 1 1
 crease 30.000000
 numvert 20
@@ -66021,7 +66021,7 @@ OBJECT poly
 name "panel.beacons"
 data 17
 Mesh160 Model.018
-texture "overhead_panel_orig.png"
+texture "overhead_panel.png"
 texrep 1 1
 crease 30.000000
 numvert 49
@@ -66242,7 +66242,7 @@ OBJECT poly
 name "panel.cockpitlights"
 data 17
 Mesh160 Model.019
-texture "overhead_panel_orig.png"
+texture "overhead_panel.png"
 texrep 1 1
 crease 30.000000
 numvert 40
@@ -66648,7 +66648,7 @@ OBJECT poly
 name "panel.elec_eng"
 data 17
 Mesh160 Model.023
-texture "overhead_panel_orig.png"
+texture "overhead_panel.png"
 texrep 1 1
 crease 30.000000
 numvert 97
@@ -67193,7 +67193,7 @@ OBJECT poly
 name "panel.extlights"
 data 17
 Mesh160 Model.005
-texture "overhead_panel_orig.png"
+texture "overhead_panel.png"
 texrep 1 1
 crease 30.000000
 numvert 25
@@ -67366,7 +67366,7 @@ OBJECT poly
 name "panel.fire"
 data 17
 Mesh160 Model.006
-texture "overhead_panel_orig.png"
+texture "overhead_panel.png"
 texrep 1 1
 crease 30.000000
 numvert 38
@@ -67649,7 +67649,7 @@ OBJECT poly
 name "panel.overhead"
 data 17
 Mesh125 Component
-texture "overhead_panel_orig.png"
+texture "overhead_panel.png"
 texrep 1 1
 crease 30.000000
 numvert 58
@@ -68067,7 +68067,7 @@ OBJECT poly
 name "panel.pressurization"
 data 17
 Mesh160 Model.016
-texture "overhead_panel_orig.png"
+texture "overhead_panel.png"
 texrep 1 1
 crease 30.000000
 numvert 49

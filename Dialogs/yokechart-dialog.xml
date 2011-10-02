@@ -34,6 +34,10 @@
 
   <group>
     <layout>vbox</layout>
+	
+	<text>
+		<label>ICAO code</label>
+	</text>
 
     <input>
       <legend>ICAO</legend>
@@ -46,6 +50,10 @@
         <command>dialog-apply</command>
       </binding>
     </input>
+	
+	<text>
+		<label>Zoom level</label>
+	</text>
 
     <slider>
       <min>0.2</min>

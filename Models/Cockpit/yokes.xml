@@ -166,5 +166,21 @@
 	</center>
 </animation>
 
+<animation>
+	<type>pick</type>
+	<object-name>left_chart</object-name>
+	<object-name>right_chart</object-name>
+	<action>
+		<button>0</button>
+		<binding>
+			<command>nasal</command>
+			<script>
+				var mal = gui.Dialog.new("/sim/gui/dialogs/Boeing747/menu/dialog","Aircraft/747-400/Dialogs/yokechart-dialog.xml");
+				mal.open();
+			</script>
+		</binding>
+	</action>
+</animation>
+
 </PropertyList>
 

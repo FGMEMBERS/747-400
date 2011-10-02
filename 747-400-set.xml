@@ -11,7 +11,7 @@
 		<cockpit type="int">3</cockpit>
 		<model type="int">3</model>
 	</rating>
-	<version>20110716</version>
+	<version>20111002</version>
 	
 	<flight-model>jsb</flight-model>
 	<aero>747-400</aero>
@@ -59,8 +59,8 @@
 			<kd type="double">0</kd>
 			<position-norm type="double">0</position-norm>
 		</pushback>
-	</model>	
-
+	</model>
+	
 	<systems>
 		<autopilot>
 			<name>Primary Autopilot</name>

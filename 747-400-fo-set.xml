@@ -29,7 +29,7 @@
    <cockpit type="int">3</cockpit>
    <model type="int">3</model>
   </rating>
-  <version>20110211</version>
+  <version>20111002</version>
   
   <flight-model>null</flight-model>
 
