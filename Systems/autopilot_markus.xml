@@ -497,6 +497,77 @@
 
 
   <!-- =============================================================== -->
+  <!-- Wing-level hold.                                                -->
+  <!-- =============================================================== -->
+
+	<!-- Stage #2 drives the ailerons to achieve the desired roll deg. -->
+	<pid-controller>
+		<name>Wing Level Hold</name>
+		<debug>false</debug>
+		<enable>
+			<condition>
+				<and>
+					<equals>
+						<property>/autopilot/locks/heading</property>
+						<value>wing-leveler</value>
+					</equals>
+					<equals>
+						<property>/autopilot/internal/wing-leveler-hold-heading</property>
+						<value>0</value>
+					</equals>
+				</and>
+			</condition>
+		</enable>
+		<input>
+			<property>/orientation/roll-deg</property>
+		</input>
+		<reference>0</reference>
+		<output>
+			<property>/autopilot/internal/aileron-servo</property>
+		</output>
+		<config>
+			<Kp>/autopilot/internal/target-kp-for-heading-hold-clambed</Kp>
+			<Ti>/autopilot/internal/target-ti-for-heading-hold</Ti>
+			<Td>/autopilot/internal/target-td-for-heading-hold</Td>
+			<u_min>-1.0</u_min>
+			<u_max>1.0</u_max>
+		</config>
+	</pid-controller>
+
+	<!-- Stage #2b drives the rudder in order to the actual roll. -->
+	<pi-simple-controller>
+		<name>Wing Level Hold - rudder</name>
+		<debug>false</debug>
+		<enable>
+			<condition>
+				<and>
+					<equals>
+						<property>/autopilot/locks/heading</property>
+						<value>wing-leveler</value>
+					</equals>
+					<equals>
+						<property>/autopilot/internal/wing-leveler-hold-heading</property>
+						<value>0</value>
+					</equals>
+				</and>
+			</condition>
+		</enable>
+		<input>
+			<property>/orientation/roll-deg</property>
+		</input>
+		<reference>0.0</reference>
+		<output>
+			<property>/autopilot/internal/rudder-servo</property>
+		</output>
+		<config>
+			<Kp>/autopilot/internal/target-kp-for-heading-hold-rudder</Kp>
+			<u_min>-0.4</u_min>
+			<u_max>0.4</u_max>
+		</config>
+	</pi-simple-controller>
+
+
+  <!-- =============================================================== -->
   <!-- Heading Bug Hold.  2 stage cascade controller.                  -->
   <!-- =============================================================== -->
 
@@ -506,10 +577,22 @@
 		<debug>false</debug>
 		<enable>
 			<condition>
-				<equals>
-					<property>/autopilot/locks/heading</property>
-					<value>dg-heading-hold</value>
-				</equals>
+				<or>
+					<equals>
+						<property>/autopilot/locks/heading</property>
+						<value>dg-heading-hold</value>
+					</equals>
+					<and>
+						<equals>
+							<property>/autopilot/locks/heading</property>
+							<value>wing-leveler</value>
+						</equals>
+						<equals>
+							<property>/autopilot/internal/wing-leveler-hold-heading</property>
+							<value>1</value>
+						</equals>
+					</and>
+				</or>
 			</condition>
 		</enable>
 		<type>gain</type>
@@ -523,12 +606,39 @@
 		<name>heading bug error computer/normalizer</name>
 		<debug>false</debug>
 		<enable>
-			<equals>
-				<property>/autopilot/locks/heading</property>
-				<value>dg-heading-hold</value>
-			</equals>
+			<condition>
+				<or>
+					<equals>
+						<property>/autopilot/locks/heading</property>
+						<value>dg-heading-hold</value>
+					</equals>
+					<and>
+						<equals>
+							<property>/autopilot/locks/heading</property>
+							<value>wing-leveler</value>
+						</equals>
+						<equals>
+							<property>/autopilot/internal/wing-leveler-hold-heading</property>
+							<value>1</value>
+						</equals>
+					</and>
+				</or>
+			</condition>
 		</enable>
 		<type>gain</type>
+		<input>
+			<condition>
+				<equals>
+					<property>/autopilot/locks/heading</property>
+					<value>wing-leveler</value>
+				</equals>
+			</condition>
+			<property>/autopilot/internal/wing-leveler-hold-heading-bug-deg</property>
+			<offset>
+				<property>/orientation/heading-magnetic-deg</property>
+				<scale>-1.0</scale>
+			</offset>
+		</input>
 		<input>
 			<property>/autopilot/settings/heading-bug-deg</property>
 			<offset>
@@ -543,6 +653,37 @@
 		</period>
 		<gain>1.0</gain>
 	</filter>
+	<!-- clamp heading-error to avoid too heavy reaktions of the following controllers -->
+	<filter>
+		<name>heading bug error clamper</name>
+		<debug>false</debug>
+		<enable>
+			<condition>
+				<or>
+					<equals>
+						<property>/autopilot/locks/heading</property>
+						<value>dg-heading-hold</value>
+					</equals>
+					<and>
+						<equals>
+							<property>/autopilot/locks/heading</property>
+							<value>wing-leveler</value>
+						</equals>
+						<equals>
+							<property>/autopilot/internal/wing-leveler-hold-heading</property>
+							<value>1</value>
+						</equals>
+					</and>
+				</or>
+			</condition>
+		</enable>
+		<type>gain</type>
+		<gain>1.0</gain>
+		<input>/autopilot/internal/heading-bug-error-deg</input>
+		<output>/autopilot/internal/heading-bug-error-deg-clamped</output>
+		<min>-45.0</min>
+		<max>45.0</max>
+	</filter>
 
 	<!-- Stage #1 sets target roll based on diff between current heading and heading bug. -->
 	<pid-controller>
@@ -550,14 +691,26 @@
 		<debug>false</debug>
 		<enable>
 			<condition>
-				<equals>
-					<property>/autopilot/locks/heading</property>
-					<value>dg-heading-hold</value>
-				</equals>
+				<or>
+					<equals>
+						<property>/autopilot/locks/heading</property>
+						<value>dg-heading-hold</value>
+					</equals>
+					<and>
+						<equals>
+							<property>/autopilot/locks/heading</property>
+							<value>wing-leveler</value>
+						</equals>
+						<equals>
+							<property>/autopilot/internal/wing-leveler-hold-heading</property>
+							<value>1</value>
+						</equals>
+					</and>
+				</or>
 			</condition>
 		</enable>
 		<input>
-			<property>/autopilot/internal/heading-bug-error-deg</property>
+			<property>/autopilot/internal/heading-bug-error-deg-clamped</property>
 		</input>
 		<reference>
 			<value>0.0</value>
@@ -570,11 +723,11 @@
 			<Ti>/autopilot/internal/target-ti-airspeed-for-heading-hold</Ti>
 			<Td>0.00001</Td>
 			<min>
-				<property>/autopilot/settings/bank-limit</property>
+				<property>/autopilot/internal/bank-limit-filtered</property>
 				<scale>-1.0</scale>
 			</min>
 			<max>
-				<property>/autopilot/settings/bank-limit</property>
+				<property>/autopilot/internal/bank-limit-filtered</property>
 			</max>
 		</config>
 	</pid-controller>
@@ -585,10 +738,22 @@
 		<debug>false</debug>
 		<enable>
 			<condition>
-				<equals>
-					<property>/autopilot/locks/heading</property>
-					<value>dg-heading-hold</value>
-				</equals>
+				<or>
+					<equals>
+						<property>/autopilot/locks/heading</property>
+						<value>dg-heading-hold</value>
+					</equals>
+					<and>
+						<equals>
+							<property>/autopilot/locks/heading</property>
+							<value>wing-leveler</value>
+						</equals>
+						<equals>
+							<property>/autopilot/internal/wing-leveler-hold-heading</property>
+							<value>1</value>
+						</equals>
+					</and>
+				</or>
 			</condition>
 		</enable>
 		<input>
@@ -615,10 +780,22 @@
 		<debug>false</debug>
 		<enable>
 			<condition>
-				<equals>
-					<property>/autopilot/locks/heading</property>
-					<value>dg-heading-hold</value>
-				</equals>
+				<or>
+					<equals>
+						<property>/autopilot/locks/heading</property>
+						<value>dg-heading-hold</value>
+					</equals>
+					<and>
+						<equals>
+							<property>/autopilot/locks/heading</property>
+							<value>wing-leveler</value>
+						</equals>
+						<equals>
+							<property>/autopilot/internal/wing-leveler-hold-heading</property>
+							<value>1</value>
+						</equals>
+					</and>
+				</or>
 			</condition>
 		</enable>
 		<input>
@@ -637,7 +814,7 @@
 
 
   <!-- =============================================================== -->
-  <!-- True Heading / Wing Level hold.  2 stage cascade controller.                 -->
+  <!-- True Heading                                                    -->
   <!-- =============================================================== -->
 
 	<!-- Stage #1 sets target roll based on diff between current heading -->
@@ -649,18 +826,10 @@
 		<debug>false</debug>
 		<enable>
 			<condition>
-				<or>
-					<equals>
-						<property>/autopilot/locks/heading</property>
-						<value>true-heading-hold</value>
-					</equals>
-<!--
-					<equals>
-						<property>/autopilot/locks/heading</property>
-						<value>wing-leveler</value>
-					</equals>
--->
-				</or>
+				<equals>
+					<property>/autopilot/locks/heading</property>
+					<value>true-heading-hold</value>
+				</equals>
 			</condition>
 		</enable>
 		<type>gain</type>
@@ -675,18 +844,10 @@
 		<debug>false</debug>
 		<enable>
 			<condition>
-				<or>
-					<equals>
-						<property>/autopilot/locks/heading</property>
-						<value>true-heading-hold</value>
-					</equals>
-<!--
-					<equals>
-						<property>/autopilot/locks/heading</property>
-						<value>wing-leveler</value>
-					</equals>
--->
-				</or>
+				<equals>
+					<property>/autopilot/locks/heading</property>
+					<value>true-heading-hold</value>
+				</equals>
 			</condition>
 		</enable>
 		<type>gain</type>
@@ -704,30 +865,41 @@
 		</period>
 		<gain>1.0</gain>
 	</filter>
+	<!-- clamp heading-error to avoid too heavy reaktions of the following controllers -->
+	<filter>
+		<name>heading bug error clamper</name>
+		<debug>false</debug>
+		<enable>
+			<condition>
+				<equals>
+					<property>/autopilot/locks/heading</property>
+					<value>true-heading-hold</value>
+				</equals>
+			</condition>
+		</enable>
+		<type>gain</type>
+		<gain>1.0</gain>
+		<input>/autopilot/internal/true-heading-error-deg</input>
+		<output>/autopilot/internal/true-heading-error-deg-clamped</output>
+		<min>-45.0</min>
+		<max>45.0</max>
+	</filter>
 
 	<!-- Stage #1 sets target roll based on diff between current heading -->
-	<!-- and heading bug. (stable over speed 190 kts) -->
+	<!-- and heading bug. -->
 	<pid-controller>
 		<name>True Heading Hold Stage 1</name>
 		<debug>false</debug>
 		<enable>
 			<condition>
-				<or>
-					<equals>
-						<property>/autopilot/locks/heading</property>
-						<value>true-heading-hold</value>
-					</equals>
-<!--
-					<equals>
-						<property>/autopilot/locks/heading</property>
-						<value>wing-leveler</value>
-					</equals>
--->
-				</or>
+				<equals>
+					<property>/autopilot/locks/heading</property>
+					<value>true-heading-hold</value>
+				</equals>
 			</condition>
 		</enable>
 		<input>
-			<property>/autopilot/internal/true-heading-error-deg</property>
+			<property>/autopilot/internal/true-heading-error-deg-clamped</property>
 		</input>
 		<reference>
 			<value>0.0</value>
@@ -740,11 +912,11 @@
 			<Ti>/autopilot/internal/target-ti-airspeed-for-heading-hold</Ti>
 			<Td>0.00001</Td>
 			<min>
-				<property>/autopilot/settings/bank-limit</property>
+				<property>/autopilot/internal/bank-limit-filtered</property>
 				<scale>-1.0</scale>
 			</min>
 			<max>
-				<property>/autopilot/settings/bank-limit</property>
+				<property>/autopilot/internal/bank-limit-filtered</property>
 			</max>
 		</config>
 	</pid-controller>
@@ -755,18 +927,10 @@
 		<debug>false</debug>
 		<enable>
 			<condition>
-				<or>
-					<equals>
-						<property>/autopilot/locks/heading</property>
-						<value>true-heading-hold</value>
-					</equals>
-<!--
-					<equals>
-						<property>/autopilot/locks/heading</property>
-						<value>wing-leveler</value>
-					</equals>
--->
-				</or>
+				<equals>
+					<property>/autopilot/locks/heading</property>
+					<value>true-heading-hold</value>
+				</equals>
 			</condition>
 		</enable>
 		<input>
@@ -808,77 +972,9 @@
 		<debug>false</debug>
 		<enable>
 			<condition>
-				<or>
-					<equals>
-						<property>/autopilot/locks/heading</property>
-						<value>true-heading-hold</value>
-					</equals>
-<!--
-					<equals>
-						<property>/autopilot/locks/heading</property>
-						<value>wing-leveler</value>
-					</equals>
--->
-				</or>
-			</condition>
-		</enable>
-		<input>
-			<property>/orientation/roll-deg</property>
-		</input>
-		<reference>0.0</reference>
-		<output>
-			<property>/autopilot/internal/rudder-servo</property>
-		</output>
-		<config>
-			<Kp>/autopilot/internal/target-kp-for-heading-hold-rudder</Kp>
-			<u_min>-0.4</u_min>
-			<u_max>0.4</u_max>
-		</config>
-	</pi-simple-controller>
-
-
-
-  <!-- =============================================================== -->
-  <!-- Wing-level hold.                                                -->
-  <!-- =============================================================== -->
-
-	<!-- Stage #2 drives the ailerons to achieve the desired roll deg. -->
-	<pid-controller>
-		<name>Wing Level Hold</name>
-		<debug>false</debug>
-		<enable>
-			<condition>
 				<equals>
 					<property>/autopilot/locks/heading</property>
-					<value>wing-leveler</value>
-				</equals>
-			</condition>
-		</enable>
-		<input>
-			<property>/orientation/roll-deg</property>
-		</input>
-		<reference>0</reference>
-		<output>
-			<property>/autopilot/internal/aileron-servo</property>
-		</output>
-		<config>
-			<Kp>/autopilot/internal/target-kp-for-heading-hold-clambed</Kp>
-			<Ti>/autopilot/internal/target-ti-for-heading-hold</Ti>
-			<Td>/autopilot/internal/target-td-for-heading-hold</Td>
-			<u_min>-1.0</u_min>
-			<u_max>1.0</u_max>
-		</config>
-	</pid-controller>
-
-	<!-- Stage #2b drives the rudder in order to the actual roll. -->
-	<pi-simple-controller>
-		<name>Wing Level Hold - rudder</name>
-		<debug>false</debug>
-		<enable>
-			<condition>
-				<equals>
-					<property>/autopilot/locks/heading</property>
-					<value>wing-leveler</value>
+					<value>true-heading-hold</value>
 				</equals>
 			</condition>
 		</enable>
@@ -895,6 +991,7 @@
 			<u_max>0.4</u_max>
 		</config>
 	</pi-simple-controller>
+
 
 
   <!-- =============================================================== -->
@@ -943,8 +1040,7 @@
 			</condition>
 		</enable>
 		<input>
-			<property>/autopilot/internal/nav1-track-error-deg</property>
-			<scale>1.5</scale>
+			<property>/autopilot/internal/nav1-track-error-deg-magnified</property>
 		</input>
 		<reference>0.0</reference>
 		<output>
@@ -953,11 +1049,11 @@
 		<config>
 			<Kp>/autopilot/internal/target-kp-for-nav1-hold-clambed</Kp>
 			<min>
-				<property>/autopilot/settings/bank-limit</property>
+				<property>/autopilot/internal/bank-limit-filtered</property>
 				<scale>-1.0</scale>
 			</min>
 			<max>
-				<property>/autopilot/settings/bank-limit</property>
+				<property>/autopilot/internal/bank-limit-filtered</property>
 			</max>
 		</config>
 	</pi-simple-controller>
@@ -1194,7 +1290,6 @@
 					<property>/autopilot/locks/altitude</property>
 					<value>gs1-hold</value>
 				</equals>
-				<property>/instrumentation/nav[0]/gs-in-range</property>
 				<less-than-equals>
 					<property>/autopilot/internal/nav1-pitch-deg-ground-mode</property>
 					<value>0.0</value>
@@ -1348,7 +1443,7 @@
 			<Ti>400.0</Ti>
 			<Td>0.4</Td>
 			<u_min>0.0</u_min>
-			<u_max>0.4</u_max>
+			<u_max>0.5</u_max>
 		</config>
 	</pid-controller>
 
