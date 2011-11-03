@@ -278,6 +278,25 @@
  </axis>
 </animation>
 
+<!-- GEAR NOSE SPIN -->
+
+<animation>
+ <type>spin</type>
+ <object-name>GearNoseWheels</object-name>
+ <property>/gear/gear[0]/rollspeed-ms</property>
+ <factor>15.4</factor>
+ <center>
+  <x-m>-21.991</x-m>
+  <y-m>  0.0  </y-m>
+  <z-m> -5.0  </z-m>
+ </center>
+ <axis>
+  <x> 0</x>
+  <y>-1</y>
+  <z> 0</z>
+ </axis>
+</animation>
+
 <!-- WING -->
 <!-- LEFT -->
 
@@ -301,6 +320,17 @@
  <object-name>wlg_left_poly2</object-name>
  <object-name>wlg_left_support</object-name>
  <object-name>GearWingLeftStrut</object-name>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>GearWingLeft</object-name>
+ <condition>
+  <greater-than>
+   <property>gear/gear[1]/position-norm</property>
+   <value>0.0</value>
+  </greater-than>
+ </condition>
 </animation>
 
 <!-- basic movements -->
@@ -483,7 +513,7 @@
  <type>spin</type>
  <object-name>wlg.lf</object-name>
  <property>/gear/gear[1]/rollspeed-ms</property>
- <factor>4</factor>
+ <factor>15.4</factor>
  <center>
   <x-m> 1.284</x-m>
   <y-m>-5.514</y-m>
@@ -500,7 +530,7 @@
  <type>spin</type>
  <object-name>wlg.lr</object-name>
  <property>/gear/gear[1]/rollspeed-ms</property>
- <factor>4</factor>
+ <factor>15.4</factor>
  <center>
   <x-m> 2.883</x-m>
   <y-m>-5.514</y-m>
@@ -536,6 +566,17 @@
  <object-name>wlg_right_poly2</object-name>
  <object-name>wlg_right_support</object-name>
  <object-name>GearWingRightStrut</object-name>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>GearWingRight</object-name>
+ <condition>
+  <greater-than>
+   <property>gear/gear[4]/position-norm</property>
+   <value>0.0</value>
+  </greater-than>
+ </condition>
 </animation>
 
 <!-- basic movements -->
@@ -712,13 +753,13 @@
  </axis>
 </animation>
 
-<!-- GEAR WING LEFT SPIN -->
+<!-- GEAR WING RIGHT SPIN -->
 
 <animation>
  <type>spin</type>
  <object-name>wlg.rf</object-name>
  <property>/gear/gear[4]/rollspeed-ms</property>
- <factor>4</factor>
+ <factor>15.4</factor>
  <center>
   <x-m> 1.284</x-m>
   <y-m> 5.514</y-m>
@@ -735,7 +776,7 @@
  <type>spin</type>
  <object-name>wlg.rr</object-name>
  <property>/gear/gear[4]/rollspeed-ms</property>
- <factor>4</factor>
+ <factor>15.4</factor>
  <center>
   <x-m> 2.883</x-m>
   <y-m> 5.514</y-m>
@@ -876,6 +917,42 @@
  </axis>
 </animation>
 
+<!-- GEAR BODY LEFT SPIN -->
+
+<animation>
+ <type>spin</type>
+ <object-name>blg.lf</object-name>
+ <property>/gear/gear[2]/rollspeed-ms</property>
+ <factor>15.4</factor>
+ <center>
+  <x-m> 4.661</x-m>
+  <y-m>-1.906</y-m>
+  <z-m>-4.538</z-m>
+ </center>
+ <axis>
+  <x> 0</x>
+  <y>-1</y>
+  <z> 0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>spin</type>
+ <object-name>blg.lr</object-name>
+ <property>/gear/gear[2]/rollspeed-ms</property>
+ <factor>15.4</factor>
+ <center>
+  <x-m> 6.261</x-m>
+  <y-m>-1.906</y-m>
+  <z-m>-4.538</z-m>
+ </center>
+ <axis>
+  <x> 0</x>
+  <y>-1</y>
+  <z> 0</z>
+ </axis>
+</animation>
+
 <!-- BODY -->
 <!-- RIGHT -->
 
@@ -1003,5 +1080,41 @@
   <z>0</z>
  </axis>
 </animation>
- 
+
+<!-- GEAR BODY RIGHT SPIN -->
+
+<animation>
+ <type>spin</type>
+ <object-name>blg.rf</object-name>
+ <property>/gear/gear[3]/rollspeed-ms</property>
+ <factor>15.4</factor>
+ <center>
+  <x-m> 4.661</x-m>
+  <y-m> 1.906</y-m>
+  <z-m>-4.538</z-m>
+ </center>
+ <axis>
+  <x> 0</x>
+  <y>-1</y>
+  <z> 0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>spin</type>
+ <object-name>blg.rr</object-name>
+ <property>/gear/gear[3]/rollspeed-ms</property>
+ <factor>15.4</factor>
+ <center>
+  <x-m> 6.261</x-m>
+  <y-m> 1.906</y-m>
+  <z-m>-4.538</z-m>
+ </center>
+ <axis>
+  <x> 0</x>
+  <y>-1</y>
+  <z> 0</z>
+ </axis>
+</animation>
+
 </PropertyList>

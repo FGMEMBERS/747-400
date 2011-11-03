@@ -17,22 +17,6 @@ We're now fully configured to begin our pushback and engine start. The passenger
 			<value>0.0</value>
 		</set>
 		<set>
-			<property>/controls/engines/engine[0]/throttle</property>
-			<value>0</value>
-		</set>
-		<set>
-			<property>/controls/engines/engine[1]/throttle</property>
-			<value>0</value>
-		</set>
-		<set>
-			<property>/controls/engines/engine[2]/throttle</property>
-			<value>0</value>
-		</set>
-		<set>
-			<property>/controls/engines/engine[3]/throttle</property>
-			<value>0</value>
-		</set>
-		<set>
 			<property>/engines/engine[0]/running</property>
 			<value>false</value>
 		</set>
@@ -52,6 +36,13 @@ We're now fully configured to begin our pushback and engine start. The passenger
 
     <step>
 		<message>Close all doors.</message>
+		<exit>
+			<condition>
+				<not>
+					<property>/controls/doors/cargo1/position-norm</property>
+				</not>
+			</condition>
+		</exit>
     </step>
 
     <step>
@@ -67,14 +58,51 @@ We're now fully configured to begin our pushback and engine start. The passenger
 		</view>
 		<exit>
 			<condition>
-				<equals>
-					<property>/controls/lighting/beacon</property>
-					<value>1</value>
-				</equals>
+				<property>/controls/lighting/beacon</property>
+			</condition>
+		</exit>
+    </step>
+	
+	<step>
+		<message>Open the 747-400 > Pushback dialog and connect the pushback.</message>
+		<exit>
+			<condition>
+				<property>/sim/model/pushback/position-norm</property>
+			</condition>
+		</exit>
+    </step>
+	
+	<step>
+		<message>Release the parking brake.</message>
+		<exit>
+			<condition>
+				<property>/controls/gear/brake-parking</property>
+				<value>0</value>		
+			</condition>
+		</exit>
+	</step>
+	
+	<step>
+		<message>Use the slider to control the pushback speed. Steer with the rudder pedals.
+		You want to turn the tail to your left, so your nose ends up pointing right of your current position.</message>
+    </step>
+	
+	<step>
+		<message>Disconnect the pushback.</message>
+		<exit>
+			<condition>
+				<not>
+					<property>/sim/model/pushback/position-norm</property>
+				</not>
 			</condition>
 		</exit>
     </step>
 
+	<step>
+		<message>We will now start the engines.</message>
+	</step>
+	
+	<!--
     <step>
 		<message>Set Hydraulid DEMAND Pump selector 4 to AUX.</message>
     </step>
@@ -90,6 +118,7 @@ We're now fully configured to begin our pushback and engine start. The passenger
     <step>
 		<message>Turn OFF autostart.</message>
     </step>
+	-->
 
     <step>
 		<message>Turn ON continuous ignition.</message>
@@ -101,10 +130,7 @@ We're now fully configured to begin our pushback and engine start. The passenger
 		</marker>
 		<exit>
 			<condition>
-				<equals>
-					<property>/controls/engines/con-ignition</property>
-					<value>1</value>
-				</equals>
+				<property>/controls/engines/con-ignition</property>
 			</condition>
 		</exit>
     </step>
@@ -133,9 +159,11 @@ We're now fully configured to begin our pushback and engine start. The passenger
 		</exit>
     </step>
 
+	<!--
     <step>
 		<message>ARM the emergency lights.</message>
     </step>
+	-->
 
     <step>
 		<message>Press the ENG button on the EICAS MCP.</message>
@@ -225,6 +253,7 @@ We're now fully configured to begin our pushback and engine start. The passenger
 		</exit>
     </step>
 
+	<!--
     <step>
 		<message>Turn OFF APU Bleed Air.</message>
     </step>
@@ -236,13 +265,10 @@ We're now fully configured to begin our pushback and engine start. The passenger
     <step>
 		<message>Set Hydraulid DEMAND Pump selector 4 to AUTO.</message>
     </step>
+	-->
 
     <step>
 		<message>Check the main display for any warnings.</message>
-    </step>
-
-    <step>
-		<message>Turn ON MAIN and OVRD fuel pumps for each tank that contains fuel.</message>
     </step>
 	
 	<end>

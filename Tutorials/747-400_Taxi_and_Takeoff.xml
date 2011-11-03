@@ -1,23 +1,41 @@
 <PropertyList>
     <name>Taxi and Takeoff</name>
     <description>
-We're now fully configured to begin our pushback and engine start. The passengers are on board and
-you've just been given your clearance. As things start to happen very quickly from here on out, don't be
-afraid to pause your sim between steps.
+		Time to taxi to the runway and make this beauty go up in the air!
     </description>
     <audio-dir>Aircraft/747-400/tutorial</audio-dir>
+	
+	<presets>
+		<airport-id>EHAM</airport-id>
+		<on-ground>1</on-ground>
+		<parkpos>E20</parkpos>
+	</presets>
+	
+	<init>
+		<set>
+			<property>/controls/gear/brake-parking</property>
+			<value>1</value>
+		</set>
+		<set>
+			<property>/controls/flight/flaps</property>
+			<value>0.0</value>
+		</set>
+		<set>
+			<property>/controls/electric/battery-switch</property>
+			<value>1.0</value>
+		</set>
+    </init>
 
+	<!--
 	<step>
 		<message>Turn TAXI LIGHT ON.</message>
 		<exit>           
 			<condition>                   
-				<equals>
-					<property>/controls/lighting/taxi-light</property>
-					<value>1</value>
-				</equals>
+				<property>/controls/lighting/taxi-light</property>
 			</condition>
 		</exit>
 	</step>
+	-->
 
 	<step>
 		<message>Set flaps to 20.</message>
@@ -32,7 +50,7 @@ afraid to pause your sim between steps.
 	</step>
 
 	<step>
-		<message>Release parking brake and taxi to runway 28R</message>
+		<message>Release parking brake and taxi to runway 18L.</message>
 		<exit>
 			<condition>
 				<property>/controls/gear/brake-parking</property>
@@ -50,14 +68,8 @@ afraid to pause your sim between steps.
 		<exit>
 			<condition>   
 				<and>
-					<equals>    
-						<property>/controls/lighting/landing-lights</property>
-						<value>1</value>
-					</equals>
-					<equals> 
-						<property>/controls/lighting/strobe</property>
-						<value>1</value>
-					</equals>
+					<property>/controls/lighting/landing-lights</property>
+					<property>/controls/lighting/strobe</property>
 				</and>
 			</condition>
 		</exit>
@@ -82,24 +94,25 @@ afraid to pause your sim between steps.
 	</step>
 
 	<step>
-	<message>Ensure that F/D is ON, runway heading (283) is set in HDG, IAS is set to V2, LNAV and VNAV are armed, and that altitude is 10,000.</message>
+	<!--<message>Ensure that F/D is ON, runway heading (183) is set in HDG, IAS is set to V2, LNAV and VNAV are armed, and that altitude is 10,000.</message>-->
+	<message>Ensure that runway heading (183) is set in HDG, IAS is set to V2 and that altitude is 10,000.</message>
 		<exit>
-			<condition>  
-				<equals>    
-				<property>/autopilot/locks/passive-mode</property>
-				<value>1</value>
-				</equals>          
-				<equals>    
-				<property>/autopilot/settings/target/true-heading-deg</property>
-				<value>283</value>
+			<condition>
+				<equals>
+					<property>/autopilot/locks/passive-mode</property>
+					<value>1</value>
 				</equals>
-				<equals> 
-				<property>/autopilot/settings/target-speed-kt</property>
-				<value>185</value>
+				<equals>
+					<property>/autopilot/settings/target/true-heading-deg</property>
+					<value>183</value>
 				</equals>
-				<equals> 
-				<property>/autopilot/settings/target-altitude-feet</property>
-				<value>10000</value>
+				<equals>
+					<property>/autopilot/settings/target-speed-kt</property>
+					<property>/instrumentation/fmc/vspeeds/V2</property>
+				</equals>
+				<equals>
+					<property>/autopilot/settings/target-altitude-feet</property>
+					<value>10000</value>
 				</equals>
 			</condition>
 		</exit>
@@ -107,17 +120,35 @@ afraid to pause your sim between steps.
 
 	<step>
 		<message>At Rotate, slowly and smoothly pull back on the controls to become airborne.</message>
+		<exit>
+			<condition>
+				<greater-than>
+					<property>/position/altitude-agl-ft</property>
+					<value>25</value>
+				</greater-than>
+			</condition>
+		</exit>
 	</step>
 
+	<!--
 	<step>
-		<message>Adjust pitch and roll with the controls to center the flight director indictors.</message>
+		<message>Adjust pitch and roll with the controls to center the flight director indicators.</message>
+		<exit>
+			<condition>
+				<greater-than> 
+					<property>/velocities/vertical-speed-fps</property>
+					<value>8.3</value>
+				</greater-than>
+			</condition>
+		</exit>
 	</step>
+	-->
 
 	<step>
 		<message>As soon as you're clear of the runway and your climb rate is at least 500 feet per minute, set the landing gear to UP.</message>
 		<exit>
-			<condition>             
-				<equals> 
+			<condition>
+				<equals>
 					<property>/controls/gear/gear-down</property>
 					<value>0</value>
 				</equals>

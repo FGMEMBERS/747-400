@@ -128,16 +128,40 @@
         <iyz unit="SLUG*FT2"> 0 </iyz>
         <emptywt unit="LBS"> 259583  </emptywt> <!-- minus 2 wings and 4 engines -->
         <location name="CG" unit="M">
-            <x>-2.0 </x>
-            <y> 0   </y>
-            <z> 0   </z>
+            <x> -5.0 </x>
+            <y>  0   </y>
+            <z>  0   </z>
         </location>
-		<pointmass name="Passengers and crew">
-            <weight unit="LBS"> 88300 </weight> <!-- 420 passengers and baggage -->
+		<pointmass name="Passengers">
+            <weight unit="LBS"> 70000 </weight> <!-- 420 passengers -->
             <location name="POINTMASS" unit="M">
-            <x>-3.0 </x>
+            <x>-5.0 </x>
             <y> 0   </y>
             <z> 0   </z>
+            </location>
+        </pointmass>
+		<pointmass name="Forward Cargo">
+			<form shape="cylinder">
+               <radius unit="M"> 1 </radius>
+               <length unit="M"> 12 </length>
+            </form> 
+            <weight unit="LBS"> 56000 </weight> <!-- 8 full-width or 16 half-width containers -->
+            <location name="POINTMASS" unit="M">
+            <x>-12.6 </x>
+            <y>  0   </y>
+            <z> -1.2 </z>
+            </location>
+        </pointmass>
+		<pointmass name="Aft Cargo">
+			<form shape="cylinder">
+               <radius unit="M"> 1 </radius>
+               <length unit="M"> 12 </length>
+            </form> 
+            <weight unit="LBS"> 56000 </weight> <!-- 8 full-width or 16 half-width containers -->
+            <location name="POINTMASS" unit="M">
+            <x> 11.8 </x>
+            <y>  0   </y>
+            <z> -1.2 </z>
             </location>
         </pointmass>
 		<pointmass name="Left Wing">
@@ -901,17 +925,27 @@
             <output>fcs/flap-pos-deg</output>
         </kinematic>
         <aerosurface_scale name="Flap Position Normalizer">
-          <input>fcs/flap-pos-deg</input>
-          <domain>
-            <min>0</min>
-            <max>30</max>
-          </domain>
-          <range>
-            <min>0</min>
-            <max>1</max>
-          </range>
-          <output>fcs/flap-pos-norm</output>
+			<input>fcs/flap-pos-deg</input>
+			<domain>
+				<min>0</min>
+				<max>30</max>
+			</domain>
+			<range>
+				<min>0</min>
+				<max>1</max>
+			</range>
+			<output>fcs/flap-pos-norm</output>
         </aerosurface_scale>
+		
+		<fcs_function name="Flap Cmd Deg">
+			<function>
+				<product>
+					   <property>fcs/flap-cmd-norm</property>
+					   <value>30</value>
+				</product>
+				<output>fcs/flap-cmd-deg1</output>
+			</function>
+		</fcs_function>
 		
 		<kinematic name="gear/unit[0]/pos">
             <input>gear/unit[0]/pos-cmd-norm</input>
@@ -983,7 +1017,49 @@
             </traverse>
             <output>gear/unit[4]/pos-norm</output>
         </kinematic>
-
+		
+		<switch name="/controls/gear/tiller-disabled">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				/controls/gear/tiller-enabled == 0
+			</test>
+		</switch>
+		
+		<fcs_function name="Nose Wheel Steering 0">
+          <function name="fcs/steer-nose-deg[0]">
+            <description>Steering command for nose gear</description>
+			<sum>
+			  <product>
+			    <table>
+                   <independentVar lookup="row">/controls/gear/tiller-cmd-norm</independentVar>
+                   <independentVar lookup="column">/controls/flight/rudder</independentVar>
+                   <tableData>
+                      -1   0   1
+                  -1 -70 -70 -70
+                   0  -7   0   7
+                   1  70  70  70
+                   </tableData>
+                </table>
+				<property>/controls/gear/tiller-enabled</property>
+			  </product>
+			  <product>
+			    <product>
+                   <property>/controls/flight/rudder</property>
+                   <value>70</value>
+                </product>
+				<property>/controls/gear/tiller-disabled</property>
+			  </product>
+			</sum>
+          </function>
+        </fcs_function>
+		
+		<!-- simulate rotational friction -->
+        <actuator name="Gear Nose Actuator">
+          <input>fcs/steer-nose-deg[0]</input>
+          <rate_limit>70</rate_limit>
+          <output>fcs/steer-pos-deg[0]</output>
+        </actuator>
+		
         <fcs_function name="Rear Wheel Steering 2">
           <function name="fcs/steer-rear-deg[2]">
             <description>Steering command for left body gear</description>
@@ -1253,7 +1329,7 @@
                 <product>
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
-                    <property>fcs/elevator-pos-norm</property>
+                    <abs><property>fcs/elevator-pos-norm</property></abs>
                     <value>0.0550</value>
                 </product>
             </function>

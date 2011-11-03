@@ -54,8 +54,8 @@
 		</door>
 		<hide-yoke type="bool">0</hide-yoke>
 		<pushback>
-			<kp type="double">500</kp>
-			<ki type="double">25</ki>
+			<kp type="double">3000</kp>
+			<!--<ki type="double">250</ki>-->
 			<kd type="double">0</kd>
 			<position-norm type="double">0</position-norm>
 		</pushback>
@@ -337,6 +337,17 @@ left mouse button and counter clockwise using the middle mouse button.
 						<property>sim/model/hide-yoke</property>
 					</binding>
 				</item>
+				
+				<item>
+					<label>Tiller Steering</label>
+					<binding>
+						<command>nasal</command>
+						<script>
+							var mal = gui.Dialog.new("/sim/gui/dialogs/Boeing747/menu/dialog","Aircraft/747-400/Dialogs/tiller_steering-dialog.xml");
+							mal.open();
+						</script>
+					</binding>
+				</item>
 				 
 				<item>
 					<label>Yoke charts</label>
@@ -465,6 +476,8 @@ left mouse button and counter clockwise using the middle mouse button.
 
 	<gear>
 		<brake-parking>1</brake-parking>
+		<tiller-cmd-norm type="double">0</tiller-cmd-norm>
+        <tiller-enabled type="bool">false</tiller-enabled>
 		<gear n="0">
 			<tyre-smoke type="int">0</tyre-smoke>
 			<sprayspeed-ms type="double">0</sprayspeed-ms>
@@ -781,10 +794,22 @@ left mouse button and counter clockwise using the middle mouse button.
 
 <payload>
 	<weight>
-		<name type="string">Passengers with baggage</name>
+		<name type="string">Passengers</name>
 		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
-		<min-lb type="double">3000.0</min-lb>
-		<max-lb type="double">90000.0</max-lb>
+		<min-lb type="double">    0.0</min-lb>
+		<max-lb type="double">70000.0</max-lb>
+	</weight>
+	<weight>
+		<name type="string">Forward Cargo</name>
+		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
+		<min-lb type="double">    0.0</min-lb>
+		<max-lb type="double">56000.0</max-lb>
+	</weight>
+	<weight>
+		<name type="string">Aft Cargo</name>
+		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]"/>
+		<min-lb type="double">    0.0</min-lb>
+		<max-lb type="double">56000.0</max-lb>
 	</weight>
 </payload>
  

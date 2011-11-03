@@ -17,9 +17,9 @@
 			</images>
 		</texture>
 		<rainbowiness type="float">0</rainbowiness>
-		<fresneliness>0.1</fresneliness>
-		<refl_correction>0.1</refl_correction>
-		<ambient_correction>0.1</ambient_correction>
+		<fresneliness>0</fresneliness>
+		<refl_correction>0.0001</refl_correction>
+		<ambient_correction>0</ambient_correction>
 		<reflect_map>0</reflect_map>
 	</parameters>
 

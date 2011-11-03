@@ -52,9 +52,9 @@
 	<name>EICAS-upper</name>
 	<path>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/eicas_eng.xml</path>
 	<offsets>
-		<x-m>0.689</x-m>
+		<x-m>0.693</x-m>
 		<y-m>0</y-m>
-		<z-m>0.641</z-m>
+		<z-m>0.645</z-m>
 		<pitch-deg>-22</pitch-deg>
 	</offsets>
 	<condition>

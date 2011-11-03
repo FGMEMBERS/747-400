@@ -6,70 +6,6 @@
 
 <path>eicas_eng.ac</path>
 
-<!--
-<model>
-	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
-	<offsets>
-		<x-m> 0.008</x-m>
-		<y-m> 0.025</y-m>
-		<z-m> 0.090</z-m>
-	</offsets>
-	<overlay>
-		<params>
-			<property type="string">/instrumentation/eicas/msg/advisory</property>
-			<character-size type="double">0.007</character-size>
-			<color>
-				<red   type="double">0.8</red>
-				<green type="double">0.4</green>
-				<blue  type="double">0.0</blue>
-			</color>
-			<alignment>left-top</alignment>
-		</params>
-	</overlay>
-</model>
-
-<model>
-	<path>Aircraft/747-400/Models/Cockpit/OSGtext/display-text-value.xml</path>
-	<offsets>
-		<x-m> 0.008</x-m>
-		<y-m> 0.025</y-m>
-		<z-m> 0.090</z-m>
-	</offsets>
-	<overlay>
-		<params>
-			<property type="string">/instrumentation/eicas/msg/memo</property>
-			<character-size type="double">0.007</character-size>
-			<color>
-				<red   type="double">0.8</red>
-				<green type="double">0.8</green>
-				<blue  type="double">0.8</blue>
-			</color>
-			<alignment>left-top</alignment>
-		</params>
-	</overlay>
-</model>
-
-<model>
-	<path>Aircraft/747-400/Models/Cockpit/display-text-value.xml</path>
-	<offsets>
-		<x-m> 0.008</x-m>
-		<y-m> 0.025</y-m>
-		<z-m> 0.090</z-m>
-	</offsets>
-	<overlay>
-		<params>
-			<property>/instrumentation/eicas/msg/warning</property>
-			<character-size type="double">0.007</character-size>
-			<color>
-				<red   type="double">1.0</red>
-				<green type="double">0.0</green>
-				<blue  type="double">0.0</blue>
-			</color>
-			<alignment>left-top</alignment>
-		</params>
-	</overlay>
-</model>-->
-
 <panel>
 	<path>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/eicas-text-panel.xml</path>
 	<bottom-left>
@@ -89,138 +25,182 @@
 	</top-left>
 </panel>
 
-<!-- GEAR -->
-
 <animation>
- <type>select</type>
- <object-name>Gear.Annun</object-name>
- <condition>
-  <and>
-   <greater-than>
-      <property>/gear/gear[0]/position-norm</property>
-    <value>0.0</value>
-   </greater-than>
-   <greater-than>
-      <property>/gear/gear[1]/position-norm</property>
-    <value>0.0</value>
-   </greater-than>
-   <greater-than>
-      <property>/gear/gear[2]/position-norm</property>
-    <value>0.0</value>
-   </greater-than>
-   <greater-than>
-      <property>/gear/gear[3]/position-norm</property>
-    <value>0.0</value>
-   </greater-than>
-   <greater-than>
-      <property>/gear/gear[4]/position-norm</property>
-    <value>0.0</value>
-   </greater-than>
-  </and>
- </condition>
+	<type>select</type>
+	<object-name>flap.slider</object-name>
+	<object-name>flap-on</object-name>
+	<condition>
+		<greater-than>
+			<property>surface-positions/flap-pos-norm</property>
+			<value>0.0001</value>
+		</greater-than>
+	</condition>
 </animation>
 
 <animation>
- <type>select</type>
- <object-name>GearAnnun.ptr1</object-name>
- <condition>
-  <and>
-   <greater-than>
-      <property>/gear/gear[0]/position-norm</property>
-    <value>0.0</value>
-   </greater-than>
-   <greater-than>
-      <property>/gear/gear[1]/position-norm</property>
-    <value>0.0</value>
-   </greater-than>
-   <greater-than>
-      <property>/gear/gear[2]/position-norm</property>
-    <value>0.0</value>
-   </greater-than>
-   <greater-than>
-      <property>/gear/gear[3]/position-norm</property>
-    <value>0.0</value>
-   </greater-than>
-   <greater-than>
-      <property>/gear/gear[4]/position-norm</property>
-    <value>0.0</value>
-   </greater-than>
-   <less-than>
-      <property>/gear/gear[0]/position-norm</property>
-    <value>1.0</value>
-   </less-than>
-   <less-than>
-      <property>/gear/gear[1]/position-norm</property>
-    <value>1.0</value>
-   </less-than>
-   <less-than>
-      <property>/gear/gear[2]/position-norm</property>
-    <value>1.0</value>
-   </less-than>
-   <less-than>
-      <property>/gear/gear[3]/position-norm</property>
-    <value>1.0</value>
-   </less-than>
-   <less-than>
-      <property>/gear/gear[4]/position-norm</property>
-    <value>1.0</value>
-   </less-than>
-  </and>
- </condition>
+	<type>select</type>
+	<object-name>Gr-on</object-name>
+	<condition>
+		<greater-than>
+			<property>gear/gear[0]/position-norm</property>
+			<value>0.0001</value>
+		</greater-than>
+	</condition>
 </animation>
 
 <animation>
- <type>select</type>
- <object-name>GearAnnun.ptr2</object-name>
- <condition>
-  <and>
-   <equals>
-      <property>/gear/gear[0]/position-norm</property>
-    <value>1.0</value>
-   </equals>
-   <equals>
-      <property>/gear/gear[1]/position-norm</property>
-    <value>1.0</value>
-   </equals>
-   <equals>
-      <property>/gear/gear[2]/position-norm</property>
-    <value>1.0</value>
-   </equals>
-   <equals>
-      <property>/gear/gear[3]/position-norm</property>
-    <value>1.0</value>
-   </equals>
-   <equals>
-      <property>/gear/gear[4]/position-norm</property>
-    <value>1.0</value>
-   </equals>
-  </and>
- </condition>
-</animation>
-
-<!-- FLAPS -->
-
-<animation>
- <type>select</type>
- <object-name>FlapAnnun.ptr</object-name>
- <condition>
-  <greater-than>
-     <property>/surface-positions/flap-pos-norm</property>
-   <value>0.0</value>
-  </greater-than>
- </condition>
+	<type>select</type>
+	<object-name>gearlocked</object-name>
+	<condition>
+		<equals>
+			<property>gear/gear[0]/position-norm</property>
+			<value>1.0</value>
+		</equals>
+	</condition>
 </animation>
 
 <animation>
- <type>textranslate</type>
- <object-name>FlapAnnun.ptr</object-name>
-   <property>/surface-positions/flap-pos-norm</property>
- <factor>0.2118</factor>
- <axis>
-  <x>0</x>
-  <y>1</y>
-  <z>0</z>
- </axis>
+	<type>textranslate</type>
+	<object-name>flap.slider</object-name>
+	<property>surface-positions/flap-pos-norm</property>
+	<factor>0.2388</factor>
+	<axis>
+		<x>0</x>
+		<y>-1</y>
+		<z>0</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ind1.set</object-name>
+	<condition>
+		<equals>
+			<property>controls/flight/flaps</property>
+			<value>0.033</value>
+		</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ind5.set</object-name>
+	<condition>
+		<equals>
+			<property>controls/flight/flaps</property>
+			<value>0.167</value>
+		</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ind10.set</object-name>
+	<condition>
+		<equals>
+			<property>controls/flight/flaps</property>
+			<value>0.333</value>
+		</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ind20.set</object-name>
+	<condition>
+		<equals>
+			<property>controls/flight/flaps</property>
+			<value>0.667</value>
+		</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ind25.set</object-name>
+	<condition>
+		<equals>
+			<property>controls/flight/flaps</property>
+			<value>0.833</value>
+		</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ind30.set</object-name>
+	<condition>
+		<equals>
+			<property>controls/flight/flaps</property>
+			<value>1.0</value>
+		</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ind1.on</object-name>
+	<condition>
+		<equals>
+			<property>surface-positions/flap-pos-norm</property>
+			<value>0.033</value>
+		</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ind5.on</object-name>
+	<condition>
+		<equals>
+			<property>surface-positions/flap-pos-norm</property>
+			<value>0.167</value>
+		</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ind10.on</object-name>
+	<condition>
+		<equals>
+			<property>surface-positions/flap-pos-norm</property>
+			<value>0.333</value>
+		</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ind20.on</object-name>
+	<condition>
+		<equals>
+			<property>surface-positions/flap-pos-norm</property>
+			<value>0.667</value>
+		</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ind25.on</object-name>
+	<condition>
+		<equals>
+			<property>surface-positions/flap-pos-norm</property>
+			<value>0.833</value>
+		</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>ind30.on</object-name>
+	<condition>
+		<equals>
+			<property>surface-positions/flap-pos-norm</property>
+			<value>1.0</value>
+		</equals>
+	</condition>
 </animation>
 
 <!-- EPR -->
@@ -240,7 +220,7 @@
 			<format type="string">%01.2f</format>
 			<character-size type="double">0.008</character-size>
 			<color>
-				<red   type="double">0.0</red>
+				<red   type="double">0.35</red>
 				<green type="double">1.0</green>
 				<blue  type="double">0.0</blue>
 			</color>
@@ -297,7 +277,7 @@
 			<text>REV</text>
 			<character-size type="double">0.008</character-size>
 			<color>
-				<red   type="double">0.0</red>
+				<red   type="double">0.35</red>
 				<green type="double">1.0</green>
 				<blue  type="double">0.0</blue>
 			</color>
@@ -332,6 +312,17 @@
 	</overlay>
 </model>
 
+<animation>
+	<type>textranslate</type>
+	<object-name>epr.1</object-name>
+	<property>/engines/engine[0]/epr</property>
+	<factor>0.1194</factor>
+	<axis>
+		<x>0</x>
+		<y>-1</y>
+	</axis>
+</animation>
+
 <!-- ENGINE 2 -->
 
 <model>
@@ -348,7 +339,7 @@
 			<format type="string">%01.2f</format>
 			<character-size type="double">0.008</character-size>
 			<color>
-				<red   type="double">0.0</red>
+				<red   type="double">0.35</red>
 				<green type="double">1.0</green>
 				<blue  type="double">0.0</blue>
 			</color>
@@ -405,7 +396,7 @@
 			<text>REV</text>
 			<character-size type="double">0.008</character-size>
 			<color>
-				<red   type="double">0.0</red>
+				<red   type="double">0.35</red>
 				<green type="double">1.0</green>
 				<blue  type="double">0.0</blue>
 			</color>
@@ -440,6 +431,17 @@
 	</overlay>
 </model>
 
+<animation>
+	<type>textranslate</type>
+	<object-name>epr.2</object-name>
+	<property>/engines/engine[1]/epr</property>
+	<factor>0.1194</factor>
+	<axis>
+		<x>0</x>
+		<y>-1</y>
+	</axis>
+</animation>
+
 <!-- ENGINE 3 -->
 
 <model>
@@ -456,7 +458,7 @@
 			<format type="string">%01.2f</format>
 			<character-size type="double">0.008</character-size>
 			<color>
-				<red   type="double">0.0</red>
+				<red   type="double">0.35</red>
 				<green type="double">1.0</green>
 				<blue  type="double">0.0</blue>
 			</color>
@@ -513,7 +515,7 @@
 			<text>REV</text>
 			<character-size type="double">0.008</character-size>
 			<color>
-				<red   type="double">0.0</red>
+				<red   type="double">0.35</red>
 				<green type="double">1.0</green>
 				<blue  type="double">0.0</blue>
 			</color>
@@ -548,6 +550,17 @@
 	</overlay>
 </model>
 
+<animation>
+	<type>textranslate</type>
+	<object-name>epr.3</object-name>
+	<property>/engines/engine[2]/epr</property>
+	<factor>0.1194</factor>
+	<axis>
+		<x>0</x>
+		<y>-1</y>
+	</axis>
+</animation>
+
 <!-- ENGINE 4 --> 
 
 <model>
@@ -564,7 +577,7 @@
 			<format type="string">%01.2f</format>
 			<character-size type="double">0.008</character-size>
 			<color>
-				<red   type="double">0.0</red>
+				<red   type="double">0.35</red>
 				<green type="double">1.0</green>
 				<blue  type="double">0.0</blue>
 			</color>
@@ -621,7 +634,7 @@
 			<text>REV</text>
 			<character-size type="double">0.008</character-size>
 			<color>
-				<red   type="double">0.0</red>
+				<red   type="double">0.35</red>
 				<green type="double">1.0</green>
 				<blue  type="double">0.0</blue>
 			</color>
@@ -656,6 +669,17 @@
 	</overlay>
 </model>
 
+<animation>
+	<type>textranslate</type>
+	<object-name>epr.4</object-name>
+	<property>/engines/engine[3]/epr</property>
+	<factor>0.1194</factor>
+	<axis>
+		<x>0</x>
+		<y>-1</y>
+	</axis>
+</animation>
+
 <!-- N1 -->
 
 <!-- ENGINE 1 -->
@@ -681,6 +705,27 @@
 	</overlay>
 </model>
 
+<animation>
+	<type>textranslate</type>
+	<object-name>n1.1</object-name>
+	<property>/engines/engine[0]/n1</property>
+	<factor>0.00199</factor>
+	<axis>
+		<x>0</x>
+		<y>-1</y>
+	</axis>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>N1.cmd.1</object-name>
+	<property>/controls/engines/engine[0]/throttle</property>
+	<factor>0.032</factor>
+	<axis>
+		<z>1</z>
+	</axis>
+</animation>
+
 <!-- ENGINE 2 -->
 
 <model>
@@ -703,6 +748,27 @@
 		</params>
 	</overlay>
 </model>
+
+<animation>
+	<type>textranslate</type>
+	<object-name>n1.2</object-name>
+	<property>/engines/engine[1]/n1</property>
+	<factor>0.00199</factor>
+	<axis>
+		<x>0</x>
+		<y>-1</y>
+	</axis>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>N1.cmd.2</object-name>
+	<property>/controls/engines/engine[1]/throttle</property>
+	<factor>0.032</factor>
+	<axis>
+		<z>1</z>
+	</axis>
+</animation>
 
 <!-- ENGINE 3 -->
 
@@ -727,6 +793,27 @@
 	</overlay>
 </model>
 
+<animation>
+	<type>textranslate</type>
+	<object-name>n1.3</object-name>
+	<property>/engines/engine[2]/n1</property>
+	<factor>0.00199</factor>
+	<axis>
+		<x>0</x>
+		<y>-1</y>
+	</axis>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>N1.cmd.3</object-name>
+	<property>/controls/engines/engine[2]/throttle</property>
+	<factor>0.032</factor>
+	<axis>
+		<z>1</z>
+	</axis>
+</animation>
+
 <!-- ENGINE 4 -->
 
 <model>
@@ -749,6 +836,27 @@
 		</params>
 	</overlay>
 </model>
+
+<animation>
+	<type>textranslate</type>
+	<object-name>n1.4</object-name>
+	<property>/engines/engine[3]/n1</property>
+	<factor>0.00199</factor>
+	<axis>
+		<x>0</x>
+		<y>-1</y>
+	</axis>
+</animation>
+
+<animation>
+	<type>translate</type>
+	<object-name>N1.cmd.4</object-name>
+	<property>/controls/engines/engine[3]/throttle</property>
+	<factor>0.032</factor>
+	<axis>
+		<z>1</z>
+	</axis>
+</animation>
 
 <!-- EGT ENGINE 1 -->
 
@@ -773,6 +881,17 @@
 	</overlay>
 </model>
 
+<animation>
+	<type>textranslate</type>
+	<object-name>egt.1</object-name>
+	<property>/engines/engine[0]/egt-degf</property>
+	<factor>0.0001592</factor>
+	<axis>
+		<x>0</x>
+		<y>-1</y>
+	</axis>
+</animation>
+
 <!-- ENGINE 2 -->
 
 <model>
@@ -795,6 +914,17 @@
 		</params>
 	</overlay>
 </model>
+
+<animation>
+	<type>textranslate</type>
+	<object-name>egt.2</object-name>
+	<property>/engines/engine[1]/egt-degf</property>
+	<factor>0.0001592</factor>
+	<axis>
+		<x>0</x>
+		<y>-1</y>
+	</axis>
+</animation>
 
 <!-- ENGINE 3 -->
 
@@ -819,6 +949,17 @@
 	</overlay>
 </model>
 
+<animation>
+	<type>textranslate</type>
+	<object-name>egt.3</object-name>
+	<property>/engines/engine[2]/egt-degf</property>
+	<factor>0.0001592</factor>
+	<axis>
+		<x>0</x>
+		<y>-1</y>
+	</axis>
+</animation>
+
 <!-- ENGINE 4 -->
 
 <model>
@@ -841,6 +982,17 @@
 		</params>
 	</overlay>
 </model>
+
+<animation>
+	<type>textranslate</type>
+	<object-name>egt.4</object-name>
+	<property>/engines/engine[3]/egt-degf</property>
+	<factor>0.0001592</factor>
+	<axis>
+		<x>0</x>
+		<y>-1</y>
+	</axis>
+</animation>
 
 <!-- Total Fuel-->
 
@@ -888,284 +1040,5 @@
 		</params>
 	</overlay>
 </model>
-
-<!-- EPR --> 
-<!-- ENGINE 1 -->
-
- <animation>
- <type>textranslate</type>
- <object-name>EPR.001</object-name>
-   <property>/engines/engine[0]/epr</property>
-     <interpolation>
-    <entry>
-      <ind>1</ind>
-      <dep>0</dep>
-    </entry>
-    <entry>
-      <ind>2</ind>
-      <dep>-0.34</dep>
-    </entry>
-  </interpolation>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
-</animation>
-
-<!-- ENGINE 2 -->
-
- <animation>
- <type>textranslate</type>
- <object-name>EPR.002</object-name>
-   <property>/engines/engine[1]/epr</property>
-     <interpolation>
-    <entry>
-      <ind>1</ind>
-      <dep>0</dep>
-    </entry>
-    <entry>
-      <ind>2</ind>
-      <dep>-0.34</dep>
-    </entry>
-  </interpolation>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
-</animation>
-
-<!-- ENGINE 3 -->
-
- <animation>
- <type>textranslate</type>
- <object-name>EPR.003</object-name>
-   <property>/engines/engine[2]/epr</property>
-     <interpolation>
-    <entry>
-      <ind>1</ind>
-      <dep>0</dep>
-    </entry>
-    <entry>
-      <ind>2</ind>
-      <dep>-0.34</dep>
-    </entry>
-  </interpolation>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
-</animation>
-
-<!-- ENGINE 4 -->
-
- <animation>
- <type>textranslate</type>
- <object-name>EPR.004</object-name>
-   <property>/engines/engine[3]/epr</property>
-     <interpolation>
-    <entry>
-      <ind>1</ind>
-      <dep>0</dep>
-    </entry>
-    <entry>
-      <ind>2</ind>
-      <dep>-0.34</dep>
-    </entry>
-  </interpolation>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
-</animation>
-
-<!-- N1 --> 
-<!-- ENGINE 1 -->
-
- <animation>
- <type>textranslate</type>
- <object-name>N1.001</object-name>
-     <property>/engines/engine[0]/n1</property>
-   <interpolation>
-    <entry>
-      <ind>0</ind>
-      <dep>0</dep>
-    </entry>
-    <entry>
-      <ind>100</ind>
-      <dep>-0.24</dep>
-    </entry>
-   </interpolation>
- <axis>
-  <x>0</x>
-  <y>1</y>
-  <z>0</z>
- </axis>
-</animation>
-
-<!-- ENGINE 2 -->
-
- <animation>
- <type>textranslate</type>
- <object-name>N1.002</object-name>
-  <property>/engines/engine[1]/n1</property>
-     <interpolation>
-    <entry>
-      <ind>0</ind>
-      <dep>0</dep>
-    </entry>
-    <entry>
-      <ind>100</ind>
-      <dep>-0.24</dep>
-    </entry>
-  </interpolation>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
-</animation>
-
-<!-- ENGINE 3 -->
-
- <animation>
- <type>textranslate</type>
- <object-name>N1.003</object-name>
-  <property>/engines/engine[2]/n1</property>
-     <interpolation>
-    <entry>
-      <ind>0</ind>
-      <dep>0</dep>
-    </entry>
-    <entry>
-      <ind>100</ind>
-      <dep>-0.24</dep>
-    </entry>
-  </interpolation>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
-</animation>
-
-<!-- ENGINE 4 -->
-
- <animation>
- <type>textranslate</type>
- <object-name>N1.004</object-name>
-     <property>/engines/engine[3]/n1</property>
-   <interpolation>
-    <entry>
-      <ind>0</ind>
-      <dep>0</dep>
-    </entry>
-    <entry>
-      <ind>100</ind>
-      <dep>-0.24</dep>
-    </entry>
-  </interpolation>
-   <axis>
-     <x>0</x>
-     <y>1</y>
-     <z>0</z>
-   </axis>
-</animation>
-
-<!-- EGT -->
-<!-- ENGINE 1 -->
-
- <animation>
- <type>textranslate</type>
- <object-name>EGT.001</object-name>
-     <property>/engines/engine[0]/egt-degf</property>
-   <interpolation>
-    <entry>
-      <ind>0</ind>
-      <dep>0</dep>
-    </entry>
-    <entry>
-      <ind>15000</ind>
-      <dep>-1.9</dep>
-    </entry>
-   </interpolation>
- <axis>
-  <x>0</x>
-  <y>1</y>
-  <z>0</z>
- </axis>
-</animation>
-
-<!-- ENGINE 2 -->
-
- <animation>
- <type>textranslate</type>
- <object-name>EGT.002</object-name>
-     <property>/engines/engine[1]/egt-degf</property>
-   <interpolation>
-    <entry>
-      <ind>0</ind>
-      <dep>0</dep>
-    </entry>
-    <entry>
-      <ind>15000</ind>
-      <dep>-1.9</dep>
-    </entry>
-   </interpolation>
- <axis>
-  <x>0</x>
-  <y>1</y>
-  <z>0</z>
- </axis>
-</animation>
-
-<!-- ENGINE 3 -->
-
- <animation>
- <type>textranslate</type>
- <object-name>EGT.003</object-name>
-     <property>/engines/engine[2]/egt-degf</property>
-   <interpolation>
-    <entry>
-      <ind>0</ind>
-      <dep>0</dep>
-    </entry>
-    <entry>
-      <ind>15000</ind>
-      <dep>-1.9</dep>
-    </entry>
-   </interpolation>
- <axis>
-  <x>0</x>
-  <y>1</y>
-  <z>0</z>
- </axis>
-</animation>
-
-<!-- ENGINE 4 -->
-
- <animation>
- <type>textranslate</type>
- <object-name>EGT.004</object-name>
-     <property>/engines/engine[3]/egt-degf</property>
-   <interpolation>
-    <entry>
-      <ind>0</ind>
-      <dep>0</dep>
-    </entry>
-    <entry>
-      <ind>15000</ind>
-      <dep>-1.9</dep>
-    </entry>
-   </interpolation>
- <axis>
-  <x>0</x>
-  <y>1</y>
-  <z>0</z>
- </axis>
-</animation>
 
 </PropertyList>
