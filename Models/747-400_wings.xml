@@ -172,9 +172,8 @@
 	</condition>
 </animation>
 
-<!--
 <effect>
-	<inherits-from>Effects/744reflect</inherits-from>
+	<inherits-from>Effects/747-400</inherits-from>
 	<object-name>eng.1_1_1</object-name>
 	<object-name>eng.2_1_1</object-name>
 	<object-name>eng.3_1_1</object-name>
@@ -264,7 +263,6 @@
 	<object-name>LEinbL.3</object-name>
 	<object-name>fueldump.1</object-name>
 </effect>
--->
 
 <!-- WING FLEX RIGHT -->
 
