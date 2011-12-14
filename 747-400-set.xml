@@ -11,7 +11,7 @@
 		<cockpit type="int">3</cockpit>
 		<model type="int">3</model>
 	</rating>
-	<version>20111002</version>
+	<version>20111214</version>
 	
 	<flight-model>jsb</flight-model>
 	<aero>747-400</aero>
@@ -753,12 +753,10 @@ left mouse button and counter clockwise using the middle mouse button.
 	<Boeing747>
 		<file>Aircraft/747-400/Nasal/autopilot.nas</file>
 		<file>Aircraft/747-400/Nasal/autopilot-routemanager.nas</file>
-		<file>Aircraft/747-400/Nasal/brakesystem.nas</file>
 		<file>Aircraft/747-400/Nasal/copilot.nas</file>
 		<file>Aircraft/747-400/Nasal/doors.nas</file>
 		<file>Aircraft/747-400/Nasal/eicas.nas</file>
 		<file>Aircraft/747-400/Nasal/system.nas</file>
-		<file>Aircraft/747-400/Nasal/tyresmoke.nas</file>
 		<file>Aircraft/747-400/Nasal/vspeeds.nas</file>
 		<file>Aircraft/747-400/Nasal/wipers.nas</file>
 		<file>Aircraft/Generic/limits.nas</file>

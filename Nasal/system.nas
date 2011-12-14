@@ -159,4 +159,6 @@ controls.click = func {
 }
 
 ## Yoke charts ##
-setprop("/instrumentation/groundradar/id", getprop("/sim/airport/closest-airport-id"));
+_setlistener("/sim/signals/fdm-initialized", func {
+	setprop("/instrumentation/groundradar/id", getprop("/sim/airport/closest-airport-id"));
+});
