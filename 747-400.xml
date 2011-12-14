@@ -54,8 +54,8 @@
           Gear stearing.
           Tanks typical quantities.
         </documentation>
-		
-		<reference
+        
+        <reference
           refID=""
           author="The Boeing Company"
           title="747-469/-4F6 Flight Crew Operations Manual, Philipine Airlines"
@@ -117,8 +117,8 @@
         <documentation>
           - operational empty weight = 394088 lb
           - empty CG at 23 % MAC (no payload)
-			
-			inertia from http://www.wseas.us/e-library/conferences/2007istanbul/papers/557-095.pdf
+            
+            inertia from http://www.wseas.us/e-library/conferences/2007istanbul/papers/557-095.pdf
         </documentation>
         <ixx unit="SLUG*FT2"> 1.82e+07 </ixx>
         <iyy unit="SLUG*FT2"> 3.31e+07 </iyy>
@@ -132,7 +132,7 @@
             <y>  0   </y>
             <z>  0   </z>
         </location>
-		<pointmass name="Passengers">
+        <pointmass name="Passengers">
             <weight unit="LBS"> 70000 </weight> <!-- 420 passengers -->
             <location name="POINTMASS" unit="M">
             <x>-5.0 </x>
@@ -140,8 +140,8 @@
             <z> 0   </z>
             </location>
         </pointmass>
-		<pointmass name="Forward Cargo">
-			<form shape="cylinder">
+        <pointmass name="Forward Cargo">
+            <form shape="cylinder">
                <radius unit="M"> 1 </radius>
                <length unit="M"> 12 </length>
             </form> 
@@ -152,8 +152,8 @@
             <z> -1.2 </z>
             </location>
         </pointmass>
-		<pointmass name="Aft Cargo">
-			<form shape="cylinder">
+        <pointmass name="Aft Cargo">
+            <form shape="cylinder">
                <radius unit="M"> 1 </radius>
                <length unit="M"> 12 </length>
             </form> 
@@ -164,7 +164,7 @@
             <z> -1.2 </z>
             </location>
         </pointmass>
-		<pointmass name="Left Wing">
+        <pointmass name="Left Wing">
             <weight unit="LBS"> 47500 </weight>
             <location name="POINTMASS" unit="M">
             <x>  2.65 </x>
@@ -172,7 +172,7 @@
             <z> -0.45 </z>
             </location>
         </pointmass>
-		<pointmass name="Right Wing">
+        <pointmass name="Right Wing">
             <weight unit="LBS"> 47500 </weight>
             <location name="POINTMASS" unit="M">
             <x> 2.65 </x>
@@ -180,7 +180,7 @@
             <z>-0.45 </z>
             </location>
         </pointmass>
-		<pointmass name="Engine 1">
+        <pointmass name="Engine 1">
             <weight unit="LBS"> 9670 </weight>
             <location name="POINTMASS" unit="M">
             <x>  6.02 </x>
@@ -188,7 +188,7 @@
             <z> -1.98 </z>
             </location>
         </pointmass>
-		<pointmass name="Engine 2">
+        <pointmass name="Engine 2">
             <weight unit="LBS"> 9670 </weight>
             <location name="POINTMASS" unit="M">
             <x> -1.48 </x>
@@ -196,7 +196,7 @@
             <z> -2.59 </z>
             </location>
         </pointmass>
-		<pointmass name="Engine 3">
+        <pointmass name="Engine 3">
             <weight unit="LBS"> 9670 </weight>
             <location name="POINTMASS" unit="M">
             <x>-1.48 </x>
@@ -204,7 +204,7 @@
             <z>-2.59 </z>
             </location>
         </pointmass>
-		<pointmass name="Engine 4">
+        <pointmass name="Engine 4">
             <weight unit="LBS"> 9670 </weight>
             <location name="POINTMASS" unit="M">
             <x> 6.02 </x>
@@ -509,8 +509,8 @@
                 </orient>
             </thruster>
         </engine>
-		
-	    <engine file="APU_PW901">
+        
+        <engine file="APU_PW901">
             <location unit="IN">
                 <x> 100 </x>
                 <y> 0 </y>
@@ -555,8 +555,8 @@
             <capacity unit="LBS"> 114972.0 </capacity>
             <contents unit="LBS"> 114972.0 </contents>
         </tank>
-		
-		<tank type="FUEL">    <!-- Tank number 1 == main #1--> 
+        
+        <tank type="FUEL">    <!-- Tank number 1 == main #1--> 
             <location unit="M">
                 <x>  7.8 </x>
                 <y>-17.1 </y>
@@ -595,7 +595,7 @@
             <capacity unit="LBS"> 30029.0 </capacity>
             <contents unit="LBS"> 30029.0 </contents>
         </tank>
-		
+        
         <tank type="FUEL">    <!-- Tank number 5 == resesrve #2--> 
             <location unit="M">
                 <x> 14.0 </x>
@@ -629,10 +629,10 @@
 
     <system file="failures"/>
     <system file="flaps"/>
-	<system file="fuel"/>
-	<!-- <system file="gear"/> -->
+    <system file="fuel"/>
+    <!-- <system file="gear"/> -->
     <system file="pushback"/>
-	<system file="wingflex"/>
+    <system file="wingflex"/>
 
     <flight_control name="747-400">
     <property>fcs/LE-flap-cmd-norm</property>
@@ -653,7 +653,7 @@
             <range>
                 <!--<min>-0.26</min>
                 <max>0.44</max>-->
-				<min>-0.26</min>
+                <min>-0.26</min>
                 <max>0.44</max>
             </range>
             <output>fcs/elevator-pos-rad</output>
@@ -678,28 +678,28 @@
                 <max>1</max>
             </clipto>
         </summer>
-		
-		<summer name="Left Spoiler">
-			<input>/controls/flight/speedbrake</input>
+        
+        <summer name="Left Spoiler">
+            <input>/controls/flight/speedbrake</input>
             <input>-fcs/left-inboard-aileron-pos-rad</input>
             <clipto>
                 <min>0</min>
                 <max>1</max>
             </clipto>
-			<output>fcs/left-spoiler-pos-norm</output>
-			<output>/surface-positions/left-spoiler-pos-norm</output>
-		</summer>
-		
-		<summer name="Right Spoiler">
-			<input>/controls/flight/speedbrake</input>
+            <output>fcs/left-spoiler-pos-norm</output>
+            <output>/surface-positions/left-spoiler-pos-norm</output>
+        </summer>
+        
+        <summer name="Right Spoiler">
+            <input>/controls/flight/speedbrake</input>
             <input>fcs/right-inboard-aileron-pos-rad</input>
             <clipto>
                 <min>0</min>
                 <max>1</max>
             </clipto>
-			<output>fcs/right-spoiler-pos-norm</output>
-			<output>/surface-positions/right-spoiler-pos-norm</output>
-		</summer>
+            <output>fcs/right-spoiler-pos-norm</output>
+            <output>/surface-positions/right-spoiler-pos-norm</output>
+        </summer>
 
         <aerosurface_scale name="Left Outboard Aileron Control">
             <input>fcs/roll-trim-sum</input>
@@ -716,10 +716,10 @@
                 <max>1</max>
             </range>
             <output>fcs/left-outboard-aileron-pos-norm</output>
-			<output>/surface-positions/left-outboard-aileron-pos-norm</output>
+            <output>/surface-positions/left-outboard-aileron-pos-norm</output>
         </aerosurface_scale>
-		
-		<aerosurface_scale name="Right Outboard Aileron Control">
+        
+        <aerosurface_scale name="Right Outboard Aileron Control">
             <input>fcs/roll-trim-sum</input>
             <range>
                 <min>-0.61</min>
@@ -734,23 +734,23 @@
                 <max>1</max>
             </range>
             <output>fcs/right-outboard-aileron-pos-norm</output>
-			<output>/surface-positions/right-outboard-aileron-pos-norm</output>
+            <output>/surface-positions/right-outboard-aileron-pos-norm</output>
         </aerosurface_scale>
-		
-		<switch name="fcs/outboard-ailerons-lockout">
-			<default value="1"/>
+        
+        <switch name="fcs/outboard-ailerons-lockout">
+            <default value="1"/>
             <test  logic="AND" value="0">
                 velocities/vc-kts > 238
-				/controls/flight/flaps == 0
+                /controls/flight/flaps == 0
             </test>
-			<test  logic="AND" value="0">
-				velocities/mach > 0.53
-				/controls/flight/flaps == 0
+            <test  logic="AND" value="0">
+                velocities/mach > 0.53
+                /controls/flight/flaps == 0
             </test>
-			<output>fcs/outboard-ailerons-unlocked</output>
-		</switch>
-		
-		<aerosurface_scale name="Left Inboard Aileron Control">
+            <output>fcs/outboard-ailerons-unlocked</output>
+        </switch>
+        
+        <aerosurface_scale name="Left Inboard Aileron Control">
             <input>fcs/roll-trim-sum</input>
             <range>
                 <min>-0.61</min>
@@ -765,10 +765,10 @@
                 <max>1</max>
             </range>
             <output>fcs/left-inboard-aileron-pos-norm</output>
-			<output>/surface-positions/left-inboard-aileron-pos-norm</output>
+            <output>/surface-positions/left-inboard-aileron-pos-norm</output>
         </aerosurface_scale>
-		
-		<aerosurface_scale name="Right Inboard Aileron Control">
+        
+        <aerosurface_scale name="Right Inboard Aileron Control">
             <input>fcs/roll-trim-sum</input>
             <range>
                 <min>-0.61</min>
@@ -783,28 +783,28 @@
                 <max>1</max>
             </range>
             <output>fcs/right-inboard-aileron-pos-norm</output>
-			<output>/surface-positions/right-inboard-aileron-pos-norm</output>
+            <output>/surface-positions/right-inboard-aileron-pos-norm</output>
         </aerosurface_scale>
-		
-		<fcs_function name="Average Aileron Deflection">
-			<function name="fcs/total-aileron-pos-rad">
+        
+        <fcs_function name="Average Aileron Deflection">
+            <function name="fcs/total-aileron-pos-rad">
                 <description>Average_aileron_pos_rad</description>
                 <avg>
-					<product>
-						<property>fcs/left-outboard-aileron-pos-rad</property>
-						<property>fcs/outboard-ailerons-unlocked</property>
-					</product>
-					<property>fcs/left-spoiler-pos-norm</property>
+                    <product>
+                        <property>fcs/left-outboard-aileron-pos-rad</property>
+                        <property>fcs/outboard-ailerons-unlocked</property>
+                    </product>
+                    <property>fcs/left-spoiler-pos-norm</property>
                     <property>fcs/left-inboard-aileron-pos-rad</property>
                     <property>fcs/right-inboard-aileron-pos-rad</property>
-					<property>fcs/right-spoiler-pos-norm</property>
-					<product>
-						<property>fcs/right-outboard-aileron-pos-rad</property>
-						<property>fcs/outboard-ailerons-unlocked</property>
-					</product>
+                    <property>fcs/right-spoiler-pos-norm</property>
+                    <product>
+                        <property>fcs/right-outboard-aileron-pos-rad</property>
+                        <property>fcs/outboard-ailerons-unlocked</property>
+                    </product>
                 </avg>
-			</function>
-			<output>fcs/aileron-pos-rad</output>
+            </function>
+            <output>fcs/aileron-pos-rad</output>
         </fcs_function>
 
      </channel>
@@ -824,8 +824,8 @@
             <table>
                 <independentVar>aero/qbar-psf</independentVar>
                 <tableData>
-                    3.0000	0.0000	
-                    11.0000	2.0000	
+                    3.0000    0.0000    
+                    11.0000    2.0000    
                 </tableData>
             </table>
         </scheduled_gain>
@@ -835,8 +835,8 @@
             <table>
                 <independentVar>aero/qbar-psf</independentVar>
                 <tableData>
-                    3.0000	0.0000	
-                    11.0000	0.0000	
+                    3.0000    0.0000    
+                    11.0000    0.0000    
                 </tableData>
             </table>
         </scheduled_gain>
@@ -855,8 +855,8 @@
             <table>
                 <independentVar>aero/qbar-psf</independentVar>
                 <tableData>
-                    2.9900	0.0000	
-                    3.0000	1.0000	
+                    2.9900    0.0000    
+                    3.0000    1.0000    
                 </tableData>
             </table>
         </scheduled_gain>
@@ -925,29 +925,29 @@
             <output>fcs/flap-pos-deg</output>
         </kinematic>
         <aerosurface_scale name="Flap Position Normalizer">
-			<input>fcs/flap-pos-deg</input>
-			<domain>
-				<min>0</min>
-				<max>30</max>
-			</domain>
-			<range>
-				<min>0</min>
-				<max>1</max>
-			</range>
-			<output>fcs/flap-pos-norm</output>
+            <input>fcs/flap-pos-deg</input>
+            <domain>
+                <min>0</min>
+                <max>30</max>
+            </domain>
+            <range>
+                <min>0</min>
+                <max>1</max>
+            </range>
+            <output>fcs/flap-pos-norm</output>
         </aerosurface_scale>
-		
-		<fcs_function name="Flap Cmd Deg">
-			<function>
-				<product>
-					   <property>fcs/flap-cmd-norm</property>
-					   <value>30</value>
-				</product>
-				<output>fcs/flap-cmd-deg1</output>
-			</function>
-		</fcs_function>
-		
-		<kinematic name="gear/unit[0]/pos">
+        
+        <fcs_function name="Flap Cmd Deg">
+            <function>
+                <product>
+                       <property>fcs/flap-cmd-norm</property>
+                       <value>30</value>
+                </product>
+            </function>
+            <output>fcs/flap-cmd-deg1</output>
+        </fcs_function>
+        
+        <kinematic name="gear/unit[0]/pos">
             <input>gear/unit[0]/pos-cmd-norm</input>
             <traverse>
                 <setting>
@@ -959,9 +959,9 @@
                     <time>25.0000</time>
                 </setting>
             </traverse>
-			<output>gear/unit[0]/pos-norm</output>
+            <output>gear/unit[0]/pos-norm</output>
         </kinematic>
-		<kinematic name="gear/unit[1]/pos">
+        <kinematic name="gear/unit[1]/pos">
             <input>gear/unit[1]/pos-cmd-norm</input>
             <traverse>
                 <setting>
@@ -975,7 +975,7 @@
             </traverse>
             <output>gear/unit[1]/pos-norm</output>
         </kinematic>
-		<kinematic name="gear/unit[2]/pos">
+        <kinematic name="gear/unit[2]/pos">
             <input>gear/unit[2]/pos-cmd-norm</input>
             <traverse>
                 <setting>
@@ -989,7 +989,7 @@
             </traverse>
             <output>gear/unit[2]/pos-norm</output>
         </kinematic>
-		<kinematic name="gear/unit[3]/pos">
+        <kinematic name="gear/unit[3]/pos">
             <input>gear/unit[3]/pos-cmd-norm</input>
             <traverse>
                 <setting>
@@ -1003,7 +1003,7 @@
             </traverse>
             <output>gear/unit[3]/pos-norm</output>
         </kinematic>
-		<kinematic name="gear/unit[4]/pos">
+        <kinematic name="gear/unit[4]/pos">
             <input>gear/unit[4]/pos-cmd-norm</input>
             <traverse>
                 <setting>
@@ -1017,20 +1017,20 @@
             </traverse>
             <output>gear/unit[4]/pos-norm</output>
         </kinematic>
-		
-		<switch name="/controls/gear/tiller-disabled">
-			<default value="0"/>
-			<test logic="AND" value="1">
-				/controls/gear/tiller-enabled == 0
-			</test>
-		</switch>
-		
-		<fcs_function name="Nose Wheel Steering 0">
+        
+        <switch name="/controls/gear/tiller-disabled">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                /controls/gear/tiller-enabled == 0
+            </test>
+        </switch>
+        
+        <fcs_function name="Nose Wheel Steering 0">
           <function name="fcs/steer-nose-deg[0]">
             <description>Steering command for nose gear</description>
-			<sum>
-			  <product>
-			    <table>
+            <sum>
+              <product>
+                <table>
                    <independentVar lookup="row">/controls/gear/tiller-cmd-norm</independentVar>
                    <independentVar lookup="column">/controls/flight/rudder</independentVar>
                    <tableData>
@@ -1040,26 +1040,26 @@
                    1  70  70  70
                    </tableData>
                 </table>
-				<property>/controls/gear/tiller-enabled</property>
-			  </product>
-			  <product>
-			    <product>
+                <property>/controls/gear/tiller-enabled</property>
+              </product>
+              <product>
+                <product>
                    <property>/controls/flight/rudder</property>
                    <value>70</value>
                 </product>
-				<property>/controls/gear/tiller-disabled</property>
-			  </product>
-			</sum>
+                <property>/controls/gear/tiller-disabled</property>
+              </product>
+            </sum>
           </function>
         </fcs_function>
-		
-		<!-- simulate rotational friction -->
+        
+        <!-- simulate rotational friction -->
         <actuator name="Gear Nose Actuator">
           <input>fcs/steer-nose-deg[0]</input>
           <rate_limit>70</rate_limit>
           <output>fcs/steer-pos-deg[0]</output>
         </actuator>
-		
+        
         <fcs_function name="Rear Wheel Steering 2">
           <function name="fcs/steer-rear-deg[2]">
             <description>Steering command for left body gear</description>
@@ -1081,7 +1081,7 @@
           </function>
           <output>fcs/steer-pos-deg[2]</output>
         </fcs_function>
-		
+        
         <fcs_function name="Rear Wheel Steering 3">
           <function name="fcs/steer-rear-deg[3]">
             <description>Steering command for right body gear</description>
@@ -1205,11 +1205,11 @@
                   <table>
                       <independentVar>aero/h_b-mac-ft</independentVar>
                       <tableData>
-                          0.0000	1.2000	
-                          0.1000	1.1500	
-                          0.1500	1.0900	
-                          0.2000	1.0200	
-                          1.1000	1.0000	
+                          0.0000    1.2000    
+                          0.1000    1.1500    
+                          0.1500    1.0900    
+                          0.2000    1.0200    
+                          1.1000    1.0000    
                       </tableData>
                   </table>
             </product>
@@ -1224,11 +1224,11 @@
                       <table>
                           <independentVar>aero/alpha-rad</independentVar>
                           <tableData>
-                             -1.5700	1.5000	
-                             -0.2600	0.0340	
-                              0.0000	0.0170	
-                              0.2600	0.0340	
-                              1.5700	1.5000	
+                             -1.5700    1.5000    
+                             -0.2600    0.0340    
+                              0.0000    0.0170    
+                              0.2600    0.0340    
+                              1.5700    1.5000    
                           </tableData>
                       </table>
                 </product>
@@ -1250,10 +1250,10 @@
                       <table>
                           <independentVar>velocities/mach</independentVar>
                           <tableData>
-                              0.0000	0.0000	
-                              0.7900	0.0000	
-                              1.1000	0.0230	
-                              1.8000	0.0150	
+                              0.0000    0.0000    
+                              0.7900    0.0000    
+                              1.1000    0.0230    
+                              1.8000    0.0150    
                           </tableData>
                       </table>
                 </product>
@@ -1268,7 +1268,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/flap-pos-norm</property>
-					<property>fcs/failures-wings-lift</property>
+                    <property>fcs/failures-wings-lift</property>
                     <value>0.0500</value>
                 </product>
             </function>
@@ -1281,7 +1281,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/LE-flap-pos-norm</property>
-					<property>fcs/failures-wings-lift</property>
+                    <property>fcs/failures-wings-lift</property>
                     <value>0.0050</value>
                 </product>
             </function>
@@ -1303,7 +1303,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/speedbrake-pos-norm</property>
-					<property>fcs/failures-wings-lift</property>
+                    <property>fcs/failures-wings-lift</property>
                     <value>0.02</value>
                 </product>
             </function>
@@ -1315,11 +1315,11 @@
                       <table>
                           <independentVar>aero/beta-rad</independentVar>
                           <tableData>
-                              -1.5700	1.2300	
-                              -0.2600	0.0500	
-                              0.0000	0.0000	
-                              0.2600	0.0500	
-                              1.5700	1.2300	
+                              -1.5700    1.2300    
+                              -0.2600    0.0500    
+                              0.0000    0.0000    
+                              0.2600    0.0500    
+                              1.5700    1.2300    
                           </tableData>
                       </table>
                 </product>
@@ -1362,11 +1362,11 @@
                           <independentVar lookup="row">aero/alpha-rad</independentVar>
                           <independentVar lookup="column">velocities/mach</independentVar>
                           <tableData>
-                                       0.2000   0.6000	
-                             -0.200   -0.3400  -0.6800	
-                              0.0000   0.0000   0.2000	
-                              0.2300   0.6000   1.2000	
-                              0.6000   0.3000   0.6000	
+                                       0.2000   0.6000    
+                             -0.200   -0.3400  -0.6800    
+                              0.0000   0.0000   0.2000    
+                              0.2300   0.6000   1.2000    
+                              0.6000   0.3000   0.6000    
                           </tableData>
                       </table>
                 </product>
@@ -1383,7 +1383,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/LE-flap-pos-norm</property>
-					<property>fcs/failures-wings-lift</property>
+                    <property>fcs/failures-wings-lift</property>
                       <table>
                           <independentVar>aero/alpha-rad</independentVar>
                           <tableData>
@@ -1410,13 +1410,13 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>aero/function/kCLge</property>
-					<property>fcs/failures-wings-lift</property>
+                    <property>fcs/failures-wings-lift</property>
                       <table>
                           <independentVar>fcs/flap-pos-deg</independentVar>
                           <tableData>
-                              0.0000	0.0000	
-                              20.0000	1.0000	
-                              30.0000	0.9100	
+                              0.0000    0.0000    
+                              20.0000    1.0000    
+                              30.0000    0.9100    
                           </tableData>
                       </table>
                 </product>
@@ -1431,7 +1431,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/speedbrake-pos-norm</property>
-					<property>fcs/failures-wings-lift</property>
+                    <property>fcs/failures-wings-lift</property>
                     <value>0.0000</value>
                 </product>
             </function>
@@ -1445,7 +1445,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/spoiler-pos-norm</property>
-					<property>fcs/failures-wings-lift</property>
+                    <property>fcs/failures-wings-lift</property>
                     <value>-1.0000</value>
                 </product>
             </function>
@@ -1503,8 +1503,8 @@
                       <table>
                           <independentVar>velocities/mach</independentVar>
                           <tableData>
-                              0.0000	0.1000	
-                              2.0000	0.0330	
+                              0.0000    0.1000    
+                              2.0000    0.0330    
                           </tableData>
                       </table>
                 </product>
@@ -1542,8 +1542,8 @@
                       <table>
                           <independentVar>velocities/mach</independentVar>
                           <tableData>
-                              0.0000	-1.3000	
-                              2.0000	-0.3250	
+                              0.0000    -1.3000    
+                              2.0000    -0.3250    
                           </tableData>
                       </table>
                 </product>
