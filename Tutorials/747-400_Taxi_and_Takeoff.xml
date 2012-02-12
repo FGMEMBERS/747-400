@@ -53,8 +53,10 @@
 		<message>Release parking brake and taxi to runway 18L.</message>
 		<exit>
 			<condition>
-				<property>/controls/gear/brake-parking</property>
-				<value>0</value>		
+				<equals>         
+                                        <property>/controls/gear/brake-parking</property>
+                                        <value>0</value>		
+                                </equals>         
 			</condition>
 		</exit>
 	</step>

@@ -91,10 +91,10 @@ You just stepped through the cockpit door of the cold and dark 747-400, the most
 		<message>Turn the ENGINE hydraulic pump selectors ON.</message>
 		<exit>
 			<condition>
-				<property>/controls/hydraulic/system/engine-pump</property>
-				<property>/controls/hydraulic/system[1]/engine-pump</property>
-				<property>/controls/hydraulic/system[2]/engine-pump</property>
-				<property>/controls/hydraulic/system[3]/engine-pump</property>
+				<property>/controls/hydraulic/engine-pump</property>
+				<property>/controls/hydraulic/engine-pump[1]</property>
+				<property>/controls/hydraulic/engine-pump[2]</property>
+				<property>/controls/hydraulic/engine-pump[3]</property>
 			</condition>
 		</exit>
     </step>
@@ -136,6 +136,7 @@ You just stepped through the cockpit door of the cold and dark 747-400, the most
 		</exit>
     </step>
 
+	<!--
     <step>
 		<message>Turn on the LOGO lights.</message>
 		<exit>
@@ -145,7 +146,6 @@ You just stepped through the cockpit door of the cold and dark 747-400, the most
 		</exit>
     </step>
 
-	<!--
     <step>
 		<message>Turn on the WING lights.</message>
     </step>
@@ -185,6 +185,7 @@ You just stepped through the cockpit door of the cold and dark 747-400, the most
 		</exit>
     </step>
 
+                                        <!--
     <step>
 		<message>Ensure all fuel pumps are OFF.</message>
 		<exit>
@@ -192,44 +193,45 @@ You just stepped through the cockpit door of the cold and dark 747-400, the most
 				<and>
 					<equals>       
 						<property>/controls/fuel/tank[1]/pump-fwd</property>
-						<value>0</value>
+						<value>false</value>
 					</equals>
 					<equals>       
 						<property>/controls/fuel/tank[1]/pump-aft</property>
-						<value>0</value>
+						<value>false</value>
 					</equals>
 					<equals>       
 						<property>/controls/fuel/tank[2]/pump-fwd</property>
-						<value>0</value>
+						<value>false</value>
 					</equals>
 					<equals>       
 						<property>/controls/fuel/tank[2]/pump-aft</property>
-						<value>0</value>
+						<value>false</value>
 					</equals>       
 					<equals>       
 						<property>/controls/fuel/tank[3]/pump-fwd</property>
-						<value>0</value>
+						<value>false</value>
 					</equals>
 					<equals>       
 						<property>/controls/fuel/tank[3]/pump-aft</property>
-						<value>0</value>
+						<value>false</value>
 					</equals>       
 					<equals>       
 						<property>/controls/fuel/tank[4]/pump-fwd</property>
-						<value>0</value>
+						<value>false</value>
 					</equals>
 					<equals>       
 						<property>/controls/fuel/tank[4]/pump-aft</property>
-						<value>0</value>
+						<value>false</value>
 					</equals>
 					<equals>       
 						<property>/controls/fuel/tank[7]/pump</property>
-						<value>0</value>
+						<value>false</value>
 					</equals>
 				</and>
 			</condition>
 		</exit>
     </step>
+                                        -->
 
     <step>
 		<message>Disable NACELLE and WING ANTI-ICE.</message>
@@ -440,7 +442,7 @@ You just stepped through the cockpit door of the cold and dark 747-400, the most
 		<exit>
 			<condition> 
 				<property>/controls/engines/engine[0]/cutoff</property> 
-				<property>/controls/enginesc/engine[1]/cutoff</property>
+				<property>/controls/engines/engine[1]/cutoff</property>
 				<property>/controls/engines/engine[2]/cutoff</property>
 				<property>/controls/engines/engine[3]/cutoff</property>
 			</condition>
@@ -457,10 +459,7 @@ You just stepped through the cockpit door of the cold and dark 747-400, the most
 		<message>Set AUTOBRAKES to RTO.</message>
 		<exit>
 			<condition>  
-				<equals>
-					<property>/autopilot/autobrake/step</property>
-					<value>0</value>
-				</equals>
+                                <property>/autopilot/autobrake/rto-selected</property>
 			</condition>
 		</exit>
     </step>

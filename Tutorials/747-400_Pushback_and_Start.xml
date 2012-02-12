@@ -45,6 +45,7 @@ We're now fully configured to begin our pushback and engine start. The passenger
 		</exit>
     </step>
 
+    <!--
     <step>
 		<message>Turn ON the BEACON lights.</message>
 		<view>
@@ -62,6 +63,7 @@ We're now fully configured to begin our pushback and engine start. The passenger
 			</condition>
 		</exit>
     </step>
+    -->
 	
 	<step>
 		<message>Open the 747-400 > Pushback dialog and connect the pushback.</message>
@@ -76,8 +78,10 @@ We're now fully configured to begin our pushback and engine start. The passenger
 		<message>Release the parking brake.</message>
 		<exit>
 			<condition>
-				<property>/controls/gear/brake-parking</property>
-				<value>0</value>		
+				<equals>
+                                    <property>/controls/gear/brake-parking</property>
+                                    <value>0</value>		
+                                </equals>
 			</condition>
 		</exit>
 	</step>
