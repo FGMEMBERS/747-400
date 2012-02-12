@@ -26,10 +26,10 @@ var vspeeds = func {
 	if (flaps == 1) {
 		Vref = (0.285*(WT-200))+127;
 	}
-	setprop("/instrumentation/fmc/vspeeds/V1",V1);
-	setprop("/instrumentation/fmc/vspeeds/VR",VR);
+	setprop("/instrumentation/fmc/vspeeds/V1",int(V1));
+	setprop("/instrumentation/fmc/vspeeds/VR",int(VR));
 	setprop("/instrumentation/fmc/vspeeds/Vref",Vref);
-	setprop("/instrumentation/fmc/vspeeds/V2",V2);
+	setprop("/instrumentation/fmc/vspeeds/V2",int(V2));
 	settimer(vspeeds, 1);
 }
 
