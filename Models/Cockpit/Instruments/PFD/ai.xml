@@ -14,7 +14,7 @@
    <h>665</h>
    <emissive>true</emissive>
    <texture>
-    <path>Aircraft/777-200/Models/Instruments/PFD/ati.png</path>
+    <path>Aircraft/777/Models/Instruments/PFD/ati.png</path>
     <x1>0.063</x1>
     <y1>0.0</y1>
     <x2>0.433</x2>
