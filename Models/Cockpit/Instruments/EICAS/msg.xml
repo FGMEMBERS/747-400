@@ -13,7 +13,7 @@
         <font>arial_black</font>
         <point-size>15</point-size>
         <color>
-            <red>0.9</red>
+            <red>0.95</red>
             <green>0</green>
             <blue>0</blue>
         </color>
@@ -26,7 +26,7 @@
         <transformations>
             <transformation>
                 <type>x-shift</type>
-                <offset>-115</offset>
+                <offset>-128</offset>
             </transformation>
             <transformation>
                 <type>y-shift</type>
@@ -41,8 +41,8 @@
         <font>arial_black</font>
         <point-size>15</point-size>
         <color>
-            <red>0.8</red>
-            <green>0.4</green>
+            <red>1.0</red>
+            <green>0.7</green>
             <blue>0</blue>
         </color>
         <chunks>
@@ -54,7 +54,7 @@
         <transformations>
             <transformation>
                 <type>x-shift</type>
-                <offset>-115</offset>
+                <offset>-128</offset>
             </transformation>
             <transformation>
                 <type>y-shift</type>
@@ -69,8 +69,8 @@
         <font>arial_black</font>
         <point-size>15</point-size>
         <color>
-            <red>0.8</red>
-            <green>0.4</green>
+            <red>1.0</red>
+            <green>0.7</green>
             <blue>0</blue>
         </color>
         <chunks>
@@ -82,7 +82,7 @@
         <transformations>
             <transformation>
                 <type>x-shift</type>
-                <offset>-115</offset>
+                <offset>-128</offset>
             </transformation>
             <transformation>
                 <type>y-shift</type>
@@ -97,9 +97,9 @@
         <font>arial_black</font>
         <point-size>15</point-size>
         <color>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
         </color>
         <chunks>
             <chunk>
@@ -110,7 +110,7 @@
         <transformations>
             <transformation>
                 <type>x-shift</type>
-                <offset>-115</offset>
+                <offset>-128</offset>
             </transformation>
             <transformation>
                 <type>y-shift</type>

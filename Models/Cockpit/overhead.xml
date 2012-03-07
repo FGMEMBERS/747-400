@@ -1046,7 +1046,7 @@
 		<repeatable>true</repeatable>	
 		<binding>
 			<command>property-adjust</command>
-			<property>/controls/fuel/fuel-to-remain</property>
+			<property>/controls/fuel/fuel-to-remain-lbs</property>
 			<step>1000</step>
 			<min>0</min>
 			<max>400000</max>
@@ -1062,7 +1062,7 @@
 		<repeatable>true</repeatable>	
 		<binding>
 			<command>property-adjust</command>
-			<property>/controls/fuel/fuel-to-remain</property>
+			<property>/controls/fuel/fuel-to-remain-lbs</property>
 			<step>-1000</step>
 			<min>0</min>
 			<max>400000</max>

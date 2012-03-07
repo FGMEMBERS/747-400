@@ -9,7 +9,7 @@
 	<property>/controls/fuel/tank[7]/pump</property>
 	<property>/controls/fuel/dump-valve</property>
 	-->
-	<property>/controls/fuel/fuel-to-remain</property>
+	<property>/controls/fuel/fuel-to-remain-lbs</property>
 
 	<channel name="fuel">
 
@@ -34,7 +34,7 @@
 			<default value="0"/>
 			<test logic="AND" value="25">
 				/controls/fuel/dump-valve == 1
-				propulsion/total-fuel-lbs gt /controls/fuel/fuel-to-remain
+				propulsion/total-fuel-lbs gt /controls/fuel/fuel-to-remain-lbs
 			</test>
 			<output>propulsion/tank[0]/external-flow-rate/jettison</output>
 			<output>propulsion/tank[7]/external-flow-rate/jettison</output>
@@ -43,7 +43,7 @@
 			<default value="0"/>
 			<test logic="AND" value="25">
 				/controls/fuel/dump-valve == 1
-				propulsion/total-fuel-lbs gt /controls/fuel/fuel-to-remain
+				propulsion/total-fuel-lbs gt /controls/fuel/fuel-to-remain-lbs
 				propulsion/tank[2]/contents-lbs gt 7055
 			</test>
 		</switch>
@@ -51,7 +51,7 @@
 			<default value="0"/>
 			<test logic="AND" value="25">
 				/controls/fuel/dump-valve == 1
-				propulsion/total-fuel-lbs gt /controls/fuel/fuel-to-remain
+				propulsion/total-fuel-lbs gt /controls/fuel/fuel-to-remain-lbs
 				propulsion/tank[3]/contents-lbs gt 7055
 			</test>
 		</switch>
@@ -68,7 +68,7 @@
 						<property>propulsion/total-fuel-lbs</property>
 						<product>
 							<value>-1</value>
-							<property>/controls/fuel/fuel-to-remain</property>
+							<property>/controls/fuel/fuel-to-remain-lbs</property>
 						</product>
 					</sum>
 					<sum>

@@ -9,19 +9,19 @@
 <panel>
 	<path>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/eicas-text-panel.xml</path>
 	<bottom-left>
-		<x-m>0.009</x-m>
+		<x-m>0.002</x-m>
 		<y-m>0.025</y-m>
-		<z-m>0.015</z-m>
+		<z-m>0.013</z-m>
 	</bottom-left>
 	<bottom-right>
-		<x-m>0.009</x-m>
-		<y-m>0.090</y-m>
-		<z-m>0.015</z-m>
+		<x-m>0.002</x-m>
+		<y-m>0.095</y-m>
+		<z-m>0.013</z-m>
 	</bottom-right>
 	<top-left>
-		<x-m>0.009</x-m>
+		<x-m>0.002</x-m>
 		<y-m>0.025</y-m>
-		<z-m>0.090</z-m>
+		<z-m>0.095</z-m>
 	</top-left>
 </panel>
 
@@ -688,8 +688,8 @@
 	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
 	<offsets>
 		<x-m> 0.007</x-m>
-		<y-m>-0.064</y-m>
-		<z-m> 0.018</z-m>
+		<y-m>-0.056</y-m>
+		<z-m> 0.017</z-m>
 	</offsets>
 	<overlay>
 		<params>
@@ -697,12 +697,46 @@
 			<format type="string">%03.1f</format>
 			<character-size type="double">0.008</character-size>
 			<color>
-				<red   type="double">1.0</red>
-				<green type="double">1.0</green>
-				<blue  type="double">1.0</blue>
+				<red   type="double">0.9</red>
+				<green type="double">0.9</green>
+				<blue  type="double">0.9</blue>
 			</color>
+			<alignment>right-center</alignment>
 		</params>
 	</overlay>
+	<condition>
+		<less-than-equals>
+			<property>/engines/engine[0]/n1</property>
+			<value>117</value>
+		</less-than-equals>
+	</condition>
+</model>
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.056</y-m>
+		<z-m> 0.017</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/engines/engine[0]/n1</property>
+			<format type="string">%03.1f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">0.95</red>
+				<green type="double">0.0</green>
+				<blue  type="double">0.0</blue>
+			</color>
+			<alignment>right-center</alignment>
+		</params>
+	</overlay>
+	<condition>
+		<greater-than>
+			<property>/engines/engine[0]/n1</property>
+			<value>117</value>
+		</greater-than>
+	</condition>
 </model>
 
 <animation>
@@ -732,8 +766,8 @@
 	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
 	<offsets>
 		<x-m> 0.007</x-m>
-		<y-m>-0.039</y-m>
-		<z-m> 0.018</z-m>
+		<y-m>-0.031</y-m>
+		<z-m> 0.017</z-m>
 	</offsets>
 	<overlay>
 		<params>
@@ -741,12 +775,46 @@
 			<format type="string">%03.1f</format>
 			<character-size type="double">0.008</character-size>
 			<color>
-				<red   type="double">1.0</red>
-				<green type="double">1.0</green>
-				<blue  type="double">1.0</blue>
+				<red   type="double">0.9</red>
+				<green type="double">0.9</green>
+				<blue  type="double">0.9</blue>
 			</color>
+			<alignment>right-center</alignment>
 		</params>
 	</overlay>
+	<condition>
+		<less-than-equals>
+			<property>/engines/engine[1]/n1</property>
+			<value>117</value>
+		</less-than-equals>
+	</condition>
+</model>
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.031</y-m>
+		<z-m> 0.017</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/engines/engine[1]/n1</property>
+			<format type="string">%03.1f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">0.95</red>
+				<green type="double">0.0</green>
+				<blue  type="double">0.0</blue>
+			</color>
+			<alignment>right-center</alignment>
+		</params>
+	</overlay>
+	<condition>
+		<greater-than>
+			<property>/engines/engine[1]/n1</property>
+			<value>117</value>
+		</greater-than>
+	</condition>
 </model>
 
 <animation>
@@ -776,8 +844,8 @@
 	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
 	<offsets>
 		<x-m> 0.007</x-m>
-		<y-m>-0.014</y-m>
-		<z-m> 0.018</z-m>
+		<y-m>-0.006</y-m>
+		<z-m> 0.017</z-m>
 	</offsets>
 	<overlay>
 		<params>
@@ -785,12 +853,46 @@
 			<format type="string">%03.1f</format>
 			<character-size type="double">0.008</character-size>
 			<color>
-				<red   type="double">1.0</red>
-				<green type="double">1.0</green>
-				<blue  type="double">1.0</blue>
+				<red   type="double">0.9</red>
+				<green type="double">0.9</green>
+				<blue  type="double">0.9</blue>
 			</color>
+			<alignment>right-center</alignment>
 		</params>
 	</overlay>
+	<condition>
+		<less-than-equals>
+			<property>/engines/engine[2]/n1</property>
+			<value>117</value>
+		</less-than-equals>
+	</condition>
+</model>
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m>-0.006</y-m>
+		<z-m> 0.017</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/engines/engine[2]/n1</property>
+			<format type="string">%03.1f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">0.95</red>
+				<green type="double">0.0</green>
+				<blue  type="double">0.0</blue>
+			</color>
+			<alignment>right-center</alignment>
+		</params>
+	</overlay>
+	<condition>
+		<greater-than>
+			<property>/engines/engine[2]/n1</property>
+			<value>117</value>
+		</greater-than>
+	</condition>
 </model>
 
 <animation>
@@ -820,8 +922,8 @@
 	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
 	<offsets>
 		<x-m> 0.007</x-m>
-		<y-m> 0.011</y-m>
-		<z-m> 0.018</z-m>
+		<y-m> 0.020</y-m>
+		<z-m> 0.017</z-m>
 	</offsets>
 	<overlay>
 		<params>
@@ -829,12 +931,46 @@
 			<format type="string">%03.1f</format>
 			<character-size type="double">0.008</character-size>
 			<color>
-				<red   type="double">1.0</red>
-				<green type="double">1.0</green>
-				<blue  type="double">1.0</blue>
+				<red   type="double">0.9</red>
+				<green type="double">0.9</green>
+				<blue  type="double">0.9</blue>
 			</color>
+			<alignment>right-center</alignment>
 		</params>
 	</overlay>
+	<condition>
+		<less-than-equals>
+			<property>/engines/engine[3]/n1</property>
+			<value>117</value>
+		</less-than-equals>
+	</condition>
+</model>
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 0.007</x-m>
+		<y-m> 0.020</y-m>
+		<z-m> 0.017</z-m>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/engines/engine[3]/n1</property>
+			<format type="string">%03.1f</format>
+			<character-size type="double">0.008</character-size>
+			<color>
+				<red   type="double">0.95</red>
+				<green type="double">0.0</green>
+				<blue  type="double">0.0</blue>
+			</color>
+			<alignment>right-center</alignment>
+		</params>
+	</overlay>
+	<condition>
+		<greater-than>
+			<property>/engines/engine[3]/n1</property>
+			<value>117</value>
+		</greater-than>
+	</condition>
 </model>
 
 <animation>

@@ -31,14 +31,19 @@ eicas_msg_advisory	= eicas.initNode("msg/advisory"," ","STRING");
 eicas_msg_memo		= eicas.initNode("msg/memo"," ","STRING");
 
 setlistener("sim/signals/fdm-initialized", func() {
-	setlistener("controls/gear/gear-down",          func { update_listener_inputs() } );
-	setlistener("controls/gear/brake-parking",      func { update_listener_inputs() } );
-	setlistener("controls/engines/engine/reverser", func { update_listener_inputs() } );
-	setlistener("controls/flight/rudder-trim",      func { update_listener_inputs() } );
-	setlistener("controls/flight/elevator-trim",    func { update_listener_inputs() } );
-	setlistener("sim/freeze/replay-state",          func { update_listener_inputs() } );
-	setlistener("/autopilot/autobrake/step",        func { update_listener_inputs() } );
-	setlistener("controls/engines/engine/throttle", func { update_throttle_input() } );
+	setlistener("controls/gear/gear-down",            func { update_listener_inputs() } );
+	setlistener("controls/gear/brake-parking",        func { update_listener_inputs() } );
+	setlistener("controls/engines/engine/reverser",   func { update_listener_inputs() } );
+	setlistener("controls/engines/engine[0]/on-fire", func { update_listener_inputs() } );
+	setlistener("controls/engines/engine[1]/on-fire", func { update_listener_inputs() } );
+	setlistener("controls/engines/engine[2]/on-fire", func { update_listener_inputs() } );
+	setlistener("controls/engines/engine[3]/on-fire", func { update_listener_inputs() } );
+	setlistener("controls/flight/rudder-trim",        func { update_listener_inputs() } );
+	setlistener("controls/flight/elevator-trim",      func { update_listener_inputs() } );
+	setlistener("sim/freeze/replay-state",            func { update_listener_inputs() } );
+	setlistener("/autopilot/autobrake/step",          func { update_listener_inputs() } );
+	
+	setlistener("controls/engines/engine/throttle",   func { update_throttle_input() } );
 
 	update_listener_inputs();
 	update_throttle_input();
@@ -100,38 +105,64 @@ var approach_config_warnings = func {
 }
 
 var warning_messages = func {
-	if (eng1fire or eng2fire or eng3fire or eng4fire)
-		append(msgs_warning,"FIRE ENGINE 1, 2, 3, 4");
+	if (eng1fire or eng2fire or eng3fire or eng4fire) {
+		var msgs_fire = "FIRE ENGINE ";
+		if (eng1fire)
+			msgs_fire = msgs_fire~"1, ";
+		if (eng2fire)
+			msgs_fire = msgs_fire~"2, ";
+		if (eng3fire)
+			msgs_fire = msgs_fire~"3, ";
+		if (eng4fire)
+			msgs_fire = msgs_fire~"4, ";
+		append(msgs_warning,substr(msgs_fire,0,size(msgs_fire)-2));
+	}
 }
 
 var caution_messages = func {
 	if ((getprop("/consumables/fuel/tank[1]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[2]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[3]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[4]/level-lbs") < 1985))
 		append(msgs_caution,"FUEL QTY LOW");
+	if ((getprop("/consumables/fuel/total-fuel-lbs") < getprop("/controls/fuel/fuel-to-remain-lbs")) and (getprop("/controls/fuel/dump-valve") == 1))
+		append(msgs_caution,"FUEL JETT SYS");
 	if (getprop("controls/failures/gear[0]/stuck") or getprop("controls/failures/gear[1]/stuck") or getprop("controls/failures/gear[2]/stuck") or getprop("controls/failures/gear[3]/stuck") or getprop("controls/failures/gear[4]/stuck"))
 		append(msgs_warning,"GEAR DISAGREE");
 }
 
 var advisory_messages = func {
+	if ((getprop("/controls/anti-ice/engine[0]/carb-heat") or getprop("/controls/anti-ice/engine[1]/carb-heat") or getprop("/controls/anti-ice/engine[2]/carb-heat") or getprop("/controls/anti-ice/engine[3]/carb-heat") or getprop("/controls/anti-ice/wing-heat")) and getprop("/environment/temperature-degc") > 12)
+		append(msgs_advisory,">ANTI-ICE");
+	if (!getprop("/controls/electric/battery"))
+		append(msgs_advisory,">BATTERY OFF");
+	if (!getprop("/controls/electric/generator-control[0]") or !getprop("/controls/electric/generator-control[1]") or !getprop("/controls/electric/generator-control[2]") or !getprop("/controls/electric/generator-control[3]")) {
+		var msgs_elecGenOff = ">ELEC GEN OFF ";
+		if (!getprop("/controls/electric/generator-control[0]"))
+			msgs_elecGenOff = msgs_elecGenOff~"1, ";
+		if (!getprop("/controls/electric/generator-control[1]"))
+			msgs_elecGenOff = msgs_elecGenOff~"2, ";
+		if (!getprop("/controls/electric/generator-control[2]"))
+			msgs_elecGenOff = msgs_elecGenOff~"3, ";
+		if (!getprop("/controls/electric/generator-control[3]"))
+			msgs_elecGenOff = msgs_elecGenOff~"4, ";
+		append(msgs_advisory,substr(msgs_elecGenOff,0,size(msgs_elecGenOff)-2));
+	}
+	if (getprop("/controls/flight/flaps") != getprop("/fdm/jsbsim/fcs/flap-cmd-norm"))
+		append(msgs_advisory,">FLAP RELIEF");
 	if (math.abs((getprop("/consumables/fuel/tank[1]/level-lbs")-getprop("/consumables/fuel/tank[4]/level-lbs"))) > 3000)
 		append(msgs_advisory,">FUEL IMBAL 1-4");
 	if (math.abs((getprop("/consumables/fuel/tank[2]/level-lbs")-getprop("/consumables/fuel/tank[3]/level-lbs"))) > 6000)
 		append(msgs_advisory,">FUEL IMBAL 2-3");
 	if ((getprop("/consumables/fuel/tank[2]/level-lbs") <= getprop("/consumables/fuel/tank[1]/level-lbs")) or (getprop("/consumables/fuel/tank[3]/level-lbs") <= getprop("/consumables/fuel/tank[4]/level-lbs")))
 		append(msgs_advisory,">FUEL TANK/ENG");
+	if ((((getprop("/consumables/fuel/tank[2]/level-lbs") > getprop("/consumables/fuel/tank[1]/level-lbs")) or (getprop("/consumables/fuel/tank[3]/level-lbs") > getprop("/consumables/fuel/tank[4]/level-lbs"))) or getprop("/gear/gear/wow") == 1 ) and (getprop("/controls/fuel/tank[1]/x-feed") == 1) and (getprop("/controls/fuel/tank[4]/x-feed") == 1))
+		append(msgs_advisory,">FUEL XFER 1+4");
+	if (getprop("/systems/hydraulic/demand-pump-pressure-low[0]") == 1 or getprop("/systems/hydraulic/demand-pump-pressure-low[1]") == 1 or getprop("/systems/hydraulic/demand-pump-pressure-low[2]") == 1 or getprop("/systems/hydraulic/demand-pump-pressure-low[3]") == 1)
+		append(msgs_advisory,"HYD PRESS DEM 1, 2, 3, 4");
+	if (getprop("/systems/hydraulic/engine-pump-pressure-low[0]") == 1 or getprop("/systems/hydraulic/engine-pump-pressure-low[1]") == 1 or getprop("/systems/hydraulic/engine-pump-pressure-low[2]") == 1 or getprop("/systems/hydraulic/engine-pump-pressure-low[3]") == 1)
+		append(msgs_advisory,"HYD PRESS ENG 1, 2, 3, 4");
+	if (getprop("/controls/fuel/dump-valve") == 1)
+		append(msgs_advisory,">JETT NOZ ON");
 	if (((getprop("/consumables/fuel/tank[1]/level-lbs") != getprop("/consumables/fuel/tank[2]/level-lbs")) or (getprop("/consumables/fuel/tank[3]/level-lbs") != getprop("/consumables/fuel/tank[4]/level-lbs"))) and ((getprop("/controls/fuel/tank[1]/x-feed") != 1) or (getprop("/controls/fuel/tank[4]/x-feed") != 1)))
 		append(msgs_advisory,">X FEED CONFIG");
-	if ((getprop("/controls/anti-ice/engine[0]/carb-heat") or getprop("/controls/anti-ice/engine[1]/carb-heat") or getprop("/controls/anti-ice/engine[2]/carb-heat") or getprop("/controls/anti-ice/engine[3]/carb-heat") or getprop("/controls/anti-ice/wing-heat")) and getprop("/environment/temperature-degc") > 12)
-		append(msgs_advisory,">ANTI-ICE");
-	if (!getprop("/controls/electric/battery"))
-		append(msgs_advisory,">BATTERY OFF");
-	if (!getprop("/controls/electric/generator-control[0]"))
-		append(msgs_advisory,">ELEC GEN OFF 1");
-	if (!getprop("/controls/electric/generator-control[1]"))
-		append(msgs_advisory,">ELEC GEN OFF 2");
-	if (!getprop("/controls/electric/generator-control[2]"))
-		append(msgs_advisory,">ELEC GEN OFF 3");
-	if (!getprop("/controls/electric/generator-control[3]"))
-		append(msgs_advisory,">ELEC GEN OFF 4");
 }
 
 var memo_messages = func {
@@ -141,8 +172,6 @@ var memo_messages = func {
 		append(msgs_memo,"APU RUNNING");
 	if (parkbrake)
 		append(msgs_memo,">PARK BRK SET");
-	if (reverser)
-		append(msgs_memo,">L R THRUST REV SET");
 	if (getprop("/autopilot/autobrake/step") == -2)
 		append(msgs_memo,"AUTOBRAKES RTO");
 	if (getprop("/autopilot/autobrake/step") == 1)
@@ -208,6 +237,7 @@ var update_system = func() {
 	
 	takeoff_config_warnings();
 	warning_messages();
+	caution_messages();
 	advisory_messages();
 	memo_messages();
 	
