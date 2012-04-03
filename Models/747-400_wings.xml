@@ -1641,7 +1641,7 @@
 <!-- LIGHTS -->
 
 <model>
- <path>Aircraft/747-400/Models/Lights/GreenLight.xml</path>
+ <path>Aircraft/747-400/Models/Lights/light-green.xml</path>
  <name>GreenLight</name>
  <offsets>
   <x-m>16.75</x-m>
@@ -1651,7 +1651,7 @@
 </model>
 
 <model>
- <path>Aircraft/747-400/Models/Lights/RedLight.xml</path>
+ <path>Aircraft/747-400/Models/Lights/light-red.xml</path>
  <name>RedLight</name>
  <offsets>
   <x-m>16.75</x-m>
@@ -1661,7 +1661,7 @@
 </model>
 
 <model>
- <path>Aircraft/747-400/Models/Lights/flash.xml</path>
+ <path>Aircraft/747-400/Models/Lights/strobe.xml</path>
  <name>StrobeLight.R</name>
  <offsets>
   <x-m>18.6</x-m>
@@ -1671,7 +1671,7 @@
 </model>
 
 <model>
- <path>Aircraft/747-400/Models/Lights/flash.xml</path>
+ <path>Aircraft/747-400/Models/Lights/strobe.xml</path>
  <name>StrobeLight.L</name>
  <offsets>
   <x-m>18.6</x-m>

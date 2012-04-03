@@ -41,7 +41,7 @@
 </model>
 
 <!-- LANDING LIGHTS WINGS -->
-<!--
+
 <model>
 	<path>Aircraft/747-400/Models/Lights/light-cone.xml</path>
 	<name>LandingLight.Outbd.Left</name>
@@ -73,7 +73,7 @@
 <animation>
 	<type>select</type>
 	<object-name>LandingLight.Inbd.Left</object-name>
-		<condition>
+	<condition>
 		<property>controls/lighting/landing-light-inbdl</property>
 	</condition>
 </animation>
@@ -113,9 +113,9 @@
 		<property>controls/lighting/landing-light-outbdr</property>
 	</condition>
 </animation>
--->
+
 <!-- LANDING LIGHTS NOSE -->
-<!--
+
 <model>
 	<path>Aircraft/747-400/Models/Lights/light-cone.xml</path>
 	<name>LandingLight.Taxi</name>
@@ -209,11 +209,11 @@
 		</and>
 	</condition>
 </animation> 
--->
+
 <!-- ANTI-COLLISION LIGHTS -->
 
 <model>
-	<path>Aircraft/747-400/Models/Lights/flash.xml</path>
+	<path>Aircraft/747-400/Models/Lights/strobe.xml</path>
 	<name>StrobeLight.Tail</name>
 	<offsets>
 		<x-m>38.65</x-m>
@@ -229,6 +229,7 @@
 		<x-m>-5.6</x-m>
 		<y-m>0</y-m>
 		<z-m>-3.2</z-m>
+		<pitch-deg>180</pitch-deg>
 	</offsets>
 </model>
 
@@ -245,8 +246,7 @@
 <!-- tail logo lights -->
 
 <model>
-	<path>Aircraft/747-400/Models/Lights/WhiteLight.xml</path>
-	<name>light.logo1</name>
+	<path>Aircraft/747-400/Models/Lights/light-logo.xml</path>
 	<offsets>
 		<x-m>36.94</x-m>
 		<y-m> 8.72</y-m>
@@ -255,22 +255,12 @@
 </model>
 
 <model>
-	<path>Aircraft/747-400/Models/Lights/WhiteLight.xml</path>
-	<name>light.logo2</name>
+	<path>Aircraft/747-400/Models/Lights/light-logo.xml</path>
 	<offsets>
 		<x-m>36.94</x-m>
 		<y-m>-8.72</y-m>
 		<z-m> 3.61</z-m>
 	</offsets>
 </model>
-
-<animation> 
-	<type>select</type> 
-	<object-name>light.logo1</object-name>
-	<object-name>light.logo2</object-name>
-	<condition>
-		<property>/controls/lighting/logo-lights</property> 
-	</condition>
-</animation> 
 
 </PropertyList>

@@ -61,9 +61,16 @@ var autostart = func {
 	setprop("/controls/engines/engine[3]/cutoff",1);
 	setprop("/controls/electric/battery",1);
 	setprop("/controls/lighting/beacon",1);
+	setprop("/controls/lighting/landing-light-inbdl",1);
+	setprop("/controls/lighting/landing-light-inbdr",1);
+	setprop("/controls/lighting/landing-light-outbdl",1);
+	setprop("/controls/lighting/landing-light-outbdr",1);
+	setprop("/controls/lighting/logo-lights",1);
 	setprop("/controls/lighting/nav-lights",1);
 	setprop("/controls/lighting/strobe",1);
-	setprop("/controls/lighting/logo-lights",1);
+	setprop("/controls/lighting/taxi-lights",1);
+	setprop("/controls/lighting/turnoff-light-l",1);
+	setprop("/controls/lighting/turnoff-light-r",1);
 	setprop("/controls/fuel/tank[1]/x-feed",1);
 	setprop("/controls/fuel/tank[2]/x-feed",1);
 	setprop("/controls/fuel/tank[3]/x-feed",1);
