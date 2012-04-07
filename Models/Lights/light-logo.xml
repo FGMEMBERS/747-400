@@ -50,7 +50,6 @@
 
 <animation>
 	<type>select</type>
-	<object-name>Cone</object-name>
 	<object-name>LightSrcLeft</object-name>
 	<condition>
 		<property>/controls/lighting/logo-lights</property>

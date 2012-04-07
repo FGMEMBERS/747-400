@@ -57,6 +57,11 @@
 	<object-name>vstab</object-name> 
 </effect>
 
+<effect>
+	<inherits-from>Effects/model-transparent</inherits-from>
+	<object-name>cockpit.windows</object-name> 
+</effect>
+
 <animation>
 	<type>pick</type>
 	<object-name>cockpitdoor</object-name>
@@ -426,9 +431,9 @@
 	<property>controls/doors/nosecone/position-norm</property>
 	<factor>90</factor>
 	<center>
-		<x-m>-28.701</x-m>
-		<y-m> -1.002</y-m>
-		<z-m>  1.075</z-m>
+		<x-m>-28.700</x-m>
+		<y-m> -1.205</y-m>
+		<z-m>  0.421</z-m>
 	</center>
 	<axis>
 		<x>0</x>
