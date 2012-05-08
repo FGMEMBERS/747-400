@@ -105,6 +105,12 @@ var approach_config_warnings = func {
 }
 
 var warning_messages = func {
+	if (radio_alt>41000)
+		append(msgs_warning,">CABIN ALTITUDE");	
+	if (getprop("/gear/gear/wow") and (getprop("/controls/engines/engine[1]/throttle")>0.5 or getprop("/controls/engines/engine[2]/throttle")>0.5) and (getprop("/gear/gear[2]/steering-norm") != 0 or getprop("/gear/gear[3]/steering-norm") != 0))
+		append(msgs_warning,">CONFIG GEAR CTR");
+	if (getprop("controls/flight/speedbrake") != 0 and getprop("/gear/gear/wow") and (getprop("/controls/engines/engine[1]/throttle")>0.5 or getprop("/controls/engines/engine[2]/throttle")>0.5))
+		append(msgs_warning,">CONFIG SPOILERS");	
 	if (eng1fire or eng2fire or eng3fire or eng4fire) {
 		var msgs_fire = "FIRE ENGINE ";
 		if (eng1fire)
@@ -120,19 +126,59 @@ var warning_messages = func {
 }
 
 var caution_messages = func {
+	if (getprop("/systems/electrical/ac-bus[0]") or getprop("/systems/electrical/ac-bus[1]") or getprop("/systems/electrical/ac-bus[2]") or getprop("/systems/electrical/ac-bus[3]")) {
+		var msgs_ac_bus = ">ELEC AC BUS ";
+		if (getprop("/systems/electrical/ac-bus[0]"))
+			msgs_ac_bus = msgs_ac_bus~"1, ";
+		if (getprop("/systems/electrical/ac-bus[1]"))
+			msgs_ac_bus = msgs_ac_bus~"2, ";
+		if (getprop("/systems/electrical/ac-bus[2]"))
+			msgs_ac_bus = msgs_ac_bus~"3, ";
+		if (getprop("/systems/electrical/ac-bus[3]"))
+			msgs_ac_bus = msgs_ac_bus~"4, ";
+		append(msgs_caution,substr(msgs_ac_bus,0,size(msgs_ac_bus)-2));
+	}
+	if (getprop("/controls/engines/engine[0]/cutoff") or getprop("/controls/engines/engine[1]/cutoff") or getprop("/controls/engines/engine[2]/cutoff") or getprop("/controls/engines/engine[3]/cutoff")) {
+		var msgs_eng_cutoff = ">ENG ";
+		if (getprop("/controls/engines/engine[0]/cutoff"))
+			msgs_eng_cutoff = msgs_eng_cutoff~"1, ";
+		if (getprop("/controls/engines/engine[1]/cutoff"))
+			msgs_eng_cutoff = msgs_eng_cutoff~"2, ";
+		if (getprop("/controls/engines/engine[2]/cutoff"))
+			msgs_eng_cutoff = msgs_eng_cutoff~"3, ";
+		if (getprop("/controls/engines/engine[3]/cutoff"))
+			msgs_eng_cutoff = msgs_eng_cutoff~"4, ";
+		append(msgs_caution,substr(msgs_eng_cutoff,0,size(msgs_eng_cutoff)-2)~" SHUTDOWN");
+	}
 	if ((getprop("/consumables/fuel/tank[1]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[2]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[3]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[4]/level-lbs") < 1985))
 		append(msgs_caution,"FUEL QTY LOW");
 	if ((getprop("/consumables/fuel/total-fuel-lbs") < getprop("/controls/fuel/fuel-to-remain-lbs")) and (getprop("/controls/fuel/dump-valve") == 1))
 		append(msgs_caution,"FUEL JETT SYS");
 	if (getprop("controls/failures/gear[0]/stuck") or getprop("controls/failures/gear[1]/stuck") or getprop("controls/failures/gear[2]/stuck") or getprop("controls/failures/gear[3]/stuck") or getprop("controls/failures/gear[4]/stuck"))
-		append(msgs_warning,"GEAR DISAGREE");
+		append(msgs_caution,"GEAR DISAGREE");
+	if (getprop("controls/flight/speedbrake") and ((radio_alt<800 and radio_alt>15) or flaps>0.7 or throttle>0.1))
+		append(msgs_caution,">SPEEDBRAKES EXT");	
 }
 
 var advisory_messages = func {
 	if ((getprop("/controls/anti-ice/engine[0]/carb-heat") or getprop("/controls/anti-ice/engine[1]/carb-heat") or getprop("/controls/anti-ice/engine[2]/carb-heat") or getprop("/controls/anti-ice/engine[3]/carb-heat") or getprop("/controls/anti-ice/wing-heat")) and getprop("/environment/temperature-degc") > 12)
 		append(msgs_advisory,">ANTI-ICE");
+	if (!getprop("/controls/engines/autostart"))
+		append(msgs_advisory,">AUTOSTART OFF");
 	if (!getprop("/controls/electric/battery"))
 		append(msgs_advisory,">BATTERY OFF");
+	if (getprop("/systems/electrical/bus-isolation[0]") or getprop("/systems/electrical/bus-isolation[1]") or getprop("/systems/electrical/bus-isolation[2]") or getprop("/systems/electrical/bus-isolation[3]")) {
+		var msgs_bus_isln = ">ELEC BUS ISLN ";
+		if (getprop("/systems/electrical/bus-isolation[0]"))
+			msgs_bus_isln = msgs_bus_isln~"1, ";
+		if (getprop("/systems/electrical/bus-isolation[1]"))
+			msgs_bus_isln = msgs_bus_isln~"2, ";
+		if (getprop("/systems/electrical/bus-isolation[2]"))
+			msgs_bus_isln = msgs_bus_isln~"3, ";
+		if (getprop("/systems/electrical/bus-isolation[3]"))
+			msgs_bus_isln = msgs_bus_isln~"4, ";
+		append(msgs_advisory,substr(msgs_bus_isln,0,size(msgs_bus_isln)-2));
+	}
 	if (!getprop("/controls/electric/generator-control[0]") or !getprop("/controls/electric/generator-control[1]") or !getprop("/controls/electric/generator-control[2]") or !getprop("/controls/electric/generator-control[3]")) {
 		var msgs_elecGenOff = ">ELEC GEN OFF ";
 		if (!getprop("/controls/electric/generator-control[0]"))
@@ -163,6 +209,8 @@ var advisory_messages = func {
 		append(msgs_advisory,">JETT NOZ ON");
 	if (((getprop("/consumables/fuel/tank[1]/level-lbs") != getprop("/consumables/fuel/tank[2]/level-lbs")) or (getprop("/consumables/fuel/tank[3]/level-lbs") != getprop("/consumables/fuel/tank[4]/level-lbs"))) and ((getprop("/controls/fuel/tank[1]/x-feed") != 1) or (getprop("/controls/fuel/tank[4]/x-feed") != 1)))
 		append(msgs_advisory,">X FEED CONFIG");
+	if (!getprop("controls/flight/yaw-damper"))
+		append(msgs_advisory,">YAW DAMPER LWR, UPR");
 }
 
 var memo_messages = func {
@@ -174,19 +222,18 @@ var memo_messages = func {
 		append(msgs_memo,">PARK BRK SET");
 	if (getprop("/autopilot/autobrake/step") == -2)
 		append(msgs_memo,"AUTOBRAKES RTO");
-	if (getprop("/autopilot/autobrake/step") == 1)
-		append(msgs_memo,"AUTOBRAKES 1");
-	if (getprop("/autopilot/autobrake/step") == 2)
-		append(msgs_memo,"AUTOBRAKES 2");
-	if (getprop("/autopilot/autobrake/step") == 3)
-		append(msgs_memo,"AUTOBRAKES 3");
-	if (getprop("/autopilot/autobrake/step") == 4)
-		append(msgs_memo,"AUTOBRAKES 4");
+	if (getprop("/autopilot/autobrake/step") > 0 and getprop("/autopilot/autobrake/step") < 5)
+		append(msgs_memo,"AUTOBRAKES "~getprop("/autopilot/autobrake/step"));
 	if (getprop("/autopilot/autobrake/step") == 5)
 		append(msgs_memo,"AUTOBRAKES MAX");
-	if (getprop("/controls/switches/seatbelt-sign"))
-		append(msgs_memo,"SEATBELTS ON");
-		
+	if (getprop("/controls/switches/seatbelt-sign") and getprop("/controls/switches/smoking-sign"))
+		append(msgs_memo,"PASS SIGNS ON");
+	else {
+		if (getprop("/controls/switches/seatbelt-sign"))
+			append(msgs_memo,"SEATBELTS ON");
+		if (getprop("/controls/switches/smoking-sign"))
+			append(msgs_memo,"NO SMOKING ON");
+	}
 	if (!getprop("/controls/pneumatic/pack-control[0]") and !getprop("/controls/pneumatic/pack-control[1]") and !getprop("/controls/pneumatic/pack-control[2]"))
 		append(msgs_memo,"PACKS OFF");
 	else {

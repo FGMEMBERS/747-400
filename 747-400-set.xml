@@ -454,6 +454,7 @@ left mouse button and counter clockwise using the middle mouse button.
 
 	<flight>
 		<autospeedbrakes-armed type="string">true</autospeedbrakes-armed>
+		<yaw-damper type="bool">1</yaw-damper>
 	</flight>
 
 	<fuel>
