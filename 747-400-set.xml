@@ -3,7 +3,7 @@
 
 <sim>
 	<description>Boeing 747-400</description>
-	<author>Gijs de Rooy, Ivan Ngeow, Markus Bulik</author>
+	<author>Gijs de Rooy, Ivan Ngeow, Markus Bulik and others</author>
 	<status>early production</status>
 	<rating>
 		<FDM type="int">3</FDM>
@@ -11,7 +11,7 @@
 		<cockpit type="int">3</cockpit>
 		<model type="int">3</model>
 	</rating>
-	<version>20111214</version>
+	<version>20120611</version>
 	
 	<flight-model>jsb</flight-model>
 	<aero>747-400</aero>
@@ -55,7 +55,6 @@
 		<hide-yoke type="bool">0</hide-yoke>
 		<pushback>
 			<kp type="double">3000</kp>
-			<!--<ki type="double">250</ki>-->
 			<kd type="double">0</kd>
 			<position-norm type="double">0</position-norm>
 		</pushback>
@@ -64,7 +63,7 @@
 	<systems>
 		<autopilot>
 			<name>Primary Autopilot</name>
-			<path>Aircraft/747-400/Systems/autopilot_markus.xml</path>
+			<path>Aircraft/747-400/Systems/autopilot.xml</path>
 		</autopilot>
 		<autopilot>
 			<name>Autobrake System</name>
@@ -203,6 +202,8 @@ left mouse button and counter clockwise using the middle mouse button.
 		</text>
 
 	</help>
+	
+	<flight-recorder include="Systems/flight-recorder.xml"/>
   
 	<tutorials>
 		<tutorial include="Tutorials/747-400_Preflight.xml"/>
@@ -218,8 +219,8 @@ left mouse button and counter clockwise using the middle mouse button.
 					<binding>
 						<command>nasal</command>
 						<script>
-							var mal = gui.Dialog.new("/sim/gui/dialogs/Boeing747/menu/dialog","Aircraft/747-400/Dialogs/autopilot-dialog.xml");
-							mal.open();
+							var autopilot = gui.Dialog.new("/sim/gui/dialogs/Boeing747/menu/dialog","Aircraft/747-400/Dialogs/autopilot-dialog.xml");
+							autopilot.open();
 						</script>
 					</binding>
 				</item>
@@ -242,8 +243,8 @@ left mouse button and counter clockwise using the middle mouse button.
 					<binding>
 						<command>nasal</command>
 						<script>
-							var mal = gui.Dialog.new("/sim/gui/dialogs/Boeing747/menu/dialog","Aircraft/747-400/Dialogs/malfunctions-dialog.xml");
-							mal.open();
+							var malfunctions = gui.Dialog.new("/sim/gui/dialogs/Boeing747/menu/dialog","Aircraft/747-400/Dialogs/malfunctions-dialog.xml");
+							malfunctions.open();
 						</script>
 					</binding>
 				</item>
@@ -343,8 +344,8 @@ left mouse button and counter clockwise using the middle mouse button.
 					<binding>
 						<command>nasal</command>
 						<script>
-							var mal = gui.Dialog.new("/sim/gui/dialogs/Boeing747/menu/dialog","Aircraft/747-400/Dialogs/tiller_steering-dialog.xml");
-							mal.open();
+							var tiller = gui.Dialog.new("/sim/gui/dialogs/Boeing747/menu/dialog","Aircraft/747-400/Dialogs/tiller_steering-dialog.xml");
+							tiller.open();
 						</script>
 					</binding>
 				</item>

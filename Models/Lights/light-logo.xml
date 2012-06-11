@@ -46,6 +46,7 @@
 	<near-m>0.1</near-m>
 	<far-m>20</far-m>
 	<cutoff>90</cutoff>
+	<nopreview/>
 </animation>
 
 <animation>

@@ -95,6 +95,7 @@
 	<near-m>0.0001</near-m>
 	<far-m>79</far-m>
 	<cutoff>110</cutoff>
+	<nopreview/>
 </animation>
 
 <animation>
@@ -116,6 +117,13 @@
 			<property>/sim/model/lights/beacon/state</property>
 			<value>1</value>
 		</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<condition>
+		<property>/sim/rendering/rembrandt/enabled</property> 
 	</condition>
 </animation>
 

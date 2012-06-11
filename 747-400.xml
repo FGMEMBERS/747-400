@@ -104,7 +104,7 @@
         <location name="EYEPOINT" unit="IN">
             <x> 218 </x>
             <y> -21 </y>
-            <z> 80 </z>
+            <z> 80  </z>
         </location>
         <location name="VRP" unit="IN">
             <x> 0 </x>
@@ -133,83 +133,83 @@
             <z>  0   </z>
         </location>
         <pointmass name="Passengers">
-            <weight unit="LBS"> 70000 </weight> <!-- 420 passengers -->
+            <weight unit="LBS"> 70000 </weight> <!-- 400 passengers (175 lbs) -->
             <location name="POINTMASS" unit="M">
-            <x>-5.0 </x>
-            <y> 0   </y>
-            <z> 0   </z>
+            <x> 2.537 </x>
+            <y> 0.005 </y>
+            <z> 0.747 </z>
             </location>
         </pointmass>
         <pointmass name="Forward Cargo">
             <form shape="cylinder">
-               <radius unit="M"> 1 </radius>
+               <radius unit="M"> 2 </radius>
                <length unit="M"> 12 </length>
             </form> 
-            <weight unit="LBS"> 56000 </weight> <!-- 8 full-width or 16 half-width containers -->
+            <weight unit="LBS"> 56000 </weight> <!-- 8 full-width (7000 lbs) or 16 half-width (3500 lbs) containers -->
             <location name="POINTMASS" unit="M">
-            <x>-12.6 </x>
-            <y>  0   </y>
-            <z> -1.2 </z>
+               <x>-13.7 </x>
+               <y>  0   </y>
+               <z> -1.3 </z>
             </location>
         </pointmass>
         <pointmass name="Aft Cargo">
             <form shape="cylinder">
-               <radius unit="M"> 1 </radius>
+               <radius unit="M"> 2 </radius>
                <length unit="M"> 12 </length>
             </form> 
-            <weight unit="LBS"> 56000 </weight> <!-- 8 full-width or 16 half-width containers -->
+            <weight unit="LBS"> 56000 </weight> <!-- 8 full-width (7000 lbs) or 16 half-width (3500 lbs) containers -->
             <location name="POINTMASS" unit="M">
-            <x> 11.8 </x>
-            <y>  0   </y>
-            <z> -1.2 </z>
+               <x> 14   </x>
+               <y>  0   </y>
+               <z> -1.2 </z>
             </location>
         </pointmass>
         <pointmass name="Left Wing">
             <weight unit="LBS"> 47500 </weight>
             <location name="POINTMASS" unit="M">
-            <x>  2.65 </x>
-            <y>-13.0  </y>
-            <z> -0.45 </z>
+               <x>  2.65 </x>
+               <y>-13.0  </y>
+               <z> -0.45 </z>
             </location>
         </pointmass>
         <pointmass name="Right Wing">
             <weight unit="LBS"> 47500 </weight>
             <location name="POINTMASS" unit="M">
-            <x> 2.65 </x>
-            <y>13.0  </y>
-            <z>-0.45 </z>
+               <x> 2.65 </x>
+               <y>13.0  </y>
+               <z>-0.45 </z>
             </location>
         </pointmass>
         <pointmass name="Engine 1">
             <weight unit="LBS"> 9670 </weight>
             <location name="POINTMASS" unit="M">
-            <x>  6.02 </x>
-            <y>-21.23 </y>
-            <z> -1.98 </z>
+               <x>  6.02 </x>
+               <y>-21.23 </y>
+               <z> -1.98 </z>
             </location>
         </pointmass>
         <pointmass name="Engine 2">
             <weight unit="LBS"> 9670 </weight>
             <location name="POINTMASS" unit="M">
-            <x> -1.48 </x>
-            <y>-13.46 </y>
-            <z> -2.59 </z>
+               <x> -1.48 </x>
+               <y>-13.46 </y>
+               <z> -2.59 </z>
             </location>
         </pointmass>
         <pointmass name="Engine 3">
             <weight unit="LBS"> 9670 </weight>
             <location name="POINTMASS" unit="M">
-            <x>-1.48 </x>
-            <y>13.46 </y>
-            <z>-2.59 </z>
+               <x>-1.48 </x>
+               <y>13.46 </y>
+               <z>-2.59 </z>
             </location>
         </pointmass>
         <pointmass name="Engine 4">
             <weight unit="LBS"> 9670 </weight>
             <location name="POINTMASS" unit="M">
-            <x> 6.02 </x>
-            <y>21.23 </y>
-            <z>-1.98 </z>
+               <x> 6.02 </x>
+               <y>21.23 </y>
+               <z>-1.98 </z>
             </location>
         </pointmass>
     </mass_balance>
@@ -539,11 +539,9 @@
         <documentation>
           - tank arm and lateral position is a guess : must fit inside the wing,
             in front of gear well; and close of aero reference point to minimize the CG shift.
-          - typical quantities (52340 US gal).
+          - typical quantities (53765 US gal).
           - extended range fuel (2048 US gal), spread on the reserve tanks.
           - 1 US gal = 6.7 lb.
-          - reference length is 229 ft 2 in (includes elevator).
-          - reference width is 195 ft 8 in (wing span)
         </documentation>
 
         <tank type="FUEL">    <!-- Tank number 0 == center wing--> 
@@ -562,8 +560,8 @@
                 <y>-17.1 </y>
                 <z> -0.1 </z>
             </location>
-            <capacity unit="LBS"> 30029.0 </capacity>
-            <contents unit="LBS"> 30029.0 </contents>
+            <capacity unit="LBS"> 29694.4 </capacity>
+            <contents unit="LBS"> 29694.4 </contents>
         </tank>
 
         <tank type="FUEL">    <!-- Tank number 2 == main #2--> 
@@ -592,18 +590,18 @@
                 <y>17.1 </y>
                 <z>-0.1 </z>
             </location>
-            <capacity unit="LBS"> 30029.0 </capacity>
-            <contents unit="LBS"> 30029.0 </contents>
+            <capacity unit="LBS"> 29694.4 </capacity>
+            <contents unit="LBS"> 29694.4 </contents>
         </tank>
         
-        <tank type="FUEL">    <!-- Tank number 5 == resesrve #2--> 
+        <tank type="FUEL">    <!-- Tank number 5 == reserve #2--> 
             <location unit="M">
                 <x> 14.0 </x>
                 <y>-26.3 </y>
                 <z>  0.9   </z>
             </location>
-            <capacity unit="LBS"> 17715.0 </capacity>
-            <contents unit="LBS"> 17715.0 </contents>
+            <capacity unit="LBS"> 8857.4 </capacity>
+            <contents unit="LBS"> 8857.4 </contents>
         </tank>
 
         <tank type="FUEL">    <!-- Tank number 6 == reserve #3--> 
@@ -612,8 +610,8 @@
                 <y>26.3 </y>
                 <z> 0.9   </z>
             </location>
-            <capacity unit="LBS"> 17715.0 </capacity>
-            <contents unit="LBS"> 17715.0 </contents>
+            <capacity unit="LBS"> 8857.4 </capacity>
+            <contents unit="LBS"> 8857.4 </contents>
         </tank>
 
         <tank type="FUEL">    <!-- Tank number 7 == stab--> 
@@ -623,7 +621,7 @@
                 <z> 2.5 </z>
             </location>
             <capacity unit="LBS"> 22110.0 </capacity>
-            <contents unit="LBS"> 22110.0 </contents>
+            <contents unit="LBS"> 0.0 </contents>
         </tank>
     </propulsion>
 

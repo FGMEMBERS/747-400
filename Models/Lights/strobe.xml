@@ -124,4 +124,11 @@
 	</condition>
 </animation>
 
+<animation>
+	<type>select</type>
+	<condition>
+		<property>/sim/rendering/rembrandt/enabled</property> 
+	</condition>
+</animation>
+
 </PropertyList>
