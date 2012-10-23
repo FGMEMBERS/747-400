@@ -5,10 +5,16 @@
  xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 
     <fileheader>
-        <author> Gijs de Rooy </author>
-        <filecreationdate> 2008 </filecreationdate>
-        <version> 1.01 </version>
-        <description> 747-400 with GE_CF6-80C2B1F </description>
+        <author>Gijs de Rooy</author>
+        <filecreationdate>2008</filecreationdate>
+        <version>1.01</version>
+        <description>Boeing 747-400 with GE CF6-80C2B1F engines</description>
+
+        <license>
+            <licenseName>GPL</licenseName>
+            <licenseURL>http://www.gnu.org/licenses/gpl.html</licenseURL>
+        </license>
+  
         <note>maximum takeoff weight 875,000 lb.</note>
         <note>extended range fuel 54,388 US gal (364,400 lb).</note>
         <note>center of gravity between 13.0 % and 33.0 % of MAC.</note>
@@ -60,6 +66,16 @@
           author="The Boeing Company"
           title="747-469/-4F6 Flight Crew Operations Manual, Philipine Airlines"
           date="2 September 1993"/>
+        <reference
+          refID=""
+          author="The Boeing Company"
+          title="747-400 Flight Planning and Performance Manual"
+          date="2000"/>
+        <reference
+          refID=""
+          author="The Boeing Company"
+          title="747-400 Maintenance Manual, JAL"
+          date="18 February 2007"/>
 
         <documentation>
           - http://www.aoe.vt.edu/~mason/Mason_f/M96SC02.pdf (Willian H. Mason) :
