@@ -37,9 +37,6 @@
                     <type>bool</type><property type="string">/controls/electric/bus-tie[%i]</property>
                 </signal>
                 <signal>
-                    <type>bool</type><property type="string">/engines/engine[%i]/running</property>
-                </signal>
-                <signal>
                     <type>float</type><property type="string">/engines/engine[%i]/reverser-pos-norm</property>
                 </signal>
             </signals>
