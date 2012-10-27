@@ -781,9 +781,6 @@ left mouse button and counter clockwise using the middle mouse button.
 	<hydraulic>
 		<file>Aircraft/747-400/Nasal/744_hyd.nas</file>
 	</hydraulic>
-	<reversethrust>
-		<file>Aircraft/747-400/Nasal/reverse-thrust.nas</file>
-	</reversethrust>
 	<tyresmoke>
 		<file>Aircraft/747-400/Nasal/tyresmoke.nas</file>
 	</tyresmoke>

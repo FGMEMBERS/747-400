@@ -1,0 +1,202 @@
+<?xml version="1.0"?>
+
+<!-- # ENGINES system for BOEING 747-400 #
+     # by Gijs de Rooy                   # -->
+
+<system name="propulsion-system">
+
+    <channel name="propulsion">
+        
+        <switch>
+            <default value="0"/>
+            <test  logic="AND" value="1">
+                /controls/engines/engine[0]/reverser == 1
+                /gear/gear[1]/wow == 1
+                /controls/engines/engine[0]/throttle lt 0.1
+            </test>
+            <output>propulsion/engine[0]/reversed</output>
+        </switch>
+        <switch>
+            <default value="0"/>
+            <test  logic="AND" value="1">
+                /controls/engines/engine[1]/reverser == 1
+                /gear/gear[1]/wow == 1
+                /controls/engines/engine[1]/throttle lt 0.1
+            </test>
+            <output>propulsion/engine[1]/reversed</output>
+        </switch>
+        <switch>
+            <default value="0"/>
+            <test  logic="AND" value="1">
+                /controls/engines/engine[2]/reverser == 1
+                /gear/gear[1]/wow == 1
+                /controls/engines/engine[2]/throttle lt 0.1
+            </test>
+            <output>propulsion/engine[2]/reversed</output>
+        </switch>
+        <switch>
+            <default value="0"/>
+            <test  logic="AND" value="1">
+                /controls/engines/engine[3]/reverser == 1
+                /gear/gear[1]/wow == 1
+                /controls/engines/engine[3]/throttle lt 0.1
+            </test>
+            <output>propulsion/engine[3]/reversed</output>
+        </switch>
+        
+        <switch>
+            <default value="/controls/engines/engine[0]/throttle"/>
+            <test  logic="AND" value="0">
+                propulsion/engine[0]/reversed == 1
+            </test>
+            <output>/controls/engines/engine[0]/throttle</output>
+        </switch>
+        <switch>
+            <default value="/controls/engines/engine[1]/throttle"/>
+            <test  logic="AND" value="0">
+                propulsion/engine[1]/reversed == 1
+            </test>
+            <output>/controls/engines/engine[1]/throttle</output>
+        </switch>
+        <switch>
+            <default value="/controls/engines/engine[2]/throttle"/>
+            <test  logic="AND" value="0">
+                propulsion/engine[2]/reversed == 1
+            </test>
+            <output>/controls/engines/engine[2]/throttle</output>
+        </switch>
+        <switch>
+            <default value="/controls/engines/engine[3]/throttle"/>
+            <test  logic="AND" value="0">
+                propulsion/engine[3]/reversed == 1
+            </test>
+            <output>/controls/engines/engine[3]/throttle</output>
+        </switch>
+        
+        <!-- full throttle when in reverse -->
+        <switch>
+            <default value="fcs/throttle-cmd-norm[0]"/>
+            <test  logic="AND" value="1">
+                propulsion/engine[0]/reversed == 1
+            </test>
+            <output>fcs/throttle-cmd-norm[0]</output>
+            <output>fcs/throttle-pos-norm[0]</output>
+        </switch>
+        <switch>
+            <default value="fcs/throttle-cmd-norm[1]"/>
+            <test  logic="AND" value="1">
+                propulsion/engine[1]/reversed == 1
+            </test>
+            <output>fcs/throttle-cmd-norm[1]</output>
+            <output>fcs/throttle-pos-norm[1]</output>
+        </switch>
+        <switch>
+            <default value="fcs/throttle-cmd-norm[2]"/>
+            <test  logic="AND" value="1">
+                propulsion/engine[2]/reversed == 1
+            </test>
+            <output>fcs/throttle-cmd-norm[2]</output>
+            <output>fcs/throttle-pos-norm[2]</output>
+        </switch>
+        <switch>
+            <default value="fcs/throttle-cmd-norm[3]"/>
+            <test  logic="AND" value="1">
+                propulsion/engine[3]/reversed == 1
+            </test>
+            <output>fcs/throttle-cmd-norm[3]</output>
+            <output>fcs/throttle-pos-norm[3]</output>
+        </switch>
+        
+        <!-- reverse force -->
+        
+        <switch>
+            <default value="0"/>
+            <test  logic="AND" value="3.14159265">
+                propulsion/engine[0]/reversed == 1
+            </test>
+            <output>propulsion/engine[0]/reverser-angle-rad</output>
+        </switch>
+        <switch>
+            <default value="0"/>
+            <test  logic="AND" value="3.14159265">
+                propulsion/engine[1]/reversed == 1
+            </test>
+            <output>propulsion/engine[1]/reverser-angle-rad</output>
+        </switch>
+        <switch>
+            <default value="0"/>
+            <test  logic="AND" value="3.14159265">
+                propulsion/engine[2]/reversed == 1
+            </test>
+            <output>propulsion/engine[2]/reverser-angle-rad</output>
+        </switch>
+        <switch>
+            <default value="0"/>
+            <test  logic="AND" value="3.14159265">
+                propulsion/engine[3]/reversed == 1
+            </test>
+            <output>propulsion/engine[3]/reverser-angle-rad</output>
+        </switch>
+        
+        <!-- animations -->
+        
+        <kinematic>
+            <input>propulsion/engine[0]/reversed</input>
+            <traverse>
+                <setting>
+                    <position>0.0</position>
+                    <time>0.0</time>
+                </setting>
+                <setting>
+                    <position>1.0</position>
+                    <time>1.4</time>
+                </setting>
+            </traverse>
+            <output>/engines/engine[0]/reverser-pos-norm</output>
+        </kinematic>
+        <kinematic>
+            <input>propulsion/engine[1]/reversed</input>
+            <traverse>
+                <setting>
+                    <position>0.0</position>
+                    <time>0.0</time>
+                </setting>
+                <setting>
+                    <position>1.0</position>
+                    <time>1.4</time>
+                </setting>
+            </traverse>
+            <output>/engines/engine[1]/reverser-pos-norm</output>
+        </kinematic>
+        <kinematic>
+            <input>propulsion/engine[2]/reversed</input>
+            <traverse>
+                <setting>
+                    <position>0.0</position>
+                    <time>0.0</time>
+                </setting>
+                <setting>
+                    <position>1.0</position>
+                    <time>1.4</time>
+                </setting>
+            </traverse>
+            <output>/engines/engine[2]/reverser-pos-norm</output>
+        </kinematic>
+        <kinematic>
+            <input>propulsion/engine[3]/reversed</input>
+            <traverse>
+                <setting>
+                    <position>0.0</position>
+                    <time>0.0</time>
+                </setting>
+                <setting>
+                    <position>1.0</position>
+                    <time>1.4</time>
+                </setting>
+            </traverse>
+            <output>/engines/engine[3]/reverser-pos-norm</output>
+        </kinematic>
+
+    </channel>
+
+</system>

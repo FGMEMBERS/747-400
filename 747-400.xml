@@ -242,7 +242,7 @@
                 <y>    0.00 </y>
                 <z> -221.46 </z>
             </location>
-            <static_friction> 0.8 </static_friction>
+            <static_friction> 0.5 </static_friction>
             <dynamic_friction> 0.5 </dynamic_friction>
             <rolling_friction> 0.02 </rolling_friction>
             <spring_coeff unit="LBS/FT"> 160000 </spring_coeff>
@@ -257,7 +257,7 @@
                 <y> -238.90 </y>
                 <z> -203.27 </z>
             </location>
-            <static_friction> 0.8 </static_friction>
+            <static_friction> 0.5 </static_friction>
             <dynamic_friction> 0.5 </dynamic_friction>
             <rolling_friction> 0.02 </rolling_friction>
             <spring_coeff unit="LBS/FT"> 833000 </spring_coeff>
@@ -272,7 +272,7 @@
                 <y>  -75.5 </y>
                 <z> -203.27 </z>
             </location>
-            <static_friction> 0.8 </static_friction>
+            <static_friction> 0.5 </static_friction>
             <dynamic_friction> 0.5 </dynamic_friction>
             <rolling_friction> 0.02 </rolling_friction>
             <spring_coeff unit="LBS/FT"> 833000 </spring_coeff>
@@ -287,7 +287,7 @@
                 <y>   75.5 </y>
                 <z> -203.27 </z>
             </location>
-            <static_friction> 0.8 </static_friction>
+            <static_friction> 0.5 </static_friction>
             <dynamic_friction> 0.5 </dynamic_friction>
             <rolling_friction> 0.02 </rolling_friction>
             <spring_coeff unit="LBS/FT"> 833000 </spring_coeff>
@@ -641,10 +641,10 @@
         </tank>
     </propulsion>
 
+    <system file="engines"/>
     <system file="failures"/>
     <system file="flaps"/>
     <system file="fuel"/>
-    <!-- <system file="gear"/> -->
     <system file="pushback"/>
     <system file="wingflex"/>
 
