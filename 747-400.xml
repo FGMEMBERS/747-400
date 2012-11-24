@@ -7,7 +7,7 @@
     <fileheader>
         <author>Gijs de Rooy</author>
         <filecreationdate>2008</filecreationdate>
-        <version>1.01</version>
+        <version>20121124</version>
         <description>Boeing 747-400 with GE CF6-80C2B1F engines</description>
 
         <license>
@@ -653,7 +653,7 @@
 
     <channel name="Pitch">
 
-        <summer name="Pitch Trim Sum">
+        <summer name="Pitch Trim Sum Pure">
             <input>fcs/elevator-cmd-norm</input>
             <input>fcs/pitch-trim-cmd-norm</input>
             <clipto>
@@ -661,6 +661,13 @@
                 <max>2</max>
             </clipto>
         </summer>
+        
+        <!-- Simulate actuator speed, value is guessed -->
+        <actuator name="Elevator Actuator">
+            <input>fcs/pitch-trim-sum-pure</input>
+            <rate_limit>2</rate_limit>
+            <output>fcs/pitch-trim-sum</output>
+        </actuator>
 
         <aerosurface_scale name="Elevator Control">
             <input>fcs/pitch-trim-sum</input>
@@ -684,7 +691,7 @@
      </channel>
      <channel name="Roll">
 
-        <summer name="Roll Trim Sum">
+        <summer name="Roll Trim Sum Pure">
             <input>fcs/aileron-cmd-norm</input>
             <input>fcs/roll-trim-cmd-norm</input>
             <clipto>
@@ -692,6 +699,13 @@
                 <max>1</max>
             </clipto>
         </summer>
+        
+        <!-- Simulate actuator speed, value is guessed -->
+        <actuator name="Aileron Actuator">
+            <input>fcs/roll-trim-sum-pure</input>
+            <rate_limit>2</rate_limit>
+            <output>fcs/roll-trim-sum</output>
+        </actuator>
         
         <summer name="Left Spoiler">
             <input>/controls/flight/speedbrake</input>
@@ -875,7 +889,7 @@
             </table>
         </scheduled_gain>
 
-        <summer name="Rudder Sum">
+        <summer name="Rudder Sum Pure">
             <input>fcs/rudder-command-sum</input>
             <input>fcs/yaw-damper-final</input>
             <clipto>
@@ -883,6 +897,13 @@
                 <max>1.0000</max>
             </clipto>
         </summer>
+        
+        <!-- Simulate actuator speed, value is guessed -->
+        <actuator name="Rudder Actuator">
+            <input>fcs/rudder-sum-pure</input>
+            <rate_limit>2</rate_limit>
+            <output>fcs/rudder-sum</output>
+        </actuator>
 
         <aerosurface_scale name="Rudder Control">
             <input>fcs/rudder-sum</input>
