@@ -1,3 +1,93 @@
+
+## Brake heating ##
+var gearHeating =
+{
+	new : func()
+    {
+       var m = { parents : [gearHeating]};
+		me.LastSimTime = 0.0;
+		me.LastSpeed = 0.0;
+		me.Temperature = getprop("/environment/temperature-degc");
+
+       m.reset();
+
+       return m;
+    },
+	
+	reset : func()
+    {
+        for(var i=0; i<5; i+=1) {
+			setprop("/gear/gear["~i~"]/btms",0);
+		}
+		me.LastSimTime = 0.0;
+		me.LastSpeed = 0.0;
+		me.Temperature = getprop("/environment/temperature-degc");
+    },
+	
+	update : func()
+    {
+		var CurrentTime = getprop("/sim/time/elapsed-sec");
+		var CurrentSpeed = getprop("/velocities/groundspeed-kt")*KT2MPS;
+        var dt = CurrentTime - me.LastSimTime;
+		var dv = CurrentSpeed - me.LastSpeed;
+		
+		if (dt<1.0)
+		{
+			var OnGround = getprop("/gear/gear[1]/wow");
+
+            if (getprop("/controls/gear/brake-parking"))
+                var BrakeLevel=1.0;
+            else
+                var BrakeLevel = (getprop("/controls/gear/brake-left")+getprop("/controls/gear/brake-right"))/2;
+			if ((OnGround)and(BrakeLevel>0))
+            {
+				dT = 0.5*getprop("/fdm/jsbsim/inertia/weight-lbs")*LB2KG*(me.LastSpeed*me.LastSpeed - CurrentSpeed*CurrentSpeed)/(2500*709);
+				me.Temperature += dT*(1/BrakeLevel);
+				
+				if (me.Temperature < 176) { 
+					var btms = 0;
+				} else {
+					# BTMS units: 0 = <176C, 9 = >788C
+					var btms = int((me.Temperature-176)/72+0.5);
+				}
+				if (btms > 9)
+					btms = 9;
+					
+				for(var i=1; i<5; i+=1) {
+					setprop("/gear/gear["~i~"]/btms",btms);
+				}
+			}
+			if (me.Temperature > getprop("/environment/temperature-degc")) {
+				if (OnGround) 
+					me.Temperature += -0.12*dt; # -0.12 C/sec = cooldown in 70 minutes from 500 degrees (BTMS 5)
+				else if (getprop("/gear/gear/position-norm") == 0)
+					me.Temperature += -1.2*dt; # -0.12 C/sec = cooldown in 70 minutes from 500 degrees (BTMS 5)
+			}
+			
+			for(var i=1; i<5; i+=1) {
+				setprop("/gear/gear["~i~"]/temperature-degc",me.Temperature);
+			}
+		}
+		
+		me.LastSimTime = CurrentTime;
+		me.LastSpeed = CurrentSpeed;
+		settimer(func { gearHeating.update(); },0.2);
+	},
+};
+
+var gearHeat = gearHeating.new();
+
+setlistener("/sim/signals/fdm-initialized",
+            # executed on _every_ FDM reset (but not installing new listeners)
+            func(idle) { gearHeat.reset(); },
+            0,0);
+
+settimer(func()
+{
+	gearHeat.update();
+	print("Brake heating system... OK");
+}, 5);
+		 
 ## Continious Ignition ##
 
 setlistener("/controls/engines/con-ignition", func(conig){
@@ -151,6 +241,21 @@ controls.gearDown = func(v) {
 	elsif (v > 0) {
       setprop("/controls/gear/gear-down", 1);
     }
+}
+
+## Repair failures/malfunctions ##
+var repair = func() {
+	setprop("/controls/failures/wings/broken",0);
+	setprop("/controls/engines/engine[0]/on-fire",0);
+	setprop("/controls/engines/engine[1]/on-fire",0);
+	setprop("/controls/engines/engine[2]/on-fire",0);
+	setprop("/controls/engines/engine[3]/on-fire",0);
+	setprop("/controls/failures/gear[0]/stuck",0);
+	setprop("/controls/failures/gear[1]/stuck",0);
+	setprop("/controls/failures/gear[2]/stuck",0);
+	setprop("/controls/failures/gear[3]/stuck",0);
+	setprop("/controls/failures/gear[4]/stuck",0);
+	gearHeating.reset();
 }
 
 ## Switch click sound ##

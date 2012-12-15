@@ -11,7 +11,7 @@
 		<cockpit type="int">3</cockpit>
 		<model type="int">3</model>
 	</rating>
-	<version>20120611</version>
+	<version>20121215</version>
 	
 	<flight-model>jsb</flight-model>
 	<aero>747-400</aero>
@@ -261,54 +261,8 @@ left mouse button and counter clockwise using the middle mouse button.
 				<item>
 					<label>Repair</label>
 					<binding>
-						<command>property-assign</command>
-						<property>/controls/failures/wings/broken</property>
-						<value>0</value>
-					</binding>
-					<binding>
-						<command>property-assign</command>
-						<property>/controls/engines/engine[0]/on-fire</property>
-						<value>0</value>
-					</binding>
-					<binding>
-						<command>property-assign</command>
-						<property>/controls/engines/engine[1]/on-fire</property>
-						<value>0</value>
-					</binding>
-					<binding>
-						<command>property-assign</command>
-						<property>/controls/engines/engine[2]/on-fire</property>
-						<value>0</value>
-					</binding>
-					<binding>
-						<command>property-assign</command>
-						<property>/controls/engines/engine[3]/on-fire</property>
-						<value>0</value>
-					</binding>
-					<binding>
-						<command>property-assign</command>
-						<property>/controls/failures/gear[0]/stuck</property>
-						<value>0</value>
-					</binding>
-					<binding>
-						<command>property-assign</command>
-						<property>/controls/failures/gear[1]/stuck</property>
-						<value>0</value>
-					</binding>
-					<binding>
-						<command>property-assign</command>
-						<property>/controls/failures/gear[2]/stuck</property>
-						<value>0</value>
-					</binding>
-					<binding>
-						<command>property-assign</command>
-						<property>/controls/failures/gear[3]/stuck</property>
-						<value>0</value>
-					</binding>
-					<binding>
-						<command>property-assign</command>
-						<property>/controls/failures/gear[4]/stuck</property>
-						<value>0</value>
+						<command>nasal</command>
+						<script>Boeing747.repair();</script>
 					</binding>
 				</item>
 
