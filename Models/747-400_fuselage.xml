@@ -358,12 +358,12 @@
 </animation>
 
 <!-- ELEVATORS -->
-<!-- RIGHT ELEVATOR-->
+<!-- RIGHT ELEVATOR (inboard and outboard) -->
 
 <animation>
 	<type>rotate</type>
 	<object-name>elevator_right</object-name>
-	<property>surface-positions/elevator-pos-norm</property>
+	<property>surface-positions/outboard-elevator-pos-norm</property>
 	<factor>25</factor>
 	<axis>
 		<x1-m>34.90</x1-m>
@@ -375,11 +375,11 @@
 	</axis>
 </animation>
 
-<!-- LEFT ELEVATOR-->
+<!-- LEFT ELEVATOR (inboard and outboard) -->
 <animation>
 	<type>rotate</type>
 	<object-name>elevator_left</object-name>
-	<property>surface-positions/elevator-pos-norm</property>
+	<property>surface-positions/outboard-elevator-pos-norm</property>
 	<factor>-25</factor>
 	<axis>
 		<x1-m>34.90</x1-m>
