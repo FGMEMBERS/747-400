@@ -52,7 +52,7 @@
 	<object-name>left_yoke</object-name>
 	<object-name>EFB1</object-name>
 	<property>controls/flight/aileron</property>
-	<factor>90</factor>
+	<factor>88</factor>
 	<center>
 		<x-m> 1.048</x-m>
 		<y-m>-0.533</y-m>
@@ -93,7 +93,7 @@
 	<object-name>right_yoke</object-name>
 	<object-name>EFB2</object-name>
 	<property>controls/flight/aileron</property>
-	<factor>90</factor>
+	<factor>88</factor>
 	<center>
 		<x-m>1.048</x-m>
 		<y-m>0.533</y-m>

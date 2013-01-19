@@ -838,10 +838,24 @@
 	<object-name>speedbrake</object-name>
 	<action>
 		<button>0</button>
-		<repeatable>false</repeatable>  
+		<repeatable>false</repeatable>
 		<binding>
-			<command>property-toggle</command>
-			<property>/controls/flight/speedbrake</property>
+			<command>property-adjust</command>
+			<property>/autopilot/autospoilers/step</property>
+			<step>1</step>
+			<min>0</min>
+			<max>3</max>
+		</binding>
+	</action>
+	<action>
+		<button>1</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>property-adjust</command>
+			<property>/autopilot/autospoilers/step</property>
+			<step>-1</step>
+			<min>0</min>
+			<max>3</max>
 		</binding>
 	</action>
 </animation>
@@ -861,14 +875,13 @@
 		</entry>
 		<entry>
 			<ind>2</ind>
-			<dep>32</dep>
+			<dep>34</dep>
 		</entry>
 		<entry>
 			<ind>3</ind>
-			<dep>60</dep>
+			<dep>68</dep>
 		</entry>
 	</interpolation>
-	<factor>60</factor>
 	<center>
 		<x-m>1.143</x-m>
 		<y-m>0</y-m>

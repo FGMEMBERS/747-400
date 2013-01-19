@@ -11,7 +11,7 @@
 		<cockpit type="int">3</cockpit>
 		<model type="int">3</model>
 	</rating>
-	<version>20130118</version>
+	<version>20130119</version>
 	
 	<flight-model>jsb</flight-model>
 	<aero>747-400</aero>
@@ -539,10 +539,11 @@ left mouse button and counter clockwise using the middle mouse button.
 		</config>
 	</autobrake>
 	<autospoilers>
-		<step type="int">0</step> <!-- OFF on selection -->
+		<after-takeoff type="int">0</after-takeoff>
 		<config>
 			<idle-throttle type="double">0.10</idle-throttle>
 		</config>
+		<step type="int">0</step> <!-- OFF on selection -->
 	</autospoilers>
 	<config>
 		<min-climb-speed-kt type="float">150.0</min-climb-speed-kt>
