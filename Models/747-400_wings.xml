@@ -266,7 +266,7 @@
 
 <!-- WING FLEX RIGHT -->
 
-<animation>
+<!--<animation>
  <type>rotate</type>
  <object-name>wing_right.1</object-name>
  <object-name>wing_right.2</object-name>
@@ -323,7 +323,7 @@
   <y>0</y>
   <z>0</z>
  </axis>
-</animation>
+</animation>-->
 
 <animation>
  <type>rotate</type>
@@ -388,7 +388,7 @@
 
 <!-- WING FLEX LEFT -->
 
-<animation>
+<!--<animation>
  <type>rotate</type>
  <object-name>wing_left.1</object-name>
  <object-name>wing_left.2</object-name>
@@ -445,7 +445,7 @@
   <y>0</y>
   <z>0</z>
  </axis>
-</animation>
+</animation>-->
 
 <animation>
  <type>rotate</type>
@@ -513,8 +513,8 @@
 <animation>
 	<type>rotate</type>
 	<object-name>aileron_left_inner</object-name> 
-	<property>surface-positions/left-inboard-aileron-pos-norm</property>
-	<factor>-30</factor>   
+	<property>fdm/jsbsim/fcs/left-inboard-aileron-pos-rad</property>
+	<factor>57.3</factor>   
 	<axis>
 		<x1-m>7.23</x1-m>
 		<y1-m>-11.25</y1-m>
@@ -529,9 +529,9 @@
 
 <animation>
 	<type>rotate</type>
-	<object-name>aileron_left_outer</object-name>
-	<property>surface-positions/left-outboard-aileron-pos-norm</property>
-	<factor>-30</factor>  
+	<object-name>aileron_left_outer</object-name> 
+	<property>fdm/jsbsim/fcs/left-outboard-aileron-pos-rad</property>
+	<factor>57.3</factor>   
 	<axis>
 		<x1-m>12.88</x1-m>
 		<y1-m>-21.6</y1-m>
@@ -546,9 +546,9 @@
 
 <animation>
 	<type>rotate</type>
-	<object-name>aileron_right_inner</object-name>
-	<property>surface-positions/right-inboard-aileron-pos-norm</property>
-	<factor>-30</factor>   
+	<object-name>aileron_right_inner</object-name> 
+	<property>fdm/jsbsim/fcs/right-inboard-aileron-pos-rad</property>
+	<factor>-57.3</factor>   
 	<axis>
 		<x1-m>7.23</x1-m>
 		<y1-m>11.25</y1-m>
@@ -563,9 +563,9 @@
 
 <animation>
 	<type>rotate</type>
-	<object-name>aileron_right_outer</object-name>
-	<property>surface-positions/left-outboard-aileron-pos-norm</property>
-	<factor>-30</factor>  
+	<object-name>aileron_right_outer</object-name> 
+	<property>fdm/jsbsim/fcs/right-outboard-aileron-pos-rad</property>
+	<factor>-57.3</factor>   
 	<axis>
 		<x1-m>12.88</x1-m>
 		<y1-m>21.6</y1-m>

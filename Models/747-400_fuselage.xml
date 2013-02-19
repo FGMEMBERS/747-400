@@ -345,8 +345,8 @@
 <animation>
 	<type>rotate</type>
 	<object-name>rudder</object-name> 
-	<property>surface-positions/rudder-pos-norm</property>
-	<factor>50</factor>
+	<property>fdm/jsbsim/fcs/rudder-pos-rad</property>
+	<factor>-57.3</factor>
 	<axis>
 		<x1-m>33</x1-m>
 		<y1-m>0.0</y1-m>
@@ -363,8 +363,8 @@
 <animation>
 	<type>rotate</type>
 	<object-name>elevator_right</object-name>
-	<property>surface-positions/outboard-elevator-pos-norm</property>
-	<factor>25</factor>
+	<property>fdm/jsbsim/fcs/outboard-elevator-pos-rad</property>
+	<factor>57.3</factor>
 	<axis>
 		<x1-m>34.90</x1-m>
 		<y1-m>0.95</y1-m>
@@ -379,8 +379,8 @@
 <animation>
 	<type>rotate</type>
 	<object-name>elevator_left</object-name>
-	<property>surface-positions/outboard-elevator-pos-norm</property>
-	<factor>-25</factor>
+	<property>fdm/jsbsim/fcs/outboard-elevator-pos-rad</property>
+	<factor>-57.3</factor>
 	<axis>
 		<x1-m>34.90</x1-m>
 		<y1-m>-0.95</y1-m>

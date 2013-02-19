@@ -11,7 +11,7 @@
 		<cockpit type="int">3</cockpit>
 		<model type="int">3</model>
 	</rating>
-	<version>20130119</version>
+	<version>20130219</version>
 	
 	<flight-model>jsb</flight-model>
 	<aero>747-400</aero>
@@ -203,6 +203,8 @@ left mouse button and counter clockwise using the middle mouse button.
 
 	</help>
 	
+	<checklists include="747-400-checklists.xml"/>
+	
 	<flight-recorder include="Systems/flight-recorder.xml"/>
   
 	<tutorials>
@@ -294,7 +296,7 @@ left mouse button and counter clockwise using the middle mouse button.
 				</item>
 				
 				<item>
-					<label>Tiller Steering</label>
+					<label>Tiller steering</label>
 					<binding>
 						<command>nasal</command>
 						<script>
@@ -749,22 +751,82 @@ left mouse button and counter clockwise using the middle mouse button.
 
 <payload>
 	<weight>
-		<name type="string">Passengers</name>
+		<name type="string">Passengers 0A</name>
 		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
 		<min-lb type="double">    0.0</min-lb>
-		<max-lb type="double">70000.0</max-lb>
+		<max-lb type="double"> 3675.0</max-lb>
+		<min-pax type="int">  0</min-pax>
+		<max-pax type="int"> 21</max-pax>
 	</weight>
 	<weight>
-		<name type="string">Forward Cargo</name>
+		<name type="string">Passengers 0B (upper)</name>
 		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
 		<min-lb type="double">    0.0</min-lb>
-		<max-lb type="double">56000.0</max-lb>
+		<max-lb type="double"> 7350.0</max-lb>
+		<min-pax type="int">  0</min-pax>
+		<max-pax type="int"> 42</max-pax>
 	</weight>
 	<weight>
-		<name type="string">Aft Cargo</name>
+		<name type="string">Passengers 0B (lower)</name>
 		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]"/>
 		<min-lb type="double">    0.0</min-lb>
-		<max-lb type="double">56000.0</max-lb>
+		<max-lb type="double"> 6125.0</max-lb>
+		<min-pax type="int">  0</min-pax>
+		<max-pax type="int"> 35</max-pax>
+	</weight>
+	<weight>
+		<name type="string">Passengers 0C</name>
+		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[3]"/>
+		<min-lb type="double">    0.0</min-lb>
+		<max-lb type="double">15050.0</max-lb>
+		<min-pax type="int">  0</min-pax>
+		<max-pax type="int"> 86</max-pax>
+	</weight>
+	<weight>
+		<name type="string">Passengers 0D</name>
+		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[4]"/>
+		<min-lb type="double">    0.0</min-lb>
+		<max-lb type="double">17500.0</max-lb>
+		<min-pax type="int">  0</min-pax>
+		<max-pax type="int">100</max-pax>
+	</weight>
+	<weight>
+		<name type="string">Passengers 0E</name>
+		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[5]"/>
+		<min-lb type="double">    0.0</min-lb>
+		<max-lb type="double">23800.0</max-lb>
+		<min-pax type="int">  0</min-pax>
+		<max-pax type="int">136</max-pax>
+	</weight>
+	<weight>
+		<name type="string">Cargo 1</name>
+		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[6]"/>
+		<min-lb type="double">    0.0</min-lb>
+		<max-lb type="double">21000.0</max-lb>
+	</weight>
+	<weight>
+		<name type="string">Cargo 2</name>
+		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[7]"/>
+		<min-lb type="double">    0.0</min-lb>
+		<max-lb type="double">35000.0</max-lb>
+	</weight>
+	<weight>
+		<name type="string">Cargo 3</name>
+		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[8]"/>
+		<min-lb type="double">    0.0</min-lb>
+		<max-lb type="double">21000.0</max-lb>
+	</weight>
+	<weight>
+		<name type="string">Cargo 4</name>
+		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[9]"/>
+		<min-lb type="double">    0.0</min-lb>
+		<max-lb type="double">28000.0</max-lb>
+	</weight>
+	<weight>
+		<name type="string">Cargo 5</name>
+		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[10]"/>
+		<min-lb type="double">    0.0</min-lb>
+		<max-lb type="double">7000.0</max-lb>
 	</weight>
 </payload>
  

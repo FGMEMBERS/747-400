@@ -258,7 +258,7 @@
 		<binding>
 			<command>property-adjust</command>
 			<property>/controls/flight/rudder-trim</property>
-			<step>0.05</step>
+			<step>0.01</step>
 			<min>-1</min>
 			<max>1</max>
 		</binding>
@@ -269,7 +269,7 @@
 		<binding>
 			<command>property-adjust</command>
 			<property>/controls/flight/rudder-trim</property>
-			<step>-0.05</step>
+			<step>-0.01</step>
 			<min>-1</min>
 			<max>1</max>
 		</binding>
@@ -279,7 +279,7 @@
 		<binding>
 			<command>property-adjust</command>
 			<property>/controls/flight/rudder-trim</property>
-			<step>0.05</step>
+			<step>0.01</step>
 			<min>-1</min>
 			<max>1</max>
 		</binding>
@@ -289,7 +289,7 @@
 		<binding>
 			<command>property-adjust</command>
 			<property>/controls/flight/rudder-trim</property>
-			<step>-0.05</step>
+			<step>-0.01</step>
 			<min>-1</min>
 			<max>1</max>
 		</binding>
@@ -300,7 +300,7 @@
 	<type>rotate</type>
 	<object-name>rudder_trim_ctrl</object-name>
 	<property>/controls/flight/rudder-trim</property>
-	<factor>-180</factor>
+	<factor>-1569.6</factor> <!-- 4.36 turns = 10 units -->
 	<center>
 		<x-m>1.634</x-m>
 		<y-m>0.029</y-m>
@@ -333,6 +333,17 @@
 	<step>0.01</step>
 	<axis>
 		<y>-1</y>
+	</axis>
+</animation>
+
+
+<animation>
+	<type>textranslate</type>
+	<object-name>stab.trim.greenband</object-name>
+	<property>/instrumentation/stabilizer-trim-indicator/greenband</property>
+	<factor>0.0185</factor>
+	<axis>
+		<y>1</y>
 	</axis>
 </animation>
 
