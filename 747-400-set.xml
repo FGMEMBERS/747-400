@@ -203,8 +203,6 @@ left mouse button and counter clockwise using the middle mouse button.
 
 	</help>
 	
-	<checklists include="747-400-checklists.xml"/>
-	
 	<flight-recorder include="Systems/flight-recorder.xml"/>
   
 	<tutorials>
