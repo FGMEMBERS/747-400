@@ -735,12 +735,12 @@
             <output>fcs/inboard-elevator-int-pos-rad</output>
             <output>fcs/outboard-elevator-int-pos-rad</output>
         </aerosurface_scale>
-        <actuator>
+        <actuator name="Inboard Elevator Actuator">
             <input>fcs/inboard-elevator-int-pos-rad</input>
             <rate_limit> 0.646 </rate_limit> <!-- 37 deg/sec -->
             <output>fcs/inboard-elevator-pos-rad</output>
         </actuator>
-        <actuator>
+        <actuator name="Outboard Elevator Actuator">
             <input>fcs/outboard-elevator-int-pos-rad</input>
             <rate_limit> 0.646 </rate_limit> <!-- 37 deg/sec -->
             <output>fcs/outboard-elevator-pos-rad</output>
@@ -773,7 +773,7 @@
             <output>fcs/outboard-ailerons-unlocked</output>
         </switch>
         
-        <fcs_function>
+        <fcs_function name="Outboard Aileron Locking Function">
             <function>
                 <product>
                     <property>fcs/roll-trim-sum</property>
@@ -791,7 +791,7 @@
             </range>
             <output>fcs/left-outboard-aileron-int-pos-rad</output>
         </aerosurface_scale>
-        <actuator>
+        <actuator name="Left Outboard Aileron Actuator">
             <input>fcs/left-outboard-aileron-int-pos-rad</input>
             <rate_limit> 0.873 </rate_limit> <!-- 50 deg/sec -->
             <output>fcs/left-outboard-aileron-pos-rad</output>
@@ -805,7 +805,7 @@
             </range>
             <output>fcs/right-outboard-aileron-int-pos-rad</output>
         </aerosurface_scale>
-        <actuator>
+        <actuator name="Right Outboard Aileron Actuator">
             <input>fcs/right-outboard-aileron-int-pos-rad</input>
             <rate_limit> 0.873 </rate_limit> <!-- 50 deg/sec -->
             <output>fcs/right-outboard-aileron-pos-rad</output>
@@ -819,7 +819,7 @@
             </range>
             <output>fcs/left-inboard-aileron-int-pos-rad</output>
         </aerosurface_scale>
-        <actuator>
+        <actuator name="Left Inboard Aileron Actuator">
             <input>fcs/left-inboard-aileron-int-pos-rad</input>
             <rate_limit> 0.742 </rate_limit> <!-- 42.5 deg/sec -->
             <output>fcs/left-inboard-aileron-pos-rad</output>
@@ -833,7 +833,7 @@
             </range>
             <output>fcs/right-inboard-aileron-int-pos-rad</output>
         </aerosurface_scale>
-        <actuator>
+        <actuator name="Right Inboard Aileron Actuator">
             <input>fcs/right-inboard-aileron-int-pos-rad</input>
             <rate_limit> 0.742 </rate_limit> <!-- 42.5 deg/sec -->
             <output>fcs/right-inboard-aileron-pos-rad</output>
@@ -860,7 +860,7 @@
         
         <!-- Spoilers -->
         
-        <switch>
+        <switch name="Spoiler 1 Command">
             <default value="0"/>
             <test  logic="AND" value="-fcs/roll-trim-sum">
                 /controls/flight/speedbrakes == 0
@@ -878,13 +878,13 @@
             </range>
             <output>fcs/spoiler-pos-int-rad[0]</output>
         </aerosurface_scale>
-        <actuator>
+        <actuator name="Spoiler 1 Actuator">
             <input>fcs/spoiler-pos-int-rad[0]</input>
             <rate_limit> 1.309 </rate_limit> <!-- 75 deg/sec -->
             <output>fcs/spoiler-pos-rad[0]</output>
         </actuator>
         
-        <switch>
+        <switch name="Spoiler 2 Command">
             <default value="0"/>
             <test  logic="AND" value="-fcs/roll-trim-sum">
                 /controls/flight/speedbrakes == 0
@@ -902,13 +902,13 @@
             </range>
             <output>fcs/spoiler-pos-int-rad[1]</output>
         </aerosurface_scale>
-        <actuator>
+        <actuator name="Spoiler 2 Actuator">
             <input>fcs/spoiler-pos-int-rad[1]</input>
             <rate_limit> 1.309 </rate_limit> <!-- 75 deg/sec -->
             <output>fcs/spoiler-pos-rad[1]</output>
         </actuator>
         
-        <switch>
+        <switch name="Spoiler 3 Command">
             <default value="0"/>
             <test  logic="AND" value="-fcs/roll-trim-sum">
                 /controls/flight/speedbrakes == 0
@@ -927,13 +927,13 @@
             </range>
             <output>fcs/spoiler-pos-int-rad[2]</output>
         </aerosurface_scale>
-        <actuator>
+        <actuator name="Spoiler 3 Actuator">
             <input>fcs/spoiler-pos-int-rad[2]</input>
             <rate_limit> 1.309 </rate_limit> <!-- 75 deg/sec -->
             <output>fcs/spoiler-pos-rad[2]</output>
         </actuator>
         
-        <switch>
+        <switch name="Spoiler 4 Command">
             <default value="0"/>
             <test  logic="AND" value="-fcs/roll-trim-sum">
                 /controls/flight/speedbrakes == 0
@@ -952,13 +952,13 @@
             </range>
             <output>fcs/spoiler-pos-int-rad[3]</output>
         </aerosurface_scale>
-        <actuator>
+        <actuator name="Spoiler 4 Actuator">
             <input>fcs/spoiler-pos-int-rad[3]</input>
             <rate_limit> 1.309 </rate_limit> <!-- 75 deg/sec -->
             <output>fcs/spoiler-pos-rad[3]</output>
         </actuator>
         
-        <switch>
+        <switch name="Spoiler 5 Command">
             <default value="0"/>
             <test  logic="AND" value="0.5">
                 /controls/flight/speedbrakes == 1
@@ -976,13 +976,13 @@
             </range>
             <output>fcs/spoiler-pos-int-rad[4]</output>
         </aerosurface_scale>
-        <actuator>
+        <actuator name="Spoiler 5 Actuator">
             <input>fcs/spoiler-pos-int-rad[4]</input>
             <rate_limit> 1.309 </rate_limit> <!-- 25 deg/sec -->
             <output>fcs/spoiler-pos-rad[4]</output>
         </actuator>
         
-        <switch>
+        <switch name="Spoiler 6 Command">
             <default value="0"/>
             <test  logic="AND" value="0.5">
                 /controls/flight/speedbrakes == 1
@@ -1000,13 +1000,13 @@
             </range>
             <output>fcs/spoiler-pos-int-rad[5]</output>
         </aerosurface_scale>
-        <actuator>
+        <actuator name="Spoiler 6 Actuator">
             <input>fcs/spoiler-pos-int-rad[5]</input>
             <rate_limit> 1.309 </rate_limit> <!-- 25 deg/sec -->
             <output>fcs/spoiler-pos-rad[5]</output>
         </actuator>
         
-        <switch>
+        <switch name="Spoiler 7 Command">
             <default value="0"/>
             <test  logic="AND" value="0.5">
                 /controls/flight/speedbrakes == 1
@@ -1024,13 +1024,13 @@
             </range>
             <output>fcs/spoiler-pos-int-rad[6]</output>
         </aerosurface_scale>
-        <actuator>
+        <actuator name="Spoiler 7 Actuator">
             <input>fcs/spoiler-pos-int-rad[6]</input>
             <rate_limit> 1.309 </rate_limit> <!-- 25 deg/sec -->
             <output>fcs/spoiler-pos-rad[6]</output>
         </actuator>
         
-        <switch>
+        <switch name="Spoiler 8 Command">
             <default value="0"/>
             <test  logic="AND" value="0.5">
                 /controls/flight/speedbrakes == 1
@@ -1048,13 +1048,13 @@
             </range>
             <output>fcs/spoiler-pos-int-rad[7]</output>
         </aerosurface_scale>
-        <actuator>
+        <actuator name="Spoiler 8 Actuator">
             <input>fcs/spoiler-pos-int-rad[7]</input>
             <rate_limit> 1.309 </rate_limit> <!-- 25 deg/sec -->
             <output>fcs/spoiler-pos-rad[7]</output>
         </actuator>
         
-        <switch>
+        <switch name="Spoiler 9 Command">
             <default value="0"/>
             <test  logic="AND" value="fcs/roll-trim-sum">
                 /controls/flight/speedbrakes == 0
@@ -1073,13 +1073,13 @@
             </range>
             <output>fcs/spoiler-pos-int-rad[8]</output>
         </aerosurface_scale>
-        <actuator>
+        <actuator name="Spoiler 9 Actuator">
             <input>fcs/spoiler-pos-int-rad[8]</input>
             <rate_limit> 1.309 </rate_limit> <!-- 75 deg/sec -->
             <output>fcs/spoiler-pos-rad[8]</output>
         </actuator>
         
-        <switch>
+        <switch name="Spoiler 10 Command">
             <default value="0"/>
             <test  logic="AND" value="fcs/roll-trim-sum">
                 /controls/flight/speedbrakes == 0
@@ -1098,13 +1098,13 @@
             </range>
             <output>fcs/spoiler-pos-int-rad[9]</output>
         </aerosurface_scale>
-        <actuator>
+        <actuator name="Spoiler 10 Actuator">
             <input>fcs/spoiler-pos-int-rad[9]</input>
             <rate_limit> 1.309 </rate_limit> <!-- 75 deg/sec -->
             <output>fcs/spoiler-pos-rad[9]</output>
         </actuator>
         
-        <switch>
+        <switch name="Spoiler 11 Command">
             <default value="0"/>
             <test  logic="AND" value="fcs/roll-trim-sum">
                 /controls/flight/speedbrakes == 0
@@ -1122,13 +1122,13 @@
             </range>
             <output>fcs/spoiler-pos-int-rad[10]</output>
         </aerosurface_scale>
-        <actuator>
+        <actuator name="Spoiler 11 Actuator">
             <input>fcs/spoiler-pos-int-rad[10]</input>
             <rate_limit> 1.309 </rate_limit> <!-- 75 deg/sec -->
             <output>fcs/spoiler-pos-rad[10]</output>
         </actuator>
         
-        <switch>
+        <switch name="Spoiler 12 Command">
             <default value="0"/>
             <test  logic="AND" value="fcs/roll-trim-sum">
                 /controls/flight/speedbrakes == 0
@@ -1146,7 +1146,7 @@
             </range>
             <output>fcs/spoiler-pos-int-rad[11]</output>
         </aerosurface_scale>
-        <actuator>
+        <actuator name="Spoiler 12 Actuator">
             <input>fcs/spoiler-pos-int-rad[11]</input>
             <rate_limit> 1.309 </rate_limit> <!-- 75 deg/sec -->
             <output>fcs/spoiler-pos-rad[11]</output>
@@ -1232,7 +1232,7 @@
             </range>
             <output>fcs/rudder-pos-int-rad</output>
         </aerosurface_scale>
-        <actuator>
+        <actuator name="Rudder Actuator">
             <input>fcs/rudder-pos-int-rad</input>
             <rate_limit> 0.873 </rate_limit> <!-- 50 deg/sec -->
             <output>fcs/rudder-pos-rad</output>
