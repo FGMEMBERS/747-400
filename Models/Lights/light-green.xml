@@ -106,22 +106,15 @@
 <animation>
 	<type>select</type>
 	<object-name>Light-Flare</object-name>
-	<condition>
-		<equals>
-			<property>/controls/lighting/nav-lights</property>
-			<value>1</value>
-		</equals>
-	</condition>
-</animation>
-
-<animation>
-	<type>select</type>
 	<object-name>LightNavStbd</object-name>
 	<condition>
-		<equals>
-			<property>/controls/lighting/nav-lights</property>
-			<value>1</value>
-		</equals>
+		<and>
+			<equals>
+				<property>/controls/lighting/nav-lights</property>
+				<value>1</value>
+			</equals>
+			<property>/sim/rendering/rembrandt/enabled</property> 
+		</and>
 	</condition>
 </animation>
 

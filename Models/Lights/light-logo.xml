@@ -53,7 +53,10 @@
 	<type>select</type>
 	<object-name>LightSrcLeft</object-name>
 	<condition>
-		<property>/controls/lighting/logo-lights</property>
+		<and>
+			<property>/controls/lighting/logo-lights</property>
+			<property>/sim/rendering/rembrandt/enabled</property> 
+		</and>
 	</condition>
 </animation>
   
