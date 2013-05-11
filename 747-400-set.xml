@@ -11,7 +11,7 @@
 		<cockpit type="int">3</cockpit>
 		<model type="int">3</model>
 	</rating>
-	<version>20130219</version>
+	<version>20130511</version>
 	
 	<flight-model>jsb</flight-model>
 	<aero>747-400</aero>
@@ -203,6 +203,8 @@ left mouse button and counter clockwise using the middle mouse button.
 
 	</help>
 	
+	<checklists include="747-400-checklists.xml"/>
+	
 	<flight-recorder include="Systems/flight-recorder.xml"/>
   
 	<tutorials>
@@ -303,7 +305,7 @@ left mouse button and counter clockwise using the middle mouse button.
 						</script>
 					</binding>
 				</item>
-				 
+				
 				<item>
 					<label>Yoke charts</label>
 					<binding>

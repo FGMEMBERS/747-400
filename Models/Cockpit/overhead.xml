@@ -102,41 +102,25 @@
 </animation>
 
 <!-- Electrical -->
-<animation>
-	<type>pick</type>
-	<object-name>stbypwr</object-name>
-	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>nasal</command>
-			<script>electrical.turn_stby_pwr_sw(1)</script>
-		</binding>
-	</action>
-	<action>
-		<button>1</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>nasal</command>
-			<script>electrical.turn_stby_pwr_sw(-1)</script>
-		</binding>
-	</action>
-</animation>
 
 <animation>
-	<type>rotate</type>
+	<type>knob</type>
 	<object-name>stbypwr</object-name>
 	<property>/controls/electric/standby-power</property>
 	<factor>-40</factor>
+	<action>
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/electric/standby-power</property>
+			<min>0</min>
+			<max>2</max>
+		</binding>
+	</action>
 	<center>
-		<x-m>-0.063</x-m>
-		<y-m>-0.333</y-m>
-		<z-m>-0.014</z-m>
+		<x-m>-0.063</x-m><y-m>-0.333</y-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
-		<x>0</x>
-		<y>0</y>
-		<z>1</z>
+		<x>0</x><y>0</y><z>1</z>
 	</axis>
 </animation>
 
@@ -801,50 +785,24 @@
 <!-- Engine Start & Fuel Jettison -->
 
 <animation>
-	<type>pick</type>
-	<object-name>auto-ignition</object-name>
-	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>property-adjust</command>
-			<property>/controls/engines/auto-ignition</property>
-			<step>1</step>
-			<min>0</min>
-			<max>2</max>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>auto-ignition</object-name>
-	<action>
-		<button>1</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>property-adjust</command>
-			<property>/controls/engines/auto-ignition</property>
-			<step>-1</step>
-			<min>0</min>
-			<max>2</max>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>rotate</type>
+	<type>knob</type>
 	<object-name>auto-ignition</object-name>
 	<property>/controls/engines/auto-ignition</property>
+	<offset-deg>40</offset-deg>
 	<factor>-40</factor>
+	<action>
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/engines/auto-ignition</property>
+			<factor>1</factor>
+			<min>0</min>
+			<max>2</max>
+		</binding>
+	</action>
 	<center>
-		<x-m> 0.026</x-m>
-		<y-m>-0.034</y-m>
-		<z-m>-0.014</z-m>
+		<x-m> 0.026</x-m><y-m>-0.034</y-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
-		<x>0</x>
-		<y>0</y>
 		<z>1</z>
 	</axis>
 </animation>
@@ -1039,31 +997,14 @@
 </animation>
 
 <animation>
-	<type>pick</type>
+	<type>knob</type>
 	<object-name>fuel-to-remain</object-name>
 	<action>
-		<button>0</button>
 		<repeatable>true</repeatable>	
 		<binding>
 			<command>property-adjust</command>
 			<property>/controls/fuel/fuel-to-remain-lbs</property>
-			<step>1000</step>
-			<min>0</min>
-			<max>400000</max>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>fuel-to-remain</object-name>
-	<action>
-		<button>1</button>
-		<repeatable>true</repeatable>	
-		<binding>
-			<command>property-adjust</command>
-			<property>/controls/fuel/fuel-to-remain-lbs</property>
-			<step>-1000</step>
+			<factor>100</factor>
 			<min>0</min>
 			<max>400000</max>
 		</binding>
@@ -1227,11 +1168,12 @@
 <!-- Anti-Ice, Ice & Rain -->
 
 <animation>
-	<type>pick</type>
+	<type>knob</type>
 	<object-name>anti-ice_eng.1</object-name>
+	<property>/controls/anti-ice/engine/inlet-heat</property>
+	<factor>-25</factor>
+	<drag-direction>vertical</drag-direction>
 	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
 		<binding>
 			<command>property-toggle</command>
 			<property>/controls/anti-ice/engine/carb-heat</property>
@@ -1240,66 +1182,54 @@
 			<command>property-toggle</command>
 			<property>/controls/anti-ice/engine/inlet-heat</property>
 		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>controls.click();</script>
+		</binding>
 	</action>
-</animation>
-
-<animation>
-	<type>rotate</type>
-	<object-name>anti-ice_eng.1</object-name>
-	<property>/controls/anti-ice/engine/inlet-heat</property>
-	<factor>-25</factor>
 	<center>
-		<x-m> 0.204</x-m>
-		<y-m> 0.0</y-m>
-		<z-m>-0.014</z-m>
+		<x-m> 0.204</x-m><y-m> 0.0</y-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
-		<x>0</x>
 		<y>1</y>
-		<z>0</z>
 	</axis>
 </animation>
 
 <animation>
-	<type>pick</type>
-	<object-name>anti-ice_eng.2</object-name>
-	<action>
-	 <button>0</button>
-	 <repeatable>false</repeatable>	
-	 <binding>
-		<command>property-toggle</command>
-		<property>/controls/anti-ice/engine[1]/carb-heat</property>
-	 </binding>
-	 <binding>
-		<command>property-toggle</command>
-		<property>/controls/anti-ice/engine[1]/inlet-heat</property>
-	 </binding>
-	</action>
-</animation>
-
-<animation>
-	<type>rotate</type>
+	<type>knob</type>
 	<object-name>anti-ice_eng.2</object-name>
 	<property>/controls/anti-ice/engine[1]/inlet-heat</property>
 	<factor>-25</factor>
+	<drag-direction>vertical</drag-direction>
+	<action>
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/anti-ice/engine[1]/carb-heat</property>
+		</binding>
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/anti-ice/engine[1]/inlet-heat</property>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>controls.click();</script>
+		</binding>
+	</action>
 	<center>
-		<x-m> 0.194</x-m>
-		<y-m> 0.0</y-m>
-		<z-m>-0.014</z-m>
+		<x-m> 0.194</x-m><y-m> 0.0</y-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
-		<x>0</x>
 		<y>1</y>
-		<z>0</z>
 	</axis>
 </animation>
 
 <animation>
-	<type>pick</type>
+	<type>knob</type>
 	<object-name>anti-ice_eng.3</object-name>
+	<property>/controls/anti-ice/engine[2]/inlet-heat</property>
+	<factor>-25</factor>
+	<drag-direction>vertical</drag-direction>
 	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
 		<binding>
 			<command>property-toggle</command>
 			<property>/controls/anti-ice/engine[2]/carb-heat</property>
@@ -1308,32 +1238,26 @@
 			<command>property-toggle</command>
 			<property>/controls/anti-ice/engine[2]/inlet-heat</property>
 		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>controls.click();</script>
+		</binding>
 	</action>
-</animation>
-
-<animation>
-	<type>rotate</type>
-	<object-name>anti-ice_eng.3</object-name>
-	<property>/controls/anti-ice/engine[2]/inlet-heat</property>
-	<factor>-25</factor>
-	<center>
-		<x-m> 0.194</x-m>
-		<y-m> 0.0</y-m>
-		<z-m>-0.014</z-m>
+	<center>		
+		<x-m> 0.194</x-m><y-m> 0.0</y-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
-		<x>0</x>
 		<y>1</y>
-		<z>0</z>
 	</axis>
 </animation>
 
 <animation>
-	<type>pick</type>
+	<type>knob</type>
 	<object-name>anti-ice_eng.4</object-name>
+	<property>/controls/anti-ice/engine[3]/inlet-heat</property>
+	<factor>-25</factor>
+	<drag-direction>vertical</drag-direction>
 	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
 		<binding>
 			<command>property-toggle</command>
 			<property>/controls/anti-ice/engine[3]/carb-heat</property>
@@ -1342,150 +1266,83 @@
 			<command>property-toggle</command>
 			<property>/controls/anti-ice/engine[3]/inlet-heat</property>
 		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>controls.click();</script>
+		</binding>
 	</action>
-</animation>
-
-<animation>
-	<type>rotate</type>
-	<object-name>anti-ice_eng.4</object-name>
-	<property>/controls/anti-ice/engine[3]/inlet-heat</property>
-	<factor>-25</factor>
 	<center>
-		<x-m> 0.204</x-m>
-		<y-m> 0.0</y-m>
-		<z-m>-0.014</z-m>
+		<x-m> 0.204</x-m><y-m> 0.0</y-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
-		<x>0</x>
 		<y>1</y>
-		<z>0</z>
 	</axis>
 </animation>
 
 <animation>
-	<type>pick</type>
+	<type>knob</type>
 	<object-name>anti-ice_wing</object-name>
+	<property>/controls/anti-ice/wing-heat</property>
+	<offset-deg>25</offset-deg>
+	<factor>-50</factor>
 	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
 		<binding>
 			<command>property-toggle</command>
 			<property>/controls/anti-ice/wing-heat</property>
 		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>controls.click();</script>
+		</binding>
 	</action>
-</animation>
-
-<animation>
-	<type>rotate</type>
-	<object-name>anti-ice_wing</object-name>
-	<property>/controls/anti-ice/wing-heat</property>
-	<factor>-25</factor>
 	<center>
-		<x-m> 0.232</x-m>
-		<y-m>-0.080</y-m>
-		<z-m>-0.014</z-m>
+		<x-m> 0.232</x-m><y-m>-0.080</y-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
 		<x>1</x>
-		<y>0</y>
-		<z>0</z>
 	</axis>
 </animation>
 
 <animation>
-	<type>pick</type>
-	<object-name>wiperl</object-name>
-	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>property-adjust</command>
-			<property>/controls/electric/wiperl/switch</property>
-			<step>1</step>
-			<min>0</min>
-			<max>2</max>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>wiperl</object-name>
-	<action>
-		<button>1</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>property-adjust</command>
-			<property>/controls/electric/wiperl/switch</property>
-			<step>-1</step>
-			<min>0</min>
-			<max>2</max>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>rotate</type>
+	<type>knob</type>
 	<object-name>wiperl</object-name>
 	<property>/controls/electric/wiperl/switch</property>
 	<factor>-45</factor>
+	<action>
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/electric/wiperl/switch</property>
+			<factor>1</factor>
+			<min>0</min>
+			<max>2</max>
+		</binding>
+	</action>
 	<center>
-		<x-m> 0.231</x-m>
-		<y-m> 0.005</y-m>
-		<z-m>-0.014</z-m>
+		<x-m> 0.231</x-m><y-m> 0.005</y-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
-		<x>0</x>
-		<y>0</y>
 		<z>1</z>
 	</axis>
 </animation>
 
 <animation>
-	<type>pick</type>
-	<object-name>wiperr</object-name>
-	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>property-adjust</command>
-			<property>/controls/electric/wiperr/switch</property>
-			<step>1</step>
-			<min>0</min>
-			<max>2</max>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>wiperr</object-name>
-	<action>
-		<button>1</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>property-adjust</command>
-			<property>/controls/electric/wiperr/switch</property>
-			<step>-1</step>
-			<min>0</min>
-			<max>2</max>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>rotate</type>
+	<type>knob</type>
 	<object-name>wiperr</object-name>
 	<property>/controls/electric/wiperr/switch</property>
 	<factor>-45</factor>
+	<action>
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/electric/wiperr/switch</property>
+			<factor>1</factor>
+			<min>0</min>
+			<max>2</max>
+		</binding>
+	</action>
 	<center>
-		<x-m> 0.231</x-m>
-		<y-m> 0.105</y-m>
-		<z-m>-0.014</z-m>
+		<x-m> 0.231</x-m><y-m> 0.105</y-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
-		<x>0</x>
-		<y>0</y>
 		<z>1</z>
 	</axis>
 </animation>
@@ -2021,197 +1878,89 @@
 <!-- Pneumatics -->
 
 <animation>
-	<type>pick</type>
-	<object-name>pack.1</object-name>
-	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>property-adjust</command>
-			<property>/controls/pneumatic/pack-control[0]</property>
-			<step>1</step>
-			<min>0</min>
-			<max>3</max>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>pack.1</object-name>
-	<action>
-		<button>1</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>property-adjust</command>
-			<property>/controls/pneumatic/pack-control[0]</property>
-			<step>-1</step>
-			<min>0</min>
-			<max>3</max>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>rotate</type>
+	<type>knob</type>
 	<object-name>pack.1</object-name>
 	<property>/controls/pneumatic/pack-control[0]</property>
 	<factor>-35</factor>
+	<action>
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/pneumatic/pack-control[0]</property>
+			<factor>1</factor>
+			<min>0</min>
+			<max>3</max>
+		</binding>
+	</action>
 	<center>
-		<x-m> 0.153</x-m>
-		<y-m> 0.184</y-m>
-		<z-m>-0.014</z-m>
+		<x-m> 0.153</x-m><y-m> 0.184</y-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
-		<x>0</x>
-		<y>0</y>
 		<z>1</z>
 	</axis>
 </animation>
 
 <animation>
-	<type>pick</type>
-	<object-name>pack.2</object-name>
-	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>property-adjust</command>
-			<property>/controls/pneumatic/pack-control[1]</property>
-			<step>1</step>
-			<min>0</min>
-			<max>3</max>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>pack.2</object-name>
-	<action>
-		<button>1</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>property-adjust</command>
-			<property>/controls/pneumatic/pack-control[1]</property>
-			<step>-1</step>
-			<min>0</min>
-			<max>3</max>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>rotate</type>
+	<type>knob</type>
 	<object-name>pack.2</object-name>
 	<property>/controls/pneumatic/pack-control[1]</property>
 	<factor>-35</factor>
+	<action>
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/pneumatic/pack-control[1]</property>
+			<factor>1</factor>
+			<min>0</min>
+			<max>3</max>
+		</binding>
+	</action>
 	<center>
-		<x-m> 0.153</x-m>
-		<y-m> 0.261</y-m>
-		<z-m>-0.014</z-m>
+		<x-m> 0.153</x-m><y-m> 0.261</y-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
-		<x>0</x>
-		<y>0</y>
 		<z>1</z>
 	</axis>
 </animation>
 
 <animation>
-	<type>pick</type>
-	<object-name>pack.3</object-name>
-	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>property-adjust</command>
-			<property>/controls/pneumatic/pack-control[2]</property>
-			<step>1</step>
-			<min>0</min>
-			<max>3</max>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>pack.3</object-name>
-	<action>
-		<button>1</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>property-adjust</command>
-			<property>/controls/pneumatic/pack-control[2]</property>
-			<step>-1</step>
-			<min>0</min>
-			<max>3</max>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>rotate</type>
+	<type>knob</type>
 	<object-name>pack.3</object-name>
 	<property>/controls/pneumatic/pack-control[2]</property>
 	<factor>-35</factor>
+	<action>
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/pneumatic/pack-control[2]</property>
+			<factor>1</factor>
+			<min>0</min>
+			<max>3</max>
+		</binding>
+	</action>
 	<center>
-		<x-m> 0.153</x-m>
-		<y-m> 0.336</y-m>
-		<z-m>-0.014</z-m>
+		<x-m> 0.153</x-m><y-m> 0.336</y-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
-		<x>0</x>
-		<y>0</y>
 		<z>1</z>
 	</axis>
 </animation>
 
 <animation>
-	<type>pick</type>
-	<object-name>equip_cooling</object-name>
-	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>property-adjust</command>
-			<property>/controls/pneumatic/equip-cooling</property>
-			<step>1</step>
-			<min>0</min>
-			<max>2</max>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>equip_cooling</object-name>
-	<action>
-		<button>1</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>property-adjust</command>
-			<property>/controls/pneumatic/equip-cooling</property>
-			<step>-1</step>
-			<min>0</min>
-			<max>2</max>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>rotate</type>
+	<type>knob</type>
 	<object-name>equip_cooling</object-name>
 	<property>/controls/pneumatic/equip-cooling</property>
 	<factor>-45</factor>
+	<action>
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/pneumatic/equip-cooling</property>
+			<factor>1</factor>
+			<min>0</min>
+			<max>2</max>
+		</binding>
+	</action>
 	<center>
-		<x-m> 0.104</x-m>
-		<y-m> 0.182</y-m>
-		<z-m>-0.014</z-m>
+		<x-m> 0.104</x-m><y-m> 0.182</y-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
-		<x>0</x>
-		<y>0</y>
 		<z>1</z>
 	</axis>
 </animation>
@@ -3001,11 +2750,11 @@
 <!-- Exterior lights -->
 
 <animation>
-	<type>pick</type>
+	<type>knob</type>
 	<object-name>inbdl</object-name>
+	<property>controls/lighting/landing-light-inbdl</property>
+	<factor>-25</factor>
 	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
 		<binding>
 			<command>property-toggle</command>
 			<property>controls/lighting/landing-light-inbdl</property>
@@ -3015,31 +2764,20 @@
 			<script>controls.click();</script>
 		</binding>
 	</action>
-</animation>
-
-<animation>
-	<type>rotate</type>
-	<object-name>inbdl</object-name>
-	<property>controls/lighting/landing-light-inbdl</property>
-	<factor>-25</factor>
 	<center>
-		<x-m> 0.285</x-m>
-		<y-m> 0.000</y-m>
-		<z-m>-0.014</z-m>
+		<x-m> 0.285</x-m><y-m> 0.000</y-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
-		<x>0</x>
 		<y>1</y>
-		<z>0</z>
 	</axis>
 </animation>
 
 <animation>
-	<type>pick</type>
+	<type>knob</type>
 	<object-name>inbdr</object-name>
+	<property>controls/lighting/landing-light-inbdr</property>
+	<factor>-25</factor>
 	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
 		<binding>
 			<command>property-toggle</command>
 			<property>controls/lighting/landing-light-inbdr</property>
@@ -3049,31 +2787,20 @@
 			<script>controls.click();</script>
 		</binding>
 	</action>
-</animation>
-
-<animation>
-	<type>rotate</type>
-	<object-name>inbdr</object-name>
-	<property>controls/lighting/landing-light-inbdr</property>
-	<factor>-25</factor>
 	<center>
-		<x-m> 0.285</x-m>
-		<y-m> 0.000</y-m>
-		<z-m>-0.014</z-m>
+		<x-m> 0.285</x-m><y-m> 0.000</y-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
-		<x>0</x>
 		<y>1</y>
-		<z>0</z>
 	</axis>
 </animation>
 
 <animation>
-	<type>pick</type>
+	<type>knob</type>
 	<object-name>outbdl</object-name>
+	<property>controls/lighting/landing-light-outbdl</property>
+	<factor>-25</factor>
 	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
 		<binding>
 			<command>property-toggle</command>
 			<property>controls/lighting/landing-light-outbdl</property>
@@ -3083,31 +2810,20 @@
 			<script>controls.click();</script>
 		</binding>
 	</action>
-</animation>
-
-<animation>
-	<type>rotate</type>
-	<object-name>outbdl</object-name>
-	<property>controls/lighting/landing-light-outbdl</property>
-	<factor>-25</factor>
 	<center>
-		<x-m> 0.285</x-m>
-		<y-m> 0.000</y-m>
-		<z-m>-0.014</z-m>
+		<x-m> 0.285</x-m><y-m> 0.000</y-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
-		<x>0</x>
 		<y>1</y>
-		<z>0</z>
 	</axis>
 </animation>
 
 <animation>
-	<type>pick</type>
+	<type>knob</type>
 	<object-name>outbdr</object-name>
+	<property>controls/lighting/landing-light-outbdr</property>
+	<factor>-25</factor>
 	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
 		<binding>
 			<command>property-toggle</command>
 			<property>controls/lighting/landing-light-outbdr</property>
@@ -3117,22 +2833,11 @@
 			<script>controls.click();</script>
 		</binding>
 	</action>
-</animation>
-
-<animation>
-	<type>rotate</type>
-	<object-name>outbdr</object-name>
-	<property>controls/lighting/landing-light-outbdr</property>
-	<factor>-25</factor>
 	<center>
-		<x-m> 0.285</x-m>
-		<y-m> 0.000</y-m>
-		<z-m>-0.014</z-m>
+		<x-m> 0.285</x-m><y-m> 0.000</y-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
-		<x>0</x>
 		<y>1</y>
-		<z>0</z>
 	</axis>
 </animation>
 

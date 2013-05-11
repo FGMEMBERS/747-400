@@ -1747,7 +1747,7 @@ var listenerApNav1GroundModeFunc = func {
 					nav1VspeedGroundMode = 1;
 
 					if (getprop("/velocities/airspeed-kt") > 145.0 or getprop("/orientation/pitch-deg") < 1.0) {
-						setprop("/controls/flight/speedbrake", 1);
+						#setprop("/controls/flight/speedbrake", 1);
 					}
 					else {
 						setprop("/controls/flight/speedbrake", 0);

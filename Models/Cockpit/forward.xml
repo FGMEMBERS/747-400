@@ -203,10 +203,10 @@
 </animation>
 
 <animation>
-	<type>pick</type>
+	<type>knob</type>
 	<object-name>cpt.panel.light</object-name>
+	<property>/controls/lighting/panel-norm</property>
 	<action>
-		<button>0</button>
 		<repeatable>true</repeatable>  
 		<binding>
 			<command>property-adjust</command>
@@ -216,21 +216,32 @@
 			<max>1</max>
 		</binding>
 	</action>
-	<action>
-		<button>1</button>
-		<repeatable>true</repeatable>  
-		<binding>
-			<command>property-adjust</command>
-			<property>/controls/lighting/panel-norm</property>
-			<step>-0.05</step>
-			<min>0</min>
-			<max>1</max>
-		</binding>
-	</action>
 </animation>
 
 <animation>
-	<type>pick</type>
+	<type>knob</type>
+	<object-name>gear.lever</object-name>
+	<property>/controls/gear/gear-down</property>
+	<interpolation>
+		<entry><ind>0</ind><dep>-35</dep></entry>
+		<entry><ind>1</ind><dep> 35</dep></entry>
+	</interpolation>
+	<increase> 
+		<binding>
+			<command>nasal</command>
+			<script>controls.gearDown(1)</script>
+		</binding>
+	</increase>
+	<decrease> 
+		<binding>
+			<command>nasal</command>
+			<script>controls.gearDown(0)</script>
+		</binding>
+	</decrease>
+</animation>
+
+<animation>
+	<type>knob</type>
 	<object-name>gear.lever</object-name>
 	<action>
 		<button>0</button>
@@ -246,20 +257,8 @@
 			</binding>
 		</mod-up>
 	</action>
-</animation>
-
-<animation>
-	<type>rotate</type>
-	<object-name>gear.lever</object-name>
-	<property>controls/gear/gear-down</property>
-	<interpolation>
-		<entry><ind>0</ind><dep>-35</dep></entry>
-		<entry><ind>1</ind><dep> 35</dep></entry>
-	</interpolation>
 	<center>
-		<x-m>-0.095</x-m>
-		<y-m> 0.131</y-m>
-		<z-m> 0.179</z-m>
+		<x-m>-0.095</x-m><y-m> 0.131</y-m><z-m> 0.179</z-m>
 	</center>
 	<axis>
 		<y>1</y>
@@ -293,24 +292,13 @@
 </animation>
 
 <animation>
-	<type>pick</type>
+	<type>knob</type>
 	<object-name>btn.banklimit</object-name>
-	<action>
-		<button>0</button>  
+	<action> 
 		<binding>
 			<command>property-adjust</command>
 			<property>/autopilot/settings/bank-limit</property>
-			<step>5</step>
-			<min>0</min>
-			<max>30</max>
-		</binding>
-	</action>
-	<action>
-		<button>1</button>
-		<binding>
-			<command>property-adjust</command>
-			<property>/autopilot/settings/bank-limit</property>
-			<step>-5</step>
+			<factor>5</factor>
 			<min>0</min>
 			<max>30</max>
 		</binding>
@@ -383,27 +371,13 @@
 </animation>
 
 <animation>
-	<type>pick</type>
+	<type>knob</type>
 	<object-name>btn.hdgselector</object-name>
-	<action>
-		<button>0</button>
-		<repeatable>true</repeatable>  
+	<action> 
 		<binding>
 			<command>property-adjust</command>
 			<property>/autopilot/settings/heading-bug-deg</property>
- 			<step>1</step>
-			<min>000</min>
-			<max>360</max>
-			<wrap>true</wrap>
-		</binding>
-	</action>
-	<action>
-		<button>1</button>
-		<repeatable>true</repeatable>  
-		<binding>
-			<command>property-adjust</command>
-			<property>/autopilot/settings/heading-bug-deg</property>
-			<step>-1</step>
+			<factor>1</factor>
 			<min>000</min>
 			<max>360</max>
 			<wrap>true</wrap>
@@ -534,7 +508,7 @@
 	<action>
 		<button>0</button>
 		<repeatable>false</repeatable>  
-		<binding>s
+		<binding>
 			<command>property-cycle</command>
 			<property>/autopilot/settings/speed-select</property>
 			<value type="string">mach</value>
@@ -544,42 +518,9 @@
 </animation>
 
 <animation>
-	<type>pick</type>
+	<type>knob</type>
 	<object-name>btn.speed</object-name>
-	<action>
-		<button>0</button>
-		<repeatable>true</repeatable>  
-		<binding>
-			<condition>
-				<not>
-					<equals>
-						<property>/autopilot/settings/speed-select</property>
-						<value>mach</value>
-					</equals>
-				</not>
-			</condition>
-			<command>property-adjust</command>
-			<property>/autopilot/settings/target-speed-kt</property>
-			<step>1</step>
-			<min>100</min>
-			<max>399</max>
-		</binding>
-		<binding>
-			<condition>
-				<equals>
-					<property>/autopilot/settings/speed-select</property>
-					<value>mach</value>
-				</equals>
-			</condition>
-			<command>property-adjust</command>
-			<property>/autopilot/settings/target-speed-mach</property>
-			<step>0.01</step>
-			<min>0.40</min>
-			<max>0.95</max>
-		</binding>
-	</action>
-	<action>
-		<button>1</button>
+	<action> 
 		<repeatable>true</repeatable>
 		<binding>
 			<condition>
@@ -592,7 +533,7 @@
 			</condition>
 			<command>property-adjust</command>
 			<property>/autopilot/settings/target-speed-kt</property>
-			<step>-1</step>
+			<factor>1</factor>
 			<min>100</min>
 			<max>399</max>
 		</binding>
@@ -605,7 +546,7 @@
 			</condition>
 			<command>property-adjust</command>
 			<property>/autopilot/settings/target-speed-mach</property>
-			<step>-0.01</step>
+			<factor>0.01</factor>
 			<min>0.40</min>
 			<max>0.95</max>
 		</binding>
@@ -754,31 +695,16 @@
 </animation>
 
 <animation>
-	<type>pick</type>
+	<type>knob</type>
 	<object-name>btn.vs.dn</object-name>
-	<action>
-		<button>0</button>
-		<repeatable>true</repeatable>  
-		<binding>
-			<command>property-adjust</command>
-			<property>/autopilot/settings/vertical-speed-fpm</property>
-			<step>-100</step>
-			<min>-8000</min>
-			<max>6000</max>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
 	<object-name>btn.vs.up</object-name>
+	<drag-direction>vertical</drag-direction>
 	<action>
-		<button>0</button>
-		<repeatable>true</repeatable>  
+		<repeatable>true</repeatable>
 		<binding>
 			<command>property-adjust</command>
 			<property>/autopilot/settings/vertical-speed-fpm</property>
-			<step>100</step>
+			<factor>100</factor>
 			<min>-8000</min>
 			<max>6000</max>
 		</binding>
@@ -786,26 +712,14 @@
 </animation>
 
 <animation>
-	<type>pick</type>
+	<type>knob</type>
 	<object-name>btn.alt</object-name>
 	<action>
-		<button>0</button>
-		<repeatable>true</repeatable>  
+		<repeatable>true</repeatable>
 		<binding>
 			<command>property-adjust</command>
 			<property>/autopilot/settings/target-altitude-ft</property>
-			<step>100</step>
-			<min>0</min>
-			<max>50000</max>
-		</binding>
-	</action>
-	<action>
-		<button>1</button>
-		<repeatable>true</repeatable>  
-		<binding>
-			<command>property-adjust</command>
-			<property>/autopilot/settings/target-altitude-ft</property>
-			<step>-100</step>
+			<factor>100</factor>
 			<min>0</min>
 			<max>50000</max>
 		</binding>
@@ -989,10 +903,9 @@
 <!-- EFIS PANELS -->
 
 <animation>
-	<type>pick</type>
+	<type>knob</type>
 	<object-name>btn.nd.mode</object-name>
 	<action>
-		<button>0</button>
 		<binding>
 			<command>property-cycle</command>
 			<property>instrumentation/efis/mfd/display-mode</property>
@@ -1005,10 +918,9 @@
 </animation>
 
 <animation>
-	<type>pick</type>
+	<type>knob</type>
 	<object-name>btn.nd.range</object-name>
 	<action>
-		<button>0</button>
 		<binding>
 			<command>property-cycle</command>
 			<property>instrumentation/efis/inputs/range</property>

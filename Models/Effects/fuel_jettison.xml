@@ -17,19 +17,19 @@
 		<condition>
 			<or>
 				<greater-than>
-					<property>propulsion/tank[0]/external-flow-rate/jettison</property>
+					<property>/fdm/jsbsim/propulsion/tank[0]/external-flow-rate/jettison</property>
 					<value>0</value>
 				</greater-than>
 				<greater-than>
-					<property>propulsion/tank[2]/external-flow-rate/jettison</property>
+					<property>/fdm/jsbsim/propulsion/tank[2]/external-flow-rate/jettison</property>
 					<value>0</value>
 				</greater-than>
 				<greater-than>
-					<property>propulsion/tank[3]/external-flow-rate/jettison</property>
+					<property>/fdm/jsbsim/propulsion/tank[3]/external-flow-rate/jettison</property>
 					<value>0</value>
 				</greater-than>
 				<greater-than>
-					<property>propulsion/tank[7]/external-flow-rate/jettison</property>
+					<property>/fdm/jsbsim/propulsion/tank[7]/external-flow-rate/jettison</property>
 					<value>0</value>
 				</greater-than>
 			</or>
