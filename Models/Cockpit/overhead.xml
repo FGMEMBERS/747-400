@@ -1172,7 +1172,7 @@
 	<object-name>anti-ice_eng.1</object-name>
 	<property>/controls/anti-ice/engine/inlet-heat</property>
 	<factor>-25</factor>
-	<drag-direction>vertical</drag-direction>
+	<cursor-name>hand</cursor-name>
 	<action>
 		<binding>
 			<command>property-toggle</command>
@@ -1200,7 +1200,7 @@
 	<object-name>anti-ice_eng.2</object-name>
 	<property>/controls/anti-ice/engine[1]/inlet-heat</property>
 	<factor>-25</factor>
-	<drag-direction>vertical</drag-direction>
+	<cursor-name>hand</cursor-name>
 	<action>
 		<binding>
 			<command>property-toggle</command>
@@ -1228,7 +1228,7 @@
 	<object-name>anti-ice_eng.3</object-name>
 	<property>/controls/anti-ice/engine[2]/inlet-heat</property>
 	<factor>-25</factor>
-	<drag-direction>vertical</drag-direction>
+	<cursor-name>hand</cursor-name>
 	<action>
 		<binding>
 			<command>property-toggle</command>
@@ -1256,7 +1256,7 @@
 	<object-name>anti-ice_eng.4</object-name>
 	<property>/controls/anti-ice/engine[3]/inlet-heat</property>
 	<factor>-25</factor>
-	<drag-direction>vertical</drag-direction>
+	<cursor-name>hand</cursor-name>
 	<action>
 		<binding>
 			<command>property-toggle</command>
@@ -1285,6 +1285,7 @@
 	<property>/controls/anti-ice/wing-heat</property>
 	<offset-deg>25</offset-deg>
 	<factor>-50</factor>
+	<cursor-name>hand</cursor-name>
 	<action>
 		<binding>
 			<command>property-toggle</command>
@@ -2754,6 +2755,7 @@
 	<object-name>inbdl</object-name>
 	<property>controls/lighting/landing-light-inbdl</property>
 	<factor>-25</factor>
+	<cursor-name>hand</cursor-name>
 	<action>
 		<binding>
 			<command>property-toggle</command>
@@ -2777,6 +2779,7 @@
 	<object-name>inbdr</object-name>
 	<property>controls/lighting/landing-light-inbdr</property>
 	<factor>-25</factor>
+	<cursor-name>hand</cursor-name>
 	<action>
 		<binding>
 			<command>property-toggle</command>
@@ -2800,6 +2803,7 @@
 	<object-name>outbdl</object-name>
 	<property>controls/lighting/landing-light-outbdl</property>
 	<factor>-25</factor>
+	<cursor-name>hand</cursor-name>
 	<action>
 		<binding>
 			<command>property-toggle</command>
@@ -2823,6 +2827,7 @@
 	<object-name>outbdr</object-name>
 	<property>controls/lighting/landing-light-outbdr</property>
 	<factor>-25</factor>
+	<cursor-name>hand</cursor-name>
 	<action>
 		<binding>
 			<command>property-toggle</command>

@@ -211,6 +211,8 @@ var advisory_messages = func {
 		append(msgs_advisory,">X FEED CONFIG");
 	if (!getprop("controls/flight/yaw-damper"))
 		append(msgs_advisory,">YAW DAMPER LWR, UPR");
+	if (getprop("/autopilot/autobrake/step") == 0)
+		append(msgs_advisory,"AUTOBRAKES");
 }
 
 var memo_messages = func {

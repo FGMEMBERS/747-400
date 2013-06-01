@@ -41,6 +41,12 @@ This file selects the instrumentation modules that should be available.
         <name>clock</name>
         <number>0</number>
     </clock>
+    
+    <groundradar>
+        <name>groundradar</name>
+        <airport-id-source>instrumentation/groundradar/id</airport-id-source>
+        <range-source>instrumentation/groundradar/range</range-source>
+    </groundradar>
 
     <heading-indicator>
         <name>heading-indicator</name>
@@ -57,6 +63,11 @@ This file selects the instrumentation modules that should be available.
         <name>magnetic-compass</name>
         <number>0</number>
     </magnetic-compass>
+    
+    <mk-viii>
+        <name>mk-viii</name>
+        <number>0</number>
+    </mk-viii>
 
     <nav-radio>
         <name>nav</name>
@@ -68,30 +79,28 @@ This file selects the instrumentation modules that should be available.
         <number>1</number>
     </nav-radio>
 
+    <radar>
+        <name>radar</name>
+        <number>0</number>
+    </radar>
+    
     <slip-skid-ball>
         <name>slip-skid-ball</name>
         <number>0</number>
     </slip-skid-ball>
+    
+    <transponder>
+        <name type="string">transponder</name>
+        <number type="int">0</number>
+        <mode type="int">2</mode>
+        <bus-volts type="double">8.0</bus-volts>
+        <encoder-path type="string">/instrumentation/altimeter</encoder-path>
+        <kt70-compatibility type="bool">0</kt70-compatibility>
+    </transponder>
 
     <turn-indicator>
         <name>turn-indicator</name>
         <number>0</number>
     </turn-indicator>
-
-    <radar>
-        <name>radar</name>
-        <number>0</number>
-    </radar>
-
-    <groundradar>
-        <name>groundradar</name>
-        <airport-id-source>instrumentation/groundradar/id</airport-id-source>
-        <range-source>instrumentation/groundradar/range</range-source>
-    </groundradar>
-
-    <mk-viii>
-        <name>mk-viii</name>
-        <number>0</number>
-    </mk-viii>
 
 </PropertyList>

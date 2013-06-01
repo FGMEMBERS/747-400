@@ -150,6 +150,88 @@
 	</center>
 </animation>
 
+<!-- TRANSPONDER -->
+
+<animation>
+	<type>knob</type>
+	<object-name>sw.trsp.mode</object-name>
+	<property>/instrumentation/transponder/inputs/knob-mode</property>
+	<action>
+		<binding>
+			<command>property-cycle</command>
+			<wrap>false</wrap>
+			<property>/instrumentation/transponder/inputs/knob-mode</property>
+			<value type="int">1</value>
+			<value type="int">0</value>
+			<value type="int">4</value>
+			<value type="int">5</value>
+		</binding>
+	</action>	
+	<interpolation>
+		<entry>
+			<ind>0</ind>
+			<dep>60</dep>
+		</entry>
+		<entry>
+			<ind>1</ind>
+			<dep>90</dep>
+		</entry>
+		<entry>
+			<ind>4</ind>
+			<dep>30</dep>
+		</entry>
+		<entry>
+			<ind>5</ind>
+			<dep>-30</dep>
+		</entry>
+	</interpolation>
+	<center>
+		<x-m>1.466</x-m><y-m>0.195</y-m><z-m>0</z-m>
+	</center>
+	<axis>
+		<z>1</z>
+	</axis>
+</animation>
+
+<animation>
+	<type>knob</type>
+	<object-name>sw.trsp.code</object-name>
+	<shift-repeat>100</shift-repeat>
+	<action>
+		<repeatable>true</repeatable>  
+		<binding>
+			<command>property-adjust</command>
+			<property>/instrumentation/transponder/id-code</property>
+			<factor>1</factor>
+			<min>0</min>
+			<max>7777</max>
+		</binding>
+	</action>
+</animation>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/display-number.xml</path>
+	<offsets>
+		<x-m> 1.469</x-m>
+		<y-m> 0.151</y-m>
+		<z-m> 0.419</z-m>
+		<pitch-deg>-90</pitch-deg>
+	</offsets>
+	<overlay>
+		<params>
+			<property type="string">/instrumentation/transponder/id-code</property>
+			<format type="string">%04.0f</format>
+			<font>led.txf</font>
+			<character-size type="double">0.01</character-size>
+			<color>
+				<red   type="double">1</red>
+				<green type="double">1</green>
+				<blue  type="double">1</blue>
+			</color>
+		</params>
+	</overlay>
+</model>
+
 <!-- AUTOBRAKE -->
 
 <animation>
@@ -173,6 +255,51 @@
 	</center>
 	<axis>
 		<z>1</z>
+	</axis>
+</animation>
+
+<!-- AILERON TRIM -->
+
+<animation>
+	<type>knob</type>
+	<object-name>aileron_trim_ctrl</object-name>
+	<property>/controls/switches/aileron-trim-pressed</property>
+	<factor>-40</factor>
+	<cursor-name>hand</cursor-name>
+	<action>
+		<repeatable>true</repeatable>
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/flight/aileron-trim</property>
+			<factor>0.01</factor>
+		</binding>
+	</action>
+	<increase>
+		<binding>
+			<command>property-assign</command>
+			<property>/controls/switches/aileron-trim-pressed</property>
+			<value>1</value>
+		</binding>
+	</increase>
+	<decrease>
+		<binding>
+			<command>property-assign</command>
+			<property>/controls/switches/aileron-trim-pressed</property>
+			<value>-1</value>
+		</binding>
+	</decrease>
+	<release>
+		<binding>
+			<command>property-assign</command>
+			<property>/controls/switches/aileron-trim-pressed</property>
+			<value>0</value>
+		</binding>
+	</release>
+	<center>
+		<x-m>1.645</x-m><y-m>-0.045</y-m><z-m>0.417</z-m>
+	</center>
+	<axis>
+		<x>1</x>
 	</axis>
 </animation>
 
