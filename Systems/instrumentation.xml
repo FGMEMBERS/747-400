@@ -89,6 +89,11 @@ This file selects the instrumentation modules that should be available.
         <number>0</number>
     </slip-skid-ball>
     
+    <tcas>
+        <name>tcas</name>
+        <number>0</number>
+    </tcas>
+    
     <transponder>
         <name type="string">transponder</name>
         <number type="int">0</number>

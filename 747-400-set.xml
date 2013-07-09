@@ -11,7 +11,7 @@
 		<cockpit type="int">3</cockpit>
 		<model type="int">3</model>
 	</rating>
-	<version>20130601</version>
+	<version>20130710</version>
 	
 	<flight-model>jsb</flight-model>
 	<aero>747-400</aero>
@@ -663,7 +663,18 @@ left mouse button and counter clockwise using the middle mouse button.
 		<minimized type="bool" archive="y">false</minimized>
 		<heading-marker type="bool" archive="y">true</heading-marker>
 		<limit-deg type="int">360</limit-deg>
-	</radar>
+	</radar> 
+	<tcas>
+		<serviceable type="bool">true</serviceable>
+		<inputs>
+			<mode type="int">3</mode>
+		</inputs>
+		<speaker>
+			<max-dist>2</max-dist>
+			<reference-dist>1</reference-dist>
+			<volume>1.0</volume>
+		</speaker>
+	</tcas>
 </instrumentation>
 
 <limits>
