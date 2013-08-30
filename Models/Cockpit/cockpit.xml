@@ -44,22 +44,6 @@
 	</condition>
 </model>
 
-<!-- PANELS -->
-  
-<model>
-	<name>EICAS-lower</name>
-	<path>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/eicas-lower.xml</path>
-	<offsets>
-		<x-m>0.845</x-m>
-		<y-m>0</y-m>
-		<z-m>0.493</z-m>
-		<pitch-deg>-75</pitch-deg>
-	</offsets>
-	<condition>
-		<property>/controls/electric/battery</property>
-	</condition>
-</model>
-
 <!-- ### PEDESTAL PANEL ### -->
 
 <effect>

@@ -16,6 +16,8 @@ var eng1fire		= 0;
 var eng2fire		= 0;
 var eng3fire		= 0;
 var eng4fire		= 0;
+var secondary_eicas = {};
+var secEICAS		= {};
 
 msgs_warning = [];
 msgs_caution = [];
@@ -262,7 +264,7 @@ var update_listener_inputs = func() {
 	reverser      = getprop("controls/engines/engine/reverser");
 	gear_down     = getprop("controls/gear/gear-down");
 	parkbrake     = getprop("controls/gear/brake-parking");
-	apu_running   = getprop("controls/electric/apu");
+	apu_running   = getprop("engines/engine[4]/running");
 	rudder_trim   = getprop("controls/flight/rudder-trim");
 	elev_trim     = getprop("controls/flight/elevator-trim");
 	eng1fire      = getprop("controls/engines/engine[0]/on-fire");
@@ -294,3 +296,28 @@ var update_system = func() {
 	
 	settimer(update_system,0.5);
 }
+
+var eicasCreated = 0;
+
+setlistener("/instrumentation/eicas/display", func {
+	if (eicasCreated == 1)
+		secondary_eicas.del();
+	secondary_eicas = canvas.new({
+		"name": "EICASsecondary",
+		"size": [1024, 1024],
+		"view": [1024, 1024],
+		"mipmapping": 1
+	});
+	secondary_eicas.addPlacement({"node": "Lower-EICAS-Screen"});
+	var display = getprop("/instrumentation/eicas/display");
+	var group = secondary_eicas.createGroup();
+	if (display == "ELEC")
+		secEICAS = canvas_elec.new(group);
+	elsif (display == "FUEL")
+		secEICAS = canvas_fuel.new(group);
+	elsif (display == "ENG")
+		secEICAS = canvas_eng.new(group);
+	secEICAS.update();
+	eicasCreated = 1;
+});
+setprop("/instrumentation/eicas/display","ENG");

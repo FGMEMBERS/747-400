@@ -707,6 +707,7 @@
     <system file="flaps"/>
     <system file="fuel"/>
     <system file="gear"/>
+    <system file="hydraulics"/>
     <system file="pushback"/>
     <system file="wingflex"/>
 

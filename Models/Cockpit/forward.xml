@@ -71,16 +71,6 @@
 </model>
 
 <model>
-	<name>EICAS-upper</name>
-	<path>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/eicas_eng.xml</path>
-	<offsets>
-		<x-m> 0.008</x-m>
-		<y-m>-0.005</y-m>
-		<z-m> 0.176</z-m>
-	</offsets>
-</model>
-
-<model>
 	<path>Aircraft/747-400/Models/Cockpit/Instruments/brake-pressure.ac</path>
 	<offsets>
 		<x-m> 0.008</x-m>

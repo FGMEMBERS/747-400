@@ -14,6 +14,7 @@
 	n1 max-safe speed: 	117.5
 	n2 max-safe speed: 	112.5
 	http://www.airliners.net/aviation-forums/tech_ops/read.main/59939/
+	http://www2.anac.gov.br/certificacao/produtos/Espec/EM-8303-04i.pdf
 -->
 
 <turbine_engine name="GE CF6-80C2B1F">
@@ -21,8 +22,8 @@
   <bypassratio>     5.15  </bypassratio>
   <tsfc>            0.337 </tsfc>
   <bleed>           0.03  </bleed>
-  <idlen1>         35.0   </idlen1>
-  <idlen2>         35.0   </idlen2>
+  <idlen1>         25.0   </idlen1> <!-- not verified -->
+  <idlen2>         62.0   </idlen2> <!-- not verified -->
   <maxn1>         117.5   </maxn1>
   <maxn2>         112.5   </maxn2>
   <augmented>         0   </augmented>
