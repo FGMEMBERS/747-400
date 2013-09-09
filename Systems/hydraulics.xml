@@ -6,11 +6,12 @@
 
 <system name="hydraulics">
 	
+	<property>/systems/hydraulic/pressure[0]</property>
+	<property>/systems/hydraulic/pressure[1]</property>
+	<property>/systems/hydraulic/pressure[2]</property>
+	<property>/systems/hydraulic/pressure[3]</property>
+		
 	<channel name="gear">
-		<property>/systems/hydraulic/pressure[0]</property>
-		<property>/systems/hydraulic/pressure[1]</property>
-		<property>/systems/hydraulic/pressure[2]</property>
-		<property>/systems/hydraulic/pressure[3]</property>
 		
 		<switch name="failures/hydraulics[0]">
 			<default value="0"/>
