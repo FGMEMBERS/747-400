@@ -59,9 +59,9 @@ var gearHeating =
 			}
 			if (me.Temperature > getprop("/environment/temperature-degc")) {
 				if (OnGround) 
-					me.Temperature += -0.12*dt; # -0.12 C/sec = cooldown in 70 minutes from 500 degrees (BTMS 5)
+					me.Temperature += -0.11*dt; # -0.11 C/sec = cooldown in 75 minutes from 500 degrees (BTMS 5)
 				else if (getprop("/gear/gear/position-norm") == 0)
-					me.Temperature += -1.2*dt; # -0.12 C/sec = cooldown in 70 minutes from 500 degrees (BTMS 5)
+					me.Temperature += -0.98*dt; # -0.98 C/sec = cooldown in 8.5 minutes from 500 degrees (BTMS 5)
 			}
 			
 			for(var i=1; i<5; i+=1) {
@@ -149,6 +149,9 @@ var autostart = func {
 	setprop("/controls/engines/engine[2]/cutoff",1);
 	setprop("/controls/engines/engine[3]/cutoff",1);
 	setprop("/controls/electric/battery",1);
+	setprop("/controls/electric/standby-power",1);
+	electrical.turn_apu_sw(1);
+	electrical.turn_apu_sw(1);
 	setprop("/controls/lighting/beacon",1);
 	setprop("/controls/lighting/landing-light-inbdl",1);
 	setprop("/controls/lighting/landing-light-inbdr",1);
@@ -173,6 +176,18 @@ var autostart = func {
 	setprop("/controls/fuel/tank[4]/pump-aft",1);
 	setprop("/controls/fuel/tank[4]/pump-fwd",1);
 	setprop("/controls/fuel/tank[7]/pump",1);
+	setprop("/controls/hydraulic/demand-pump",1);
+	setprop("/controls/hydraulic/demand-pump[1]",1);
+	setprop("/controls/hydraulic/demand-pump[2]",1);
+	setprop("/controls/hydraulic/demand-pump[3]",1);
+	setprop("/controls/hydraulic/engine-pump",1);
+	setprop("/controls/hydraulic/engine-pump[1]",1);
+	setprop("/controls/hydraulic/engine-pump[2]",1);
+	setprop("/controls/hydraulic/engine-pump[3]",1);
+	setprop("/controls/pneumatic/pack-control",1);
+	setprop("/controls/pneumatic/pack-control[1]",1);
+	setprop("/controls/pneumatic/pack-control[2]",1);
+	setprop("/controls/pneumatic/pack-control[3]",1);
 	#setprop("/controls/engines/auto-ignition",1);
 	var autostartCutoff = func {
 		if (getprop("/engines/engine[0]/n2") > 25) {
@@ -187,43 +202,6 @@ var autostart = func {
 	};
 	autostartCutoff();
 }
-
-## Mouse drag&drop handler ##
-
-var MouseHandler = {
-  new : func() {
-    var obj = { parents : [ MouseHandler ] };
-
-    obj.property = nil;
-    obj.factor = 1.0;
-
-    obj.YListenerId = setlistener( "devices/status/mice/mouse/accel-y", 
-      func(n) { obj.YListener(n); }, 1, 0 );
-
-    return obj;
-  },
-
-  YListener : func(n) {
-    me.property == nil and return;
-    me.factor == 0 and return;
-    n == nil and return;
-    var v = n.getValue();
-    v == nil and return;
-    fgcommand("property-adjust", props.Node.new({ 
-      "offset" : v,
-      "factor" : me.factor,
-      "property" : me.property
-    }));
-  },
-
-  set : func( property = nil, factor = 1.0 ) {
-    me.property = property;
-    me.factor = factor;
-  },
-
-};
-
-var mouseHandler = MouseHandler.new();
 
 ## Lights ##
 
@@ -261,6 +239,17 @@ var repair = func() {
 	setprop("/controls/failures/gear[4]/stuck",0);
 	gearHeating.reset();
 }
+
+## Save fuel state ##
+var tank0    = props.globals.getNode("consumables/fuel/tank[0]/level-lbs", 1);
+var tank1    = props.globals.getNode("consumables/fuel/tank[1]/level-lbs", 1);
+var tank2    = props.globals.getNode("consumables/fuel/tank[2]/level-lbs", 1);
+var tank3    = props.globals.getNode("consumables/fuel/tank[3]/level-lbs", 1);
+var tank4    = props.globals.getNode("consumables/fuel/tank[4]/level-lbs", 1);
+var tank5    = props.globals.getNode("consumables/fuel/tank[5]/level-lbs", 1);
+var tank6    = props.globals.getNode("consumables/fuel/tank[6]/level-lbs", 1);
+var tank7    = props.globals.getNode("consumables/fuel/tank[7]/level-lbs", 1);
+aircraft.data.add( tank0, tank1, tank2, tank3, tank4, tank5, tank6, tank7 );
 
 ## Switch click sound ##
 var click_reset = func(propName) {

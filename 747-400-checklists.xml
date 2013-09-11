@@ -71,13 +71,40 @@
                 </condition>
             </item>
             <item>
+                <name>APU GENERATOR 1 switch</name>
+                <value>Push (verify that the ON light is illuminated)</value>
+            </item>
+            <item>
+                <name>APU GENERATOR 2 switch</name>
+                <value>Push (verify that the ON light is illuminated)</value>
+            </item>
+            <item>
                 <name>DEMAND pump selectors</name>
                 <value>OFF</value>
+                <condition>
+                    <not>
+                        <or>
+                            <property>/controls/hydraulic/demand-pump</property>
+                            <property>/controls/hydraulic/demand-pump[1]</property>
+                            <property>/controls/hydraulic/demand-pump[2]</property>
+                            <property>/controls/hydraulic/demand-pump[3]</property>
+                        </or>
+                    </not>
+                </condition>
             </item>
             <item>
                 <name>ENGINE pump switches</name>
                 <value>ON</value>
+                <condition>
+                    <and>
+                        <property>/controls/hydraulic/engine-pump</property>
+                        <property>/controls/hydraulic/engine-pump[1]</property>
+                        <property>/controls/hydraulic/engine-pump[2]</property>
+                        <property>/controls/hydraulic/engine-pump[3]</property>
+                    </and>
+                </condition>
             </item>
+            <!--
             <item>
                 <name>FUEL TRANSFER MAIN 1 AND 4 switch</name>
                 <value>OFF</value>
@@ -86,6 +113,7 @@
                 <name>Engine fire switches</name>
                 <value>In</value>
             </item>
+            -->
             <item>
                 <name>START switches</name>
                 <value>In, extinguished</value>
@@ -170,6 +198,7 @@
                     </and>
                 </condition>
             </item>
+            <!--
             <item>
                 <name>Cabin Altitude AUTO SELECTOR</name>
                 <value>NORM</value>
@@ -182,12 +211,15 @@
                 <name>FLIGHT DECK TEMPERATURE selector</name>
                 <value>AUTO</value>
             </item>
+            -->
         </page>
         <page>
+            <!--
             <item>
                 <name>COMBI TEMPERATURE selector</name>
                 <value>AUTO</value>
             </item>
+            -->
             <item>
                 <name>EUQIPMENT COOLING selector</name>
                 <value>NORM</value>
@@ -235,13 +267,23 @@
                     </and>
                 </condition>
             </item>
+            <!--
             <item>
                 <name>NAVIGATION light switch</name>
                 <value>As needed</value>
             </item>
+            -->
+            <item>
+                <name>FLIGHT DIRECTOR switch</name>
+                <value>ON</value>
+            </item>
             <item>
                 <name>Clock</name>
                 <value>Set</value>
+            </item>
+            <item>
+                <name>Flight instruments</name>
+                <value>Check</value>
             </item>
             <item>
                 <name>Landing gear lever</name>
@@ -249,6 +291,10 @@
                 <condition>
                     <property>/controls/gear/gear-down</property>
                 </condition>
+            </item>
+            <item>
+                <name>EICAS displays</name>
+                <value>Check</value>
             </item>
             <item>
                 <name>NO SMOKING selector</name>
@@ -288,6 +334,14 @@
         <title>Preflight Procedure - Captain</title>
         <page>
             <item>
+                <name>FLIGHT DIRECTOR switch</name>
+                <value>ON</value>
+            </item>
+            <item>
+                <name>BANK LIMIT selector</name>
+                <value>AUTO</value>
+            </item>
+            <item>
                 <name>Autopilot DISENGAGE bar</name>
                 <value>Up</value>
             </item>
@@ -296,14 +350,12 @@
                 <value>Set</value>
             </item>
             <item>
-                <name>AUTOBRAKES selector</name>
-                <value>RTO</value>
-                <condition>
-                    <equals>
-                        <property>/autopilot/autobrake/step</property>
-                        <value>-2</value>
-                    </equals>
-                </condition>
+                <name>Flight instruments</name>
+                <value>Check</value>
+            </item>
+            <item>
+                <name>Standby instruments</name>
+                <value>Check</value>
             </item>
             <item>
                 <name>SPEEDBRAKE lever</name>
@@ -367,6 +419,14 @@
             <item>
                 <name>FUEL CONTROL switches</name>
                 <value>CUTOFF</value>
+                <condition>
+                    <and>
+                        <property>/controls/engines/engine[0]/cutoff</property>
+                        <property>/controls/engines/engine[1]/cutoff</property>
+                        <property>/controls/engines/engine[2]/cutoff</property>
+                        <property>/controls/engines/engine[3]/cutoff</property>
+                    </and>
+                </condition>
             </item>
             <item>
                 <name>FUEL CONTROL switch fire warning lights</name>
@@ -388,6 +448,10 @@
         <item>
             <name>Flight deck door</name>
             <value>Closed and locked</value>
+        </item>
+        <item>
+            <name>Taxi and Takeoff briefings</name>
+            <value>Complete</value>
         </item>
         <item>
             <name>Exterior doors</name>
@@ -421,11 +485,11 @@
             </condition>
         </item>
         <item>
-            <name>CENTER FUEL PUMP switches</name>
+            <name>CENTER FUEL PUMP switches (if not empty)</name>
             <value>On</value>
         </item>
         <item>
-            <name>STAB FUEL PUMP switches</name>
+            <name>STAB FUEL PUMP switches (if not empty)</name>
             <value>On</value>
             <condition>
                 <property>/controls/fuel/tank[7]/pump</property>
@@ -440,6 +504,18 @@
                     <value>0</value>
                 </equals>
             </condition>
+        </item>
+    </checklist>
+    
+    <checklist>    
+        <title>Engine Start Procedure</title>
+        <item>
+            <name>Engine START switch</name>
+            <value>Pull</value>
+        </item>
+        <item>
+            <name>FUEL CONTROL switch</name>
+            <value>RUN</value>
         </item>
     </checklist>
     
@@ -468,6 +544,10 @@
             </condition>
         </item>
         <item>
+            <name>NACELLE ANTI-ICE switches</name>
+            <value>As needed</value>
+        </item>
+        <item>
             <name>PACK selectors</name>
             <value>NORM</value>
             <condition>
@@ -482,6 +562,10 @@
         <item>
             <name>Flap lever</name>
             <value>Set takeoff flaps</value>
+        </item>
+        <item>
+            <name>Flight controls</name>
+            <value>Check</value>
         </item>
     </checklist>
     
@@ -582,6 +666,16 @@
             </condition>
         </item>
         <item>
+            <name>Hydraulic demand pump 4 selector</name>
+            <value>AUX</value>
+            <condition>
+                <equals>
+                    <property>/controls/hydraulic/demand-pump[3]</property>
+                    <value>2</value>
+                </equals>
+            </condition>
+        </item>
+        <item>
             <name>FUEL CONTROL switches</name>
             <value>CUTOFF</value>
             <condition>
@@ -610,6 +704,30 @@
                         <property>/controls/fuel/tank[7]/pump</property>
                     </not>
                 </and>
+            </condition>
+        </item>
+        <item>
+            <name>NACELLE and WING ANTI-ICE switches</name>
+            <value>OFF</value>
+        </item>
+        <item>
+            <name>FLIGHT DIRECTOR switches</name>
+            <value>OFF</value>
+        </item>
+        <item>
+            <name>After wheel chocks are in place</name>
+        </item>
+        <item>
+            <name>Parking brake</name>
+            <value>Release</value>
+        </item>
+        <item>
+            <name>Hydraulic demand pump 4 selector</name>
+            <value>OFF</value>
+            <condition>
+                <not>
+                    <property>/controls/hydraulic/demand-pump[3]</property>
+                </not>
             </condition>
         </item>
     </checklist>

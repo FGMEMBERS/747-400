@@ -7,7 +7,7 @@
     <fileheader>
         <author>Gijs de Rooy</author>
         <filecreationdate>2008</filecreationdate>
-        <version>20130709</version>
+        <version>20130911</version>
         <description>Boeing 747-400 with GE CF6-80C2B1F engines</description>
 
         <license>
@@ -101,21 +101,13 @@
     </fileheader>
 
     <metrics>
-        <documentation>
-          - aero reference point is at empty load CG (33 % MAC) :
-            less arm for landing; control is supposed easier if CG is forwards.
-          - VRP at nose.
-          - gear estimated at 25 ft (300 in.) below nose.
-          - wing incidence helps the takeoff.
-        </documentation>
         <wingarea unit="FT2"> 5825 </wingarea>
         <wingspan unit="FT"> 211.5 </wingspan>
-        <chord unit="FT"> 27.54 </chord>                                                  <!-- aeromatic 28.11 -->
-        <htailarea unit="FT2"> 1470.35 </htailarea>                                       <!-- aeromatic 1375.00 -->
-        <htailarm unit="FT"> 106.63 </htailarm>                                           <!-- aeromatic 104.33 -->
-        <vtailarea unit="FT2"> 1060 </vtailarea>                                         <!-- aeromatic 1100.00 -->
+        <chord unit="FT"> 27.54 </chord>
+        <htailarea unit="FT2"> 1470.35 </htailarea>
+        <htailarm unit="FT"> 106.63 </htailarm>
+        <vtailarea unit="FT2"> 1060 </vtailarea>
         <vtailarm unit="FT"> 0 </vtailarm>
-        <!-- AC_LV        98.43     -->                        <!-- ft -->                <!-- aeromatic 104.33 -->
         <wing_incidence unit="DEG"> 2 </wing_incidence>
         <location name="AERORP" unit="M">
             <x>  2   </x> <!-- GUESSTIMATE -->
@@ -746,6 +738,18 @@
             <rate_limit> 0.646 </rate_limit> <!-- 37 deg/sec -->
             <output>fcs/outboard-elevator-pos-rad</output>
         </actuator>
+        <aerosurface_scale name="Elevator Control Normalizer">
+            <input>fcs/outboard-elevator-pos-rad</input>
+            <domain>
+                <min>-0.26</min>
+                <max> 0.44</max>
+            </domain>
+            <range>
+                <min>-1</min>
+                <max>1</max>
+            </range>
+            <output>fcs/outboard-elevator-pos-norm</output>
+        </aerosurface_scale>
 
      </channel>
      <channel name="Roll">
@@ -797,6 +801,18 @@
             <rate_limit> 0.873 </rate_limit> <!-- 50 deg/sec -->
             <output>fcs/left-outboard-aileron-pos-rad</output>
         </actuator>
+        <aerosurface_scale name="Left Outboard Aileron Normalizer">
+            <input>fcs/left-outboard-aileron-pos-rad</input>
+            <domain>
+                <min>-0.44</min>
+                <max> 0.26</max>
+            </domain>
+            <range>
+                <min>-1</min>
+                <max>1</max>
+            </range>
+            <output>fcs/left-outboard-aileron-pos-norm</output>
+        </aerosurface_scale>
         
         <aerosurface_scale name="Right Outboard Aileron Control">
             <input>fcs/outboard-aileron-cmd-norm</input>
@@ -811,6 +827,18 @@
             <rate_limit> 0.873 </rate_limit> <!-- 50 deg/sec -->
             <output>fcs/right-outboard-aileron-pos-rad</output>
         </actuator>
+        <aerosurface_scale name="Right Outboard Aileron Normalizer">
+            <input>fcs/right-outboard-aileron-pos-rad</input>
+            <domain>
+                <min>-0.44</min>
+                <max> 0.26</max>
+            </domain>
+            <range>
+                <min>-1</min>
+                <max>1</max>
+            </range>
+            <output>fcs/right-outboard-aileron-pos-norm</output>
+        </aerosurface_scale>
         
         <aerosurface_scale name="Left Inboard Aileron Control">
             <input>-fcs/roll-trim-sum</input>
@@ -825,6 +853,18 @@
             <rate_limit> 0.742 </rate_limit> <!-- 42.5 deg/sec -->
             <output>fcs/left-inboard-aileron-pos-rad</output>
         </actuator>
+        <aerosurface_scale name="Left Inboard Aileron Normalizer">
+            <input>fcs/left-inboard-aileron-pos-rad</input>
+            <domain>
+                <min>-0.35</min>
+                <max> 0.35</max>
+            </domain>
+            <range>
+                <min>-1</min>
+                <max>1</max>
+            </range>
+            <output>fcs/left-inboard-aileron-pos-norm</output>
+        </aerosurface_scale>
         
         <aerosurface_scale name="Right Inboard Aileron Control">
             <input>fcs/roll-trim-sum</input>
@@ -839,6 +879,18 @@
             <rate_limit> 0.742 </rate_limit> <!-- 42.5 deg/sec -->
             <output>fcs/right-inboard-aileron-pos-rad</output>
         </actuator>
+        <aerosurface_scale name="Right Inboard Aileron Normalizer">
+            <input>fcs/right-inboard-aileron-pos-rad</input>
+            <domain>
+                <min>-0.35</min>
+                <max> 0.35</max>
+            </domain>
+            <range>
+                <min>-1</min>
+                <max>1</max>
+            </range>
+            <output>fcs/right-inboard-aileron-pos-norm</output>
+        </aerosurface_scale>
         
         <fcs_function name="Average Aileron Deflection">
             <function name="fcs/total-aileron-pos-rad">
@@ -1200,8 +1252,8 @@
             <input>fcs/yaw-damper-beta</input>
             <input>fcs/yaw-damper-rate</input>
             <clipto>
-                <min>-0.2000</min>
-                <max>0.2000</max>
+                <min>-0.103</min> <!-- +/- 3.6 deg -->
+                <max>0.103</max>
             </clipto>
         </summer>
 
@@ -1210,8 +1262,8 @@
             <table>
                 <independentVar>aero/qbar-psf</independentVar>
                 <tableData>
-                    2.9900    0.0000    
-                    3.0000    1.0000    
+                    2.9900    0.0000
+                    3.0000    1.0000
                 </tableData>
             </table>
         </scheduled_gain>
@@ -1238,6 +1290,18 @@
             <rate_limit> 0.873 </rate_limit> <!-- 50 deg/sec -->
             <output>fcs/rudder-pos-rad</output>
         </actuator>
+        <aerosurface_scale name="Rudder Control Normalizer">
+            <input>fcs/rudder-pos-rad</input>
+            <domain>
+                <min>-0.61</min>
+                <max>0.61</max>
+            </domain>
+            <range>
+                <min>-1</min>
+                <max>1</max>
+            </range>
+            <output>fcs/rudder-pos-norm</output>
+        </aerosurface_scale>
 
      </channel>
      <channel name="Aeromechanical">
@@ -1746,8 +1810,6 @@
             </product>
         </function>
         
-        <documentation>At MACH 0.3</documentation>
-        
         <function name="aero/coefficient/CDmach">
             <description>Drag_due_to_mach</description>
             <product>
@@ -1759,13 +1821,15 @@
                     </product>
                 </sum>
                 <table>
-                    <independentVar>aero/coefficient/CL</independentVar>
+                    <independentVar lookup="row">aero/coefficient/CL</independentVar>
+                    <independentVar lookup="column">velocities/mach</independentVar>
                     <tableData>
-                        0.0000    0.0190
-                        0.2000    0.0190
-                        0.6000    0.0350
-                        1.3000    0.1800
-                    </tableData>
+                               0.0000  0.3000  0.5000  0.7000  0.9200
+                        0.000  0.0190  0.0190  0.0180  0.0174  0.0286
+                        0.200  0.0190  0.0190  0.0180  0.0174  0.0281
+                        0.600  0.0350  0.0350  0.0340  0.0340  0.0580
+                        1.300  0.1800  0.1800  0.1800  0.2100  0.2580
+                    </tableData> <!-- mach 0.92/1.300 is guessed -->
                 </table>
             </product>
         </function>
@@ -1778,31 +1842,6 @@
                 <value>0.0050</value>
             </product>
         </function>
-        
-        <function name="aero/coefficient/dCDgear">
-            <description>Change_in_drag_due_to_gear</description>
-            <product>
-                <property>aero/function/Kgear</property>
-                  <table>
-                      <independentVar lookup="row">aero/alpha-rad</independentVar>
-                      <independentVar lookup="column">fcs/flap-pos-deg</independentVar>
-                      <tableData>
-                                   0.0000   1.0000  30.0000
-                         -0.0870   0.0275   0.0275   0.0155
-                          0.0000   0.0280   0.0280   0.0115
-                          0.0870   0.0280   0.0280   0.0085
-                          0.1750   0.0270   0.0270   0.0070
-                          0.2620   0.0245   0.0245   0.0076
-                          0.3490   0.0225   0.0225   0.0122
-                          0.4360   0.0200   0.0200   0.0062
-                      </tableData>
-                  </table>
-            </product>
-        </function>
-        
-        <documentation>
-          no speedbrake : 0.0170 -> 0.0.
-        </documentation>
         
         <function name="aero/coefficient/CDsb">
             <description>Drag_due_to_speedbrakes</description>
@@ -1893,6 +1932,45 @@
             </sum>
         </function>
         
+        <function name="aero/coefficient/dCDgear">
+            <description>Change_in_drag_due_to_gear</description>
+            <product>
+                <property>aero/function/Kgear</property>
+                  <table>
+                      <independentVar lookup="row">aero/alpha-rad</independentVar>
+                      <independentVar lookup="column">fcs/flap-pos-deg</independentVar>
+                      <tableData>
+                                   0.0000   1.0000  30.0000
+                         -0.0870   0.0275   0.0275   0.0155
+                          0.0000   0.0280   0.0280   0.0115
+                          0.0870   0.0280   0.0280   0.0085
+                          0.1750   0.0270   0.0270   0.0070
+                          0.2620   0.0245   0.0245   0.0076
+                          0.3490   0.0225   0.0225   0.0122
+                          0.4360   0.0200   0.0200   0.0062
+                      </tableData>
+                  </table>
+            </product>
+        </function>
+        
+        <function name="aero/coefficient/dCDge">
+            <description>Drag_due_to_ground_effect</description>
+            <product>
+                <property>aero/function/Kge</property>
+                <table>
+                    <independentVar lookup="row">aero/alpha-deg</independentVar>
+                    <independentVar lookup="column">fcs/flap-pos-deg</independentVar>
+                    <tableData>
+                             0.000   1.000  25.000  30.000
+                         0  -0.021  -0.017  -0.030  -0.033
+                         5  -0.026  -0.019  -0.046  -0.050
+                        10  -0.034  -0.024  -0.072  -0.078
+                        15  -0.043  -0.041  -0.084  -0.091
+                    </tableData>
+                </table>
+            </product>
+        </function>
+        
         <function name="aero/coefficient/dCDbeta">
             <description>Drag_due_to_sideslip</description>
             <table>
@@ -1943,16 +2021,13 @@
                 <property>aero/coefficient/CDsb</property>
                 <property>aero/coefficient/dCDbeta</property>
                 <property>aero/coefficient/dCDgear</property>
+                <property>aero/coefficient/dCDge</property>
                 <property>aero/coefficient/dCDrudder</property>
                 <property>aero/coefficient/dCDspoilers</property>
             </sum>
         </function>
             
         <axis name="DRAG">
-            <documentation>
-              CL = CL0 + ... + dCL_inboard_elevators + dCL_outboard_elevators + dCL_outboard_ailerons + dCL_landing_gear + dCL_ground_effect
-            </documentation>
-            
             <function name="my_drag">
                 <description>Drag_force</description>
                 <product>
@@ -2492,7 +2567,7 @@
                     <value>1173</value>
                     <value>-1258</value>
                 </sum>
-                <value>0.305</value>
+                <value>0.00305</value>
             </product>
         </function>
         

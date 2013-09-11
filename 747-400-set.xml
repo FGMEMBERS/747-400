@@ -11,7 +11,7 @@
 		<cockpit type="int">3</cockpit>
 		<model type="int">3</model>
 	</rating>
-	<version>20130830</version>
+	<version>20130911</version>
 	
 	<flight-model>jsb</flight-model>
 	<aero>747-400</aero>
@@ -731,7 +731,9 @@ left mouse button and counter clockwise using the middle mouse button.
 		<file>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/elec.nas</file>
 		<file>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/eng.nas</file>
 		<file>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/fuel.nas</file>
+		<file>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/gear.nas</file>
 		<file>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/primary.nas</file>
+		<file>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/stat.nas</file>
 		<file>Aircraft/747-400/Nasal/eicas.nas</file> <!-- must load after EICAS -->
 		<file>Aircraft/747-400/Nasal/system.nas</file>
 		<file>Aircraft/747-400/Nasal/vspeeds.nas</file>

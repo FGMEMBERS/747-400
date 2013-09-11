@@ -35,6 +35,8 @@ var bareng2 = {};
 var bareng3 = {};
 var bareng4 = {};
 var bar1pump = {};
+var bar2pump = {};
+var bar3pump = {};
 var bar4pump = {};
 var barxfeed1 = {};
 var barxfeed2 = {};
@@ -48,7 +50,7 @@ var xfeed2 = {};
 var xfeed3 = {};
 var xfeed4 = {};
 var jettisonLines = {};
-var jettisonBar = {};
+var jettison = {};
 var jettisonTime = {};
 var jettisonTimeCount = {};
 var canvas_group = {};
@@ -98,6 +100,8 @@ var canvas_fuel = {
 		bareng3 = eicas.getElementById("bareng3");
 		bareng4 = eicas.getElementById("bareng4");
 		bar1pump = eicas.getElementById("bar1pump");
+		bar2pump = eicas.getElementById("bar2pump");
+		bar3pump = eicas.getElementById("bar3pump");
 		bar4pump = eicas.getElementById("bar4pump");
 		barxfeed1 = eicas.getElementById("barxfeed1");
 		barxfeed2 = eicas.getElementById("barxfeed2");
@@ -111,7 +115,7 @@ var canvas_fuel = {
 		xfeed3 = eicas.getElementById("xfeed3").updateCenter();
 		xfeed4 = eicas.getElementById("xfeed4").updateCenter();
 		jettisonLines = eicas.getElementById("jettisonLines");
-		jettisonBar = eicas.getElementById("jettisonBar");
+		jettison = eicas.getElementById("jettison");
 		jettisonTime = eicas.getElementById("jettisonTime");
 		jettisonTimeCount = eicas.getElementById("jettisonTimeCount");
 		
@@ -246,7 +250,7 @@ var canvas_fuel = {
 		xfeed4.setRotation(0.5 * math.pi * getprop("/controls/fuel/tank[4]/x-feed"));
 		if (getprop("/fdm/jsbsim/propulsion/jettison-flow-rates") > 0) {
 			jettisonLines.show();
-			jettisonBar.show();
+			jettison.show();
 			ovrd2aft.setColor(1,0,1);
 			ovrd2fwd.setColor(1,0,1);
 			ovrd3aft.setColor(1,0,1);
@@ -259,7 +263,9 @@ var canvas_fuel = {
 			jettisonTimeCount.setText(sprintf("%2.0f",getprop("/fdm/jsbsim/propulsion/fuel-dump-time-sec")/60));
 		} else {
 			jettisonLines.hide();
-			jettisonBar.hide();
+			jettison.hide();
+			jettisonTime.hide();
+			jettisonTimeCount.hide();
 		}
 		
 		if (getprop("/fdm/jsbsim/propulsion/tank[1]/external-flow-rate-pps") or (getprop("/fdm/jsbsim/propulsion/engine[0]/fuel-flow-rate-pps") > 0 and (getprop("/controls/fuel/tank[1]/pump-aft") or getprop("/controls/fuel/tank[1]/pump-fwd")))) {
@@ -267,7 +273,17 @@ var canvas_fuel = {
 		} else {
 			bar1pump.hide();
 		}
-		if (getprop("/fdm/jsbsim/propulsion/tank[4]/external-flow-rate-pps") or (getprop("/fdm/jsbsim/propulsion/engine[4]/fuel-flow-rate-pps") > 0 and (getprop("/controls/fuel/tank[4]/pump-aft") or getprop("/controls/fuel/tank[4]/pump-fwd")))) {
+		if (getprop("/fdm/jsbsim/propulsion/tank[2]/external-flow-rate-pps") or (getprop("/fdm/jsbsim/propulsion/engine[1]/fuel-flow-rate-pps") > 0 and (getprop("/controls/fuel/tank[2]/pump-aft") or getprop("/controls/fuel/tank[2]/pump-fwd")))) {
+			bar2pump.show();
+		} else {
+			bar2pump.hide();
+		}
+		if (getprop("/fdm/jsbsim/propulsion/tank[3]/external-flow-rate-pps") or (getprop("/fdm/jsbsim/propulsion/engine[2]/fuel-flow-rate-pps") > 0 and (getprop("/controls/fuel/tank[3]/pump-aft") or getprop("/controls/fuel/tank[3]/pump-fwd")))) {
+			bar3pump.show();
+		} else {
+			bar3pump.hide();
+		}
+		if (getprop("/fdm/jsbsim/propulsion/tank[4]/external-flow-rate-pps") or (getprop("/fdm/jsbsim/propulsion/engine[3]/fuel-flow-rate-pps") > 0 and (getprop("/controls/fuel/tank[4]/pump-aft") or getprop("/controls/fuel/tank[4]/pump-fwd")))) {
 			bar4pump.show();
 		} else {
 			bar4pump.hide();

@@ -71,7 +71,7 @@
 </model>
 
 <model>
-	<path>Aircraft/747-400/Models/Cockpit/Instruments/brake-pressure.ac</path>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/brake-pressure.xml</path>
 	<offsets>
 		<x-m> 0.008</x-m>
 		<y-m>-0.345</y-m>

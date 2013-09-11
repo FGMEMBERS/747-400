@@ -12,6 +12,10 @@ var eng1n2 = {};
 var eng2n2 = {};
 var eng3n2 = {};
 var eng4n2 = {};
+var eng1oilp = {};
+var eng2oilp = {};
+var eng3oilp = {};
+var eng4oilp = {};
 var eng1n2bar = {};
 var eng2n2bar = {};
 var eng3n2bar = {};
@@ -44,6 +48,10 @@ var canvas_eng = {
 		eng2n2 = eicasE.getElementById("eng2n2");
 		eng3n2 = eicasE.getElementById("eng3n2");
 		eng4n2 = eicasE.getElementById("eng4n2");
+		eng1oilp = eicasE.getElementById("eng1oilp");
+		eng2oilp = eicasE.getElementById("eng2oilp");
+		eng3oilp = eicasE.getElementById("eng3oilp");
+		eng4oilp = eicasE.getElementById("eng4oilp");
 		eng1n2bar = eicasE.getElementById("eng1n2bar").updateCenter();
 		eng2n2bar = eicasE.getElementById("eng2n2bar").updateCenter();
 		eng3n2bar = eicasE.getElementById("eng3n2bar").updateCenter();
@@ -124,6 +132,10 @@ var canvas_eng = {
 			eng3ff.setText(sprintf("%2.01f",getprop("engines/engine[2]/fuel-flow_pph")*LB2KG/1000));
 			eng4ff.setText(sprintf("%2.01f",getprop("engines/engine[3]/fuel-flow_pph")*LB2KG/1000));
 		}
+		eng1oilp.setText(sprintf("%2.0f",getprop("engines/engine/oil-pressure-psi")));
+		eng2oilp.setText(sprintf("%2.0f",getprop("engines/engine[1]/oil-pressure-psi")));
+		eng3oilp.setText(sprintf("%2.0f",getprop("engines/engine[2]/oil-pressure-psi")));
+		eng4oilp.setText(sprintf("%2.0f",getprop("engines/engine[3]/oil-pressure-psi")));
 
 		settimer(func me.update(), 0);
 	}

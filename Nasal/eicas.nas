@@ -169,6 +169,8 @@ var advisory_messages = func {
 		append(msgs_advisory,">AUTOSTART OFF");
 	if (!getprop("/controls/electric/battery"))
 		append(msgs_advisory,">BATTERY OFF");
+	if (getprop("/gear/gear[1]/btms") >= 5 or getprop("/gear/gear[2]/btms") >= 5 or getprop("/gear/gear[3]/btms") >= 5 or getprop("/gear/gear[4]/btms") >= 5)
+		append(msgs_advisory,"BRAKE TEMP");
 	if (getprop("/systems/electrical/bus-isolation[0]") or getprop("/systems/electrical/bus-isolation[1]") or getprop("/systems/electrical/bus-isolation[2]") or getprop("/systems/electrical/bus-isolation[3]")) {
 		var msgs_bus_isln = ">ELEC BUS ISLN ";
 		if (getprop("/systems/electrical/bus-isolation[0]"))
@@ -313,10 +315,14 @@ setlistener("/instrumentation/eicas/display", func {
 	var group = secondary_eicas.createGroup();
 	if (display == "ELEC")
 		secEICAS = canvas_elec.new(group);
-	elsif (display == "FUEL")
-		secEICAS = canvas_fuel.new(group);
 	elsif (display == "ENG")
 		secEICAS = canvas_eng.new(group);
+	elsif (display == "FUEL")
+		secEICAS = canvas_fuel.new(group);
+	elsif (display == "GEAR")
+		secEICAS = canvas_gear.new(group);
+	elsif (display == "STAT")
+		secEICAS = canvas_stat.new(group);
 	secEICAS.update();
 	eicasCreated = 1;
 });
