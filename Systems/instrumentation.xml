@@ -41,6 +41,16 @@ This file selects the instrumentation modules that should be available.
         <name>clock</name>
         <number>0</number>
     </clock>
+	
+    <dme>
+        <name>dme</name>
+        <number>0</number>
+    </dme>
+
+    <dme>
+        <name>dme</name>
+        <number>1</number>
+    </dme>
     
     <groundradar>
         <name>groundradar</name>
@@ -63,6 +73,11 @@ This file selects the instrumentation modules that should be available.
         <name>magnetic-compass</name>
         <number>0</number>
     </magnetic-compass>
+	
+    <marker-beacon>
+        <name>marker-beacon</name>
+        <number>0</number>
+    </marker-beacon>
     
     <mk-viii>
         <name>mk-viii</name>

@@ -50,6 +50,8 @@ setlistener("sim/signals/fdm-initialized", func() {
 	update_listener_inputs();
 	update_throttle_input();
     update_system();
+    
+    setprop("/instrumentation/eicas/display","ENG");
 });
 
 var update_eicas = func(warningmsgs,cautionmsgs,advisorymsgs,memomsgs) {
@@ -94,21 +96,11 @@ var takeoff_config_warnings = func {
    }
 }
 
-var approach_config_warnings = func {
-	# approach warnings below 800ft when thrust lever in idle...
-	# ... or flaps in landing configuration
-	if (((radio_alt<800) and (throttle<0.5)) or (flaps>0.6))
-	{
-		if (!gear_down)
-		{
-			append(msgs_alert,">CONFIG GEAR");
-		}
-	 }
-}
-
 var warning_messages = func {
 	if (radio_alt>41000)
-		append(msgs_warning,">CABIN ALTITUDE");	
+		append(msgs_warning,">CABIN ALTITUDE");
+	if ((((radio_alt<800) and (throttle<0.1)) or (flaps>0.6)) and !gear_down)
+		append(msgs_warning,">CONFIG GEAR");
 	if (getprop("/gear/gear/wow") and (getprop("/controls/engines/engine[1]/throttle")>0.5 or getprop("/controls/engines/engine[2]/throttle")>0.5) and (getprop("/gear/gear[2]/steering-norm") != 0 or getprop("/gear/gear[3]/steering-norm") != 0))
 		append(msgs_warning,">CONFIG GEAR CTR");
 	if (getprop("controls/flight/speedbrake") != 0 and getprop("/gear/gear/wow") and (getprop("/controls/engines/engine[1]/throttle")>0.5 or getprop("/controls/engines/engine[2]/throttle")>0.5))
@@ -124,6 +116,10 @@ var warning_messages = func {
 		if (eng4fire)
 			msgs_fire = msgs_fire~"4, ";
 		append(msgs_warning,substr(msgs_fire,0,size(msgs_fire)-2));
+	}
+	if (getprop("instrumentation/fmc/vspeeds/Vmax") != nil) {
+		if(speed > getprop("instrumentation/fmc/vspeeds/Vmax"))
+			append(msgs_warning,">OVERSPEED");
 	}
 }
 
@@ -152,6 +148,17 @@ var caution_messages = func {
 			msgs_eng_cutoff = msgs_eng_cutoff~"4, ";
 		append(msgs_caution,substr(msgs_eng_cutoff,0,size(msgs_eng_cutoff)-2)~" SHUTDOWN");
 	}
+	var msgs_eng_fuel_press = "FUEL PRESS ENG ";
+	if (!getprop("controls/fuel/tank[1]/x-feed") and !getprop("controls/fuel/tank[1]/pump-aft") and !getprop("controls/fuel/tank[1]/pump-fwd"))
+		msgs_eng_fuel_press = msgs_eng_fuel_press~"1, ";
+	if (!getprop("controls/fuel/tank[2]/x-feed") and !getprop("controls/fuel/tank[2]/pump-aft") and !getprop("controls/fuel/tank[2]/pump-fwd"))
+		msgs_eng_fuel_press = msgs_eng_fuel_press~"2, ";
+	if (!getprop("controls/fuel/tank[3]/x-feed") and !getprop("controls/fuel/tank[3]/pump-aft") and !getprop("controls/fuel/tank[3]/pump-fwd"))
+		msgs_eng_fuel_press = msgs_eng_fuel_press~"3, ";
+	if (!getprop("controls/fuel/tank[4]/x-feed") and !getprop("controls/fuel/tank[4]/pump-aft") and !getprop("controls/fuel/tank[4]/pump-fwd"))
+		msgs_eng_fuel_press = msgs_eng_fuel_press~"4, ";
+	if (size(msgs_eng_fuel_press) > 15)
+		append(msgs_caution,substr(msgs_eng_fuel_press,0,size(msgs_eng_fuel_press)-2));
 	if ((getprop("/consumables/fuel/tank[1]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[2]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[3]/level-lbs") < 1985) or (getprop("/consumables/fuel/tank[4]/level-lbs") < 1985))
 		append(msgs_caution,"FUEL QTY LOW");
 	if ((getprop("/consumables/fuel/total-fuel-lbs") < getprop("/controls/fuel/fuel-to-remain-lbs")) and (getprop("/controls/fuel/dump-valve") == 1))
@@ -201,7 +208,7 @@ var advisory_messages = func {
 		append(msgs_advisory,">FUEL IMBAL 1-4");
 	if (math.abs((getprop("/consumables/fuel/tank[2]/level-lbs")-getprop("/consumables/fuel/tank[3]/level-lbs"))) > 6000)
 		append(msgs_advisory,">FUEL IMBAL 2-3");
-	if ((getprop("/consumables/fuel/tank[2]/level-lbs") <= getprop("/consumables/fuel/tank[1]/level-lbs")) or (getprop("/consumables/fuel/tank[3]/level-lbs") <= getprop("/consumables/fuel/tank[4]/level-lbs")))
+	if (((getprop("/consumables/fuel/tank[2]/level-lbs") <= getprop("/consumables/fuel/tank[1]/level-lbs")) or (getprop("/consumables/fuel/tank[3]/level-lbs") <= getprop("/consumables/fuel/tank[4]/level-lbs"))) and !getprop("/controls/fuel/dump-valve"))
 		append(msgs_advisory,">FUEL TANK/ENG");
 	if ((((getprop("/consumables/fuel/tank[2]/level-lbs") > getprop("/consumables/fuel/tank[1]/level-lbs")) or (getprop("/consumables/fuel/tank[3]/level-lbs") > getprop("/consumables/fuel/tank[4]/level-lbs"))) or getprop("/gear/gear/wow") == 1 ) and (getprop("/controls/fuel/tank[1]/x-feed") == 1) and (getprop("/controls/fuel/tank[4]/x-feed") == 1))
 		append(msgs_advisory,">FUEL XFER 1+4");
@@ -313,7 +320,9 @@ setlistener("/instrumentation/eicas/display", func {
 	secondary_eicas.addPlacement({"node": "Lower-EICAS-Screen"});
 	var display = getprop("/instrumentation/eicas/display");
 	var group = secondary_eicas.createGroup();
-	if (display == "ELEC")
+	if (display == "DRS")
+		secEICAS = canvas_doors.new(group);
+	elsif (display == "ELEC")
 		secEICAS = canvas_elec.new(group);
 	elsif (display == "ENG")
 		secEICAS = canvas_eng.new(group);
@@ -326,4 +335,3 @@ setlistener("/instrumentation/eicas/display", func {
 	secEICAS.update();
 	eicasCreated = 1;
 });
-setprop("/instrumentation/eicas/display","ENG");

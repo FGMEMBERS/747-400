@@ -41,8 +41,23 @@ var fuelTotal = {};
 var fuelTemp = {};
 var fuelTempL = {};
 var text4283 = {};
+var gearGrpBox = {};
+var gearL = {};
+var gearGrp = {};
+var gear0 = {};
+var gear0box = {};
+var gear1 = {};
+var gear1box = {};
+var gear2 = {};
+var gear2box = {};
+var gear3 = {};
+var gear3box = {};
+var gear4 = {};
+var gear4box = {};
 var flapsLine = {};
 var flapsL = {};
+var flapsBar = {};
+var flapsBar_scale = {};
 var flapsBox = {};
 var eng1nai = {};
 var eng2nai = {};
@@ -118,8 +133,22 @@ var canvas_primary = {
 		fuelTempL =  eicasP.getElementById("fuelTempL");
 		fuelTotal =  eicasP.getElementById("fuelTotal");
 		text4283=  eicasP.getElementById("text4283");
+		gearGrpBox =  eicasP.getElementById("gearBox");
+		gearL =  eicasP.getElementById("gearL");
+		gearGrp =  eicasP.getElementById("gear");
+		gear0 =  eicasP.getElementById("gear0");
+		gear0box =  eicasP.getElementById("gear0box");
+		gear1 =  eicasP.getElementById("gear1");
+		gear1box =  eicasP.getElementById("gear1box");
+		gear2 =  eicasP.getElementById("gear2");
+		gear2box =  eicasP.getElementById("gear2box");
+		gear3 =  eicasP.getElementById("gear3");
+		gear3box =  eicasP.getElementById("gear3box");
+		gear4 =  eicasP.getElementById("gear4");
+		gear4box =  eicasP.getElementById("gear4box");
 		flapsLine =  eicasP.getElementById("flapsLine");
 		flapsL =  eicasP.getElementById("flapsL");
+		flapsBar =  eicasP.getElementById("flapsBar");
 		flapsBox =  eicasP.getElementById("flapsBox");
 		eng1nai=  eicasP.getElementById("eng1nai");
 		eng2nai=  eicasP.getElementById("eng2nai");
@@ -169,166 +198,97 @@ var canvas_primary = {
 		eng4egtBar_scale = eng4egtBar.createTransform();
 		eng4egtBar.createTransform().setTranslation(c8[0], c8[1]);
 		
+		var c9 = flapsBar.getCenter();
+		flapsBar.createTransform().setTranslation(-c9[0], -c9[1]);
+		flapsBar_scale = flapsBar.createTransform();
+		flapsBar.createTransform().setTranslation(c9[0], c9[1]);
+
+		var timerFlaps = maketimer(10.0, func { text4283.hide();flapsLine.hide();flapsL.hide();flapsBar.hide();flapsBox.hide(); });
+		setlistener("surface-positions/flap-pos-norm", func() {
+			if (getprop("surface-positions/flap-pos-norm") == 0) {
+				timerFlaps.singleShot = 1;
+				timerFlaps.start(); # start the timer (with 1 second inverval)
+			} else {
+				timerFlaps.stop();
+			}
+		});
+		timerFlaps.stop();
+		
+		var timerGear = maketimer(10.0, func { gearGrp.hide();gearL.hide();gearGrpBox.hide(); });
+		setlistener("gear/gear/position-norm", func() {
+			if (getprop("gear/gear/position-norm") == 0) {
+				timerGear.singleShot = 1;
+				timerGear.start(); # start the timer (with 1 second inverval)
+			} else {
+				timerGear.stop();
+			}
+		});
+		
 		return m;
 	},
 	update: func()
 	{	
-		# Engine 1 #
-		if (getprop("controls/engines/engine[0]/reverser")) {
-			eng1n1ref.setText("REV");
-			if (getprop("engines/engine/reverser-pos-norm") != 1) {
-				eng1n1ref.setColor(1,0.5,0);
-			} else {
-				eng1n1ref.setColor(0,1.0,0);
-			}
-			eng1n1refLine.hide();
-		} else {
-			eng1n1ref.setText(sprintf("%3.01f",92.5*getprop("controls/engines/engine[0]/throttle")+25));
-			eng1n1refLine.show();
-			eng1n1refLine.setTranslation(0,-150.957*getprop("controls/engines/engine[0]/throttle")-64.043);
-		}
-		eng1n1.setText(sprintf("%3.01f",getprop("engines/engine[0]/n1")));
-		eng1n1maxLine.setTranslation(0,-175);
-		eng1n1rpmLine.setTranslation(0,-215);
-		if (getprop("engines/engine[0]/n1") != nil){
-			eng1n1bar_scale.setScale(1, getprop("engines/engine[0]/n1")/117.5);
-			if(getprop("engines/engine[0]/n1") >= 117.5) {
-				eng1n1bar.setColor(1,0,0);
-			} else {
-				eng1n1bar.setColor(1,1,1);
-			}
-		}
-		if (getprop("engines/engine[0]/egt-degf") != nil) {
-			eng1egt.setText(sprintf("%3.0f",(getprop("engines/engine[0]/egt-degf")-32)/1.8));
-			eng1egtBar_scale.setScale(1, ((getprop("engines/engine[0]/egt-degf")-32)/1.8)/960);
-			if ((getprop("engines/engine[0]/egt-degf")-32)/1.8 >= 960) {
-				eng1egt.setColor(1,0,0);
-				eng1egtBar.setColor(1,0,0);
-			} elsif ((getprop("engines/engine[0]/egt-degf")-32)/1.8 >= 925) {
-				eng1egt.setColor(1,0.5,0);
-				eng1egtBar.setColor(1,0.5,0);
-			} else {
-				eng1egt.setColor(1,1,1);
-				eng1egtBar.setColor(1,1,1);
-			}
-		}
+		var egt = [getprop("engines/engine[0]/egt-degf"),getprop("engines/engine[1]/egt-degf"),getprop("engines/engine[2]/egt-degf"),getprop("engines/engine[3]/egt-degf")];
+		var flaps = getprop("controls/flight/flaps");
+		var flapPos = getprop("surface-positions/flap-pos-norm");
+		var n1 = [getprop("engines/engine[0]/n1"),getprop("engines/engine[1]/n1"),getprop("engines/engine[2]/n1"),getprop("engines/engine[3]/n1")];
+		var throttle = [getprop("controls/engines/engine[0]/throttle"),getprop("controls/engines/engine[1]/throttle"),getprop("controls/engines/engine[2]/throttle"),getprop("controls/engines/engine[3]/throttle")];
 		
-		# Engine 2 #
-		if (getprop("controls/engines/engine[1]/reverser")) {
-			eng2n1ref.setText("REV");
-			if (getprop("engines/engine[1]/reverser-pos-norm") != 1) {
-				eng2n1ref.setColor(1,0.5,0);
-			} else {
-				eng2n1ref.setColor(0,1.0,0);
-			}
-			eng2n1refLine.hide();
-		} else {
-			eng2n1ref.setText(sprintf("%3.01f",92.5*getprop("controls/engines/engine[1]/throttle")+25));
-			eng2n1refLine.show();
-			eng2n1refLine.setTranslation(0,-150.957*getprop("controls/engines/engine[1]/throttle")-64.043);
-		}
-		eng2n1.setText(sprintf("%3.01f",getprop("engines/engine[1]/n1")));
-		eng2n1maxLine.setTranslation(0,-175);
-		eng2n1rpmLine.setTranslation(0,-215);
-		if (getprop("engines/engine[1]/n1") != nil){
-			eng2n1bar_scale.setScale(1, getprop("engines/engine[1]/n1")/117.5);
-			if(getprop("engines/engine[1]/n1") == 117.5) {
-				eng2n1bar.setColor(1,0,0);
-			} else {
-				eng2n1bar.setColor(1,1,1);
-			}
-		}
-		if (getprop("engines/engine[1]/egt-degf") != nil) {
-			eng2egt.setText(sprintf("%3.0f",(getprop("engines/engine[1]/egt-degf")-32)/1.8));
-			eng2egtBar_scale.setScale(1, ((getprop("engines/engine[1]/egt-degf")-32)/1.8)/960);
-			if ((getprop("engines/engine[1]/egt-degf")-32)/1.8 >= 960) {
-				eng2egt.setColor(1,0,0);
-				eng2egtBar.setColor(1,0,0);
-			} elsif ((getprop("engines/engine[1]/egt-degf")-32)/1.8 >= 925) {
-				eng2egt.setColor(1,0.5,0);
-				eng2egtBar.setColor(1,0.5,0);
-			} else {
-				eng2egt.setColor(1,1,1);
-				eng2egtBar.setColor(1,1,1);
-			}
-		}
+		var engn1 = [eng1n1,eng2n1,eng3n1,eng4n1];
+		var engn1maxLine = [eng1n1maxLine,eng2n1maxLine,eng3n1maxLine,eng4n1maxLine];
+		var engn1rpmLine = [eng1n1rpmLine,eng2n1rpmLine,eng3n1rpmLine,eng4n1rpmLine];
+		var engn1ref = [eng1n1ref,eng2n1ref,eng3n1ref,eng4n1ref];
+		var engn1refLine = [eng1n1refLine,eng2n1refLine,eng3n1refLine,eng4n1refLine];
+		var engn1bar = [eng1n1bar,eng2n1bar,eng3n1bar,eng4n1bar];
+		var engn1bar_scale = [eng1n1bar_scale,eng2n1bar_scale,eng3n1bar_scale,eng4n1bar_scale];
+		var engegt = [eng1egt,eng2egt,eng3egt,eng4egt];
+		var engegtBar = [eng1egtBar,eng2egtBar,eng3egtBar,eng4egtBar];
+		var engegtBar_scale = [eng1egtBar_scale,eng2egtBar_scale,eng3egtBar_scale,eng4egtBar_scale];
+		var engnai = [eng1nai,eng2nai,eng3nai,eng4nai];
 		
-		# Engine 3 #
-		if (getprop("controls/engines/engine[2]/reverser")) {
-			eng3n1ref.setText("REV");
-			if (getprop("engines/engine[2]/reverser-pos-norm") != getprop("controls/engines/engine[2]/reverser")) {
-				eng3n1ref.setColor(1,0.5,0);
+		for(var n = 0; n<=3; n+=1){
+			if (getprop("controls/engines/engine["~n~"]/reverser")) {
+				engn1ref[n].setText("REV");
+				if (getprop("engines/engine["~n~"]/reverser-pos-norm") != 1) {
+					engn1ref[n].setColor(1,0.5,0);
+				} else {
+					engn1ref[n].setColor(0,1.0,0);
+				}
+				engn1refLine[n].hide();
 			} else {
-				eng3n1ref.setColor(0,1.0,0);
+				engn1ref[n].setText(sprintf("%3.01f",92.5*throttle[n]+25));
+				engn1refLine[n].show();
+				engn1refLine[n].setTranslation(0,-150.957*throttle[n]-64.043);
 			}
-			eng3n1refLine.hide();
-		} else {
-			eng3n1ref.setText(sprintf("%3.01f",92.5*getprop("controls/engines/engine[2]/throttle")+25));
-			eng3n1refLine.show();
-			eng3n1refLine.setTranslation(0,-150.957*getprop("controls/engines/engine[2]/throttle")-64.043);
-		}
-		eng3n1.setText(sprintf("%3.01f",getprop("engines/engine[2]/n1")));
-		eng3n1maxLine.setTranslation(0,-175);
-		eng3n1rpmLine.setTranslation(0,-215);
-		if (getprop("engines/engine[2]/n1") != nil){
-			eng3n1bar_scale.setScale(1, getprop("engines/engine[2]/n1")/117.5);
-			if(getprop("engines/engine[2]/n1") == 117.5) {
-				eng3n1bar.setColor(1,0,0);
-			} else {
-				eng3n1bar.setColor(1,1,1);
+			engn1[n].setText(sprintf("%3.01f",n1[n]));
+			engn1maxLine[n].setTranslation(0,-175);
+			engn1rpmLine[n].setTranslation(0,-215);
+			if (n1[n] != nil){
+				engn1bar_scale[n].setScale(1, n1[n]/117.5);
+				if(n1[n] >= 117.5) {
+					engn1bar[n].setColor(1,0,0);
+				} else {
+					engn1bar[n].setColor(1,1,1);
+				}
 			}
-		}
-		if (getprop("engines/engine[2]/egt-degf") != nil) {
-			eng3egt.setText(sprintf("%3.0f",(getprop("engines/engine[2]/egt-degf")-32)/1.8));
-			eng3egtBar_scale.setScale(1, ((getprop("engines/engine[2]/egt-degf")-32)/1.8)/960);
-			if ((getprop("engines/engine[2]/egt-degf")-32)/1.8 >= 960) {
-				eng3egt.setColor(1,0,0);
-				eng3egtBar.setColor(1,0,0);
-			} elsif ((getprop("engines/engine[2]/egt-degf")-32)/1.8 >= 925) {
-				eng3egt.setColor(1,0.5,0);
-				eng3egtBar.setColor(1,0.5,0);
-			} else {
-				eng3egt.setColor(1,1,1);
-				eng3egtBar.setColor(1,1,1);
+			if (egt[n] != nil) {
+				engegt[n].setText(sprintf("%3.0f",(egt[n]-32)/1.8));
+				engegtBar_scale[n].setScale(1, ((egt[n]-32)/1.8)/960);
+				if ((egt[n]-32)/1.8 >= 960) {
+					engegt[n].setColor(1,0,0);
+					engegtBar[n].setColor(1,0,0);
+				} elsif ((egt[n]-32)/1.8 >= 925) {
+					engegt[n].setColor(1,0.5,0);
+					engegtBar[n].setColor(1,0.5,0);
+				} else {
+					engegt[n].setColor(1,1,1);
+					engegtBar[n].setColor(1,1,1);
+				}
 			}
-		}
-		
-		if (getprop("controls/engines/engine[3]/reverser")) {
-			eng4n1ref.setText("REV");
-			if (getprop("engines/engine[3]/reverser-pos-norm") != 1) {
-				eng4n1ref.setColor(1,0.5,0);
+			if (getprop("controls/anti-ice/engine["~n~"]/inlet-heat")) {
+				engnai[n].show();
 			} else {
-				eng4n1ref.setColor(0,1.0,0);
-			}
-			eng4n1refLine.hide();
-		} else {
-			eng4n1ref.setText(sprintf("%3.01f",92.5*getprop("controls/engines/engine[3]/throttle")+25));
-			eng4n1refLine.show();
-			eng4n1refLine.setTranslation(0,-150.957*getprop("controls/engines/engine[3]/throttle")-64.043);
-		}
-		eng4n1.setText(sprintf("%3.01f",getprop("engines/engine[3]/n1")));
-		eng4n1maxLine.setTranslation(0,-175);
-		eng4n1rpmLine.setTranslation(0,-215);
-		if (getprop("engines/engine[3]/n1") != nil){
-			eng4n1bar_scale.setScale(1, getprop("engines/engine[3]/n1")/117.5);
-			if(getprop("engines/engine[3]/n1") == 117.5) {
-				eng4n1bar.setColor(1,0,0);
-			} else {
-				eng4n1bar.setColor(1,1,1);
-			}
-		}
-		if (getprop("engines/engine[3]/egt-degf") != nil) {
-			eng4egt.setText(sprintf("%3.0f",(getprop("engines/engine[3]/egt-degf")-32)/1.8));
-			eng4egtBar_scale.setScale(1, ((getprop("engines/engine[3]/egt-degf")-32)/1.8)/960);
-			if ((getprop("engines/engine[3]/egt-degf")-32)/1.8 >= 960) {
-				eng4egt.setColor(1,0,0);
-				eng4egtBar.setColor(1,0,0);
-			} elsif ((getprop("engines/engine[3]/egt-degf")-32)/1.8 >= 925) {
-				eng4egt.setColor(1,0.5,0);
-				eng4egtBar.setColor(1,0.5,0);
-			} else {
-				eng4egt.setColor(1,1,1);
-				eng4egtBar.setColor(1,1,1);
+				engnai[n].hide();
 			}
 		}
 		
@@ -350,54 +310,76 @@ var canvas_primary = {
 		msgCaution.setText(getprop("instrumentation/eicas/msg/caution"));
 		msgAdvisory.setText(getprop("instrumentation/eicas/msg/advisory"));
 		msgMemo.setText(getprop("instrumentation/eicas/msg/memo"));
-		
-		if (getprop("surface-positions/flap-pos-norm") == 0 and getprop("controls/flight/flaps") == 0) {
-			text4283.hide();
-			flapsLine.hide();
-			flapsL.hide();
-			flapsBox.hide();
-		} else {
+
+		if (flapPos != 0 or flaps != 0) {
 			text4283.show();
 			flapsLine.show();
 			flapsL.show();
+			flapsBar.show();
 			flapsBox.show();
-			if (getprop("controls/flight/flaps") != getprop("surface-positions/flap-pos-norm")) {
-				text4283.setColor(1,0,1);
-				flapsLine.setColor(1,0,1);
-			} else {
-				text4283.setColor(0,1,0);
-				flapsLine.setColor(0,1,0);
-			}
-			text4283.setText(sprintf("%2.0f",getprop("controls/flight/flaps")*30));
-			flapsLine.setTranslation(0,157*getprop("controls/flight/flaps"));
-			text4283.setTranslation(0,157*getprop("controls/flight/flaps"));
+			text4283.setText(sprintf("%2.0f",flaps*30));
+			flapsLine.setTranslation(0,157*flaps);
+			text4283.setTranslation(0,157*flaps);
+			flapsBar_scale.setScale(1, flapPos);
 		}
-		if (getprop("controls/anti-ice/engine/inlet-heat")) {
-			eng1nai.show();
+		if (flaps != flapPos) {
+			text4283.setColor(1,0,1);
+			flapsLine.setColor(1,0,1);
 		} else {
-			eng1nai.hide();
+			text4283.setColor(0,1,0);
+			flapsLine.setColor(0,1,0);
 		}
-		if (getprop("controls/anti-ice/engine[1]/inlet-heat")) {
-			eng2nai.show();
-		} else {
-			eng2nai.hide();
-		}
-		if (getprop("controls/anti-ice/engine[2]/inlet-heat")) {
-			eng3nai.show();
-		} else {
-			eng3nai.hide();
-		}
-		if (getprop("controls/anti-ice/engine[3]/inlet-heat")) {
-			eng4nai.show();
-		} else {
-			eng4nai.hide();
-		}
+		
 		if (getprop("controls/anti-ice/wing-heat")) {
 			wai.show();
 		} else {
 			wai.hide();
 		}
-
+		
+		var gear = [gear0, gear1, gear2, gear3, gear4];
+		var gearBox = [gear0box, gear1box, gear2box, gear3box, gear4box];
+		var gearStuck = [getprop("/controls/failures/gear[0]/stuck"),getprop("/controls/failures/gear[1]/stuck"),getprop("/controls/failures/gear[2]/stuck"),getprop("/controls/failures/gear[3]/stuck"),getprop("/controls/failures/gear[4]/stuck")];
+		var gearPos = [getprop("gear/gear[0]/position-norm"),getprop("gear/gear[1]/position-norm"),getprop("gear/gear[2]/position-norm"),getprop("gear/gear[3]/position-norm"),getprop("gear/gear[4]/position-norm")];
+		
+		if (gearStuck[0] or gearStuck[1] or gearStuck[2] or gearStuck[3] or gearStuck[4]) {
+			
+			gearGrp.hide();
+			gearGrpBox.hide();
+			gearL.show();
+			
+			for(var g = 0; g <= 4; g+=1){
+				gear[g].show();
+				gearBox[g].show();
+				if(gearPos[g] == 1) {
+					gear[g].setColor(0,1,0);
+					gear[g].setText("DN");
+					gearBox[g].setColor(0,1,0);
+				} else {
+					gear[g].setColor(1,1,1);
+					if (gearPos[g] == 0)
+						gear[g].setText("UP");
+					else 
+						gear[g].setText("");
+					gearBox[g].setColor(1,1,1);
+				}
+			}
+		} else {
+			for(var g = 0; g <= 4; g+=1){
+				gear[g].hide();
+				gearBox[g].hide();
+			}
+			
+			if (gearPos[0] == 0 and gearPos[1] == 0 and gearPos[2] == 0 and gearPos[3] == 0 and gearPos[4] == 0) {
+				gearGrp.setText("UP");
+				gearGrp.setColor(1,1,1);
+				gearGrpBox.setColor(1,1,1);
+			} elsif (gearPos[0] == 1 and gearPos[1] == 1 and gearPos[2] == 1 and gearPos[3] == 1 and gearPos[4] == 1) {
+				gearGrp.setText("DOWN");
+				gearGrp.setColor(0,1,0);
+				gearGrpBox.setColor(0,1,0);
+			}
+		}
+		
 		settimer(func me.update(), 0);
 	}
 };

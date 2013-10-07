@@ -7,15 +7,47 @@
 <PropertyList>
 
  <nasal>
-  <dual_control_tools>
-   <file>Aircraft/Generic/DualControl/dual-control-tools.nas</file>
-  </dual_control_tools>
-  <aircraft_dual_control>
-   <file>Aircraft/747-400/DualControl/747-400-dual-control.nas</file>
-  </aircraft_dual_control>
-  <dual_control>
-   <file>Aircraft/Generic/DualControl/copilot-dual-control.nas</file>
-  </dual_control>
+	<Boeing747>
+		<file>Aircraft/747-400/Nasal/autopilot.nas</file>
+		<file>Aircraft/747-400/Nasal/autopilot-routemanager.nas</file>
+		<file>Aircraft/747-400/Nasal/copilot.nas</file>
+		<file>Aircraft/747-400/Nasal/doors.nas</file>
+		<file>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/elec.nas</file>
+		<file>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/eng.nas</file>
+		<file>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/fuel.nas</file>
+		<file>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/gear.nas</file>
+		<file>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/primary.nas</file>
+		<file>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/stat.nas</file>
+		<file>Aircraft/747-400/Nasal/eicas.nas</file> <!-- must load after EICAS -->
+		<file>Aircraft/747-400/Nasal/system.nas</file>
+		<file>Aircraft/747-400/Nasal/vspeeds.nas</file>
+		<file>Aircraft/747-400/Nasal/wipers.nas</file>
+		<file>Aircraft/Generic/limits.nas</file>
+	</Boeing747>
+	<cdu>
+		<file>Aircraft/Instruments-3d/cdu/boeing.nas</file>
+	</cdu>
+	<dual_control_tools>
+		<file>Aircraft/Generic/DualControl/dual-control-tools.nas</file>
+	</dual_control_tools>
+	<aircraft_dual_control>
+		<file>Aircraft/747-400/DualControl/747-400-dual-control.nas</file>
+	</aircraft_dual_control>
+	<dual_control>
+		<file>Aircraft/Generic/DualControl/copilot-dual-control.nas</file>
+	</dual_control>
+	<electrical>
+		<file>Aircraft/747-400/Nasal/744_elec.nas</file>
+	</electrical>
+	<hydraulic>
+		<file>Aircraft/747-400/Nasal/744_hyd.nas</file>
+	</hydraulic>
+	<tyresmoke>
+		<file>Aircraft/747-400/Nasal/tyresmoke.nas</file>
+	</tyresmoke>
+	<walk>
+		<file>Aircraft/747-400/Nasal/walk.nas</file>
+	</walk>
  </nasal>
 
  <sim>
