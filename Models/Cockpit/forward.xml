@@ -25,26 +25,6 @@
 </effect>
 
 <model>
-	<name>ND1</name>
-	<path>Aircraft/747-400/Models/Cockpit/Instruments/MFD/ND.xml</path>
-	<offsets>
-		<x-m> 0.008</x-m>
-		<y-m>-0.325</y-m>
-		<z-m> 0.189</z-m>
-	</offsets>
-</model>
-  
-<model>
-	<name>ND2</name>
-	<path>Aircraft/747-400/Models/Cockpit/Instruments/MFD/ND.xml</path>
-	<offsets>
-		<x-m>0.008</x-m>
-		<y-m>0.325</y-m>
-		<z-m>0.189</z-m>
-	</offsets>
-</model>
-
-<model>
 	<path>Aircraft/747-400/Models/Cockpit/Instruments/brake-pressure.xml</path>
 	<offsets>
 		<x-m> 0.008</x-m>
@@ -82,6 +62,48 @@
 		<z-m> 0.097</z-m>
 	</offsets>
 </model>
+
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/chronometer.xml</path>
+	<offsets>
+		<x-m> 0.008</x-m>
+		<y-m>-0.700</y-m>
+		<z-m> 0.236</z-m>
+	</offsets>
+</model>
+<model>
+	<path>Aircraft/747-400/Models/Cockpit/Instruments/chronometer.xml</path>
+	<offsets>
+		<x-m> 0.008</x-m>
+		<y-m> 0.700</y-m>
+		<z-m> 0.236</z-m>
+	</offsets>
+</model>
+
+<animation>
+	<type>pick</type>
+	<object-name>pfdScreen</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>Boeing747.showPfd();</script>
+		</binding>
+	</action>
+</animation>
+<animation>
+	<type>pick</type>
+	<object-name>ndScreen</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>Boeing747.showNd();</script>
+		</binding>
+	</action>
+</animation>
 
 <animation>
 	<type>material</type>
@@ -202,25 +224,6 @@
 			<script>controls.gearDown(0)</script>
 		</binding>
 	</decrease>
-</animation>
-
-<animation>
-	<type>knob</type>
-	<object-name>gear.lever</object-name>
-	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>
-		<binding>
-			<command>nasal</command>
-			<script>controls.gearDown(1)</script>
-		</binding>
-		<mod-up>
-			<binding>
-				<command>nasal</command>
-				<script>controls.gearDown(0)</script>
-			</binding>
-		</mod-up>
-	</action>
 	<center>
 		<x-m>-0.095</x-m><y-m> 0.131</y-m><z-m> 0.179</z-m>
 	</center>
@@ -873,12 +876,21 @@
 		<binding>
 			<command>property-cycle</command>
 			<property>instrumentation/efis/mfd/display-mode</property>
+			<wrap>false</wrap>
 			<value type="string">APP</value>
 			<value type="string">VOR</value>
 			<value type="string">MAP</value>
 			<value type="string">PLAN</value>
 		</binding>
 	</action>
+	<hovered>
+		<binding>
+			<command>set-tooltip</command>
+			<label>Mode: %s</label>
+			<tooltip-id>ndMode</tooltip-id>
+			<property>instrumentation/efis/mfd/display-mode</property>
+		</binding>
+	</hovered>
 </animation>
 
 <animation>
@@ -887,7 +899,8 @@
 	<action>
 		<binding>
 			<command>property-cycle</command>
-			<property>instrumentation/efis/inputs/range</property>
+			<property>instrumentation/efis/inputs/range-nm</property>
+			<wrap>false</wrap>
 			<value type="int">10</value>
 			<value type="int">20</value>
 			<value type="int">40</value>
@@ -897,6 +910,129 @@
 			<value type="int">640</value>
 		</binding>
 	</action>
+	<hovered>
+		<binding>
+			<command>set-tooltip</command>
+			<label>Range: %3d NM</label>
+			<tooltip-id>ndRange</tooltip-id>
+			<property>instrumentation/efis/inputs/range-nm</property>
+		</binding>
+	</hovered>
+</animation>
+
+<animation>
+	<type>knob</type>
+	<object-name>btn.wxr</object-name>
+	<action>
+		<binding>
+			<command>property-toggle</command>
+			<property>instrumentation/efis/inputs/wxr</property>
+		</binding>
+	</action>
+	<hovered>
+		<binding>
+			<command>set-tooltip</command>
+			<label>WXR: %s</label>
+			<tooltip-id>wxr</tooltip-id>
+			<mapping>on-off</mapping>
+			<property>instrumentation/efis/inputs/wxr</property>
+		</binding>
+	</hovered>
+</animation>
+<animation>
+	<type>knob</type>
+	<object-name>btn.sta</object-name>
+	<action>
+		<binding>
+			<command>property-toggle</command>
+			<property>instrumentation/efis/inputs/sta</property>
+		</binding>
+	</action>
+	<hovered>
+		<binding>
+			<command>set-tooltip</command>
+			<label>STA: %s</label>
+			<tooltip-id>sta</tooltip-id>
+			<mapping>on-off</mapping>
+			<property>instrumentation/efis/inputs/sta</property>
+		</binding>
+	</hovered>
+</animation>
+<animation>
+	<type>knob</type>
+	<object-name>btn.wpt</object-name>
+	<action>
+		<binding>
+			<command>property-toggle</command>
+			<property>instrumentation/efis/inputs/wpt</property>
+		</binding>
+	</action>
+	<hovered>
+		<binding>
+			<command>set-tooltip</command>
+			<label>WPT: %s</label>
+			<tooltip-id>wpt</tooltip-id>
+			<mapping>on-off</mapping>
+			<property>instrumentation/efis/inputs/wpt</property>
+		</binding>
+	</hovered>
+</animation>
+<animation>
+	<type>knob</type>
+	<object-name>btn.arpt</object-name>
+	<action>
+		<binding>
+			<command>property-toggle</command>
+			<property>instrumentation/efis/inputs/arpt</property>
+		</binding>
+	</action>
+	<hovered>
+		<binding>
+			<command>set-tooltip</command>
+			<label>ARPT: %s</label>
+			<tooltip-id>arpt</tooltip-id>
+			<mapping>on-off</mapping>
+			<property>instrumentation/efis/inputs/arpt</property>
+		</binding>
+	</hovered>
+</animation>
+<animation>
+	<type>knob</type>
+	<object-name>btn.data</object-name>
+	<action>
+		<binding>
+			<command>property-toggle</command>
+			<property>instrumentation/efis/inputs/data</property>
+		</binding>
+	</action>
+	<hovered>
+		<binding>
+			<command>set-tooltip</command>
+			<label>DATA: %s</label>
+			<tooltip-id>data</tooltip-id>
+			<mapping>on-off</mapping>
+			<property>instrumentation/efis/inputs/data</property>
+		</binding>
+	</hovered>
+</animation>
+<animation>
+	<type>knob</type>
+	<object-name>btn.pos</object-name>
+	<action>
+		<binding>
+			<command>property-toggle</command>
+			<property>instrumentation/efis/inputs/pos</property>
+		</binding>
+	</action>
+	<hovered>
+		<binding>
+			<command>set-tooltip</command>
+			<label>POS: %s</label>
+			<tooltip-id>pos</tooltip-id>
+			<mapping>on-off</mapping>
+			<property>instrumentation/efis/inputs/pos</property>
+		</binding>
+	</hovered>
 </animation>
 
 <!-- EICAS PANEL -->

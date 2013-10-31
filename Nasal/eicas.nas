@@ -12,12 +12,12 @@ var ap_passive		= 1;
 var ap_disengaged	= 0;
 var rudder_trim		= 0;
 var elev_trim		= 0;
-var eng1fire		= 0;
-var eng2fire		= 0;
-var eng3fire		= 0;
-var eng4fire		= 0;
+var engfire			= [0,0,0,0];
 var secondary_eicas = {};
 var secEICAS		= {};
+var pack 			= [0,0,0];
+
+var num_lines = 18;
 
 msgs_warning = [];
 msgs_caution = [];
@@ -36,14 +36,17 @@ setlistener("sim/signals/fdm-initialized", func() {
 	setlistener("controls/gear/gear-down",            func { update_listener_inputs() } );
 	setlistener("controls/gear/brake-parking",        func { update_listener_inputs() } );
 	setlistener("controls/engines/engine/reverser",   func { update_listener_inputs() } );
-	setlistener("controls/engines/engine[0]/on-fire", func { update_listener_inputs() } );
-	setlistener("controls/engines/engine[1]/on-fire", func { update_listener_inputs() } );
-	setlistener("controls/engines/engine[2]/on-fire", func { update_listener_inputs() } );
-	setlistener("controls/engines/engine[3]/on-fire", func { update_listener_inputs() } );
+	setlistener("controls/engines/engine[0]/on-fire", func(n) { engfire[0] = n.getValue(); } );
+	setlistener("controls/engines/engine[1]/on-fire", func(n) { engfire[1] = n.getValue(); } );
+	setlistener("controls/engines/engine[2]/on-fire", func(n) { engfire[2] = n.getValue(); } );
+	setlistener("controls/engines/engine[3]/on-fire", func(n) { engfire[3] = n.getValue(); } );
 	setlistener("controls/flight/rudder-trim",        func { update_listener_inputs() } );
 	setlistener("controls/flight/elevator-trim",      func { update_listener_inputs() } );
 	setlistener("sim/freeze/replay-state",            func { update_listener_inputs() } );
 	setlistener("/autopilot/autobrake/step",          func { update_listener_inputs() } );
+	setlistener("/controls/pneumatic/pack-control[0]",func { pack[0] = (getprop("/controls/pneumatic/pack-control[0]")>0); } );
+	setlistener("/controls/pneumatic/pack-control[1]",func { pack[1] = (getprop("/controls/pneumatic/pack-control[1]")>0); } );
+	setlistener("/controls/pneumatic/pack-control[2]",func { pack[2] = (getprop("/controls/pneumatic/pack-control[2]")>0); } );
 	
 	setlistener("controls/engines/engine/throttle",   func { update_throttle_input() } );
 
@@ -57,10 +60,12 @@ setlistener("sim/signals/fdm-initialized", func() {
 var update_eicas = func(warningmsgs,cautionmsgs,advisorymsgs,memomsgs) {
 	var msg="";
 	var spacer="";
+	var line = 0;
 	for(var i=0; i<size(warningmsgs); i+=1)
 	{
 		msg = msg ~ warningmsgs[i] ~ "\n";
 		spacer = spacer ~ "\n";
+		line+=1;
 	}
 	eicas_msg_warning.setValue(msg);
 	msg=spacer;
@@ -68,6 +73,7 @@ var update_eicas = func(warningmsgs,cautionmsgs,advisorymsgs,memomsgs) {
 	{
 		msg = msg ~ cautionmsgs[i] ~ "\n";
 		spacer = spacer ~ "\n";
+		line+=1;
 	}
 	eicas_msg_caution.setValue(msg);
 	msg=spacer;
@@ -75,8 +81,13 @@ var update_eicas = func(warningmsgs,cautionmsgs,advisorymsgs,memomsgs) {
 	{
 		msg = msg ~ advisorymsgs[i] ~ "\n";
 		spacer = spacer ~ "\n";
+		line+=1;
 	}
 	eicas_msg_advisory.setValue(msg);
+	while (line+size(memomsgs) < num_lines) {
+		line+=1;
+		spacer = spacer ~ "\n";
+	}
 	msg=spacer;
 	for(var i=0; i<size(memomsgs); i+=1)
 	{
@@ -105,15 +116,15 @@ var warning_messages = func {
 		append(msgs_warning,">CONFIG GEAR CTR");
 	if (getprop("controls/flight/speedbrake") != 0 and getprop("/gear/gear/wow") and (getprop("/controls/engines/engine[1]/throttle")>0.5 or getprop("/controls/engines/engine[2]/throttle")>0.5))
 		append(msgs_warning,">CONFIG SPOILERS");	
-	if (eng1fire or eng2fire or eng3fire or eng4fire) {
+	if (engfire[0] or engfire[1] or engfire[2] or engfire[3]) {
 		var msgs_fire = "FIRE ENGINE ";
-		if (eng1fire)
+		if (engfire[0])
 			msgs_fire = msgs_fire~"1, ";
-		if (eng2fire)
+		if (engfire[1])
 			msgs_fire = msgs_fire~"2, ";
-		if (eng3fire)
+		if (engfire[2])
 			msgs_fire = msgs_fire~"3, ";
-		if (eng4fire)
+		if (engfire[3])
 			msgs_fire = msgs_fire~"4, ";
 		append(msgs_warning,substr(msgs_fire,0,size(msgs_fire)-2));
 	}
@@ -232,7 +243,7 @@ var memo_messages = func {
 	if (apu_running and (getprop("/engines/engine[4]/n1") > 95))
 		append(msgs_memo,"APU RUNNING");
 	if (parkbrake)
-		append(msgs_memo,">PARK BRK SET");
+		append(msgs_memo,"PARK BRAKE SET");
 	if (getprop("/autopilot/autobrake/step") == -2)
 		append(msgs_memo,"AUTOBRAKES RTO");
 	if (getprop("/autopilot/autobrake/step") > 0 and getprop("/autopilot/autobrake/step") < 5)
@@ -247,20 +258,20 @@ var memo_messages = func {
 		if (getprop("/controls/switches/smoking-sign"))
 			append(msgs_memo,"NO SMOKING ON");
 	}
-	if (!getprop("/controls/pneumatic/pack-control[0]") and !getprop("/controls/pneumatic/pack-control[1]") and !getprop("/controls/pneumatic/pack-control[2]"))
+	if (!pack[0] and !pack[1] and !pack[2])
 		append(msgs_memo,"PACKS OFF");
 	else {
-		if (!getprop("/controls/pneumatic/pack-control[0]") and !getprop("/controls/pneumatic/pack-control[1]"))
+		if (!pack[0] and !pack[1])
 			append(msgs_memo,"PACKS 1+2 OFF");
-		if (!getprop("/controls/pneumatic/pack-control[0]") and !getprop("/controls/pneumatic/pack-control[2]"))
+		if (!pack[0] and !pack[2])
 			append(msgs_memo,"PACKS 1+3 OFF");
-		if (!getprop("/controls/pneumatic/pack-control[1]") and !getprop("/controls/pneumatic/pack-control[2]"))
+		if (!pack[1] and !pack[2])
 			append(msgs_memo,"PACKS 2+3 OFF");
-		if (!getprop("/controls/pneumatic/pack-control[0]") and (getprop("/controls/pneumatic/pack-control[1]") and getprop("/controls/pneumatic/pack-control[2]")))
+		if (!pack[0] and (pack[1] and pack[2]))
 			append(msgs_memo,"PACK 1 OFF");
-		if (!getprop("/controls/pneumatic/pack-control[1]") and (getprop("/controls/pneumatic/pack-control[0]") and getprop("/controls/pneumatic/pack-control[2]")))
+		if (!pack[1] and (pack[0] and pack[2]))
 			append(msgs_memo,"PACK 2 OFF");
-		if (!getprop("/controls/pneumatic/pack-control[2]") and (getprop("/controls/pneumatic/pack-control[0]") and getprop("/controls/pneumatic/pack-control[1]")))
+		if (!pack[2] and (pack[0] and pack[1]))
 			append(msgs_memo,"PACK 3 OFF");
 	}
 	if (getprop("/controls/pneumatic/pack-high-flow"))
@@ -276,10 +287,6 @@ var update_listener_inputs = func() {
 	apu_running   = getprop("engines/engine[4]/running");
 	rudder_trim   = getprop("controls/flight/rudder-trim");
 	elev_trim     = getprop("controls/flight/elevator-trim");
-	eng1fire      = getprop("controls/engines/engine[0]/on-fire");
-	eng2fire      = getprop("controls/engines/engine[1]/on-fire");
-	eng3fire      = getprop("controls/engines/engine[2]/on-fire");
-	eng4fire      = getprop("controls/engines/engine[3]/on-fire");
 }
 
 var update_throttle_input = func() {
@@ -292,7 +299,7 @@ var update_system = func() {
 	msgs_advisory = [];
 	msgs_memo    = [];
 	
-	radio_alt	= getprop("position/altitude-agl-ft");
+	radio_alt	= getprop("position/altitude-agl-ft")-16.5;
 	speed		= getprop("velocities/airspeed-kt");
 	
 	takeoff_config_warnings();
@@ -335,3 +342,8 @@ setlistener("/instrumentation/eicas/display", func {
 	secEICAS.update();
 	eicasCreated = 1;
 });
+
+var showEicas = func() {
+	var dlg = canvas.Window.new([400, 400], "dialog");
+	dlg.setCanvas(secondary_eicas);
+}

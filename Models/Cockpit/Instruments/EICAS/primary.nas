@@ -80,6 +80,7 @@ var eng1egtBar_scale = {};
 var eng2egtBar_scale = {};
 var eng3egtBar_scale = {};
 var eng4egtBar_scale = {};
+var primary_eicas = {};
 
 var canvas_primary = {
 	new: func(canvas_group)
@@ -385,14 +386,19 @@ var canvas_primary = {
 };
 
 setlistener("/nasal/canvas/loaded", func {
-	var my_canvas = canvas.new({
+	primary_eicas = canvas.new({
 		"name": "EICASPrimary",
 		"size": [1024, 1024],
 		"view": [1024, 1024],
 		"mipmapping": 1
 	});
-	my_canvas.addPlacement({"node": "Upper-EICAS-Screen"});
-	var group = my_canvas.createGroup();
+	primary_eicas.addPlacement({"node": "Upper-EICAS-Screen"});
+	var group = primary_eicas.createGroup();
 	var demo = canvas_primary.new(group);
 	demo.update();
 }, 1);
+
+var showPrimaryEicas = func() {
+	var dlg = canvas.Window.new([400, 400], "dialog");
+	dlg.setCanvas(primary_eicas);
+}

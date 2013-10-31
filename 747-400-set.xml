@@ -11,7 +11,7 @@
 		<cockpit type="int">3</cockpit>
 		<model type="int">3</model>
 	</rating>
-	<version>20131007</version>
+	<version>20131031</version>
 	
 	<flight-model>jsb</flight-model>
 	<aero>747-400</aero>
@@ -75,6 +75,9 @@
 		</autopilot>
 		<autopilot>
 			<path>Aircraft/747-400/Systems/744_pfd.xml</path>
+		</autopilot>
+		<autopilot>
+			<path>Aircraft/747-400/Systems/744_nd.xml</path>
 		</autopilot>
 		<electrical>
 			<path>Aircraft/747-400/Systems/744_elec.xml</path>
@@ -215,19 +218,6 @@ left mouse button and counter clockwise using the middle mouse button.
 
 	<menubar>
 		<default>
-			<menu n="3">
-				<item n="0">
-					<label>Autopilot Settings</label>
-					<binding>
-						<command>nasal</command>
-						<script>
-							var autopilot = gui.Dialog.new("/sim/gui/dialogs/Boeing747/menu/dialog","Aircraft/747-400/Dialogs/autopilot-dialog.xml");
-							autopilot.open();
-						</script>
-					</binding>
-				</item>
-			</menu>
-
 			<menu n="10">
 				<label>Boeing 747-400</label>
 				<enabled type="bool">true</enabled>
@@ -237,6 +227,28 @@ left mouse button and counter clockwise using the middle mouse button.
 					<binding>
 						<command>nasal</command>
 						<script>Boeing747.autostart()</script>
+					</binding>
+				</item>
+
+				<item>
+					<label>EICAS dialog</label>
+					<binding>
+						<command>nasal</command>
+						<script>
+							var eicasDlg = gui.Dialog.new("/sim/gui/dialogs/Boeing747/menu/dialog","Aircraft/747-400/Dialogs/eicas.xml");
+							eicasDlg.open();
+						</script>
+					</binding>
+				</item>
+
+				<item>
+					<label>PFD dialog</label>
+					<binding>
+						<command>nasal</command>
+						<script>
+							var pfdDlg = gui.Dialog.new("/sim/gui/dialogs/Boeing747/menu/dialog","Aircraft/747-400/Dialogs/pfd.xml");
+							pfdDlg.open();
+						</script>
 					</binding>
 				</item>
 
@@ -590,19 +602,6 @@ left mouse button and counter clockwise using the middle mouse button.
 		<input type="string"/>
 		<serviceable type="bool">1</serviceable>
 	</cdu>
-	<efis>
-		<inputs>
-			<tfc  type="bool">true</tfc>
-			<sta  type="bool">true</sta>
-			<arpt type="bool">true</arpt>
-			<wpt  type="bool">true</wpt>
-			<wxr  type="bool">true</wxr>
-			<range type="int">10</range>
-		</inputs>
-		<mfd>
-			<display-mode>APP</display-mode>
-		</mfd>
-	</efis>
 	<eicas>
 		<display>FUEL</display>
 	</eicas>
@@ -737,6 +736,7 @@ left mouse button and counter clockwise using the middle mouse button.
 		<file>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/stat.nas</file>
 		<file>Aircraft/747-400/Nasal/eicas.nas</file> <!-- must load after EICAS -->
 		<file>Aircraft/747-400/Models/Cockpit/Instruments/PFD/PFD.nas</file>
+		<file>Aircraft/747-400/Models/Cockpit/Instruments/ND/ND.nas</file>
 		<file>Aircraft/747-400/Nasal/system.nas</file>
 		<file>Aircraft/747-400/Nasal/vspeeds.nas</file>
 		<file>Aircraft/747-400/Nasal/wipers.nas</file>

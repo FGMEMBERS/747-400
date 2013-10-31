@@ -21,9 +21,12 @@ var altText = {};
 var selHdgText = {};
 var fdX = {};
 var fdY = {};
-var curAlt = {};
+var curAlt1 = {};
+var curAlt2 = {};
+var curAlt3 = {};
 var curAltBox = {};
 var curSpd = {};
+var curSpdTen = {};
 var spdTrend = {};
 var spdTrend_scale = {};
 var v1 = {};
@@ -47,6 +50,7 @@ var baroSet = {};
 var vertSpdText = {};
 var tenThousand = {};
 var vsiNeedle = {};
+var vsPointer = {};
 var bankPointer = {};
 var touchdownInd = {};
 var atMode = {};
@@ -54,9 +58,12 @@ var rollMode = {};
 var pitchMode = {};
 var compass = {};
 var risingRwy = {};
+var risingRwyPtr = {};
+var risingRwyPtr_scale = {};
 var locPtr = {};
 var locScale = {};
 var locScaleExp = {};
+var selAltPtr = {};
 var gsScale = {};
 var gsPtr = {};
 var minimums = {};
@@ -81,11 +88,16 @@ var canvas_PFD = {
 		machText = pfd.getElementById("machText");
 		altText = pfd.getElementById("altText");
 		selHdgText = pfd.getElementById("selHdgText");
+		selAltPtr = pfd.getElementById("selAltPtr");
 		fdX = pfd.getElementById("fdX");
 		fdY = pfd.getElementById("fdY");
-		curAlt = pfd.getElementById("curAlt");
+		curAlt1 = pfd.getElementById("curAlt1");
+		curAlt2 = pfd.getElementById("curAlt2");
+		curAlt3 = pfd.getElementById("curAlt3");
+		vsPointer = pfd.getElementById("vsPointer");
 		curAltBox = pfd.getElementById("curAltBox");
 		curSpd = pfd.getElementById("curSpd");
+		curSpdTen = pfd.getElementById("curSpdTen");
 		spdTrend = pfd.getElementById("spdTrend");
 		v1 = pfd.getElementById("v1");
 		vr = pfd.getElementById("vr");
@@ -98,6 +110,7 @@ var canvas_PFD = {
 		minSpdInd = pfd.getElementById("minSpdInd");
 		maxSpdInd = pfd.getElementById("maxSpdInd");
 		risingRwy = pfd.getElementById("risingRwy");
+		risingRwyPtr = pfd.getElementById("risingRwyPtr");
 		compass = pfd.getElementById("compass").updateCenter();
 		touchdownInd = pfd.getElementById("touchdown");
 		spdTape = pfd.getElementById("spdTape");
@@ -126,6 +139,10 @@ var canvas_PFD = {
 		spdTrend.createTransform().setTranslation(-c1[0], -c1[1]);
 		spdTrend_scale = spdTrend.createTransform();
 		spdTrend.createTransform().setTranslation(c1[0], c1[1]);
+		var c2 = risingRwyPtr.getCenter();
+		risingRwyPtr.createTransform().setTranslation(-c2[0], -c2[1]);
+		risingRwyPtr_scale = risingRwyPtr.createTransform();
+		risingRwyPtr.createTransform().setTranslation(c2[0], c2[1]);
 		
 		horizon.set("clip", "rect(244, 705, 764, 230)");
 		minSpdInd.set("clip", "rect(130, 1024, 896, 0)");
@@ -135,10 +152,11 @@ var canvas_PFD = {
 		touchdownInd.set("clip", "rect(130, 1024, 896, 0)");
 		minimums.set("clip", "rect(130, 1024, 896, 0)");
 		cmdSpd.set("clip", "rect(130, 1024, 896, 0)");
+		selAltPtr.set("clip", "rect(130, 1024, 896, 0)");
 		vsiNeedle.set("clip", "rect(287, 1024, 739, 930)");
 		compass.set("clip", "rect(700, 1024, 990, 0)");
-		
-		curAlt.setAlignment("right-bottom");
+		curAlt3.set("clip", "rect(464, 1024, 559, 0)");
+		curSpdTen.set("clip", "rect(464, 1024, 559, 0)");
 		
 		return m;
 	},
@@ -146,6 +164,8 @@ var canvas_PFD = {
 	{
 		var radioAlt = getprop("position/altitude-agl-ft")-16.5;
 		var alt = getprop("instrumentation/altimeter/indicated-altitude-ft");
+		if (alt < 0)
+			alt = 0;
 		var apAlt = getprop("autopilot/settings/target-altitude-ft");
 		var ias = getprop("velocities/airspeed-kt");
 		var flaps = getprop("/controls/flight/flaps");
@@ -175,10 +195,11 @@ var canvas_PFD = {
 		altText.setText(sprintf("%5.0f",apAlt));
 		selHdgText.setText(sprintf("%3.0f",getprop("autopilot/settings/true-heading-deg")));
 		
-		#curAlt.setText(sprintf("%3.0f",alt/100));
-		curAlt.setText(sprintf("%5.0f",alt));
-		var curAltDiff = abs(alt-apAlt);
-		if (curAltDiff > 300 and curAltDiff < 900) {
+		curAlt1.setText(sprintf("%2.0f",math.floor(alt/1000)));
+		curAlt2.setText(sprintf("%1.0f",math.mod(math.floor(alt/100),10)));
+		curAlt3.setTranslation(0,(math.mod(alt,100)/20)*35);
+		var curAltDiff = alt-apAlt;
+		if (abs(curAltDiff) > 300 and abs(curAltDiff) < 900) {
 			curAltBox.setStrokeLineWidth(5);
 			if ((alt > apAlt and getprop("velocities/vertical-speed-fps") > 10) or (alt < apAlt and getprop("velocities/vertical-speed-fps") < 10))
 				curAltBox.setColor(1,0,1);
@@ -188,9 +209,14 @@ var canvas_PFD = {
 			curAltBox.setStrokeLineWidth(2);
 			curAltBox.setColor(1,1,1);
 		}
-		
-		#curSpd.setText(sprintf("%2.0f",int(ias/10)));
-		curSpd.setText(sprintf("%3.0f",ias));
+		if (curAltDiff > 420)
+			curAltDiff = 420;
+		elsif (curAltDiff < -420)
+			curAltDiff = -420;
+		selAltPtr.setTranslation(0,curAltDiff*0.9);
+
+		curSpd.setText(sprintf("%2.0f",math.floor(ias/10)));
+		curSpdTen.setTranslation(0,math.mod(ias,10)*45);
 		baroSet.setText(sprintf("%2.2f",getprop("instrumentation/altimeter/setting-inhg")));
 		ilsCourse.setText(sprintf("CRS %3.0f",getprop("instrumentation/nav/radials/selected-deg")));
 		dhText.setText(sprintf("DH%3.0f",getprop("instrumentation/mk-viii/inputs/arinc429/decision-height")));
@@ -210,26 +236,40 @@ var canvas_PFD = {
 		
 		if(getprop("instrumentation/nav/heading-needle-deflection-norm") != nil) {
 			var deflection = getprop("instrumentation/nav/heading-needle-deflection-norm");
+			locPtr.show();
 			
 			if (radioAlt < 2500) {
 				risingRwy.show();
-				if (radioAlt< 200)
+				risingRwyPtr.show();
+				if (radioAlt< 200) {
 					risingRwy.setTranslation(deflection*150,-(200-radioAlt)*0.682);
-				else
+					risingRwyPtr_scale.setScale(1, ((200-radioAlt)*0.682)/11);
+				} else {
 					risingRwy.setTranslation(deflection*150,0);
+					risingRwyPtr_scale.setScale(1, 1);
+				}
 			} else {
 				risingRwy.hide();
+				risingRwyPtr.hide();
 			}
 		
 			if(abs(deflection) < 0.5) { # need to verify 0.5
 				locPtr.setTranslation(deflection*300,0);
+				risingRwyPtr.setTranslation(deflection*300,0);
 				locScaleExp.show();
 				locScale.hide();
 			} else {
 				locPtr.setTranslation(deflection*150,0);
+				risingRwyPtr.setTranslation(deflection*150,0);
 				locScaleExp.hide();
 				locScale.show();
 			}
+		} else {
+			locPtr.hide();
+			locScaleExp.hide();
+			locScale.hide();
+			risingRwy.hide();
+			risingRwyPtr.hide();
 		}
 		if (getprop("instrumentation/nav/nav-id") != nil)
 			ilsId.setText(getprop("instrumentation/nav/nav-id"));
@@ -248,6 +288,8 @@ var canvas_PFD = {
 			} else {
 				vertSpdText.hide();
 			}
+			if (getprop("instrumentation/pfd/target-vs") != nil)
+				vsPointer.setTranslation(0,-getprop("instrumentation/pfd/target-vs"));
 		}
 		if (radioAlt < 2500) {
 			if (radioAlt > 500)
@@ -363,10 +405,12 @@ var canvas_PFD = {
 			rollMode.setText("LNAV");
 		else
 			rollMode.setText("");
+		vsPointer.hide();
 		var apPitch = getprop("/autopilot/locks/altitude");
-		if (apPitch == "vertical-speed-hold")
+		if (apPitch == "vertical-speed-hold") {
 			pitchMode.setText("V/S");
-		elsif (apPitch ==  "altitude-hold")
+			vsPointer.show();
+		} elsif (apPitch ==  "altitude-hold")
 			pitchMode.setText("ALT");
 		else
 			pitchMode.setText("");
@@ -387,3 +431,9 @@ setlistener("sim/signals/fdm-initialized", func() {
 	pfd_canvas = canvas_PFD.new(group);
 	pfd_canvas.update();
 });
+
+# The optional second arguments enables creating a window decoration
+var showPfd = func() {
+	var dlg = canvas.Window.new([400, 400], "dialog");
+	dlg.setCanvas(pfd_display);
+}

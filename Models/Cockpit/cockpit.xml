@@ -81,6 +81,31 @@
 	<object-name>throttle</object-name>
 </effect>
 
+<animation>
+	<type>pick</type>
+	<object-name>Lower-EICAS-Screen</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>Boeing747.showEicas();</script>
+		</binding>
+	</action>
+</animation>
+<animation>
+	<type>pick</type>
+	<object-name>Upper-EICAS-Screen</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>Boeing747.showPrimaryEicas();</script>
+		</binding>
+	</action>
+</animation>
+
 <!-- CDU -->
 <model>
 	<path>Aircraft/Instruments-3d/cdu/boeing.xml</path>

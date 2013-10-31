@@ -44,6 +44,7 @@
 						<value>wing-leveler</value>
 					</equals>
 				</or>
+				<not><property>autopilot/locks/passive-mode</property></not>
 			</condition>
 		</enable>
 		<input>/autopilot/internal/aileron-servo</input>
@@ -116,6 +117,7 @@
 					<property>/gear/gear[5]/wow</property>
 					<value>0.0</value>
 				</equals>
+				<not><property>autopilot/locks/passive-mode</property></not>
 			</condition>
 		</enable>
 		<input>
@@ -154,6 +156,7 @@
 						<value>nav1-hold</value>
 					</equals>
 				</or>
+				<not><property>autopilot/locks/passive-mode</property></not>
 			</condition>
 		</enable>
 		<input>/autopilot/internal/rudder-servo</input>
@@ -341,6 +344,7 @@
 					<property>/gear/gear[5]/wow</property>
 					<value>0.0</value>
 				</equals>
+				<not><property>autopilot/locks/passive-mode</property></not>
 			</condition>
 		</enable>
 		<type>gain</type>
