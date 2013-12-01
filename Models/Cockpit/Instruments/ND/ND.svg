@@ -733,7 +733,7 @@
    inkscape:connector-curvature="0" /><g
    inkscape:transform-center-y="-364.376"
    inkscape:label="#g3049"
-   id="rotate"><g
+   id="rotateComp"><g
      id="selHdg"
      inkscape:label="#g4996"
      inkscape:transform-center-y="-350.407"><path
@@ -1552,7 +1552,7 @@
    style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#00ffff;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
    x="41.732624"
    y="671.54895"
-   id="wxr"
+   id="status.wxr"
    sodipodi:linespacing="125%"
    inkscape:label="#text7243"><tspan
      style="font-size:32px;fill:#00ffff;fill-opacity:1"
@@ -1573,7 +1573,7 @@
 <text
    inkscape:label="#text7243"
    sodipodi:linespacing="125%"
-   id="arpt"
+   id="status.arpt"
    y="636.54889"
    x="41.732624"
    style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#00ffff;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
@@ -1598,7 +1598,7 @@
    style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#00ffff;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
    x="41.732624"
    y="599.54883"
-   id="wpt"
+   id="status.wpt"
    sodipodi:linespacing="125%"
    inkscape:label="#text7243"><tspan
      style="font-size:32px;fill:#00ffff"
@@ -1619,7 +1619,7 @@
 <text
    inkscape:label="#text7243"
    sodipodi:linespacing="125%"
-   id="sta"
+   id="status.sta"
    y="563.54877"
    x="41.732624"
    style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#00ffff;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
