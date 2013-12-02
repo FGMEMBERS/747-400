@@ -58,11 +58,25 @@ setlistener("sim/signals/fdm-initialized", func() {
 		"mipmapping": 1
 	});
 
-	# TODO: rename the FO ND screen, and use separate button names for F/O side
-	nd_display.cpt.addPlacement({"node": "ndScreen"});
+	nd_display.cpt.addPlacement({"node": "ndScreenL"});
 	var group = nd_display.cpt.createGroup();
 	NDCpt.newMFD(group);
 	NDCpt.update();
+	
+	var NDFo = ND.new("instrumentation/efis[1]", myCockpit_switches);
+	
+	nd_display.fo = canvas.new({
+		"name": "ND",
+		"size": [1024, 1024],
+		"view": [1024, 1024],
+		"mipmapping": 1
+	});
+
+	# TODO: rename the FO ND screen, and use separate button names for F/O side
+	nd_display.fo.addPlacement({"node": "ndScreenR"});
+	var group = nd_display.fo.createGroup();
+	NDFo.newMFD(group);
+	NDFo.update();
 
 		
 }); # fdm-initialized listener callback
