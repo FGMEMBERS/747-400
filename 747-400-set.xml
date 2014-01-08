@@ -580,10 +580,11 @@ left mouse button and counter clockwise using the middle mouse button.
 	</route-manager>
 	<!-- settings when power first applied -->
 	<settings>
+		<bank-limit>25</bank-limit>
+		<heading-bug-deg>0</heading-bug-deg>
 		<target-altitude-ft>10000</target-altitude-ft>
 		<target-speed-kt>200</target-speed-kt>
-		<true-heading-deg>000</true-heading-deg>
-		<bank-limit>25</bank-limit>
+		<true-heading-deg>0</true-heading-deg>
 	</settings>
 </autopilot>
 
@@ -602,6 +603,40 @@ left mouse button and counter clockwise using the middle mouse button.
 		<input type="string"/>
 		<serviceable type="bool">1</serviceable>
 	</cdu>
+	<efis>
+		<inputs>
+			<tfc  type="bool">true</tfc>
+			<sta  type="bool">false</sta>
+			<arpt type="bool">true</arpt>
+			<wpt  type="bool">false</wpt>
+			<wxr  type="bool">false</wxr>
+			<lh-vor-adf  type="int">0</lh-vor-adf>
+			<rh-vor-adf  type="int">0</rh-vor-adf>
+			<range-nm type="int">10</range-nm>
+			<plan-wpt-index type="int">-1</plan-wpt-index>
+		</inputs>
+		<mfd>
+			<display-mode type="string">MAP</display-mode>
+			<display-type type="string">CRT</display-type>
+		</mfd>
+	</efis>
+	<efis n="1">
+		<inputs>
+			<tfc  type="bool">true</tfc>
+			<sta  type="bool">false</sta>
+			<arpt type="bool">true</arpt>
+			<wpt  type="bool">false</wpt>
+			<wxr  type="bool">false</wxr>
+			<lh-vor-adf  type="int">0</lh-vor-adf>
+			<rh-vor-adf  type="int">0</rh-vor-adf>
+			<range-nm type="int">10</range-nm>
+			<plan-wpt-index type="int">-1</plan-wpt-index>
+		</inputs>
+		<mfd>
+			<display-mode type="string">MAP</display-mode>
+			<display-type type="string">CRT</display-type>
+		</mfd>
+	</efis>
 	<eicas>
 		<display>FUEL</display>
 	</eicas>
@@ -772,50 +807,50 @@ left mouse button and counter clockwise using the middle mouse button.
 	<weight>
 		<name type="string">Passengers 0A</name>
 		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
-		<min-lb type="double">    0.0</min-lb>
-		<max-lb type="double"> 3675.0</max-lb>
+		<min-lb type="double">   0.0</min-lb>
+		<max-lb type="double">9100.0</max-lb>
 		<min-pax type="int">  0</min-pax>
-		<max-pax type="int"> 21</max-pax>
+		<max-pax type="int"> 52</max-pax>
 	</weight>
 	<weight>
 		<name type="string">Passengers 0B (upper)</name>
 		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
-		<min-lb type="double">    0.0</min-lb>
-		<max-lb type="double"> 7350.0</max-lb>
+		<min-lb type="double">   0.0</min-lb>
+		<max-lb type="double">6300.0</max-lb>
 		<min-pax type="int">  0</min-pax>
-		<max-pax type="int"> 42</max-pax>
+		<max-pax type="int"> 36</max-pax>
 	</weight>
 	<weight>
 		<name type="string">Passengers 0B (lower)</name>
 		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]"/>
 		<min-lb type="double">    0.0</min-lb>
-		<max-lb type="double"> 6125.0</max-lb>
+		<max-lb type="double">13825.0</max-lb>
 		<min-pax type="int">  0</min-pax>
-		<max-pax type="int"> 35</max-pax>
+		<max-pax type="int"> 79</max-pax>
 	</weight>
 	<weight>
 		<name type="string">Passengers 0C</name>
 		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[3]"/>
 		<min-lb type="double">    0.0</min-lb>
-		<max-lb type="double">15050.0</max-lb>
+		<max-lb type="double">19250.0</max-lb>
 		<min-pax type="int">  0</min-pax>
-		<max-pax type="int"> 86</max-pax>
+		<max-pax type="int">110</max-pax>
 	</weight>
 	<weight>
 		<name type="string">Passengers 0D</name>
 		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[4]"/>
 		<min-lb type="double">    0.0</min-lb>
-		<max-lb type="double">17500.0</max-lb>
+		<max-lb type="double">18550.0</max-lb>
 		<min-pax type="int">  0</min-pax>
-		<max-pax type="int">100</max-pax>
+		<max-pax type="int">106</max-pax>
 	</weight>
 	<weight>
 		<name type="string">Passengers 0E</name>
 		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[5]"/>
 		<min-lb type="double">    0.0</min-lb>
-		<max-lb type="double">23800.0</max-lb>
+		<max-lb type="double">26950.0</max-lb>
 		<min-pax type="int">  0</min-pax>
-		<max-pax type="int">136</max-pax>
+		<max-pax type="int">154</max-pax>
 	</weight>
 	<weight>
 		<name type="string">Cargo 1</name>
