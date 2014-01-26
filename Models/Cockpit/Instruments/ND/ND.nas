@@ -20,7 +20,7 @@ var myCockpit_switches = {
 	# add new switches here
 };
 
-setlistener("sim/signals/fdm-initialized", func() {
+var _list = setlistener("sim/signals/fdm-initialized", func() {
 	var ND = canvas.NavDisplay;
 
 	# TODO: is this just an object decsribing a ND? Can we move this out of the listener?
@@ -34,15 +34,7 @@ setlistener("sim/signals/fdm-initialized", func() {
 		"mipmapping": 1
 	});
 
-	var plc_cpt = nd_display.cpt.addPlacement({"node": "ndScreenL"});
-	settimer(func {
-		if (plc_cpt.getValue("status-msg") == "Ok") return;
-		#print("retry "~plc_cpt.getValue("status-msg"));
-		plc_cpt.remove();
-		nd_display.cpt.addPlacement({"node": "ndScreenL"});
-		#if (nd_display.cpt.texture.getValue("placement/status-msg") == "No match")
-		#	print(".. failed: "~nd_display.cpt.texture.getValue("placement/status-msg"));
-	}, 0);
+	nd_display.cpt.addPlacement({"node": "ndScreenL"});
 	var group = nd_display.cpt.createGroup();
 	NDCpt.newMFD(group, nd_display.cpt);
 	NDCpt.update();
@@ -56,19 +48,12 @@ setlistener("sim/signals/fdm-initialized", func() {
 		"mipmapping": 1
 	});
 
-	var plc_fo = nd_display.fo.addPlacement({"node": "ndScreenR"});
-	settimer(func {
-		if (plc_fo.getValue("status-msg") == "Ok") return;
-		#print("retry "~plc_fo.getValue("status-msg"));
-		plc_fo.remove();
-		nd_display.fo.addPlacement({"node": "ndScreenR"});
-		#if (nd_display.fo.texture.getValue("placement/status-msg") == "No match")
-		#	print(".. failed: "~nd_display.fo.texture.getValue("placement/status-msg"));
-	}, 0);
+	nd_display.fo.addPlacement({"node": "ndScreenR"});
 	var group = nd_display.fo.createGroup();
 	NDFo.newMFD(group, nd_display.fo);
 	NDFo.update();
-	
+
+	removelistener(_list); # run ONCE
 });
 
 var showNd = func(pilot='cpt') {
