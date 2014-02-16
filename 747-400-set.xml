@@ -11,7 +11,7 @@
 		<cockpit type="int">3</cockpit>
 		<model type="int">3</model>
 	</rating>
-	<version>20131201</version>
+	<version>20140216</version>
 	
 	<flight-model>jsb</flight-model>
 	<aero>747-400</aero>
@@ -231,28 +231,6 @@ left mouse button and counter clockwise using the middle mouse button.
 				</item>
 
 				<item>
-					<label>EICAS dialog</label>
-					<binding>
-						<command>nasal</command>
-						<script>
-							var eicasDlg = gui.Dialog.new("/sim/gui/dialogs/Boeing747/menu/dialog","Aircraft/747-400/Dialogs/eicas.xml");
-							eicasDlg.open();
-						</script>
-					</binding>
-				</item>
-
-				<item>
-					<label>PFD dialog</label>
-					<binding>
-						<command>nasal</command>
-						<script>
-							var pfdDlg = gui.Dialog.new("/sim/gui/dialogs/Boeing747/menu/dialog","Aircraft/747-400/Dialogs/pfd.xml");
-							pfdDlg.open();
-						</script>
-					</binding>
-				</item>
-
-				<item>
 					<label>Malfunctions</label>
 					<binding>
 						<command>nasal</command>
@@ -423,6 +401,7 @@ left mouse button and counter clockwise using the middle mouse button.
 
 	<flight>
 		<autospeedbrakes-armed type="string">true</autospeedbrakes-armed>
+		<elevator-trim>0.3</elevator-trim>
 		<yaw-damper type="bool">1</yaw-damper>
 	</flight>
 

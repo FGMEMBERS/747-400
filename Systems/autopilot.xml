@@ -938,7 +938,7 @@
 		<input>
 			<property>/autopilot/settings/true-heading-deg</property>
 			<offset>
-				<property>/orientation/heading-deg</property>
+				<property>/orientation/track-deg</property>
 				<scale>-1.0</scale>
 			</offset>
 		</input>
@@ -1795,13 +1795,13 @@
   <!-- =============================================================== -->
 
 	<pid-controller>
-		<name>Auto throttle (IAS) Stage 1 (evaluate speed-error, amplifies the real speed-error with factor 2.0)</name>
+		<name>Auto throttle Stage 1 (evaluate speed-error, amplifies the real speed-error with factor 2.0)</name>
 		<debug>false</debug>
 		<enable>
 			<condition>
 				<equals>
 					<property>/autopilot/locks/speed</property>
-					<value>speed-with-throttle-ias</value>
+					<value>speed-with-throttle</value>
 				</equals>
 				<equals>
 					<property>/autopilot/internal/nav1-vspeed-ground-mode</property>
@@ -1833,7 +1833,7 @@
 			<condition>
 				<equals>
 					<property>/autopilot/locks/speed</property>
-					<value>speed-with-throttle-ias</value>
+					<value>speed-with-throttle</value>
 				</equals>
 				<equals>
 					<property>/autopilot/internal/nav1-vspeed-ground-mode</property>
@@ -1855,39 +1855,6 @@
 	            <Ti>30.0</Ti>
 	            <Td>0.00001</Td>
 	            <u_min>0.02</u_min>
-	            <u_max>1.0</u_max>
-	        </config>
-	</pid-controller>
-	
-	<pid-controller>
-	        <name>Auto throttle (MACH) Stage 2</name>
-	        <debug>false</debug>
-	        <enable>
-			<condition>
-				<equals>
-					<property>/autopilot/locks/speed</property>
-					<value>speed-with-throttle-mach</value>
-				</equals>
-				<equals>
-					<property>/autopilot/internal/nav1-vspeed-ground-mode</property>
-					<value>0</value>
-				</equals>
-			</condition>
-	        </enable>
-	        <input>
-	            <property>/instrumentation/airspeed-indicator/indicated-mach</property>
-	        </input>
-	        <reference>
-	            <property>/autopilot/settings/target-speed-mach</property>
-	        </reference>
-	        <output>
-	            <property>/autopilot/internal/throttle-servo</property>
-	        </output>
-	        <config>
-	            <Kp>200</Kp>
-	            <Ti>20.0</Ti>
-	            <Td>5.0</Td>
-	            <u_min>0.0</u_min>
 	            <u_max>1.0</u_max>
 	        </config>
 	</pid-controller>

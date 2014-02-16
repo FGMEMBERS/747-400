@@ -357,9 +357,25 @@
 	</axis>
 </animation>
 
-<!-- ELEVATORS -->
-<!-- RIGHT ELEVATOR (inboard and outboard) -->
+<!-- STABILIZER -->
+<animation>
+	<type>rotate</type>
+	<object-name>elevator_right</object-name>
+	<object-name>elevator_left</object-name>
+	<object-name>hstab</object-name>
+	<property>fdm/jsbsim/fcs/stabilizer-pos-rad</property>
+	<factor>57.3</factor>
+	<axis>
+		<x1-m>32.926</x1-m>
+		<y1-m>-0.887</y1-m>
+		<z1-m> 2.331</z1-m>
+		<x2-m>32.926</x2-m>
+		<y2-m> 0.887</y2-m>
+		<z2-m> 2.331</z2-m>
+	</axis>
+</animation>
 
+<!-- RIGHT ELEVATOR (inboard and outboard) -->
 <animation>
 	<type>rotate</type>
 	<object-name>elevator_right</object-name>

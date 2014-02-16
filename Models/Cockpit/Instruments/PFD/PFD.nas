@@ -168,6 +168,8 @@ var canvas_PFD = {
 			alt = 0;
 		var apAlt = getprop("autopilot/settings/target-altitude-ft");
 		var ias = getprop("velocities/airspeed-kt");
+		if (ias < 45)
+			ias = 45;
 		var flaps = getprop("/controls/flight/flaps");
 		var pitch = getprop("orientation/pitch-deg");
 		var roll =  getprop("orientation/roll-deg");
@@ -234,7 +236,7 @@ var canvas_PFD = {
 			markerBeacon.hide();
 		}
 		
-		if(getprop("instrumentation/nav/heading-needle-deflection-norm") != nil) {
+		if(getprop("instrumentation/nav/in-range")) {
 			var deflection = getprop("instrumentation/nav/heading-needle-deflection-norm");
 			locPtr.show();
 			

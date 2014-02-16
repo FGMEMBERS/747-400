@@ -24,17 +24,40 @@
 	</offsets>
 </model>
 
+<animation>
+	<object-name>Pushback</object-name>
+	<type>range</type>
+	<min-m>0</min-m>
+	<max-m>5000</max-m>
+</animation>
+
 <model>
+	<name>cockpit</name>
 	<path>Aircraft/747-400/Models/Cockpit/cockpit.xml</path> 
 </model>
+
+<animation>
+	<object-name>cockpit</object-name>
+	<type>range</type>
+	<min-m>0</min-m>
+	<max-m>500</max-m>
+</animation>
 
 <model>
 	<path>Aircraft/747-400/Models/747-400_fuselage.xml</path> 
 </model>
 
 <model>
+	<name>gear</name>
 	<path>Aircraft/747-400/Models/747-400_gear.xml</path> 
 </model>
+
+<animation>
+	<object-name>gear</object-name>
+	<type>range</type>
+	<min-m>0</min-m>
+	<max-m>5000</max-m>
+</animation>
 
 <model>
 	<path>Aircraft/747-400/Models/747-400_wings.xml</path> 

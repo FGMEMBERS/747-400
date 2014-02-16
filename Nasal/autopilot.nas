@@ -932,8 +932,6 @@ var listenerApAltitudeClambFunc = func {
 }
 
 setlistener("/autopilot/locks/speed", listenerApAltitudeClambSwitchFunc);	# for 'speed-with-pitch-trim'
-setlistener("/autopilot/locks/speed/speed-with-throttle-ias", listenerApAltitudeClambSwitchFunc);	# for 'speed-with-pitch-trim'
-setlistener("/autopilot/locks/speed/speed-with-throttle-mach", listenerApAltitudeClambSwitchFunc);	# for 'speed-with-pitch-trim'
 
 setlistener("/autopilot/locks/altitude", listenerApAltitudeClambSwitchFunc);
 setlistener("/autopilot/settings/target-altitude-ft", listenerApAltitudeClambFunc);

@@ -7,7 +7,7 @@
     <fileheader>
         <author>Gijs de Rooy</author>
         <filecreationdate>2008</filecreationdate>
-        <version>20130911</version>
+        <version>20131205</version>
         <description>Boeing 747-400 with GE CF6-80C2B1F engines</description>
 
         <license>
@@ -137,16 +137,17 @@
         <iyy unit="SLUG*FT2"> 3.31e+07 </iyy>
         <izz unit="SLUG*FT2"> 4.97e+07 </izz>
         <ixy unit="SLUG*FT2"> 0 </ixy>
-        <ixz unit="SLUG*FT2">-4.05e+05 </ixz>
+        <ixz unit="SLUG*FT2"> 0 </ixz>
+        <!--<ixz unit="SLUG*FT2">-4.05e+05 </ixz> --> <!-- not sure why this would be non zero -->
         <iyz unit="SLUG*FT2"> 0 </iyz>
-        <emptywt unit="LBS"> 259583  </emptywt> <!-- minus 2 wings and 4 engines -->
+        <emptywt unit="LBS"> 393263  </emptywt>
         <location name="CG" unit="M">
             <x>  3.0 </x> <!-- GUESSTIMATE -->
             <y>  0.0 </y>
             <z>  1.0 </z> <!-- GUESSTIMATE -->
         </location>
         <pointmass name="Passengers 0A">
-            <weight unit="LBS"> 1800 </weight> <!-- 21 passengers (175 lbs) -->
+            <weight unit="LBS"> 7000 </weight> <!-- 40 passengers (175 lbs) -->
             <location name="POINTMASS" unit="M">
             <x>-24.33 </x>
             <y>  0.00 </y>
@@ -154,7 +155,7 @@
             </location>
         </pointmass>
         <pointmass name="Passengers 0B (upper)">
-            <weight unit="LBS"> 3500 </weight> <!-- 42 passengers (175 lbs) -->
+            <weight unit="LBS"> 5250 </weight> <!-- 30 passengers (175 lbs) -->
             <location name="POINTMASS" unit="M">
             <x>-15.08 </x>
             <y>  0.00 </y>
@@ -162,7 +163,7 @@
             </location>
         </pointmass>
         <pointmass name="Passengers 0B (lower)">
-            <weight unit="LBS"> 5000 </weight> <!-- 35 passengers (175 lbs) -->
+            <weight unit="LBS"> 12250 </weight> <!-- 70 passengers (175 lbs) -->
             <location name="POINTMASS" unit="M">
             <x>-15.58 </x>
             <y>  0.00 </y>
@@ -170,7 +171,7 @@
             </location>
         </pointmass>
         <pointmass name="Passengers 0C">
-            <weight unit="LBS"> 14000 </weight> <!-- 86 passengers (175 lbs) -->
+            <weight unit="LBS"> 19250 </weight> <!-- 110 passengers (175 lbs) -->
             <location name="POINTMASS" unit="M">
             <x> -5.06 </x>
             <y>  0.00 </y>
@@ -178,7 +179,7 @@
             </location>
         </pointmass>
         <pointmass name="Passengers 0D">
-            <weight unit="LBS"> 10000 </weight> <!-- 100 passengers (175 lbs) -->
+            <weight unit="LBS"> 17500 </weight> <!-- 100 passengers (175 lbs) -->
             <location name="POINTMASS" unit="M">
             <x>  5.82 </x>
             <y>  0.00 </y>
@@ -186,7 +187,7 @@
             </location>
         </pointmass>
         <pointmass name="Passengers 0E">
-            <weight unit="LBS"> 20000 </weight> <!-- 136 passengers (175 lbs) -->
+            <weight unit="LBS"> 26250 </weight> <!-- 150 passengers (175 lbs) -->
             <location name="POINTMASS" unit="M">
             <x> 19.31 </x>
             <y>  0.00 </y>
@@ -194,7 +195,7 @@
             </location>
         </pointmass>
         <pointmass name="Cargo 1">
-            <weight unit="LBS"> 7000 </weight> <!-- 3 full-width (7000 lbs) or 6 half-width (3500 lbs) containers -->
+            <weight unit="LBS"> 0 </weight> <!-- 3 full-width (7000 lbs) or 6 half-width (3500 lbs) containers -->
             <location name="POINTMASS" unit="M">
                <x>-17.99 </x>
                <y>  0    </y>
@@ -202,7 +203,7 @@
             </location>
         </pointmass>
         <pointmass name="Cargo 2">
-            <weight unit="LBS"> 7000 </weight> <!-- 5 full-width (7000 lbs) or 10 half-width (3500 lbs) containers -->
+            <weight unit="LBS"> 4410 </weight> <!-- 5 full-width (7000 lbs) or 10 half-width (3500 lbs) containers -->
             <location name="POINTMASS" unit="M">
                <x>-11.64 </x>
                <y>  0    </y>
@@ -210,7 +211,7 @@
             </location>
         </pointmass>
         <pointmass name="Cargo 3">
-            <weight unit="LBS"> 21000 </weight> <!-- 3 full-width (7000 lbs) or 6 half-width (3500 lbs) containers -->
+            <weight unit="LBS"> 11025 </weight> <!-- 3 full-width (7000 lbs) or 6 half-width (3500 lbs) containers -->
             <location name="POINTMASS" unit="M">
                <x>  7.83 </x>
                <y>  0    </y>
@@ -218,7 +219,7 @@
             </location>
         </pointmass>
         <pointmass name="Cargo 4">
-            <weight unit="LBS"> 28000 </weight> <!-- 4 full-width (7000 lbs) or 8 half-width (3500 lbs) containers -->
+            <weight unit="LBS"> 13230 </weight> <!-- 4 full-width (7000 lbs) or 8 half-width (3500 lbs) containers -->
             <location name="POINTMASS" unit="M">
                <x> 13.33 </x>
                <y>  0    </y>
@@ -226,59 +227,11 @@
             </location>
         </pointmass>
         <pointmass name="Cargo 5">
-            <weight unit="LBS"> 7000 </weight> <!-- 1 full-width (7000 lbs) or 2 half-width (3500 lbs) containers -->
+            <weight unit="LBS"> 1100 </weight> <!-- 1 full-width (7000 lbs) or 2 half-width (3500 lbs) containers -->
             <location name="POINTMASS" unit="M">
                <x> 18.71 </x>
                <y>  0    </y>
                <z> -1.36 </z>
-            </location>
-        </pointmass>
-        <pointmass name="Left Wing">
-            <weight unit="LBS"> 47500 </weight>
-            <location name="POINTMASS" unit="M">
-               <x>  2.65 </x>
-               <y>-13.0  </y>
-               <z> -0.45 </z>
-            </location>
-        </pointmass>
-        <pointmass name="Right Wing">
-            <weight unit="LBS"> 47500 </weight>
-            <location name="POINTMASS" unit="M">
-               <x> 2.65 </x>
-               <y>13.0  </y>
-               <z>-0.45 </z>
-            </location>
-        </pointmass>
-        <pointmass name="Engine 1">
-            <weight unit="LBS"> 9670 </weight>
-            <location name="POINTMASS" unit="M">
-               <x>  6.02 </x>
-               <y>-21.23 </y>
-               <z> -1.98 </z>
-            </location>
-        </pointmass>
-        <pointmass name="Engine 2">
-            <weight unit="LBS"> 9670 </weight>
-            <location name="POINTMASS" unit="M">
-               <x> -1.48 </x>
-               <y>-13.46 </y>
-               <z> -2.59 </z>
-            </location>
-        </pointmass>
-        <pointmass name="Engine 3">
-            <weight unit="LBS"> 9670 </weight>
-            <location name="POINTMASS" unit="M">
-               <x>-1.48 </x>
-               <y>13.46 </y>
-               <z>-2.59 </z>
-            </location>
-        </pointmass>
-        <pointmass name="Engine 4">
-            <weight unit="LBS"> 9670 </weight>
-            <location name="POINTMASS" unit="M">
-               <x> 6.02 </x>
-               <y>21.23 </y>
-               <z>-1.98 </z>
             </location>
         </pointmass>
     </mass_balance>
@@ -478,7 +431,7 @@
         <engine file="GE_CF6-80C2B1F">
             <location unit="IN">
                 <x> 50 </x>
-                <y> -835 </y>                                                                 <!-- aeromatic -391.34 -->
+                <y> -835 </y>
                 <z> -100 </z>
             </location>
             <orient unit="DEG">
@@ -504,7 +457,7 @@
         <engine file="GE_CF6-80C2B1F">
             <location unit="IN">
                 <x> -250 </x>
-                <y> -530 </y>                                                                 <!-- aeromatic -391.34 -->
+                <y> -530 </y>
                 <z> -100 </z>
             </location>
             <orient unit="DEG">
@@ -608,8 +561,6 @@
         <documentation>
           - tank arm and lateral position is a guess : must fit inside the wing,
             in front of gear well; and close of aero reference point to minimize the CG shift.
-          - typical quantities (53765 US gal).
-          - extended range fuel (2048 US gal), spread on the reserve tanks.
           - 1 US gal = 6.7 lb.
         </documentation>
 
@@ -620,7 +571,7 @@
                 <z>-1.0 </z>
             </location>
             <capacity unit="LBS"> 114972.0 </capacity>
-            <contents unit="LBS">  72000.0 </contents>
+            <contents unit="LBS">  50000.0 </contents>
         </tank>
         
         <tank type="FUEL">    <!-- Tank number 1 == main #1--> 
@@ -690,7 +641,7 @@
                 <z> 2.5 </z>
             </location>
             <capacity unit="LBS"> 22110.0 </capacity>
-            <contents unit="LBS"> 20000.0 </contents>
+            <contents unit="LBS">     0.0 </contents>
         </tank>
     </propulsion>
 
@@ -710,17 +661,8 @@
     
         <!-- elevator -->
 
-        <summer name="Pitch Trim Sum">
-            <input>fcs/elevator-cmd-norm</input>
-            <input>fcs/pitch-trim-cmd-norm</input>
-            <clipto>
-                <min>-1</min>
-                <max>1</max>
-            </clipto>
-        </summer>
-
         <aerosurface_scale name="Elevator Control">
-            <input>fcs/pitch-trim-sum</input>
+            <input>fcs/elevator-cmd-norm</input>
             <range>
                 <min>-0.26</min>
                 <max> 0.44</max>
@@ -744,12 +686,45 @@
                 <min>-0.26</min>
                 <max> 0.44</max>
             </domain>
+            <zero_centered>false</zero_centered>
             <range>
                 <min>-1</min>
                 <max>1</max>
             </range>
             <output>fcs/outboard-elevator-pos-norm</output>
         </aerosurface_scale>
+        
+        <aerosurface_scale name="Stabilizer Control">
+            <input>fcs/pitch-trim-cmd-norm</input>
+            <domain>
+                <min>-1</min>
+                <max>1</max>
+            </domain>
+            <zero_centered>false</zero_centered>
+            <range>
+                <min>-0.209</min>
+                <max> 0.052</max>
+            </range>
+            <output>fcs/stabilizer-int-pos-rad</output>
+        </aerosurface_scale>
+        <actuator name="Stabilizer Actuator">
+            <input>fcs/stabilizer-int-pos-rad</input>
+            <rate_limit> 0.006 </rate_limit> <!-- 0.35 deg/sec -->
+            <output>fcs/stabilizer-pos-rad</output>
+        </actuator>
+        <!--<aerosurface_scale name="Stabilizer Control Normalizer">
+            <input>fcs/stabilizer-pos-rad</input>
+            <domain>
+                <min>-0.209</min>
+                <max> 0.052</max>
+            </domain>
+            <zero_centered>false</zero_centered>
+            <range>
+                <min>-1</min>
+                <max>1</max>
+            </range>
+            <output>fcs/stabilizer-pos-norm</output>
+        </aerosurface_scale>-->
 
      </channel>
      <channel name="Roll">
@@ -798,7 +773,9 @@
         </aerosurface_scale>
         <actuator name="Left Outboard Aileron Actuator">
             <input>fcs/left-outboard-aileron-int-pos-rad</input>
-            <rate_limit> 0.873 </rate_limit> <!-- 50 deg/sec -->
+            <rate_limit> 0.873 </rate_limit>
+            <!-- <rate_limit sense="decr"> 0.785 </rate_limit> 45 deg/sec -->
+            <!-- <rate_limit sense="incr"> 0.960 </rate_limit> 55 deg/sec -->
             <output>fcs/left-outboard-aileron-pos-rad</output>
         </actuator>
         <aerosurface_scale name="Left Outboard Aileron Normalizer">
@@ -824,7 +801,9 @@
         </aerosurface_scale>
         <actuator name="Right Outboard Aileron Actuator">
             <input>fcs/right-outboard-aileron-int-pos-rad</input>
-            <rate_limit> 0.873 </rate_limit> <!-- 50 deg/sec -->
+            <rate_limit> 0.873 </rate_limit>
+            <!-- <rate_limit sense="decr"> 0.785 </rate_limit> 45 deg/sec -->
+            <!-- <rate_limit sense="incr"> 0.960 </rate_limit> 55 deg/sec -->
             <output>fcs/right-outboard-aileron-pos-rad</output>
         </actuator>
         <aerosurface_scale name="Right Outboard Aileron Normalizer">
@@ -850,7 +829,9 @@
         </aerosurface_scale>
         <actuator name="Left Inboard Aileron Actuator">
             <input>fcs/left-inboard-aileron-int-pos-rad</input>
-            <rate_limit> 0.742 </rate_limit> <!-- 42.5 deg/sec -->
+            <rate_limit> 0.742 </rate_limit>
+            <!-- <rate_limit sense="decr"> 0.698 </rate_limit> 40 deg/sec -->
+            <!-- <rate_limit sense="incr"> 0.785 </rate_limit> 45 deg/sec -->
             <output>fcs/left-inboard-aileron-pos-rad</output>
         </actuator>
         <aerosurface_scale name="Left Inboard Aileron Normalizer">
@@ -876,7 +857,9 @@
         </aerosurface_scale>
         <actuator name="Right Inboard Aileron Actuator">
             <input>fcs/right-inboard-aileron-int-pos-rad</input>
-            <rate_limit> 0.742 </rate_limit> <!-- 42.5 deg/sec -->
+            <rate_limit> 0.742 </rate_limit>
+            <!-- <rate_limit sense="decr"> 0.698 </rate_limit> 40 deg/sec -->
+            <!-- <rate_limit sense="incr"> 0.785 </rate_limit> 45 deg/sec -->
             <output>fcs/right-inboard-aileron-pos-rad</output>
         </actuator>
         <aerosurface_scale name="Right Inboard Aileron Normalizer">
@@ -1031,7 +1014,7 @@
         </aerosurface_scale>
         <actuator name="Spoiler 5 Actuator">
             <input>fcs/spoiler-pos-int-rad[4]</input>
-            <rate_limit> 1.309 </rate_limit> <!-- 25 deg/sec -->
+            <rate_limit> 1.309 </rate_limit> <!-- 75 deg/sec -->
             <output>fcs/spoiler-pos-rad[4]</output>
         </actuator>
         
@@ -1055,7 +1038,7 @@
         </aerosurface_scale>
         <actuator name="Spoiler 6 Actuator">
             <input>fcs/spoiler-pos-int-rad[5]</input>
-            <rate_limit> 1.309 </rate_limit> <!-- 25 deg/sec -->
+            <rate_limit> 0.436 </rate_limit> <!-- 25 deg/sec -->
             <output>fcs/spoiler-pos-rad[5]</output>
         </actuator>
         
@@ -1079,7 +1062,7 @@
         </aerosurface_scale>
         <actuator name="Spoiler 7 Actuator">
             <input>fcs/spoiler-pos-int-rad[6]</input>
-            <rate_limit> 1.309 </rate_limit> <!-- 25 deg/sec -->
+            <rate_limit> 0.436 </rate_limit> <!-- 25 deg/sec -->
             <output>fcs/spoiler-pos-rad[6]</output>
         </actuator>
         
@@ -1103,7 +1086,7 @@
         </aerosurface_scale>
         <actuator name="Spoiler 8 Actuator">
             <input>fcs/spoiler-pos-int-rad[7]</input>
-            <rate_limit> 1.309 </rate_limit> <!-- 25 deg/sec -->
+            <rate_limit> 1.309 </rate_limit> <!-- 75 deg/sec -->
             <output>fcs/spoiler-pos-rad[7]</output>
         </actuator>
         
@@ -1280,8 +1263,8 @@
         <aerosurface_scale name="Rudder Control">
             <input>fcs/rudder-sum</input>
             <range>
-                <min>-0.61</min>
-                <max>0.61</max>
+                <min>-0.52</min> <!-- 30 deg (on -400, 25 deg on older models) -->
+                <max>0.52</max>
             </range>
             <output>fcs/rudder-pos-int-rad</output>
         </aerosurface_scale>
@@ -1293,8 +1276,8 @@
         <aerosurface_scale name="Rudder Control Normalizer">
             <input>fcs/rudder-pos-rad</input>
             <domain>
-                <min>-0.61</min>
-                <max>0.61</max>
+                <min>-0.52</min>
+                <max>0.52</max>
             </domain>
             <range>
                 <min>-1</min>
@@ -1636,6 +1619,72 @@
                   </table>
             </product>
         </function>
+        
+        <function name="aero/CoG-mac-pct">
+            <description>Center_of_Gravity_in_percentage_MAC</description>
+            <product>
+                <sum>
+                    <property>inertia/cg-x-in</property>
+                    <value>1173</value>
+                    <value>-1258</value>
+                </sum>
+                <value>0.00305</value>
+            </product>
+        </function>
+        
+        <function name="weight-index">
+            <sum>
+                <product>
+                    <property>inertia/pointmass-weight-lbs[0]</property>
+                    <value>0.005714</value>
+                    <value>-0.383</value>
+                </product>
+                <product>
+                    <sum>
+                        <property>inertia/pointmass-weight-lbs[1]</property>
+                        <property>inertia/pointmass-weight-lbs[2]</property>
+                    </sum>
+                    <value>0.005714</value>
+                    <value>-0.251</value>
+                </product>
+                <product>
+                    <property>inertia/pointmass-weight-lbs[3]</property>
+                    <value>0.005714</value>
+                    <value>-0.093</value>
+                </product>
+                <product>
+                    <property>inertia/pointmass-weight-lbs[4]</property>
+                    <value>0.005714</value>
+                    <value>0.074</value>
+                </product>
+                <product>
+                    <property>inertia/pointmass-weight-lbs[5]</property>
+                    <value>0.005714</value>
+                    <value>0.265</value>
+                </product>
+                <product>
+                    <property>inertia/pointmass-weight-lbs[6]</property>
+                    <value>-0.00012370701</value>
+                </product>
+                <product>
+                    <property>inertia/pointmass-weight-lbs[7]</property>
+                    <value>-0.000185560515</value>
+                </product>
+                <product>
+                    <property>inertia/pointmass-weight-lbs[8]</property>
+                    <value>0.000334008927</value>
+                </product>
+                <product>
+                    <property>inertia/pointmass-weight-lbs[9]</property>
+                    <value>0.000169066247</value>
+                </product>
+                <product>
+                    <property>inertia/pointmass-weight-lbs[10]</property>
+                    <value>0.000127830577</value>
+                </product>
+                <value>17.9</value> <!-- all tanks full -->
+            </sum>
+        </function>
 
         <axis name="SIDE">
             <function name="aero/coefficient/CYb">
@@ -1669,6 +1718,91 @@
                         0.4360   1.3700   1.5700   1.8200   1.9200   2.0200   2.0900   2.1900
                     </tableData>
                 </table>
+            </product>
+        </function>
+        <function name="aero/coefficient/dCLae">
+            <description>Change_in_basic_lift_coefficient_due_to_aeroelasticity</description>
+            <product>
+                <table>
+                    <independentVar lookup="row">velocities/ve-kts</independentVar>
+                    <independentVar lookup="column">fcs/flap-pos-deg</independentVar>
+                    <tableData>
+                                0.000   1.000   5.000  10.000  20.000  25.000  30.000
+                        0.000   0.000   0.000   0.000   0.000   0.000   0.000   0.000
+                      100.000   0.002   0.006   0.006   0.012   0.026   0.040   0.044
+                      250.000   0.015   0.028   0.028   0.058   0.120   0.204   0.228
+                    </tableData>
+                </table>
+            </product>
+        </function>
+        <function name="aero/coefficient/dCLalphaae">
+            <description>Change_in_basic_lift_coefficient_due_to_aeroelastic_effect_on_the_rigid_airplane_basic_lift_coefficient_curve_slope</description>
+            <product>
+                <table>
+                    <independentVar lookup="row">velocities/ve-kts</independentVar>
+                    <independentVar lookup="column">fcs/flap-pos-deg</independentVar>
+                    <tableData>
+                                 0.0000   1.0000   5.0000  10.0000  20.0000  25.0000  30.0000
+                        0.0000   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000
+                      250.0000   0.0100   0.0122   0.0130   0.0134   0.0146   0.0130   0.0118
+                    </tableData>
+                </table>
+                <property>aero/alpha-deg</property>
+            </product>
+        </function>
+        <function name="aero/coefficient/dCLrateaoa">
+            <description>Change_in_basic_lift_coefficient_due_to_rate_of_change_angle_of_attack</description>
+            <product>
+                <table>
+                    <independentVar>velocities/mach</independentVar>
+                    <tableData>
+                        0.00   0.67
+                        0.30   0.67
+                        0.70   0.64
+                        0.90   0.55
+                        0.95   0.60
+                        0.97   0.62
+                    </tableData>
+                </table>
+                <property>aero/ci2vel</property>
+                <property>aero/alphadot-rad_sec</property>
+            </product>
+        </function>
+        
+        <function name="aero/coefficient/dCLratealpha">
+            <description>Change_in_basic_lift_coefficient_due_to_pitch_rate</description>
+            <product>
+                <!-- center of gravity factor -->
+                <table>
+                    <independentVar>aero/CoG-mac-pct</independentVar>
+                    <tableData>
+                        10.00   1.26
+                        40.00   0.81
+                    </tableData>
+                </table>
+                <table>
+                    <independentVar lookup="row">velocities/mach</independentVar>
+                    <independentVar lookup="column">atmosphere/density-altitude</independentVar>
+                    <tableData>
+                                   0.00   20000.00   40000.00
+                        0.00       0.68       0.68       0.68
+                        0.70       0.37       0.51       0.58
+                        0.94       0.23       0.44       0.61
+                    </tableData>
+                </table>
+                <property>aero/ci2vel</property>
+                <property>velocities/q-aero-rad_sec</property>
+            </product>
+        </function>
+        
+        <!-- Change in basic lift coefficient due to aeroelastic inertia relief caused by normal load factor -->
+        <!-- TO BE DONE -->
+        
+        <function name="aero/coefficient/dCLsp">
+            <description>Change_in_basic_lift_coefficient_due_to_spoilers</description>
+            <product>
+                <property>fcs/spoiler-pos-norm</property>
+                <value>-1.0000</value>
             </product>
         </function>
         
@@ -1715,13 +1849,6 @@
             </product>
         </function>
 
-        <function name="aero/coefficient/dCLsp">
-            <description>Delta_Lift_due_to_spoilers</description>
-            <product>
-                <property>fcs/spoiler-pos-norm</property>
-                <value>-1.0000</value>
-            </product>
-        </function>
         <function name="aero/coefficient/CLde_inboard">
             <description>Lift_due_to_inboard_elevator_deflection</description>
             <product>
@@ -1762,6 +1889,10 @@
             <description>Total_lift_coefficient</description>
             <sum>
                 <property>aero/coefficient/CLalpha</property>
+                <property>aero/coefficient/dCLae</property>
+                <property>aero/coefficient/dCLalphaae</property>
+                <property>aero/coefficient/dCLrateaoa</property>
+                <property>aero/coefficient/dCLratealpha</property>
                 <property>aero/coefficient/CLde_inboard</property>
                 <property>aero/coefficient/CLde_outboard</property>
                 <property>aero/coefficient/dCLflap</property>
@@ -2419,7 +2550,8 @@
             </function>    
             
         </axis>
-
+        
+        <!-- PITCH -->
         <axis name="PITCH">
             <function name="aero/coefficient/Cmalpha">
                 <description>Pitch_moment_due_to_alpha</description>
@@ -2515,6 +2647,8 @@
             </function>
         </axis>
 
+        <!-- YAW -->
+        
         <axis name="YAW">
             <function name="aero/coefficient/Cnb">
                 <description>Yaw_moment_due_to_beta</description>
@@ -2558,72 +2692,6 @@
                 </product>
             </function>
         </axis>
-        
-        <function name="aero/CoG-mac-pct">
-            <description>Center_of_Gravity_in_percentage_MAC</description>
-            <product>
-                <sum>
-                    <property>inertia/cg-x-in</property>
-                    <value>1173</value>
-                    <value>-1258</value>
-                </sum>
-                <value>0.00305</value>
-            </product>
-        </function>
-        
-        <function name="weight-index">
-            <sum>
-                <product>
-                    <property>inertia/pointmass-weight-lbs[0]</property>
-                    <value>0.005714</value>
-                    <value>-0.383</value>
-                </product>
-                <product>
-                    <sum>
-                        <property>inertia/pointmass-weight-lbs[1]</property>
-                        <property>inertia/pointmass-weight-lbs[2]</property>
-                    </sum>
-                    <value>0.005714</value>
-                    <value>-0.251</value>
-                </product>
-                <product>
-                    <property>inertia/pointmass-weight-lbs[3]</property>
-                    <value>0.005714</value>
-                    <value>-0.093</value>
-                </product>
-                <product>
-                    <property>inertia/pointmass-weight-lbs[4]</property>
-                    <value>0.005714</value>
-                    <value>0.074</value>
-                </product>
-                <product>
-                    <property>inertia/pointmass-weight-lbs[5]</property>
-                    <value>0.005714</value>
-                    <value>0.265</value>
-                </product>
-                <product>
-                    <property>inertia/pointmass-weight-lbs[6]</property>
-                    <value>-0.00012370701</value>
-                </product>
-                <product>
-                    <property>inertia/pointmass-weight-lbs[7]</property>
-                    <value>-0.000185560515</value>
-                </product>
-                <product>
-                    <property>inertia/pointmass-weight-lbs[8]</property>
-                    <value>0.000334008927</value>
-                </product>
-                <product>
-                    <property>inertia/pointmass-weight-lbs[9]</property>
-                    <value>0.000169066247</value>
-                </product>
-                <product>
-                    <property>inertia/pointmass-weight-lbs[10]</property>
-                    <value>0.000127830577</value>
-                </product>
-                <value>17.9</value> <!-- all tanks full -->
-            </sum>
-        </function>
             
     </aerodynamics>
 
