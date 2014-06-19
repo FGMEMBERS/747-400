@@ -2093,7 +2093,7 @@ OBJECT poly
 name "btn.hdgsel.001"
 data 9
 Plane.001
-texture "forwardshadows2.png"
+texture "forward.png"
 texrep 1 1
 crease 30.000000
 numvert 1775
@@ -35898,7 +35898,7 @@ OBJECT poly
 name "gear.lever"
 data 9
 Plane.013
-texture "forwardshadows2.png"
+texture "forward.png"
 texrep 1 1
 crease 30.000000
 numvert 178
