@@ -7,7 +7,7 @@
     <fileheader>
         <author>Gijs de Rooy</author>
         <filecreationdate>2008</filecreationdate>
-        <version>20131205</version>
+        <version>20140621</version>
         <description>Boeing 747-400 with GE CF6-80C2B1F engines</description>
 
         <license>
@@ -140,16 +140,16 @@
         <ixz unit="SLUG*FT2"> 0 </ixz>
         <!--<ixz unit="SLUG*FT2">-4.05e+05 </ixz> --> <!-- not sure why this would be non zero -->
         <iyz unit="SLUG*FT2"> 0 </iyz>
-        <emptywt unit="LBS"> 393263  </emptywt>
+        <emptywt unit="KG"> 179500  </emptywt>
         <location name="CG" unit="M">
-            <x>  3.0 </x> <!-- GUESSTIMATE -->
+            <x>  2.064 </x> <!-- GUESSTIMATE, based on TUI document and CG calculation -->
             <y>  0.0 </y>
             <z>  1.0 </z> <!-- GUESSTIMATE -->
         </location>
         <pointmass name="Passengers 0A">
             <weight unit="LBS"> 7000 </weight> <!-- 40 passengers (175 lbs) -->
             <location name="POINTMASS" unit="M">
-            <x>-24.33 </x>
+            <x>-23.47 </x>
             <y>  0.00 </y>
             <z>  0.95 </z>
             </location>
@@ -157,7 +157,7 @@
         <pointmass name="Passengers 0B (upper)">
             <weight unit="LBS"> 5250 </weight> <!-- 30 passengers (175 lbs) -->
             <location name="POINTMASS" unit="M">
-            <x>-15.08 </x>
+            <x>-15.04 </x>
             <y>  0.00 </y>
             <z>  3.61 </z>
             </location>
@@ -165,7 +165,7 @@
         <pointmass name="Passengers 0B (lower)">
             <weight unit="LBS"> 12250 </weight> <!-- 70 passengers (175 lbs) -->
             <location name="POINTMASS" unit="M">
-            <x>-15.58 </x>
+            <x>-15.04 </x>
             <y>  0.00 </y>
             <z>  0.95 </z>
             </location>
@@ -173,7 +173,7 @@
         <pointmass name="Passengers 0C">
             <weight unit="LBS"> 19250 </weight> <!-- 110 passengers (175 lbs) -->
             <location name="POINTMASS" unit="M">
-            <x> -5.06 </x>
+            <x> -4.88 </x>
             <y>  0.00 </y>
             <z>  0.95 </z>
             </location>
@@ -181,7 +181,7 @@
         <pointmass name="Passengers 0D">
             <weight unit="LBS"> 17500 </weight> <!-- 100 passengers (175 lbs) -->
             <location name="POINTMASS" unit="M">
-            <x>  5.82 </x>
+            <x>  5.79 </x>
             <y>  0.00 </y>
             <z>  0.95 </z>
             </location>
@@ -189,7 +189,7 @@
         <pointmass name="Passengers 0E">
             <weight unit="LBS"> 26250 </weight> <!-- 150 passengers (175 lbs) -->
             <location name="POINTMASS" unit="M">
-            <x> 19.31 </x>
+            <x> 18.01 </x>
             <y>  0.00 </y>
             <z>  0.95 </z>
             </location>
@@ -197,7 +197,7 @@
         <pointmass name="Cargo 1">
             <weight unit="LBS"> 0 </weight> <!-- 3 full-width (7000 lbs) or 6 half-width (3500 lbs) containers -->
             <location name="POINTMASS" unit="M">
-               <x>-17.99 </x>
+               <x>-17.22 </x>
                <y>  0    </y>
                <z> -1.36 </z>
             </location>
@@ -205,7 +205,7 @@
         <pointmass name="Cargo 2">
             <weight unit="LBS"> 4410 </weight> <!-- 5 full-width (7000 lbs) or 10 half-width (3500 lbs) containers -->
             <location name="POINTMASS" unit="M">
-               <x>-11.64 </x>
+               <x>-12.14 </x>
                <y>  0    </y>
                <z> -1.36 </z>
             </location>
@@ -213,7 +213,7 @@
         <pointmass name="Cargo 3">
             <weight unit="LBS"> 11025 </weight> <!-- 3 full-width (7000 lbs) or 6 half-width (3500 lbs) containers -->
             <location name="POINTMASS" unit="M">
-               <x>  7.83 </x>
+               <x>  7.95 </x>
                <y>  0    </y>
                <z> -1.36 </z>
             </location>
@@ -221,7 +221,7 @@
         <pointmass name="Cargo 4">
             <weight unit="LBS"> 13230 </weight> <!-- 4 full-width (7000 lbs) or 8 half-width (3500 lbs) containers -->
             <location name="POINTMASS" unit="M">
-               <x> 13.33 </x>
+               <x> 14.27 </x>
                <y>  0    </y>
                <z> -1.36 </z>
             </location>
@@ -229,7 +229,7 @@
         <pointmass name="Cargo 5">
             <weight unit="LBS"> 1100 </weight> <!-- 1 full-width (7000 lbs) or 2 half-width (3500 lbs) containers -->
             <location name="POINTMASS" unit="M">
-               <x> 18.71 </x>
+               <x> 19.33 </x>
                <y>  0    </y>
                <z> -1.36 </z>
             </location>
@@ -564,19 +564,21 @@
           - 1 US gal = 6.7 lb.
         </documentation>
 
+        <!-- Y and Z locations are guestimates
+             X locations are based on TUI balance sheet -->
         <tank type="FUEL">    <!-- Tank number 0 == center wing--> 
             <location unit="M">
-                <x>-2.5 </x>
+                <x>-3.9 </x>
                 <y> 0   </y>
                 <z>-1.0 </z>
             </location>
             <capacity unit="LBS"> 114972.0 </capacity>
-            <contents unit="LBS">  50000.0 </contents>
+            <contents unit="LBS">      0.0 </contents>
         </tank>
         
         <tank type="FUEL">    <!-- Tank number 1 == main #1--> 
             <location unit="M">
-                <x>  7.8 </x>
+                <x>  5.73</x>
                 <y>-17.1 </y>
                 <z> -0.1 </z>
             </location>
@@ -586,27 +588,27 @@
 
         <tank type="FUEL">    <!-- Tank number 2 == main #2--> 
             <location unit="M">
-                <x> 2.0 </x>
+                <x>-1.25 </x>
                 <y>-8.2 </y>
                 <z>-0.7 </z>
             </location>
             <capacity unit="LBS"> 84058.0 </capacity>
-            <contents unit="LBS"> 84058.0 </contents>
+            <contents unit="LBS"> 66138.0 </contents>
         </tank>
 
         <tank type="FUEL">    <!-- Tank number 3 == main #3--> 
             <location unit="M">
-                <x> 2.0 </x>
+                <x>-1.25 </x>
                 <y> 8.2 </y>
                 <z>-0.7 </z>
             </location>
             <capacity unit="LBS"> 84058.0 </capacity>
-            <contents unit="LBS"> 84058.0 </contents>
+            <contents unit="LBS"> 66138.0 </contents>
         </tank>
 
         <tank type="FUEL">    <!-- Tank number 4 == Main #4--> 
             <location unit="M">
-                <x> 7.8 </x>
+                <x> 5.73</x>
                 <y>17.1 </y>
                 <z>-0.1 </z>
             </location>
@@ -616,9 +618,9 @@
         
         <tank type="FUEL">    <!-- Tank number 5 == reserve #2--> 
             <location unit="M">
-                <x> 14.0 </x>
+                <x> 11.7 </x>
                 <y>-26.3 </y>
-                <z>  0.9   </z>
+                <z>  0.9 </z>
             </location>
             <capacity unit="LBS"> 8857.4 </capacity>
             <contents unit="LBS"> 8857.4 </contents>
@@ -626,9 +628,9 @@
 
         <tank type="FUEL">    <!-- Tank number 6 == reserve #3--> 
             <location unit="M">
-                <x>14.0 </x>
+                <x>11.7 </x>
                 <y>26.3 </y>
-                <z> 0.9   </z>
+                <z> 0.9 </z>
             </location>
             <capacity unit="LBS"> 8857.4 </capacity>
             <contents unit="LBS"> 8857.4 </contents>
@@ -636,7 +638,7 @@
 
         <tank type="FUEL">    <!-- Tank number 7 == stab--> 
             <location unit="M">
-                <x>32.0 </x>
+                <x>32.3 </x>
                 <y> 0   </y>
                 <z> 2.5 </z>
             </location>
@@ -1625,65 +1627,330 @@
             <product>
                 <sum>
                     <property>inertia/cg-x-in</property>
-                    <value>1173</value>
+                    <value> 1263</value> <!-- convert jsbsim cg to boeing stations -->
                     <value>-1258</value>
                 </sum>
-                <value>0.00305</value>
+                <value>0.305</value>
+            </product>
+        </function>
+        <function name="aero/stab-trim-units">
+            <description>Stab_trim_units</description>
+            <product>
+                <table>
+                    <independentVar lookup="row">inertia/weight-lbs</independentVar>
+                    <independentVar lookup="column">aero/CoG-mac-pct</independentVar>
+                    <tableData>
+                                 9    13    17    21    25    29    33
+                        440924   0     4     3.5   3     2.5   2     2
+                        485017   0     5     4     3.5   3     2     2
+                        529109   0     6     5     4.5   3.5   2.5   2
+                        573201   8     7     6     5     4     3     2
+                        617294   8.5   7.5   6.5   5.5   4.5   3.5   2.5
+                        661386   9     8     7     6     5     4     3
+                        705479   9.5   8.5   7.5   6.5   5.5   4     3
+                        749571   9.5   8.5   7.5   6.5   5.5   4.5   3.5
+                        793664   9.5   8.5   7.5   6.5   5.5   4.5   3.5
+                        837756   9.5   9     8     7     5.5   5     3.5
+                        881849   9.5   9     8     7     6     5     4
+                    </tableData>
+                </table>
+            </product>
+        </function>
+        <function name="inertia/weight-kg">
+            <product>
+                    <property>inertia/weight-lbs</property>
+                    <value>0.45359237</value>
             </product>
         </function>
         
-        <function name="weight-index">
-            <sum>
-                <product>
-                    <property>inertia/pointmass-weight-lbs[0]</property>
-                    <value>0.005714</value>
-                    <value>-0.383</value>
-                </product>
+        <function name="weight-index[0]">
+            <product>
+                <property>inertia/pointmass-weight-lbs[0]</property>
+                <value>0.005714</value> <!-- convert to pax -->
+                <value>-0.383</value>
+            </product>
+        </function>
+        <function name="weight-index[1]">
                 <product>
                     <sum>
                         <property>inertia/pointmass-weight-lbs[1]</property>
                         <property>inertia/pointmass-weight-lbs[2]</property>
                     </sum>
-                    <value>0.005714</value>
+                    <value>0.005714</value> <!-- convert to pax -->
                     <value>-0.251</value>
                 </product>
+        </function>
+        <function name="weight-index[2]">
                 <product>
                     <property>inertia/pointmass-weight-lbs[3]</property>
-                    <value>0.005714</value>
+                    <value>0.005714</value> <!-- convert to pax -->
                     <value>-0.093</value>
                 </product>
+        </function>
+        <function name="weight-index[3]">
                 <product>
                     <property>inertia/pointmass-weight-lbs[4]</property>
-                    <value>0.005714</value>
+                    <value>0.005714</value> <!-- convert to pax -->
                     <value>0.074</value>
                 </product>
+        </function>
+        <function name="weight-index[4]">
                 <product>
                     <property>inertia/pointmass-weight-lbs[5]</property>
-                    <value>0.005714</value>
+                    <value>0.005714</value> <!-- convert to pax -->
                     <value>0.265</value>
                 </product>
+        </function>
+        <function name="weight-index[5]">
                 <product>
                     <property>inertia/pointmass-weight-lbs[6]</property>
-                    <value>-0.00012370701</value>
+                    <value>-0.00163294928</value>
                 </product>
+        </function>
+        <function name="weight-index[6]">
                 <product>
                     <property>inertia/pointmass-weight-lbs[7]</property>
-                    <value>-0.000185560515</value>
+                    <value>-0.00117935226</value>
                 </product>
+        </function>
+        <function name="weight-index[7]">
                 <product>
                     <property>inertia/pointmass-weight-lbs[8]</property>
-                    <value>0.000334008927</value>
+                    <value>0.00061688076</value>
                 </product>
+        </function>
+        <function name="weight-index[8]">
                 <product>
                     <property>inertia/pointmass-weight-lbs[9]</property>
-                    <value>0.000169066247</value>
+                    <value>0.00117935226</value>
                 </product>
+        </function>
+        <function name="weight-index[9]">
                 <product>
                     <property>inertia/pointmass-weight-lbs[10]</property>
-                    <value>0.000127830577</value>
+                    <value>0.00163294928</value>
                 </product>
-                <value>17.9</value> <!-- all tanks full -->
+        </function>
+        <function name="propulsion/tank[0]/contents-kg">
+            <product>
+                    <property>propulsion/tank[0]/contents-lbs</property>
+                    <value>0.45359237</value>
+            </product>
+        </function>
+        <function name="propulsion/tank[1]/contents-kg">
+            <product>
+                    <property>propulsion/tank[1]/contents-lbs</property>
+                    <value>0.45359237</value>
+            </product>
+        </function>
+        <function name="propulsion/tank[2]/contents-kg">
+            <product>
+                    <property>propulsion/tank[2]/contents-lbs</property>
+                    <value>0.45359237</value>
+            </product>
+        </function>
+        <function name="propulsion/tank[3]/contents-kg">
+            <product>
+                    <property>propulsion/tank[3]/contents-lbs</property>
+                    <value>0.45359237</value>
+            </product>
+        </function>
+        <function name="propulsion/tank[4]/contents-kg">
+            <product>
+                    <property>propulsion/tank[4]/contents-lbs</property>
+                    <value>0.45359237</value>
+            </product>
+        </function>
+        <function name="propulsion/tank[5]/contents-kg">
+            <product>
+                    <property>propulsion/tank[5]/contents-lbs</property>
+                    <value>0.45359237</value>
+            </product>
+        </function>
+        <function name="propulsion/tank[6]/contents-kg">
+            <product>
+                    <property>propulsion/tank[6]/contents-lbs</property>
+                    <value>0.45359237</value>
+            </product>
+        </function>
+        <function name="propulsion/tank[7]/contents-kg">
+            <product>
+                    <property>propulsion/tank[7]/contents-lbs</property>
+                    <value>0.45359237</value>
+            </product>
+        </function>
+        <function name="propulsion/tank-1-4-contents-kg">
+            <sum>
+                <property>propulsion/tank[1]/contents-kg</property>
+                <property>propulsion/tank[4]/contents-kg</property>
             </sum>
+        </function>
+        <function name="propulsion/tank-2-3-contents-kg">
+            <sum>
+                <property>propulsion/tank[2]/contents-kg</property>
+                <property>propulsion/tank[3]/contents-kg</property>
+            </sum>
+        </function>
+        <function name="propulsion/tank-5-6-contents-kg">
+            <sum>
+                <property>propulsion/tank[5]/contents-kg</property>
+                <property>propulsion/tank[6]/contents-kg</property>
+            </sum>
+        </function>
+        <function name="weight-index-fuel">
+            <sum>
+                <product>
+                    <table>
+                        <independentVar>propulsion/tank[0]/contents-kg</independentVar>
+                        <tableData>
+                                0.0    0.0
+                            51300.0  -51.0
+                        </tableData>
+                    </table>
+                </product>
+                <product>
+                    <table>
+                        <independentVar>propulsion/tank-1-4-contents-kg</independentVar>
+                        <tableData>
+                             0000.0    0.0
+                            26800.0   24.8
+                        </tableData>
+                    </table>
+                </product>
+                <product>
+                    <table>
+                        <independentVar>propulsion/tank-2-3-contents-kg</independentVar>
+                        <tableData>
+                                0.0    0.0
+                            75000.0  -34.8
+                        </tableData>
+                    </table>
+                </product>
+                <product>
+                    <table>
+                        <independentVar>propulsion/tank-5-6-contents-kg</independentVar>
+                        <tableData>
+                                0.0    0.0
+                             7900.0   16.8
+                        </tableData>
+                    </table>
+                </product>
+                <product>
+                    <table>
+                        <independentVar>propulsion/tank[7]/contents-kg</independentVar>
+                        <tableData>
+                                0.0    0.0
+                             9900.0   61.7
+                        </tableData>
+                    </table>
+                </product>
+            </sum>
+        </function>
+        <function name="weight-index-zfw">
+            <sum>
+                <value>65.2</value> <!-- dry operating index -->
+                <property>weight-index[0]</property>
+                <property>weight-index[1]</property>
+                <property>weight-index[2]</property>
+                <property>weight-index[3]</property>
+                <property>weight-index[4]</property>
+                <property>weight-index[5]</property>
+                <property>weight-index[6]</property>
+                <property>weight-index[7]</property>
+                <property>weight-index[8]</property>
+                <property>weight-index[9]</property>
+            </sum>
+        </function>
+        <function name="weight-index-to">
+            <sum>
+                <property>weight-index-zfw</property>
+                <property>weight-index-fuel</property>
+            </sum>
+            <output>weight-index-to</output>
+        </function>
+        <function name="inertia/zero-fuel-weight-kg">
+            <product>
+                <sum>
+                    <property>inertia/weight-lbs</property>
+                    <product>
+                        <property>propulsion/total-fuel-lbs</property>
+                        <value>-1</value>
+                    </product>
+                </sum>
+                <value>0.45359237</value>
+            </product>
+        </function>
+        <function name="aero/calculated-CoG-to-mac-pct">
+            <description>Calculated_TO_CoG_in_percent_MAC</description>
+            <product>
+                <table>
+                    <independentVar lookup="row">inertia/weight-kg</independentVar>
+                    <independentVar lookup="column">weight-index-to</independentVar>
+                    <tableData>
+                                 1.0   29.0   80.0  91.0  132.0
+                        174000  14.0   14.0   32.0  35.8   32.0
+                        352000   9.6   14.1   23.0  25.0   32.0
+                        390000  14.1   14.1   22.1  23.9   32.0
+                    </tableData>
+                </table>
+            </product>
+        </function>
+        <function name="aero/calculated-CoG-zfw-mac-pct">
+            <description>Calculated_ZFW_CoG_in_percent_MAC</description>
+            <product>
+                <table>
+                    <independentVar lookup="row">inertia/zero-fuel-weight-kg</independentVar>
+                    <independentVar lookup="column">weight-index-zfw</independentVar>
+                    <tableData>
+                                 1.0   29.0   80.0  91.0  132.0
+                        174000  14.0   14.0   32.0  35.8   32.0
+                        352000   9.6   14.1   23.0  25.0   32.0
+                        390000  14.1   14.1   22.1  23.9   32.0
+                    </tableData>
+                </table>
+            </product>
+        </function>
+        <function name="aero/calculated-CoG-from-index-zfw-mac-pct">
+            <description>Calculated_ZFW_CoG_in_percent_MAC</description>
+            <quotient>
+                <sum>
+                    <product>
+                        <value>200000</value>
+                        <sum>
+                            <property>weight-index-to</property>
+                            <value>-30</value>
+                        </sum>
+                    </product>
+                    <product>
+                        <value>47</value>
+                        <property>inertia/weight-kg</property>
+                    </product>
+                </sum>
+                <product>
+                    <value>3.278</value>
+                    <property>inertia/weight-kg</property>
+                </product>
+            </quotient>
+        </function>
+        
+        <function name="aero/outside-cog-envelope">
+            <description>Not_zero_if_the_CoG_outside_the_envelope</description>
+            <product>
+                <table>
+                    <independentVar lookup="row">inertia/weight-kg</independentVar>
+                    <independentVar lookup="column">weight-index-to</independentVar>
+                    <tableData>
+                                1   9  29  80  132
+                        174000  1   1   0   1    1
+                        256000  1   1   0   0    1
+                        272000  1   1   0   0    1
+                        350000  1   0   0   0    1
+                        364000  1   0   0   0    1
+                        390000  1   1   0   0    1
+                        397000  1   1   1   1    1
+                    </tableData>
+                </table>
+            </product>
         </function>
 
         <axis name="SIDE">
@@ -2598,11 +2865,14 @@
                     <property>metrics/Sw-sqft</property>
                     <property>metrics/cbarw-ft</property>
                     <property>fcs/inboard-elevator-pos-rad</property>
+                    <value>57.2957795786</value> <!-- convert to 1/rad -->
                     <table>
-                        <independentVar>velocities/mach</independentVar>
+                        <independentVar lookup="row">atmosphere/density-altitude</independentVar>
+                        <independentVar lookup="column">velocities/mach</independentVar>
                         <tableData>
-                          0.0000    -0.7448
-                          0.7000    -0.3953 
+                                     0.0000    0.8000    0.9700
+                                0   -0.0129   -0.0066   -0.0066
+                            40000   -0.0129   -0.0136   -0.0089
                         </tableData>
                     </table>
                 </product>
@@ -2614,11 +2884,33 @@
                     <property>metrics/Sw-sqft</property>
                     <property>metrics/cbarw-ft</property>
                     <property>fcs/outboard-elevator-pos-rad</property>
+                    <value>57.2957795786</value> <!-- convert to 1/rad -->
                     <table>
-                        <independentVar>velocities/mach</independentVar>
+                        <independentVar lookup="row">atmosphere/density-altitude</independentVar>
+                        <independentVar lookup="column">velocities/mach</independentVar>
                         <tableData>
-                          0.0000    -0.8594
-                          0.7000    -0.2521
+                                     0.0000    0.8000    0.9700
+                                0   -0.0150   -0.0024    0.0000
+                            40000   -0.0150   -0.0116   -0.0062
+                        </tableData>
+                    </table>
+                </product>
+            </function>
+            <function name="aero/coefficient/dCm_stabilizer">
+                <description>Change_in_basic_pitching_moment_due_to_change_in_stabilizer_angle</description>
+                <product>
+                    <property>aero/qbar-psf</property>
+                    <property>metrics/Sw-sqft</property>
+                    <property>metrics/cbarw-ft</property>
+                    <property>fcs/stabilizer-pos-rad</property>
+                    <value>57.2957795786</value> <!-- convert to 1/rad -->
+                    <table>
+                        <independentVar lookup="row">atmosphere/density-altitude</independentVar>
+                        <independentVar lookup="column">velocities/mach</independentVar>
+                        <tableData>
+                                     0.000    0.800
+                                0   -0.053   -0.036
+                            40000   -0.053   -0.055
                         </tableData>
                     </table>
                 </product>

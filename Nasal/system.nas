@@ -240,6 +240,38 @@ var repair = func() {
 	gearHeating.reset();
 }
 
+## Fill fuel tanks ##
+var fillFuel = func() {
+	var fuelWeight = getprop("/consumables/fuel-weight-to-load-kg");
+	print("Fuel tanks filled with "~fuelWeight~" kg");
+	if (fuelWeight > 54600) {
+		setprop("consumables/fuel/tank[1]/level-lbs",(0.5*27150*KG2LB));
+		setprop("consumables/fuel/tank[4]/level-lbs",(0.5*27150*KG2LB));
+	} else {
+		setprop("consumables/fuel/tank[1]/level-lbs",(0.5*27150*(fuelWeight/54600)*KG2LB));
+		setprop("consumables/fuel/tank[4]/level-lbs",(0.5*27150*(fuelWeight/54600)*KG2LB));
+	}
+	if (fuelWeight > 111510) {
+		setprop("consumables/fuel/tank[2]/level-lbs",(0.5*75990*KG2LB));
+		setprop("consumables/fuel/tank[3]/level-lbs",(0.5*75990*KG2LB));
+	} else {
+		setprop("consumables/fuel/tank[2]/level-lbs",(0.5*75990*(fuelWeight/111510)*KG2LB));
+		setprop("consumables/fuel/tank[3]/level-lbs",(0.5*75990*(fuelWeight/111510)*KG2LB));
+	}
+	if (fuelWeight > 66880) {
+		setprop("consumables/fuel/tank[5]/level-lbs",(0.5*8010*((fuelWeight-66880)/8010)*KG2LB));
+		setprop("consumables/fuel/tank[6]/level-lbs",(0.5*8010*((fuelWeight-66880)/8010)*KG2LB));
+	} else {
+		setprop("consumables/fuel/tank[5]/level-lbs",0);
+		setprop("consumables/fuel/tank[6]/level-lbs",0);
+	}
+	if (fuelWeight > 111510) {
+		setprop("consumables/fuel/tank[0]/level-lbs",(51980*((fuelWeight-111510)/51980)*KG2LB));
+	} else {
+		setprop("consumables/fuel/tank[0]/level-lbs",0);
+	}
+}
+
 ## Save fuel state ##
 var tank0    = props.globals.getNode("consumables/fuel/tank[0]/level-lbs", 1);
 var tank1    = props.globals.getNode("consumables/fuel/tank[1]/level-lbs", 1);

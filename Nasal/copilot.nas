@@ -5,14 +5,15 @@ setlistener("/sim/signals/fdm-initialized", func {
 # Copilot announcements
 var copilot = {
 	init : func { 
-        me.UPDATE_INTERVAL = 1.73; 
+        me.UPDATE_INTERVAL = 1; 
         me.loopid = 0; 
 		# Initialize state variables.
 		me.V1announced = 0;
 		me.VRannounced = 0;
 		me.V2announced = 0;
+		me.cogannounced = 0;
         me.reset(); 
-        print("Copilot ready"); 
+        print("Copilot aboard"); 
     }, 
 	update : func {
         var airspeed = getprop("velocities/airspeed-kt");
@@ -30,9 +31,9 @@ var copilot = {
             me.announce("V2!");
 			me.V2announced = 1;
         }
-		
-		if ((V1 == nil) or (V2 == nil) or (VR == nil)){
-			print ("Vspeeds are not calculated yet");
+		if (getprop("/fdm/jsbsim/aero/outside-cog-envelope") == 1 and !me.cogannounced) {
+			me.announce("Warning: the center of gravity lies outside the flight envelope!");
+			me.cogannounced = 1;
 		}
     },
 	announce : func(msg) {
