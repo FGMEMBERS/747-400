@@ -433,16 +433,10 @@
 	<type>select</type>
 	<object-name>lt.spd</object-name>
 	<condition>
-		<or>
-			<equals>
-				<property>/autopilot/locks/speed</property>
-				<value>speed-with-throttle-mach</value>
-			</equals>
-			<equals>
-				<property>/autopilot/locks/speed</property>
-				<value>speed-with-throttle-ias</value>
-			</equals>
-		</or>
+		<equals>
+			<property>/autopilot/locks/speed</property>
+			<value>speed-with-throttle</value>
+		</equals>
 	</condition>
 </animation>
 
@@ -453,29 +447,9 @@
 		<button>0</button>
 		<repeatable>false</repeatable>  
 		<binding>
-			<condition>
-				<not>
-					<equals>
-						<property>/autopilot/settings/speed-select</property>
-						<value>mach</value>
-					</equals>
-				</not>
-			</condition>
 			<command>property-cycle</command>
 			<property>/autopilot/locks/speed</property>
-			<value type="string">speed-with-throttle-ias</value>
-			<value type="string"></value>
-		</binding>
-		<binding>
-			<condition>
-				<equals>
-					<property>/autopilot/settings/speed-select</property>
-					<value>mach</value>
-				</equals>
-			</condition>
-			<command>property-cycle</command>
-			<property>/autopilot/locks/speed</property>
-			<value type="string">speed-with-throttle-mach</value>
+			<value type="string">speed-with-throttle</value>
 			<value type="string"></value>
 		</binding>
 	</action>

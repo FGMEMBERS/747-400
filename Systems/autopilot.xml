@@ -180,7 +180,7 @@
 					<and>
 						<equals>
 							<property>/autopilot/locks/speed</property>
-							<value>speed-with-throttle-ias</value>
+							<value>speed-with-throttle</value>
 						</equals>
 						<equals>
 							<property>/autopilot/internal/nav1-vspeed-ground-mode</property>
@@ -190,24 +190,8 @@
 					<and>
 						<equals>
 							<property>/autopilot/locks/speed</property>
-							<value>speed-with-throttle-mach</value>
+							<value>speed-with-throttle</value>
 						</equals>
-						<equals>
-							<property>/autopilot/internal/nav1-vspeed-ground-mode</property>
-							<value>0</value>
-						</equals>
-					</and>
-					<and>
-						<or>
-							<equals>
-								<property>/autopilot/locks/speed</property>
-								<value>speed-with-throttle-ias</value>
-							</equals>
-							<equals>
-								<property>/autopilot/locks/speed</property>
-								<value>speed-with-throttle-mach</value>
-							</equals>
-						</or>
 						<equals>
 							<property>/autopilot/locks/altitude</property>
 							<value>gs1-hold</value>
@@ -1530,16 +1514,10 @@
 						<value>speed-with-pitch-trim</value>
 					</equals>
 				</not>
-				<or>
-					<equals>
-						<property>/autopilot/locks/speed</property>
-						<value>speed-with-throttle-ias</value>
-					</equals>
-					<equals>
-						<property>/autopilot/locks/speed</property>
-						<value>speed-with-throttle-mach</value>
-					</equals>
-				</or>
+				<equals>
+					<property>/autopilot/locks/speed</property>
+					<value>speed-with-throttle</value>
+				</equals>
 			</condition>
 		</enable>
 		<input>

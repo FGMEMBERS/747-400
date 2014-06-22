@@ -932,7 +932,7 @@ var listenerApAltitudeClambFunc = func {
 }
 
 setlistener("/autopilot/locks/speed", listenerApAltitudeClambSwitchFunc);	# for 'speed-with-pitch-trim'
-
+		
 setlistener("/autopilot/locks/altitude", listenerApAltitudeClambSwitchFunc);
 setlistener("/autopilot/settings/target-altitude-ft", listenerApAltitudeClambFunc);
 setlistener("/autopilot/settings/vertical-speed-fpm", listenerApAltitudeClambFunc);
@@ -1593,8 +1593,7 @@ var listenerApNav1GroundModeFunc = func {
 					}
 
 					if (nav1VspeedGroundMode < 2 and gearTouchedGround == 0) { # to not confuse the reverser
-						if (	getprop("/autopilot/locks/speed") == "speed-with-throttle-ias" or
-							getprop("/autopilot/locks/speed") == "speed-with-throttle-mach") {
+						if (	getprop("/autopilot/locks/speed") == "speed-with-throttle") {
 							if (totalFuelLbs < 60000) {
 								interpolate("/controls/engines/engine[0]/throttle", 0.0, 0.2);
 								interpolate("/controls/engines/engine[1]/throttle", 0.0, 0.2);
@@ -1787,8 +1786,7 @@ var listenerApNav1GroundModeFunc = func {
 						if (getprop("/velocities/airspeed-kt") > 100.0) {
 							if (getprop("/engines/engine/reversed") == 0) {
 								# start thrust-reversers
-								if (	getprop("/autopilot/locks/speed") == "speed-with-throttle-ias" or
-									getprop("/autopilot/locks/speed") == "speed-with-throttle-mach" or
+								if (	getprop("/autopilot/locks/speed") == "speed-with-throttle" or
 									getprop("/autopilot/locks/speed") == "speed-with-pitch-trim") {
 
 									setprop("/controls/engines/engine[0]/throttle", 0.0);
@@ -1807,8 +1805,7 @@ var listenerApNav1GroundModeFunc = func {
 
 					# breaks
 					if (getprop("/velocities/airspeed-kt") > 120.0) {
-						if (	getprop("/autopilot/locks/speed") == "speed-with-throttle-ias" or
-							getprop("/autopilot/locks/speed") == "speed-with-throttle-mach" or
+						if (	getprop("/autopilot/locks/speed") == "speed-with-throttle" or
 							getprop("/autopilot/locks/speed") == "speed-with-pitch-trim") {
 
 							#if (getprop("/controls/gear/brake-right") < 0.3) {
@@ -1820,8 +1817,7 @@ var listenerApNav1GroundModeFunc = func {
 						}
 					}
 					elsif (getprop("/velocities/airspeed-kt") > 80.0) {
-						if (	getprop("/autopilot/locks/speed") == "speed-with-throttle-ias" or
-							getprop("/autopilot/locks/speed") == "speed-with-throttle-mach" or
+						if (	getprop("/autopilot/locks/speed") == "speed-with-throttle" or
 							getprop("/autopilot/locks/speed") == "speed-with-pitch-trim") {
 
 							#if (getprop("/controls/gear/brake-right") < 0.5) {
@@ -1833,8 +1829,7 @@ var listenerApNav1GroundModeFunc = func {
 						}
 					}
 					elsif (getprop("/velocities/airspeed-kt") > 20.0) {
-						if (	getprop("/autopilot/locks/speed") == "speed-with-throttle-ias" or
-							getprop("/autopilot/locks/speed") == "speed-with-throttle-mach" or
+						if (	getprop("/autopilot/locks/speed") == "speed-with-throttle" or
 							getprop("/autopilot/locks/speed") == "speed-with-pitch-trim") {
 
 							#if (getprop("/controls/gear/brake-right") < 1.0) {
@@ -1847,8 +1842,7 @@ var listenerApNav1GroundModeFunc = func {
 					}
 					else {
 						# stop breaking at 20 kts to keep some speed for taxiing
-						if (	getprop("/autopilot/locks/speed") == "speed-with-throttle-ias" or
-							getprop("/autopilot/locks/speed") == "speed-with-throttle-mach" or
+						if (	getprop("/autopilot/locks/speed") == "speed-with-throttle" or
 							getprop("/autopilot/locks/speed") == "speed-with-pitch-trim") {
 
 							setprop("/controls/engines/engine[0]/throttle", 0.0);
@@ -1865,8 +1859,7 @@ var listenerApNav1GroundModeFunc = func {
 						setprop("/autopilot/locks/speed", "");
 
 						# if reversers still running, stop them now
-						if (	getprop("/autopilot/locks/speed") == "speed-with-throttle-ias" or
-							getprop("/autopilot/locks/speed") == "speed-with-throttle-mach" or
+						if (	getprop("/autopilot/locks/speed") == "speed-with-throttle" or
 							getprop("/autopilot/locks/speed") == "speed-with-pitch-trim") {
 
 							if (getprop("/engines/engine[0]/reversed") == 1) {
@@ -1893,8 +1886,7 @@ var listenerApNav1GroundModeFunc = func {
 
 ## handle thrust-reversers for NAV1 ground-mode ##
 var startReverserProgram = func {
-	if (	getprop("/autopilot/locks/speed") == "speed-with-throttle-ias" or
-		getprop("/autopilot/locks/speed") == "speed-with-throttle-mach" or
+	if (	getprop("/autopilot/locks/speed") == "speed-with-throttle" or
 		getprop("/autopilot/locks/speed") == "speed-with-pitch-trim") {
 
 		if (getprop("/autopilot/locks/speed") == "speed-with-pitch-trim") {
@@ -1919,8 +1911,7 @@ var startReverserProgram = func {
 var reverserProgramFunc = func {
 	if (getprop("/autopilot/locks/altitude") == "gs1-hold") {
 
-		if (	getprop("/autopilot/locks/speed") == "speed-with-throttle-ias" or
-			getprop("/autopilot/locks/speed") == "speed-with-throttle-mach" or
+		if (	getprop("/autopilot/locks/speed") == "speed-with-throttle" or
 			getprop("/autopilot/locks/speed") == "speed-with-pitch-trim") {
 
 			if (getprop("/engines/engine[0]/reversed") == 1) {
