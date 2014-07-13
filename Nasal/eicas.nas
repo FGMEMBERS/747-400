@@ -17,7 +17,7 @@ var secondary_eicas = {};
 var secEICAS		= {};
 var pack 			= [0,0,0];
 
-var num_lines = 18;
+var num_lines = 15;
 
 msgs_warning = [];
 msgs_caution = [];
@@ -100,7 +100,7 @@ var takeoff_config_warnings = func {
 	if ((throttle>=0.667)and
 		(!reverser))
 	{
-		if (((flaps<0.3)or(flaps>0.7)) and (speed < getprop("/instrumentation/fmc/vspeeds/V1")))
+		if (((flaps<0.3)or(flaps>0.7)) and (speed < (getprop("/instrumentation/fmc/vspeeds/V1") or 200)))
 			append(msgs_warning,">CONFIG FLAPS");
 		if (parkbrake)
 			append(msgs_warning,">CONFIG PARK BRK");
@@ -235,6 +235,8 @@ var advisory_messages = func {
 		append(msgs_advisory,">YAW DAMPER LWR, UPR");
 	if (getprop("/autopilot/autobrake/step") == 0)
 		append(msgs_advisory,"AUTOBRAKES");
+	if ((getprop("consumables/tank[1]/temperature_degC") or 0) <= -37)
+		append(msgs_advisory,">FUEL TEMP LOW");
 }
 
 var memo_messages = func {

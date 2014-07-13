@@ -67,6 +67,7 @@ var selAltPtr = nil;
 var gsScale = nil;
 var gsPtr = nil;
 var minimums = nil;
+var afdsMode = nil;
 
 var canvas_PFD = {
 	new: func(canvas_group)
@@ -134,6 +135,7 @@ var canvas_PFD = {
 		gsScale = pfd.getElementById("gsScale");
 		gsPtr = pfd.getElementById("gsPtr");
 		minimums = pfd.getElementById("minimums");
+		afdsMode = pfd.getElementById("afdsMode");
 		
 		var c1 = spdTrend.getCenter();
 		spdTrend.createTransform().setTranslation(-c1[0], -c1[1]);
@@ -173,6 +175,7 @@ var canvas_PFD = {
 		var flaps = getprop("/controls/flight/flaps");
 		var pitch = getprop("orientation/pitch-deg");
 		var roll =  getprop("orientation/roll-deg");
+		var vSpd = getprop("/velocities/vertical-speed-fps");
 		
 		#10 deg = 105px
 		horizon.setTranslation(0,pitch*10.5);
@@ -180,16 +183,29 @@ var canvas_PFD = {
 		bankPointer.setRotation(-roll*D2R);
 		compass.setRotation(-getprop("orientation/heading-deg")*D2R);
 		
+		# Modes
+		if (getprop("autopilot/locks/passive-mode") == 1)
+			afdsMode.setText("FD");
+		elsif (getprop("autopilot/locks/altitude") != "" or getprop("autopilot/locks/heading") != "" or getprop("autopilot/locks/speed") != "")
+			afdsMode.setText("CMD");
+		else
+			afdsMode.setText("");
+			
 		# Flight director
-		#if (getprop("autopilot/internal/target-pitch-deg") != nil)
-		#	fdY.setTranslation(0,(getprop("autopilot/internal/target-pitch-deg")-pitch)*10.5);
-		if (getprop("autopilot/internal/target-roll-deg") != nil) {
-			var fdRoll = (roll-getprop("/autopilot/internal/target-roll-deg"))*10.5;
-			if (fdRoll > 300)
-				fdRoll = 300;
-			elsif (fdRoll < -300)
-				fdRoll = -300;
-			fdX.setTranslation(-fdRoll,0);
+		if (getprop("autopilot/locks/passive-mode") == 1) {
+			if (getprop("autopilot/internal/target-roll-deg") != nil) {
+				var fdRoll = (roll-getprop("/autopilot/internal/target-roll-deg"))*10.5;
+				if (fdRoll > 200)
+					fdRoll = 200;
+				elsif (fdRoll < -200)
+					fdRoll = -200;
+				fdX.setTranslation(-fdRoll,0);
+			}
+			fdX.show();
+			#fdY.show();
+		} else {
+			fdX.hide();
+			fdY.hide();
 		}
 		
 		speedText.setText(sprintf("%3.0f",getprop("autopilot/settings/target-speed-kt")));
@@ -203,7 +219,7 @@ var canvas_PFD = {
 		var curAltDiff = alt-apAlt;
 		if (abs(curAltDiff) > 300 and abs(curAltDiff) < 900) {
 			curAltBox.setStrokeLineWidth(5);
-			if ((alt > apAlt and getprop("velocities/vertical-speed-fps") > 10) or (alt < apAlt and getprop("velocities/vertical-speed-fps") < 10))
+			if ((alt > apAlt and vSpd > 10) or (alt < apAlt and vSpd < 10))
 				curAltBox.setColor(1,0,1);
 			else
 				curAltBox.setColor(1,1,1);
@@ -239,6 +255,8 @@ var canvas_PFD = {
 		if(getprop("instrumentation/nav/in-range")) {
 			var deflection = getprop("instrumentation/nav/heading-needle-deflection-norm");
 			locPtr.show();
+			gsPtr.show();
+			gsScale.show();
 			
 			if (radioAlt < 2500) {
 				risingRwy.show();
@@ -266,7 +284,10 @@ var canvas_PFD = {
 				locScaleExp.hide();
 				locScale.show();
 			}
+			gsPtr.setTranslation(0,-getprop("instrumentation/nav/gs-needle-deflection-norm")*150);
 		} else {
+			gsPtr.hide();
+			gsScale.hide();
 			locPtr.hide();
 			locScaleExp.hide();
 			locScale.hide();
@@ -275,15 +296,13 @@ var canvas_PFD = {
 		}
 		if (getprop("instrumentation/nav/nav-id") != nil)
 			ilsId.setText(getprop("instrumentation/nav/nav-id"));
-		if(getprop("instrumentation/nav/gs-needle-deflection-norm") != nil)
-			gsPtr.setTranslation(0,-getprop("instrumentation/nav/gs-needle-deflection-norm")*150);
 		
 		if (alt < 10000)
 			tenThousand.show();
 		else 
 			tenThousand.hide();
-		if (getprop("velocities/vertical-speed-fps") != nil) {
-			var vertSpd = getprop("velocities/vertical-speed-fps")*60;
+		if (vSpd != nil) {
+			var vertSpd = vSpd*60;
 			if (abs(vertSpd) > 400) {
 				vertSpdText.setText(sprintf("%4.0f",roundToNearest(vertSpd,50)));
 				vertSpdText.show();

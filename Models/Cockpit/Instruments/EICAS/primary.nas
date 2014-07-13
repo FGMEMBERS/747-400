@@ -42,6 +42,7 @@ var fuelTemp = {};
 var fuelTempL = {};
 var text4283 = {};
 var gearGrpBox = {};
+var gearBoxTrans = {};
 var gearL = {};
 var gearGrp = {};
 var gear0 = {};
@@ -135,6 +136,7 @@ var canvas_primary = {
 		fuelTotal =  eicasP.getElementById("fuelTotal");
 		text4283=  eicasP.getElementById("text4283");
 		gearGrpBox =  eicasP.getElementById("gearBox");
+		gearBoxTrans =  eicasP.getElementById("gearBoxTrans");
 		gearL =  eicasP.getElementById("gearL");
 		gearGrp =  eicasP.getElementById("gear");
 		gear0 =  eicasP.getElementById("gear0");
@@ -215,7 +217,7 @@ var canvas_primary = {
 		});
 		timerFlaps.stop();
 		
-		var timerGear = maketimer(10.0, func { gearGrp.hide();gearL.hide();gearGrpBox.hide(); });
+		var timerGear = maketimer(10.0, func { gearGrp.hide();gearL.hide();gearGrpBox.hide();gearBoxTrans.hide(); });
 		setlistener("gear/gear/position-norm", func() {
 			if (getprop("gear/gear/position-norm") == 0) {
 				timerGear.singleShot = 1;
@@ -225,13 +227,124 @@ var canvas_primary = {
 			}
 		});
 		
+		# add some listeners
+		setlistener("/controls/failures/gear[0]/stuck", 	func { m.update_gear() } );
+		setlistener("/controls/failures/gear[1]/stuck", 	func { m.update_gear() } );
+		setlistener("/controls/failures/gear[2]/stuck", 	func { m.update_gear() } );
+		setlistener("/controls/failures/gear[3]/stuck", 	func { m.update_gear() } );
+		setlistener("/controls/failures/gear[4]/stuck",		func { m.update_gear() } );
+		setlistener("gear/gear[0]/position-norm",			func { m.update_gear() } );
+		setlistener("gear/gear[1]/position-norm",			func { m.update_gear() } );
+		setlistener("gear/gear[2]/position-norm",			func { m.update_gear() } );
+		setlistener("gear/gear[3]/position-norm",			func { m.update_gear() } );
+		setlistener("gear/gear[4]/position-norm",			func { m.update_gear() } );
+		setlistener("controls/flight/flaps",		  		func { m.update_flaps() } );
+		setlistener("surface-positions/flap-pos-norm",  	func { m.update_flaps() } );
+		setlistener("controls/gear/gear-down",		  	func { m.update_listener_inputs() } );
+		setlistener("instrumentation/eicas/msg/warning", 	func { m.update_messages() } );
+		setlistener("instrumentation/eicas/msg/caution", 	func { m.update_messages() } );
+		setlistener("instrumentation/eicas/msg/advisory", 	func { m.update_messages() } );
+		setlistener("instrumentation/eicas/msg/memo", 		func { m.update_messages() } );
+		m.update_listener_inputs();
+		
 		return m;
+	},
+	update_listener_inputs : func()
+    {
+		# be nice to sim: some inputs rarely change. use listeners.
+		me.gear_down     = getprop("controls/gear/gear-down");
+    },
+	update_flaps : func()
+	{
+		me.flaps     	= getprop("controls/flight/flaps");
+		me.flapPos 		= getprop("surface-positions/flap-pos-norm");
+		
+		if (me.flapPos != 0 or me.flaps != 0) {
+			text4283.show();
+			flapsLine.show();
+			flapsL.show();
+			flapsBar.show();
+			flapsBox.show();
+			text4283.setText(sprintf("%2.0f",me.flaps*30));
+			flapsLine.setTranslation(0,157*me.flaps);
+			text4283.setTranslation(0,157*me.flaps);
+			flapsBar_scale.setScale(1, me.flapPos);
+		}
+		if (me.flaps != me.flapPos) {
+			text4283.setColor(1,0,1);
+			flapsLine.setColor(1,0,1);
+		} else {
+			text4283.setColor(0,1,0);
+			flapsLine.setColor(0,1,0);
+		}
+	},
+	update_gear : func()
+	{
+		var gear = [gear0, gear1, gear2, gear3, gear4];
+		var gearBox = [gear0box, gear1box, gear2box, gear3box, gear4box];
+		var gearStuck = [getprop("/controls/failures/gear[0]/stuck"),getprop("/controls/failures/gear[1]/stuck"),getprop("/controls/failures/gear[2]/stuck"),getprop("/controls/failures/gear[3]/stuck"),getprop("/controls/failures/gear[4]/stuck")];
+		var gearPos = [getprop("gear/gear[0]/position-norm"),getprop("gear/gear[1]/position-norm"),getprop("gear/gear[2]/position-norm"),getprop("gear/gear[3]/position-norm"),getprop("gear/gear[4]/position-norm")];
+		
+		if (gearStuck[0] or gearStuck[1] or gearStuck[2] or gearStuck[3] or gearStuck[4]) {
+			
+			gearGrp.hide();
+			gearGrpBox.hide();
+			gearBoxTrans.hide();
+			gearL.show();
+			
+			for(var g = 0; g <= 4; g+=1){
+				gear[g].show();
+				gearBox[g].show();
+				if(gearPos[g] == 1) {
+					gear[g].setColor(0,1,0);
+					gear[g].setText("DN");
+					gearBox[g].setColor(0,1,0);
+				} else {
+					gear[g].setColor(1,1,1);
+					if (gearPos[g] == 0)
+						gear[g].setText("UP");
+					else 
+						gear[g].setText("");
+					gearBox[g].setColor(1,1,1);
+				}
+			}
+		} else {
+			for(var g = 0; g <= 4; g+=1){
+				gear[g].hide();
+				gearBox[g].hide();
+			}
+			
+			if (gearPos[0] == 0 and gearPos[1] == 0 and gearPos[2] == 0 and gearPos[3] == 0 and gearPos[4] == 0) {
+				gearGrp.setText("UP");
+				gearGrp.setColor(1,1,1);
+				gearGrpBox.setColor(1,1,1);
+				gearGrp.show();
+				gearGrpBox.show();
+				gearBoxTrans.hide();
+			} elsif (gearPos[0] == 1 and gearPos[1] == 1 and gearPos[2] == 1 and gearPos[3] == 1 and gearPos[4] == 1) {
+				gearGrp.setText("DOWN");
+				gearGrp.setColor(0,1,0);
+				gearGrpBox.setColor(0,1,0);
+				gearGrp.show();
+				gearGrpBox.show();
+				gearBoxTrans.hide();
+			} else {
+				gearGrp.hide();
+				gearGrpBox.hide();
+				gearBoxTrans.show();
+			}
+		}
+	},
+	update_messages: func()
+	{
+		msgWarning.setText(getprop("instrumentation/eicas/msg/warning"));
+		msgCaution.setText(getprop("instrumentation/eicas/msg/caution"));
+		msgAdvisory.setText(getprop("instrumentation/eicas/msg/advisory"));
+		msgMemo.setText(getprop("instrumentation/eicas/msg/memo"));
 	},
 	update: func()
 	{	
 		var egt = [getprop("engines/engine[0]/egt-degf"),getprop("engines/engine[1]/egt-degf"),getprop("engines/engine[2]/egt-degf"),getprop("engines/engine[3]/egt-degf")];
-		var flaps = getprop("controls/flight/flaps");
-		var flapPos = getprop("surface-positions/flap-pos-norm");
 		var n1 = [getprop("engines/engine[0]/n1"),getprop("engines/engine[1]/n1"),getprop("engines/engine[2]/n1"),getprop("engines/engine[3]/n1")];
 		var throttle = [getprop("controls/engines/engine[0]/throttle"),getprop("controls/engines/engine[1]/throttle"),getprop("controls/engines/engine[2]/throttle"),getprop("controls/engines/engine[3]/throttle")];
 		
@@ -306,79 +419,13 @@ var canvas_primary = {
 			fuelToRemainL.hide();
 			fuelTemp.show();
 			fuelTempL.show();
-		}
-		msgWarning.setText(getprop("instrumentation/eicas/msg/warning"));
-		msgCaution.setText(getprop("instrumentation/eicas/msg/caution"));
-		msgAdvisory.setText(getprop("instrumentation/eicas/msg/advisory"));
-		msgMemo.setText(getprop("instrumentation/eicas/msg/memo"));
-
-		if (flapPos != 0 or flaps != 0) {
-			text4283.show();
-			flapsLine.show();
-			flapsL.show();
-			flapsBar.show();
-			flapsBox.show();
-			text4283.setText(sprintf("%2.0f",flaps*30));
-			flapsLine.setTranslation(0,157*flaps);
-			text4283.setTranslation(0,157*flaps);
-			flapsBar_scale.setScale(1, flapPos);
-		}
-		if (flaps != flapPos) {
-			text4283.setColor(1,0,1);
-			flapsLine.setColor(1,0,1);
-		} else {
-			text4283.setColor(0,1,0);
-			flapsLine.setColor(0,1,0);
+			fuelTemp.setText(sprintf("%+02.0fc",getprop("consumables/fuel/tank[1]/temperature_degC")));
 		}
 		
 		if (getprop("controls/anti-ice/wing-heat")) {
 			wai.show();
 		} else {
 			wai.hide();
-		}
-		
-		var gear = [gear0, gear1, gear2, gear3, gear4];
-		var gearBox = [gear0box, gear1box, gear2box, gear3box, gear4box];
-		var gearStuck = [getprop("/controls/failures/gear[0]/stuck"),getprop("/controls/failures/gear[1]/stuck"),getprop("/controls/failures/gear[2]/stuck"),getprop("/controls/failures/gear[3]/stuck"),getprop("/controls/failures/gear[4]/stuck")];
-		var gearPos = [getprop("gear/gear[0]/position-norm"),getprop("gear/gear[1]/position-norm"),getprop("gear/gear[2]/position-norm"),getprop("gear/gear[3]/position-norm"),getprop("gear/gear[4]/position-norm")];
-		
-		if (gearStuck[0] or gearStuck[1] or gearStuck[2] or gearStuck[3] or gearStuck[4]) {
-			
-			gearGrp.hide();
-			gearGrpBox.hide();
-			gearL.show();
-			
-			for(var g = 0; g <= 4; g+=1){
-				gear[g].show();
-				gearBox[g].show();
-				if(gearPos[g] == 1) {
-					gear[g].setColor(0,1,0);
-					gear[g].setText("DN");
-					gearBox[g].setColor(0,1,0);
-				} else {
-					gear[g].setColor(1,1,1);
-					if (gearPos[g] == 0)
-						gear[g].setText("UP");
-					else 
-						gear[g].setText("");
-					gearBox[g].setColor(1,1,1);
-				}
-			}
-		} else {
-			for(var g = 0; g <= 4; g+=1){
-				gear[g].hide();
-				gearBox[g].hide();
-			}
-			
-			if (gearPos[0] == 0 and gearPos[1] == 0 and gearPos[2] == 0 and gearPos[3] == 0 and gearPos[4] == 0) {
-				gearGrp.setText("UP");
-				gearGrp.setColor(1,1,1);
-				gearGrpBox.setColor(1,1,1);
-			} elsif (gearPos[0] == 1 and gearPos[1] == 1 and gearPos[2] == 1 and gearPos[3] == 1 and gearPos[4] == 1) {
-				gearGrp.setText("DOWN");
-				gearGrp.setColor(0,1,0);
-				gearGrpBox.setColor(0,1,0);
-			}
 		}
 		
 		settimer(func me.update(), 0);
