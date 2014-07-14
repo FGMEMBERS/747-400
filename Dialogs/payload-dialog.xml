@@ -39,7 +39,7 @@
 		<group>
 			<layout>vbox</layout>
 			<text>
-				<label>Use the follow slider to load well-balanced fuel</label>
+				<label>Load well-balanced fuel</label>
 			</text>
 			<group>
 				<layout>table</layout>
@@ -62,6 +62,10 @@
 						<command>dialog-apply</command>
 						<object-name>fuel-to-load</object-name>
 					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>Boeing747.fillFuel();</script>
+					</binding>
 				</slider>
 				<text>
 					<row>0</row>
@@ -71,10 +75,32 @@
 					<live>true</live>
 					<property>/consumables/fuel-weight-to-load-kg</property>
 				</text>
+			</group>
+			
+			<group>
+				<layout>hbox</layout>
+				<text>
+					<label>Max</label>
+				</text>
 				<button>
-					<row>0</row>
-					<col>3</col>
-					<legend>Fill</legend>
+					<legend>Landing</legend>
+					<binding>
+						<command>property-assign</command>
+						<property>/consumables/fuel-weight-to-load-kg</property>
+						<value>53100</value>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>Boeing747.fillFuel();</script>
+					</binding>
+				</button>
+				<button>
+					<legend>Takeoff</legend>
+					<binding>
+						<command>property-assign</command>
+						<property>/consumables/fuel-weight-to-load-kg</property>
+						<value>164100</value>
+					</binding>
 					<binding>
 						<command>nasal</command>
 						<script>Boeing747.fillFuel();</script>
@@ -85,7 +111,7 @@
 			<hrule/>
 			
 			<text>
-				<label>Use the follow sliders to adjust fuel levels.</label>
+				<label>Adjust fuel levels.</label>
 			</text>
 			<text>
 				<label>Remember to check the balance!</label>

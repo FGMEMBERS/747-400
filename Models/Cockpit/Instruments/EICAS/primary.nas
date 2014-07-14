@@ -228,58 +228,73 @@ var canvas_primary = {
 		});
 		
 		# add some listeners
-		setlistener("/controls/failures/gear[0]/stuck", 	func { m.update_gear() } );
-		setlistener("/controls/failures/gear[1]/stuck", 	func { m.update_gear() } );
-		setlistener("/controls/failures/gear[2]/stuck", 	func { m.update_gear() } );
-		setlistener("/controls/failures/gear[3]/stuck", 	func { m.update_gear() } );
-		setlistener("/controls/failures/gear[4]/stuck",		func { m.update_gear() } );
-		setlistener("gear/gear[0]/position-norm",			func { m.update_gear() } );
-		setlistener("gear/gear[1]/position-norm",			func { m.update_gear() } );
-		setlistener("gear/gear[2]/position-norm",			func { m.update_gear() } );
-		setlistener("gear/gear[3]/position-norm",			func { m.update_gear() } );
-		setlistener("gear/gear[4]/position-norm",			func { m.update_gear() } );
-		setlistener("controls/flight/flaps",		  		func { m.update_flaps() } );
-		setlistener("surface-positions/flap-pos-norm",  	func { m.update_flaps() } );
-		setlistener("controls/gear/gear-down",		  	func { m.update_listener_inputs() } );
-		setlistener("instrumentation/eicas/msg/warning", 	func { m.update_messages() } );
-		setlistener("instrumentation/eicas/msg/caution", 	func { m.update_messages() } );
-		setlistener("instrumentation/eicas/msg/advisory", 	func { m.update_messages() } );
-		setlistener("instrumentation/eicas/msg/memo", 		func { m.update_messages() } );
-		m.update_listener_inputs();
+		setlistener("controls/flight/flaps",				func { me.flaps = getprop("controls/flight/flaps") } );
+		setlistener("controls/gear/gear-down",				func { me.gear_down = getprop("controls/gear/gear-down") } );
+		setlistener("controls/anti-ice/wing-heat",			func { m.update_wai() } );
+		setlistener("instrumentation/eicas/msg/warning",	func { m.update_messages() } );
+		setlistener("instrumentation/eicas/msg/caution",	func { m.update_messages() } );
+		setlistener("instrumentation/eicas/msg/advisory",	func { m.update_messages() } );
+		setlistener("instrumentation/eicas/msg/memo",		func { m.update_messages() } );
 		
 		return m;
 	},
-	update_listener_inputs : func()
-    {
-		# be nice to sim: some inputs rarely change. use listeners.
-		me.gear_down     = getprop("controls/gear/gear-down");
-    },
-	update_flaps : func()
+	update_wai: func()
 	{
-		me.flaps     	= getprop("controls/flight/flaps");
-		me.flapPos 		= getprop("surface-positions/flap-pos-norm");
+		print("wai");
+		if (getprop("controls/anti-ice/wing-heat")) {
+			wai.show();
+		} else {
+			wai.hide();
+		}
+	},
+	update_messages: func()
+	{
+		print("messages");
+		msgWarning.setText(getprop("instrumentation/eicas/msg/warning"));
+		msgCaution.setText(getprop("instrumentation/eicas/msg/caution"));
+		msgAdvisory.setText(getprop("instrumentation/eicas/msg/advisory"));
+		msgMemo.setText(getprop("instrumentation/eicas/msg/memo"));
+	},
+	slow_update: func()
+	{
+		var flaps = getprop("controls/flight/flaps");
+		var flapPos = getprop("surface-positions/flap-pos-norm");
 		
-		if (me.flapPos != 0 or me.flaps != 0) {
+		text5655.setText(sprintf("%+03.0f",getprop("environment/temperature-degc")));
+		fuelTotal.setText(sprintf("%03.01f",getprop("fdm/jsbsim/propulsion/total-fuel-lbs")*LB2KG/1000));
+		if (getprop("/fdm/jsbsim/propulsion/jettison-flow-rates") > 0) {
+			fuelToRemain.show();
+			fuelToRemainL.show();
+			fuelTemp.hide();
+			fuelTempL.hide();
+			fuelToRemain.setText(sprintf("%03.01f",getprop("controls/fuel/fuel-to-remain-lbs")*LB2KG/1000));
+		} else {
+			fuelToRemain.hide();
+			fuelToRemainL.hide();
+			fuelTemp.show();
+			fuelTempL.show();
+			fuelTemp.setText(sprintf("%+02.0fc",getprop("consumables/fuel/tank[1]/temperature_degC")));
+		}
+		
+		if (flapPos != 0 or flaps != 0) {
 			text4283.show();
 			flapsLine.show();
 			flapsL.show();
 			flapsBar.show();
 			flapsBox.show();
-			text4283.setText(sprintf("%2.0f",me.flaps*30));
-			flapsLine.setTranslation(0,157*me.flaps);
-			text4283.setTranslation(0,157*me.flaps);
-			flapsBar_scale.setScale(1, me.flapPos);
+			text4283.setText(sprintf("%2.0f",flaps*30));
+			flapsLine.setTranslation(0,157*flaps);
+			text4283.setTranslation(0,157*flaps);
+			flapsBar_scale.setScale(1, flapPos);
 		}
-		if (me.flaps != me.flapPos) {
+		if (flaps != flapPos) {
 			text4283.setColor(1,0,1);
 			flapsLine.setColor(1,0,1);
 		} else {
 			text4283.setColor(0,1,0);
 			flapsLine.setColor(0,1,0);
 		}
-	},
-	update_gear : func()
-	{
+		
 		var gear = [gear0, gear1, gear2, gear3, gear4];
 		var gearBox = [gear0box, gear1box, gear2box, gear3box, gear4box];
 		var gearStuck = [getprop("/controls/failures/gear[0]/stuck"),getprop("/controls/failures/gear[1]/stuck"),getprop("/controls/failures/gear[2]/stuck"),getprop("/controls/failures/gear[3]/stuck"),getprop("/controls/failures/gear[4]/stuck")];
@@ -318,8 +333,6 @@ var canvas_primary = {
 				gearGrp.setText("UP");
 				gearGrp.setColor(1,1,1);
 				gearGrpBox.setColor(1,1,1);
-				gearGrp.show();
-				gearGrpBox.show();
 				gearBoxTrans.hide();
 			} elsif (gearPos[0] == 1 and gearPos[1] == 1 and gearPos[2] == 1 and gearPos[3] == 1 and gearPos[4] == 1) {
 				gearGrp.setText("DOWN");
@@ -334,16 +347,11 @@ var canvas_primary = {
 				gearBoxTrans.show();
 			}
 		}
+		
+		settimer(func me.slow_update(), 0.3);
 	},
-	update_messages: func()
+	fast_update: func() 
 	{
-		msgWarning.setText(getprop("instrumentation/eicas/msg/warning"));
-		msgCaution.setText(getprop("instrumentation/eicas/msg/caution"));
-		msgAdvisory.setText(getprop("instrumentation/eicas/msg/advisory"));
-		msgMemo.setText(getprop("instrumentation/eicas/msg/memo"));
-	},
-	update: func()
-	{	
 		var egt = [getprop("engines/engine[0]/egt-degf"),getprop("engines/engine[1]/egt-degf"),getprop("engines/engine[2]/egt-degf"),getprop("engines/engine[3]/egt-degf")];
 		var n1 = [getprop("engines/engine[0]/n1"),getprop("engines/engine[1]/n1"),getprop("engines/engine[2]/n1"),getprop("engines/engine[3]/n1")];
 		var throttle = [getprop("controls/engines/engine[0]/throttle"),getprop("controls/engines/engine[1]/throttle"),getprop("controls/engines/engine[2]/throttle"),getprop("controls/engines/engine[3]/throttle")];
@@ -372,11 +380,11 @@ var canvas_primary = {
 			} else {
 				engn1ref[n].setText(sprintf("%3.01f",92.5*throttle[n]+25));
 				engn1refLine[n].show();
-				engn1refLine[n].setTranslation(0,-150.957*throttle[n]-64.043);
+				engn1refLine[n].setTranslation(0,-173.2*throttle[n]-46.8);
 			}
 			engn1[n].setText(sprintf("%3.01f",n1[n]));
 			engn1maxLine[n].setTranslation(0,-175);
-			engn1rpmLine[n].setTranslation(0,-215);
+			engn1rpmLine[n].setTranslation(0,-220);
 			if (n1[n] != nil){
 				engn1bar_scale[n].setScale(1, n1[n]/117.5);
 				if(n1[n] >= 117.5) {
@@ -405,30 +413,7 @@ var canvas_primary = {
 				engnai[n].hide();
 			}
 		}
-		
-		text5655.setText(sprintf("%+03.0f",getprop("environment/temperature-degc")));
-		fuelTotal.setText(sprintf("%03.01f",getprop("fdm/jsbsim/propulsion/total-fuel-lbs")*LB2KG/1000));
-		if (getprop("/fdm/jsbsim/propulsion/jettison-flow-rates") > 0) {
-			fuelToRemain.show();
-			fuelToRemainL.show();
-			fuelTemp.hide();
-			fuelTempL.hide();
-			fuelToRemain.setText(sprintf("%03.01f",getprop("controls/fuel/fuel-to-remain-lbs")*LB2KG/1000));
-		} else {
-			fuelToRemain.hide();
-			fuelToRemainL.hide();
-			fuelTemp.show();
-			fuelTempL.show();
-			fuelTemp.setText(sprintf("%+02.0fc",getprop("consumables/fuel/tank[1]/temperature_degC")));
-		}
-		
-		if (getprop("controls/anti-ice/wing-heat")) {
-			wai.show();
-		} else {
-			wai.hide();
-		}
-		
-		settimer(func me.update(), 0);
+		settimer(func me.fast_update(), 0.05);
 	}
 };
 
@@ -442,7 +427,8 @@ setlistener("/nasal/canvas/loaded", func {
 	primary_eicas.addPlacement({"node": "Upper-EICAS-Screen"});
 	var group = primary_eicas.createGroup();
 	var demo = canvas_primary.new(group);
-	demo.update();
+	demo.slow_update();
+	demo.fast_update();
 }, 1);
 
 var showPrimaryEicas = func() {

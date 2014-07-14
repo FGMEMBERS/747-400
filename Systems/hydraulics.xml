@@ -98,7 +98,23 @@
 				/systems/hydraulic/pressure[0] LT 100
 				/systems/hydraulic/pressure[3] LT 100
 			</test>
+			<output>fcs/inboard-elevator-actuator/malfunction/fail_stuck</output>
+		</switch>
+		<switch name="failures/hydraulics[10]">
+			<default value="0"/>
+			<test  logic="AND" value="1">
+				/systems/hydraulic/pressure[0] LT 100
+				/systems/hydraulic/pressure[3] LT 100
+			</test>
 			<output>fcs/outboard-elevator-actuator/malfunction/fail_stuck</output>
+		</switch>
+		<switch name="failures/hydraulics[11]">
+			<default value="0"/>
+			<test  logic="AND" value="1">
+				/systems/hydraulic/pressure[1] LT 100
+				/systems/hydraulic/pressure[2] LT 100
+			</test>
+			<output>fcs/stabilizer-actuator/malfunction/fail_stuck</output>
 		</switch>
 
 	</channel>

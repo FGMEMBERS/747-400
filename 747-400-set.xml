@@ -11,7 +11,7 @@
 		<cockpit type="int">3</cockpit>
 		<model type="int">3</model>
 	</rating>
-	<version>20140621</version>
+	<version>20140714</version>
 	
 	<flight-model>jsb</flight-model>
 	<aero>747-400</aero>
@@ -75,9 +75,6 @@
 		</autopilot>
 		<autopilot>
 			<path>Aircraft/747-400/Systems/744_pfd.xml</path>
-		</autopilot>
-		<autopilot>
-			<path>Aircraft/747-400/Systems/744_nd.xml</path>
 		</autopilot>
 		<electrical>
 			<path>Aircraft/747-400/Systems/744_elec.xml</path>
