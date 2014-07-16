@@ -560,12 +560,89 @@
             </condition>
         </item>
         <item>
+            <name>Ground equipment</name>
+            <value>Clear</value>
+        </item>
+        <item>
             <name>Flap lever</name>
             <value>Set takeoff flaps</value>
         </item>
         <item>
             <name>Flight controls</name>
             <value>Check</value>
+        </item>
+    </checklist>
+    
+    <checklist>    
+        <title>Before Takeoff Procedure</title>
+        <item>
+            <name>Notify cabin crew</name>
+            <value></value>
+        </item>
+    </checklist>
+    
+    <checklist>    
+        <title>Takeoff Procedure</title>
+        <item>
+            <name>STROBE lights switch</name>
+            <value>ON</value>
+            <condition>
+                <property>/controls/lighting/strobe</property>
+            </condition>
+        </item>
+        <item>
+            <name>Brakes</name>
+            <value>Released</value>
+            <condition>
+                <not><property>/controls/gear/brake-parking</property></not>
+            </condition>
+        </item>
+        <item>
+            <name>INBOARD landing lights switches</name>
+            <value>ON</value>
+            <condition>
+                <and>
+                    <property>/controls/lighting/landing-light-inbdl</property>
+                    <property>/controls/lighting/landing-light-inbdr</property>
+                </and>
+            </condition>
+        </item>
+        <item>
+            <name>Thrust levers</name>
+            <value>70% N1</value>
+            <condition>
+                <greater-than>
+                    <property>/controls/engines/engine/throttle</property>
+                    <value>0.5</value>
+                </greater-than>
+            </condition>
+        </item>
+        <item>
+            <name>Rotate at VR</name>
+            <value></value>
+        </item>
+        <item>
+            <name>Landing gear lever</name>
+            <value>UP</value>
+            <condition>
+                <not><property>/controls/gear/gear-down</property></not>
+            </condition>
+        </item>
+    </checklist>
+    
+    <checklist>    
+        <title>Climb and Cruise Procedure</title>
+        <item>
+            <name>Above 10,000ft INBOARD landing lights switches</name>
+            <value>OFF</value>
+            <condition>
+                <and>
+                    <not>
+                        <property>/controls/lighting/landing-light-inbdl</property>
+                        <property>/controls/lighting/landing-light-inbdr</property>
+                    </not>
+                </and>
+            </condition>
         </item>
     </checklist>
     
@@ -709,6 +786,15 @@
         <item>
             <name>NACELLE and WING ANTI-ICE switches</name>
             <value>OFF</value>
+        </item>
+        <item>
+            <name>BEACON light switch</name>
+            <value>OFF</value>
+            <condition>
+                <not>
+                    <property>/controls/lighting/beacon</property>
+                </not>
+            </condition>
         </item>
         <item>
             <name>FLIGHT DIRECTOR switches</name>

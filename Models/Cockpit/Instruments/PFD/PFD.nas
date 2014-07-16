@@ -82,7 +82,10 @@ var canvas_PFD = {
 		
 		canvas.parsesvg(pfd, "Aircraft/747-400/Models/Cockpit/Instruments/PFD/PFD.svg", {'font-mapper': font_mapper});
 		
-		horizon = pfd.getElementById("horizon").updateCenter();
+		horizon = pfd.getElementById("horizon");
+		horizon.updateCenter();
+		me.h_trans = horizon.createTransform();
+		me.h_rot = horizon.createTransform();
 		speedText = pfd.getElementById("speedText");
 		markerBeacon = pfd.getElementById("markerBeacon");
 		markerBeaconText = pfd.getElementById("markerBeaconText");
@@ -178,18 +181,10 @@ var canvas_PFD = {
 		var vSpd = getprop("/velocities/vertical-speed-fps");
 		
 		#10 deg = 105px
-		horizon.setTranslation(0,pitch*10.5);
-		horizon.setRotation(-roll*D2R);
+		me.h_rot.setRotation(-roll*D2R, horizon.getCenter());
+		me.h_trans.setTranslation(0,pitch*10.5);
 		bankPointer.setRotation(-roll*D2R);
 		compass.setRotation(-getprop("orientation/heading-deg")*D2R);
-		
-		# Modes
-		if (getprop("autopilot/locks/passive-mode") == 1)
-			afdsMode.setText("FD");
-		elsif (getprop("autopilot/locks/altitude") != "" or getprop("autopilot/locks/heading") != "" or getprop("autopilot/locks/speed") != "")
-			afdsMode.setText("CMD");
-		else
-			afdsMode.setText("");
 			
 		# Flight director
 		if (getprop("autopilot/locks/passive-mode") == 1) {
@@ -294,8 +289,6 @@ var canvas_PFD = {
 			risingRwy.hide();
 			risingRwyPtr.hide();
 		}
-		if (getprop("instrumentation/nav/nav-id") != nil)
-			ilsId.setText(getprop("instrumentation/nav/nav-id"));
 		
 		if (alt < 10000)
 			tenThousand.show();
@@ -410,8 +403,23 @@ var canvas_PFD = {
 		if(getprop("instrumentation/pfd/vsi-needle-deg") != nil)
 			vsiNeedle.setRotation(getprop("instrumentation/pfd/vsi-needle-deg")*D2R);
 		
+		settimer(func me.update(), 0.05);
+	},
+	update_slow: func()
+	{
+		if (var navId = getprop("instrumentation/nav/nav-id") != nil)
+			ilsId.setText(navId);
+		
+		# Modes
+		if (getprop("autopilot/locks/passive-mode") == 1)
+			afdsMode.setText("FD");
+		elsif (getprop("autopilot/locks/altitude") != "" or getprop("autopilot/locks/heading") != "" or getprop("autopilot/locks/speed") != "")
+			afdsMode.setText("CMD");
+		else
+			afdsMode.setText("");
+		
 		var apSpd = getprop("/autopilot/locks/speed");
-		if (apSpd == "speed-with-throttle-mach" or apSpd == "speed-with-throttle-ias")
+		if (apSpd == "speed-with-throttle")
 			atMode.setText("SPD");
 		elsif (apSpd ==  "speed-with-pitch-trim")
 			atMode.setText("THR");
@@ -433,11 +441,15 @@ var canvas_PFD = {
 			vsPointer.show();
 		} elsif (apPitch ==  "altitude-hold")
 			pitchMode.setText("ALT");
+		elsif (apPitch ==  "gs1-hold")
+			pitchMode.setText("G/S");
+		elsif (apPitch ==  "speed-with-pitch-trim")
+			pitchMode.setText("FLCH SPD");
 		else
 			pitchMode.setText("");
-		
-		settimer(func me.update(), 0.05);
-	}
+			
+		settimer(func me.update_slow(), 0.5);
+	},
 };
 
 setlistener("sim/signals/fdm-initialized", func() {
@@ -451,12 +463,13 @@ setlistener("sim/signals/fdm-initialized", func() {
 	var group = pfd_display.createGroup();
 	pfd_canvas = canvas_PFD.new(group);
 	pfd_canvas.update();
+	pfd_canvas.update_slow();
 });
 
 setlistener("sim/signals/reinit", func pfd_display.del());
 
 # The optional second arguments enables creating a window decoration
 var showPfd = func() {
-	var dlg = canvas.Window.new([400, 400], "dialog");
+	var dlg = canvas.Window.new([400, 400], "dialog").set("resize", 1);
 	dlg.setCanvas(pfd_display);
 }

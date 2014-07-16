@@ -139,7 +139,6 @@ setlistener("/controls/engines/auto-ignition", func(autoig){
 ## FG Autostart/Shutdown ##
 
 var autostart = func {
-	setprop("/sim/multiplay/chat","I'm too lazy to go through the startup procedure");
 	setprop("/controls/engines/engine[0]/starter",1);
 	setprop("/controls/engines/engine[1]/starter",1);
 	setprop("/controls/engines/engine[2]/starter",1);

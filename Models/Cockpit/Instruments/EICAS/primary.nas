@@ -17,18 +17,14 @@ var msgWarning = {};
 var msgCaution = {};
 var msgAdvisory = {};
 var eng1n1rect = {};
+var eng1n1cmdLine = {};
 var eng1n1maxLine = {};
-var eng1n1refLine = {};
-var eng1n1rpmLine = {};
+var eng2n1cmdLine = {};
 var eng2n1maxLine = {};
-var eng2n1refLine = {};
-var eng2n1rpmLine = {};
+var eng3n1cmdLine = {};
 var eng3n1maxLine = {};
-var eng3n1refLine = {};
-var eng3n1rpmLine = {};
+var eng4n1cmdLine = {};
 var eng4n1maxLine = {};
-var eng4n1refLine = {};
-var eng4n1rpmLine = {};
 var canvas_group = {};
 var primary_dialog = {};
 var eng1egt = {};
@@ -112,18 +108,14 @@ var canvas_primary = {
 		msgCaution = eicasP.getElementById("msgCaution");
 		msgAdvisory = eicasP.getElementById("msgAdvisory");
 		eng1n1rect = eicasP.getElementById("eng1n1rect");
+		eng1n1cmdLine = eicasP.getElementById("eng1n1cmdLine");
 		eng1n1maxLine = eicasP.getElementById("eng1n1maxLine");
-		eng1n1refLine = eicasP.getElementById("eng1n1refLine");
-		eng1n1rpmLine = eicasP.getElementById("eng1n1rpmLine");
+		eng2n1cmdLine = eicasP.getElementById("eng2n1cmdLine");
 		eng2n1maxLine = eicasP.getElementById("eng2n1maxLine");
-		eng2n1refLine = eicasP.getElementById("eng2n1refLine");
-		eng2n1rpmLine = eicasP.getElementById("eng2n1rpmLine");
+		eng3n1cmdLine = eicasP.getElementById("eng3n1cmdLine");
 		eng3n1maxLine = eicasP.getElementById("eng3n1maxLine");
-		eng3n1refLine = eicasP.getElementById("eng3n1refLine");
-		eng3n1rpmLine = eicasP.getElementById("eng3n1rpmLine");
+		eng4n1cmdLine = eicasP.getElementById("eng4n1cmdLine");
 		eng4n1maxLine = eicasP.getElementById("eng4n1maxLine");
-		eng4n1refLine = eicasP.getElementById("eng4n1refLine");
-		eng4n1rpmLine = eicasP.getElementById("eng4n1rpmLine");
 		rect3032 =  eicasP.getElementById("rect3032");
 		eng1egt =  eicasP.getElementById("eng1egt");
 		eng2egt =  eicasP.getElementById("eng2egt");
@@ -231,29 +223,16 @@ var canvas_primary = {
 		setlistener("controls/flight/flaps",				func { me.flaps = getprop("controls/flight/flaps") } );
 		setlistener("controls/gear/gear-down",				func { me.gear_down = getprop("controls/gear/gear-down") } );
 		setlistener("controls/anti-ice/wing-heat",			func { m.update_wai() } );
-		setlistener("instrumentation/eicas/msg/warning",	func { m.update_messages() } );
-		setlistener("instrumentation/eicas/msg/caution",	func { m.update_messages() } );
-		setlistener("instrumentation/eicas/msg/advisory",	func { m.update_messages() } );
-		setlistener("instrumentation/eicas/msg/memo",		func { m.update_messages() } );
 		
 		return m;
 	},
 	update_wai: func()
 	{
-		print("wai");
 		if (getprop("controls/anti-ice/wing-heat")) {
 			wai.show();
 		} else {
 			wai.hide();
 		}
-	},
-	update_messages: func()
-	{
-		print("messages");
-		msgWarning.setText(getprop("instrumentation/eicas/msg/warning"));
-		msgCaution.setText(getprop("instrumentation/eicas/msg/caution"));
-		msgAdvisory.setText(getprop("instrumentation/eicas/msg/advisory"));
-		msgMemo.setText(getprop("instrumentation/eicas/msg/memo"));
 	},
 	slow_update: func()
 	{
@@ -263,29 +242,29 @@ var canvas_primary = {
 		text5655.setText(sprintf("%+03.0f",getprop("environment/temperature-degc")));
 		fuelTotal.setText(sprintf("%03.01f",getprop("fdm/jsbsim/propulsion/total-fuel-lbs")*LB2KG/1000));
 		if (getprop("/fdm/jsbsim/propulsion/jettison-flow-rates") > 0) {
+			fuelToRemain.setText(sprintf("%03.01f",getprop("controls/fuel/fuel-to-remain-lbs")*LB2KG/1000));
 			fuelToRemain.show();
 			fuelToRemainL.show();
 			fuelTemp.hide();
 			fuelTempL.hide();
-			fuelToRemain.setText(sprintf("%03.01f",getprop("controls/fuel/fuel-to-remain-lbs")*LB2KG/1000));
 		} else {
+			fuelTemp.setText(sprintf("%+02.0fc",getprop("consumables/fuel/tank[1]/temperature_degC")));
 			fuelToRemain.hide();
 			fuelToRemainL.hide();
 			fuelTemp.show();
 			fuelTempL.show();
-			fuelTemp.setText(sprintf("%+02.0fc",getprop("consumables/fuel/tank[1]/temperature_degC")));
 		}
 		
 		if (flapPos != 0 or flaps != 0) {
+			text4283.setText(sprintf("%2.0f",flaps*30));
+			flapsLine.setTranslation(0,157*flaps);
+			text4283.setTranslation(0,157*flaps);
+			flapsBar_scale.setScale(1, flapPos);
 			text4283.show();
 			flapsLine.show();
 			flapsL.show();
 			flapsBar.show();
 			flapsBox.show();
-			text4283.setText(sprintf("%2.0f",flaps*30));
-			flapsLine.setTranslation(0,157*flaps);
-			text4283.setTranslation(0,157*flaps);
-			flapsBar_scale.setScale(1, flapPos);
 		}
 		if (flaps != flapPos) {
 			text4283.setColor(1,0,1);
@@ -348,6 +327,11 @@ var canvas_primary = {
 			}
 		}
 		
+		msgWarning.setText(getprop("instrumentation/eicas/msg/warning"));
+		msgCaution.setText(getprop("instrumentation/eicas/msg/caution"));
+		msgAdvisory.setText(getprop("instrumentation/eicas/msg/advisory"));
+		msgMemo.setText(getprop("instrumentation/eicas/msg/memo"));
+		
 		settimer(func me.slow_update(), 0.3);
 	},
 	fast_update: func() 
@@ -357,41 +341,40 @@ var canvas_primary = {
 		var throttle = [getprop("controls/engines/engine[0]/throttle"),getprop("controls/engines/engine[1]/throttle"),getprop("controls/engines/engine[2]/throttle"),getprop("controls/engines/engine[3]/throttle")];
 		
 		var engn1 = [eng1n1,eng2n1,eng3n1,eng4n1];
+		var engn1cmdLine = [eng1n1cmdLine,eng2n1cmdLine,eng3n1cmdLine,eng4n1cmdLine];
 		var engn1maxLine = [eng1n1maxLine,eng2n1maxLine,eng3n1maxLine,eng4n1maxLine];
-		var engn1rpmLine = [eng1n1rpmLine,eng2n1rpmLine,eng3n1rpmLine,eng4n1rpmLine];
 		var engn1ref = [eng1n1ref,eng2n1ref,eng3n1ref,eng4n1ref];
-		var engn1refLine = [eng1n1refLine,eng2n1refLine,eng3n1refLine,eng4n1refLine];
 		var engn1bar = [eng1n1bar,eng2n1bar,eng3n1bar,eng4n1bar];
 		var engn1bar_scale = [eng1n1bar_scale,eng2n1bar_scale,eng3n1bar_scale,eng4n1bar_scale];
 		var engegt = [eng1egt,eng2egt,eng3egt,eng4egt];
 		var engegtBar = [eng1egtBar,eng2egtBar,eng3egtBar,eng4egtBar];
 		var engegtBar_scale = [eng1egtBar_scale,eng2egtBar_scale,eng3egtBar_scale,eng4egtBar_scale];
 		var engnai = [eng1nai,eng2nai,eng3nai,eng4nai];
+		var engn1max = getprop("/fdm/jsbsim/eec/throttle-max-cmd-norm");
 		
 		for(var n = 0; n<=3; n+=1){
-			if (getprop("controls/engines/engine["~n~"]/reverser")) {
+			var revPos = getprop("engines/engine["~n~"]/reverser-pos-norm") or 0;
+			if (revPos > 0) {
 				engn1ref[n].setText("REV");
-				if (getprop("engines/engine["~n~"]/reverser-pos-norm") != 1) {
+				if (revPos != 1)
 					engn1ref[n].setColor(1,0.5,0);
-				} else {
+				else
 					engn1ref[n].setColor(0,1.0,0);
-				}
-				engn1refLine[n].hide();
+				engn1cmdLine[n].hide();
 			} else {
-				engn1ref[n].setText(sprintf("%3.01f",92.5*throttle[n]+25));
-				engn1refLine[n].show();
-				engn1refLine[n].setTranslation(0,-173.2*throttle[n]-46.8);
+				engn1cmdLine[n].show();
+				engn1cmdLine[n].setTranslation(0,-173.2*throttle[n]*engn1max-46.8);
+				engn1ref[n].setText(sprintf("%3.01f",92.5*throttle[n]*engn1max+25));
+				engn1ref[n].setColor(0,1.0,0);
 			}
 			engn1[n].setText(sprintf("%3.01f",n1[n]));
-			engn1maxLine[n].setTranslation(0,-175);
-			engn1rpmLine[n].setTranslation(0,-220);
+			engn1maxLine[n].setTranslation(0,-173.2*engn1max-46.8);
 			if (n1[n] != nil){
 				engn1bar_scale[n].setScale(1, n1[n]/117.5);
-				if(n1[n] >= 117.5) {
+				if(n1[n] >= 117.5)
 					engn1bar[n].setColor(1,0,0);
-				} else {
+				else
 					engn1bar[n].setColor(1,1,1);
-				}
 			}
 			if (egt[n] != nil) {
 				engegt[n].setText(sprintf("%3.0f",(egt[n]-32)/1.8));
@@ -407,11 +390,10 @@ var canvas_primary = {
 					engegtBar[n].setColor(1,1,1);
 				}
 			}
-			if (getprop("controls/anti-ice/engine["~n~"]/inlet-heat")) {
+			if (getprop("controls/anti-ice/engine["~n~"]/inlet-heat"))
 				engnai[n].show();
-			} else {
+			else
 				engnai[n].hide();
-			}
 		}
 		settimer(func me.fast_update(), 0.05);
 	}

@@ -11,7 +11,7 @@
 		<cockpit type="int">3</cockpit>
 		<model type="int">3</model>
 	</rating>
-	<version>20140714</version>
+	<version>20140716</version>
 	
 	<flight-model>jsb</flight-model>
 	<aero>747-400</aero>
@@ -503,8 +503,20 @@ left mouse button and counter clockwise using the middle mouse button.
 			<name>Delete</name>
 			<desc>Toggle Reversers</desc>
 			<binding>
-				<command>nasal</command>
-				<script>reversethrust.togglereverser()</script>
+				<command>property-toggle</command>
+				<property>/controls/engines/engine[0]/reverser</property>
+			</binding>
+			<binding>
+				<command>property-toggle</command>
+				<property>/controls/engines/engine[1]/reverser</property>
+			</binding>
+			<binding>
+				<command>property-toggle</command>
+				<property>/controls/engines/engine[2]/reverser</property>
+			</binding>
+			<binding>
+				<command>property-toggle</command>
+				<property>/controls/engines/engine[3]/reverser</property>
 			</binding>
 		</key>
 		<key n='356'>

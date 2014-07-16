@@ -19,6 +19,8 @@ var hyd1pr = {};
 var hyd2pr = {};
 var hyd3pr = {};
 var hyd4pr = {};
+var apuBattVdc = {};
+var mainBattVdc = {};
 
 var canvas_stat = {
 	new: func(canvas_group)
@@ -48,6 +50,8 @@ var canvas_stat = {
 		hyd2pr = eicas.getElementById("hyd2pr");
 		hyd3pr = eicas.getElementById("hyd3pr");
 		hyd4pr = eicas.getElementById("hyd4pr");
+		mainBattVdc = eicas.getElementById("mainBattVdc");
+		apuBattVdc = eicas.getElementById("apuBattVdc");
 		
 		return m;
 	},
@@ -68,7 +72,9 @@ var canvas_stat = {
 		hyd2pr.setText(sprintf("%4.0f",getprop("systems/hydraulic/pressure[1]")));
 		hyd3pr.setText(sprintf("%4.0f",getprop("systems/hydraulic/pressure[2]")));
 		hyd4pr.setText(sprintf("%4.0f",getprop("systems/hydraulic/pressure[3]")));
+		mainBattVdc.setText(sprintf("%2.0f",getprop("systems/electrical/suppliers/battery")));
+		apuBattVdc.setText(sprintf("%2.0f",getprop("systems/electrical/suppliers/apu-battery")));
 		
-		settimer(func me.update(), 0);
+		settimer(func me.update(), 0.05);
 	}
 };

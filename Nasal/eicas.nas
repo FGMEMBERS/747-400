@@ -108,13 +108,14 @@ var takeoff_config_warnings = func {
 }
 
 var warning_messages = func {
+	var wow = getprop("/gear/gear/wow");
 	if (radio_alt>41000)
 		append(msgs_warning,">CABIN ALTITUDE");
 	if ((((radio_alt<800) and (throttle<0.1)) or (flaps>0.6)) and !gear_down)
 		append(msgs_warning,">CONFIG GEAR");
-	if (getprop("/gear/gear/wow") and (getprop("/controls/engines/engine[1]/throttle")>0.5 or getprop("/controls/engines/engine[2]/throttle")>0.5) and (getprop("/gear/gear[2]/steering-norm") != 0 or getprop("/gear/gear[3]/steering-norm") != 0))
+	if (wow and (getprop("/controls/engines/engine[1]/throttle")>0.5 or getprop("/controls/engines/engine[2]/throttle")>0.5) and (getprop("/gear/gear[2]/steering-norm") != 0 or getprop("/gear/gear[3]/steering-norm") != 0))
 		append(msgs_warning,">CONFIG GEAR CTR");
-	if (getprop("controls/flight/speedbrake") != 0 and getprop("/gear/gear/wow") and (getprop("/controls/engines/engine[1]/throttle")>0.5 or getprop("/controls/engines/engine[2]/throttle")>0.5))
+	if (getprop("controls/flight/speedbrake") != 0 and wow and (getprop("/controls/engines/engine[1]/throttle")>0.5 or getprop("/controls/engines/engine[2]/throttle")>0.5))
 		append(msgs_warning,">CONFIG SPOILERS");	
 	if (engfire[0] or engfire[1] or engfire[2] or engfire[3]) {
 		var msgs_fire = "FIRE ENGINE ";
@@ -132,6 +133,8 @@ var warning_messages = func {
 		if(speed > getprop("instrumentation/fmc/vspeeds/Vmax"))
 			append(msgs_warning,">OVERSPEED");
 	}
+	if (abs((1-getprop("/controls/flight/elevator-trim"))*7.75-getprop("/fdm/jsbsim/aero/stab-trim-units")) > 1 and wow)
+		append(msgs_warning,">CONFIG STAB");
 }
 
 var caution_messages = func {
@@ -181,6 +184,9 @@ var caution_messages = func {
 }
 
 var advisory_messages = func {
+	var fuel = [0,getprop("/consumables/fuel/tank[1]/level-lbs"),getprop("/consumables/fuel/tank[2]/level-lbs"),getprop("/consumables/fuel/tank[3]/level-lbs"),getprop("/consumables/fuel/tank[4]/level-lbs"),0,0,0];
+	var xfeed = [getprop("/controls/fuel/tank[1]/x-feed"),getprop("/controls/fuel/tank[2]/x-feed"),getprop("/controls/fuel/tank[3]/x-feed"),getprop("/controls/fuel/tank[4]/x-feed")];
+	
 	if ((getprop("/controls/anti-ice/engine[0]/carb-heat") or getprop("/controls/anti-ice/engine[1]/carb-heat") or getprop("/controls/anti-ice/engine[2]/carb-heat") or getprop("/controls/anti-ice/engine[3]/carb-heat") or getprop("/controls/anti-ice/wing-heat")) and getprop("/environment/temperature-degc") > 12)
 		append(msgs_advisory,">ANTI-ICE");
 	if (!getprop("/controls/engines/autostart"))
@@ -215,21 +221,21 @@ var advisory_messages = func {
 	}
 	if (getprop("/controls/flight/flaps") != getprop("/fdm/jsbsim/fcs/flap-cmd-norm"))
 		append(msgs_advisory,">FLAP RELIEF");
-	if (math.abs((getprop("/consumables/fuel/tank[1]/level-lbs")-getprop("/consumables/fuel/tank[4]/level-lbs"))) > 3000)
+	if (math.abs((fuel[1]-fuel[4])) > 3000)
 		append(msgs_advisory,">FUEL IMBAL 1-4");
-	if (math.abs((getprop("/consumables/fuel/tank[2]/level-lbs")-getprop("/consumables/fuel/tank[3]/level-lbs"))) > 6000)
+	if (math.abs((getprop("/consumables/fuel/tank[2]/level-lbs")-fuel[3])) > 6000)
 		append(msgs_advisory,">FUEL IMBAL 2-3");
-	if (((getprop("/consumables/fuel/tank[2]/level-lbs") <= getprop("/consumables/fuel/tank[1]/level-lbs")) or (getprop("/consumables/fuel/tank[3]/level-lbs") <= getprop("/consumables/fuel/tank[4]/level-lbs"))) and !getprop("/controls/fuel/dump-valve"))
+	if (((fuel[2] <= (fuel[1]+20)) or (fuel[3] <= (fuel[4]+20))) and !getprop("/controls/fuel/dump-valve") and (xfeed[0] or xfeed[3]))
 		append(msgs_advisory,">FUEL TANK/ENG");
-	if ((((getprop("/consumables/fuel/tank[2]/level-lbs") > getprop("/consumables/fuel/tank[1]/level-lbs")) or (getprop("/consumables/fuel/tank[3]/level-lbs") > getprop("/consumables/fuel/tank[4]/level-lbs"))) or getprop("/gear/gear/wow") == 1 ) and (getprop("/controls/fuel/tank[1]/x-feed") == 1) and (getprop("/controls/fuel/tank[4]/x-feed") == 1))
-		append(msgs_advisory,">FUEL XFER 1+4");
+	#if ((((fuel[2] > fuel[1]) or (fuel[3] > fuel[4])) or getprop("/gear/gear/wow") == 1 ) and xfeed[0] and xfeed[3])
+	#	append(msgs_advisory,">FUEL XFER 1+4");
 	if (getprop("/systems/hydraulic/demand-pump-pressure-low[0]") == 1 or getprop("/systems/hydraulic/demand-pump-pressure-low[1]") == 1 or getprop("/systems/hydraulic/demand-pump-pressure-low[2]") == 1 or getprop("/systems/hydraulic/demand-pump-pressure-low[3]") == 1)
 		append(msgs_advisory,"HYD PRESS DEM 1, 2, 3, 4");
 	if (getprop("/systems/hydraulic/engine-pump-pressure-low[0]") == 1 or getprop("/systems/hydraulic/engine-pump-pressure-low[1]") == 1 or getprop("/systems/hydraulic/engine-pump-pressure-low[2]") == 1 or getprop("/systems/hydraulic/engine-pump-pressure-low[3]") == 1)
 		append(msgs_advisory,"HYD PRESS ENG 1, 2, 3, 4");
 	if (getprop("/controls/fuel/dump-valve") == 1)
 		append(msgs_advisory,">JETT NOZ ON");
-	if (((getprop("/consumables/fuel/tank[1]/level-lbs") != getprop("/consumables/fuel/tank[2]/level-lbs")) or (getprop("/consumables/fuel/tank[3]/level-lbs") != getprop("/consumables/fuel/tank[4]/level-lbs"))) and ((getprop("/controls/fuel/tank[1]/x-feed") != 1) or (getprop("/controls/fuel/tank[4]/x-feed") != 1)))
+	if (((abs(fuel[1]-fuel[2]) > 10) or (abs(fuel[3]-fuel[4]) > 10)) and (!xfeed[0] or !xfeed[3]))
 		append(msgs_advisory,">X FEED CONFIG");
 	if (!getprop("controls/flight/yaw-damper"))
 		append(msgs_advisory,">YAW DAMPER LWR, UPR");
@@ -237,6 +243,8 @@ var advisory_messages = func {
 		append(msgs_advisory,"AUTOBRAKES");
 	if ((getprop("consumables/tank[1]/temperature_degC") or 0) <= -37)
 		append(msgs_advisory,">FUEL TEMP LOW");
+	if (getprop("instrumentation/tcas/inputs/mode") == 0)
+		append(msgs_advisory,">TCAS OFF");
 }
 
 var memo_messages = func {
@@ -346,6 +354,6 @@ setlistener("/instrumentation/eicas/display", func {
 });
 
 var showEicas = func() {
-	var dlg = canvas.Window.new([400, 400], "dialog");
+	var dlg = canvas.Window.new([400, 400], "dialog").set("resize", 1);
 	dlg.setCanvas(secondary_eicas);
 }
