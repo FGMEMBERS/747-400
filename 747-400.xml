@@ -7,7 +7,7 @@
     <fileheader>
         <author>Gijs de Rooy</author>
         <filecreationdate>2008</filecreationdate>
-        <version>20140716</version>
+        <version>20140717</version>
         <description>Boeing 747-400 with GE CF6-80C2B1F engines</description>
 
         <license>
@@ -784,9 +784,8 @@
         </aerosurface_scale>
         <actuator name="Left Outboard Aileron Actuator">
             <input>fcs/left-outboard-aileron-int-pos-rad</input>
-            <rate_limit> 0.873 </rate_limit>
-            <!-- <rate_limit sense="decr"> 0.785 </rate_limit> 45 deg/sec -->
-            <!-- <rate_limit sense="incr"> 0.960 </rate_limit> 55 deg/sec -->
+            <rate_limit sense="incr"> 0.785 </rate_limit> <!-- 45 deg/sec -->
+            <rate_limit sense="decr"> 0.960 </rate_limit> <!-- 55 deg/sec -->
             <output>fcs/left-outboard-aileron-pos-rad</output>
         </actuator>
         <aerosurface_scale name="Left Outboard Aileron Normalizer">
@@ -812,9 +811,8 @@
         </aerosurface_scale>
         <actuator name="Right Outboard Aileron Actuator">
             <input>fcs/right-outboard-aileron-int-pos-rad</input>
-            <rate_limit> 0.873 </rate_limit>
-            <!-- <rate_limit sense="decr"> 0.785 </rate_limit> 45 deg/sec -->
-            <!-- <rate_limit sense="incr"> 0.960 </rate_limit> 55 deg/sec -->
+            <rate_limit sense="incr"> 0.785 </rate_limit> <!-- 45 deg/sec -->
+            <rate_limit sense="decr"> 0.960 </rate_limit> <!-- 55 deg/sec -->
             <output>fcs/right-outboard-aileron-pos-rad</output>
         </actuator>
         <aerosurface_scale name="Right Outboard Aileron Normalizer">
@@ -840,9 +838,8 @@
         </aerosurface_scale>
         <actuator name="Left Inboard Aileron Actuator">
             <input>fcs/left-inboard-aileron-int-pos-rad</input>
-            <rate_limit> 0.742 </rate_limit>
-            <!-- <rate_limit sense="decr"> 0.698 </rate_limit> 40 deg/sec -->
-            <!-- <rate_limit sense="incr"> 0.785 </rate_limit> 45 deg/sec -->
+            <rate_limit sense="incr"> 0.698 </rate_limit> <!-- 40 deg/sec -->
+            <rate_limit sense="decr"> 0.785 </rate_limit> <!-- 45 deg/sec -->
             <output>fcs/left-inboard-aileron-pos-rad</output>
         </actuator>
         <aerosurface_scale name="Left Inboard Aileron Normalizer">
@@ -868,9 +865,8 @@
         </aerosurface_scale>
         <actuator name="Right Inboard Aileron Actuator">
             <input>fcs/right-inboard-aileron-int-pos-rad</input>
-            <rate_limit> 0.742 </rate_limit>
-            <!-- <rate_limit sense="decr"> 0.698 </rate_limit> 40 deg/sec -->
-            <!-- <rate_limit sense="incr"> 0.785 </rate_limit> 45 deg/sec -->
+            <rate_limit sense="incr"> 0.698 </rate_limit> <!-- 40 deg/sec -->
+            <rate_limit sense="decr"> 0.785 </rate_limit> <!-- 45 deg/sec -->
             <output>fcs/right-inboard-aileron-pos-rad</output>
         </actuator>
         <aerosurface_scale name="Right Inboard Aileron Normalizer">
