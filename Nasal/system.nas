@@ -156,8 +156,8 @@ var autostart = func {
 	setprop("/controls/lighting/landing-light-inbdr",1);
 	setprop("/controls/lighting/landing-light-outbdl",1);
 	setprop("/controls/lighting/landing-light-outbdr",1);
-	setprop("/controls/lighting/logo-lights",1);
-	setprop("/controls/lighting/nav-lights",1);
+	setprop("/controls/lighting/logo",1);
+	setprop("/controls/lighting/nav",1);
 	setprop("/controls/lighting/strobe",1);
 	setprop("/controls/lighting/taxi-lights",1);
 	setprop("/controls/lighting/turnoff-light-l",1);
@@ -204,9 +204,7 @@ var autostart = func {
 
 ## Lights ##
 
-strobe_switch = props.globals.getNode("controls/switches/strobe", 1);
 var beacon = aircraft.light.new( "/sim/model/lights/beacon", [0.05, 1.2,], "/controls/lighting/beacon" );
-beacon_switch = props.globals.getNode("controls/lighting/beacon", 1);
 var strobe = aircraft.light.new( "/sim/model/lights/strobe", [0.05, 3,], "/controls/lighting/strobe" );
 
 ## Liveries ##

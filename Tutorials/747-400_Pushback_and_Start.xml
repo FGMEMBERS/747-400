@@ -45,25 +45,14 @@ We're now fully configured to begin our pushback and engine start. The passenger
 		</exit>
     </step>
 
-    <!--
     <step>
 		<message>Turn ON the BEACON lights.</message>
-		<view>
-			<heading-offset-deg>319.9</heading-offset-deg>
-			<pitch-offset-deg>26.2</pitch-offset-deg>
-			<roll-offset-deg>0.0</roll-offset-deg>
-			<x-offset-m>-0.55</x-offset-m>
-			<y-offset-m>3.8</y-offset-m>
-			<z-offset-m>-23.5</z-offset-m>
-			<field-of-view>57</field-of-view>
-		</view>
 		<exit>
 			<condition>
 				<property>/controls/lighting/beacon</property>
 			</condition>
 		</exit>
     </step>
-    -->
 	
 	<step>
 		<message>Open the 747-400 > Pushback dialog and connect the pushback.</message>
@@ -79,9 +68,9 @@ We're now fully configured to begin our pushback and engine start. The passenger
 		<exit>
 			<condition>
 				<equals>
-                                    <property>/controls/gear/brake-parking</property>
-                                    <value>0</value>		
-                                </equals>
+					<property>/controls/gear/brake-parking</property>
+					<value>0</value>		
+				</equals>
 			</condition>
 		</exit>
 	</step>

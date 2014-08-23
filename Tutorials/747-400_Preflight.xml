@@ -131,21 +131,20 @@ You just stepped through the cockpit door of the cold and dark 747-400, the most
 		<message>Turn on the NAV lights.</message>
 		<exit>
 			<condition> 
-				<property>/controls/lighting/nav-lights</property> 
+				<property>/controls/lighting/nav</property> 
 			</condition>
 		</exit>
     </step>
 
-	<!--
     <step>
 		<message>Turn on the LOGO lights.</message>
 		<exit>
 			<condition>
-				<property>/controls/lighting/logo-lights</property>             
+				<property>/controls/lighting/logo</property>             
 			</condition>
 		</exit>
     </step>
-
+	<!--
     <step>
 		<message>Turn on the WING lights.</message>
     </step>

@@ -40,7 +40,7 @@
 	<step>
 		<message>Set flaps to 20.</message>
 		<exit>
-			<condition>    
+			<condition>
 				<equals>         
 					<property>/controls/flight/flaps</property>
 					<value>0.667</value>
@@ -53,10 +53,10 @@
 		<message>Release parking brake and taxi to runway 18L.</message>
 		<exit>
 			<condition>
-				<equals>         
-                                        <property>/controls/gear/brake-parking</property>
-                                        <value>0</value>		
-                                </equals>         
+				<equals>
+						<property>/controls/gear/brake-parking</property>
+						<value>0</value>		
+				</equals>
 			</condition>
 		</exit>
 	</step>
@@ -68,9 +68,12 @@
 	<step>
 		<message>Turn LANDING and STROBE lights ON.</message>
 		<exit>
-			<condition>   
+			<condition>
 				<and>
-					<property>/controls/lighting/landing-lights</property>
+					<property>/controls/lighting/landing-light-inbdl</property>
+					<property>/controls/lighting/landing-light-inbdr</property>
+					<property>/controls/lighting/landing-light-outbdl</property>
+					<property>/controls/lighting/landing-light-outbdr</property>
 					<property>/controls/lighting/strobe</property>
 				</and>
 			</condition>

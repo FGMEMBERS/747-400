@@ -54,7 +54,7 @@
 	<object-name>LightSrcLeft</object-name>
 	<condition>
 		<and>
-			<property>/controls/lighting/logo-lights</property>
+			<property>/controls/lighting/logo</property>
 			<property>/sim/rendering/rembrandt/enabled</property> 
 		</and>
 	</condition>

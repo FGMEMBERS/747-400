@@ -109,7 +109,7 @@
 	<condition>
 		<and>
 			<equals>
-				<property>/controls/lighting/nav-lights</property>
+				<property>/controls/lighting/nav</property>
 				<value>1</value>
 			</equals>
 			<property>/sim/rendering/rembrandt/enabled</property> 
