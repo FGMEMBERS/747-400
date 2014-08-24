@@ -10,6 +10,7 @@
 	<property>/controls/fuel/dump-valve</property>
 	-->
 	<property>/controls/fuel/fuel-to-remain-lbs</property>
+	<property>/controls/fuel/transfer-main-1-4</property>
 
 	<channel name="fuel">
 
@@ -30,18 +31,17 @@
 			</test>
 		</switch>
 		<!-- JETTISON -->
-		<switch name="propulsion/jettison-flow-rates">
+		<switch name="propulsion/tank[0]/external-flow-rate/jettison">
 			<default value="0"/>
-			<test logic="AND" value="25">
+			<test logic="AND" value="33">
 				/controls/fuel/dump-valve == 1
 				propulsion/total-fuel-lbs gt /controls/fuel/fuel-to-remain-lbs
+				propulsion/tank[0]/contents-lbs gt 7055
 			</test>
-			<output>propulsion/tank[0]/external-flow-rate/jettison</output>
-			<output>propulsion/tank[7]/external-flow-rate/jettison</output>
 		</switch>
 		<switch name="propulsion/tank[2]/external-flow-rate/jettison">
 			<default value="0"/>
-			<test logic="AND" value="25">
+			<test logic="AND" value="33">
 				/controls/fuel/dump-valve == 1
 				propulsion/total-fuel-lbs gt /controls/fuel/fuel-to-remain-lbs
 				propulsion/tank[2]/contents-lbs gt 7055
@@ -49,10 +49,18 @@
 		</switch>
 		<switch name="propulsion/tank[3]/external-flow-rate/jettison">
 			<default value="0"/>
-			<test logic="AND" value="25">
+			<test logic="AND" value="33">
 				/controls/fuel/dump-valve == 1
 				propulsion/total-fuel-lbs gt /controls/fuel/fuel-to-remain-lbs
 				propulsion/tank[3]/contents-lbs gt 7055
+			</test>
+		</switch>
+		<switch name="propulsion/tank[7]/external-flow-rate/jettison">
+			<default value="0"/>
+			<test logic="AND" value="33">
+				/controls/fuel/dump-valve == 1
+				propulsion/total-fuel-lbs gt /controls/fuel/fuel-to-remain-lbs
+				propulsion/tank[7]/contents-lbs gt 7055
 			</test>
 		</switch>
 		<summer name="propulsion/fuel-dump-rate-pps">
@@ -91,6 +99,17 @@
 				propulsion/tank[1]/contents-lbs gt 7050
 				propulsion/tank[2]/contents-lbs lt 84057
 			</test>
+			<test logic="AND" value="25">
+				/controls/fuel/dump-valve == 1
+				propulsion/total-fuel-lbs gt /controls/fuel/fuel-to-remain-lbs
+				propulsion/tank[1]/contents-lbs gt 7050
+				propulsion/tank[2]/contents-lbs lt 20000
+			</test>
+			<test logic="AND" value="25">
+				/controls/fuel/transfer-main-1-4 == 1
+				propulsion/tank[1]/contents-lbs gt 7050
+				propulsion/tank[2]/contents-lbs lt 84057
+			</test>
 		</switch>
 		<!-- from MAIN #2 to MAIN #1 -->
 		<switch name="propulsion/tank[2]/external-flow-rate/tank[1]">
@@ -121,6 +140,17 @@
 				/controls/fuel/tank[3]/x-feed == 1
 				/controls/fuel/tank[4]/x-feed == 1
 				propulsion/tank[4]/contents-lbs gt propulsion/tank[3]/contents-lbs
+				propulsion/tank[3]/contents-lbs lt 84057
+				propulsion/tank[4]/contents-lbs gt 7050
+			</test>
+			<test logic="AND" value="25">
+				/controls/fuel/dump-valve == 1
+				propulsion/total-fuel-lbs gt /controls/fuel/fuel-to-remain-lbs
+				propulsion/tank[3]/contents-lbs lt 20000
+				propulsion/tank[4]/contents-lbs gt 7050
+			</test>
+			<test logic="AND" value="25">
+				/controls/fuel/transfer-main-1-4 == 1
 				propulsion/tank[3]/contents-lbs lt 84057
 				propulsion/tank[4]/contents-lbs gt 7050
 			</test>
@@ -204,6 +234,16 @@
 			<input>-propulsion/tank[7]/external-flow-rate/tank[0]</input>
 			<output>propulsion/tank[7]/external-flow-rate-pps</output>
 		</summer>
+		
+		<!-- low pressure warnings -->
+		
+		<switch name="propulsion/tank[7]/pump-low-pressure">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				/controls/fuel/tank[7]/pump == 1
+				propulsion/tank[7]/contents-lbs lt 500
+			</test>
+		</switch>
 	   
     </channel>
 	

@@ -20,52 +20,6 @@
 	<object-name>wiper.r</object-name>
 </effect>
 
-<!-- 2D panels -->
-
-<animation>
-	<type>pick</type>
-	<object-name>panel.electric</object-name>
-	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>property-assign</command>
-			<property>sim/panel/path</property>
-			<value>Aircraft/747-400/Panels/744_elec_panel.xml</value>
-		</binding>
-		<binding>
-			<command>property-assign</command>
-			<property>sim/panel/visibility</property>
-			<value>true</value>
-		</binding>
-		<binding>
-			<command>panel-load</command>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>panel.hydraulic</object-name>
-	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>property-assign</command>
-			<property>sim/panel/path</property>
-			<value>Aircraft/747-400/Panels/744_hyd_panel.xml</value>
-		</binding>
-		<binding>
-			<command>property-assign</command>
-			<property>sim/panel/visibility</property>
-			<value>true</value>
-		</binding>
-		<binding>
-			<command>panel-load</command>
-		</binding>
-	</action>
-</animation>
-
 <!-- Electrical -->
 
 <animation>
@@ -117,7 +71,8 @@
 <!-- U T I L -->
 <animation>
 	<type>pick</type>
-	<object-name>utility.l</object-name>
+	<object-name>utility.l.l</object-name>
+	<object-name>utility.l.u</object-name>
 	<action>
 		<button>0</button>
 		<repeatable>false</repeatable>	
@@ -127,40 +82,39 @@
 		</binding>
 	</action>
 </animation>
-
-<animation> 
-	<type>select</type>
-		<object-name>utility.l.ON</object-name>
-	<condition>
-		<property>/controls/electric/utility[0]</property>
-	</condition>
-</animation>
- 
 <animation>
-	<type>select</type>
-		<object-name>utility.l.OFF</object-name>
-	<condition>
-		<property>/systems/electrical/utility-off[0]</property>
-	</condition>
+	<type>textranslate</type>
+	<object-name>utility.l.l</object-name>
+	<property>/systems/electrical/utility-off[0]</property>
+	<factor>0.0537</factor>
+	<axis>
+		<x>1</x>
+	</axis>
 </animation>
-
+<animation>
+	<type>textranslate</type>
+	<object-name>utility.l.u</object-name>
+	<property>/controls/electric/utility[0]</property>
+	<factor>0.0537</factor>
+	<axis>
+		<x>1</x>
+	</axis>
+</animation>
 <animation>
 	<type>translate</type>
-	<object-name>utility.l</object-name>
-		<object-name>utility.l.ON</object-name>
-		<object-name>utility.l.OFF</object-name>
+	<object-name>utility.l.l</object-name>
+	<object-name>utility.l.u</object-name>
 	<property>/controls/electric/utility[0]</property>
-	<factor>0.0045</factor>
+	<factor>0.0025</factor>
 	<axis>
-		<x> 0</x>
-		<y> 0</y>
 		<z>-1</z>
 	</axis>
 </animation>
 
 <animation>
 	<type>pick</type>
-	<object-name>utility.r</object-name>
+	<object-name>utility.r.l</object-name>
+	<object-name>utility.r.u</object-name>
 	<action>
 		<button>0</button>
 		<repeatable>false</repeatable>	
@@ -170,33 +124,31 @@
 		</binding>
 	</action>
 </animation>
-
-<animation> 
-	<type>select</type>
-	<object-name>utility.r.ON</object-name>
-	<condition>
-		<property>/controls/electric/utility[1]</property>
-	</condition>
-</animation>
- 
 <animation>
-	<type>select</type>
-	<object-name>utility.r.OFF</object-name>
-	<condition>
-		<property>/systems/electrical/utility-off[1]</property>
-	</condition>
+	<type>textranslate</type>
+	<object-name>utility.r.l</object-name>
+	<property>/systems/electrical/utility-off[1]</property>
+	<factor>0.0537</factor>
+	<axis>
+		<x>1</x>
+	</axis>
 </animation>
-
+<animation>
+	<type>textranslate</type>
+	<object-name>utility.r.u</object-name>
+	<property>/controls/electric/utility[1]</property>
+	<factor>0.0537</factor>
+	<axis>
+		<x>1</x>
+	</axis>
+</animation>
 <animation>
 	<type>translate</type>
-	<object-name>utility.r</object-name>
-	<object-name>utility.r.ON</object-name>
-	<object-name>utility.r.OFF</object-name>
+	<object-name>utility.r.l</object-name>
+	<object-name>utility.r.u</object-name>
 	<property>/controls/electric/utility[1]</property>
-	<factor>0.0045</factor>
+	<factor>0.0025</factor>
 	<axis>
-		<x> 0</x>
-		<y> 0</y>
 		<z>-1</z>
 	</axis>
 </animation>
@@ -215,7 +167,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>ext.pwr.1.l</object-name>
 	<object-name>ext.pwr.1.r</object-name>
 	<property>/systems/electrical/external-power[0]</property>
@@ -225,7 +177,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>ext.pwr.1.l</object-name>
 	<object-name>ext.pwr.1.r</object-name>
 	<property>/systems/electrical/external-power[0]</property>
@@ -262,7 +214,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>ext.pwr.2.l</object-name>
 	<object-name>ext.pwr.2.r</object-name>
 	<property>/systems/electrical/external-power[1]</property>
@@ -272,7 +224,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>ext.pwr.2.l</object-name>
 	<object-name>ext.pwr.2.r</object-name>
 	<property>/systems/electrical/external-power[1]</property>
@@ -283,11 +235,11 @@
 		</entry>
 		<entry>
 			<ind> 1</ind>
-			<dep> 0.005</dep>
+			<dep> 0.0</dep>
 		</entry>
 		<entry>
 			<ind> 2</ind>
-			<dep> 0.005</dep>
+			<dep> 0.0025</dep>
 		</entry>
 	</interpolation>
 	<axis>
@@ -307,31 +259,23 @@
 			<script>electrical.push_ext_apu('apu', 0)</script>
 		</binding>
 	</action>
-</animation><!--
+</animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.apugen.1.l</object-name>
+	<object-name>elec.apugen.1.r</object-name>
 	<property>/systems/electrical/apu-generator[0]</property>
-	<factor>0.3216</factor>
+	<factor>0.05371</factor>
 	<axis>
-		<x>1</x>
+		<y>-1</y>
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
-	<object-name>elec.apugen.1.r</object-name>
-	<property>/systems/electrical/apu-generator[0]</property>
-	<factor>0.3216</factor>
-	<axis>
-		<x>1</x>
-	</axis>
-</animation>-->
-<animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>elec.apugen.1.l</object-name>
 	<object-name>elec.apugen.1.r</object-name>
 	<property>/systems/electrical/apu-generator[0]</property>
-	<factor>0.0030</factor>
+	<factor>0.0012</factor>
 	<axis>
 		<z>-1</z>
 	</axis>
@@ -339,7 +283,8 @@
 
 <animation>
 	<type>pick</type>
-	<object-name>apu_gen.2</object-name>
+	<object-name>elec.apugen.2.l</object-name>
+	<object-name>elec.apugen.2.r</object-name>
 	<action>
 		<button>0</button>
 		<repeatable>false</repeatable>	
@@ -347,33 +292,27 @@
 			<command>nasal</command>
 			<script>electrical.push_ext_apu('apu', 1)</script>
 		</binding>
-		<binding>
-			<command>nasal</command>
-			<script>controls.click();</script>
-		</binding>
 	</action>
 </animation>
-
 <animation>
-	<type>select</type>
-		<object-name>apu_gen.2.AVAIL</object-name>
-	<condition>
-		<equals>
-			<property>/systems/electrical/apu-generator[1]</property>
-			<value>1</value>
-		</equals>
-	</condition>
+	<type>textranslate</type>
+	<object-name>elec.apugen.2.l</object-name>
+	<object-name>elec.apugen.2.r</object-name>
+	<property>/systems/electrical/apu-generator[1]</property>
+	<factor>0.05371</factor>
+	<axis>
+		<y>-1</y>
+	</axis>
 </animation>
-
 <animation>
-	<type>select</type>
-		<object-name>apu_gen.2.ON</object-name>
-	<condition>
-		<equals>
-			<property>/systems/electrical/apu-generator[1]</property>
-			<value>2</value>
-		</equals>
-	</condition>
+	<type>translate</type>
+	<object-name>elec.apugen.2.l</object-name>
+	<object-name>elec.apugen.2.r</object-name>
+	<property>/systems/electrical/apu-generator[1]</property>
+	<factor>0.0012</factor>
+	<axis>
+		<z>-1</z>
+	</axis>
 </animation>
 
 <!-- B A T T -->
@@ -438,7 +377,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>battery.l</object-name>
 	<property>/systems/electrical/battery-off</property>
 	<factor>0.0536</factor>
@@ -447,7 +386,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>battery.u</object-name>
 	<property>/controls/electric/battery</property>
 	<factor>0.0536</factor>
@@ -480,7 +419,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.bus.1.u</object-name>
 	<property>/controls/electric/bus-tie[0]</property>
 	<factor>0.1608</factor>
@@ -489,7 +428,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.bus.1.l</object-name>
 		<property>/systems/electrical/bus-isolation[0]</property>
 	<factor>0.2144</factor>
@@ -498,7 +437,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>elec.bus.1.l</object-name>
 	<object-name>elec.bus.1.u</object-name>
 	<property>/controls/electric/bus-tie[0]</property>
@@ -522,7 +461,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.bus.2.u</object-name>
 	<property>/controls/electric/bus-tie[1]</property>
 	<factor>0.1608</factor>
@@ -531,7 +470,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.bus.2.l</object-name>
 		<property>/systems/electrical/bus-isolation[1]</property>
 	<factor>0.2144</factor>
@@ -540,7 +479,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>elec.bus.2.l</object-name>
 	<object-name>elec.bus.2.u</object-name>
 	<property>/controls/electric/bus-tie[1]</property>
@@ -564,7 +503,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.bus.3.u</object-name>
 	<property>/controls/electric/bus-tie[2]</property>
 	<factor>0.1608</factor>
@@ -573,7 +512,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.bus.3.l</object-name>
 		<property>/systems/electrical/bus-isolation[2]</property>
 	<factor>0.2144</factor>
@@ -582,7 +521,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>elec.bus.3.l</object-name>
 	<object-name>elec.bus.3.u</object-name>
 	<property>/controls/electric/bus-tie[2]</property>
@@ -606,7 +545,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.bus.4.u</object-name>
 	<property>/controls/electric/bus-tie[3]</property>
 	<factor>0.1608</factor>
@@ -615,7 +554,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.bus.4.l</object-name>
 	<property>/systems/electrical/bus-isolation[3]</property>
 	<factor>0.2144</factor>
@@ -624,7 +563,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>elec.bus.4.l</object-name>
 	<object-name>elec.bus.4.u</object-name>
 	<property>/controls/electric/bus-tie[3]</property>
@@ -695,7 +634,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.drive.1.u</object-name>
 	<factor>0</factor>
 	<axis>
@@ -703,7 +642,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.drive.1.l</object-name>
 	<property>/systems/electrical/generator-drive[0]</property>
 	<factor>0.1072</factor>
@@ -712,7 +651,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>elec.drive.1.l</object-name>
 	<object-name>elec.drive.1.u</object-name>
 	<property>/systems/electrical/generator-drive[0]</property>
@@ -721,7 +660,6 @@
 		<z>-1</z>
 	</axis>
 </animation>
-
 
 <animation>
 	<type>pick</type>
@@ -784,7 +722,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.drive.2.u</object-name>
 	<factor>0</factor>
 	<axis>
@@ -792,7 +730,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.drive.2.l</object-name>
 	<property>/systems/electrical/generator-drive[1]</property>
 	<factor>0.1072</factor>
@@ -801,7 +739,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>elec.drive.2.l</object-name>
 	<object-name>elec.drive.2.u</object-name>
 	<property>/systems/electrical/generator-drive[1]</property>
@@ -810,7 +748,6 @@
 		<z>-1</z>
 	</axis>
 </animation>
-
 
 <animation>
 	<type>pick</type>
@@ -873,7 +810,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.drive.3.u</object-name>
 	<factor>0</factor>
 	<axis>
@@ -881,7 +818,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.drive.3.l</object-name>
 	<property>/systems/electrical/generator-drive[2]</property>
 	<factor>0.1072</factor>
@@ -890,7 +827,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>elec.drive.3.l</object-name>
 	<object-name>elec.drive.3.u</object-name>
 	<property>/systems/electrical/generator-drive[2]</property>
@@ -961,7 +898,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.drive.4.u</object-name>
 	<factor>0</factor>
 	<axis>
@@ -969,7 +906,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.drive.4.l</object-name>
 	<property>/systems/electrical/generator-drive[3]</property>
 	<factor>0.1072</factor>
@@ -978,7 +915,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>elec.drive.4.l</object-name>
 	<object-name>elec.drive.4.u</object-name>
 	<property>/systems/electrical/generator-drive[3]</property>
@@ -1003,7 +940,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.gen.1.l</object-name>
 	<property>/systems/electrical/generator-off[0]</property>
 	<factor>0.0536</factor>
@@ -1012,7 +949,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.gen.1.u</object-name>
 	<property>/controls/electric/generator-control[0]</property>
 	<factor>0.0536</factor>
@@ -1021,7 +958,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>elec.gen.1.u</object-name>
 	<object-name>elec.gen.1.l</object-name>
 	<property>/controls/electric/generator-control[0]</property>
@@ -1045,7 +982,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.gen.2.l</object-name>
 	<property>/systems/electrical/generator-off[1]</property>
 	<factor>0.0536</factor>
@@ -1054,7 +991,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.gen.2.u</object-name>
 	<property>/controls/electric/generator-control[1]</property>
 	<factor>0.0536</factor>
@@ -1063,7 +1000,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>elec.gen.2.u</object-name>
 	<object-name>elec.gen.2.l</object-name>
 	<property>/controls/electric/generator-control[1]</property>
@@ -1087,7 +1024,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.gen.3.l</object-name>
 	<property>/systems/electrical/generator-off[2]</property>
 	<factor>0.0536</factor>
@@ -1096,7 +1033,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.gen.3.u</object-name>
 	<property>/controls/electric/generator-control[2]</property>
 	<factor>0.0536</factor>
@@ -1105,7 +1042,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>elec.gen.3.u</object-name>
 	<object-name>elec.gen.3.l</object-name>
 	<property>/controls/electric/generator-control[2]</property>
@@ -1129,7 +1066,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.gen.4.l</object-name>
 	<property>/systems/electrical/generator-off[3]</property>
 	<factor>0.0536</factor>
@@ -1138,7 +1075,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>elec.gen.4.u</object-name>
 	<property>/controls/electric/generator-control[3]</property>
 	<factor>0.0536</factor>
@@ -1147,7 +1084,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>elec.gen.4.u</object-name>
 	<object-name>elec.gen.4.l</object-name>
 	<property>/controls/electric/generator-control[3]</property>
@@ -1175,7 +1112,7 @@
 		</binding>
 	</action>
 	<center>
-		<x-m> 0.026</x-m><y-m>-0.034</y-m><z-m>-0.014</z-m>
+		<x-m> 0.033</x-m><y-m>-0.035</y-m>
 	</center>
 	<axis>
 		<z>1</z>
@@ -1202,13 +1139,11 @@
 	<property>/controls/engines/con-ignition</property>
 	<factor>0.005</factor>
 	<axis>
-		<x> 0</x>
-		<y> 0</y>
 		<z>-1</z>
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>con.ign.u</object-name>
 	<property>/controls/engines/con-ignition</property>
 	<factor>0.0537</factor>
@@ -1245,8 +1180,6 @@
 	<property>/controls/engines/engine[0]/starter</property>
 	<factor>0.011</factor>
 	<axis>
-		<x>0</x>
-		<y>0</y>
 		<z>1</z>
 	</axis>
 </animation>
@@ -1279,8 +1212,6 @@
 	<property>/controls/engines/engine[1]/starter</property>
 	<factor>0.011</factor>
 	<axis>
-		<x>0</x>
-		<y>0</y>
 		<z>1</z>
 	</axis>
 </animation>
@@ -1313,8 +1244,6 @@
 	<property>/controls/engines/engine[2]/starter</property>
 	<factor>0.011</factor>
 	<axis>
-		<x>0</x>
-		<y>0</y>
 		<z>1</z>
 	</axis>
 </animation>
@@ -1347,13 +1276,11 @@
 	<property>/controls/engines/engine[3]/starter</property>
 	<factor>0.011</factor>
 	<axis>
-		<x>0</x>
-		<y>0</y>
 		<z>1</z>
 	</axis>
 </animation>
 
-<animation>
+<animation>		
 	<type>knob</type>
 	<object-name>fuel-to-remain</object-name>
 	<action>
@@ -1392,13 +1319,11 @@
 	<property>/controls/fuel/dump-valve</property>
 	<factor>0.0045</factor>
 	<axis>
-		<x> 0</x>
-		<y> 0</y>
 		<z>-1</z>
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>jettison.l.u</object-name>
 	<object-name>jettison.r.u</object-name>
 	<property>/controls/fuel/dump-valve</property>
@@ -1415,7 +1340,11 @@
 	<object-name>fire.1</object-name>
 	<action>
 		<button>0</button>
-		<repeatable>false</repeatable>	
+		<repeatable>false</repeatable>
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine/fire</property>
+		</binding>
 		<binding>
 			<command>property-assign</command>
 			<property>/controls/engines/engine/cutoff</property>
@@ -1428,13 +1357,26 @@
 		</binding>
 	</action>
 </animation>
+<animation>
+	<type>translate</type>
+	<object-name>fire.1</object-name>
+	<property>/controls/engines/engine/fire</property>
+	<factor>0.02</factor>
+	<axis>
+		<z>1</z>
+	</axis>
+</animation>
 
 <animation>
 	<type>pick</type>
 	<object-name>fire.2</object-name>
 	<action>
 		<button>0</button>
-		<repeatable>false</repeatable>	
+		<repeatable>false</repeatable>
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine[1]/fire</property>
+		</binding>
 		<binding>
 			<command>property-assign</command>
 			<property>/controls/engines/engine[1]/cutoff</property>
@@ -1447,6 +1389,15 @@
 		</binding>
 	</action>
 </animation>
+<animation>
+	<type>translate</type>
+	<object-name>fire.2</object-name>
+	<property>/controls/engines/engine[1]/fire</property>
+	<factor>0.02</factor>
+	<axis>
+		<z>1</z>
+	</axis>
+</animation>
 
 <animation>
 	<type>pick</type>
@@ -1454,6 +1405,10 @@
 	<action>
 		<button>0</button>
 		<repeatable>false</repeatable>	
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine[2]/fire</property>
+		</binding>
 		<binding>
 			<command>property-assign</command>
 			<property>/controls/engines/engine[2]/cutoff</property>
@@ -1466,13 +1421,26 @@
 		</binding>
 	</action>
 </animation>
+<animation>
+	<type>translate</type>
+	<object-name>fire.3</object-name>
+	<property>/controls/engines/engine[2]/fire</property>
+	<factor>0.02</factor>
+	<axis>
+		<z>1</z>
+	</axis>
+</animation>
 
 <animation>
 	<type>pick</type>
 	<object-name>fire.4</object-name>
 	<action>
 		<button>0</button>
-		<repeatable>false</repeatable>	
+		<repeatable>false</repeatable>
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine[3]/fire</property>
+		</binding>
 		<binding>
 			<command>property-assign</command>
 			<property>/controls/engines/engine[3]/cutoff</property>
@@ -1484,6 +1452,15 @@
 			<value>0</value>
 		</binding>
 	</action>
+</animation>
+<animation>
+	<type>translate</type>
+	<object-name>fire.4</object-name>
+	<property>/controls/engines/engine[3]/fire</property>
+	<factor>0.02</factor>
+	<axis>
+		<z>1</z>
+	</axis>
 </animation>
 
 <effect>
@@ -1661,7 +1638,7 @@
 	<center>
 		<x-m>0.236</x-m><y-m>-0.084</y-m><z-m>-0.014</z-m>
 	</center>
-	<axis>
+	<axis>	
 		<x>1</x>
 	</axis>
 </animation>
@@ -1749,7 +1726,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>xfer.u</object-name>
 	<property>/controls/fuel/transfer-main-1-4</property>
 	<factor>0.0537</factor>
@@ -1771,7 +1748,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>xfeed.1.l</object-name>
 	<property>controls/fuel/tank[1]/x-feed</property>
 	<factor>0.268</factor>
@@ -1780,7 +1757,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>xfeed.1.l</object-name>
 	<object-name>xfeed.1.u</object-name>
 	<property>controls/fuel/tank[1]/x-feed</property>
@@ -1850,7 +1827,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>xfeed.2.l</object-name>
 	<property>controls/fuel/tank[2]/x-feed</property>
 	<factor>0.268</factor>
@@ -1859,7 +1836,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>xfeed.2.l</object-name>
 	<object-name>xfeed.2.u</object-name>
 	<property>controls/fuel/tank[2]/x-feed</property>
@@ -1929,7 +1906,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>xfeed.3.l</object-name>
 	<property>controls/fuel/tank[3]/x-feed</property>
 	<factor>0.268</factor>
@@ -1938,7 +1915,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>xfeed.3.l</object-name>
 	<object-name>xfeed.3.u</object-name>
 	<property>controls/fuel/tank[3]/x-feed</property>
@@ -1961,7 +1938,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>xfeed.4.l</object-name>
 	<property>controls/fuel/tank[4]/x-feed</property>
 	<factor>0.268</factor>
@@ -1970,7 +1947,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>xfeed.4.l</object-name>
 	<object-name>xfeed.4.u</object-name>
 	<property>controls/fuel/tank[4]/x-feed</property>
@@ -2004,17 +1981,25 @@
 	<property>/controls/fuel/tank[7]/pump</property>
 	<factor>0.005</factor>
 	<axis>
-		<x> 0</x>
-		<y> 0</y>
 		<z>-1</z>
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>fuel_stab.l.u</object-name>
 	<object-name>fuel_stab.r.u</object-name>
 	<property>/controls/fuel/tank[7]/pump</property>
 	<factor>0.0537</factor>
+	<axis>
+		<x>1</x>
+	</axis>
+</animation>
+<animation>
+	<type>textranslate</type>
+	<object-name>fuel_stab.l.l</object-name>
+	<object-name>fuel_stab.r.l</object-name>
+	<property>/fdm/jsbsim/propulsion/tank[7]/pump-low-pressure</property>
+	<factor>0.1611</factor>
 	<axis>
 		<x>1</x>
 	</axis>
@@ -2040,13 +2025,11 @@
 	<property>/controls/fuel/tank[1]/pump-fwd</property>
 	<factor>0.005</factor>
 	<axis>
-		<x> 0</x>
-		<y> 0</y>
 		<z>-1</z>
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>pump.1.fwd.u</object-name>
 	<property>/controls/fuel/tank[1]/pump-fwd</property>
 	<factor>0.0537</factor>
@@ -2075,13 +2058,11 @@
 	<property>/controls/fuel/tank[1]/pump-aft</property>
 	<factor>0.005</factor>
 	<axis>
-		<x> 0</x>
-		<y> 0</y>
 		<z>-1</z>
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>pump.1.aft.u</object-name>
 	<property>/controls/fuel/tank[1]/pump-aft</property>
 	<factor>0.0537</factor>
@@ -2110,13 +2091,11 @@
 	<property>/controls/fuel/tank[2]/pump-fwd</property>
 	<factor>0.005</factor>
 	<axis>
-		<x> 0</x>
-		<y> 0</y>
 		<z>-1</z>
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>pump.2.fwd.u</object-name>
 	<property>/controls/fuel/tank[2]/pump-fwd</property>
 	<factor>0.0537</factor>
@@ -2145,13 +2124,11 @@
 	<property>/controls/fuel/tank[2]/pump-aft</property>
 	<factor>0.005</factor>
 	<axis>
-		<x> 0</x>
-		<y> 0</y>
 		<z>-1</z>
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>pump.2.aft.u</object-name>
 	<property>/controls/fuel/tank[2]/pump-aft</property>
 	<factor>0.0537</factor>
@@ -2180,13 +2157,11 @@
 	<property>/controls/fuel/tank[3]/pump-fwd</property>
 	<factor>0.005</factor>
 	<axis>
-		<x> 0</x>
-		<y> 0</y>
 		<z>-1</z>
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>pump.3.fwd.u</object-name>
 	<property>/controls/fuel/tank[3]/pump-fwd</property>
 	<factor>0.0537</factor>
@@ -2215,13 +2190,11 @@
 	<property>/controls/fuel/tank[3]/pump-aft</property>
 	<factor>0.005</factor>
 	<axis>
-		<x> 0</x>
-		<y> 0</y>
 		<z>-1</z>
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>pump.3.aft.u</object-name>
 	<property>/controls/fuel/tank[3]/pump-aft</property>
 	<factor>0.0537</factor>
@@ -2250,13 +2223,11 @@
 	<property>/controls/fuel/tank[4]/pump-fwd</property>
 	<factor>0.005</factor>
 	<axis>
-		<x> 0</x>
-		<y> 0</y>
 		<z>-1</z>
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>pump.4.fwd.u</object-name>
 	<property>/controls/fuel/tank[4]/pump-fwd</property>
 	<factor>0.0537</factor>
@@ -2285,13 +2256,11 @@
 	<property>/controls/fuel/tank[4]/pump-aft</property>
 	<factor>0.005</factor>
 	<axis>
-		<x> 0</x>
-		<y> 0</y>
 		<z>-1</z>
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>pump.4.aft.u</object-name>
 	<property>/controls/fuel/tank[4]/pump-aft</property>
 	<factor>0.0537</factor>
@@ -2387,7 +2356,7 @@
 		</binding>
 	</action>
 	<center>
-		<x-m>0.156</x-m><y-m> 0.183</y-m>
+		<x-m>0.156</x-m><y-m>0.183</y-m>
 	</center>
 	<axis>
 		<z>1</z>
@@ -2409,7 +2378,7 @@
 		</binding>
 	</action>
 	<center>
-		<x-m> 0.156</x-m><y-m> 0.259</y-m>
+		<x-m>0.156</x-m><y-m>0.259</y-m>
 	</center>
 	<axis>
 		<z>1</z>
@@ -2431,7 +2400,7 @@
 		</binding>
 	</action>
 	<center>
-		<x-m> 0.156</x-m><y-m> 0.335</y-m>	
+		<x-m>0.156</x-m><y-m>0.335</y-m>	
 	</center>
 	<axis>
 		<z>1</z>
@@ -2519,7 +2488,7 @@
 		</binding>
 	</action>
 	<center>	
-		<x-m> 0.1</x-m><y-m> 0.177</y-m>
+		<x-m>0.1</x-m><y-m>0.177</y-m>
 	</center>
 	<axis>
 		<z>1</z>
@@ -2540,7 +2509,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>pack.hi.flow.u</object-name>
 	<property>/controls/air/pack-high-flow</property>
 	<factor>0.0537</factor>
@@ -2560,35 +2529,6 @@
 </animation>
 
 <animation>
-	<type>translate</type>
-	<object-name>pack_hi_flow</object-name>
-	<object-name>pack_hi_flow.ON</object-name>
-	<property>/controls/air/pack-high-flow</property>
-	<factor>0.0045</factor>
-	<axis>
-		<x> 0</x>
-		<y> 0</y>
-		<z>-1</z>
-	</axis>
-</animation>
-
-<animation>
-	<type>select</type>
-	<object-name>pack_hi_flow.ON</object-name>
-	<condition>
-		<property>/controls/air/pack-high-flow</property>
-	</condition>
-</animation>
-
-<animation>
-	<type>select</type>
-	<object-name>pack_rst.SYSFAULT</object-name>
-	<condition>
-		<property>/systems/air/pack-sys-fault</property>
-	</condition>
-</animation>
-
-<animation>
 	<type>pick</type>
 	<object-name>bleed.1.l</object-name>
 	<object-name>bleed.1.u</object-name>
@@ -2602,7 +2542,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>bleed.1.l</object-name>
 	<property>/systems/pneumatic/engine-bleed-off[0]</property>
 	<factor>0.0537</factor>
@@ -2611,7 +2551,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>bleed.1.u</object-name>
 	<property>/controls/pneumatic/engine-bleed[0]</property>
 	<factor>0.0537</factor>
@@ -2644,7 +2584,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>bleed.2.l</object-name>
 	<property>/systems/pneumatic/engine-bleed-off[1]</property>
 	<factor>0.0537</factor>
@@ -2653,7 +2593,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>bleed.2.u</object-name>
 	<property>/controls/pneumatic/engine-bleed[1]</property>
 	<factor>0.0537</factor>
@@ -2686,7 +2626,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>bleed.3.l</object-name>
 	<property>/systems/pneumatic/engine-bleed-off[2]</property>
 	<factor>0.0537</factor>
@@ -2695,7 +2635,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>bleed.3.u</object-name>
 	<property>/controls/pneumatic/engine-bleed[2]</property>
 	<factor>0.0537</factor>
@@ -2728,7 +2668,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>bleed.4.l</object-name>
 	<property>/systems/pneumatic/engine-bleed-off[3]</property>
 	<factor>0.0537</factor>
@@ -2737,7 +2677,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>bleed.4.u</object-name>
 	<property>/controls/pneumatic/engine-bleed[3]</property>
 	<factor>0.0537</factor>
@@ -2757,7 +2697,7 @@
 </animation>
 
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>pack.1.sysfault</object-name>
 	<property>systems/pneumatic/system-fault[0]</property>
 	<factor>0.0542</factor>
@@ -2766,7 +2706,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>pack.2.sysfault</object-name>
 	<property>systems/pneumatic/system-fault[1]</property>
 	<factor>0.0542</factor>
@@ -2775,7 +2715,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>pack.3.sysfault</object-name>
 	<property>systems/pneumatic/system-fault[2]</property>
 	<factor>0.0542</factor>
@@ -2784,7 +2724,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>pack.4.sysfault</object-name>
 	<property>systems/pneumatic/system-fault[3]</property>
 	<factor>0.0542</factor>
@@ -2807,7 +2747,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>bleed.apu.u</object-name>
 	<property>/controls/pneumatic/APU-bleed</property>
 	<factor>0.0537</factor>
@@ -2827,36 +2767,6 @@
 </animation>
 
 <animation>
-	<type>translate</type>
-	<object-name>bleed_apu</object-name>
-	<object-name>bleed_apu.ON</object-name>
-	<object-name>bleed_apu.VALVE</object-name>
-	<property>/controls/pneumatic/APU-bleed</property>
-	<factor>0.0045</factor>
-	<axis>
-		<x> 0</x>
-		<y> 0</y>
-		<z>-1</z>
-	</axis>
-</animation>
-
-<animation>
-	<type>select</type>
-	<object-name>bleed_apu.ON</object-name>
-	<condition>
-		<property>/controls/pneumatic/APU-bleed</property>
-	</condition>
-</animation>
-
-<animation>
-	<type>select</type>
-	<object-name>bleed_apu.VALVE</object-name>
-	<condition>
-		<property>/systems/pneumatic/APU-bleed-valve</property>
-	</condition>
-</animation>
-
-<animation>
 	<type>pick</type>
 	<object-name>isln.l.u</object-name>
 	<object-name>isln.l.l</object-name>
@@ -2870,7 +2780,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>isln.l.l</object-name>
 	<property>/controls/pneumatic/isolation-valve[0]</property>
 	<factor>0.2685</factor>
@@ -2903,7 +2813,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>isln.r.l</object-name>
 	<property>/controls/pneumatic/isolation-valve[1]</property>
 	<factor>0.2685</factor>
@@ -2925,7 +2835,7 @@
 <!-- Hydraulics -->
 <!-- SYS FAULT lights -->
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>hyd.1.fault</object-name>
 	<property>systems/hydraulic/system-fault[0]</property>
 	<factor>0.0542</factor>
@@ -2934,7 +2844,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>hyd.2.fault</object-name>
 	<property>systems/hydraulic/system-fault[1]</property>
 	<factor>0.0542</factor>
@@ -2943,7 +2853,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>hyd.3.fault</object-name>
 	<property>systems/hydraulic/system-fault[2]</property>
 	<factor>0.0542</factor>
@@ -2952,7 +2862,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>hyd.4.fault</object-name>
 	<property>systems/hydraulic/system-fault[3]</property>
 	<factor>0.0542</factor>
@@ -2962,7 +2872,7 @@
 </animation>
 
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>dem.1.press</object-name>
 	<property>systems/hydraulic/demand-pump-pressure-low[0]</property>
 	<factor>0.1084</factor>
@@ -2971,7 +2881,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>dem.2.press</object-name>
 	<property>systems/hydraulic/demand-pump-pressure-low[1]</property>
 	<factor>0.1084</factor>
@@ -2980,7 +2890,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>dem.3.press</object-name>
 	<property>systems/hydraulic/demand-pump-pressure-low[2]</property>
 	<factor>0.1084</factor>
@@ -2989,7 +2899,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>dem.4.press</object-name>
 	<property>systems/hydraulic/demand-pump-pressure-low[3]</property>
 	<factor>0.1084</factor>
@@ -2999,113 +2909,12 @@
 </animation>
 
 <!-- demand pump rotaries -->
-<animation>
-	<type>pick</type>
-	<object-name>dem_pump_sw.1</object-name>
-	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>nasal</command>
-			<script>hydraulic.hyd_sys[0].dem_sw(1)</script>
-		</binding>
-		<binding>
-			<command>nasal</command>
-			<script>controls.click();</script>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>dem_pump_sw.1</object-name>
-	<action>
-		<button>1</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>nasal</command>
-			<script>hydraulic.hyd_sys[0].dem_sw(-1)</script>
-		</binding>
-		<binding>
-			<command>nasal</command>
-			<script>controls.click();</script>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>rotate</type>
-	<object-name>dem_pump_sw.1</object-name>
-	<property>controls/hydraulic/demand-pump[0]</property>
-	<factor>-40</factor>
-	<center>
-		<x-m> 0.191</x-m>
-		<y-m>-0.334</y-m>
-		<z-m>-0.014</z-m>
-	</center>
-	<axis>
-		<x>0</x>
-		<y>0</y>
-		<z>1</z>
-	</axis>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>dem_pump_sw.2</object-name>
-	<action>
-		<button>0</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>nasal</command>
-			<script>hydraulic.hyd_sys[1].dem_sw(1)</script>
-		</binding>
-		<binding>
-			<command>nasal</command>
-			<script>controls.click();</script>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>pick</type>
-	<object-name>dem_pump_sw.2</object-name>
-	<action>
-		<button>1</button>
-		<repeatable>false</repeatable>	
-		<binding>
-			<command>nasal</command>
-			<script>hydraulic.hyd_sys[1].dem_sw(-1)</script>
-		</binding>
-		<binding>
-			<command>nasal</command>
-			<script>controls.click();</script>
-		</binding>
-	</action>
-</animation>
-
-<animation>
-	<type>rotate</type>
-	<object-name>dem_pump_sw.2</object-name>
-	<property>controls/hydraulic/demand-pump[1]</property>
-	<factor>-40</factor>
-	<center>
-		<x-m> 0.191</x-m>
-		<y-m>-0.288</y-m>
-		<z-m>-0.014</z-m>
-	</center>
-	<axis>
-		<x>0</x>
-		<y>0</y>
-		<z>1</z>
-	</axis>
-</animation>
 
 <animation>
 	<type>knob</type>
 	<object-name>dem_pump_sw.1</object-name>
-	<property>controls/hydraulic/demand-pump</property>
-	<factor>-40</factor>
+	<property>controls/hydraulic/demand-pump[0]</property>
+	<factor>-30</factor>
 	<cursor>hand</cursor>
 	<action>
 		<binding>
@@ -3137,7 +2946,7 @@
 	<type>knob</type>
 	<object-name>dem_pump_sw.2</object-name>
 	<property>controls/hydraulic/demand-pump[1]</property>
-	<factor>-40</factor>
+	<factor>-30</factor>
 	<cursor>hand</cursor>
 	<action>
 		<binding>
@@ -3169,7 +2978,7 @@
 	<type>knob</type>
 	<object-name>dem_pump_sw.3</object-name>
 	<property>controls/hydraulic/demand-pump[2]</property>
-	<factor>-40</factor>
+	<factor>-30</factor>
 	<cursor>hand</cursor>
 	<action>
 		<binding>
@@ -3212,11 +3021,11 @@
 		</entry>
 		<entry>
 			<ind>1</ind>
-			<dep>-40</dep>
+			<dep>-30</dep>
 		</entry>
 		<entry>
 			<ind>2</ind>
-			<dep>-80</dep>
+			<dep>-60</dep>
 		</entry>
 	</interpolation>
 	<cursor>hand</cursor>
@@ -3263,7 +3072,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>hyd.eng.1.u</object-name>
 	<property>controls/hydraulic/engine-pump[0]</property>
 	<factor>0.0537</factor>
@@ -3272,7 +3081,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>hyd.eng.1.l</object-name>
 	<property>systems/hydraulic/engine-pump-pressure-low[0]</property>
 	<factor>0.1616</factor>
@@ -3281,7 +3090,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>hyd.eng.1.l</object-name>
 	<object-name>hyd.eng.1.u</object-name>
 	<property>controls/hydraulic/engine-pump[0]</property>
@@ -3306,7 +3115,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>hyd.eng.2.u</object-name>
 	<property>controls/hydraulic/engine-pump[1]</property>
 	<factor>0.0537</factor>
@@ -3315,7 +3124,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>hyd.eng.2.l</object-name>
 	<property>systems/hydraulic/engine-pump-pressure-low[1]</property>
 	<factor>0.1616</factor>
@@ -3324,7 +3133,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>hyd.eng.2.l</object-name>
 	<object-name>hyd.eng.2.u</object-name>
 	<property>controls/hydraulic/engine-pump[1]</property>
@@ -3349,7 +3158,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>hyd.eng.3.u</object-name>
 	<property>controls/hydraulic/engine-pump[2]</property>
 	<factor>0.0537</factor>
@@ -3358,7 +3167,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>hyd.eng.3.l</object-name>
 	<property>systems/hydraulic/engine-pump-pressure-low[2]</property>
 	<factor>0.1616</factor>
@@ -3367,7 +3176,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>hyd.eng.3.l</object-name>
 	<object-name>hyd.eng.3.u</object-name>
 	<property>controls/hydraulic/engine-pump[2]</property>
@@ -3392,7 +3201,7 @@
 	</action>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>hyd.eng.4.u</object-name>
 	<property>controls/hydraulic/engine-pump[3]</property>
 	<factor>0.0537</factor>
@@ -3401,7 +3210,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>textranslate</type>
+	<type>textranslate</type>
 	<object-name>hyd.eng.4.l</object-name>
 	<property>systems/hydraulic/engine-pump-pressure-low[3]</property>
 	<factor>0.1616</factor>
@@ -3410,7 +3219,7 @@
 	</axis>
 </animation>
 <animation>
-    <type>translate</type>
+	<type>translate</type>
 	<object-name>hyd.eng.4.l</object-name>
 	<object-name>hyd.eng.4.u</object-name>
 	<property>controls/hydraulic/engine-pump[3]</property>
@@ -3439,7 +3248,7 @@
 		</binding>
 	</action>
 	<center>
-		<x-m> 0.285</x-m><z-m>-0.014</z-m>
+		<x-m>0.285</x-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
 		<y>1</y>
@@ -3463,7 +3272,7 @@
 		</binding>
 	</action>
 	<center>
-		<x-m> 0.285</x-m><z-m>-0.014</z-m>
+		<x-m>0.285</x-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
 		<y>1</y>
@@ -3487,7 +3296,7 @@
 		</binding>
 	</action>
 	<center>
-		<x-m> 0.285</x-m><z-m>-0.014</z-m>
+		<x-m>0.285</x-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
 		<y>1</y>
@@ -3511,7 +3320,7 @@
 		</binding>
 	</action>
 	<center>
-		<x-m> 0.285</x-m><z-m>-0.014</z-m>
+		<x-m>0.285</x-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
 		<y>1</y>
@@ -3535,7 +3344,7 @@
 		</binding>
 	</action>
 	<center>
-		<x-m> 0.285</x-m><z-m>-0.014</z-m>
+		<x-m>0.285</x-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
 		<y>1</y>
@@ -3559,7 +3368,7 @@
 		</binding>
 	</action>
 	<center>
-		<x-m> 0.285</x-m><z-m>-0.014</z-m>
+		<x-m>0.285</x-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
 		<y>1</y>
@@ -3583,7 +3392,7 @@
 		</binding>
 	</action>
 	<center>
-		<x-m> 0.284</x-m><z-m>-0.014</z-m>
+		<x-m>0.284</x-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
 		<y>1</y>
@@ -3607,7 +3416,7 @@
 		</binding>
 	</action>
 	<center>
-		<x-m> 0.284</x-m><z-m>-0.014</z-m>
+		<x-m>0.284</x-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
 		<y>1</y>
@@ -3631,7 +3440,7 @@
 		</binding>
 	</action>
 	<center>
-		<x-m> 0.284</x-m><z-m>-0.014</z-m>
+		<x-m>0.284</x-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
 		<y>1</y>
@@ -3655,7 +3464,7 @@
 		</binding>
 	</action>
 	<center>
-		<x-m> 0.284</x-m><z-m>-0.014</z-m>
+		<x-m>0.284</x-m><z-m>-0.014</z-m>
 	</center>
 	<axis>
 		<y>1</y>
