@@ -1,0 +1,36 @@
+<?xml version="1.0"?> 
+<PropertyList> 
+
+<!--United Airlines "Rising Blue" Livery by E-Savageair
+ 
+ Background:
+
+      In 2004 the Pentagram Group introduced the "Rising Blue" livery that seems to harken back to the original "Rainbow" livery, 
+using a blue-tone cheatline on the windows and an over-cropped "tulip" on the tail.  The "Rising Blue" scheme however would have 
+a short life: In 2011 United and Continental Airlines would merge and United would incorporate Continental's "Globe" design 
+(that would replace Saul Bass's "Meatball" logo design) that would replace the Tulip.
+
+
+Unzip your file to:
+FlightGear/data/aircraft/747-400/models/liveries
+Run FlightGear, and if you have your United livery, 
+then you can -
+
+"Fly the Frendly Skies".
+(Cue in "Rhapsody in Blue")
+
+Thank you for downloading ;-)
+ESA
+
+    -->
+
+<sim> 
+ <model> 
+  <livery> 
+   <name type="string">United Airlines "Rising Blue" livery</name> 
+   <texture>Liveries/UAL-N179UA.png</texture>
+  </livery> 
+ </model> 
+</sim> 
+
+</PropertyList> 

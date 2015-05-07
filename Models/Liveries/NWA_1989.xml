@@ -1,0 +1,13 @@
+<?xml version="1.0"?> 
+<PropertyList> 
+
+<sim> 
+ <model> 
+  <livery> 
+   <name type="string">Northwest Airlines"Bowling Shoe"</name> 
+   <texture>Liveries/NWA_1989.png</texture>
+  </livery> 
+ </model> 
+</sim> 
+
+</PropertyList> 

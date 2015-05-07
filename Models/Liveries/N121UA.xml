@@ -4,8 +4,8 @@
 <sim> 
 	<model> 
 		<livery> 
-			<name type="string">KLM Royal Dutch Airlines</name> 
-			<texture>Liveries/KLM.png</texture>
+			<name type="string">United Airlines (Star Alliance)</name> 
+			<texture>Liveries/N121UA.png</texture>
 		</livery> 
 	</model> 
 </sim> 

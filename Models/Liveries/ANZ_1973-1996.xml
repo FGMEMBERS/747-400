@@ -1,0 +1,13 @@
+<?xml version="1.0"?> 
+<PropertyList> 
+
+<sim> 
+ <model> 
+  <livery> 
+   <name type="string">Air New Zealand (1973-1996)</name> 
+   <texture>Liveries/ANZ_1973-1996.png</texture>
+  </livery> 
+ </model> 
+</sim> 
+
+</PropertyList> 

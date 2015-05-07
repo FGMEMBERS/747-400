@@ -1,0 +1,13 @@
+<?xml version="1.0"?> 
+<PropertyList> 
+
+<sim> 
+ <model> 
+  <livery> 
+   <name type="string">Asiana Airlines (1988-2005)</name> 
+   <texture>Liveries/AAR_1988-2005.png</texture>
+  </livery> 
+ </model> 
+</sim> 
+
+</PropertyList> 
