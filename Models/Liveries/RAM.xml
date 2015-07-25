@@ -1,0 +1,29 @@
+<?xml version="1.0"?> 
+<PropertyList> 
+
+<!--Royal Air Maroc Airlines 747-400 Livery by E-Savageair
+ 
+ Background:
+
+    Royal Air Maroc was formed in July 1953 as a result of a merger with Compagnie Ch'erifienne de'l Air (Air Atlas) and Compagnie Ch'erifienne de Transports A'eriens Air Maroc that was founded in 1947 and began operations in 1949 using Junkers ju-52's six Bretagnes, four Commandos, 5 DC-3's and two Languedocs.  With the government of Morocco having a 67.73% stake in the new airline, operations began in 1957, adopting the new name Royal Air Maroc (RAM) on 28 June, 1957.  The first jet appeared in April 1960 with the introduction of the French Caravelle.  By then the route network included destinations to France, Germany, and Switzerland.  In 1969, the airline started investing in Boeings, taking deliveries of 727-200 aircraft in 1970 with revenue serivce taking place on 15 May.  On 2 April, 1970 Royal Air inter was formed and began operations on domestic routes, using Fokker F-27 Friendship aircraft. Then in 1974, RAM negotiated with Air France to lease a Boeing 707-320B flying to New York, becoming the first Arab airline to serve this destination. By the 1980's RAM's fleet consisted of two Boeing 707-320Cs, one Boeing 707-320, seven Boeing 727-200s and three Boeing 737-200s, and one Boeing 747-200B.  In July 1986, Ram was the first African airline to fly and operate the Boeing 757-200 in service, setting a world record for the type when it flew non-stop from Seattle to Casablanca, a distance of 4,910 nautical miles.  Long by then, Ram had joined the International Air Transoprt Association in 1983.  By the 90's the last of the 707s were withdrawn from service; the 727s left the fleet by the middle of the decade.  The Boeing 737 models 400 and 500 Series began service to European routes. By then Royal Air Maroc purchased a single Boeing 747-400 to consolidate its North American operations, the aircraft's repaint being deplicted here.  Royal Air Maroc is considering a purchase of an Airbus A380 or a Boeing 747-8i in place of the 744 as more routes continue to open.  Royal Air Maroc has for now 94 destinations with fleet of 53 aircraft, the hub at Mohammed V International Airport with the headquarters in Casablanca, Morocco, the government being the parent company. - First unzip to:
+FlightGear/data/aircraft/747-400/models/liveries.  
+Run FlightGear, and if you have RAM, 
+then you'll have "The Wings of Morocco" -
+
+  
+
+Thank you for downloading and enjoy  ;-)
+ESA
+
+    -->
+
+<sim> 
+ <model> 
+  <livery> 
+   <name type="string">RAM</name> 
+   <texture>Liveries/RAM.png</texture>
+  </livery> 
+ </model> 
+</sim> 
+
+</PropertyList> 
