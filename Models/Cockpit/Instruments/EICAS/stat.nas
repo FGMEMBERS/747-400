@@ -44,6 +44,6 @@ var canvas_stat = {
 		me["mainBattVdc"].setText(sprintf("%2.0f",getprop("systems/electrical/suppliers/battery")));
 		me["apuBattVdc"].setText(sprintf("%2.0f",getprop("systems/electrical/suppliers/apu-battery")));
 		
-		settimer(func me.update(), 0.05);
+		settimer(func me.update(), 0.1);
 	}
 };
