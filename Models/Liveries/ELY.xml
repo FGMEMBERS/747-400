@@ -1,0 +1,13 @@
+<?xml version="1.0"?> 
+<PropertyList> 
+
+<sim> 
+ <model> 
+  <livery> 
+   <name type="string">EL AL israel</name> 
+   <texture>Liveries/ELY.png</texture>
+  </livery> 
+ </model> 
+</sim> 
+
+</PropertyList> 

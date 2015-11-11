@@ -1,0 +1,43 @@
+Northwest Airlines Boeing 747-400 "Bowling Shoe" livery by E-Savageair
+
+     
+
+
+
+     In 1984, Boeing introduced an 'advanced' version of their 747-300 at the Farnborough air show in England.  The plane featured an increased wingspan, 
+sporting 6'ft. winglets, composite materials, and a digital flight control system that can be managed by two crew; at first there was some concern about 
+flying with only two pilots with no flight engineer coming from overseas airlines like Cathay Pacific, but Boeing convinced the airlines the 
+Electronic Flight Instrument System(EFIS) would operate efficiently.  In the end on Oct 22, 1985 it was Eagan, Minnesota-based Northwest Airlines
+who would become the launch customer, purchasing 10 aircraft that would be called the Boeing 747-451. 
+
+     The aircraft rolled out on Jan. 26, 1988, and flew on Apr. 29, 1988, but there were problems in development: the aircraft's electronics was not only 
+operating on the flightdeck, but it would power many of the services for the passengers, which became a big problem in development and would cause delays 
+in deliveries because of different airline interior configurations, inexperienced workers, as well as electronic intergration problems on the flightdeck.  
+But Boeing would resolve those issues by mid-1989, a lesson learned for future Boeing aircraft.
+
+     The 747-451 was delivered Jan 26, 1989 to Northwest and flew the first revenue service on Feb 9, 1989, 20 years after the first 747 flight in 1969. 
+Soon there after the prototype, N661US the paint being depicted was refurbished and joined the Northwest fleet. The aircraft were flying in the old 
+'blue stripe' livery, but those colors were about change.  In fall of that year, designed by Landor Associates, Northwest unveiled their new and bold 
+livery the employees called the "bowling shoe" livery and a new logo called the 'compass' logo; it was ingenious: it can look like a compass pointing 
+northwest, or an 'n' or a 'w'.  The bold and handsome livery would be adorned on the fleet and was flown till 2003 when Northwest went a pearl-gray 
+paint scheme.
+
+    In 2008 Northwest and Delta Airlines would merge; most of Northwest's fleet would be handed over to Delta in which many of the aircraft
+including 747-451 fleet and for that matter the prototype, will likely finish their service life in Delta colors.
+
+
+To "Keep Climbing", 
+
+First unzip the xml/png. files to flightgear/data/aircraft/747-400/models/liveries
+Run FlightGear, if your livery appears,  "Now You're Flying Smart"
+
+Thank you for downloading
+
+"Some People Just Know How to Fly" ;)
+
+ESA
+
+
+
+
+ 
