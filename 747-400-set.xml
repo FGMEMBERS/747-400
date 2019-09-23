@@ -17,15 +17,15 @@
 		<tag>jet</tag>
 		<tag>4-engine</tag>
 	</tags>
-	<author>Gijs de Rooy, Ivan Ngeow, Markus Bulik and others</author>
+	<author>Gijs de Rooy, Jonathan Redpath, Ivan Ngeow, Markus Bulik and others</author>
 	<status>early production</status>
 	<rating>
-		<FDM type="int">3</FDM>
+		<FDM type="int">4</FDM>
 		<systems type="int">3</systems>
 		<cockpit type="int">3</cockpit>
 		<model type="int">3</model>
 	</rating>
-	<version>20160128</version>
+	<version>20190723</version>
 	
 	<flight-model>jsb</flight-model>
 	<aero>747-400</aero>
@@ -48,6 +48,7 @@
 
 	<model>
 		<path>Aircraft/747-400/Models/747-400.xml</path>
+		<fallback-model-index type="int">352</fallback-model-index>
 		<door>
 			<position-x-m type="float">-20.38</position-x-m>
 			<position-y-m type="float"> -2.89</position-y-m>
@@ -72,6 +73,7 @@
 			<kd type="double">0</kd>
 			<position-norm type="double">0</position-norm>
 		</pushback>
+        <fallback-model-index>352</fallback-model-index>
 	</model>
 	
 	<systems>
@@ -179,8 +181,8 @@
 		<title>Boeing 747-400</title>
 
 		<key>
-			<name>Ctrl-b</name>
-			<desc>Toggle speedbrakes</desc>
+			<name>Ctrl+b</name>
+			<desc>Cycle speedbrakes: off, armed, half deployed, fully deployed</desc>
 		</key>
 		<key>
 			<name>Delete</name>
@@ -229,7 +231,7 @@ left mouse button and counter clockwise using the middle mouse button.
 	<menubar>
 		<default>
 			<menu n="5">
-				<item n="3">
+				<item n="4">
 					<name>fuel-and-payload</name>
 					<binding>
 						<command>nasal</command>
@@ -423,7 +425,7 @@ left mouse button and counter clockwise using the middle mouse button.
 
 	<flight>
 		<autospeedbrakes-armed type="string">true</autospeedbrakes-armed>
-		<elevator-trim>0.3</elevator-trim>
+		<elevator-trim>0.0</elevator-trim>
 		<yaw-damper type="bool">1</yaw-damper>
 	</flight>
 
@@ -495,6 +497,18 @@ left mouse button and counter clockwise using the middle mouse button.
 
 <input>
 	<keyboard>
+                <key n="2">
+                        <name>Ctrl+b</name>
+                        <desc>Cycle speedbrakes: off, armed, half deployed, fully deployed</desc>
+                        <binding>
+                               <command>property-cycle</command>
+                               <property>autopilot/autospoilers/step</property>
+                               <value type="int">0</value>
+                               <value type="int">1</value>
+                               <value type="int">2</value>
+                               <value type="int">3</value>
+                        </binding>
+                </key>
 		<key n="119">
 			<name>w</name>
 			<desc>Walk forward toward view</desc>

@@ -267,6 +267,7 @@ var fillFuel = func() {
 	} else {
 		setprop("consumables/fuel/tank[0]/level-lbs",0);
 	}
+	setprop("consumables/fuel/tank[7]/level-lbs",0);
 }
 
 ## Save fuel state ##
@@ -279,6 +280,13 @@ var tank5    = props.globals.getNode("consumables/fuel/tank[5]/level-lbs", 1);
 var tank6    = props.globals.getNode("consumables/fuel/tank[6]/level-lbs", 1);
 var tank7    = props.globals.getNode("consumables/fuel/tank[7]/level-lbs", 1);
 aircraft.data.add( tank0, tank1, tank2, tank3, tank4, tank5, tank6, tank7 );
+
+## Elevator trim: limit to max position
+setlistener("/controls/flight/elevator-trim", func {
+    if (getprop("/controls/flight/elevator-trim") > 0.25) {
+        setprop("/controls/flight/elevator-trim", 0.25); # -3
+    }
+});
 
 ## Switch click sound ##
 var click_reset = func(propName) {

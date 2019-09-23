@@ -42,8 +42,8 @@ var canvas_primary = {
 		m["flapsBar"].createTransform().setTranslation(c[0], c[1]);
 
 		var timerFlaps = maketimer(10.0, func { m["flapsText"].hide();m["flapsLine"].hide();m["flapsL"].hide();m["flapsBar"].hide();m["flapsBox"].hide(); });
-		setlistener("surface-positions/flap-pos-norm", func() {
-			if (getprop("surface-positions/flap-pos-norm") == 0) {
+		setlistener("/fdm/jsbsim/fcs/flap-pos-norm", func() {
+			if (getprop("/fdm/jsbsim/fcs/flap-pos-norm") == 0) {
 				timerFlaps.singleShot = 1;
 				timerFlaps.start(); # start the timer (with 1 second inverval)
 			} else {
@@ -52,7 +52,7 @@ var canvas_primary = {
 		});
 		timerFlaps.stop();
 		
-		var timerGear = maketimer(10.0, func { gear.hide();gearL.hide();gearBox.hide();gearBoxTrans.hide(); });
+		var timerGear = maketimer(10.0, func { m["gear"].hide();m["gearL"].hide();m["gearBox"].hide();m["gearBoxTrans"].hide(); });
 		setlistener("gear/gear/position-norm", func() {
 			if (getprop("gear/gear/position-norm") == 0) {
 				timerGear.singleShot = 1;
@@ -81,8 +81,8 @@ var canvas_primary = {
 			me["thrustRefMode"].setText(thrustRefModeText[thrustMode]);
 		else
 			me["thrustRefMode"].setText("");
-		var flaps = getprop("controls/flight/flaps");
-		var flapPos = getprop("surface-positions/flap-pos-norm");
+		var flaps = getprop("fdm/jsbsim/fcs/flaps/cmd-detent-deg") or 0;
+		var flapPos = getprop("fdm/jsbsim/fcs/flaps/pos-deg") or 0;
 		
 		if ((var asstat = getprop("instrumentation/fmc/inputs/assumed-temp-deg-c") or -999) > -90) {
 			me["assTemp"].setText(sprintf("%+02.0fc",asstat));
@@ -111,10 +111,10 @@ var canvas_primary = {
 		}
 		
 		if (flapPos != 0 or flaps != 0) {
-			me["flapsText"].setText(sprintf("%2.0f",flaps*30));
-			me["flapsLine"].setTranslation(0,157*flaps);
-			me["flapsText"].setTranslation(0,157*flaps);
-			me["flapsBar_scale"].setScale(1, flapPos);
+			me["flapsText"].setText(sprintf("%2.0f",flaps));
+			me["flapsLine"].setTranslation(0,5.233*flaps);
+			me["flapsText"].setTranslation(0,5.233*flaps);
+			me["flapsBar_scale"].setScale(1, flapPos/30);
 			me["flapsText"].show();
 			me["flapsLine"].show();
 			me["flapsL"].show();
@@ -193,7 +193,7 @@ var canvas_primary = {
 		var egt = [0,getprop("engines/engine[0]/egt-degf"),getprop("engines/engine[1]/egt-degf"),getprop("engines/engine[2]/egt-degf"),getprop("engines/engine[3]/egt-degf")];
 		var n1 = [0,getprop("engines/engine[0]/n1"),getprop("engines/engine[1]/n1"),getprop("engines/engine[2]/n1"),getprop("engines/engine[3]/n1")];
 		var throttle = [0,getprop("controls/engines/engine[0]/throttle"),getprop("controls/engines/engine[1]/throttle"),getprop("controls/engines/engine[2]/throttle"),getprop("controls/engines/engine[3]/throttle")];
-		var engn1max = [0,getprop("/fdm/jsbsim/eec/throttle-max-cmd-norm[0]"),getprop("/fdm/jsbsim/eec/throttle-max-cmd-norm[0]"),getprop("/fdm/jsbsim/eec/throttle-max-cmd-norm[0]"),getprop("/fdm/jsbsim/eec/throttle-max-cmd-norm[0]")];
+		var engn1max = [0,getprop("/fdm/jsbsim/eec/throttle-max-cmd-norm[0]") or 0,getprop("/fdm/jsbsim/eec/throttle-max-cmd-norm[0]") or 0,getprop("/fdm/jsbsim/eec/throttle-max-cmd-norm[0]") or 0,getprop("/fdm/jsbsim/eec/throttle-max-cmd-norm[0]") or 0];
 		
 		for(var n = 1; n<=4; n+=1){
 			var revPos = getprop("engines/engine["~n~"]/reverser-pos-norm") or 0;
@@ -207,7 +207,7 @@ var canvas_primary = {
 			} else {
 				me["eng"~n~"n1cmdLine"].show();
 				me["eng"~n~"n1cmdLine"].setTranslation(0,-173.2*throttle[n]*engn1max[n]-46.8);
-				me["eng"~n~"n1ref"].setText(sprintf("%3.01f",92.5*throttle[n]*engn1max[n]+25));
+				me["eng"~n~"n1ref"].setText(sprintf("%3.01f",92.5*throttle[n]*engn1max[n]+25.0));
 				me["eng"~n~"n1ref"].setColor(0,1.0,0);
 			}
 			me["eng"~n~"n1"].setText(sprintf("%3.01f",n1[n]));
